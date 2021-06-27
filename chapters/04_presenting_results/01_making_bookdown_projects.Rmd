@@ -1,4 +1,4 @@
-# Making a Bookdown Book {#bookdown}
+# Making a Bookdown Book Project {#bookdown}
 
 Document the process of creating a bookdown book. Think of it as a quickstart guide.
 
@@ -202,7 +202,6 @@ description: "This is the textbook for Brad Cannell's Introduction to R Programm
 
 3. First-level headers become chapters. Use `{-}` at the end of the header if you don't want the chapter to be numbered. For example `# Welcome {-}`
 
-
 ## Creating bookdown chapters
 
 Each Rmd file is a chapter. Chapters can be broken up into parts. To do so, create a subdirectory for each part inside the `chapters` folder. The individual Rmd files (i.e. chapters) go inside these folders. 
@@ -218,6 +217,10 @@ The first Rmd file in each part folder should have only this content:
 ```
 
 Name the file `00_part_<part_name>`
+
+All subsequent content chapters should start with a first level heading only -- No YAML. For example, `# R scripts`.
+
+For more on chapter content, see [Bookdown template chapter](#bookdown-template)
 
 
 ## Knitting the book

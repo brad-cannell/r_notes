@@ -1,0 +1,114 @@
+# Bookdown Template Chapter {#bookdown-template}
+
+Chapters should pretty much just be about one distinct idea. Give some more thought to defining this more clearly. I think it will be important as I start incorporating the epidemiology stuff. Also, it should help with making things easier to find.
+
+Heading guidelines:
+* Useful for finding what you are looking for.
+
+## Chapter overview
+
+Very brief description of what they can expect. 
+
+By the end of this chapter, we will be able to:
+1. Placeholder
+2. Placeholder
+
+* Awesome if you can start with a funny picture or a cool quote.
+
+## Motivating example
+
+Recall that one of my [goals][Goals] is "To start each concept with the end result and then deconstruct how we arrived at that result, where possible. I find that it is easier for me to understand new concepts when learning them as a component of a final product."
+
+We won't necessarily do this for every chapter (e.g., installing R and RStudio) if doing so doesn't make sense.
+
+## Body
+
+### Language
+
+Use "we" and "our" language. Make it friendly and informal. 
+
+### Text conventions
+
+* **Bold** text is used to highlight important **terms**, file names, and file extensions.
+  - Not every bolded term needs to go in the glossary. Use your best judgment.
+
+* `Highlighted inline code` is used to emphasize small sections of R code and program elements such as variable or function names.
+
+### Special sections
+
+<p class="note"> 🗒**Side Note:** This is an example note. </p>
+
+<p class="warning"> ⚠️**Warning:** This is an example warning </p>
+
+### Images
+
+```{r screenshot-cran, echo=FALSE}
+# knitr::include_graphics("img/01_part_getting_started/01_install_r/install_r_mac/cran.png")
+```
+
+* Don't forget to add "echo=FALSE" to the code chunk.
+
+* To cross-reference figures. Name the figure in the code chunk (e.g., ```{r console, echo=FALSE}). Then add \@ref(fig:console) to the text.
+  - The figure reference should go outside of punctuation. With a space.
+
+* Every figure doesn't need a caption. It can actually make things look sloppy. The only figures that NEED a caption are those figures that are cross-referenced.
+
+* Because of the way the files are structured, You won't be able to see pictures directly in the Rmd files without including "../../" on the front the file paths. However, having "../../" on the front of the file paths prevents the book from building appropriately.
+
+### Code blocks
+
+```{r}
+
+```
+
+👆**Here's what we did above:**
+
+Use unordered lists for these sections. It allows for nested lists and code. Add line breaks in between the bullets.
+
+```{eval=FALSE}
+<ul>
+  <li>You can type `?mutate` into your R console to view the help documentation for this function and follow along with the explanation below./li>
+  
+  <li></li>
+  
+  <li></li>
+</ul>
+```
+
+
+### Cross-references
+
+* To cross-reference figures. Name the figure in the code chunk (e.g., ```{r console, echo=FALSE}). Then add \@ref(fig:console) to the text.
+  - The figure reference should go outside of punctuation. With a space.
+  
+* To cross-reference chapters: https://happygitwithr.com/bookdown-cheat-sheet.html
+  - Add CSS id the behind the header # How to use odds ratios {#ors}
+  - Refer to it like this: The the [chapter on odds ratios](#ors)
+  - Capitalize first letter when cross-referencing the chapter by name -- the Let's get programming chapter. Written as "the [Let's get programming] chapter."  
+  - Don't capitalize the first letter when describing the contents of a chapter in the cross-reference -- the chapter on exporting data. Written as "We were first introduced to [factor vectors][Factor vectors] in the chapter.."
+
+
+### Previewing the chapter
+
+* Supposed to use "bookdown::preview_chapter("03_what_is_r.Rmd")" to preview chapters. 
+  - I can't get this to work for some reason. I created a new project that I can use a test environment. 
+  - It's in "R4Epi chapters in progress/bookdown_test_environment". You have to build the whole book, but it should go fast because I don't have all the chapters.
+
+### Miscelaneous 
+
+* Make liberal use of emojis.
+* Start making videos to supplement content.
+
+## Additional resources: function to check
+
+Links to cheat sheets, websites, and videos.
+
+## Key terms : function to add to appendix 
+
+Key terms covered in this chapter.
+
+## Final example code : function to add to appendix
+
+Succinct recap of the code used in this chapter without any explanation of how it works. You can use this as a quick reference later.
+
+We won't necessarily do this for every chapter (e.g., installing R and RStudio) if doing so doesn't make sense.

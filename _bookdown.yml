@@ -1,5 +1,9 @@
-book_filename: "r_notes_bookdown"
+book_filename: "R Notes"
+repo: https://github.com/brad-cannell/r_notes
+output_dir: docs
 delete_merged_file: true
 language:
   ui:
-    chapter_name: "Chapter "
+    chapter_name: ""
+new_session: no
+rmd_subdir: ["chapters"]

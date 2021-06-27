@@ -1,0 +1,244 @@
+# Making a Bookdown Book {#bookdown}
+
+Document the process of creating a bookdown book. Think of it as a quickstart guide.
+
+Complete documentation at: https://bookdown.org/yihui/bookdown/
+
+## Creating the bookdown project locally
+
+1. Start by clicking New Project -> New Directory -> Book project using Bookdown.
+
+2. Add a NOTES file and add it to `.gitignore` and `.Rbuildignore` using `usethis`:    
+    * `usethis::use_build_ignore("NOTES")`   
+    * `usethis::use_git_ignore("NOTES")`   
+
+3. Delete all Rmd files except `index.Rmd`
+
+4. Create a folder named _chapters_.
+
+5. Edit the README file. It can say whatever you want it to. For examples, see here:   
+    * https://github.com/brad-cannell/r4epi   
+    * https://github.com/brad-cannell/r_notes   
+    * [Use this website to create a creative commons license](https://creativecommons.org/licenses/)   
+
+6. Add a license file to the project's root directory. Here is an example.
+
+This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+
+## Initiate a git repository
+
+You need to do this in order to connect to GitHub, and you need to connect to GitHub before editing some of the books configuration files because you will need to add links to the repository.
+
+1. Type "usethis::use_git(message = "Initial commit")" in the R console.
+
+
+## Create a github repository for the book
+
+1. Go to: https://github.com/orgs/brad-cannell/dashboard
+
+2. Click New
+
+3. Name the repository. For example, "r_notes"
+
+4. Optionally, type in a description. For example, "This is the repository for my R notes bookdown project."
+
+5. Make the repository public 
+
+6. Don't check the boxes for README, .gitignore, or license
+
+7. Click create repository
+
+8. Follow GitHub's instructions for pushing the repository to GitHub.
+
+At this point, the GitHub repository should be set up. 
+
+
+## Configuring a publishing source for the GitHub Pages site
+
+Useful websites:   
+* https://bookdown.org/yihui/bookdown/github.html   
+* https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site   
+
+1. In the repository, click on Settings, then pages (on the left sidebar).
+
+2. Change the source to Branch:master, folder = docs
+
+
+## Modify _bookdown.yml
+
+Start with this example and modify as needed
+
+```{eval=FALSE}
+book_filename: "R 4 Epidemiology"
+repo: https://github.com/brad-cannell/r4epi
+output_dir: docs
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: ""
+new_session: no
+rmd_subdir: ["chapters"]
+```
+
+
+## Modify _output.yml
+
+Start with this example and modify as needed
+
+```{eval=FALSE}
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc:
+      collapse: section
+      scroll_highlight: yes
+      before: |
+        <li><a href="./">R for Epidemiology</a></li>
+      after: |
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+```
+        
+        
+## Modify style.css
+
+```{css eval=FALSE}
+/******************************************************************************
+CSS for the R4Epi textbook
+******************************************************************************/
+
+/*
+CSS that came with bookdown
+*/
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+/* 
+Font Styles
+*/
+.large-bold {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.red-text {
+  color: red;
+}
+
+.code {
+  color: #0365C0;
+  font-family: "Courier New", Courier, monospace;
+}
+
+
+/*
+Note styles
+*/
+.note {
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  background-color: #f0f7fb;
+  border: solid 1px #3498db;
+  border-radius: 6px;
+  line-height: 18px;
+  overflow: hidden;
+  padding: 15px 15px;
+}
+
+.warning {
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  background-color: #FEFBEA;
+  border: solid 1px #F2E394;
+  border-radius: 6px;
+  line-height: 18px;
+  overflow: hidden;
+  padding: 15px 15px;
+}
+```
+
+
+## Modify index.Rmd
+
+1. Delete all the example text.
+
+2. Modify the YAML header. Here is an example:
+
+```{eval=FALSE}
+--- 
+title: "R for Epidemiology"
+author: "Brad Cannell"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+link-citations: yes
+csl: ama.csl
+github-repo: brad-cannell/r4epi
+url: 'https://brad-cannell.github.io/r4epi/'
+description: "This is the textbook for Brad Cannell's Introduction to R Programming for Epidemiologic Research course."
+---
+```
+
+* The `csl: ama.csl` part of the YAML header allows you to change the bibliography style. You can find a list of styles here: https://github.com/citation-style-language/styles    
+
+* For AMA, which I frequently want, you can just copy and paste from your templates folder. 
+
+3. First-level headers become chapters. Use `{-}` at the end of the header if you don't want the chapter to be numbered. For example `# Welcome {-}`
+
+
+## Creating bookdown chapters
+
+Each Rmd file is a chapter. Chapters can be broken up into parts. To do so, create a subdirectory for each part inside the `chapters` folder. The individual Rmd files (i.e. chapters) go inside these folders. 
+
+I typically prefix each folder name that  aligns with the order the parts should appear in. For example 01_getting_started, 02_best_practices, etc. 
+
+The first Rmd file in each part folder should have only this content:
+
+```{eval=FALSE}
+# (PART) Getting Started {-}
+
+<!-- This Rmd just creates a part heading in the table of contents -->
+```
+
+Name the file `00_part_<part_name>`
+
+
+## Knitting the book
+
+1. Click on the build tab, then click "Build Book".
+
+2. Commit the changes and push to GitHub.
+
+3. After a few minutes, you should see the GitHub pages version working.   
+
+
+## Errors and warnings
+
+* Output created: docs/index.html Warning message: In split_chapters(output, gitbook_page, number_sections, split_by,  : You have 3 Rmd input file(s) but only 2 first-level heading(s). Did you forget first-level headings in certain Rmd files?    
+  - Just ignore this.
+
+* tlmgr: Local TeX Live (2019) is older than remote repository (2020).    
+  - Run tinytex::reinstall_tinytex()   
+
+* ! LaTeX Error: Cannot determine size of graphic in img/getting_started/01_install_r/download_r_mac.gif (no BoundingBox).   
+  - This is from trying to make a pdf document with a gif in it. LaTeX doesn't support gifs. Just make a just build the book in gitbook format.   
+  
+* 2: The label(s) fig:source1 not found.    
+  - Figures must have a caption in order to cross reference them.   

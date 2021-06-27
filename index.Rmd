@@ -1,34 +1,28 @@
 --- 
-title: "A Minimal Book Example"
-author: "Yihui Xie"
+title: "R Notes"
+author: "Brad Cannell"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
-biblio-style: apalike
 link-citations: yes
-description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+csl: ama.csl
+github-repo: brad-cannell/r_notes
+url: 'https://brad-cannell.github.io/r_notes/'
+description: "This is the Bookdown for Brad Cannell's R Notes."
 ---
 
-# Prerequisites
+# Welcome {-}
 
-This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports, e.g., a math equation $a^2 + b^2 = c^2$.
+Welcome to Brad Cannell's R Notes!
 
-The **bookdown** package can be installed from CRAN or Github:
+This repository is for a [Bookdown](https://bookdown.org/) version Brad Cannell's R Notes. I'm really making this repository for me, but even better if you find it useful too!
 
-```{r eval=FALSE}
-install.packages("bookdown")
-# or the development version
-# devtools::install_github("rstudio/bookdown")
-```
+Why am I doing this (as opposed to just keeping notes locally)?     
 
-Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`.
+* Better organized (e.g., chapter structure and search)      
+* Easy access -- just click on the bookmark on web browser      
+* Practice using bookdown      
+* Might help with R4Epi -- This can be sort of a sandbox for developing before I add things to R4Epi.     
 
-To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.org/tinytex/>.
-
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
-```
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.

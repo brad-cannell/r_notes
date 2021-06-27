@@ -1,0 +1,115 @@
+# Arranging Columns with Across
+
+I'm trying to arrange calculated columns immediately after source columns when using dplyr column-wise operations.
+
+https://stackoverflow.com/questions/67076974/arrange-calculated-columns-immediately-after-source-columns-when-using-dplyr-col/67077122#67077122
+
+https://community.rstudio.com/t/arrange-calculated-columns-immediately-after-source-columns-when-using-dplyr-column-wise-operations/101726
+
+```{r}
+library(dplyr)
+```
+
+Example data
+
+```{r}
+df <- tibble(
+  id         = c(1, 2, 2),
+  id_row     = c(1, 1, 2),
+  name_first = c("John", "Jane", "Jane"),
+  city       = c("NY", "DAL", "HOU"),
+  x          = c(0, 1, 0)
+)
+
+df
+```
+
+Within ID, the values of name_first and city should be constant. The values for id_row and x need not be constant. I want to test for and inspect differing values of name_first and city within-id.
+
+One convenient way to do this is with `mutate()` and `across()`.
+
+```{r}
+df %>% 
+  group_by(id) %>% 
+  mutate(
+    across(
+      .cols  = c(name_first, city),
+      .fns   = ~ length(unique(.x)) == 1,
+      .names = "{col}_all_match"
+    )
+  )
+```
+
+The issue is that the "all_match" (calculated) columns are added to the far right of the data frame rather than immediately after their source column. This makes it difficult to visually inspect differing values for the columns of interest. 
+
+Of course, in this small data frame, we could easily rearrange the columns using `select()`.
+
+```{r}
+df %>% 
+  group_by(id) %>% 
+  mutate(
+    across(
+      .cols  = c(name_first, city),
+      .fns   = ~ length(unique(.x)) == 1,
+      .names = "{col}_all_match"
+    )
+  ) %>% 
+  select(id, id_row, starts_with("name_first"), starts_with("city"), x)
+```
+
+The issue with that approach is that it quickly becomes pretty cumbersome with more columns. A more tractable approach would be to sort the names alphabetically... 
+
+```{r}
+df %>% 
+  group_by(id) %>% 
+  mutate(
+    across(
+      .cols  = c(name_first, city),
+      .fns   = ~ length(unique(.x)) == 1,
+      .names = "{col}_all_match"
+    )
+  ) %>% 
+  select(sort(names(.)))
+```
+
+...but in my situation I need to preserve the original column order. I'd also prefer to stick with Tidyverse solutions if possible.
+
+Any ideas are appreciated!
+
+## Solution by LMc:
+
+```{r}
+# Use select because it allows for more complex column selection when working 
+# with more complex data frames.
+inspect_cols <- df %>% select(name_first, city) %>% names()
+```
+
+```{r}
+# Set column order ahead of time. This assumes that you know the names of each 
+# of the columns you want to inspect
+col_order <- purrr::map(
+  names(df), 
+  function(x) {
+    if (x %in% inspect_cols) {
+      c(x, paste0(x, "_all_match"))
+    } else {
+      x
+    }
+  }
+) %>% 
+  unlist()
+```
+
+```{r}
+df %>% 
+  group_by(id) %>% 
+  mutate(
+    across(
+      .cols  = all_of(inspect_cols),
+      .fns   = ~ length(unique(.x)) == 1,
+      .names = "{col}_all_match"
+    )
+  ) %>% 
+  dplyr::select(all_of(col_order))
+```
+

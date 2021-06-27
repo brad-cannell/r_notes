@@ -1,0 +1,54 @@
+# Making a Bookdown Book {#bookdown}
+
+Document the process of creating a bookdown book. Think of it as a quickstart guide.
+
+Complete documentation at: https://bookdown.org/yihui/bookdown/
+
+## Creating the bookdown project locally
+
+1. Start by clicking New Project -> New Directory -> Book project using Bookdown.
+
+2. Add a NOTES file and add it to .gitignore and .Rbuildignore using `usethis`:    
+* usethis::use_build_ignore("NOTES")   
+* usethis::use_git_ignore("NOTES")   
+
+3. Delete all Rmd files except `index.Rmd`
+
+4. Create a folder named _chapters_.
+
+5. Edit the README file. It can say whatever you want it to. For examples, see here:   
+* https://github.com/brad-cannell/r4epi   
+* https://github.com/brad-cannell/r_notes   
+* [Use this website to create a creative commons license](https://creativecommons.org/licenses/)   
+
+6. Add a license file to the project's root directory. Here is an example.
+
+This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+
+## Initiate a git repository
+
+You need to do this in order to connect to GitHub, and you need to connect to GitHub before editing some of the books configuration files because you will need to add links to the repository.
+
+1. Type "usethis::use_git(message = "Initial commit")" in the R console.
+
+
+## Create a github repository for the book
+
+1. Go to: https://github.com/orgs/brad-cannell/dashboard
+
+2. Click New
+
+3. Name the repository. For example, "r_notes"
+
+4. Optionally, type in a description. For example, "This is the repository for my R notes bookdown project."
+
+5. Make the repository public 
+
+6. Don't check the boxes for README, .gitignore, or license
+
+7. Click create repository
+
+## Modify _bookdown.yml
+
+1. Change `book_filename: "r_notes_bookdown"` to Whatever you want the name of the book to be.

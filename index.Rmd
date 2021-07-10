@@ -16,7 +16,7 @@ description: "This is the Bookdown for Brad Cannell's R Notes."
 
 Welcome to Brad Cannell's R Notes!
 
-This repository is for a [Bookdown](https://bookdown.org/) version Brad Cannell's R Notes. I'm really making this repository for me, but even better if you find it useful too!
+This is a [Bookdown](https://bookdown.org/) version Brad Cannell's R Notes. I'm really making this "book" for me, but even better if you find it useful too!
 
 Why am I doing this (as opposed to just keeping notes locally)?     
 
@@ -26,3 +26,27 @@ Why am I doing this (as opposed to just keeping notes locally)?
 * Might help with R4Epi -- This can be sort of a sandbox for developing before I add things to R4Epi.     
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+
+
+## Organization {-}
+
+These notes are loosely organized into the following parts:   
+
+1. **Programming:** Things that have to do with optimizing code, writing functions, creating packages, and repeated operations.   
+
+2. **Working with external files:** Things like data transfer, web scraping, PDF scraping, and using Officer to scrape Microsoft Office documents.   
+
+3. **Data management:** Things related to manipulating/transforming/filtering data that is already in R.   
+
+4. **Data analysis:** Things related to creating numerical summaries of data.
+
+5. **Data visualization:** Things related to graphical summaries of data. A lot of this will be about ggplot. 
+
+6. **Presenting results:**  Things related to making numerical and graphical summaries accessible outside of R. This can include webpages, static dashboards, PDF documents, Microsoft Office documents, ect. This does not include Shiny apps.  
+
+7. **Shiny:** Things related to using Shiny to create interactive web apps. Eventually, this may need its own Bookdown project. 
+
+
+
+
+

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Arranging Columns with Across | R Notes</title>
+  <title>3 Arranging Columns with Across | R Notes</title>
   <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Arranging Columns with Across | R Notes" />
+  <meta property="og:title" content="3 Arranging Columns with Across | R Notes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://brad-cannell.github.io/r_notes/" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="brad-cannell/r_notes" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Arranging Columns with Across | R Notes" />
+  <meta name="twitter:title" content="3 Arranging Columns with Across | R Notes" />
   
   <meta name="twitter:description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2021-07-10" />
+<meta name="date" content="2021-07-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="creating-rmd-templates.html"/>
-<link rel="next" href="book-chapters.html"/>
+<link rel="next" href="column-names-prepping-many-for-merge.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,6 +51,14 @@
 
 
 
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.15/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -151,10 +159,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.4" data-path="my-package-notes.html"><a href="my-package-notes.html#step-3-writing-help-pages"><i class="fa fa-check"></i><b>1.4</b> Step 3: Writing help pages</a>
 <ul>
 <li class="chapter" data-level="1.4.1" data-path="my-package-notes.html"><a href="my-package-notes.html#example-roxygen-header"><i class="fa fa-check"></i><b>1.4.1</b> Example <code>roxygen</code> header</a></li>
-<li class="chapter" data-level="1.4.2" data-path="my-package-notes.html"><a href="my-package-notes.html#documenting-data"><i class="fa fa-check"></i><b>1.4.2</b> Documenting Data:</a></li>
-<li class="chapter" data-level="1.4.3" data-path="my-package-notes.html"><a href="my-package-notes.html#documenting-package"><i class="fa fa-check"></i><b>1.4.3</b> Documenting Package:</a></li>
-<li class="chapter" data-level="1.4.4" data-path="my-package-notes.html"><a href="my-package-notes.html#once-package-is-complete-ish"><i class="fa fa-check"></i><b>1.4.4</b> Once package is complete (ish)</a></li>
-<li class="chapter" data-level="1.4.5" data-path="my-package-notes.html"><a href="my-package-notes.html#notes-about-package-notes"><i class="fa fa-check"></i><b>1.4.5</b> Notes about package notes:</a></li>
+<li class="chapter" data-level="1.4.2" data-path="my-package-notes.html"><a href="my-package-notes.html#documenting-package"><i class="fa fa-check"></i><b>1.4.2</b> Documenting Package:</a></li>
+<li class="chapter" data-level="1.4.3" data-path="my-package-notes.html"><a href="my-package-notes.html#once-package-is-complete-ish"><i class="fa fa-check"></i><b>1.4.3</b> Once package is complete (ish)</a></li>
+<li class="chapter" data-level="1.4.4" data-path="my-package-notes.html"><a href="my-package-notes.html#notes-about-package-notes"><i class="fa fa-check"></i><b>1.4.4</b> Notes about package notes:</a></li>
 </ul></li>
 <li class="chapter" data-level="1.5" data-path="my-package-notes.html"><a href="my-package-notes.html#step-4-synchronize-with-github"><i class="fa fa-check"></i><b>1.5</b> Step 4: Synchronize with GitHub</a>
 <ul>
@@ -162,32 +169,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.5.2" data-path="my-package-notes.html"><a href="my-package-notes.html#example-installation-instructions-for-readme"><i class="fa fa-check"></i><b>1.5.2</b> Example Installation instructions for README:</a></li>
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="my-package-notes.html"><a href="my-package-notes.html#step-5-testing"><i class="fa fa-check"></i><b>1.6</b> Step 5: Testing</a></li>
-<li class="chapter" data-level="1.7" data-path="my-package-notes.html"><a href="my-package-notes.html#step-6-vignettes"><i class="fa fa-check"></i><b>1.7</b> Step 6: Vignettes</a></li>
-<li class="chapter" data-level="1.8" data-path="my-package-notes.html"><a href="my-package-notes.html#to-create-a-vignette"><i class="fa fa-check"></i><b>1.8</b> To create a vignette:</a>
+<li class="chapter" data-level="1.7" data-path="my-package-notes.html"><a href="my-package-notes.html#vignettes"><i class="fa fa-check"></i><b>1.7</b> Vignettes</a>
 <ul>
-<li class="chapter" data-level="1.8.1" data-path="my-package-notes.html"><a href="my-package-notes.html#vignette-notes"><i class="fa fa-check"></i><b>1.8.1</b> Vignette Notes:</a></li>
+<li class="chapter" data-level="1.7.1" data-path="my-package-notes.html"><a href="my-package-notes.html#to-create-a-vignette"><i class="fa fa-check"></i><b>1.7.1</b> To create a vignette:</a></li>
+<li class="chapter" data-level="1.7.2" data-path="my-package-notes.html"><a href="my-package-notes.html#vignette-notes"><i class="fa fa-check"></i><b>1.7.2</b> Vignette Notes:</a></li>
 </ul></li>
+<li class="chapter" data-level="1.8" data-path="my-package-notes.html"><a href="my-package-notes.html#adding-and-documenting-data"><i class="fa fa-check"></i><b>1.8</b> Adding and documenting data</a></li>
 <li class="chapter" data-level="1.9" data-path="my-package-notes.html"><a href="my-package-notes.html#errors-warnings-notes"><i class="fa fa-check"></i><b>1.9</b> Errors, warnings, notes</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="packages-adding-data.html"><a href="packages-adding-data.html"><i class="fa fa-check"></i><b>2</b> Packages: Adding Data</a>
+<li class="chapter" data-level="2" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html"><i class="fa fa-check"></i><b>2</b> Creating Rmd Templates</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="packages-adding-data.html"><a href="packages-adding-data.html#overview-1"><i class="fa fa-check"></i><b>2.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="2.2" data-path="packages-adding-data.html"><a href="packages-adding-data.html#useful-websites-1"><i class="fa fa-check"></i><b>2.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="2.3" data-path="packages-adding-data.html"><a href="packages-adding-data.html#load-packages"><i class="fa fa-check"></i><b>2.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="2.4" data-path="packages-adding-data.html"><a href="packages-adding-data.html#simulate-data"><i class="fa fa-check"></i><b>2.4</b> 🔢Simulate data</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html"><i class="fa fa-check"></i><b>3</b> Creating Rmd Templates</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#overview-2"><i class="fa fa-check"></i><b>3.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="3.2" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#useful-websites-2"><i class="fa fa-check"></i><b>3.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="3.3" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#create-a-package"><i class="fa fa-check"></i><b>3.3</b> Create a package</a></li>
-<li class="chapter" data-level="3.4" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#add-a-template-to-your-package"><i class="fa fa-check"></i><b>3.4</b> Add a template to your package</a></li>
+<li class="chapter" data-level="2.1" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#overview-1"><i class="fa fa-check"></i><b>2.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="2.2" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#useful-websites-1"><i class="fa fa-check"></i><b>2.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="2.3" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#create-a-package"><i class="fa fa-check"></i><b>2.3</b> Create a package</a></li>
+<li class="chapter" data-level="2.4" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#add-a-template-to-your-package"><i class="fa fa-check"></i><b>2.4</b> Add a template to your package</a></li>
 </ul></li>
 <li class="part"><span><b>II Working with External Files</b></span></li>
 <li class="part"><span><b>III Data Management</b></span></li>
-<li class="chapter" data-level="4" data-path="arranging-columns-with-across.html"><a href="arranging-columns-with-across.html"><i class="fa fa-check"></i><b>4</b> Arranging Columns with Across</a>
+<li class="chapter" data-level="3" data-path="arranging-columns-with-across.html"><a href="arranging-columns-with-across.html"><i class="fa fa-check"></i><b>3</b> Arranging Columns with Across</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="arranging-columns-with-across.html"><a href="arranging-columns-with-across.html#solution-by-lmc"><i class="fa fa-check"></i><b>4.1</b> Solution by LMc:</a></li>
+<li class="chapter" data-level="3.1" data-path="arranging-columns-with-across.html"><a href="arranging-columns-with-across.html#solution-by-lmc"><i class="fa fa-check"></i><b>3.1</b> Solution by LMc:</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html"><i class="fa fa-check"></i><b>4</b> Column Names: Prepping Many for Merge</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#overview-2"><i class="fa fa-check"></i><b>4.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="4.2" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#useful-websites-2"><i class="fa fa-check"></i><b>4.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="4.3" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#load-packages"><i class="fa fa-check"></i><b>4.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="4.4" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#simulate-data"><i class="fa fa-check"></i><b>4.4</b> 🔢Simulate data</a></li>
+<li class="chapter" data-level="4.5" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#get-the-existing-column-names"><i class="fa fa-check"></i><b>4.5</b> Get the existing column names</a></li>
+<li class="chapter" data-level="4.6" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#standardize-new-column-names"><i class="fa fa-check"></i><b>4.6</b> Standardize new column names</a></li>
+<li class="chapter" data-level="4.7" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#turn-this-into-a-function"><i class="fa fa-check"></i><b>4.7</b> Turn this into a function</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#make-a-unit-test-for-the-function"><i class="fa fa-check"></i><b>4.7.1</b> Make a unit test for the function</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#manual-changes-to-column-names"><i class="fa fa-check"></i><b>4.8</b> Manual changes to column names</a></li>
+<li class="chapter" data-level="4.9" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#have-r-write-out-the-rename-code"><i class="fa fa-check"></i><b>4.9</b> Have R write out the rename code</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#make-it-a-function"><i class="fa fa-check"></i><b>4.9.1</b> Make it a function</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#rename-the-columns"><i class="fa fa-check"></i><b>4.10</b> Rename the columns</a></li>
+<li class="chapter" data-level="4.11" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#repeat-the-process-for-v2"><i class="fa fa-check"></i><b>4.11</b> Repeat the process for V2</a></li>
+<li class="chapter" data-level="4.12" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#repeat-the-process-for-v3"><i class="fa fa-check"></i><b>4.12</b> Repeat the process for V3</a></li>
+<li class="chapter" data-level="4.13" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#merge-all-3-visits"><i class="fa fa-check"></i><b>4.13</b> Merge all 3 visits</a></li>
+<li class="chapter" data-level="4.14" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#final-data-cleaning"><i class="fa fa-check"></i><b>4.14</b> Final data cleaning</a></li>
 </ul></li>
 <li class="part"><span><b>IV Analysis</b></span></li>
 <li class="part"><span><b>V Data Visualization</b></span></li>
@@ -250,12 +274,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="arranging-columns-with-across" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Arranging Columns with Across</h1>
+<div id="arranging-columns-with-across" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Arranging Columns with Across</h1>
 <p>I’m trying to arrange calculated columns immediately after source columns when using dplyr column-wise operations.</p>
 <p><a href="https://stackoverflow.com/questions/67076974/arrange-calculated-columns-immediately-after-source-columns-when-using-dplyr-col/67077122#67077122" class="uri">https://stackoverflow.com/questions/67076974/arrange-calculated-columns-immediately-after-source-columns-when-using-dplyr-col/67077122#67077122</a></p>
 <p><a href="https://community.rstudio.com/t/arrange-calculated-columns-immediately-after-source-columns-when-using-dplyr-column-wise-operations/101726" class="uri">https://community.rstudio.com/t/arrange-calculated-columns-immediately-after-source-columns-when-using-dplyr-column-wise-operations/101726</a></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="arranging-columns-with-across.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="arranging-columns-with-across.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
 <p>Example data</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="arranging-columns-with-across.html#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb14-2"><a href="arranging-columns-with-across.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id         =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>),</span>
@@ -329,8 +361,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3 HOU   FALSE              2      2 Jane       TRUE                     0</code></pre>
 <p>…but in my situation I need to preserve the original column order. I’d also prefer to stick with Tidyverse solutions if possible.</p>
 <p>Any ideas are appreciated!</p>
-<div id="solution-by-lmc" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Solution by LMc:</h2>
+<div id="solution-by-lmc" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Solution by LMc:</h2>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="arranging-columns-with-across.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use select because it allows for more complex column selection when working </span></span>
 <span id="cb22-2"><a href="arranging-columns-with-across.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># with more complex data frames.</span></span>
 <span id="cb22-3"><a href="arranging-columns-with-across.html#cb22-3" aria-hidden="true" tabindex="-1"></a>inspect_cols <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">select</span>(name_first, city) <span class="sc">%&gt;%</span> <span class="fu">names</span>()</span></code></pre></div>
@@ -397,28 +429,13 @@ Clean up and add session info
 
 </div>
 </div>
-
-
-
-
-</div>
-
-
-
-
-</div>
-
-
-
-
-</div>
             </section>
 
           </div>
         </div>
       </div>
 <a href="creating-rmd-templates.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="book-chapters.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="column-names-prepping-many-for-merge.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

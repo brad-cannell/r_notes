@@ -1,0 +1,342 @@
+# Column Names: Prepping Many for Merge
+
+<!--
+Hidden comments placeholder
+-->
+
+```{r random-pic-from-url, echo=FALSE}
+knitr::include_graphics("https://picsum.photos/200/300")
+```
+
+## ⭐️Overview
+
+The inspiration for this chapter came about when I was trying to merge the QDS vist 1 through visit 5 files that were part of the Link2Care project. All of the QDS files (plus some other files) needed to be merged together into a final analysis data set. However, not all questions were asked at all visits and column names were inconsistently used across visits. Even when the names were almost the same, a visit number was attached to the name (e.g., TODAY_V1, TODAY_V2, TODAY_V3, etc.). Finally, each data set contained 800+ columns, which made renaming them all manually tedious and error prone. So, I'm trying to come up with a better way.
+
+One method I came up with was reading in the variable names from the Word codebooks and then modifying them. Using this method required making some custom styles in Word and applying those styles to the column names. This seemed to work pretty well at first, but then Joe and James made some changes to QDS, which rendered the codebooks I'd made all the changes to obsolete. This left me with two options:
+
+1. Have some of the variable name adjustments pulled from the codebook and some of the variable name adjustments done manually in the R code (e.g., T26, visit type).
+
+2. Keep all of the adjustments in the codebook, which means converting the new codebooks to word documents, and going back through them to format all of the old column names again.
+
+Neither of these options seems very robust or future-proof. While it might be a lot of work upfront, I'm starting to think that just doing all of the variable renaming in the R code might be the way to go. Below, I'm going to play around with how to automate as much of this process as possible.
+
+
+## 🌎Useful websites
+
+* [GitHub issue](https://github.com/brad-cannell/link2care_public/issues/1)   
+
+
+## 📦Load packages
+
+```{r message=FALSE}
+library(dplyr)
+library(stringr)
+library(testthat)
+library(tidyr)
+```
+
+
+## 🔢Simulate data 
+
+Simulate 3 QDS data sets. Don't worry about the values much. They really aren't the issue for this example. 
+
+* SUBJECT: No change in column name across visits.   
+* TODAY_V and VISIT_V: The _V1, _V2, _V3 part changes.   
+* SQ_2: Only exists in v1, and the name is altered.   
+* GROUP: Only exists in v3.  
+* WEIGHT and WEIGHT3: Doesn't exist in v2 and doesn't follow any naming convention.   
+* DEMO16G and DEM14GV3: The variable was named incorrectly in v1.    
+* DS10A_V2: Only asked in v2 and doesn't follow typical naming convention.   
+* DEM15V1: Only asked in v1 and I want to change the name completely.   
+* T26A_V1: Only exists in v1 and v3. Also, it needs to be renamed.   
+* T26A_V1A and T26A_V1B: Only exists in v1 and v3. Needs to be renamed, and it requires using the dummy variable naming convention.    
+
+Additionally, we want to convert all column names to lower case and follow these naming conventions:
+
+* The typical way that variables are named in these data sets is:    
+  - <abbreviated_tool_name><question_number>[optionally:dummy_variable_lettered]    
+    + For example: BPM1_V1, LSN3_V1   
+  - <abbreviated_tool_name>_<question_number>[optionally:dummy_variable_lettered]   
+    + For example: Screening Question 2 is named: SQ_2   
+    + OR: The dummy variable for the "EMAIL" Response to Screening Question 18 is: SQ_18A   
+  - Many questions also have the visit number embedded in the name.   
+    + For example: Demographics question 1 is: DEM1V1.   
+  - However, there are some exceptions to this rule - intentional or not.   
+    + For example, the fifth MMSE question is: MMS4V   
+
+* In order to improve consistency in the variable names, we will adopt the following convention:   
+  - <abbreviated_tool_name>_<question_number>[optionally:dummy_variable_lettered]   
+    + dummy variables will be numbered a-z   
+    + For example, sq_12, t_14a   
+  - We will drop visit number from the variable name an use an explicit visit variable.   
+  - Exceptions: Demographic variables that almost anyone should be reasonably able to understand without the codebook will be given intuitive, descriptive names (e.g., age, race, gender, marital_status, etc.).      
+  - I'm also going to change "SUBJECT" to "id".   
+
+```{r}
+v1 <- tibble(
+  SUBJECT  = c(2001, 2002),
+  TODAY_V1 = as.Date(c("2018-04-07", "2018-05-03")),
+  VISIT_V1 = 1,
+  SQ_2     = c(1, 0),
+  WEIGHT   = c(179, 194),
+  DEMO16G  = c(0, 1),
+  DEM15V1  = c(1, 0),
+  T26A_V1  = c(2, 4),
+  T26A_V1A = c(0, 0),
+  T26A_V1B = c(1, 0)
+)
+```
+
+```{r}
+v2 <- tibble(
+  SUBJECT  = c(2001, 2002),
+  TODAY_V2 = as.Date(c("2018-04-30", "2018-05-07")),
+  VISIT_V2 = 2
+)
+```
+
+```{r}
+v3 <- tibble(
+  SUBJECT  = c(2001, 2002),
+  TODAY_V3 = as.Date(c("2018-05-31", "2018-06-08")),
+  VISIT_V3 = 3,
+  GROUP    = c(1, 2),
+  WEIGHT3  = c(179, 194),
+  DEM14GV3 = c(2, 3),
+  T26A_V3  = c(2, 4),
+  T26A_V3A = c(0, 0),
+  T26A_V3B = c(1, 0)
+)
+```
+
+## Get the existing column names
+
+```{r}
+v1_old_names <- names(v1)
+v1_old_names
+```
+
+## Standardize new column names
+
+* Remove _v{1, 2, 3} and v{1, 2, 3} from column names
+* Replace spaces with underscores
+* Convert to lower case
+* Add underscore in-between the abbreviated tool name and question number
+
+This won't be perfect, but it will drastically reduce the number of manual changes we have to make. 
+
+```{r}
+# Remove _v1 from column name
+# Remove v1 at end of column name (e.g., DEM1v3)
+v1_new_names <- stringr::str_replace(v1_old_names, "_V1|V1", "")
+# Replace spaces with underscores
+v1_new_names <- stringr::str_replace_all(v1_new_names, " ", "_")
+# Convert to lower case
+v1_new_names <- stringr::str_to_lower(v1_new_names)
+# Add underscore in-between the abbreviated tool name and question number
+v1_new_names <- stringr::str_replace(v1_new_names, "([a-z])(\\d)", "\\1_\\2")
+v1_new_names
+```
+
+## Turn this into a function
+
+```{r}
+standardize_col_names <- function(.data) {
+  # Get the existing column names
+  old_names <- names(.data)
+  # Create a string that contains _V1 through _V5 and V1 through V5 to pass to
+  # the regular expression below
+  v_num <- paste0("_V", 1:5, collapse = "|")
+  vnum <- paste0("V", 1:5, collapse = "|")
+  v_pattern <- paste(paste(v_num, vnum, sep = "|"), collapse = "|")
+  # Remove _v{1, 2, 3} from column name
+  # Remove v{1, 2, 3} at end of column name (e.g., DEM1v3)
+  new_names <- stringr::str_replace(old_names, v_pattern, "")
+  # Replace spaces with underscores
+  new_names <- stringr::str_replace_all(new_names, " ", "_")
+  # Convert to lower case
+  new_names <- stringr::str_to_lower(new_names)
+  # Add underscore in-between the abbreviated tool name and question number
+  new_names <- stringr::str_replace(new_names, "([a-z])(\\d)", "\\1_\\2")
+  # Return character vector of standardized column names
+  new_names
+}
+
+# For testing
+# standardize_col_names(v1)
+```
+
+### Make a unit test for the function
+
+```{r}
+test_that("standardize_col_names produces the expected column names.", {
+  v1_test <- tibble(
+    SUBJECT  = c(2001, 2002),
+    TODAY_V1 = as.Date(c("2018-04-07", "2018-05-03")),
+    VISIT_V1 = 1,
+    SQ_2     = c(1, 0),
+    WEIGHT   = c(179, 194),
+    DEMO16G  = c(0, 1),
+    DEM15V1  = c(1, 0),
+    T26A_V1  = c(2, 4),
+    T26A_V1A = c(0, 0),
+    T26A_V1B = c(1, 0),
+    TEST_V8 = 0
+  )
+  new_names <- standardize_col_names(v1_test)
+  expceted_new_names <- c(
+    "subject", "today", "visit", "sq_2", "weight", "demo_16g", "dem_15", 
+    "t_26a", "t_26aa", "t_26ab", "test_v_8"
+  )
+  expect_equal(new_names, expceted_new_names)
+})
+```
+
+```{r}
+new_names <- standardize_col_names(v1)
+```
+
+## Manual changes to column names
+
+The step above used to standardize column names fixes most of them, but some manual changes to variable names still need to be made. 
+
+```{r}
+new_names[new_names == "sq_2"] <- "sq_hispanic"
+# demo_16g was incorrectly numbered when the data was created
+new_names[new_names == "demo_16g"] <- "dem_14g"
+new_names[new_names == "dem_15"] <- "dem_veteran"
+# Take the extra "a" out of all the T26 col names
+new_names <- str_replace(new_names, "t_26a", "t_26")
+```
+
+## Have R write out the rename code
+
+So that you don't have to type it out by hand. Ideally, you only have to run this code once, copy and paste into the rename code chunk below, and then just make small updates to the rename code chunk if changes are made to QDS.
+
+```{r}
+# If needed, run the code below. Copy and paste the output into the rename() 
+# code chunk. Make manual changes as needed.
+new_old_name_pairs <- paste(new_names, names(v1), sep = " = ")
+new_old_name_pairs <- paste(new_old_name_pairs, collapse = ", \n")
+cat(new_old_name_pairs)
+```
+
+### Make it a function
+
+```{r}
+write_rename <- function(.data, .new_names) {
+  new_old_name_pairs <- paste(.new_names, names(.data), sep = " = ")
+  new_old_name_pairs <- paste(new_old_name_pairs, collapse = ", \n")
+  cat(new_old_name_pairs)
+}
+
+# For testing
+write_rename(v1, new_names)
+```
+
+## Rename the columns
+
+```{r}
+v1 <- v1 %>% 
+  rename(
+    subject = SUBJECT, 
+    today = TODAY_V1, 
+    visit = VISIT_V1, 
+    sq_hispanic = SQ_2, 
+    weight = WEIGHT, 
+    dem_14g = DEMO16G, 
+    dem_veteran = DEM15V1, 
+    t_26 = T26A_V1, 
+    t_26a = T26A_V1A, 
+    t_26b = T26A_V1B
+  )
+```
+
+## Repeat the process for V2
+
+```{r}
+new_names <- standardize_col_names(v2)
+write_rename(v2, new_names)
+```
+
+```{r}
+v2 <- v2 %>% 
+  rename(
+    subject = SUBJECT, 
+    today = TODAY_V2, 
+    visit = VISIT_V2
+  )
+```
+
+## Repeat the process for V3
+
+```{r}
+new_names <- standardize_col_names(v3)
+```
+
+```{r}
+new_names[new_names == "weight_3"] <- "weight"
+new_names[new_names == "dem_15"] <- "dem_veteran"
+# Take the extra "a" out of all the T26 col names
+new_names <- str_replace(new_names, "t_26a", "t_26")
+```
+
+```{r}
+write_rename(v3, new_names)
+```
+
+```{r}
+v3 <- v3 %>% 
+  rename(
+    subject = SUBJECT, 
+    today = TODAY_V3, 
+    visit = VISIT_V3, 
+    group = GROUP, 
+    weight = WEIGHT3, 
+    dem_14g = DEM14GV3, 
+    t_26 = T26A_V3, 
+    t_26a = T26A_V3A, 
+    t_26b = T26A_V3B
+  )
+```
+
+
+## Merge all 3 visits
+
+Merge all 3 visits into a single data frame
+
+```{r}
+qds_all_visits <- v1 %>% 
+  bind_rows(v2) %>% 
+  bind_rows(v3) %>% 
+  arrange(subject, visit)
+
+qds_all_visits
+```
+
+## Final data cleaning
+
+* Make a couple more column name changes    
+* Carry forward time-invariant variables    
+
+```{r}
+qds_all_visits %>% 
+  rename(id = subject, date_visit = today) %>% 
+  # Carry forward time-invariant variables
+  group_by(id) %>% 
+  fill(sq_hispanic, dem_veteran, group, .direction = "downup") %>% 
+  ungroup %>% 
+  DT::datatable(options = list(scrollX = TRUE))
+```
+
+<!--
+Clean up and add session info
+-->
+
+```{r echo=FALSE}
+rm(list = ls())
+```
+
+```{r echo=FALSE}
+sessionInfo()
+```

@@ -24,7 +24,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2021-07-10" />
+<meta name="date" content="2021-07-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="packages-adding-data.html"/>
+<link rel="next" href="creating-rmd-templates.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,6 +51,14 @@
 
 
 
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.15/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -151,10 +159,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.4" data-path="my-package-notes.html"><a href="my-package-notes.html#step-3-writing-help-pages"><i class="fa fa-check"></i><b>1.4</b> Step 3: Writing help pages</a>
 <ul>
 <li class="chapter" data-level="1.4.1" data-path="my-package-notes.html"><a href="my-package-notes.html#example-roxygen-header"><i class="fa fa-check"></i><b>1.4.1</b> Example <code>roxygen</code> header</a></li>
-<li class="chapter" data-level="1.4.2" data-path="my-package-notes.html"><a href="my-package-notes.html#documenting-data"><i class="fa fa-check"></i><b>1.4.2</b> Documenting Data:</a></li>
-<li class="chapter" data-level="1.4.3" data-path="my-package-notes.html"><a href="my-package-notes.html#documenting-package"><i class="fa fa-check"></i><b>1.4.3</b> Documenting Package:</a></li>
-<li class="chapter" data-level="1.4.4" data-path="my-package-notes.html"><a href="my-package-notes.html#once-package-is-complete-ish"><i class="fa fa-check"></i><b>1.4.4</b> Once package is complete (ish)</a></li>
-<li class="chapter" data-level="1.4.5" data-path="my-package-notes.html"><a href="my-package-notes.html#notes-about-package-notes"><i class="fa fa-check"></i><b>1.4.5</b> Notes about package notes:</a></li>
+<li class="chapter" data-level="1.4.2" data-path="my-package-notes.html"><a href="my-package-notes.html#documenting-package"><i class="fa fa-check"></i><b>1.4.2</b> Documenting Package:</a></li>
+<li class="chapter" data-level="1.4.3" data-path="my-package-notes.html"><a href="my-package-notes.html#once-package-is-complete-ish"><i class="fa fa-check"></i><b>1.4.3</b> Once package is complete (ish)</a></li>
+<li class="chapter" data-level="1.4.4" data-path="my-package-notes.html"><a href="my-package-notes.html#notes-about-package-notes"><i class="fa fa-check"></i><b>1.4.4</b> Notes about package notes:</a></li>
 </ul></li>
 <li class="chapter" data-level="1.5" data-path="my-package-notes.html"><a href="my-package-notes.html#step-4-synchronize-with-github"><i class="fa fa-check"></i><b>1.5</b> Step 4: Synchronize with GitHub</a>
 <ul>
@@ -162,32 +169,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.5.2" data-path="my-package-notes.html"><a href="my-package-notes.html#example-installation-instructions-for-readme"><i class="fa fa-check"></i><b>1.5.2</b> Example Installation instructions for README:</a></li>
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="my-package-notes.html"><a href="my-package-notes.html#step-5-testing"><i class="fa fa-check"></i><b>1.6</b> Step 5: Testing</a></li>
-<li class="chapter" data-level="1.7" data-path="my-package-notes.html"><a href="my-package-notes.html#step-6-vignettes"><i class="fa fa-check"></i><b>1.7</b> Step 6: Vignettes</a></li>
-<li class="chapter" data-level="1.8" data-path="my-package-notes.html"><a href="my-package-notes.html#to-create-a-vignette"><i class="fa fa-check"></i><b>1.8</b> To create a vignette:</a>
+<li class="chapter" data-level="1.7" data-path="my-package-notes.html"><a href="my-package-notes.html#vignettes"><i class="fa fa-check"></i><b>1.7</b> Vignettes</a>
 <ul>
-<li class="chapter" data-level="1.8.1" data-path="my-package-notes.html"><a href="my-package-notes.html#vignette-notes"><i class="fa fa-check"></i><b>1.8.1</b> Vignette Notes:</a></li>
+<li class="chapter" data-level="1.7.1" data-path="my-package-notes.html"><a href="my-package-notes.html#to-create-a-vignette"><i class="fa fa-check"></i><b>1.7.1</b> To create a vignette:</a></li>
+<li class="chapter" data-level="1.7.2" data-path="my-package-notes.html"><a href="my-package-notes.html#vignette-notes"><i class="fa fa-check"></i><b>1.7.2</b> Vignette Notes:</a></li>
 </ul></li>
+<li class="chapter" data-level="1.8" data-path="my-package-notes.html"><a href="my-package-notes.html#adding-and-documenting-data"><i class="fa fa-check"></i><b>1.8</b> Adding and documenting data</a></li>
 <li class="chapter" data-level="1.9" data-path="my-package-notes.html"><a href="my-package-notes.html#errors-warnings-notes"><i class="fa fa-check"></i><b>1.9</b> Errors, warnings, notes</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="packages-adding-data.html"><a href="packages-adding-data.html"><i class="fa fa-check"></i><b>2</b> Packages: Adding Data</a>
+<li class="chapter" data-level="2" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html"><i class="fa fa-check"></i><b>2</b> Creating Rmd Templates</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="packages-adding-data.html"><a href="packages-adding-data.html#overview-1"><i class="fa fa-check"></i><b>2.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="2.2" data-path="packages-adding-data.html"><a href="packages-adding-data.html#useful-websites-1"><i class="fa fa-check"></i><b>2.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="2.3" data-path="packages-adding-data.html"><a href="packages-adding-data.html#load-packages"><i class="fa fa-check"></i><b>2.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="2.4" data-path="packages-adding-data.html"><a href="packages-adding-data.html#simulate-data"><i class="fa fa-check"></i><b>2.4</b> 🔢Simulate data</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html"><i class="fa fa-check"></i><b>3</b> Creating Rmd Templates</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#overview-2"><i class="fa fa-check"></i><b>3.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="3.2" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#useful-websites-2"><i class="fa fa-check"></i><b>3.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="3.3" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#create-a-package"><i class="fa fa-check"></i><b>3.3</b> Create a package</a></li>
-<li class="chapter" data-level="3.4" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#add-a-template-to-your-package"><i class="fa fa-check"></i><b>3.4</b> Add a template to your package</a></li>
+<li class="chapter" data-level="2.1" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#overview-1"><i class="fa fa-check"></i><b>2.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="2.2" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#useful-websites-1"><i class="fa fa-check"></i><b>2.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="2.3" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#create-a-package"><i class="fa fa-check"></i><b>2.3</b> Create a package</a></li>
+<li class="chapter" data-level="2.4" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#add-a-template-to-your-package"><i class="fa fa-check"></i><b>2.4</b> Add a template to your package</a></li>
 </ul></li>
 <li class="part"><span><b>II Working with External Files</b></span></li>
 <li class="part"><span><b>III Data Management</b></span></li>
-<li class="chapter" data-level="4" data-path="arranging-columns-with-across.html"><a href="arranging-columns-with-across.html"><i class="fa fa-check"></i><b>4</b> Arranging Columns with Across</a>
+<li class="chapter" data-level="3" data-path="arranging-columns-with-across.html"><a href="arranging-columns-with-across.html"><i class="fa fa-check"></i><b>3</b> Arranging Columns with Across</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="arranging-columns-with-across.html"><a href="arranging-columns-with-across.html#solution-by-lmc"><i class="fa fa-check"></i><b>4.1</b> Solution by LMc:</a></li>
+<li class="chapter" data-level="3.1" data-path="arranging-columns-with-across.html"><a href="arranging-columns-with-across.html#solution-by-lmc"><i class="fa fa-check"></i><b>3.1</b> Solution by LMc:</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html"><i class="fa fa-check"></i><b>4</b> Column Names: Prepping Many for Merge</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#overview-2"><i class="fa fa-check"></i><b>4.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="4.2" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#useful-websites-2"><i class="fa fa-check"></i><b>4.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="4.3" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#load-packages"><i class="fa fa-check"></i><b>4.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="4.4" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#simulate-data"><i class="fa fa-check"></i><b>4.4</b> 🔢Simulate data</a></li>
+<li class="chapter" data-level="4.5" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#get-the-existing-column-names"><i class="fa fa-check"></i><b>4.5</b> Get the existing column names</a></li>
+<li class="chapter" data-level="4.6" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#standardize-new-column-names"><i class="fa fa-check"></i><b>4.6</b> Standardize new column names</a></li>
+<li class="chapter" data-level="4.7" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#turn-this-into-a-function"><i class="fa fa-check"></i><b>4.7</b> Turn this into a function</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#make-a-unit-test-for-the-function"><i class="fa fa-check"></i><b>4.7.1</b> Make a unit test for the function</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#manual-changes-to-column-names"><i class="fa fa-check"></i><b>4.8</b> Manual changes to column names</a></li>
+<li class="chapter" data-level="4.9" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#have-r-write-out-the-rename-code"><i class="fa fa-check"></i><b>4.9</b> Have R write out the rename code</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#make-it-a-function"><i class="fa fa-check"></i><b>4.9.1</b> Make it a function</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#rename-the-columns"><i class="fa fa-check"></i><b>4.10</b> Rename the columns</a></li>
+<li class="chapter" data-level="4.11" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#repeat-the-process-for-v2"><i class="fa fa-check"></i><b>4.11</b> Repeat the process for V2</a></li>
+<li class="chapter" data-level="4.12" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#repeat-the-process-for-v3"><i class="fa fa-check"></i><b>4.12</b> Repeat the process for V3</a></li>
+<li class="chapter" data-level="4.13" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#merge-all-3-visits"><i class="fa fa-check"></i><b>4.13</b> Merge all 3 visits</a></li>
+<li class="chapter" data-level="4.14" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#final-data-cleaning"><i class="fa fa-check"></i><b>4.14</b> Final data cleaning</a></li>
 </ul></li>
 <li class="part"><span><b>IV Analysis</b></span></li>
 <li class="part"><span><b>V Data Visualization</b></span></li>
@@ -410,17 +434,13 @@ Hidden comments placeholder
 <span id="cb4-57"><a href="my-package-notes.html#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; &quot;range&quot;, &quot;sd&quot;, &quot;var&quot;, &quot;cv&quot;, &quot;sem&quot;, &quot;skew&quot;, &quot;kurt&quot;, &quot;p1&quot;, &quot;p5&quot;, &quot;p10&quot;,</span></span>
 <span id="cb4-58"><a href="my-package-notes.html#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; &quot;p25&quot;, &quot;p50&quot;, &quot;median&quot;, &quot;p75&quot;, &quot;p90&quot;, &quot;p95&quot;, &quot;p99&quot;, &quot;iqr&quot;, &quot;q&quot;))</span></span></code></pre></div>
 </div>
-<div id="documenting-data" class="section level3" number="1.4.2">
-<h3><span class="header-section-number">1.4.2</span> Documenting Data:</h3>
-<p>If you have included a data set, you must also document that data set. <a href = "https://r-pkgs.org/data.html" target = "_blank">More information is available from Hadley here</a>.</p>
-</div>
-<div id="documenting-package" class="section level3" number="1.4.3">
-<h3><span class="header-section-number">1.4.3</span> Documenting Package:</h3>
+<div id="documenting-package" class="section level3" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> Documenting Package:</h3>
 <p>You can use roxygen to provide a help page for your package as a whole. <a href = "http://r-pkgs.had.co.nz/man.html" target = "_blank">More information is available from Hadley here</a>.</p>
 <p><strong>At this point, you have a usable package</strong></p>
 </div>
-<div id="once-package-is-complete-ish" class="section level3" number="1.4.4">
-<h3><span class="header-section-number">1.4.4</span> Once package is complete (ish)</h3>
+<div id="once-package-is-complete-ish" class="section level3" number="1.4.3">
+<h3><span class="header-section-number">1.4.3</span> Once package is complete (ish)</h3>
 <ol style="list-style-type: decimal">
 <li><p>Update documentation (help pages). Build &gt; More &gt; Document, or shift + cmd + D.</p></li>
 <li><p>Check the package by clicking Build &gt; Check. This will look for common package problems</p></li>
@@ -429,8 +449,8 @@ Hidden comments placeholder
 <li><p>If you are using GitHub, you need to commit changes and then push them to GitHub. More information about using Git and GitHub are available <a href = "http://r-pkgs.had.co.nz/git.html" target = "_blank">here</a>. Other users can install your package directly from GitHub with <code>install.packages("devtools")</code> followed by <code>devtools::install_github("username/packagename")</code>.</p></li>
 </ol>
 </div>
-<div id="notes-about-package-notes" class="section level3" number="1.4.5">
-<h3><span class="header-section-number">1.4.5</span> Notes about package notes:</h3>
+<div id="notes-about-package-notes" class="section level3" number="1.4.4">
+<h3><span class="header-section-number">1.4.4</span> Notes about package notes:</h3>
 <ul>
 <li><p>Because packages are almost always a work in progress, you will want to add notes to yourself about the project in the source package that you don’t want others to see. You can do this by creating a notes directory, and then listing that directory in <code>.Rbuildignore</code>. You can add to buildignore using <code>usethis::use_build_ignore("notes")</code>. More information is available <a href="http://r-pkgs.had.co.nz/package.html">here</a>.</p></li>
 <li><p>Also make sure to add NOTES to <code>.gitignore</code> with <code>usethis::use_git_ignore("notes")</code></p></li>
@@ -486,17 +506,16 @@ Hidden comments placeholder
 <li><p>Repeat until all tests pass.</p></li>
 </ol>
 </div>
-<div id="step-6-vignettes" class="section level2" number="1.7">
-<h2><span class="header-section-number">1.7</span> Step 6: Vignettes</h2>
+<div id="vignettes" class="section level2" number="1.7">
+<h2><span class="header-section-number">1.7</span> Vignettes</h2>
 <p>There are some great vignette resources on the internet:</p>
 <ul>
 <li><p><a href = "http://r-pkgs.had.co.nz/vignettes.html" target = "_blank">Chapter on vignettes in Hadley’s Package book</a></p></li>
 <li><p><a href = "ftp://cran.r-project.org/pub/R/doc/contrib/Leisch-CreatingPackages.pdf" target = "_blank">Leisch’s creating R packages tutorial</a></p></li>
 <li><p><a href = "http://rmflight.github.io/posts/2014/07/vignetteAnalysis.html" target = "_blank">Flight’s article on creating an analysis as a package and vignette</a></p></li>
 </ul>
-</div>
-<div id="to-create-a-vignette" class="section level2" number="1.8">
-<h2><span class="header-section-number">1.8</span> To create a vignette:</h2>
+<div id="to-create-a-vignette" class="section level3" number="1.7.1">
+<h3><span class="header-section-number">1.7.1</span> To create a vignette:</h3>
 <ul>
 <li><p>run <code>usethis::use_vignette("my-vignette")</code></p></li>
 <li><p>Open <code>vignettes/my-vignette.Rmd</code></p></li>
@@ -507,8 +526,9 @@ Hidden comments placeholder
 <li><p>use use <code>devtools::build()</code> to create a package bundle with the vignettes included. RStudio’s “Build &amp; reload” does not build vignettes to save time.</p></li>
 <li><p>When you add or update vignettes, push to Github again.</p></li>
 </ul>
-<div id="vignette-notes" class="section level3" number="1.8.1">
-<h3><span class="header-section-number">1.8.1</span> Vignette Notes:</h3>
+</div>
+<div id="vignette-notes" class="section level3" number="1.7.2">
+<h3><span class="header-section-number">1.7.2</span> Vignette Notes:</h3>
 <p>This builds the vignettes, and is probably fine for a regular package of functions. However, when using packages as a means for reproducible, self-contained analysis projects, the vignettes have greater importance, and by default are not easily accessible.<br />
 Need to find a way to make the vignettes more “front and center”</p>
 <ul>
@@ -517,8 +537,11 @@ Need to find a way to make the vignettes more “front and center”</p>
 <li><p>Remember to use <code>system.file()</code> when reading in data inside a code chunk. If you have trouble getting it to work, try build &amp; reload.</p></li>
 <li><p>To save a data frame to <code>data/</code> inside a vignette, you can use the <a href = "https://github.com/krlmlr/rprojroot" target = "_blank">rprojroot package</a>. use <code>rprojroot::find_root("DESCRIPTION")</code></p></li>
 </ul>
-<p><a href="#top">top</a></p>
 </div>
+</div>
+<div id="adding-and-documenting-data" class="section level2" number="1.8">
+<h2><span class="header-section-number">1.8</span> Adding and documenting data</h2>
+<p>The explanation in the <a href="https://r-pkgs.org/data.html">R Packages book</a> is good, short, and easy to follow.</p>
 </div>
 <div id="errors-warnings-notes" class="section level2" number="1.9">
 <h2><span class="header-section-number">1.9</span> Errors, warnings, notes</h2>
@@ -595,7 +618,7 @@ Clean up and add session info
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="packages-adding-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="creating-rmd-templates.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

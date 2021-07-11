@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Column Names: Prepping Many for Merge | R Notes</title>
+  <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Column Names: Prepping Many for Merge | R Notes" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://brad-cannell.github.io/r_notes/" />
+  
+  <meta property="og:description" content="This is the Bookdown for Brad Cannell’s R Notes." />
+  <meta name="github-repo" content="brad-cannell/r_notes" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Column Names: Prepping Many for Merge | R Notes" />
+  
+  <meta name="twitter:description" content="This is the Bookdown for Brad Cannell’s R Notes." />
+  
+
+<meta name="author" content="Brad Cannell" />
+
+
+<meta name="date" content="2021-07-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="arranging-columns-with-across.html"/>
+<link rel="next" href="book-chapters.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.15/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#organization"><i class="fa fa-check"></i>Organization</a></li>
+</ul></li>
+<li class="part"><span><b>I Programming</b></span></li>
+<li class="chapter" data-level="1" data-path="my-package-notes.html"><a href="my-package-notes.html"><i class="fa fa-check"></i><b>1</b> Packages: Quick Start</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="my-package-notes.html"><a href="my-package-notes.html#overview"><i class="fa fa-check"></i><b>1.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="1.2" data-path="my-package-notes.html"><a href="my-package-notes.html#useful-websites"><i class="fa fa-check"></i><b>1.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="1.3" data-path="my-package-notes.html"><a href="my-package-notes.html#step-1-create-the-package-project"><i class="fa fa-check"></i><b>1.3</b> Step 1: Create the package project</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="my-package-notes.html"><a href="my-package-notes.html#step-2-modify-the-description-file"><i class="fa fa-check"></i><b>1.3.1</b> Step 2: Modify the description file</a></li>
+<li class="chapter" data-level="1.3.2" data-path="my-package-notes.html"><a href="my-package-notes.html#working-with-r-scripts"><i class="fa fa-check"></i><b>1.3.2</b> Working with R scripts</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="my-package-notes.html"><a href="my-package-notes.html#step-3-writing-help-pages"><i class="fa fa-check"></i><b>1.4</b> Step 3: Writing help pages</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="my-package-notes.html"><a href="my-package-notes.html#example-roxygen-header"><i class="fa fa-check"></i><b>1.4.1</b> Example <code>roxygen</code> header</a></li>
+<li class="chapter" data-level="1.4.2" data-path="my-package-notes.html"><a href="my-package-notes.html#documenting-package"><i class="fa fa-check"></i><b>1.4.2</b> Documenting Package:</a></li>
+<li class="chapter" data-level="1.4.3" data-path="my-package-notes.html"><a href="my-package-notes.html#once-package-is-complete-ish"><i class="fa fa-check"></i><b>1.4.3</b> Once package is complete (ish)</a></li>
+<li class="chapter" data-level="1.4.4" data-path="my-package-notes.html"><a href="my-package-notes.html#notes-about-package-notes"><i class="fa fa-check"></i><b>1.4.4</b> Notes about package notes:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="my-package-notes.html"><a href="my-package-notes.html#step-4-synchronize-with-github"><i class="fa fa-check"></i><b>1.5</b> Step 4: Synchronize with GitHub</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="my-package-notes.html"><a href="my-package-notes.html#example-modify-description"><i class="fa fa-check"></i><b>1.5.1</b> Example: Modify Description</a></li>
+<li class="chapter" data-level="1.5.2" data-path="my-package-notes.html"><a href="my-package-notes.html#example-installation-instructions-for-readme"><i class="fa fa-check"></i><b>1.5.2</b> Example Installation instructions for README:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="my-package-notes.html"><a href="my-package-notes.html#step-5-testing"><i class="fa fa-check"></i><b>1.6</b> Step 5: Testing</a></li>
+<li class="chapter" data-level="1.7" data-path="my-package-notes.html"><a href="my-package-notes.html#vignettes"><i class="fa fa-check"></i><b>1.7</b> Vignettes</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="my-package-notes.html"><a href="my-package-notes.html#to-create-a-vignette"><i class="fa fa-check"></i><b>1.7.1</b> To create a vignette:</a></li>
+<li class="chapter" data-level="1.7.2" data-path="my-package-notes.html"><a href="my-package-notes.html#vignette-notes"><i class="fa fa-check"></i><b>1.7.2</b> Vignette Notes:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="my-package-notes.html"><a href="my-package-notes.html#adding-and-documenting-data"><i class="fa fa-check"></i><b>1.8</b> Adding and documenting data</a></li>
+<li class="chapter" data-level="1.9" data-path="my-package-notes.html"><a href="my-package-notes.html#errors-warnings-notes"><i class="fa fa-check"></i><b>1.9</b> Errors, warnings, notes</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html"><i class="fa fa-check"></i><b>2</b> Creating Rmd Templates</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#overview-1"><i class="fa fa-check"></i><b>2.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="2.2" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#useful-websites-1"><i class="fa fa-check"></i><b>2.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="2.3" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#create-a-package"><i class="fa fa-check"></i><b>2.3</b> Create a package</a></li>
+<li class="chapter" data-level="2.4" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#add-a-template-to-your-package"><i class="fa fa-check"></i><b>2.4</b> Add a template to your package</a></li>
+</ul></li>
+<li class="part"><span><b>II Working with External Files</b></span></li>
+<li class="part"><span><b>III Data Management</b></span></li>
+<li class="chapter" data-level="3" data-path="arranging-columns-with-across.html"><a href="arranging-columns-with-across.html"><i class="fa fa-check"></i><b>3</b> Arranging Columns with Across</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="arranging-columns-with-across.html"><a href="arranging-columns-with-across.html#solution-by-lmc"><i class="fa fa-check"></i><b>3.1</b> Solution by LMc:</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html"><i class="fa fa-check"></i><b>4</b> Column Names: Prepping Many for Merge</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#overview-2"><i class="fa fa-check"></i><b>4.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="4.2" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#useful-websites-2"><i class="fa fa-check"></i><b>4.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="4.3" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#load-packages"><i class="fa fa-check"></i><b>4.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="4.4" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#simulate-data"><i class="fa fa-check"></i><b>4.4</b> 🔢Simulate data</a></li>
+<li class="chapter" data-level="4.5" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#get-the-existing-column-names"><i class="fa fa-check"></i><b>4.5</b> Get the existing column names</a></li>
+<li class="chapter" data-level="4.6" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#standardize-new-column-names"><i class="fa fa-check"></i><b>4.6</b> Standardize new column names</a></li>
+<li class="chapter" data-level="4.7" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#turn-this-into-a-function"><i class="fa fa-check"></i><b>4.7</b> Turn this into a function</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#make-a-unit-test-for-the-function"><i class="fa fa-check"></i><b>4.7.1</b> Make a unit test for the function</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#manual-changes-to-column-names"><i class="fa fa-check"></i><b>4.8</b> Manual changes to column names</a></li>
+<li class="chapter" data-level="4.9" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#have-r-write-out-the-rename-code"><i class="fa fa-check"></i><b>4.9</b> Have R write out the rename code</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#make-it-a-function"><i class="fa fa-check"></i><b>4.9.1</b> Make it a function</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#rename-the-columns"><i class="fa fa-check"></i><b>4.10</b> Rename the columns</a></li>
+<li class="chapter" data-level="4.11" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#repeat-the-process-for-v2"><i class="fa fa-check"></i><b>4.11</b> Repeat the process for V2</a></li>
+<li class="chapter" data-level="4.12" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#repeat-the-process-for-v3"><i class="fa fa-check"></i><b>4.12</b> Repeat the process for V3</a></li>
+<li class="chapter" data-level="4.13" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#merge-all-3-visits"><i class="fa fa-check"></i><b>4.13</b> Merge all 3 visits</a></li>
+<li class="chapter" data-level="4.14" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#final-data-cleaning"><i class="fa fa-check"></i><b>4.14</b> Final data cleaning</a></li>
+</ul></li>
+<li class="part"><span><b>IV Analysis</b></span></li>
+<li class="part"><span><b>V Data Visualization</b></span></li>
+<li class="part"><span><b>VI Presenting Results</b></span></li>
+<li class="chapter" data-level="5" data-path="book-chapters.html"><a href="book-chapters.html"><i class="fa fa-check"></i><b>5</b> Bookdown: Creating Book Chapters</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="book-chapters.html"><a href="book-chapters.html#chapter-overview"><i class="fa fa-check"></i><b>5.1</b> Chapter overview</a></li>
+<li class="chapter" data-level="5.2" data-path="book-chapters.html"><a href="book-chapters.html#motivating-example"><i class="fa fa-check"></i><b>5.2</b> Motivating example</a></li>
+<li class="chapter" data-level="5.3" data-path="book-chapters.html"><a href="book-chapters.html#body"><i class="fa fa-check"></i><b>5.3</b> Body</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="book-chapters.html"><a href="book-chapters.html#language"><i class="fa fa-check"></i><b>5.3.1</b> Language</a></li>
+<li class="chapter" data-level="5.3.2" data-path="book-chapters.html"><a href="book-chapters.html#text-conventions"><i class="fa fa-check"></i><b>5.3.2</b> Text conventions</a></li>
+<li class="chapter" data-level="5.3.3" data-path="book-chapters.html"><a href="book-chapters.html#special-sections"><i class="fa fa-check"></i><b>5.3.3</b> Special sections</a></li>
+<li class="chapter" data-level="5.3.4" data-path="book-chapters.html"><a href="book-chapters.html#images"><i class="fa fa-check"></i><b>5.3.4</b> Images</a></li>
+<li class="chapter" data-level="5.3.5" data-path="book-chapters.html"><a href="book-chapters.html#code-blocks"><i class="fa fa-check"></i><b>5.3.5</b> Code blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="book-chapters.html"><a href="book-chapters.html#cross-references"><i class="fa fa-check"></i><b>5.4</b> Cross-references</a></li>
+<li class="chapter" data-level="5.5" data-path="book-chapters.html"><a href="book-chapters.html#citations"><i class="fa fa-check"></i><b>5.5</b> Citations</a></li>
+<li class="chapter" data-level="5.6" data-path="book-chapters.html"><a href="book-chapters.html#previewing-the-chapter"><i class="fa fa-check"></i><b>5.6</b> Previewing the chapter</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="book-chapters.html"><a href="book-chapters.html#miscelaneous"><i class="fa fa-check"></i><b>5.6.1</b> Miscelaneous</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="book-chapters.html"><a href="book-chapters.html#additional-resources-function-to-check"><i class="fa fa-check"></i><b>5.7</b> Additional resources: function to check</a></li>
+<li class="chapter" data-level="5.8" data-path="book-chapters.html"><a href="book-chapters.html#key-terms-function-to-add-to-appendix"><i class="fa fa-check"></i><b>5.8</b> Key terms : function to add to appendix</a></li>
+<li class="chapter" data-level="5.9" data-path="book-chapters.html"><a href="book-chapters.html#final-example-code-function-to-add-to-appendix"><i class="fa fa-check"></i><b>5.9</b> Final example code : function to add to appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html"><i class="fa fa-check"></i><b>6</b> Bookdown: Quick Start</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#overview-3"><i class="fa fa-check"></i><b>6.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="6.2" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#useful-websites-3"><i class="fa fa-check"></i><b>6.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="6.3" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#creating-the-bookdown-project-locally"><i class="fa fa-check"></i><b>6.3</b> Creating the bookdown project locally</a></li>
+<li class="chapter" data-level="6.4" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#initiate-a-git-repository"><i class="fa fa-check"></i><b>6.4</b> Initiate a git repository</a></li>
+<li class="chapter" data-level="6.5" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#create-a-github-repository-for-the-book"><i class="fa fa-check"></i><b>6.5</b> Create a github repository for the book</a></li>
+<li class="chapter" data-level="6.6" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#configuring-a-publishing-source-for-the-github-pages-site"><i class="fa fa-check"></i><b>6.6</b> Configuring a publishing source for the GitHub Pages site</a></li>
+<li class="chapter" data-level="6.7" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-_bookdown.yml"><i class="fa fa-check"></i><b>6.7</b> Modify _bookdown.yml</a></li>
+<li class="chapter" data-level="6.8" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-_output.yml"><i class="fa fa-check"></i><b>6.8</b> Modify _output.yml</a></li>
+<li class="chapter" data-level="6.9" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-style.css"><i class="fa fa-check"></i><b>6.9</b> Modify style.css</a></li>
+<li class="chapter" data-level="6.10" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-index.rmd"><i class="fa fa-check"></i><b>6.10</b> Modify index.Rmd</a></li>
+<li class="chapter" data-level="6.11" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#creating-bookdown-chapters"><i class="fa fa-check"></i><b>6.11</b> Creating bookdown chapters</a></li>
+<li class="chapter" data-level="6.12" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#knitting-the-book"><i class="fa fa-check"></i><b>6.12</b> Knitting the book</a></li>
+<li class="chapter" data-level="6.13" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#errors-and-warnings"><i class="fa fa-check"></i><b>6.13</b> Errors and warnings</a></li>
+</ul></li>
+<li class="part"><span><b>VII Shiny</b></span></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="column-names-prepping-many-for-merge" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Column Names: Prepping Many for Merge</h1>
+<!--
+Hidden comments placeholder
+-->
+<p><img src="https://picsum.photos/200/300" /><!-- --></p>
+<div id="overview-2" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> ⭐️Overview</h2>
+<p>The inspiration for this chapter came about when I was trying to merge the QDS vist 1 through visit 5 files that were part of the Link2Care project. All of the QDS files (plus some other files) needed to be merged together into a final analysis data set. However, not all questions were asked at all visits and column names were inconsistently used across visits. Even when the names were almost the same, a visit number was attached to the name (e.g., TODAY_V1, TODAY_V2, TODAY_V3, etc.). Finally, each data set contained 800+ columns, which made renaming them all manually tedious and error prone. So, I’m trying to come up with a better way.</p>
+<p>One method I came up with was reading in the variable names from the Word codebooks and then modifying them. Using this method required making some custom styles in Word and applying those styles to the column names. This seemed to work pretty well at first, but then Joe and James made some changes to QDS, which rendered the codebooks I’d made all the changes to obsolete. This left me with two options:</p>
+<ol style="list-style-type: decimal">
+<li><p>Have some of the variable name adjustments pulled from the codebook and some of the variable name adjustments done manually in the R code (e.g., T26, visit type).</p></li>
+<li><p>Keep all of the adjustments in the codebook, which means converting the new codebooks to word documents, and going back through them to format all of the old column names again.</p></li>
+</ol>
+<p>Neither of these options seems very robust or future-proof. While it might be a lot of work upfront, I’m starting to think that just doing all of the variable renaming in the R code might be the way to go. Below, I’m going to play around with how to automate as much of this process as possible.</p>
+</div>
+<div id="useful-websites-2" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> 🌎Useful websites</h2>
+<ul>
+<li><a href="https://github.com/brad-cannell/link2care_public/issues/1">GitHub issue</a></li>
+</ul>
+</div>
+<div id="load-packages" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> 📦Load packages</h2>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="column-names-prepping-many-for-merge.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb27-2"><a href="column-names-prepping-many-for-merge.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb27-3"><a href="column-names-prepping-many-for-merge.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(testthat)</span>
+<span id="cb27-4"><a href="column-names-prepping-many-for-merge.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code></pre></div>
+</div>
+<div id="simulate-data" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> 🔢Simulate data</h2>
+<p>Simulate 3 QDS data sets. Don’t worry about the values much. They really aren’t the issue for this example.</p>
+<ul>
+<li>SUBJECT: No change in column name across visits.<br />
+</li>
+<li>TODAY_V and VISIT_V: The _V1, _V2, _V3 part changes.<br />
+</li>
+<li>SQ_2: Only exists in v1, and the name is altered.<br />
+</li>
+<li>GROUP: Only exists in v3.<br />
+</li>
+<li>WEIGHT and WEIGHT3: Doesn’t exist in v2 and doesn’t follow any naming convention.<br />
+</li>
+<li>DEMO16G and DEM14GV3: The variable was named incorrectly in v1.<br />
+</li>
+<li>DS10A_V2: Only asked in v2 and doesn’t follow typical naming convention.<br />
+</li>
+<li>DEM15V1: Only asked in v1 and I want to change the name completely.<br />
+</li>
+<li>T26A_V1: Only exists in v1 and v3. Also, it needs to be renamed.<br />
+</li>
+<li>T26A_V1A and T26A_V1B: Only exists in v1 and v3. Needs to be renamed, and it requires using the dummy variable naming convention.</li>
+</ul>
+<p>Additionally, we want to convert all column names to lower case and follow these naming conventions:</p>
+<ul>
+<li>The typical way that variables are named in these data sets is:
+<ul>
+<li><abbreviated_tool_name><question_number>[optionally:dummy_variable_lettered]
+<ul>
+<li>For example: BPM1_V1, LSN3_V1<br />
+</li>
+</ul></li>
+<li><abbreviated_tool_name>_<question_number>[optionally:dummy_variable_lettered]
+<ul>
+<li>For example: Screening Question 2 is named: SQ_2<br />
+</li>
+<li>OR: The dummy variable for the “EMAIL” Response to Screening Question 18 is: SQ_18A<br />
+</li>
+</ul></li>
+<li>Many questions also have the visit number embedded in the name.
+<ul>
+<li>For example: Demographics question 1 is: DEM1V1.<br />
+</li>
+</ul></li>
+<li>However, there are some exceptions to this rule - intentional or not.
+<ul>
+<li>For example, the fifth MMSE question is: MMS4V</li>
+</ul></li>
+</ul></li>
+<li>In order to improve consistency in the variable names, we will adopt the following convention:
+<ul>
+<li><abbreviated_tool_name>_<question_number>[optionally:dummy_variable_lettered]
+<ul>
+<li>dummy variables will be numbered a-z<br />
+</li>
+<li>For example, sq_12, t_14a<br />
+</li>
+</ul></li>
+<li>We will drop visit number from the variable name an use an explicit visit variable.<br />
+</li>
+<li>Exceptions: Demographic variables that almost anyone should be reasonably able to understand without the codebook will be given intuitive, descriptive names (e.g., age, race, gender, marital_status, etc.).<br />
+</li>
+<li>I’m also going to change “SUBJECT” to “id.”</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="column-names-prepping-many-for-merge.html#cb28-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb28-2"><a href="column-names-prepping-many-for-merge.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">SUBJECT  =</span> <span class="fu">c</span>(<span class="dv">2001</span>, <span class="dv">2002</span>),</span>
+<span id="cb28-3"><a href="column-names-prepping-many-for-merge.html#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">TODAY_V1 =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;2018-04-07&quot;</span>, <span class="st">&quot;2018-05-03&quot;</span>)),</span>
+<span id="cb28-4"><a href="column-names-prepping-many-for-merge.html#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">VISIT_V1 =</span> <span class="dv">1</span>,</span>
+<span id="cb28-5"><a href="column-names-prepping-many-for-merge.html#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">SQ_2     =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb28-6"><a href="column-names-prepping-many-for-merge.html#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">WEIGHT   =</span> <span class="fu">c</span>(<span class="dv">179</span>, <span class="dv">194</span>),</span>
+<span id="cb28-7"><a href="column-names-prepping-many-for-merge.html#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">DEMO16G  =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb28-8"><a href="column-names-prepping-many-for-merge.html#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">DEM15V1  =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb28-9"><a href="column-names-prepping-many-for-merge.html#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">T26A_V1  =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>),</span>
+<span id="cb28-10"><a href="column-names-prepping-many-for-merge.html#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">T26A_V1A =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb28-11"><a href="column-names-prepping-many-for-merge.html#cb28-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">T26A_V1B =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb28-12"><a href="column-names-prepping-many-for-merge.html#cb28-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="column-names-prepping-many-for-merge.html#cb29-1" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb29-2"><a href="column-names-prepping-many-for-merge.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">SUBJECT  =</span> <span class="fu">c</span>(<span class="dv">2001</span>, <span class="dv">2002</span>),</span>
+<span id="cb29-3"><a href="column-names-prepping-many-for-merge.html#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">TODAY_V2 =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;2018-04-30&quot;</span>, <span class="st">&quot;2018-05-07&quot;</span>)),</span>
+<span id="cb29-4"><a href="column-names-prepping-many-for-merge.html#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">VISIT_V2 =</span> <span class="dv">2</span></span>
+<span id="cb29-5"><a href="column-names-prepping-many-for-merge.html#cb29-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="column-names-prepping-many-for-merge.html#cb30-1" aria-hidden="true" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb30-2"><a href="column-names-prepping-many-for-merge.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">SUBJECT  =</span> <span class="fu">c</span>(<span class="dv">2001</span>, <span class="dv">2002</span>),</span>
+<span id="cb30-3"><a href="column-names-prepping-many-for-merge.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">TODAY_V3 =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;2018-05-31&quot;</span>, <span class="st">&quot;2018-06-08&quot;</span>)),</span>
+<span id="cb30-4"><a href="column-names-prepping-many-for-merge.html#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">VISIT_V3 =</span> <span class="dv">3</span>,</span>
+<span id="cb30-5"><a href="column-names-prepping-many-for-merge.html#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">GROUP    =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb30-6"><a href="column-names-prepping-many-for-merge.html#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">WEIGHT3  =</span> <span class="fu">c</span>(<span class="dv">179</span>, <span class="dv">194</span>),</span>
+<span id="cb30-7"><a href="column-names-prepping-many-for-merge.html#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">DEM14GV3 =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb30-8"><a href="column-names-prepping-many-for-merge.html#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">T26A_V3  =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>),</span>
+<span id="cb30-9"><a href="column-names-prepping-many-for-merge.html#cb30-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">T26A_V3A =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb30-10"><a href="column-names-prepping-many-for-merge.html#cb30-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">T26A_V3B =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb30-11"><a href="column-names-prepping-many-for-merge.html#cb30-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="get-the-existing-column-names" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> Get the existing column names</h2>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="column-names-prepping-many-for-merge.html#cb31-1" aria-hidden="true" tabindex="-1"></a>v1_old_names <span class="ot">&lt;-</span> <span class="fu">names</span>(v1)</span>
+<span id="cb31-2"><a href="column-names-prepping-many-for-merge.html#cb31-2" aria-hidden="true" tabindex="-1"></a>v1_old_names</span></code></pre></div>
+<pre><code>##  [1] &quot;SUBJECT&quot;  &quot;TODAY_V1&quot; &quot;VISIT_V1&quot; &quot;SQ_2&quot;     &quot;WEIGHT&quot;   &quot;DEMO16G&quot; 
+##  [7] &quot;DEM15V1&quot;  &quot;T26A_V1&quot;  &quot;T26A_V1A&quot; &quot;T26A_V1B&quot;</code></pre>
+</div>
+<div id="standardize-new-column-names" class="section level2" number="4.6">
+<h2><span class="header-section-number">4.6</span> Standardize new column names</h2>
+<ul>
+<li>Remove _v{1, 2, 3} and v{1, 2, 3} from column names</li>
+<li>Replace spaces with underscores</li>
+<li>Convert to lower case</li>
+<li>Add underscore in-between the abbreviated tool name and question number</li>
+</ul>
+<p>This won’t be perfect, but it will drastically reduce the number of manual changes we have to make.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="column-names-prepping-many-for-merge.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove _v1 from column name</span></span>
+<span id="cb33-2"><a href="column-names-prepping-many-for-merge.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove v1 at end of column name (e.g., DEM1v3)</span></span>
+<span id="cb33-3"><a href="column-names-prepping-many-for-merge.html#cb33-3" aria-hidden="true" tabindex="-1"></a>v1_new_names <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_replace</span>(v1_old_names, <span class="st">&quot;_V1|V1&quot;</span>, <span class="st">&quot;&quot;</span>)</span>
+<span id="cb33-4"><a href="column-names-prepping-many-for-merge.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace spaces with underscores</span></span>
+<span id="cb33-5"><a href="column-names-prepping-many-for-merge.html#cb33-5" aria-hidden="true" tabindex="-1"></a>v1_new_names <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_replace_all</span>(v1_new_names, <span class="st">&quot; &quot;</span>, <span class="st">&quot;_&quot;</span>)</span>
+<span id="cb33-6"><a href="column-names-prepping-many-for-merge.html#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to lower case</span></span>
+<span id="cb33-7"><a href="column-names-prepping-many-for-merge.html#cb33-7" aria-hidden="true" tabindex="-1"></a>v1_new_names <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_to_lower</span>(v1_new_names)</span>
+<span id="cb33-8"><a href="column-names-prepping-many-for-merge.html#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Add underscore in-between the abbreviated tool name and question number</span></span>
+<span id="cb33-9"><a href="column-names-prepping-many-for-merge.html#cb33-9" aria-hidden="true" tabindex="-1"></a>v1_new_names <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_replace</span>(v1_new_names, <span class="st">&quot;([a-z])(</span><span class="sc">\\</span><span class="st">d)&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1_</span><span class="sc">\\</span><span class="st">2&quot;</span>)</span>
+<span id="cb33-10"><a href="column-names-prepping-many-for-merge.html#cb33-10" aria-hidden="true" tabindex="-1"></a>v1_new_names</span></code></pre></div>
+<pre><code>##  [1] &quot;subject&quot;  &quot;today&quot;    &quot;visit&quot;    &quot;sq_2&quot;     &quot;weight&quot;   &quot;demo_16g&quot;
+##  [7] &quot;dem_15&quot;   &quot;t_26a&quot;    &quot;t_26aa&quot;   &quot;t_26ab&quot;</code></pre>
+</div>
+<div id="turn-this-into-a-function" class="section level2" number="4.7">
+<h2><span class="header-section-number">4.7</span> Turn this into a function</h2>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="column-names-prepping-many-for-merge.html#cb35-1" aria-hidden="true" tabindex="-1"></a>standardize_col_names <span class="ot">&lt;-</span> <span class="cf">function</span>(.data) {</span>
+<span id="cb35-2"><a href="column-names-prepping-many-for-merge.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get the existing column names</span></span>
+<span id="cb35-3"><a href="column-names-prepping-many-for-merge.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  old_names <span class="ot">&lt;-</span> <span class="fu">names</span>(.data)</span>
+<span id="cb35-4"><a href="column-names-prepping-many-for-merge.html#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a string that contains _V1 through _V5 and V1 through V5 to pass to</span></span>
+<span id="cb35-5"><a href="column-names-prepping-many-for-merge.html#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the regular expression below</span></span>
+<span id="cb35-6"><a href="column-names-prepping-many-for-merge.html#cb35-6" aria-hidden="true" tabindex="-1"></a>  v_num <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;_V&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">collapse =</span> <span class="st">&quot;|&quot;</span>)</span>
+<span id="cb35-7"><a href="column-names-prepping-many-for-merge.html#cb35-7" aria-hidden="true" tabindex="-1"></a>  vnum <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;V&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">collapse =</span> <span class="st">&quot;|&quot;</span>)</span>
+<span id="cb35-8"><a href="column-names-prepping-many-for-merge.html#cb35-8" aria-hidden="true" tabindex="-1"></a>  v_pattern <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">paste</span>(v_num, vnum, <span class="at">sep =</span> <span class="st">&quot;|&quot;</span>), <span class="at">collapse =</span> <span class="st">&quot;|&quot;</span>)</span>
+<span id="cb35-9"><a href="column-names-prepping-many-for-merge.html#cb35-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove _v{1, 2, 3} from column name</span></span>
+<span id="cb35-10"><a href="column-names-prepping-many-for-merge.html#cb35-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove v{1, 2, 3} at end of column name (e.g., DEM1v3)</span></span>
+<span id="cb35-11"><a href="column-names-prepping-many-for-merge.html#cb35-11" aria-hidden="true" tabindex="-1"></a>  new_names <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_replace</span>(old_names, v_pattern, <span class="st">&quot;&quot;</span>)</span>
+<span id="cb35-12"><a href="column-names-prepping-many-for-merge.html#cb35-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Replace spaces with underscores</span></span>
+<span id="cb35-13"><a href="column-names-prepping-many-for-merge.html#cb35-13" aria-hidden="true" tabindex="-1"></a>  new_names <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_replace_all</span>(new_names, <span class="st">&quot; &quot;</span>, <span class="st">&quot;_&quot;</span>)</span>
+<span id="cb35-14"><a href="column-names-prepping-many-for-merge.html#cb35-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert to lower case</span></span>
+<span id="cb35-15"><a href="column-names-prepping-many-for-merge.html#cb35-15" aria-hidden="true" tabindex="-1"></a>  new_names <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_to_lower</span>(new_names)</span>
+<span id="cb35-16"><a href="column-names-prepping-many-for-merge.html#cb35-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add underscore in-between the abbreviated tool name and question number</span></span>
+<span id="cb35-17"><a href="column-names-prepping-many-for-merge.html#cb35-17" aria-hidden="true" tabindex="-1"></a>  new_names <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_replace</span>(new_names, <span class="st">&quot;([a-z])(</span><span class="sc">\\</span><span class="st">d)&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1_</span><span class="sc">\\</span><span class="st">2&quot;</span>)</span>
+<span id="cb35-18"><a href="column-names-prepping-many-for-merge.html#cb35-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return character vector of standardized column names</span></span>
+<span id="cb35-19"><a href="column-names-prepping-many-for-merge.html#cb35-19" aria-hidden="true" tabindex="-1"></a>  new_names</span>
+<span id="cb35-20"><a href="column-names-prepping-many-for-merge.html#cb35-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb35-21"><a href="column-names-prepping-many-for-merge.html#cb35-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-22"><a href="column-names-prepping-many-for-merge.html#cb35-22" aria-hidden="true" tabindex="-1"></a><span class="co"># For testing</span></span>
+<span id="cb35-23"><a href="column-names-prepping-many-for-merge.html#cb35-23" aria-hidden="true" tabindex="-1"></a><span class="co"># standardize_col_names(v1)</span></span></code></pre></div>
+<div id="make-a-unit-test-for-the-function" class="section level3" number="4.7.1">
+<h3><span class="header-section-number">4.7.1</span> Make a unit test for the function</h3>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="column-names-prepping-many-for-merge.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;standardize_col_names produces the expected column names.&quot;</span>, {</span>
+<span id="cb36-2"><a href="column-names-prepping-many-for-merge.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  v1_test <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb36-3"><a href="column-names-prepping-many-for-merge.html#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">SUBJECT  =</span> <span class="fu">c</span>(<span class="dv">2001</span>, <span class="dv">2002</span>),</span>
+<span id="cb36-4"><a href="column-names-prepping-many-for-merge.html#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">TODAY_V1 =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;2018-04-07&quot;</span>, <span class="st">&quot;2018-05-03&quot;</span>)),</span>
+<span id="cb36-5"><a href="column-names-prepping-many-for-merge.html#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">VISIT_V1 =</span> <span class="dv">1</span>,</span>
+<span id="cb36-6"><a href="column-names-prepping-many-for-merge.html#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">SQ_2     =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb36-7"><a href="column-names-prepping-many-for-merge.html#cb36-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">WEIGHT   =</span> <span class="fu">c</span>(<span class="dv">179</span>, <span class="dv">194</span>),</span>
+<span id="cb36-8"><a href="column-names-prepping-many-for-merge.html#cb36-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">DEMO16G  =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb36-9"><a href="column-names-prepping-many-for-merge.html#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">DEM15V1  =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb36-10"><a href="column-names-prepping-many-for-merge.html#cb36-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">T26A_V1  =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>),</span>
+<span id="cb36-11"><a href="column-names-prepping-many-for-merge.html#cb36-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">T26A_V1A =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb36-12"><a href="column-names-prepping-many-for-merge.html#cb36-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">T26A_V1B =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb36-13"><a href="column-names-prepping-many-for-merge.html#cb36-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">TEST_V8 =</span> <span class="dv">0</span></span>
+<span id="cb36-14"><a href="column-names-prepping-many-for-merge.html#cb36-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb36-15"><a href="column-names-prepping-many-for-merge.html#cb36-15" aria-hidden="true" tabindex="-1"></a>  new_names <span class="ot">&lt;-</span> <span class="fu">standardize_col_names</span>(v1_test)</span>
+<span id="cb36-16"><a href="column-names-prepping-many-for-merge.html#cb36-16" aria-hidden="true" tabindex="-1"></a>  expceted_new_names <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb36-17"><a href="column-names-prepping-many-for-merge.html#cb36-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;subject&quot;</span>, <span class="st">&quot;today&quot;</span>, <span class="st">&quot;visit&quot;</span>, <span class="st">&quot;sq_2&quot;</span>, <span class="st">&quot;weight&quot;</span>, <span class="st">&quot;demo_16g&quot;</span>, <span class="st">&quot;dem_15&quot;</span>, </span>
+<span id="cb36-18"><a href="column-names-prepping-many-for-merge.html#cb36-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;t_26a&quot;</span>, <span class="st">&quot;t_26aa&quot;</span>, <span class="st">&quot;t_26ab&quot;</span>, <span class="st">&quot;test_v_8&quot;</span></span>
+<span id="cb36-19"><a href="column-names-prepping-many-for-merge.html#cb36-19" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb36-20"><a href="column-names-prepping-many-for-merge.html#cb36-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(new_names, expceted_new_names)</span>
+<span id="cb36-21"><a href="column-names-prepping-many-for-merge.html#cb36-21" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<pre><code>## Test passed 😀</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="column-names-prepping-many-for-merge.html#cb38-1" aria-hidden="true" tabindex="-1"></a>new_names <span class="ot">&lt;-</span> <span class="fu">standardize_col_names</span>(v1)</span></code></pre></div>
+</div>
+</div>
+<div id="manual-changes-to-column-names" class="section level2" number="4.8">
+<h2><span class="header-section-number">4.8</span> Manual changes to column names</h2>
+<p>The step above used to standardize column names fixes most of them, but some manual changes to variable names still need to be made.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="column-names-prepping-many-for-merge.html#cb39-1" aria-hidden="true" tabindex="-1"></a>new_names[new_names <span class="sc">==</span> <span class="st">&quot;sq_2&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;sq_hispanic&quot;</span></span>
+<span id="cb39-2"><a href="column-names-prepping-many-for-merge.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># demo_16g was incorrectly numbered when the data was created</span></span>
+<span id="cb39-3"><a href="column-names-prepping-many-for-merge.html#cb39-3" aria-hidden="true" tabindex="-1"></a>new_names[new_names <span class="sc">==</span> <span class="st">&quot;demo_16g&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;dem_14g&quot;</span></span>
+<span id="cb39-4"><a href="column-names-prepping-many-for-merge.html#cb39-4" aria-hidden="true" tabindex="-1"></a>new_names[new_names <span class="sc">==</span> <span class="st">&quot;dem_15&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;dem_veteran&quot;</span></span>
+<span id="cb39-5"><a href="column-names-prepping-many-for-merge.html#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Take the extra &quot;a&quot; out of all the T26 col names</span></span>
+<span id="cb39-6"><a href="column-names-prepping-many-for-merge.html#cb39-6" aria-hidden="true" tabindex="-1"></a>new_names <span class="ot">&lt;-</span> <span class="fu">str_replace</span>(new_names, <span class="st">&quot;t_26a&quot;</span>, <span class="st">&quot;t_26&quot;</span>)</span></code></pre></div>
+</div>
+<div id="have-r-write-out-the-rename-code" class="section level2" number="4.9">
+<h2><span class="header-section-number">4.9</span> Have R write out the rename code</h2>
+<p>So that you don’t have to type it out by hand. Ideally, you only have to run this code once, copy and paste into the rename code chunk below, and then just make small updates to the rename code chunk if changes are made to QDS.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="column-names-prepping-many-for-merge.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If needed, run the code below. Copy and paste the output into the rename() </span></span>
+<span id="cb40-2"><a href="column-names-prepping-many-for-merge.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># code chunk. Make manual changes as needed.</span></span>
+<span id="cb40-3"><a href="column-names-prepping-many-for-merge.html#cb40-3" aria-hidden="true" tabindex="-1"></a>new_old_name_pairs <span class="ot">&lt;-</span> <span class="fu">paste</span>(new_names, <span class="fu">names</span>(v1), <span class="at">sep =</span> <span class="st">&quot; = &quot;</span>)</span>
+<span id="cb40-4"><a href="column-names-prepping-many-for-merge.html#cb40-4" aria-hidden="true" tabindex="-1"></a>new_old_name_pairs <span class="ot">&lt;-</span> <span class="fu">paste</span>(new_old_name_pairs, <span class="at">collapse =</span> <span class="st">&quot;, </span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb40-5"><a href="column-names-prepping-many-for-merge.html#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(new_old_name_pairs)</span></code></pre></div>
+<pre><code>## subject = SUBJECT, 
+## today = TODAY_V1, 
+## visit = VISIT_V1, 
+## sq_hispanic = SQ_2, 
+## weight = WEIGHT, 
+## dem_14g = DEMO16G, 
+## dem_veteran = DEM15V1, 
+## t_26 = T26A_V1, 
+## t_26a = T26A_V1A, 
+## t_26b = T26A_V1B</code></pre>
+<div id="make-it-a-function" class="section level3" number="4.9.1">
+<h3><span class="header-section-number">4.9.1</span> Make it a function</h3>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="column-names-prepping-many-for-merge.html#cb42-1" aria-hidden="true" tabindex="-1"></a>write_rename <span class="ot">&lt;-</span> <span class="cf">function</span>(.data, .new_names) {</span>
+<span id="cb42-2"><a href="column-names-prepping-many-for-merge.html#cb42-2" aria-hidden="true" tabindex="-1"></a>  new_old_name_pairs <span class="ot">&lt;-</span> <span class="fu">paste</span>(.new_names, <span class="fu">names</span>(.data), <span class="at">sep =</span> <span class="st">&quot; = &quot;</span>)</span>
+<span id="cb42-3"><a href="column-names-prepping-many-for-merge.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  new_old_name_pairs <span class="ot">&lt;-</span> <span class="fu">paste</span>(new_old_name_pairs, <span class="at">collapse =</span> <span class="st">&quot;, </span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb42-4"><a href="column-names-prepping-many-for-merge.html#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(new_old_name_pairs)</span>
+<span id="cb42-5"><a href="column-names-prepping-many-for-merge.html#cb42-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb42-6"><a href="column-names-prepping-many-for-merge.html#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-7"><a href="column-names-prepping-many-for-merge.html#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co"># For testing</span></span>
+<span id="cb42-8"><a href="column-names-prepping-many-for-merge.html#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rename</span>(v1, new_names)</span></code></pre></div>
+<pre><code>## subject = SUBJECT, 
+## today = TODAY_V1, 
+## visit = VISIT_V1, 
+## sq_hispanic = SQ_2, 
+## weight = WEIGHT, 
+## dem_14g = DEMO16G, 
+## dem_veteran = DEM15V1, 
+## t_26 = T26A_V1, 
+## t_26a = T26A_V1A, 
+## t_26b = T26A_V1B</code></pre>
+</div>
+</div>
+<div id="rename-the-columns" class="section level2" number="4.10">
+<h2><span class="header-section-number">4.10</span> Rename the columns</h2>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="column-names-prepping-many-for-merge.html#cb44-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> v1 <span class="sc">%&gt;%</span> </span>
+<span id="cb44-2"><a href="column-names-prepping-many-for-merge.html#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb44-3"><a href="column-names-prepping-many-for-merge.html#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">subject =</span> SUBJECT, </span>
+<span id="cb44-4"><a href="column-names-prepping-many-for-merge.html#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">today =</span> TODAY_V1, </span>
+<span id="cb44-5"><a href="column-names-prepping-many-for-merge.html#cb44-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">visit =</span> VISIT_V1, </span>
+<span id="cb44-6"><a href="column-names-prepping-many-for-merge.html#cb44-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sq_hispanic =</span> SQ_2, </span>
+<span id="cb44-7"><a href="column-names-prepping-many-for-merge.html#cb44-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">weight =</span> WEIGHT, </span>
+<span id="cb44-8"><a href="column-names-prepping-many-for-merge.html#cb44-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">dem_14g =</span> DEMO16G, </span>
+<span id="cb44-9"><a href="column-names-prepping-many-for-merge.html#cb44-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">dem_veteran =</span> DEM15V1, </span>
+<span id="cb44-10"><a href="column-names-prepping-many-for-merge.html#cb44-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">t_26 =</span> T26A_V1, </span>
+<span id="cb44-11"><a href="column-names-prepping-many-for-merge.html#cb44-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">t_26a =</span> T26A_V1A, </span>
+<span id="cb44-12"><a href="column-names-prepping-many-for-merge.html#cb44-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">t_26b =</span> T26A_V1B</span>
+<span id="cb44-13"><a href="column-names-prepping-many-for-merge.html#cb44-13" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+</div>
+<div id="repeat-the-process-for-v2" class="section level2" number="4.11">
+<h2><span class="header-section-number">4.11</span> Repeat the process for V2</h2>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="column-names-prepping-many-for-merge.html#cb45-1" aria-hidden="true" tabindex="-1"></a>new_names <span class="ot">&lt;-</span> <span class="fu">standardize_col_names</span>(v2)</span>
+<span id="cb45-2"><a href="column-names-prepping-many-for-merge.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rename</span>(v2, new_names)</span></code></pre></div>
+<pre><code>## subject = SUBJECT, 
+## today = TODAY_V2, 
+## visit = VISIT_V2</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="column-names-prepping-many-for-merge.html#cb47-1" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> v2 <span class="sc">%&gt;%</span> </span>
+<span id="cb47-2"><a href="column-names-prepping-many-for-merge.html#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb47-3"><a href="column-names-prepping-many-for-merge.html#cb47-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">subject =</span> SUBJECT, </span>
+<span id="cb47-4"><a href="column-names-prepping-many-for-merge.html#cb47-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">today =</span> TODAY_V2, </span>
+<span id="cb47-5"><a href="column-names-prepping-many-for-merge.html#cb47-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">visit =</span> VISIT_V2</span>
+<span id="cb47-6"><a href="column-names-prepping-many-for-merge.html#cb47-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+</div>
+<div id="repeat-the-process-for-v3" class="section level2" number="4.12">
+<h2><span class="header-section-number">4.12</span> Repeat the process for V3</h2>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="column-names-prepping-many-for-merge.html#cb48-1" aria-hidden="true" tabindex="-1"></a>new_names <span class="ot">&lt;-</span> <span class="fu">standardize_col_names</span>(v3)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="column-names-prepping-many-for-merge.html#cb49-1" aria-hidden="true" tabindex="-1"></a>new_names[new_names <span class="sc">==</span> <span class="st">&quot;weight_3&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;weight&quot;</span></span>
+<span id="cb49-2"><a href="column-names-prepping-many-for-merge.html#cb49-2" aria-hidden="true" tabindex="-1"></a>new_names[new_names <span class="sc">==</span> <span class="st">&quot;dem_15&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;dem_veteran&quot;</span></span>
+<span id="cb49-3"><a href="column-names-prepping-many-for-merge.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Take the extra &quot;a&quot; out of all the T26 col names</span></span>
+<span id="cb49-4"><a href="column-names-prepping-many-for-merge.html#cb49-4" aria-hidden="true" tabindex="-1"></a>new_names <span class="ot">&lt;-</span> <span class="fu">str_replace</span>(new_names, <span class="st">&quot;t_26a&quot;</span>, <span class="st">&quot;t_26&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="column-names-prepping-many-for-merge.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rename</span>(v3, new_names)</span></code></pre></div>
+<pre><code>## subject = SUBJECT, 
+## today = TODAY_V3, 
+## visit = VISIT_V3, 
+## group = GROUP, 
+## weight = WEIGHT3, 
+## dem_14g = DEM14GV3, 
+## t_26 = T26A_V3, 
+## t_26a = T26A_V3A, 
+## t_26b = T26A_V3B</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="column-names-prepping-many-for-merge.html#cb52-1" aria-hidden="true" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> v3 <span class="sc">%&gt;%</span> </span>
+<span id="cb52-2"><a href="column-names-prepping-many-for-merge.html#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb52-3"><a href="column-names-prepping-many-for-merge.html#cb52-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">subject =</span> SUBJECT, </span>
+<span id="cb52-4"><a href="column-names-prepping-many-for-merge.html#cb52-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">today =</span> TODAY_V3, </span>
+<span id="cb52-5"><a href="column-names-prepping-many-for-merge.html#cb52-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">visit =</span> VISIT_V3, </span>
+<span id="cb52-6"><a href="column-names-prepping-many-for-merge.html#cb52-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">group =</span> GROUP, </span>
+<span id="cb52-7"><a href="column-names-prepping-many-for-merge.html#cb52-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">weight =</span> WEIGHT3, </span>
+<span id="cb52-8"><a href="column-names-prepping-many-for-merge.html#cb52-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">dem_14g =</span> DEM14GV3, </span>
+<span id="cb52-9"><a href="column-names-prepping-many-for-merge.html#cb52-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">t_26 =</span> T26A_V3, </span>
+<span id="cb52-10"><a href="column-names-prepping-many-for-merge.html#cb52-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">t_26a =</span> T26A_V3A, </span>
+<span id="cb52-11"><a href="column-names-prepping-many-for-merge.html#cb52-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">t_26b =</span> T26A_V3B</span>
+<span id="cb52-12"><a href="column-names-prepping-many-for-merge.html#cb52-12" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+</div>
+<div id="merge-all-3-visits" class="section level2" number="4.13">
+<h2><span class="header-section-number">4.13</span> Merge all 3 visits</h2>
+<p>Merge all 3 visits into a single data frame</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="column-names-prepping-many-for-merge.html#cb53-1" aria-hidden="true" tabindex="-1"></a>qds_all_visits <span class="ot">&lt;-</span> v1 <span class="sc">%&gt;%</span> </span>
+<span id="cb53-2"><a href="column-names-prepping-many-for-merge.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(v2) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-3"><a href="column-names-prepping-many-for-merge.html#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(v3) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-4"><a href="column-names-prepping-many-for-merge.html#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(subject, visit)</span>
+<span id="cb53-5"><a href="column-names-prepping-many-for-merge.html#cb53-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-6"><a href="column-names-prepping-many-for-merge.html#cb53-6" aria-hidden="true" tabindex="-1"></a>qds_all_visits</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 11
+##   subject today      visit sq_hispanic weight dem_14g dem_veteran  t_26 t_26a
+##     &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1    2001 2018-04-07     1           1    179       0           1     2     0
+## 2    2001 2018-04-30     2          NA     NA      NA          NA    NA    NA
+## 3    2001 2018-05-31     3          NA    179       2          NA     2     0
+## 4    2002 2018-05-03     1           0    194       1           0     4     0
+## 5    2002 2018-05-07     2          NA     NA      NA          NA    NA    NA
+## 6    2002 2018-06-08     3          NA    194       3          NA     4     0
+## # … with 2 more variables: t_26b &lt;dbl&gt;, group &lt;dbl&gt;</code></pre>
+</div>
+<div id="final-data-cleaning" class="section level2" number="4.14">
+<h2><span class="header-section-number">4.14</span> Final data cleaning</h2>
+<ul>
+<li>Make a couple more column name changes<br />
+</li>
+<li>Carry forward time-invariant variables</li>
+</ul>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="column-names-prepping-many-for-merge.html#cb55-1" aria-hidden="true" tabindex="-1"></a>qds_all_visits <span class="sc">%&gt;%</span> </span>
+<span id="cb55-2"><a href="column-names-prepping-many-for-merge.html#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">id =</span> subject, <span class="at">date_visit =</span> today) <span class="sc">%&gt;%</span> </span>
+<span id="cb55-3"><a href="column-names-prepping-many-for-merge.html#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Carry forward time-invariant variables</span></span>
+<span id="cb55-4"><a href="column-names-prepping-many-for-merge.html#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(id) <span class="sc">%&gt;%</span> </span>
+<span id="cb55-5"><a href="column-names-prepping-many-for-merge.html#cb55-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span>(sq_hispanic, dem_veteran, group, <span class="at">.direction =</span> <span class="st">&quot;downup&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb55-6"><a href="column-names-prepping-many-for-merge.html#cb55-6" aria-hidden="true" tabindex="-1"></a>  ungroup <span class="sc">%&gt;%</span> </span>
+<span id="cb55-7"><a href="column-names-prepping-many-for-merge.html#cb55-7" aria-hidden="true" tabindex="-1"></a>  DT<span class="sc">::</span><span class="fu">datatable</span>(<span class="at">options =</span> <span class="fu">list</span>(<span class="at">scrollX =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div id="htmlwidget-98ecd97f219a57989fcd" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-98ecd97f219a57989fcd">{"x":{"filter":"none","data":[["1","2","3","4","5","6"],[2001,2001,2001,2002,2002,2002],["2018-04-07","2018-04-30","2018-05-31","2018-05-03","2018-05-07","2018-06-08"],[1,2,3,1,2,3],[1,1,1,0,0,0],[179,null,179,194,null,194],[0,null,2,1,null,3],[1,1,1,0,0,0],[2,null,2,4,null,4],[0,null,0,0,null,0],[1,null,1,0,null,0],[1,1,1,2,2,2]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>date_visit<\/th>\n      <th>visit<\/th>\n      <th>sq_hispanic<\/th>\n      <th>weight<\/th>\n      <th>dem_14g<\/th>\n      <th>dem_veteran<\/th>\n      <th>t_26<\/th>\n      <th>t_26a<\/th>\n      <th>t_26b<\/th>\n      <th>group<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,3,4,5,6,7,8,9,10,11]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<!--
+Clean up and add session info
+-->
+<pre><code>## R version 4.0.5 (2021-03-31)
+## Platform: x86_64-apple-darwin17.0 (64-bit)
+## Running under: macOS Big Sur 10.16
+## 
+## Matrix products: default
+## BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+## [1] tidyr_1.1.3    testthat_3.0.2 stringr_1.4.0  dplyr_1.0.6   
+## 
+## loaded via a namespace (and not attached):
+##  [1] pillar_1.6.0      compiler_4.0.5    tools_4.0.5       digest_0.6.25    
+##  [5] pkgload_1.2.1     jsonlite_1.7.2    evaluate_0.14     lifecycle_1.0.0  
+##  [9] tibble_3.1.1      pkgconfig_2.0.3   png_0.1-7         rlang_0.4.10     
+## [13] DBI_1.1.0         cli_2.4.0         rstudioapi_0.13   crosstalk_1.1.0.1
+## [17] yaml_2.2.1        xfun_0.19         withr_2.4.2       knitr_1.30       
+## [21] htmlwidgets_1.5.2 generics_0.1.0    desc_1.3.0        vctrs_0.3.7      
+## [25] rprojroot_1.3-2   DT_0.15           tidyselect_1.1.0  glue_1.4.2       
+## [29] R6_2.4.1          fansi_0.4.1       rmarkdown_2.6     bookdown_0.18    
+## [33] purrr_0.3.4       magrittr_2.0.1    backports_1.1.6   ellipsis_0.3.1   
+## [37] htmltools_0.5.0   assertthat_0.2.1  utf8_1.1.4        stringi_1.5.3    
+## [41] crayon_1.4.1</code></pre>
+
+</div>
+</div>
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="arranging-columns-with-across.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="book-chapters.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>

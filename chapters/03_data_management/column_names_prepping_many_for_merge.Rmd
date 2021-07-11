@@ -10,7 +10,7 @@ knitr::include_graphics("https://picsum.photos/200/300")
 
 ## ⭐️Overview
 
-The inspiration for this chapter came about when I was trying to merge the QDS vist 1 through visit 5 files that were part of the Link2Care project. All of the QDS files (plus some other files) needed to be merged together into a final analysis data set. However, not all questions were asked at all visits and column names were inconsistently used across visits. Even when the names were almost the same, a visit number was attached to the name (e.g., TODAY_V1, TODAY_V2, TODAY_V3, etc.). Finally, each data set contained 800+ columns, which made renaming them all manually tedious and error prone. So, I'm trying to come up with a better way.
+The inspiration for this chapter came about when I was trying to merge the QDS visit 1 through visit 5 files that were part of the Link2Care project. All of the QDS files (plus some other files) needed to be merged together into a final analysis data set. However, not all questions were asked at all visits and column names were inconsistently used across visits. Even when the names were almost the same, a visit number was attached to the name (e.g., TODAY_V1, TODAY_V2, TODAY_V3, etc.). Finally, each data set contained 800+ columns, which made renaming them all manually tedious and error prone. So, I'm trying to come up with a better way.
 
 One method I came up with was reading in the variable names from the Word codebooks and then modifying them. Using this method required making some custom styles in Word and applying those styles to the column names. This seemed to work pretty well at first, but then Joe and James made some changes to QDS, which rendered the codebooks I'd made all the changes to obsolete. This left me with two options:
 

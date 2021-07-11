@@ -1,8 +1,20 @@
-# Making a Bookdown Book Project {#bookdown}
+# Bookdown: Quick Start {#bookdown-quick-start} 
 
-Document the process of creating a bookdown book. Think of it as a quickstart guide.
+<!--
+Hidden comments placeholder
+-->
+
+## ⭐️Overview
+
+Document the process of creating a bookdown book. Think of it as a quick start guide.
 
 Complete documentation at: https://bookdown.org/yihui/bookdown/
+
+
+## 🌎Useful websites
+
+* [Yihui Xie's Bookdown book](https://bookdown.org/yihui/bookdown/)
+
 
 ## Creating the bookdown project locally
 
@@ -234,14 +246,35 @@ For more on chapter content, see [Bookdown template chapter](#bookdown-template)
 
 ## Errors and warnings
 
-* Output created: docs/index.html Warning message: In split_chapters(output, gitbook_page, number_sections, split_by,  : You have 3 Rmd input file(s) but only 2 first-level heading(s). Did you forget first-level headings in certain Rmd files?    
-  - Just ignore this.
+> Output created: docs/index.html Warning message: In split_chapters(output, gitbook_page, number_sections, split_by,  : You have 3 Rmd input file(s) but only 2 first-level heading(s). Did you forget first-level headings in certain Rmd files?    
 
-* tlmgr: Local TeX Live (2019) is older than remote repository (2020).    
-  - Run tinytex::reinstall_tinytex()   
+**Solution:** Just ignore this.
 
-* ! LaTeX Error: Cannot determine size of graphic in img/getting_started/01_install_r/download_r_mac.gif (no BoundingBox).   
-  - This is from trying to make a pdf document with a gif in it. LaTeX doesn't support gifs. Just make a just build the book in gitbook format.   
+> tlmgr: Local TeX Live (2019) is older than remote repository (2020).    
+
+**Solution:** Run tinytex::reinstall_tinytex()   
+
+> ! LaTeX Error: Cannot determine size of graphic in img/getting_started/01_install_r/download_r_mac.gif (no BoundingBox).   
+
+**Solution:** This is from trying to make a pdf document with a gif in it. LaTeX doesn't support gifs. Just make a just build the book in gitbook format.   
   
-* 2: The label(s) fig:source1 not found.    
-  - Figures must have a caption in order to cross reference them.   
+> 2: The label(s) fig:source1 not found.    
+
+**Solution:** Figures must have a caption in order to cross reference them.   
+  
+> [WARNING] Citeproc: citation examples not found
+
+**Solution:** I haven't found a solution yet, but so far the warning seems ignorable. 
+
+
+<!--
+Clean up and add session info
+-->
+
+```{r echo=FALSE}
+rm(list = ls())
+```
+
+```{r echo=FALSE}
+sessionInfo()
+```

@@ -1,4 +1,4 @@
-# Bookdown Template Chapter {#bookdown-template}
+# Bookdown: Creating Book Chapters {#book-chapters}
 
 Chapters should pretty much just be about one distinct idea. Give some more thought to defining this more clearly. I think it will be important as I start incorporating the epidemiology stuff. Also, it should help with making things easier to find.
 
@@ -42,13 +42,13 @@ Use "we" and "our" language. Make it friendly and informal.
 
 ### Images
 
-```{r screenshot-cran, echo=FALSE}
-# knitr::include_graphics("img/01_part_getting_started/01_install_r/install_r_mac/cran.png")
+```{r exampe-bookdown-img, echo=FALSE}
+knitr::include_graphics("img/06_presenting_results/bookdown_creating_book_chapters/example_bookdown_image.png")
 ```
 
 * Don't forget to add "echo=FALSE" to the code chunk.
 
-* To cross-reference figures. Name the figure in the code chunk (e.g., ```{r console, echo=FALSE}). Then add \@ref(fig:console) to the text.
+* To cross-reference figures. Name the figure in the code chunk (e.g., `{r console, echo=FALSE})`. Then add `\@ref(fig:console)` to the text.
   - The figure reference should go outside of punctuation. With a space.
 
 * Every figure doesn't need a caption. It can actually make things look sloppy. The only figures that NEED a caption are those figures that are cross-referenced.
@@ -76,9 +76,9 @@ Use unordered lists for these sections. It allows for nested lists and code. Add
 ```
 
 
-### Cross-references
+## Cross-references
 
-* To cross-reference figures. Name the figure in the code chunk (e.g., ```{r console, echo=FALSE}). Then add \@ref(fig:console) to the text.
+* To cross-reference figures. Name the figure in the code chunk (e.g., `{r console, echo=FALSE})`. Then add `\@ref(fig:console)` to the text.
   - The figure reference should go outside of punctuation. With a space.
   
 * To cross-reference chapters: https://happygitwithr.com/bookdown-cheat-sheet.html
@@ -86,9 +86,37 @@ Use unordered lists for these sections. It allows for nested lists and code. Add
   - Refer to it like this: The the [chapter on odds ratios](#ors)
   - Capitalize first letter when cross-referencing the chapter by name -- the Let's get programming chapter. Written as "the [Let's get programming] chapter."  
   - Don't capitalize the first letter when describing the contents of a chapter in the cross-reference -- the chapter on exporting data. Written as "We were first introduced to [factor vectors][Factor vectors] in the chapter.."
+  
+  
+## Citations
+
+For more details, see [Yihui Xie's Bookdown book](https://bookdown.org/yihui/bookdown/citations.html).
+
+1. Add whatever you want to cite to Paperpile.   
+2. Navigate to Paperpile.   
+3. Click on the document/article you want to cite.   
+4. Click the drop-down arrow next to the "Cite" button.   
+5. Click the BibTeX option. This will copy a BibTeX citation to your clipboard.    
+
+```{r echo=FALSE}
+knitr::include_graphics("img/06_presenting_results/bookdown_creating_book_chapters/paperpile.png")
+```
+
+6. In RStudio, open `book.bib`, which should be in your book's root directory.   
+7. Paste the BibTeX citation into `book.bib`. Order the citations alphabetically by author's last name. Save.   
+
+For example, here is the `book.bib` entry for the Yihui Xie's bookdown book:
+
+```{r echo=FALSE}
+knitr::include_graphics("img/06_presenting_results/bookdown_creating_book_chapters/bibtex_example.png")
+```
+
+Then, to cite that book, type `@key` where you want the citation to appear -- the **key** part of `@key` is marked in the example above. So, I'm citing Yihui Xie's bookdown book at the end of this sentence by typing `@Xie2021-pn` after the period _with a space in between_. @Xie2021-pn
+
+<p class="note"> 🗒**Side Note:** You can change the citation style using the `csl:` parameter in `index.Rmd`. I typically use `csl: ama.csl`, but you can download other formats from https://github.com/citation-style-language/styles. </p>
 
 
-### Previewing the chapter
+## Previewing the chapter
 
 * Supposed to use "bookdown::preview_chapter("03_what_is_r.Rmd")" to preview chapters. 
   - I can't get this to work for some reason. I created a new project that I can use a test environment. 
@@ -112,3 +140,16 @@ Key terms covered in this chapter.
 Succinct recap of the code used in this chapter without any explanation of how it works. You can use this as a quick reference later.
 
 We won't necessarily do this for every chapter (e.g., installing R and RStudio) if doing so doesn't make sense.
+
+
+<!--
+Clean up and add session info
+-->
+
+```{r echo=FALSE}
+rm(list = ls())
+```
+
+```{r echo=FALSE}
+sessionInfo()
+```

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Arranging Columns with Across | R Notes</title>
+  <title>5 Bookdown: Creating Book Chapters | R Notes</title>
   <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Arranging Columns with Across | R Notes" />
+  <meta property="og:title" content="5 Bookdown: Creating Book Chapters | R Notes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://brad-cannell.github.io/r_notes/" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="brad-cannell/r_notes" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Arranging Columns with Across | R Notes" />
+  <meta name="twitter:title" content="5 Bookdown: Creating Book Chapters | R Notes" />
   
   <meta name="twitter:description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="creating-rmd-templates.html"/>
-<link rel="next" href="book-chapters.html"/>
+<link rel="prev" href="arranging-columns-with-across.html"/>
+<link rel="next" href="bookdown-quick-start.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -250,120 +250,150 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="arranging-columns-with-across" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Arranging Columns with Across</h1>
-<p>I’m trying to arrange calculated columns immediately after source columns when using dplyr column-wise operations.</p>
-<p><a href="https://stackoverflow.com/questions/67076974/arrange-calculated-columns-immediately-after-source-columns-when-using-dplyr-col/67077122#67077122" class="uri">https://stackoverflow.com/questions/67076974/arrange-calculated-columns-immediately-after-source-columns-when-using-dplyr-col/67077122#67077122</a></p>
-<p><a href="https://community.rstudio.com/t/arrange-calculated-columns-immediately-after-source-columns-when-using-dplyr-column-wise-operations/101726" class="uri">https://community.rstudio.com/t/arrange-calculated-columns-immediately-after-source-columns-when-using-dplyr-column-wise-operations/101726</a></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="arranging-columns-with-across.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
-<p>Example data</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="arranging-columns-with-across.html#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb14-2"><a href="arranging-columns-with-across.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id         =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>),</span>
-<span id="cb14-3"><a href="arranging-columns-with-across.html#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">id_row     =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>),</span>
-<span id="cb14-4"><a href="arranging-columns-with-across.html#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">name_first =</span> <span class="fu">c</span>(<span class="st">&quot;John&quot;</span>, <span class="st">&quot;Jane&quot;</span>, <span class="st">&quot;Jane&quot;</span>),</span>
-<span id="cb14-5"><a href="arranging-columns-with-across.html#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">city       =</span> <span class="fu">c</span>(<span class="st">&quot;NY&quot;</span>, <span class="st">&quot;DAL&quot;</span>, <span class="st">&quot;HOU&quot;</span>),</span>
-<span id="cb14-6"><a href="arranging-columns-with-across.html#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">x          =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb14-7"><a href="arranging-columns-with-across.html#cb14-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-8"><a href="arranging-columns-with-across.html#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-9"><a href="arranging-columns-with-across.html#cb14-9" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
-<pre><code>## # A tibble: 3 x 5
-##      id id_row name_first city      x
-##   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt; &lt;dbl&gt;
-## 1     1      1 John       NY        0
-## 2     2      1 Jane       DAL       1
-## 3     2      2 Jane       HOU       0</code></pre>
-<p>Within ID, the values of name_first and city should be constant. The values for id_row and x need not be constant. I want to test for and inspect differing values of name_first and city within-id.</p>
-<p>One convenient way to do this is with <code>mutate()</code> and <code>across()</code>.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="arranging-columns-with-across.html#cb16-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb16-2"><a href="arranging-columns-with-across.html#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(id) <span class="sc">%&gt;%</span> </span>
-<span id="cb16-3"><a href="arranging-columns-with-across.html#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb16-4"><a href="arranging-columns-with-across.html#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
-<span id="cb16-5"><a href="arranging-columns-with-across.html#cb16-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">.cols  =</span> <span class="fu">c</span>(name_first, city),</span>
-<span id="cb16-6"><a href="arranging-columns-with-across.html#cb16-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">.fns   =</span> <span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.x)) <span class="sc">==</span> <span class="dv">1</span>,</span>
-<span id="cb16-7"><a href="arranging-columns-with-across.html#cb16-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">.names =</span> <span class="st">&quot;{col}_all_match&quot;</span></span>
-<span id="cb16-8"><a href="arranging-columns-with-across.html#cb16-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb16-9"><a href="arranging-columns-with-across.html#cb16-9" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<pre><code>## # A tibble: 3 x 7
-## # Groups:   id [2]
-##      id id_row name_first city      x name_first_all_match city_all_match
-##   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt; &lt;dbl&gt; &lt;lgl&gt;                &lt;lgl&gt;         
-## 1     1      1 John       NY        0 TRUE                 TRUE          
-## 2     2      1 Jane       DAL       1 TRUE                 FALSE         
-## 3     2      2 Jane       HOU       0 TRUE                 FALSE</code></pre>
-<p>The issue is that the “all_match” (calculated) columns are added to the far right of the data frame rather than immediately after their source column. This makes it difficult to visually inspect differing values for the columns of interest.</p>
-<p>Of course, in this small data frame, we could easily rearrange the columns using <code>select()</code>.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="arranging-columns-with-across.html#cb18-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb18-2"><a href="arranging-columns-with-across.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(id) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-3"><a href="arranging-columns-with-across.html#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb18-4"><a href="arranging-columns-with-across.html#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
-<span id="cb18-5"><a href="arranging-columns-with-across.html#cb18-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">.cols  =</span> <span class="fu">c</span>(name_first, city),</span>
-<span id="cb18-6"><a href="arranging-columns-with-across.html#cb18-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">.fns   =</span> <span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.x)) <span class="sc">==</span> <span class="dv">1</span>,</span>
-<span id="cb18-7"><a href="arranging-columns-with-across.html#cb18-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">.names =</span> <span class="st">&quot;{col}_all_match&quot;</span></span>
-<span id="cb18-8"><a href="arranging-columns-with-across.html#cb18-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb18-9"><a href="arranging-columns-with-across.html#cb18-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-10"><a href="arranging-columns-with-across.html#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, id_row, <span class="fu">starts_with</span>(<span class="st">&quot;name_first&quot;</span>), <span class="fu">starts_with</span>(<span class="st">&quot;city&quot;</span>), x)</span></code></pre></div>
-<pre><code>## # A tibble: 3 x 7
-## # Groups:   id [2]
-##      id id_row name_first name_first_all_match city  city_all_match     x
-##   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;lgl&gt;                &lt;chr&gt; &lt;lgl&gt;          &lt;dbl&gt;
-## 1     1      1 John       TRUE                 NY    TRUE               0
-## 2     2      1 Jane       TRUE                 DAL   FALSE              1
-## 3     2      2 Jane       TRUE                 HOU   FALSE              0</code></pre>
-<p>The issue with that approach is that it quickly becomes pretty cumbersome with more columns. A more tractable approach would be to sort the names alphabetically…</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="arranging-columns-with-across.html#cb20-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb20-2"><a href="arranging-columns-with-across.html#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(id) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-3"><a href="arranging-columns-with-across.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb20-4"><a href="arranging-columns-with-across.html#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
-<span id="cb20-5"><a href="arranging-columns-with-across.html#cb20-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">.cols  =</span> <span class="fu">c</span>(name_first, city),</span>
-<span id="cb20-6"><a href="arranging-columns-with-across.html#cb20-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">.fns   =</span> <span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.x)) <span class="sc">==</span> <span class="dv">1</span>,</span>
-<span id="cb20-7"><a href="arranging-columns-with-across.html#cb20-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">.names =</span> <span class="st">&quot;{col}_all_match&quot;</span></span>
-<span id="cb20-8"><a href="arranging-columns-with-across.html#cb20-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb20-9"><a href="arranging-columns-with-across.html#cb20-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-10"><a href="arranging-columns-with-across.html#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">sort</span>(<span class="fu">names</span>(.)))</span></code></pre></div>
-<pre><code>## # A tibble: 3 x 7
-## # Groups:   id [2]
-##   city  city_all_match    id id_row name_first name_first_all_match     x
-##   &lt;chr&gt; &lt;lgl&gt;          &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;lgl&gt;                &lt;dbl&gt;
-## 1 NY    TRUE               1      1 John       TRUE                     0
-## 2 DAL   FALSE              2      1 Jane       TRUE                     1
-## 3 HOU   FALSE              2      2 Jane       TRUE                     0</code></pre>
-<p>…but in my situation I need to preserve the original column order. I’d also prefer to stick with Tidyverse solutions if possible.</p>
-<p>Any ideas are appreciated!</p>
-<div id="solution-by-lmc" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Solution by LMc:</h2>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="arranging-columns-with-across.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use select because it allows for more complex column selection when working </span></span>
-<span id="cb22-2"><a href="arranging-columns-with-across.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># with more complex data frames.</span></span>
-<span id="cb22-3"><a href="arranging-columns-with-across.html#cb22-3" aria-hidden="true" tabindex="-1"></a>inspect_cols <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">select</span>(name_first, city) <span class="sc">%&gt;%</span> <span class="fu">names</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="arranging-columns-with-across.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set column order ahead of time. This assumes that you know the names of each </span></span>
-<span id="cb23-2"><a href="arranging-columns-with-across.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># of the columns you want to inspect</span></span>
-<span id="cb23-3"><a href="arranging-columns-with-across.html#cb23-3" aria-hidden="true" tabindex="-1"></a>col_order <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(</span>
-<span id="cb23-4"><a href="arranging-columns-with-across.html#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(df), </span>
-<span id="cb23-5"><a href="arranging-columns-with-across.html#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(x) {</span>
-<span id="cb23-6"><a href="arranging-columns-with-across.html#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (x <span class="sc">%in%</span> inspect_cols) {</span>
-<span id="cb23-7"><a href="arranging-columns-with-across.html#cb23-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(x, <span class="fu">paste0</span>(x, <span class="st">&quot;_all_match&quot;</span>))</span>
-<span id="cb23-8"><a href="arranging-columns-with-across.html#cb23-8" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb23-9"><a href="arranging-columns-with-across.html#cb23-9" aria-hidden="true" tabindex="-1"></a>      x</span>
-<span id="cb23-10"><a href="arranging-columns-with-across.html#cb23-10" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb23-11"><a href="arranging-columns-with-across.html#cb23-11" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb23-12"><a href="arranging-columns-with-across.html#cb23-12" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-13"><a href="arranging-columns-with-across.html#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unlist</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="arranging-columns-with-across.html#cb24-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb24-2"><a href="arranging-columns-with-across.html#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(id) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-3"><a href="arranging-columns-with-across.html#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb24-4"><a href="arranging-columns-with-across.html#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
-<span id="cb24-5"><a href="arranging-columns-with-across.html#cb24-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">.cols  =</span> <span class="fu">all_of</span>(inspect_cols),</span>
-<span id="cb24-6"><a href="arranging-columns-with-across.html#cb24-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">.fns   =</span> <span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.x)) <span class="sc">==</span> <span class="dv">1</span>,</span>
-<span id="cb24-7"><a href="arranging-columns-with-across.html#cb24-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">.names =</span> <span class="st">&quot;{col}_all_match&quot;</span></span>
-<span id="cb24-8"><a href="arranging-columns-with-across.html#cb24-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb24-9"><a href="arranging-columns-with-across.html#cb24-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-10"><a href="arranging-columns-with-across.html#cb24-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">all_of</span>(col_order))</span></code></pre></div>
-<pre><code>## # A tibble: 3 x 7
-## # Groups:   id [2]
-##      id id_row name_first name_first_all_match city  city_all_match     x
-##   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;lgl&gt;                &lt;chr&gt; &lt;lgl&gt;          &lt;dbl&gt;
-## 1     1      1 John       TRUE                 NY    TRUE               0
-## 2     2      1 Jane       TRUE                 DAL   FALSE              1
-## 3     2      2 Jane       TRUE                 HOU   FALSE              0</code></pre>
+<div id="book-chapters" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Bookdown: Creating Book Chapters</h1>
+<p>Chapters should pretty much just be about one distinct idea. Give some more thought to defining this more clearly. I think it will be important as I start incorporating the epidemiology stuff. Also, it should help with making things easier to find.</p>
+<p>Heading guidelines:
+* Useful for finding what you are looking for.</p>
+<div id="chapter-overview" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Chapter overview</h2>
+<p>Very brief description of what they can expect.</p>
+<p>By the end of this chapter, we will be able to:
+1. Placeholder
+2. Placeholder</p>
+<ul>
+<li>Awesome if you can start with a funny picture or a cool quote.</li>
+</ul>
+</div>
+<div id="motivating-example" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Motivating example</h2>
+<p>Recall that one of my [goals][Goals] is “To start each concept with the end result and then deconstruct how we arrived at that result, where possible. I find that it is easier for me to understand new concepts when learning them as a component of a final product.”</p>
+<p>We won’t necessarily do this for every chapter (e.g., installing R and RStudio) if doing so doesn’t make sense.</p>
+</div>
+<div id="body" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Body</h2>
+<div id="language" class="section level3" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Language</h3>
+<p>Use “we” and “our” language. Make it friendly and informal.</p>
+</div>
+<div id="text-conventions" class="section level3" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Text conventions</h3>
+<ul>
+<li><strong>Bold</strong> text is used to highlight important <strong>terms</strong>, file names, and file extensions.
+<ul>
+<li>Not every bolded term needs to go in the glossary. Use your best judgment.</li>
+</ul></li>
+<li><code>Highlighted inline code</code> is used to emphasize small sections of R code and program elements such as variable or function names.</li>
+</ul>
+</div>
+<div id="special-sections" class="section level3" number="5.3.3">
+<h3><span class="header-section-number">5.3.3</span> Special sections</h3>
+<p class="note">
+🗒<strong>Side Note:</strong> This is an example note.
+</p>
+<p class="warning">
+⚠️<strong>Warning:</strong> This is an example warning
+</p>
+</div>
+<div id="images" class="section level3" number="5.3.4">
+<h3><span class="header-section-number">5.3.4</span> Images</h3>
+<p><img src="img/06_presenting_results/bookdown_creating_book_chapters/example_bookdown_image.png" width="957" /></p>
+<ul>
+<li><p>Don’t forget to add “echo=FALSE” to the code chunk.</p></li>
+<li><p>To cross-reference figures. Name the figure in the code chunk (e.g., <code>{r console, echo=FALSE})</code>. Then add <code>\@ref(fig:console)</code> to the text.</p>
+<ul>
+<li>The figure reference should go outside of punctuation. With a space.</li>
+</ul></li>
+<li><p>Every figure doesn’t need a caption. It can actually make things look sloppy. The only figures that NEED a caption are those figures that are cross-referenced.</p></li>
+<li><p>Because of the way the files are structured, You won’t be able to see pictures directly in the Rmd files without including “../../” on the front the file paths. However, having “../../” on the front of the file paths prevents the book from building appropriately.</p></li>
+</ul>
+</div>
+<div id="code-blocks" class="section level3" number="5.3.5">
+<h3><span class="header-section-number">5.3.5</span> Code blocks</h3>
+<p>👆<strong>Here’s what we did above:</strong></p>
+<p>Use unordered lists for these sections. It allows for nested lists and code. Add line breaks in between the bullets.</p>
+<pre eval="FALSE"><code>&lt;ul&gt;
+  &lt;li&gt;You can type `?mutate` into your R console to view the help documentation for this function and follow along with the explanation below./li&gt;
+  
+  &lt;li&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+</div>
+<div id="cross-references" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Cross-references</h2>
+<ul>
+<li>To cross-reference figures. Name the figure in the code chunk (e.g., <code>{r console, echo=FALSE})</code>. Then add <code>\@ref(fig:console)</code> to the text.
+<ul>
+<li>The figure reference should go outside of punctuation. With a space.</li>
+</ul></li>
+<li>To cross-reference chapters: <a href="https://happygitwithr.com/bookdown-cheat-sheet.html" class="uri">https://happygitwithr.com/bookdown-cheat-sheet.html</a>
+<ul>
+<li>Add CSS id the behind the header # How to use odds ratios {#ors}</li>
+<li>Refer to it like this: The the <a href="#ors">chapter on odds ratios</a></li>
+<li>Capitalize first letter when cross-referencing the chapter by name – the Let’s get programming chapter. Written as “the [Let’s get programming] chapter.”<br />
+</li>
+<li>Don’t capitalize the first letter when describing the contents of a chapter in the cross-reference – the chapter on exporting data. Written as “We were first introduced to [factor vectors][Factor vectors] in the chapter..”</li>
+</ul></li>
+</ul>
+</div>
+<div id="citations" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Citations</h2>
+<p>For more details, see <a href="https://bookdown.org/yihui/bookdown/citations.html">Yihui Xie’s Bookdown book</a>.</p>
+<ol style="list-style-type: decimal">
+<li>Add whatever you want to cite to Paperpile.<br />
+</li>
+<li>Navigate to Paperpile.<br />
+</li>
+<li>Click on the document/article you want to cite.<br />
+</li>
+<li>Click the drop-down arrow next to the “Cite” button.<br />
+</li>
+<li>Click the BibTeX option. This will copy a BibTeX citation to your clipboard.</li>
+</ol>
+<p><img src="img/06_presenting_results/bookdown_creating_book_chapters/paperpile.png" width="978" /></p>
+<ol start="6" style="list-style-type: decimal">
+<li>In RStudio, open <code>book.bib</code>, which should be in your book’s root directory.<br />
+</li>
+<li>Paste the BibTeX citation into <code>book.bib</code>. Order the citations alphabetically by author’s last name. Save.</li>
+</ol>
+<p>For example, here is the <code>book.bib</code> entry for the Yihui Xie’s bookdown book:</p>
+<p><img src="img/06_presenting_results/bookdown_creating_book_chapters/bibtex_example.png" width="688" /></p>
+<p>Then, to cite that book, type <code>@key</code> where you want the citation to appear – the <strong>key</strong> part of <code>@key</code> is marked in the example above. So, I’m citing Yihui Xie’s bookdown book at the end of this sentence by typing <code>@Xie2021-pn</code> after the period <em>with a space in between</em>.<span class="citation"><sup><a href="bookdown-quick-start.html#ref-Xie2021-pn" role="doc-biblioref">1</a></sup></span></p>
+<p class="note">
+🗒<strong>Side Note:</strong> You can change the citation style using the <code>csl:</code> parameter in <code>index.Rmd</code>. I typically use <code>csl: ama.csl</code>, but you can download other formats from <a href="https://github.com/citation-style-language/styles" class="uri">https://github.com/citation-style-language/styles</a>.
+</p>
+</div>
+<div id="previewing-the-chapter" class="section level2" number="5.6">
+<h2><span class="header-section-number">5.6</span> Previewing the chapter</h2>
+<ul>
+<li>Supposed to use “bookdown::preview_chapter(”03_what_is_r.Rmd“)” to preview chapters.
+<ul>
+<li>I can’t get this to work for some reason. I created a new project that I can use a test environment.</li>
+<li>It’s in “R4Epi chapters in progress/bookdown_test_environment.” You have to build the whole book, but it should go fast because I don’t have all the chapters.</li>
+</ul></li>
+</ul>
+<div id="miscelaneous" class="section level3" number="5.6.1">
+<h3><span class="header-section-number">5.6.1</span> Miscelaneous</h3>
+<ul>
+<li>Make liberal use of emojis.</li>
+<li>Start making videos to supplement content.</li>
+</ul>
+</div>
+</div>
+<div id="additional-resources-function-to-check" class="section level2" number="5.7">
+<h2><span class="header-section-number">5.7</span> Additional resources: function to check</h2>
+<p>Links to cheat sheets, websites, and videos.</p>
+</div>
+<div id="key-terms-function-to-add-to-appendix" class="section level2" number="5.8">
+<h2><span class="header-section-number">5.8</span> Key terms : function to add to appendix</h2>
+<p>Key terms covered in this chapter.</p>
+</div>
+<div id="final-example-code-function-to-add-to-appendix" class="section level2" number="5.9">
+<h2><span class="header-section-number">5.9</span> Final example code : function to add to appendix</h2>
+<p>Succinct recap of the code used in this chapter without any explanation of how it works. You can use this as a quick reference later.</p>
+<p>We won’t necessarily do this for every chapter (e.g., installing R and RStudio) if doing so doesn’t make sense.</p>
 <!--
 Clean up and add session info
 -->
@@ -397,28 +427,13 @@ Clean up and add session info
 
 </div>
 </div>
-
-
-
-
-</div>
-
-
-
-
-</div>
-
-
-
-
-</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="creating-rmd-templates.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="book-chapters.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="arranging-columns-with-across.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bookdown-quick-start.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

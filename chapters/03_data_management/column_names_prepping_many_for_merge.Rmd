@@ -24,6 +24,8 @@ Neither of these options seems very robust or future-proof. While it might be a 
 ## 🌎Useful websites
 
 * [GitHub issue](https://github.com/brad-cannell/link2care_public/issues/1)   
+* [R4Epi rename_with exampe](https://www.r4epi.com/subsetting-data-frames.html)   
+* [rename_with documentation](https://dplyr.tidyverse.org/reference/rename.html)
 
 
 ## 📦Load packages
@@ -33,6 +35,7 @@ library(dplyr)
 library(stringr)
 library(testthat)
 library(tidyr)
+library(purrr)
 ```
 
 
@@ -328,6 +331,169 @@ qds_all_visits %>%
   ungroup %>% 
   DT::datatable(options = list(scrollX = TRUE))
 ```
+
+## 🟣The dplyr way
+
+Try getting the same result as above using dplyr (rename_with) functions instead of creating and manipulating separte column name vectors. 
+
+```{r}
+# Clean up environment first
+rm(list = ls())
+```
+
+```{r}
+v1 <- tibble(
+  SUBJECT  = c(2001, 2002),
+  TODAY_V1 = as.Date(c("2018-04-07", "2018-05-03")),
+  VISIT_V1 = 1,
+  SQ_2     = c(1, 0),
+  WEIGHT   = c(179, 194),
+  DEMO16G  = c(0, 1),
+  DEM15V1  = c(1, 0),
+  T26A_V1  = c(2, 4),
+  T26A_V1A = c(0, 0),
+  T26A_V1B = c(1, 0)
+)
+
+v2 <- tibble(
+  SUBJECT  = c(2001, 2002),
+  TODAY_V2 = as.Date(c("2018-04-30", "2018-05-07")),
+  VISIT_V2 = 2
+)
+
+v3 <- tibble(
+  SUBJECT  = c(2001, 2002),
+  TODAY_V3 = as.Date(c("2018-05-31", "2018-06-08")),
+  VISIT_V3 = 3,
+  GROUP    = c(1, 2),
+  WEIGHT3  = c(179, 194),
+  DEM14GV3 = c(2, 3),
+  T26A_V3  = c(2, 4),
+  T26A_V3A = c(0, 0),
+  T26A_V3B = c(1, 0)
+)
+```
+
+### Standardize new column names
+
+* Remove _v{1, 2, 3} and v{1, 2, 3} from column names
+* Replace spaces with underscores
+* Convert to lower case
+* Add underscore in-between the abbreviated tool name and question number
+
+This won't be perfect, but it will drastically reduce the number of manual changes we have to make. 
+
+```{r}
+standardize_col_names <- function(.data) {
+  # Get the existing column names
+  # When used inside of rename_with(), the column names are automatically
+  # passed into the function with/as .data. There is no need for names(.data).
+  old_names <- .data
+  # Create a string that contains _V1 through _V5 and V1 through V5 to pass to
+  # the regular expression below
+  v_num <- paste0("_V", 1:5, collapse = "|")
+  vnum <- paste0("V", 1:5, collapse = "|")
+  v_pattern <- paste(paste(v_num, vnum, sep = "|"), collapse = "|")
+  # Remove _v{1, 2, 3} from column name
+  # Remove v{1, 2, 3} at end of column name (e.g., DEM1v3)
+  new_names <- stringr::str_replace(old_names, v_pattern, "")
+  # Replace spaces with underscores
+  new_names <- stringr::str_replace_all(new_names, " ", "_")
+  # Convert to lower case
+  new_names <- stringr::str_to_lower(new_names)
+  # Add underscore in-between the abbreviated tool name and question number
+  new_names <- stringr::str_replace(new_names, "([a-z])(\\d)", "\\1_\\2")
+  # Return character vector of standardized column names
+  new_names
+}
+
+# For testing
+# rename_with(v1, standardize_col_names)
+```
+
+Standardize all 3 data frames in one step
+
+```{r}
+purrr::walk(
+  .x = paste0("v", 1:3),
+  .f = function(df_name) {
+    df <- get(df_name, envir = .GlobalEnv)
+    df <- rename_with(df, standardize_col_names)
+    assign(df_name, df, envir = .GlobalEnv)
+  }
+)
+```
+
+### Manual changes to column names 1
+
+The step above used to standardize column names fixes most of them, but some manual changes to variable names still need to be made. 
+
+First, only make the changes to the individual data frames that will affect the merge (e.g., weight and weight_3).
+
+After the merge, we will make changes to column names that need to be changed in multiple data frames (e.g., t_26a). By doing this after the merge, it reduces code repetition and reduces the risk of typos in the column names.
+
+```{r}
+# demo_16g was incorrectly numbered when the data was created
+v1 <- rename(v1, dem_14g = demo_16g)
+```
+
+```{r}
+# weight_3 was missing a "v" when it was created in the data frame
+v3 <- rename(v3, weight = weight_3)
+```
+
+### Merge all 3 visits
+
+Merge all 3 visits into a single data frame
+
+```{r}
+qds_all_visits <- v1 %>% 
+  bind_rows(v2) %>% 
+  bind_rows(v3) %>% 
+  arrange(subject, visit)
+```
+
+```{r}
+DT::datatable(qds_all_visits, options = list(scrollX = TRUE))
+```
+
+### Manual changes to column names 2
+
+We already made changes to the individual data frames that would have affected the merge (e.g., weight and weight_3).
+
+Now, we will make changes to column names that need to be changed in multiple data frames (e.g., t_26a). 
+
+```{r}
+qds_all_visits <- qds_all_visits %>% 
+  rename(
+    id = subject, 
+    date_visit = today,
+    sq_hispanic = sq_2,
+    dem_veteran = dem_15
+  ) %>% 
+  # Take the extra "a" out of all the T26 col names
+  rename_with(
+    ~ str_replace(.x, "t_26a", "t_26")
+  )
+```
+
+```{r}
+DT::datatable(qds_all_visits, options = list(scrollX = TRUE))
+```
+
+### Final data cleaning
+
+* Carry forward time-invariant variables    
+
+```{r}
+qds_all_visits %>% 
+  # Carry forward time-invariant variables
+  group_by(id) %>% 
+  fill(sq_hispanic, dem_veteran, group, .direction = "downup") %>% 
+  ungroup %>% 
+  DT::datatable(options = list(scrollX = TRUE))
+```
+
 
 <!--
 Clean up and add session info

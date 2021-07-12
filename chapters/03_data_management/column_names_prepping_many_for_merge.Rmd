@@ -43,16 +43,17 @@ library(purrr)
 
 Simulate 3 QDS data sets. Don't worry about the values much. They really aren't the issue for this example. 
 
-* SUBJECT: No change in column name across visits.   
-* TODAY_V and VISIT_V: The _V1, _V2, _V3 part changes.   
-* SQ_2: Only exists in v1, and the name is altered.   
-* GROUP: Only exists in v3.  
-* WEIGHT and WEIGHT3: Doesn't exist in v2 and doesn't follow any naming convention.   
-* DEMO16G and DEM14GV3: The variable was named incorrectly in v1.    
-* DS10A_V2: Only asked in v2 and doesn't follow typical naming convention.   
-* DEM15V1: Only asked in v1 and I want to change the name completely.   
-* T26A_V1: Only exists in v1 and v3. Also, it needs to be renamed.   
-* T26A_V1A and T26A_V1B: Only exists in v1 and v3. Needs to be renamed, and it requires using the dummy variable naming convention.    
+* `SUBJECT`: No change in column name across visits.   
+* `TODAY_V` and VISIT_V: The _V1, _V2, _V3 part changes.   
+* `SQ_2`: Only exists in v1, and the name is altered.   
+* `GROUP`: Only exists in v3.  
+* `WEIGHT` and `WEIGHT3`: Doesn't exist in v2 and doesn't follow any naming convention.   
+* `DEMO16G` and `DEM14GV3`: The variable was named incorrectly in v1.    
+* `DS10A_V2`: Only asked in v2 and doesn't follow typical naming convention.   
+* `DEM15V1`: Only asked in v1 and I want to change the name completely.   
+* `T26A_V1`: Only exists in v1 and v3. Also, it needs to be renamed.   
+* `T26A_V1A` and `T26A_V1B`: Only exists in v1 and v3. Needs to be renamed, and it requires using the dummy variable naming convention.    
+* `T31_V1B`, `T31_V3B`, `T31B_V1`, and `T31B_V3`: Added these later. In v1, v3, v4, and v5 there is a column named `T31B_V1` and a column named `T31_V1B`. The `standardize_col_names()` function converts both of these to `t_31b`, which causes `rename_with()` to throw an error. Further, I can't just manually change it to `t33` (what it will ultimately end up being named) before I run `standardize_col_names()` because then in conflicts with `T33_V1`. I need to find a solution inside of the `standardize_col_names()` function.
 
 Additionally, we want to convert all column names to lower case and follow these naming conventions:
 
@@ -86,7 +87,9 @@ v1 <- tibble(
   DEM15V1  = c(1, 0),
   T26A_V1  = c(2, 4),
   T26A_V1A = c(0, 0),
-  T26A_V1B = c(1, 0)
+  T26A_V1B = c(1, 0),
+  T31_V1B  = c(0, 0), 
+  T31B_V1  = c(0, 0)
 )
 ```
 
@@ -108,7 +111,9 @@ v3 <- tibble(
   DEM14GV3 = c(2, 3),
   T26A_V3  = c(2, 4),
   T26A_V3A = c(0, 0),
-  T26A_V3B = c(1, 0)
+  T26A_V3B = c(1, 0),
+  T31_V3B  = c(0, 0), 
+  T31B_V3  = c(0, 0)
 )
 ```
 
@@ -210,6 +215,8 @@ new_names[new_names == "demo_16g"] <- "dem_14g"
 new_names[new_names == "dem_15"] <- "dem_veteran"
 # Take the extra "a" out of all the T26 col names
 new_names <- str_replace(new_names, "t_26a", "t_26")
+# Change the second t_31b to t_33
+new_names[new_names == "t_31b"][2] <- "t_33"
 ```
 
 ## Have R write out the rename code
@@ -251,7 +258,9 @@ v1 <- v1 %>%
     dem_veteran = DEM15V1, 
     t_26 = T26A_V1, 
     t_26a = T26A_V1A, 
-    t_26b = T26A_V1B
+    t_26b = T26A_V1B, 
+    t_31b = T31_V1B, 
+    t_33 = T31B_V1
   )
 ```
 
@@ -282,6 +291,8 @@ new_names[new_names == "weight_3"] <- "weight"
 new_names[new_names == "dem_15"] <- "dem_veteran"
 # Take the extra "a" out of all the T26 col names
 new_names <- str_replace(new_names, "t_26a", "t_26")
+# Change the second t_31b to t_33
+new_names[new_names == "t_31b"][2] <- "t_33"
 ```
 
 ```{r}
@@ -299,7 +310,9 @@ v3 <- v3 %>%
     dem_14g = DEM14GV3, 
     t_26 = T26A_V3, 
     t_26a = T26A_V3A, 
-    t_26b = T26A_V3B
+    t_26b = T26A_V3B, 
+    t_31b = T31_V3B, 
+    t_33 = T31B_V3
   )
 ```
 
@@ -334,7 +347,7 @@ qds_all_visits %>%
 
 ## 🟣The dplyr way
 
-Try getting the same result as above using dplyr (rename_with) functions instead of creating and manipulating separte column name vectors. 
+Try getting the same result as above using dplyr (rename_with) functions instead of creating and manipulating separate column name vectors. 
 
 ```{r}
 # Clean up environment first
@@ -352,7 +365,13 @@ v1 <- tibble(
   DEM15V1  = c(1, 0),
   T26A_V1  = c(2, 4),
   T26A_V1A = c(0, 0),
-  T26A_V1B = c(1, 0)
+  T26A_V1B = c(1, 0),
+  T31_V1B  = c(0, 0), 
+  T31B_V1  = c(0, 0),
+  # Making these up to test standardize_col_names when more than one duplicate 
+  # column name would be created.
+  T32_V1B  = c(1, 1),
+  T32B_V1  = c(1, 1)
 )
 
 v2 <- tibble(
@@ -370,7 +389,12 @@ v3 <- tibble(
   DEM14GV3 = c(2, 3),
   T26A_V3  = c(2, 4),
   T26A_V3A = c(0, 0),
-  T26A_V3B = c(1, 0)
+  T26A_V3B = c(1, 0),
+  T31_V3B  = c(0, 0), 
+  T31B_V3  = c(0, 0),
+  # Making these up to test standardize_col_names when more than one duplicate 
+  T32_V3B  = c(1, 1), 
+  T32B_V3  = c(1, 1)
 )
 ```
 
@@ -403,11 +427,28 @@ standardize_col_names <- function(.data) {
   new_names <- stringr::str_to_lower(new_names)
   # Add underscore in-between the abbreviated tool name and question number
   new_names <- stringr::str_replace(new_names, "([a-z])(\\d)", "\\1_\\2")
+  # Check for duplicate names
+  if (!length(new_names) == length(unique(new_names))) {
+    name_counts <- table(new_names)
+    dup_names <- name_counts[name_counts > 1]
+    dup_names <- names(dup_names)
+    # Set the second instance of the duplicate name back to its original name
+    for (i in seq_along(dup_names)) {
+      index <- which(new_names == dup_names[[i]])
+      new_names[index][2] <- old_names[index][2]
+      # Print a message letting the user know what happened
+      warning(
+        "Warning: ", old_names[index][2], 
+        " Could not be standardized because it would have created a duplicate column name. \n"
+      )
+    }
+  }
   # Return character vector of standardized column names
   new_names
 }
 
 # For testing
+# standardize_col_names(names(v1))
 # rename_with(v1, standardize_col_names)
 ```
 
@@ -464,7 +505,7 @@ We already made changes to the individual data frames that would have affected t
 Now, we will make changes to column names that need to be changed in multiple data frames (e.g., t_26a). 
 
 ```{r}
-qds_all_visits <- qds_all_visits %>% 
+qds_all_visits <- qds_all_visits %>%
   rename(
     id = subject, 
     date_visit = today,
@@ -474,7 +515,14 @@ qds_all_visits <- qds_all_visits %>%
   # Take the extra "a" out of all the T26 col names
   rename_with(
     ~ str_replace(.x, "t_26a", "t_26")
-  )
+  ) %>% 
+  # Combine T31B_V1 and T31B_V3 as t_33
+  # Combine T32B_V1 and T32B_V3 as t_34
+  mutate(
+    t_33 = if_else(is.na(T31B_V1), T31B_V3, T31B_V1),
+    t_34 = if_else(is.na(T32B_V1), T32B_V3, T32B_V1)
+  ) %>% 
+  select(-T31B_V1, -T31B_V3, -T32B_V1, -T32B_V3)
 ```
 
 ```{r}

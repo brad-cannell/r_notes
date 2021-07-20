@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4 Column Names: Prepping Many for Merge | R Notes</title>
   <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4 Column Names: Prepping Many for Merge | R Notes" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2021-07-12" />
+<meta name="date" content="2021-07-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,8 @@
   
 <link rel="prev" href="arranging-columns-with-across.html"/>
 <link rel="next" href="book-chapters.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,14 +51,16 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.15/datatables.js"></script>
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -124,6 +126,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -220,6 +245,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.15.4" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#manual-changes-to-column-names-2"><i class="fa fa-check"></i><b>4.15.4</b> Manual changes to column names 2</a></li>
 <li class="chapter" data-level="4.15.5" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#final-data-cleaning-1"><i class="fa fa-check"></i><b>4.15.5</b> Final data cleaning</a></li>
 </ul></li>
+<li class="chapter" data-level="4.16" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#making-a-key-in-google-sheets"><i class="fa fa-check"></i><b>4.16</b> 🟢 Making a key in Google Sheets</a>
+<ul>
+<li class="chapter" data-level="4.16.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#create-the-google-sheet-column-name-key"><i class="fa fa-check"></i><b>4.16.1</b> Create the Google Sheet column name key</a></li>
+<li class="chapter" data-level="4.16.2" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#import-the-google-sheet-column-name-key"><i class="fa fa-check"></i><b>4.16.2</b> Import the Google Sheet column name key</a></li>
+<li class="chapter" data-level="4.16.3" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#reorder-and-rename-the-current-data-frame"><i class="fa fa-check"></i><b>4.16.3</b> Reorder and rename the current data frame</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>IV Analysis</b></span></li>
 <li class="part"><span><b>V Data Visualization</b></span></li>
@@ -305,7 +336,11 @@ Hidden comments placeholder
 </li>
 <li><a href="https://www.r4epi.com/subsetting-data-frames.html">R4Epi rename_with exampe</a><br />
 </li>
-<li><a href="https://dplyr.tidyverse.org/reference/rename.html">rename_with documentation</a></li>
+<li><a href="https://dplyr.tidyverse.org/reference/rename.html">rename_with documentation</a><br />
+</li>
+<li><a href="https://arbor-analytics.com/post/getting-your-data-into-r-from-google-sheets/">Getting your data into R from Google Sheets</a><br />
+</li>
+<li><a href="https://community.rstudio.com/t/rename-with-a-named-vector-list-and-contribution-to-the-tidyverse/2383">RStudio Community: Rename with a named vector/list and contribution to the tidyverse</a></li>
 </ul>
 </div>
 <div id="load-packages" class="section level2" number="4.3">
@@ -314,7 +349,8 @@ Hidden comments placeholder
 <span id="cb27-2"><a href="column-names-prepping-many-for-merge.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
 <span id="cb27-3"><a href="column-names-prepping-many-for-merge.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(testthat)</span>
 <span id="cb27-4"><a href="column-names-prepping-many-for-merge.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb27-5"><a href="column-names-prepping-many-for-merge.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span></code></pre></div>
+<span id="cb27-5"><a href="column-names-prepping-many-for-merge.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb27-6"><a href="column-names-prepping-many-for-merge.html#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(googlesheets4)</span></code></pre></div>
 </div>
 <div id="simulate-data" class="section level2" number="4.4">
 <h2><span class="header-section-number">4.4</span> 🔢Simulate data</h2>
@@ -494,7 +530,7 @@ Hidden comments placeholder
 <span id="cb36-19"><a href="column-names-prepping-many-for-merge.html#cb36-19" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb36-20"><a href="column-names-prepping-many-for-merge.html#cb36-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(new_names, expceted_new_names)</span>
 <span id="cb36-21"><a href="column-names-prepping-many-for-merge.html#cb36-21" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
-<pre><code>## Test passed 🌈</code></pre>
+<pre><code>## Test passed 🎉</code></pre>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="column-names-prepping-many-for-merge.html#cb38-1" aria-hidden="true" tabindex="-1"></a>new_names <span class="ot">&lt;-</span> <span class="fu">standardize_col_names</span>(v1)</span></code></pre></div>
 </div>
 </div>
@@ -656,8 +692,8 @@ Hidden comments placeholder
 <span id="cb55-5"><a href="column-names-prepping-many-for-merge.html#cb55-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span>(sq_hispanic, dem_veteran, group, <span class="at">.direction =</span> <span class="st">&quot;downup&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb55-6"><a href="column-names-prepping-many-for-merge.html#cb55-6" aria-hidden="true" tabindex="-1"></a>  ungroup <span class="sc">%&gt;%</span> </span>
 <span id="cb55-7"><a href="column-names-prepping-many-for-merge.html#cb55-7" aria-hidden="true" tabindex="-1"></a>  DT<span class="sc">::</span><span class="fu">datatable</span>(<span class="at">options =</span> <span class="fu">list</span>(<span class="at">scrollX =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
-<div id="htmlwidget-d1d6c2fb3c408ad54773" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d1d6c2fb3c408ad54773">{"x":{"filter":"none","data":[["1","2","3","4","5","6"],[2001,2001,2001,2002,2002,2002],["2018-04-07","2018-04-30","2018-05-31","2018-05-03","2018-05-07","2018-06-08"],[1,2,3,1,2,3],[1,1,1,0,0,0],[179,null,179,194,null,194],[0,null,2,1,null,3],[1,1,1,0,0,0],[2,null,2,4,null,4],[0,null,0,0,null,0],[1,null,1,0,null,0],[0,null,0,0,null,0],[0,null,0,0,null,0],[1,1,1,2,2,2]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>date_visit<\/th>\n      <th>visit<\/th>\n      <th>sq_hispanic<\/th>\n      <th>weight<\/th>\n      <th>dem_14g<\/th>\n      <th>dem_veteran<\/th>\n      <th>t_26<\/th>\n      <th>t_26a<\/th>\n      <th>t_26b<\/th>\n      <th>t_31b<\/th>\n      <th>t_33<\/th>\n      <th>group<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,3,4,5,6,7,8,9,10,11,12,13]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a2d3879f0c7820a21341" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a2d3879f0c7820a21341">{"x":{"filter":"none","data":[["1","2","3","4","5","6"],[2001,2001,2001,2002,2002,2002],["2018-04-07","2018-04-30","2018-05-31","2018-05-03","2018-05-07","2018-06-08"],[1,2,3,1,2,3],[1,1,1,0,0,0],[179,null,179,194,null,194],[0,null,2,1,null,3],[1,1,1,0,0,0],[2,null,2,4,null,4],[0,null,0,0,null,0],[1,null,1,0,null,0],[0,null,0,0,null,0],[0,null,0,0,null,0],[1,1,1,2,2,2]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>date_visit<\/th>\n      <th>visit<\/th>\n      <th>sq_hispanic<\/th>\n      <th>weight<\/th>\n      <th>dem_14g<\/th>\n      <th>dem_veteran<\/th>\n      <th>t_26<\/th>\n      <th>t_26a<\/th>\n      <th>t_26b<\/th>\n      <th>t_31b<\/th>\n      <th>t_33<\/th>\n      <th>group<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,3,4,5,6,7,8,9,10,11,12,13]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="the-dplyr-way" class="section level2" number="4.15">
 <h2><span class="header-section-number">4.15</span> 🟣The dplyr way</h2>
@@ -788,8 +824,8 @@ Hidden comments placeholder
 <span id="cb66-3"><a href="column-names-prepping-many-for-merge.html#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(v3) <span class="sc">%&gt;%</span> </span>
 <span id="cb66-4"><a href="column-names-prepping-many-for-merge.html#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(subject, visit)</span></code></pre></div>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="column-names-prepping-many-for-merge.html#cb67-1" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(qds_all_visits, <span class="at">options =</span> <span class="fu">list</span>(<span class="at">scrollX =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
-<div id="htmlwidget-01d338451665a9b8d4e9" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-01d338451665a9b8d4e9">{"x":{"filter":"none","data":[["1","2","3","4","5","6"],[2001,2001,2001,2002,2002,2002],["2018-04-07","2018-04-30","2018-05-31","2018-05-03","2018-05-07","2018-06-08"],[1,2,3,1,2,3],[1,null,null,0,null,null],[179,null,179,194,null,194],[0,null,2,1,null,3],[1,null,null,0,null,null],[2,null,2,4,null,4],[0,null,0,0,null,0],[1,null,1,0,null,0],[0,null,0,0,null,0],[0,null,null,0,null,null],[1,null,1,1,null,1],[1,null,null,1,null,null],[null,null,1,null,null,2],[null,null,0,null,null,0],[null,null,1,null,null,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>subject<\/th>\n      <th>today<\/th>\n      <th>visit<\/th>\n      <th>sq_2<\/th>\n      <th>weight<\/th>\n      <th>dem_14g<\/th>\n      <th>dem_15<\/th>\n      <th>t_26a<\/th>\n      <th>t_26aa<\/th>\n      <th>t_26ab<\/th>\n      <th>t_31b<\/th>\n      <th>T31B_V1<\/th>\n      <th>t_32b<\/th>\n      <th>T32B_V1<\/th>\n      <th>group<\/th>\n      <th>T31B_V3<\/th>\n      <th>T32B_V3<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-1f3d3d44dfc95c5b6e9a" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1f3d3d44dfc95c5b6e9a">{"x":{"filter":"none","data":[["1","2","3","4","5","6"],[2001,2001,2001,2002,2002,2002],["2018-04-07","2018-04-30","2018-05-31","2018-05-03","2018-05-07","2018-06-08"],[1,2,3,1,2,3],[1,null,null,0,null,null],[179,null,179,194,null,194],[0,null,2,1,null,3],[1,null,null,0,null,null],[2,null,2,4,null,4],[0,null,0,0,null,0],[1,null,1,0,null,0],[0,null,0,0,null,0],[0,null,null,0,null,null],[1,null,1,1,null,1],[1,null,null,1,null,null],[null,null,1,null,null,2],[null,null,0,null,null,0],[null,null,1,null,null,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>subject<\/th>\n      <th>today<\/th>\n      <th>visit<\/th>\n      <th>sq_2<\/th>\n      <th>weight<\/th>\n      <th>dem_14g<\/th>\n      <th>dem_15<\/th>\n      <th>t_26a<\/th>\n      <th>t_26aa<\/th>\n      <th>t_26ab<\/th>\n      <th>t_31b<\/th>\n      <th>T31B_V1<\/th>\n      <th>t_32b<\/th>\n      <th>T32B_V1<\/th>\n      <th>group<\/th>\n      <th>T31B_V3<\/th>\n      <th>T32B_V3<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="manual-changes-to-column-names-2" class="section level3" number="4.15.4">
 <h3><span class="header-section-number">4.15.4</span> Manual changes to column names 2</h3>
@@ -814,8 +850,8 @@ Hidden comments placeholder
 <span id="cb68-17"><a href="column-names-prepping-many-for-merge.html#cb68-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
 <span id="cb68-18"><a href="column-names-prepping-many-for-merge.html#cb68-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>T31B_V1, <span class="sc">-</span>T31B_V3, <span class="sc">-</span>T32B_V1, <span class="sc">-</span>T32B_V3)</span></code></pre></div>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="column-names-prepping-many-for-merge.html#cb69-1" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(qds_all_visits, <span class="at">options =</span> <span class="fu">list</span>(<span class="at">scrollX =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
-<div id="htmlwidget-3acb52ae53d58b45ee5e" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3acb52ae53d58b45ee5e">{"x":{"filter":"none","data":[["1","2","3","4","5","6"],[2001,2001,2001,2002,2002,2002],["2018-04-07","2018-04-30","2018-05-31","2018-05-03","2018-05-07","2018-06-08"],[1,2,3,1,2,3],[1,null,null,0,null,null],[179,null,179,194,null,194],[0,null,2,1,null,3],[1,null,null,0,null,null],[2,null,2,4,null,4],[0,null,0,0,null,0],[1,null,1,0,null,0],[0,null,0,0,null,0],[1,null,1,1,null,1],[null,null,1,null,null,2],[0,null,0,0,null,0],[1,null,1,1,null,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>date_visit<\/th>\n      <th>visit<\/th>\n      <th>sq_hispanic<\/th>\n      <th>weight<\/th>\n      <th>dem_14g<\/th>\n      <th>dem_veteran<\/th>\n      <th>t_26<\/th>\n      <th>t_26a<\/th>\n      <th>t_26b<\/th>\n      <th>t_31b<\/th>\n      <th>t_32b<\/th>\n      <th>group<\/th>\n      <th>t_33<\/th>\n      <th>t_34<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,3,4,5,6,7,8,9,10,11,12,13,14,15]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-1b0bf52ab5264c1be8cb" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1b0bf52ab5264c1be8cb">{"x":{"filter":"none","data":[["1","2","3","4","5","6"],[2001,2001,2001,2002,2002,2002],["2018-04-07","2018-04-30","2018-05-31","2018-05-03","2018-05-07","2018-06-08"],[1,2,3,1,2,3],[1,null,null,0,null,null],[179,null,179,194,null,194],[0,null,2,1,null,3],[1,null,null,0,null,null],[2,null,2,4,null,4],[0,null,0,0,null,0],[1,null,1,0,null,0],[0,null,0,0,null,0],[1,null,1,1,null,1],[null,null,1,null,null,2],[0,null,0,0,null,0],[1,null,1,1,null,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>date_visit<\/th>\n      <th>visit<\/th>\n      <th>sq_hispanic<\/th>\n      <th>weight<\/th>\n      <th>dem_14g<\/th>\n      <th>dem_veteran<\/th>\n      <th>t_26<\/th>\n      <th>t_26a<\/th>\n      <th>t_26b<\/th>\n      <th>t_31b<\/th>\n      <th>t_32b<\/th>\n      <th>group<\/th>\n      <th>t_33<\/th>\n      <th>t_34<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,3,4,5,6,7,8,9,10,11,12,13,14,15]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="final-data-cleaning-1" class="section level3" number="4.15.5">
 <h3><span class="header-section-number">4.15.5</span> Final data cleaning</h3>
@@ -828,18 +864,192 @@ Hidden comments placeholder
 <span id="cb70-4"><a href="column-names-prepping-many-for-merge.html#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span>(sq_hispanic, dem_veteran, group, <span class="at">.direction =</span> <span class="st">&quot;downup&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb70-5"><a href="column-names-prepping-many-for-merge.html#cb70-5" aria-hidden="true" tabindex="-1"></a>  ungroup <span class="sc">%&gt;%</span> </span>
 <span id="cb70-6"><a href="column-names-prepping-many-for-merge.html#cb70-6" aria-hidden="true" tabindex="-1"></a>  DT<span class="sc">::</span><span class="fu">datatable</span>(<span class="at">options =</span> <span class="fu">list</span>(<span class="at">scrollX =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
-<div id="htmlwidget-a40dc9d284519ddfe995" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a40dc9d284519ddfe995">{"x":{"filter":"none","data":[["1","2","3","4","5","6"],[2001,2001,2001,2002,2002,2002],["2018-04-07","2018-04-30","2018-05-31","2018-05-03","2018-05-07","2018-06-08"],[1,2,3,1,2,3],[1,1,1,0,0,0],[179,null,179,194,null,194],[0,null,2,1,null,3],[1,1,1,0,0,0],[2,null,2,4,null,4],[0,null,0,0,null,0],[1,null,1,0,null,0],[0,null,0,0,null,0],[1,null,1,1,null,1],[1,1,1,2,2,2],[0,null,0,0,null,0],[1,null,1,1,null,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>date_visit<\/th>\n      <th>visit<\/th>\n      <th>sq_hispanic<\/th>\n      <th>weight<\/th>\n      <th>dem_14g<\/th>\n      <th>dem_veteran<\/th>\n      <th>t_26<\/th>\n      <th>t_26a<\/th>\n      <th>t_26b<\/th>\n      <th>t_31b<\/th>\n      <th>t_32b<\/th>\n      <th>group<\/th>\n      <th>t_33<\/th>\n      <th>t_34<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,3,4,5,6,7,8,9,10,11,12,13,14,15]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c4088cd52c7bdd54e99b" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c4088cd52c7bdd54e99b">{"x":{"filter":"none","data":[["1","2","3","4","5","6"],[2001,2001,2001,2002,2002,2002],["2018-04-07","2018-04-30","2018-05-31","2018-05-03","2018-05-07","2018-06-08"],[1,2,3,1,2,3],[1,1,1,0,0,0],[179,null,179,194,null,194],[0,null,2,1,null,3],[1,1,1,0,0,0],[2,null,2,4,null,4],[0,null,0,0,null,0],[1,null,1,0,null,0],[0,null,0,0,null,0],[1,null,1,1,null,1],[1,1,1,2,2,2],[0,null,0,0,null,0],[1,null,1,1,null,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>date_visit<\/th>\n      <th>visit<\/th>\n      <th>sq_hispanic<\/th>\n      <th>weight<\/th>\n      <th>dem_14g<\/th>\n      <th>dem_veteran<\/th>\n      <th>t_26<\/th>\n      <th>t_26a<\/th>\n      <th>t_26b<\/th>\n      <th>t_31b<\/th>\n      <th>t_32b<\/th>\n      <th>group<\/th>\n      <th>t_33<\/th>\n      <th>t_34<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,3,4,5,6,7,8,9,10,11,12,13,14,15]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div id="making-a-key-in-google-sheets" class="section level2" number="4.16">
+<h2><span class="header-section-number">4.16</span> 🟢 Making a key in Google Sheets</h2>
+<p>Why might I want to do this in the first place?</p>
+<p>Pros:</p>
+<ul>
+<li>Everyone can use Excel. Not everyone is comfortable using RStudio. So, people other than me may be intimidated if they need to look up the changes to the column names by opening an Rmd file in RStudio.<br />
+</li>
+<li>If I need to look up changes to column names, it may be faster to do so in Excel.</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>Creating the Excel sheet may be an additional layer of work.<br />
+</li>
+<li>This process creates additional documents (i.e., other than the Rmd files) to keep track of and update. However, if ALL of the updates to column names go in this spreadsheet, then it should really be the only one that requires tracking and updating.<br />
+</li>
+<li>Hard to use versioning for Excel.</li>
+</ul>
+<p>Why use Google Sheets instead of Excel?</p>
+<p>It has all of the pros above, plus versioning. Also, Google Sheets makes it easy to use regular expressions, which I’ve found useful in the past.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="column-names-prepping-many-for-merge.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean up environment first</span></span>
+<span id="cb71-2"><a href="column-names-prepping-many-for-merge.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="column-names-prepping-many-for-merge.html#cb72-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb72-2"><a href="column-names-prepping-many-for-merge.html#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">SUBJECT  =</span> <span class="fu">c</span>(<span class="dv">2001</span>, <span class="dv">2002</span>),</span>
+<span id="cb72-3"><a href="column-names-prepping-many-for-merge.html#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">TODAY_V1 =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;2018-04-07&quot;</span>, <span class="st">&quot;2018-05-03&quot;</span>)),</span>
+<span id="cb72-4"><a href="column-names-prepping-many-for-merge.html#cb72-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">VISIT_V1 =</span> <span class="dv">1</span>,</span>
+<span id="cb72-5"><a href="column-names-prepping-many-for-merge.html#cb72-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">SQ_2     =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb72-6"><a href="column-names-prepping-many-for-merge.html#cb72-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">WEIGHT   =</span> <span class="fu">c</span>(<span class="dv">179</span>, <span class="dv">194</span>),</span>
+<span id="cb72-7"><a href="column-names-prepping-many-for-merge.html#cb72-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">DEMO16G  =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb72-8"><a href="column-names-prepping-many-for-merge.html#cb72-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">DEM15V1  =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb72-9"><a href="column-names-prepping-many-for-merge.html#cb72-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">T26A_V1  =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>),</span>
+<span id="cb72-10"><a href="column-names-prepping-many-for-merge.html#cb72-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">T26A_V1A =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb72-11"><a href="column-names-prepping-many-for-merge.html#cb72-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">T26A_V1B =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb72-12"><a href="column-names-prepping-many-for-merge.html#cb72-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">T31_V1B  =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), </span>
+<span id="cb72-13"><a href="column-names-prepping-many-for-merge.html#cb72-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">T31B_V1  =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb72-14"><a href="column-names-prepping-many-for-merge.html#cb72-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Making these up to test standardize_col_names when more than one duplicate </span></span>
+<span id="cb72-15"><a href="column-names-prepping-many-for-merge.html#cb72-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># column name would be created.</span></span>
+<span id="cb72-16"><a href="column-names-prepping-many-for-merge.html#cb72-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">T32_V1B  =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb72-17"><a href="column-names-prepping-many-for-merge.html#cb72-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">T32B_V1  =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb72-18"><a href="column-names-prepping-many-for-merge.html#cb72-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb72-19"><a href="column-names-prepping-many-for-merge.html#cb72-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-20"><a href="column-names-prepping-many-for-merge.html#cb72-20" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb72-21"><a href="column-names-prepping-many-for-merge.html#cb72-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">SUBJECT  =</span> <span class="fu">c</span>(<span class="dv">2001</span>, <span class="dv">2002</span>),</span>
+<span id="cb72-22"><a href="column-names-prepping-many-for-merge.html#cb72-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">TODAY_V2 =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;2018-04-30&quot;</span>, <span class="st">&quot;2018-05-07&quot;</span>)),</span>
+<span id="cb72-23"><a href="column-names-prepping-many-for-merge.html#cb72-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">VISIT_V2 =</span> <span class="dv">2</span></span>
+<span id="cb72-24"><a href="column-names-prepping-many-for-merge.html#cb72-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb72-25"><a href="column-names-prepping-many-for-merge.html#cb72-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-26"><a href="column-names-prepping-many-for-merge.html#cb72-26" aria-hidden="true" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb72-27"><a href="column-names-prepping-many-for-merge.html#cb72-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">SUBJECT  =</span> <span class="fu">c</span>(<span class="dv">2001</span>, <span class="dv">2002</span>),</span>
+<span id="cb72-28"><a href="column-names-prepping-many-for-merge.html#cb72-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">TODAY_V3 =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;2018-05-31&quot;</span>, <span class="st">&quot;2018-06-08&quot;</span>)),</span>
+<span id="cb72-29"><a href="column-names-prepping-many-for-merge.html#cb72-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">VISIT_V3 =</span> <span class="dv">3</span>,</span>
+<span id="cb72-30"><a href="column-names-prepping-many-for-merge.html#cb72-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">GROUP    =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb72-31"><a href="column-names-prepping-many-for-merge.html#cb72-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">WEIGHT3  =</span> <span class="fu">c</span>(<span class="dv">179</span>, <span class="dv">194</span>),</span>
+<span id="cb72-32"><a href="column-names-prepping-many-for-merge.html#cb72-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">DEM14GV3 =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb72-33"><a href="column-names-prepping-many-for-merge.html#cb72-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">T26A_V3  =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>),</span>
+<span id="cb72-34"><a href="column-names-prepping-many-for-merge.html#cb72-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">T26A_V3A =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb72-35"><a href="column-names-prepping-many-for-merge.html#cb72-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">T26A_V3B =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb72-36"><a href="column-names-prepping-many-for-merge.html#cb72-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">T31_V3B  =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), </span>
+<span id="cb72-37"><a href="column-names-prepping-many-for-merge.html#cb72-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">T31B_V3  =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb72-38"><a href="column-names-prepping-many-for-merge.html#cb72-38" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Making these up to test standardize_col_names when more than one duplicate </span></span>
+<span id="cb72-39"><a href="column-names-prepping-many-for-merge.html#cb72-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">T32_V3B  =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), </span>
+<span id="cb72-40"><a href="column-names-prepping-many-for-merge.html#cb72-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">T32B_V3  =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb72-41"><a href="column-names-prepping-many-for-merge.html#cb72-41" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div id="create-the-google-sheet-column-name-key" class="section level3" number="4.16.1">
+<h3><span class="header-section-number">4.16.1</span> Create the Google Sheet column name key</h3>
+<p><strong>NOTE:</strong> You should only have to do this once. After you create the initial spreadsheet, all future changes to column names should occur directly in the spreadsheet.</p>
+<ol style="list-style-type: decimal">
+<li>Create a new Google sheet.
+<ul>
+<li>Name it.</li>
+<li>Rename the first sheet “visit1.”</li>
+<li>Name column A <code>old_name</code> and column B <code>new_name</code>.</li>
+</ul></li>
+<li>Create a character string of existing column names that you can copy and paste into the <code>old_name</code> column of the Google Sheet.</li>
+</ol>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="column-names-prepping-many-for-merge.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(v1) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-2"><a href="column-names-prepping-many-for-merge.html#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="at">collapse =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-3"><a href="column-names-prepping-many-for-merge.html#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>()</span></code></pre></div>
+<pre><code>## SUBJECT
+## TODAY_V1
+## VISIT_V1
+## SQ_2
+## WEIGHT
+## DEMO16G
+## DEM15V1
+## T26A_V1
+## T26A_V1A
+## T26A_V1B
+## T31_V1B
+## T31B_V1
+## T32_V1B
+## T32B_V1</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>You can directly type new names into the <code>new_name</code> column. Or, you can use regular expressions in steps similar to what the <code>standardize_col_names()</code> function we created above does:
+<ul>
+<li>Move <code>new_name</code> to column E<br />
+</li>
+<li>Name column B <code>lower</code> and type the following function into B2: <code>=LOWER(A2)</code>. Paste the formula down.<br />
+</li>
+<li>Name column C <code>remove_v1</code> and type the following function into C2: <code>=REGEXREPLACE(B2, "v1|_v1", "")</code>. Paste the formula down.<br />
+</li>
+<li>Name column D <code>add_underscore</code> and type the following function into D2: <code>=REGEXREPLACE(C2,"([a-z])(\d)", "$1_$2")</code>. Paste the formula down. Notice that Google Sheets uses <code>$1</code> instead of <code>\\1</code> for replacing with a capture group.<br />
+</li>
+<li>Make final edits in the <code>new_name</code> column.</li>
+</ul></li>
+</ol>
+</div>
+<div id="import-the-google-sheet-column-name-key" class="section level3" number="4.16.2">
+<h3><span class="header-section-number">4.16.2</span> Import the Google Sheet column name key</h3>
+<p>The first time you attempt to read-in a Google Sheet you will need to authenticate your Google user name and password. Make sure to click the check box next to “Grant Tidyverse API Packages permission to See, edit, create, delete, spreadsheets in Google Drive.”</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="column-names-prepping-many-for-merge.html#cb75-1" aria-hidden="true" tabindex="-1"></a>gs_col_name_key <span class="ot">&lt;-</span> <span class="fu">read_sheet</span>(</span>
+<span id="cb75-2"><a href="column-names-prepping-many-for-merge.html#cb75-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;https://docs.google.com/spreadsheets/d/1cnoOvVdblnKarVf_WQIyWtJDIOumI9VSP1WK2gTy0gU/edit?usp=sharing&quot;</span>,</span>
+<span id="cb75-3"><a href="column-names-prepping-many-for-merge.html#cb75-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">&quot;visit1&quot;</span></span>
+<span id="cb75-4"><a href="column-names-prepping-many-for-merge.html#cb75-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## → Using an auto-discovered, cached token</code></pre>
+<pre><code>##   To suppress this message, modify your code or options to clearly consent to
+##   the use of a cached token</code></pre>
+<pre><code>##   See gargle&#39;s &quot;Non-interactive auth&quot; vignette for more details:</code></pre>
+<pre><code>##   &lt;https://gargle.r-lib.org/articles/non-interactive-auth.html&gt;</code></pre>
+<pre><code>## → The googlesheets4 package is using a cached token for &#39;brad.cannell@gmail.com&#39;</code></pre>
+<pre><code>## Reading from &quot;Google Sheet for column_names_prepping_many_for_merge.Rmd&quot;</code></pre>
+<pre><code>## Range &quot;&#39;visit1&#39;&quot;</code></pre>
+</div>
+<div id="reorder-and-rename-the-current-data-frame" class="section level3" number="4.16.3">
+<h3><span class="header-section-number">4.16.3</span> Reorder and rename the current data frame</h3>
+<p>You might be tempted to just rename the columns by doing something like this:</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="column-names-prepping-many-for-merge.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(v1) <span class="ot">&lt;-</span> gs_col_name_key<span class="sc">$</span>new_name</span></code></pre></div>
+<p>That will work as long as there are the exact same number of columns in <code>v1</code> as there are in are in <code>gs_col_name_key$new_name</code>, and the order of the columns in <code>v1</code> perfectly matches the order of <code>gs_col_name_key$new_name</code>. A slightly more complex, but safer, way to do this is with <code>rename()</code>. Using <code>new_name = old_name</code> inside the rename function make it less likely to accidentally assign the wrong <code>new_name</code> to a column.</p>
+<div id="create-a-named-vector" class="section level4" number="4.16.3.1">
+<h4><span class="header-section-number">4.16.3.1</span> Create a named vector</h4>
+<p>Create a named vector of old names and new names that you can pass to <code>select()</code> or <code>rename()</code>.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="column-names-prepping-many-for-merge.html#cb84-1" aria-hidden="true" tabindex="-1"></a>rename_vector <span class="ot">&lt;-</span> gs_col_name_key<span class="sc">$</span>old_name</span>
+<span id="cb84-2"><a href="column-names-prepping-many-for-merge.html#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(rename_vector) <span class="ot">&lt;-</span> gs_col_name_key<span class="sc">$</span>new_name</span>
+<span id="cb84-3"><a href="column-names-prepping-many-for-merge.html#cb84-3" aria-hidden="true" tabindex="-1"></a>rename_vector</span></code></pre></div>
+<pre><code>##          id  date_visit       visit sq_hispanic      weight     dem_14g 
+##   &quot;SUBJECT&quot;  &quot;TODAY_V1&quot;  &quot;VISIT_V1&quot;      &quot;SQ_2&quot;    &quot;WEIGHT&quot;   &quot;DEMO16G&quot; 
+## dem_veteran        t_26       t_26a       t_26b       t_31b        t_33 
+##   &quot;DEM15V1&quot;   &quot;T26A_V1&quot;  &quot;T26A_V1A&quot;  &quot;T26A_V1B&quot;   &quot;T31_V1B&quot;   &quot;T31B_V1&quot; 
+##       t_32b        t_34 
+##   &quot;T32_V1B&quot;   &quot;T32B_V1&quot;</code></pre>
+</div>
+<div id="reorder-and-rename-the-current-data-frame-1" class="section level4" number="4.16.3.2">
+<h4><span class="header-section-number">4.16.3.2</span> Reorder and rename the current data frame</h4>
+<p>Reorder and rename the current data frame using <code>rename_vector</code>.</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="column-names-prepping-many-for-merge.html#cb86-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="sc">%&gt;%</span> </span>
+<span id="cb86-2"><a href="column-names-prepping-many-for-merge.html#cb86-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!!!</span> rename_vector) <span class="sc">%&gt;%</span> </span>
+<span id="cb86-3"><a href="column-names-prepping-many-for-merge.html#cb86-3" aria-hidden="true" tabindex="-1"></a>  DT<span class="sc">::</span><span class="fu">datatable</span>(<span class="at">options =</span> <span class="fu">list</span>(<span class="at">scrollX =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div id="htmlwidget-1fb1fda2a523810f282d" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1fb1fda2a523810f282d">{"x":{"filter":"none","data":[["1","2"],[2001,2002],["2018-04-07","2018-05-03"],[1,1],[1,0],[179,194],[0,1],[1,0],[2,4],[0,0],[1,0],[0,0],[0,0],[1,1],[1,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>date_visit<\/th>\n      <th>visit<\/th>\n      <th>sq_hispanic<\/th>\n      <th>weight<\/th>\n      <th>dem_14g<\/th>\n      <th>dem_veteran<\/th>\n      <th>t_26<\/th>\n      <th>t_26a<\/th>\n      <th>t_26b<\/th>\n      <th>t_31b<\/th>\n      <th>t_33<\/th>\n      <th>t_32b<\/th>\n      <th>t_34<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,3,4,5,6,7,8,9,10,11,12,13,14]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="more-columns-in-df-than-sheet" class="section level4" number="4.16.3.3">
+<h4><span class="header-section-number">4.16.3.3</span> More columns in df than Sheet</h4>
+<p>What if there are columns in the data frame that haven’t yet been added to the Google Sheet?</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="column-names-prepping-many-for-merge.html#cb87-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="sc">%&gt;%</span> </span>
+<span id="cb87-2"><a href="column-names-prepping-many-for-merge.html#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb87-3"><a href="column-names-prepping-many-for-merge.html#cb87-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">T_Total =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(T26A_V1<span class="sc">:</span>T32B_V1))) <span class="sc">%&gt;%</span> </span>
+<span id="cb87-4"><a href="column-names-prepping-many-for-merge.html#cb87-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb87-5"><a href="column-names-prepping-many-for-merge.html#cb87-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="sc">!!!</span> rename_vector) <span class="sc">%&gt;%</span> </span>
+<span id="cb87-6"><a href="column-names-prepping-many-for-merge.html#cb87-6" aria-hidden="true" tabindex="-1"></a>  DT<span class="sc">::</span><span class="fu">datatable</span>(<span class="at">options =</span> <span class="fu">list</span>(<span class="at">scrollX =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div id="htmlwidget-775291ea9d1dda3a18a1" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-775291ea9d1dda3a18a1">{"x":{"filter":"none","data":[["1","2"],[2001,2002],["2018-04-07","2018-05-03"],[1,1],[1,0],[179,194],[0,1],[1,0],[2,4],[0,0],[1,0],[0,0],[0,0],[1,1],[1,1],[5,6]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>date_visit<\/th>\n      <th>visit<\/th>\n      <th>sq_hispanic<\/th>\n      <th>weight<\/th>\n      <th>dem_14g<\/th>\n      <th>dem_veteran<\/th>\n      <th>t_26<\/th>\n      <th>t_26a<\/th>\n      <th>t_26b<\/th>\n      <th>t_31b<\/th>\n      <th>t_33<\/th>\n      <th>t_32b<\/th>\n      <th>t_34<\/th>\n      <th>T_Total<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,3,4,5,6,7,8,9,10,11,12,13,14,15]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p>It just leaves the extra column’s name unchanged, which is exactly what we want.</p>
+</div>
+<div id="more-columns-in-sheet-and-df" class="section level4" number="4.16.3.4">
+<h4><span class="header-section-number">4.16.3.4</span> More columns in Sheet and df</h4>
+<p>What if there are columns in the Google Sheet that aren’t in the data frame?</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="column-names-prepping-many-for-merge.html#cb88-1" aria-hidden="true" tabindex="-1"></a>rename_vector_2 <span class="ot">&lt;-</span> <span class="fu">c</span>(rename_vector, <span class="st">&quot;mms_1&quot;</span> <span class="ot">=</span> <span class="st">&quot;MMS1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="column-names-prepping-many-for-merge.html#cb89-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="sc">%&gt;%</span> </span>
+<span id="cb89-2"><a href="column-names-prepping-many-for-merge.html#cb89-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="sc">!!!</span> rename_vector_2) <span class="sc">%&gt;%</span> </span>
+<span id="cb89-3"><a href="column-names-prepping-many-for-merge.html#cb89-3" aria-hidden="true" tabindex="-1"></a>  DT<span class="sc">::</span><span class="fu">datatable</span>(<span class="at">options =</span> <span class="fu">list</span>(<span class="at">scrollX =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<pre><code>## Error: Can&#39;t rename columns that don&#39;t exist.
+## x Column `MMS1` doesn&#39;t exist.</code></pre>
+<p>R gives us a warning that we can work out.</p>
 <!--
 Clean up and add session info
 -->
-<pre><code>## R version 4.0.5 (2021-03-31)
+<pre><code>## R version 4.1.0 (2021-05-18)
 ## Platform: x86_64-apple-darwin17.0 (64-bit)
 ## Running under: macOS Big Sur 10.16
 ## 
 ## Matrix products: default
-## BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
-## LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
+## BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
 ## 
 ## locale:
 ## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -848,20 +1058,24 @@ Clean up and add session info
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] purrr_0.3.4    tidyr_1.1.3    testthat_3.0.2 stringr_1.4.0  dplyr_1.0.6   
+## [1] googlesheets4_0.3.0 purrr_0.3.4         tidyr_1.1.3        
+## [4] testthat_3.0.2      stringr_1.4.0       dplyr_1.0.6        
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] pillar_1.6.0      compiler_4.0.5    tools_4.0.5       digest_0.6.25    
-##  [5] pkgload_1.2.1     jsonlite_1.7.2    evaluate_0.14     lifecycle_1.0.0  
-##  [9] tibble_3.1.1      pkgconfig_2.0.3   png_0.1-7         rlang_0.4.10     
-## [13] DBI_1.1.0         cli_2.4.0         rstudioapi_0.13   crosstalk_1.1.0.1
-## [17] yaml_2.2.1        xfun_0.19         withr_2.4.2       knitr_1.30       
-## [21] htmlwidgets_1.5.2 generics_0.1.0    desc_1.3.0        vctrs_0.3.7      
-## [25] rprojroot_1.3-2   DT_0.15           tidyselect_1.1.0  glue_1.4.2       
-## [29] R6_2.4.1          fansi_0.4.1       rmarkdown_2.6     bookdown_0.18    
-## [33] magrittr_2.0.1    backports_1.1.6   ellipsis_0.3.1    htmltools_0.5.0  
-## [37] assertthat_0.2.1  utf8_1.1.4        stringi_1.5.3     crayon_1.4.1</code></pre>
+##  [1] pillar_1.6.1      compiler_4.1.0    cellranger_1.1.0  highr_0.9        
+##  [5] tools_4.1.0       digest_0.6.27     pkgload_1.2.1     jsonlite_1.7.2   
+##  [9] googledrive_1.0.1 evaluate_0.14     lifecycle_1.0.0   tibble_3.1.2     
+## [13] gargle_1.1.0      pkgconfig_2.0.3   rlang_0.4.11      DBI_1.1.1        
+## [17] cli_2.5.0         rstudioapi_0.13   crosstalk_1.1.1   curl_4.3.1       
+## [21] yaml_2.2.1        xfun_0.23         httr_1.4.2        withr_2.4.2      
+## [25] knitr_1.33        askpass_1.1       rappdirs_0.3.3    htmlwidgets_1.5.3
+## [29] desc_1.3.0        generics_0.1.0    vctrs_0.3.8       fs_1.5.0         
+## [33] DT_0.18           rprojroot_2.0.2   tidyselect_1.1.1  glue_1.4.2       
+## [37] R6_2.5.0          fansi_0.5.0       rmarkdown_2.8     bookdown_0.22    
+## [41] magrittr_2.0.1    ellipsis_0.3.2    htmltools_0.5.1.1 assertthat_0.2.1 
+## [45] utf8_1.2.1        stringi_1.6.2     openssl_1.4.4     crayon_1.4.1</code></pre>
 
+</div>
 </div>
 </div>
 </div>
@@ -909,6 +1123,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

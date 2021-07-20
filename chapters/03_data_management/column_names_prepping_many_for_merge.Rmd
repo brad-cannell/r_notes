@@ -25,7 +25,9 @@ Neither of these options seems very robust or future-proof. While it might be a 
 
 * [GitHub issue](https://github.com/brad-cannell/link2care_public/issues/1)   
 * [R4Epi rename_with exampe](https://www.r4epi.com/subsetting-data-frames.html)   
-* [rename_with documentation](https://dplyr.tidyverse.org/reference/rename.html)
+* [rename_with documentation](https://dplyr.tidyverse.org/reference/rename.html)   
+* [Getting your data into R from Google Sheets](https://arbor-analytics.com/post/getting-your-data-into-r-from-google-sheets/)   
+* [RStudio Community: Rename with a named vector/list and contribution to the tidyverse](https://community.rstudio.com/t/rename-with-a-named-vector-list-and-contribution-to-the-tidyverse/2383)   
 
 
 ## 📦Load packages
@@ -36,6 +38,7 @@ library(stringr)
 library(testthat)
 library(tidyr)
 library(purrr)
+library(googlesheets4)
 ```
 
 
@@ -542,6 +545,171 @@ qds_all_visits %>%
   DT::datatable(options = list(scrollX = TRUE))
 ```
 
+## 🟢 Making a key in Google Sheets
+
+Why might I want to do this in the first place?
+
+Pros:    
+
+* Everyone can use Excel. Not everyone is comfortable using RStudio. So, people other than me may be intimidated if they need to look up the changes to the column names by opening an Rmd file in RStudio.   
+* If I need to look up changes to column names, it may be faster to do so in Excel.    
+
+Cons:    
+
+* Creating the Excel sheet may be an additional layer of work.   
+* This process creates additional documents (i.e., other than the Rmd files) to keep track of and update. However, if ALL of the updates to column names go in this spreadsheet, then it should really be the only one that requires tracking and updating.    
+* Hard to use versioning for Excel.    
+
+Why use Google Sheets instead of Excel?
+
+It has all of the pros above, plus versioning. Also, Google Sheets makes it easy to use regular expressions, which I've found useful in the past. 
+
+```{r}
+# Clean up environment first
+rm(list = ls())
+```
+
+```{r}
+v1 <- tibble(
+  SUBJECT  = c(2001, 2002),
+  TODAY_V1 = as.Date(c("2018-04-07", "2018-05-03")),
+  VISIT_V1 = 1,
+  SQ_2     = c(1, 0),
+  WEIGHT   = c(179, 194),
+  DEMO16G  = c(0, 1),
+  DEM15V1  = c(1, 0),
+  T26A_V1  = c(2, 4),
+  T26A_V1A = c(0, 0),
+  T26A_V1B = c(1, 0),
+  T31_V1B  = c(0, 0), 
+  T31B_V1  = c(0, 0),
+  # Making these up to test standardize_col_names when more than one duplicate 
+  # column name would be created.
+  T32_V1B  = c(1, 1),
+  T32B_V1  = c(1, 1)
+)
+
+v2 <- tibble(
+  SUBJECT  = c(2001, 2002),
+  TODAY_V2 = as.Date(c("2018-04-30", "2018-05-07")),
+  VISIT_V2 = 2
+)
+
+v3 <- tibble(
+  SUBJECT  = c(2001, 2002),
+  TODAY_V3 = as.Date(c("2018-05-31", "2018-06-08")),
+  VISIT_V3 = 3,
+  GROUP    = c(1, 2),
+  WEIGHT3  = c(179, 194),
+  DEM14GV3 = c(2, 3),
+  T26A_V3  = c(2, 4),
+  T26A_V3A = c(0, 0),
+  T26A_V3B = c(1, 0),
+  T31_V3B  = c(0, 0), 
+  T31B_V3  = c(0, 0),
+  # Making these up to test standardize_col_names when more than one duplicate 
+  T32_V3B  = c(1, 1), 
+  T32B_V3  = c(1, 1)
+)
+```
+
+### Create the Google Sheet column name key
+
+**NOTE:** You should only have to do this once. After you create the initial spreadsheet, all future changes to column names should occur directly in the spreadsheet.
+
+1. Create a new Google sheet. 
+    - Name it. 
+    - Rename the first sheet "visit1". 
+    - Name column A `old_name` and column B `new_name`. 
+
+2. Create a character string of existing column names that you can copy and paste into the `old_name` column of the Google Sheet.    
+
+```{r}
+names(v1) %>% 
+  paste(collapse = "\n") %>% 
+  cat()
+```
+
+3. You can directly type new names into the `new_name` column. Or, you can use regular expressions in steps similar to what the `standardize_col_names()` function we created above does:
+    - Move `new_name` to column E    
+    - Name column B `lower` and type the following function into B2: `=LOWER(A2)`. Paste the formula down.   
+    - Name column C `remove_v1` and type the following function into C2: `=REGEXREPLACE(B2, "v1|_v1", "")`. Paste the formula down.   
+    - Name column D `add_underscore` and type the following function into D2: `=REGEXREPLACE(C2,"([a-z])(\d)", "$1_$2")`. Paste the formula down. Notice that Google Sheets uses `$1` instead of `\\1` for replacing with a capture group.     
+    - Make final edits in the `new_name` column.   
+
+
+### Import the Google Sheet column name key
+
+The first time you attempt to read-in a Google Sheet you will need to authenticate your Google user name and password. Make sure to click the check box next to "Grant Tidyverse API Packages permission to See, edit, create, delete, spreadsheets in Google Drive". 
+
+```{r}
+gs_col_name_key <- read_sheet(
+  "https://docs.google.com/spreadsheets/d/1cnoOvVdblnKarVf_WQIyWtJDIOumI9VSP1WK2gTy0gU/edit?usp=sharing",
+  sheet = "visit1"
+)
+```
+
+
+### Reorder and rename the current data frame
+
+You might be tempted to just rename the columns by doing something like this:
+
+```{r eval=FALSE}
+names(v1) <- gs_col_name_key$new_name
+```
+
+That will work as long as there are the exact same number of columns in `v1` as there are in are in `gs_col_name_key$new_name`, and the order of the columns in `v1` perfectly matches the order of `gs_col_name_key$new_name`. A slightly more complex, but safer, way to do this is with `rename()`. Using `new_name = old_name` inside the rename function make it less likely to accidentally assign the wrong `new_name` to a column.
+
+#### Create a named vector 
+
+Create a named vector of old names and new names that you can pass to `select()` or `rename()`.
+
+```{r}
+rename_vector <- gs_col_name_key$old_name
+names(rename_vector) <- gs_col_name_key$new_name
+rename_vector
+```
+
+#### Reorder and rename the current data frame
+
+Reorder and rename the current data frame using `rename_vector`.
+
+```{r}
+v1 %>% 
+  select(!!! rename_vector) %>% 
+  DT::datatable(options = list(scrollX = TRUE))
+```
+
+#### More columns in df than Sheet
+
+What if there are columns in the data frame that haven't yet been added to the Google Sheet?
+
+```{r}
+v1 %>% 
+  rowwise() %>% 
+  mutate(T_Total = sum(c_across(T26A_V1:T32B_V1))) %>% 
+  ungroup() %>% 
+  rename(!!! rename_vector) %>% 
+  DT::datatable(options = list(scrollX = TRUE))
+```
+
+It just leaves the extra column's name unchanged, which is exactly what we want. 
+
+#### More columns in Sheet and df
+
+What if there are columns in the Google Sheet that aren't in the data frame?
+
+```{r}
+rename_vector_2 <- c(rename_vector, "mms_1" = "MMS1")
+```
+
+```{r error=TRUE}
+v1 %>% 
+  rename(!!! rename_vector_2) %>% 
+  DT::datatable(options = list(scrollX = TRUE))
+```
+
+R gives us a warning that we can work out. 
 
 <!--
 Clean up and add session info

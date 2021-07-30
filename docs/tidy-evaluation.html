@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Tidy Evaluation | R Notes</title>
+  <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Tidy Evaluation | R Notes" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://brad-cannell.github.io/r_notes/" />
+  
+  <meta property="og:description" content="This is the Bookdown for Brad Cannell’s R Notes." />
+  <meta name="github-repo" content="brad-cannell/r_notes" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Tidy Evaluation | R Notes" />
+  
+  <meta name="twitter:description" content="This is the Bookdown for Brad Cannell’s R Notes." />
+  
+
+<meta name="author" content="Brad Cannell" />
+
+
+<meta name="date" content="2021-07-30" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="creating-rmd-templates.html"/>
+<link rel="next" href="arranging-columns-with-across.html"/>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#organization"><i class="fa fa-check"></i>Organization</a></li>
+</ul></li>
+<li class="part"><span><b>I Programming</b></span></li>
+<li class="chapter" data-level="1" data-path="my-package-notes.html"><a href="my-package-notes.html"><i class="fa fa-check"></i><b>1</b> Packages: Quick Start</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="my-package-notes.html"><a href="my-package-notes.html#overview"><i class="fa fa-check"></i><b>1.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="1.2" data-path="my-package-notes.html"><a href="my-package-notes.html#useful-websites"><i class="fa fa-check"></i><b>1.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="1.3" data-path="my-package-notes.html"><a href="my-package-notes.html#step-1-create-the-package-project"><i class="fa fa-check"></i><b>1.3</b> Step 1: Create the package project</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="my-package-notes.html"><a href="my-package-notes.html#step-2-modify-the-description-file"><i class="fa fa-check"></i><b>1.3.1</b> Step 2: Modify the description file</a></li>
+<li class="chapter" data-level="1.3.2" data-path="my-package-notes.html"><a href="my-package-notes.html#working-with-r-scripts"><i class="fa fa-check"></i><b>1.3.2</b> Working with R scripts</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="my-package-notes.html"><a href="my-package-notes.html#step-3-writing-help-pages"><i class="fa fa-check"></i><b>1.4</b> Step 3: Writing help pages</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="my-package-notes.html"><a href="my-package-notes.html#example-roxygen-header"><i class="fa fa-check"></i><b>1.4.1</b> Example <code>roxygen</code> header</a></li>
+<li class="chapter" data-level="1.4.2" data-path="my-package-notes.html"><a href="my-package-notes.html#documenting-package"><i class="fa fa-check"></i><b>1.4.2</b> Documenting Package:</a></li>
+<li class="chapter" data-level="1.4.3" data-path="my-package-notes.html"><a href="my-package-notes.html#once-package-is-complete-ish"><i class="fa fa-check"></i><b>1.4.3</b> Once package is complete (ish)</a></li>
+<li class="chapter" data-level="1.4.4" data-path="my-package-notes.html"><a href="my-package-notes.html#notes-about-package-notes"><i class="fa fa-check"></i><b>1.4.4</b> Notes about package notes:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="my-package-notes.html"><a href="my-package-notes.html#step-4-synchronize-with-github"><i class="fa fa-check"></i><b>1.5</b> Step 4: Synchronize with GitHub</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="my-package-notes.html"><a href="my-package-notes.html#example-modify-description"><i class="fa fa-check"></i><b>1.5.1</b> Example: Modify Description</a></li>
+<li class="chapter" data-level="1.5.2" data-path="my-package-notes.html"><a href="my-package-notes.html#example-installation-instructions-for-readme"><i class="fa fa-check"></i><b>1.5.2</b> Example Installation instructions for README:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="my-package-notes.html"><a href="my-package-notes.html#step-5-testing"><i class="fa fa-check"></i><b>1.6</b> Step 5: Testing</a></li>
+<li class="chapter" data-level="1.7" data-path="my-package-notes.html"><a href="my-package-notes.html#vignettes"><i class="fa fa-check"></i><b>1.7</b> Vignettes</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="my-package-notes.html"><a href="my-package-notes.html#to-create-a-vignette"><i class="fa fa-check"></i><b>1.7.1</b> To create a vignette:</a></li>
+<li class="chapter" data-level="1.7.2" data-path="my-package-notes.html"><a href="my-package-notes.html#vignette-notes"><i class="fa fa-check"></i><b>1.7.2</b> Vignette Notes:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="my-package-notes.html"><a href="my-package-notes.html#adding-and-documenting-data"><i class="fa fa-check"></i><b>1.8</b> Adding and documenting data</a></li>
+<li class="chapter" data-level="1.9" data-path="my-package-notes.html"><a href="my-package-notes.html#errors-warnings-notes"><i class="fa fa-check"></i><b>1.9</b> Errors, warnings, notes</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html"><i class="fa fa-check"></i><b>2</b> Creating Rmd Templates</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#overview-1"><i class="fa fa-check"></i><b>2.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="2.2" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#useful-websites-1"><i class="fa fa-check"></i><b>2.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="2.3" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#create-a-package"><i class="fa fa-check"></i><b>2.3</b> Create a package</a></li>
+<li class="chapter" data-level="2.4" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#add-a-template-to-your-package"><i class="fa fa-check"></i><b>2.4</b> Add a template to your package</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html"><i class="fa fa-check"></i><b>3</b> Tidy Evaluation</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#overview-2"><i class="fa fa-check"></i><b>3.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="3.2" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#useful-websites-2"><i class="fa fa-check"></i><b>3.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="3.3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#load-packages"><i class="fa fa-check"></i><b>3.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="3.4" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#simulate-data"><i class="fa fa-check"></i><b>3.4</b> 🔢Simulate data</a></li>
+<li class="chapter" data-level="3.5" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#load-starwars-data"><i class="fa fa-check"></i><b>3.5</b> Load Starwars data</a></li>
+<li class="chapter" data-level="3.6" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#key_functions"><i class="fa fa-check"></i><b>3.6</b> Key Functions</a></li>
+<li class="chapter" data-level="3.7" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#for_loop"><i class="fa fa-check"></i><b>3.7</b> Example using Tidy Eval in For Loop</a></li>
+<li class="chapter" data-level="3.8" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#functions"><i class="fa fa-check"></i><b>3.8</b> Example using Tidy Eval in Functions</a></li>
+<li class="chapter" data-level="3.9" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#purrr"><i class="fa fa-check"></i><b>3.9</b> Using tidyeval with purrr</a></li>
+<li class="chapter" data-level="3.10" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#quirks"><i class="fa fa-check"></i><b>3.10</b> Other Quirks and Lessons Learned</a>
+<ul>
+<li class="chapter" data-level="3.10.1" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#when-doesnt-work"><i class="fa fa-check"></i><b>3.10.1</b> When !! doesn’t work</a></li>
+<li class="chapter" data-level="3.10.2" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#unquoting-inside-non-dplyr-functions"><i class="fa fa-check"></i><b>3.10.2</b> Unquoting inside non-dplyr functions</a></li>
+<li class="chapter" data-level="3.10.3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-create-variable-name-in-mutate"><i class="fa fa-check"></i><b>3.10.3</b> Using a quoture to create variable name in mutate</a></li>
+<li class="chapter" data-level="3.10.4" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-turn-a-variable-name-into-a-constant-value"><i class="fa fa-check"></i><b>3.10.4</b> Using a quoture to turn a variable name into a constant value</a></li>
+<li class="chapter" data-level="3.10.5" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#convert-a-string-to-a-quoture"><i class="fa fa-check"></i><b>3.10.5</b> Convert a string to a quoture</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#example-i-created-for-steph-yap"><i class="fa fa-check"></i><b>3.11</b> Example I created for Steph Yap</a></li>
+<li class="chapter" data-level="3.12" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#other"><i class="fa fa-check"></i><b>3.12</b> Other questions / notes / reminders</a></li>
+</ul></li>
+<li class="part"><span><b>II Working with External Files</b></span></li>
+<li class="part"><span><b>III Data Management</b></span></li>
+<li class="chapter" data-level="4" data-path="arranging-columns-with-across.html"><a href="arranging-columns-with-across.html"><i class="fa fa-check"></i><b>4</b> Arranging Columns with Across</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="arranging-columns-with-across.html"><a href="arranging-columns-with-across.html#solution-by-lmc"><i class="fa fa-check"></i><b>4.1</b> Solution by LMc:</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html"><i class="fa fa-check"></i><b>5</b> Column Names: Prepping Many for Merge</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#overview-3"><i class="fa fa-check"></i><b>5.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="5.2" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#useful-websites-3"><i class="fa fa-check"></i><b>5.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="5.3" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#load-packages-1"><i class="fa fa-check"></i><b>5.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="5.4" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#simulate-data-1"><i class="fa fa-check"></i><b>5.4</b> 🔢Simulate data</a></li>
+<li class="chapter" data-level="5.5" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#get-the-existing-column-names"><i class="fa fa-check"></i><b>5.5</b> Get the existing column names</a></li>
+<li class="chapter" data-level="5.6" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#standardize-new-column-names"><i class="fa fa-check"></i><b>5.6</b> Standardize new column names</a></li>
+<li class="chapter" data-level="5.7" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#turn-this-into-a-function"><i class="fa fa-check"></i><b>5.7</b> Turn this into a function</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#make-a-unit-test-for-the-function"><i class="fa fa-check"></i><b>5.7.1</b> Make a unit test for the function</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#manual-changes-to-column-names"><i class="fa fa-check"></i><b>5.8</b> Manual changes to column names</a></li>
+<li class="chapter" data-level="5.9" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#have-r-write-out-the-rename-code"><i class="fa fa-check"></i><b>5.9</b> Have R write out the rename code</a>
+<ul>
+<li class="chapter" data-level="5.9.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#make-it-a-function"><i class="fa fa-check"></i><b>5.9.1</b> Make it a function</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#rename-the-columns"><i class="fa fa-check"></i><b>5.10</b> Rename the columns</a></li>
+<li class="chapter" data-level="5.11" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#repeat-the-process-for-v2"><i class="fa fa-check"></i><b>5.11</b> Repeat the process for V2</a></li>
+<li class="chapter" data-level="5.12" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#repeat-the-process-for-v3"><i class="fa fa-check"></i><b>5.12</b> Repeat the process for V3</a></li>
+<li class="chapter" data-level="5.13" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#merge-all-3-visits"><i class="fa fa-check"></i><b>5.13</b> Merge all 3 visits</a></li>
+<li class="chapter" data-level="5.14" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#final-data-cleaning"><i class="fa fa-check"></i><b>5.14</b> Final data cleaning</a></li>
+<li class="chapter" data-level="5.15" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#the-dplyr-way"><i class="fa fa-check"></i><b>5.15</b> 🟣The dplyr way</a>
+<ul>
+<li class="chapter" data-level="5.15.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#standardize-new-column-names-1"><i class="fa fa-check"></i><b>5.15.1</b> Standardize new column names</a></li>
+<li class="chapter" data-level="5.15.2" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#manual-changes-to-column-names-1"><i class="fa fa-check"></i><b>5.15.2</b> Manual changes to column names 1</a></li>
+<li class="chapter" data-level="5.15.3" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#merge-all-3-visits-1"><i class="fa fa-check"></i><b>5.15.3</b> Merge all 3 visits</a></li>
+<li class="chapter" data-level="5.15.4" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#manual-changes-to-column-names-2"><i class="fa fa-check"></i><b>5.15.4</b> Manual changes to column names 2</a></li>
+<li class="chapter" data-level="5.15.5" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#final-data-cleaning-1"><i class="fa fa-check"></i><b>5.15.5</b> Final data cleaning</a></li>
+</ul></li>
+<li class="chapter" data-level="5.16" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#making-a-key-in-google-sheets"><i class="fa fa-check"></i><b>5.16</b> 🟢 Making a key in Google Sheets</a>
+<ul>
+<li class="chapter" data-level="5.16.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#create-the-google-sheet-column-name-key"><i class="fa fa-check"></i><b>5.16.1</b> Create the Google Sheet column name key</a></li>
+<li class="chapter" data-level="5.16.2" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#import-the-google-sheet-column-name-key"><i class="fa fa-check"></i><b>5.16.2</b> Import the Google Sheet column name key</a></li>
+<li class="chapter" data-level="5.16.3" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#reorder-and-rename-the-current-data-frame"><i class="fa fa-check"></i><b>5.16.3</b> Reorder and rename the current data frame</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV Analysis</b></span></li>
+<li class="part"><span><b>V Data Visualization</b></span></li>
+<li class="part"><span><b>VI Presenting Results</b></span></li>
+<li class="chapter" data-level="6" data-path="book-chapters.html"><a href="book-chapters.html"><i class="fa fa-check"></i><b>6</b> Bookdown: Creating Book Chapters</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="book-chapters.html"><a href="book-chapters.html#chapter-overview"><i class="fa fa-check"></i><b>6.1</b> Chapter overview</a></li>
+<li class="chapter" data-level="6.2" data-path="book-chapters.html"><a href="book-chapters.html#motivating-example"><i class="fa fa-check"></i><b>6.2</b> Motivating example</a></li>
+<li class="chapter" data-level="6.3" data-path="book-chapters.html"><a href="book-chapters.html#body"><i class="fa fa-check"></i><b>6.3</b> Body</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="book-chapters.html"><a href="book-chapters.html#language"><i class="fa fa-check"></i><b>6.3.1</b> Language</a></li>
+<li class="chapter" data-level="6.3.2" data-path="book-chapters.html"><a href="book-chapters.html#text-conventions"><i class="fa fa-check"></i><b>6.3.2</b> Text conventions</a></li>
+<li class="chapter" data-level="6.3.3" data-path="book-chapters.html"><a href="book-chapters.html#special-sections"><i class="fa fa-check"></i><b>6.3.3</b> Special sections</a></li>
+<li class="chapter" data-level="6.3.4" data-path="book-chapters.html"><a href="book-chapters.html#images"><i class="fa fa-check"></i><b>6.3.4</b> Images</a></li>
+<li class="chapter" data-level="6.3.5" data-path="book-chapters.html"><a href="book-chapters.html#code-blocks"><i class="fa fa-check"></i><b>6.3.5</b> Code blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="book-chapters.html"><a href="book-chapters.html#cross-references"><i class="fa fa-check"></i><b>6.4</b> Cross-references</a></li>
+<li class="chapter" data-level="6.5" data-path="book-chapters.html"><a href="book-chapters.html#citations"><i class="fa fa-check"></i><b>6.5</b> Citations</a></li>
+<li class="chapter" data-level="6.6" data-path="book-chapters.html"><a href="book-chapters.html#previewing-the-chapter"><i class="fa fa-check"></i><b>6.6</b> Previewing the chapter</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="book-chapters.html"><a href="book-chapters.html#miscelaneous"><i class="fa fa-check"></i><b>6.6.1</b> Miscelaneous</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="book-chapters.html"><a href="book-chapters.html#additional-resources-function-to-check"><i class="fa fa-check"></i><b>6.7</b> Additional resources: function to check</a></li>
+<li class="chapter" data-level="6.8" data-path="book-chapters.html"><a href="book-chapters.html#key-terms-function-to-add-to-appendix"><i class="fa fa-check"></i><b>6.8</b> Key terms : function to add to appendix</a></li>
+<li class="chapter" data-level="6.9" data-path="book-chapters.html"><a href="book-chapters.html#final-example-code-function-to-add-to-appendix"><i class="fa fa-check"></i><b>6.9</b> Final example code : function to add to appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html"><i class="fa fa-check"></i><b>7</b> Bookdown: Quick Start</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#overview-4"><i class="fa fa-check"></i><b>7.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="7.2" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#useful-websites-4"><i class="fa fa-check"></i><b>7.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="7.3" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#creating-the-bookdown-project-locally"><i class="fa fa-check"></i><b>7.3</b> Creating the bookdown project locally</a></li>
+<li class="chapter" data-level="7.4" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#initiate-a-git-repository"><i class="fa fa-check"></i><b>7.4</b> Initiate a git repository</a></li>
+<li class="chapter" data-level="7.5" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#create-a-github-repository-for-the-book"><i class="fa fa-check"></i><b>7.5</b> Create a github repository for the book</a></li>
+<li class="chapter" data-level="7.6" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#configuring-a-publishing-source-for-the-github-pages-site"><i class="fa fa-check"></i><b>7.6</b> Configuring a publishing source for the GitHub Pages site</a></li>
+<li class="chapter" data-level="7.7" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-_bookdown.yml"><i class="fa fa-check"></i><b>7.7</b> Modify _bookdown.yml</a></li>
+<li class="chapter" data-level="7.8" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-_output.yml"><i class="fa fa-check"></i><b>7.8</b> Modify _output.yml</a></li>
+<li class="chapter" data-level="7.9" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-style.css"><i class="fa fa-check"></i><b>7.9</b> Modify style.css</a></li>
+<li class="chapter" data-level="7.10" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-index.rmd"><i class="fa fa-check"></i><b>7.10</b> Modify index.Rmd</a></li>
+<li class="chapter" data-level="7.11" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#creating-bookdown-chapters"><i class="fa fa-check"></i><b>7.11</b> Creating bookdown chapters</a></li>
+<li class="chapter" data-level="7.12" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#knitting-the-book"><i class="fa fa-check"></i><b>7.12</b> Knitting the book</a></li>
+<li class="chapter" data-level="7.13" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#errors-and-warnings"><i class="fa fa-check"></i><b>7.13</b> Errors and warnings</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="flexdashboard.html"><a href="flexdashboard.html"><i class="fa fa-check"></i><b>8</b> flexdashboard</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="flexdashboard.html"><a href="flexdashboard.html#overview-5"><i class="fa fa-check"></i><b>8.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="8.2" data-path="flexdashboard.html"><a href="flexdashboard.html#useful-websites-5"><i class="fa fa-check"></i><b>8.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="8.3" data-path="flexdashboard.html"><a href="flexdashboard.html#load-packages-2"><i class="fa fa-check"></i><b>8.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="8.4" data-path="flexdashboard.html"><a href="flexdashboard.html#tips"><i class="fa fa-check"></i><b>8.4</b> Tips</a></li>
+<li class="chapter" data-level="8.5" data-path="flexdashboard.html"><a href="flexdashboard.html#simulate-data-2"><i class="fa fa-check"></i><b>8.5</b> 🔢Simulate data</a></li>
+</ul></li>
+<li class="part"><span><b>VII Shiny</b></span></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tidy-evaluation" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Tidy Evaluation</h1>
+<p>Created: 2017-06-24 <br> Updated: 2021-07-30</p>
+<!--
+Hidden comments placeholder
+-->
+<p><img src="https://picsum.photos/200/300" /><!-- --></p>
+<div id="overview-2" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> ⭐️Overview</h2>
+<p>This chapter is about tidy evaluation.</p>
+</div>
+<div id="useful-websites-2" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> 🌎Useful websites</h2>
+<ul>
+<li><a href="https://tidyeval.tidyverse.org/">Tidy evaluation book</a><br />
+</li>
+<li><a href="https://dplyr.tidyverse.org/articles/programming.html">Programming with dplyr</a><br />
+</li>
+<li><a href="https://ggplot2.tidyverse.org/articles/ggplot2-in-packages.html">Using ggplot2 in packages</a><br />
+</li>
+<li><a href="https://www.tidyverse.org/blog/2019/06/rlang-0-4-0/">Rlang adds curly-curly</a><br />
+</li>
+<li><a href="https://adv-r.hadley.nz/metaprogramming.html#">Advanced R, metaprogramming</a></li>
+</ul>
+</div>
+<div id="load-packages" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> 📦Load packages</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="tidy-evaluation.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb10-2"><a href="tidy-evaluation.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb10-3"><a href="tidy-evaluation.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+</div>
+<div id="simulate-data" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> 🔢Simulate data</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="tidy-evaluation.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Do this later</span></span>
+<span id="cb11-2"><a href="tidy-evaluation.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># set.seed(123)</span></span>
+<span id="cb11-3"><a href="tidy-evaluation.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># df &lt;- tibble(</span></span>
+<span id="cb11-4"><a href="tidy-evaluation.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   x = rnorm(26),</span></span>
+<span id="cb11-5"><a href="tidy-evaluation.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   y = letters</span></span>
+<span id="cb11-6"><a href="tidy-evaluation.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span></code></pre></div>
+</div>
+<div id="load-starwars-data" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Load Starwars data</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="tidy-evaluation.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(starwars)</span></code></pre></div>
+<p><strong>Tidy Eval</strong> is as system for <strong>programming</strong>, as opposed to working interactively, with <strong>dplyr</strong>.</p>
+<p>Tidy Eval is all about <strong>quoting</strong>. Not in the <code>""</code> sense, which is to create a character string. Rather, Quoting is the action of capturing an expression instead of evaluating it. This is similar to the way formulas work in R. For example:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="tidy-evaluation.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Computing the value of the expression:</span></span>
+<span id="cb13-2"><a href="tidy-evaluation.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">toupper</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code></pre></div>
+<pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot;</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="tidy-evaluation.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Capturing the expression:</span></span>
+<span id="cb15-2"><a href="tidy-evaluation.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quote</span>(<span class="fu">toupper</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]))</span></code></pre></div>
+<pre><code>## toupper(letters[1:5])</code></pre>
+<p><strong>Don’t forget:</strong> When using quoted expressions, or <strong>quotures</strong> inside functions, you must <strong>unquote</strong> them where you want the expression evaluated. You can unquote with <code>!!</code> or unquote-splice with <code>!!!</code>.</p>
+<p>You can also use the curly-curly syntax to unquote: <code>{{}}</code>. I’m still not clear on when to use one vs. the other.</p>
+</div>
+<div id="key_functions" class="section level2" number="3.6">
+<h2><span class="header-section-number">3.6</span> Key Functions</h2>
+<ul>
+<li><p><code>.data</code> pronoun</p>
+<ul>
+<li><p>Not officially part of Tidy Eval (part of rlang).</p></li>
+<li><p>However, useful to keep in mind in situations where you might be programming over multiple data frames. If you’re in that situation, go check out the <em>Pragramming with dplyr</em> link above for more details.</p></li>
+</ul></li>
+<li><p><code>quo()</code></p>
+<ul>
+<li><p>This is sort of the foundational function in Tidy Eval. It creates a class <strong>quoture</strong> object, which is a special type of formula.</p></li>
+<li><p>quo() captures expressions when outside of user-defined functions.</p></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="tidy-evaluation.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What does quo() return?</span></span>
+<span id="cb17-2"><a href="tidy-evaluation.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quo</span>(species) <span class="co"># Where species is a variable in the Starwars tibble</span></span></code></pre></div>
+<pre><code>## &lt;quosure&gt;
+## expr: ^species
+## env:  global</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="tidy-evaluation.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic usage of quo() in function</span></span>
+<span id="cb19-2"><a href="tidy-evaluation.html#cb19-2" aria-hidden="true" tabindex="-1"></a>freq_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df, x, ...) {</span>
+<span id="cb19-3"><a href="tidy-evaluation.html#cb19-3" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span>                             <span class="co"># No quoting and unquoting necessary for the tibble</span></span>
+<span id="cb19-4"><a href="tidy-evaluation.html#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(<span class="sc">!!</span>x) <span class="sc">%&gt;%</span>                <span class="co"># Don&#39;t forget to unquote (!!) where you want the quoture evaluated</span></span>
+<span id="cb19-5"><a href="tidy-evaluation.html#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">N =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span>           <span class="co"># Calculate freq</span></span>
+<span id="cb19-6"><a href="tidy-evaluation.html#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">top_n</span>(<span class="dv">3</span>, N)                      <span class="co"># Return top 3 results</span></span>
+<span id="cb19-7"><a href="tidy-evaluation.html#cb19-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-8"><a href="tidy-evaluation.html#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="tidy-evaluation.html#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="fu">freq_table</span>(<span class="at">df =</span> starwars, <span class="at">x =</span> <span class="fu">quo</span>(species))</span></code></pre></div>
+<pre><code>## # A tibble: 3 x 2
+##   species     N
+##   &lt;chr&gt;   &lt;int&gt;
+## 1 Droid       6
+## 2 Human      35
+## 3 &lt;NA&gt;        4</code></pre>
+<ul>
+<li><p><code>enquo()</code></p>
+<ul>
+<li>If you don’t want the user of your function to be able to pass the variable name as an argument without wrapping in <code>quo()</code>, that’s where <code>enquo()</code> comes in.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="tidy-evaluation.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic usage of enquo() in function</span></span>
+<span id="cb21-2"><a href="tidy-evaluation.html#cb21-2" aria-hidden="true" tabindex="-1"></a>freq_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df, x, ...) {</span>
+<span id="cb21-3"><a href="tidy-evaluation.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">enquo</span>(x)                      <span class="co"># Capturing function argument and turning it into a quoture</span></span>
+<span id="cb21-4"><a href="tidy-evaluation.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span>                             </span>
+<span id="cb21-5"><a href="tidy-evaluation.html#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(<span class="sc">!!</span>x) <span class="sc">%&gt;%</span>                </span>
+<span id="cb21-6"><a href="tidy-evaluation.html#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">N =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span>           </span>
+<span id="cb21-7"><a href="tidy-evaluation.html#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">top_n</span>(<span class="dv">3</span>, N)                      </span>
+<span id="cb21-8"><a href="tidy-evaluation.html#cb21-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-9"><a href="tidy-evaluation.html#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="tidy-evaluation.html#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="fu">freq_table</span>(<span class="at">df =</span> starwars, <span class="at">x =</span> species) <span class="co"># Notice we no longer need to wrop species with quo()</span></span></code></pre></div>
+<pre><code>## # A tibble: 3 x 2
+##   species     N
+##   &lt;chr&gt;   &lt;int&gt;
+## 1 Droid       6
+## 2 Human      35
+## 3 &lt;NA&gt;        4</code></pre>
+<ul>
+<li><p><code>quos()</code></p>
+<ul>
+<li><p>Use <code>quos()</code> with <code>...</code> when you want to pass multiple variables / arguments / expressions into your function.</p></li>
+<li><p>Must unquote-splice <code>!!!</code> in your function to evaluate.</p></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="tidy-evaluation.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What does quos() return?</span></span>
+<span id="cb23-2"><a href="tidy-evaluation.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quos</span>(species, name) <span class="co"># Where species and name are variables in the Starwars tibble</span></span></code></pre></div>
+<pre><code>## &lt;list_of&lt;quosure&gt;&gt;
+## 
+## [[1]]
+## &lt;quosure&gt;
+## expr: ^species
+## env:  global
+## 
+## [[2]]
+## &lt;quosure&gt;
+## expr: ^name
+## env:  global</code></pre>
+<p>You can iterate over the list of quotures returned by <code>quos()</code></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="tidy-evaluation.html#cb25-1" aria-hidden="true" tabindex="-1"></a>my_quos <span class="ot">&lt;-</span> <span class="fu">quos</span>(species, name)</span>
+<span id="cb25-2"><a href="tidy-evaluation.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(my_quos)) {</span>
+<span id="cb25-3"><a href="tidy-evaluation.html#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(my_quos[[i]])</span>
+<span id="cb25-4"><a href="tidy-evaluation.html#cb25-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## &lt;quosure&gt;
+## expr: ^species
+## env:  global
+## &lt;quosure&gt;
+## expr: ^name
+## env:  global</code></pre>
+<p>Don’t forget to unquote-splice with <code>!!!</code></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="tidy-evaluation.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic use of quos() in a for loop</span></span>
+<span id="cb27-2"><a href="tidy-evaluation.html#cb27-2" aria-hidden="true" tabindex="-1"></a>my_quos <span class="ot">&lt;-</span> <span class="fu">quos</span>(species, name)</span>
+<span id="cb27-3"><a href="tidy-evaluation.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(my_quos)) {</span>
+<span id="cb27-4"><a href="tidy-evaluation.html#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(starwars, <span class="at">n_miss =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(<span class="sc">!!</span>my_quos[[i]]))) <span class="sc">%&gt;%</span> print <span class="co"># Can use !! or !!! in this case</span></span>
+<span id="cb27-5"><a href="tidy-evaluation.html#cb27-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 1
+##   n_miss
+##    &lt;int&gt;
+## 1      4
+## # A tibble: 1 x 1
+##   n_miss
+##    &lt;int&gt;
+## 1      0</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="tidy-evaluation.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic usage of quos() in function</span></span>
+<span id="cb29-2"><a href="tidy-evaluation.html#cb29-2" aria-hidden="true" tabindex="-1"></a>freq_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df, ...) {    <span class="co"># Notice we dropped the &quot;x&quot; argument</span></span>
+<span id="cb29-3"><a href="tidy-evaluation.html#cb29-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">quos</span>(...)                     <span class="co"># Capturing function argument and turning it into a quoture list</span></span>
+<span id="cb29-4"><a href="tidy-evaluation.html#cb29-4" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span>                             </span>
+<span id="cb29-5"><a href="tidy-evaluation.html#cb29-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(<span class="sc">!!!</span>x) <span class="sc">%&gt;%</span>               <span class="co"># Must use unquote-splice (!!!) in this case</span></span>
+<span id="cb29-6"><a href="tidy-evaluation.html#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">N =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb29-7"><a href="tidy-evaluation.html#cb29-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb29-8"><a href="tidy-evaluation.html#cb29-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)                      </span>
+<span id="cb29-9"><a href="tidy-evaluation.html#cb29-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb29-10"><a href="tidy-evaluation.html#cb29-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-11"><a href="tidy-evaluation.html#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="fu">freq_table</span>(<span class="at">df =</span> starwars, species, hair_color)</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;species&#39;. You can override using the `.groups` argument.</code></pre>
+<pre><code>## # A tibble: 5 x 3
+##   species  hair_color     N
+##   &lt;chr&gt;    &lt;chr&gt;      &lt;int&gt;
+## 1 Aleena   none           1
+## 2 Besalisk none           1
+## 3 Cerean   white          1
+## 4 Chagrian none           1
+## 5 Clawdite blonde         1</code></pre>
+<ul>
+<li><p><code>quo_name()</code></p>
+<ul>
+<li>Sometimes we want to convert the argument to a string for use in our function output. For example, we may want to dynamically create variable names inside the function.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="tidy-evaluation.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What does quo_name return?</span></span>
+<span id="cb32-2"><a href="tidy-evaluation.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quo_name</span>(<span class="st">&quot;height&quot;</span>) <span class="co"># Input must be a string or a quoture</span></span></code></pre></div>
+<pre><code>## [1] &quot;height&quot;</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="tidy-evaluation.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What does quo_name return?</span></span>
+<span id="cb34-2"><a href="tidy-evaluation.html#cb34-2" aria-hidden="true" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fu">quo</span>(height)</span>
+<span id="cb34-3"><a href="tidy-evaluation.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">quo_name</span>(height) <span class="co"># Input must be a string or a quoture</span></span></code></pre></div>
+<pre><code>## [1] &quot;height&quot;</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="tidy-evaluation.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic usage of quos() in function</span></span>
+<span id="cb36-2"><a href="tidy-evaluation.html#cb36-2" aria-hidden="true" tabindex="-1"></a>continuous_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df, x) {</span>
+<span id="cb36-3"><a href="tidy-evaluation.html#cb36-3" aria-hidden="true" tabindex="-1"></a>  x2 <span class="ot">&lt;-</span> <span class="fu">enquo</span>(x)                             <span class="co"># Must enquo first</span></span>
+<span id="cb36-4"><a href="tidy-evaluation.html#cb36-4" aria-hidden="true" tabindex="-1"></a>  mean_name <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;mean_&quot;</span>, <span class="fu">quo_name</span>(x2))</span>
+<span id="cb36-5"><a href="tidy-evaluation.html#cb36-5" aria-hidden="true" tabindex="-1"></a>  sum_name  <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;sum_&quot;</span>, <span class="fu">quo_name</span>(x2))</span>
+<span id="cb36-6"><a href="tidy-evaluation.html#cb36-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb36-7"><a href="tidy-evaluation.html#cb36-7" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
+<span id="cb36-8"><a href="tidy-evaluation.html#cb36-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb36-9"><a href="tidy-evaluation.html#cb36-9" aria-hidden="true" tabindex="-1"></a>      <span class="sc">!!</span><span class="at">mean_name :=</span> <span class="fu">mean</span>(<span class="sc">!!</span>x2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="co"># Must use !! and := to set the variable names</span></span>
+<span id="cb36-10"><a href="tidy-evaluation.html#cb36-10" aria-hidden="true" tabindex="-1"></a>      <span class="sc">!!</span><span class="at">sum_name  :=</span> <span class="fu">sum</span>(<span class="sc">!!</span>x2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb36-11"><a href="tidy-evaluation.html#cb36-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb36-12"><a href="tidy-evaluation.html#cb36-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb36-13"><a href="tidy-evaluation.html#cb36-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-14"><a href="tidy-evaluation.html#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="fu">continuous_table</span>(starwars, height)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 2
+##   mean_height sum_height
+##         &lt;dbl&gt;      &lt;int&gt;
+## 1        174.      14123</code></pre>
+<ul>
+<li><p><code>rlang::sym()</code></p>
+<ul>
+<li>Takes a string as an input and turns it into a symbol</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="tidy-evaluation.html#cb38-1" aria-hidden="true" tabindex="-1"></a>my_col <span class="ot">&lt;-</span> <span class="st">&quot;height&quot;</span></span>
+<span id="cb38-2"><a href="tidy-evaluation.html#cb38-2" aria-hidden="true" tabindex="-1"></a>rlang<span class="sc">::</span><span class="fu">qq_show</span>(</span>
+<span id="cb38-3"><a href="tidy-evaluation.html#cb38-3" aria-hidden="true" tabindex="-1"></a>  starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb38-4"><a href="tidy-evaluation.html#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
+<span id="cb38-5"><a href="tidy-evaluation.html#cb38-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mean</span>(my_col)</span>
+<span id="cb38-6"><a href="tidy-evaluation.html#cb38-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb38-7"><a href="tidy-evaluation.html#cb38-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## starwars %&gt;% summarize(mean(my_col))</code></pre>
+<p>Doesn’t work because R will look for a variable named “my_col” in the data frame “starwars.”</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="tidy-evaluation.html#cb40-1" aria-hidden="true" tabindex="-1"></a>my_col <span class="ot">&lt;-</span> <span class="st">&quot;height&quot;</span></span>
+<span id="cb40-2"><a href="tidy-evaluation.html#cb40-2" aria-hidden="true" tabindex="-1"></a>rlang<span class="sc">::</span><span class="fu">qq_show</span>(</span>
+<span id="cb40-3"><a href="tidy-evaluation.html#cb40-3" aria-hidden="true" tabindex="-1"></a>  starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb40-4"><a href="tidy-evaluation.html#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
+<span id="cb40-5"><a href="tidy-evaluation.html#cb40-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mean</span>(<span class="sc">!!</span>my_col)</span>
+<span id="cb40-6"><a href="tidy-evaluation.html#cb40-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb40-7"><a href="tidy-evaluation.html#cb40-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## starwars %&gt;% summarize(mean(&quot;height&quot;))</code></pre>
+<p>Doesn’t work because R will try to calculate the mean of the character string “height.”</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="tidy-evaluation.html#cb42-1" aria-hidden="true" tabindex="-1"></a>my_col <span class="ot">&lt;-</span> rlang<span class="sc">::</span><span class="fu">sym</span>(<span class="st">&quot;height&quot;</span>)</span>
+<span id="cb42-2"><a href="tidy-evaluation.html#cb42-2" aria-hidden="true" tabindex="-1"></a>rlang<span class="sc">::</span><span class="fu">qq_show</span>(</span>
+<span id="cb42-3"><a href="tidy-evaluation.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb42-4"><a href="tidy-evaluation.html#cb42-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
+<span id="cb42-5"><a href="tidy-evaluation.html#cb42-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mean</span>(<span class="sc">!!</span>my_col)</span>
+<span id="cb42-6"><a href="tidy-evaluation.html#cb42-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb42-7"><a href="tidy-evaluation.html#cb42-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## starwars %&gt;% summarize(mean(height))</code></pre>
+<p>This looks like what we would type manually.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="tidy-evaluation.html#cb44-1" aria-hidden="true" tabindex="-1"></a>my_col <span class="ot">&lt;-</span> rlang<span class="sc">::</span><span class="fu">sym</span>(<span class="st">&quot;height&quot;</span>)</span>
+<span id="cb44-2"><a href="tidy-evaluation.html#cb44-2" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb44-3"><a href="tidy-evaluation.html#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb44-4"><a href="tidy-evaluation.html#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(<span class="sc">!!</span>my_col, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb44-5"><a href="tidy-evaluation.html#cb44-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 1
+##    mean
+##   &lt;dbl&gt;
+## 1  174.</code></pre>
+<p>And it works as expeccted</p>
+<ul>
+<li><p><code>rlang::syms()</code></p>
+<ul>
+<li>Like sym, but can convert multiple strings into a list of symbols</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="tidy-evaluation.html#cb46-1" aria-hidden="true" tabindex="-1"></a>my_cols <span class="ot">&lt;-</span> rlang<span class="sc">::</span><span class="fu">syms</span>(<span class="fu">c</span>(<span class="st">&quot;height&quot;</span>, <span class="st">&quot;mass&quot;</span>))</span>
+<span id="cb46-2"><a href="tidy-evaluation.html#cb46-2" aria-hidden="true" tabindex="-1"></a>rlang<span class="sc">::</span><span class="fu">qq_show</span>(</span>
+<span id="cb46-3"><a href="tidy-evaluation.html#cb46-3" aria-hidden="true" tabindex="-1"></a>  starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb46-4"><a href="tidy-evaluation.html#cb46-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
+<span id="cb46-5"><a href="tidy-evaluation.html#cb46-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mean</span>(<span class="sc">!!</span>my_cols)</span>
+<span id="cb46-6"><a href="tidy-evaluation.html#cb46-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb46-7"><a href="tidy-evaluation.html#cb46-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## starwars %&gt;% summarize(mean(&lt;list: height, mass&gt;))</code></pre>
+<p>Notice that unquoting with !! returns a list of symbols. To unlist them, we must use the splice operator.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="tidy-evaluation.html#cb48-1" aria-hidden="true" tabindex="-1"></a>my_cols <span class="ot">&lt;-</span> rlang<span class="sc">::</span><span class="fu">syms</span>(<span class="fu">c</span>(<span class="st">&quot;height&quot;</span>, <span class="st">&quot;mass&quot;</span>))</span>
+<span id="cb48-2"><a href="tidy-evaluation.html#cb48-2" aria-hidden="true" tabindex="-1"></a>rlang<span class="sc">::</span><span class="fu">qq_show</span>(</span>
+<span id="cb48-3"><a href="tidy-evaluation.html#cb48-3" aria-hidden="true" tabindex="-1"></a>  starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb48-4"><a href="tidy-evaluation.html#cb48-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
+<span id="cb48-5"><a href="tidy-evaluation.html#cb48-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mean</span>(<span class="sc">!!!</span>my_cols)</span>
+<span id="cb48-6"><a href="tidy-evaluation.html#cb48-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb48-7"><a href="tidy-evaluation.html#cb48-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## starwars %&gt;% summarize(mean(height, mass))</code></pre>
+<p>Of course, to make this meaningful we need to map it over height and mass</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="tidy-evaluation.html#cb50-1" aria-hidden="true" tabindex="-1"></a>my_cols <span class="ot">&lt;-</span> rlang<span class="sc">::</span><span class="fu">syms</span>(<span class="fu">c</span>(<span class="st">&quot;height&quot;</span>, <span class="st">&quot;mass&quot;</span>))</span>
+<span id="cb50-2"><a href="tidy-evaluation.html#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="tidy-evaluation.html#cb50-3" aria-hidden="true" tabindex="-1"></a>summarise_avg <span class="ot">&lt;-</span> <span class="cf">function</span>(data, col) {</span>
+<span id="cb50-4"><a href="tidy-evaluation.html#cb50-4" aria-hidden="true" tabindex="-1"></a>  col <span class="ot">&lt;-</span> <span class="fu">enquo</span>(col)</span>
+<span id="cb50-5"><a href="tidy-evaluation.html#cb50-5" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> </span>
+<span id="cb50-6"><a href="tidy-evaluation.html#cb50-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">avg =</span> <span class="fu">mean</span>(<span class="sc">!!</span>col, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb50-7"><a href="tidy-evaluation.html#cb50-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb50-8"><a href="tidy-evaluation.html#cb50-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-9"><a href="tidy-evaluation.html#cb50-9" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_df</span>(my_cols, summarise_avg, <span class="at">data =</span> starwars)</span>
+<span id="cb50-10"><a href="tidy-evaluation.html#cb50-10" aria-hidden="true" tabindex="-1"></a>results</span></code></pre></div>
+<pre><code>## # A tibble: 2 x 1
+##     avg
+##   &lt;dbl&gt;
+## 1 174. 
+## 2  97.3</code></pre>
+</div>
+<div id="for_loop" class="section level2" number="3.7">
+<h2><span class="header-section-number">3.7</span> Example using Tidy Eval in For Loop</h2>
+<p>In this example, I’m creating a table of summary statistics using the Starwars data. The table will compare some simple characteristics of the characters by species.</p>
+<p>First, I’m going to reclassify every character as Human or Not Human</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="tidy-evaluation.html#cb52-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="ot">&lt;-</span> <span class="fu">mutate</span>(starwars, <span class="at">human =</span> <span class="fu">if_else</span>(species <span class="sc">==</span> <span class="st">&quot;Human&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="cn">NA_character_</span>))</span></code></pre></div>
+<p>Now I’m going to create the table shell</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="tidy-evaluation.html#cb53-1" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">=</span> <span class="dv">3</span>        <span class="co"># Number of vars</span></span>
+<span id="cb53-2"><a href="tidy-evaluation.html#cb53-2" aria-hidden="true" tabindex="-1"></a>rows <span class="ot">=</span> vars <span class="sc">+</span> <span class="dv">1</span> <span class="co"># Additional row for group sample size</span></span>
+<span id="cb53-3"><a href="tidy-evaluation.html#cb53-3" aria-hidden="true" tabindex="-1"></a>table <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb53-4"><a href="tidy-evaluation.html#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variable =</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">&quot;character&quot;</span>, <span class="at">length =</span> rows),</span>
+<span id="cb53-5"><a href="tidy-evaluation.html#cb53-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Human =</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">&quot;character&quot;</span>, <span class="at">length =</span> rows),</span>
+<span id="cb53-6"><a href="tidy-evaluation.html#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Not Human</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">&quot;character&quot;</span>, <span class="at">length =</span> rows)</span>
+<span id="cb53-7"><a href="tidy-evaluation.html#cb53-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb53-8"><a href="tidy-evaluation.html#cb53-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-9"><a href="tidy-evaluation.html#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="co"># N for Human</span></span>
+<span id="cb53-10"><a href="tidy-evaluation.html#cb53-10" aria-hidden="true" tabindex="-1"></a>table[<span class="dv">1</span>, <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<span id="cb53-11"><a href="tidy-evaluation.html#cb53-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;(N = &quot;</span>,</span>
+<span id="cb53-12"><a href="tidy-evaluation.html#cb53-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(starwars, human <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">nrow</span>() <span class="sc">%&gt;%</span> <span class="fu">format</span>(<span class="at">big.mark =</span> <span class="st">&quot;,&quot;</span>),</span>
+<span id="cb53-13"><a href="tidy-evaluation.html#cb53-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;)&quot;</span></span>
+<span id="cb53-14"><a href="tidy-evaluation.html#cb53-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb53-15"><a href="tidy-evaluation.html#cb53-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-16"><a href="tidy-evaluation.html#cb53-16" aria-hidden="true" tabindex="-1"></a><span class="co"># N for Not Human</span></span>
+<span id="cb53-17"><a href="tidy-evaluation.html#cb53-17" aria-hidden="true" tabindex="-1"></a>table[<span class="dv">1</span>, <span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<span id="cb53-18"><a href="tidy-evaluation.html#cb53-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;(N = &quot;</span>,</span>
+<span id="cb53-19"><a href="tidy-evaluation.html#cb53-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(starwars, human <span class="sc">==</span> <span class="st">&quot;No&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">nrow</span>() <span class="sc">%&gt;%</span> <span class="fu">format</span>(<span class="at">big.mark =</span> <span class="st">&quot;,&quot;</span>),</span>
+<span id="cb53-20"><a href="tidy-evaluation.html#cb53-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;)&quot;</span></span>
+<span id="cb53-21"><a href="tidy-evaluation.html#cb53-21" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="tidy-evaluation.html#cb54-1" aria-hidden="true" tabindex="-1"></a>table</span></code></pre></div>
+<pre><code>## # A tibble: 4 x 3
+##   Variable Human      `Not Human`
+##   &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;      
+## 1 &quot;&quot;       &quot;(N = 35)&quot; &quot;(N = 48)&quot; 
+## 2 &quot;&quot;       &quot;&quot;         &quot;&quot;         
+## 3 &quot;&quot;       &quot;&quot;         &quot;&quot;         
+## 4 &quot;&quot;       &quot;&quot;         &quot;&quot;</code></pre>
+<p>Finally, I’ll fill in the table using a for loop. In this case, I just want to compare the mean height, mass, and birth year of humans and non-humans.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="tidy-evaluation.html#cb56-1" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">quo</span>(height), <span class="fu">quo</span>(mass), <span class="fu">quo</span>(birth_year)) <span class="co"># Create vector of quotures for variables of interest</span></span>
+<span id="cb56-2"><a href="tidy-evaluation.html#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="tidy-evaluation.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(vars)) {</span>
+<span id="cb56-4"><a href="tidy-evaluation.html#cb56-4" aria-hidden="true" tabindex="-1"></a>  table[i <span class="sc">+</span> <span class="dv">1</span>, ] <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span>                             <span class="co"># Chunk of table to receive loop output</span></span>
+<span id="cb56-5"><a href="tidy-evaluation.html#cb56-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(human)) <span class="sc">%&gt;%</span> </span>
+<span id="cb56-6"><a href="tidy-evaluation.html#cb56-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(human) <span class="sc">%&gt;%</span> </span>
+<span id="cb56-7"><a href="tidy-evaluation.html#cb56-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">Mean =</span> <span class="fu">mean</span>(<span class="sc">!!</span>vars[[i]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span>    <span class="co"># Use !! with vars[[i]]</span></span>
+<span id="cb56-8"><a href="tidy-evaluation.html#cb56-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Mean =</span> <span class="fu">round</span>(Mean, <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">format</span>(<span class="at">nsmall =</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb56-9"><a href="tidy-evaluation.html#cb56-9" aria-hidden="true" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">spread</span>(human, Mean) <span class="sc">%&gt;%</span> </span>
+<span id="cb56-10"><a href="tidy-evaluation.html#cb56-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Variable =</span> <span class="fu">quo_name</span>(vars[[i]])) <span class="sc">%&gt;%</span>               <span class="co"># Use quo_name to get variable name for first column</span></span>
+<span id="cb56-11"><a href="tidy-evaluation.html#cb56-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Variable, Yes, No)</span>
+<span id="cb56-12"><a href="tidy-evaluation.html#cb56-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="tidy-evaluation.html#cb57-1" aria-hidden="true" tabindex="-1"></a>table</span></code></pre></div>
+<pre><code>## # A tibble: 4 x 3
+##   Variable     Human      `Not Human`
+##   &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;      
+## 1 &quot;&quot;           &quot;(N = 35)&quot; (N = 48)   
+## 2 &quot;height&quot;     &quot;176.6&quot;    172.4      
+## 3 &quot;mass&quot;       &quot; 82.8&quot;    107.6      
+## 4 &quot;birth_year&quot; &quot; 53.4&quot;    139.3</code></pre>
+<p>This works! How can I keep from having to type quo around every variable?</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="tidy-evaluation.html#cb59-1" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">quos</span>(height, mass, birth_year)</span>
+<span id="cb59-2"><a href="tidy-evaluation.html#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-3"><a href="tidy-evaluation.html#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(vars)) {</span>
+<span id="cb59-4"><a href="tidy-evaluation.html#cb59-4" aria-hidden="true" tabindex="-1"></a>  table[i <span class="sc">+</span> <span class="dv">1</span>, ] <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span>                             <span class="co"># Chunk of table to receive loop output</span></span>
+<span id="cb59-5"><a href="tidy-evaluation.html#cb59-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(human)) <span class="sc">%&gt;%</span> </span>
+<span id="cb59-6"><a href="tidy-evaluation.html#cb59-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(human) <span class="sc">%&gt;%</span> </span>
+<span id="cb59-7"><a href="tidy-evaluation.html#cb59-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">Mean =</span> <span class="fu">mean</span>(<span class="sc">!!</span>vars[[i]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span>    <span class="co"># Use !! with vars[[i]]</span></span>
+<span id="cb59-8"><a href="tidy-evaluation.html#cb59-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Mean =</span> <span class="fu">round</span>(Mean, <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">format</span>(<span class="at">nsmall =</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb59-9"><a href="tidy-evaluation.html#cb59-9" aria-hidden="true" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">spread</span>(human, Mean) <span class="sc">%&gt;%</span> </span>
+<span id="cb59-10"><a href="tidy-evaluation.html#cb59-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Variable =</span> <span class="fu">quo_name</span>(vars[[i]])) <span class="sc">%&gt;%</span>               <span class="co"># Use quo_name to get variable name for first column</span></span>
+<span id="cb59-11"><a href="tidy-evaluation.html#cb59-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Variable, Yes, No)</span>
+<span id="cb59-12"><a href="tidy-evaluation.html#cb59-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="tidy-evaluation.html#cb60-1" aria-hidden="true" tabindex="-1"></a>table</span></code></pre></div>
+<pre><code>## # A tibble: 4 x 3
+##   Variable     Human      `Not Human`
+##   &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;      
+## 1 &quot;&quot;           &quot;(N = 35)&quot; (N = 48)   
+## 2 &quot;height&quot;     &quot;176.6&quot;    172.4      
+## 3 &quot;mass&quot;       &quot; 82.8&quot;    107.6      
+## 4 &quot;birth_year&quot; &quot; 53.4&quot;    139.3</code></pre>
+</div>
+<div id="functions" class="section level2" number="3.8">
+<h2><span class="header-section-number">3.8</span> Example using Tidy Eval in Functions</h2>
+<p>In this example, I’m creating a table of summary statistics using the Starwars data. The table will compare some simple characteristics of the characters by species.</p>
+<p>First, I’m going to reclassify every character as Human or Not Human</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="tidy-evaluation.html#cb62-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="ot">&lt;-</span> <span class="fu">mutate</span>(starwars, <span class="at">human =</span> <span class="fu">if_else</span>(species <span class="sc">==</span> <span class="st">&quot;Human&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="cn">NA_character_</span>))</span></code></pre></div>
+<p>Now I’m going to create the table shell</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="tidy-evaluation.html#cb63-1" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">=</span> <span class="dv">3</span>        <span class="co"># Number of vars</span></span>
+<span id="cb63-2"><a href="tidy-evaluation.html#cb63-2" aria-hidden="true" tabindex="-1"></a>rows <span class="ot">=</span> vars <span class="sc">+</span> <span class="dv">1</span> <span class="co"># Additional row for group sample size</span></span>
+<span id="cb63-3"><a href="tidy-evaluation.html#cb63-3" aria-hidden="true" tabindex="-1"></a>table <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb63-4"><a href="tidy-evaluation.html#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variable =</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">&quot;character&quot;</span>, <span class="at">length =</span> rows),</span>
+<span id="cb63-5"><a href="tidy-evaluation.html#cb63-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Human =</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">&quot;character&quot;</span>, <span class="at">length =</span> rows),</span>
+<span id="cb63-6"><a href="tidy-evaluation.html#cb63-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Not Human</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">&quot;character&quot;</span>, <span class="at">length =</span> rows)</span>
+<span id="cb63-7"><a href="tidy-evaluation.html#cb63-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb63-8"><a href="tidy-evaluation.html#cb63-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-9"><a href="tidy-evaluation.html#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="co"># N for Human</span></span>
+<span id="cb63-10"><a href="tidy-evaluation.html#cb63-10" aria-hidden="true" tabindex="-1"></a>table[<span class="dv">1</span>, <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<span id="cb63-11"><a href="tidy-evaluation.html#cb63-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;(N = &quot;</span>,</span>
+<span id="cb63-12"><a href="tidy-evaluation.html#cb63-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(starwars, human <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">nrow</span>() <span class="sc">%&gt;%</span> <span class="fu">format</span>(<span class="at">big.mark =</span> <span class="st">&quot;,&quot;</span>),</span>
+<span id="cb63-13"><a href="tidy-evaluation.html#cb63-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;)&quot;</span></span>
+<span id="cb63-14"><a href="tidy-evaluation.html#cb63-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb63-15"><a href="tidy-evaluation.html#cb63-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-16"><a href="tidy-evaluation.html#cb63-16" aria-hidden="true" tabindex="-1"></a><span class="co"># N for Not Human</span></span>
+<span id="cb63-17"><a href="tidy-evaluation.html#cb63-17" aria-hidden="true" tabindex="-1"></a>table[<span class="dv">1</span>, <span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<span id="cb63-18"><a href="tidy-evaluation.html#cb63-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;(N = &quot;</span>,</span>
+<span id="cb63-19"><a href="tidy-evaluation.html#cb63-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(starwars, human <span class="sc">==</span> <span class="st">&quot;No&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">nrow</span>() <span class="sc">%&gt;%</span> <span class="fu">format</span>(<span class="at">big.mark =</span> <span class="st">&quot;,&quot;</span>),</span>
+<span id="cb63-20"><a href="tidy-evaluation.html#cb63-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;)&quot;</span></span>
+<span id="cb63-21"><a href="tidy-evaluation.html#cb63-21" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="tidy-evaluation.html#cb64-1" aria-hidden="true" tabindex="-1"></a>table</span></code></pre></div>
+<pre><code>## # A tibble: 4 x 3
+##   Variable Human      `Not Human`
+##   &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;      
+## 1 &quot;&quot;       &quot;(N = 35)&quot; &quot;(N = 48)&quot; 
+## 2 &quot;&quot;       &quot;&quot;         &quot;&quot;         
+## 3 &quot;&quot;       &quot;&quot;         &quot;&quot;         
+## 4 &quot;&quot;       &quot;&quot;         &quot;&quot;</code></pre>
+<p>Finally, I’ll fill in the table using a user-defined function. In this case, I just want to compare the mean height, mass, and birth year of humans and non-humans.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="tidy-evaluation.html#cb66-1" aria-hidden="true" tabindex="-1"></a>my_stats <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
+<span id="cb66-2"><a href="tidy-evaluation.html#cb66-2" aria-hidden="true" tabindex="-1"></a>  vars <span class="ot">&lt;-</span> <span class="fu">quos</span>(...)                                           <span class="co"># Creates a list of quotures from variable names</span></span>
+<span id="cb66-3"><a href="tidy-evaluation.html#cb66-3" aria-hidden="true" tabindex="-1"></a>  temp <span class="ot">&lt;-</span> <span class="fu">get</span>(<span class="st">&quot;table&quot;</span>)                                        <span class="co"># Grabs a copy of the table shell from the environment</span></span>
+<span id="cb66-4"><a href="tidy-evaluation.html#cb66-4" aria-hidden="true" tabindex="-1"></a>  temp <span class="ot">&lt;-</span> temp[<span class="dv">0</span>, ]                                           <span class="co"># Only keep the column headers</span></span>
+<span id="cb66-5"><a href="tidy-evaluation.html#cb66-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb66-6"><a href="tidy-evaluation.html#cb66-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(vars)) {                                 <span class="co"># Loop over all variables in ...</span></span>
+<span id="cb66-7"><a href="tidy-evaluation.html#cb66-7" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> <span class="fu">quo</span>(<span class="sc">!!</span>vars[[i]])                                   <span class="co"># Not necessary, but makes more readable.</span></span>
+<span id="cb66-8"><a href="tidy-evaluation.html#cb66-8" aria-hidden="true" tabindex="-1"></a>    name <span class="ot">&lt;-</span> <span class="fu">quo_name</span>(out)                                     <span class="co"># Turns variable name into string for mutate below.</span></span>
+<span id="cb66-9"><a href="tidy-evaluation.html#cb66-9" aria-hidden="true" tabindex="-1"></a>    row <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span>                                       <span class="co"># Creates a single row of stats for the table.</span></span>
+<span id="cb66-10"><a href="tidy-evaluation.html#cb66-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(human)) <span class="sc">%&gt;%</span> </span>
+<span id="cb66-11"><a href="tidy-evaluation.html#cb66-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">group_by</span>(human) <span class="sc">%&gt;%</span> </span>
+<span id="cb66-12"><a href="tidy-evaluation.html#cb66-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">summarise</span>(<span class="at">Mean =</span> <span class="fu">mean</span>(<span class="sc">!!</span>out, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span>         <span class="co"># Still need !!</span></span>
+<span id="cb66-13"><a href="tidy-evaluation.html#cb66-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">Mean =</span> <span class="fu">round</span>(Mean, <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">format</span>(<span class="at">nsmall =</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb66-14"><a href="tidy-evaluation.html#cb66-14" aria-hidden="true" tabindex="-1"></a>      tidyr<span class="sc">::</span><span class="fu">spread</span>(human, Mean) <span class="sc">%&gt;%</span> </span>
+<span id="cb66-15"><a href="tidy-evaluation.html#cb66-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">Variable =</span> name) <span class="sc">%&gt;%</span></span>
+<span id="cb66-16"><a href="tidy-evaluation.html#cb66-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(Variable, Yes, No)</span>
+<span id="cb66-17"><a href="tidy-evaluation.html#cb66-17" aria-hidden="true" tabindex="-1"></a>    temp <span class="ot">&lt;-</span> <span class="fu">rbind</span>(temp, row)</span>
+<span id="cb66-18"><a href="tidy-evaluation.html#cb66-18" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb66-19"><a href="tidy-evaluation.html#cb66-19" aria-hidden="true" tabindex="-1"></a>  temp</span>
+<span id="cb66-20"><a href="tidy-evaluation.html#cb66-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="tidy-evaluation.html#cb67-1" aria-hidden="true" tabindex="-1"></a>table[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>, ] <span class="ot">&lt;-</span> <span class="fu">my_stats</span>(height, mass, birth_year)            <span class="co"># Notice that we no longer need to us quo</span></span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="tidy-evaluation.html#cb68-1" aria-hidden="true" tabindex="-1"></a>table</span></code></pre></div>
+<pre><code>## # A tibble: 4 x 3
+##   Variable     Human      `Not Human`
+##   &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;      
+## 1 &quot;&quot;           &quot;(N = 35)&quot; (N = 48)   
+## 2 &quot;height&quot;     &quot;176.6&quot;    172.4      
+## 3 &quot;mass&quot;       &quot; 82.8&quot;    107.6      
+## 4 &quot;birth_year&quot; &quot; 53.4&quot;    139.3</code></pre>
+</div>
+<div id="purrr" class="section level2" number="3.9">
+<h2><span class="header-section-number">3.9</span> Using tidyeval with purrr</h2>
+<p>I have a situation that I’m a little confused about. I think if I could understand the contrived situation below, then I could figure out my issue.</p>
+<p>Essentially, when I use map(x, function(x) { !!x }) with tidyeval I get the result that I expect. When I try to use the purrr shortcut, i.e., map(x, ~ { !!. }) I get an error. I don’t understand why. If anybody has insight that they care to share, I would really appreciate it!</p>
+<p>A reprex is below:</p>
+<p>This works as expected:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="tidy-evaluation.html#cb70-1" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">quos</span>(gender, species)</span>
+<span id="cb70-2"><a href="tidy-evaluation.html#cb70-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-3"><a href="tidy-evaluation.html#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map_df</span>(vars, <span class="cf">function</span>(x){</span>
+<span id="cb70-4"><a href="tidy-evaluation.html#cb70-4" aria-hidden="true" tabindex="-1"></a>  starwars <span class="sc">%&gt;%</span></span>
+<span id="cb70-5"><a href="tidy-evaluation.html#cb70-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(<span class="sc">!!</span> x) <span class="sc">%&gt;%</span></span>
+<span id="cb70-6"><a href="tidy-evaluation.html#cb70-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb70-7"><a href="tidy-evaluation.html#cb70-7" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<pre><code>## # A tibble: 41 x 3
+##    gender    `mean(height, na.rm = TRUE)` species 
+##    &lt;chr&gt;                            &lt;dbl&gt; &lt;chr&gt;   
+##  1 feminine                          165. &lt;NA&gt;    
+##  2 masculine                         177. &lt;NA&gt;    
+##  3 &lt;NA&gt;                              181. &lt;NA&gt;    
+##  4 &lt;NA&gt;                               79  Aleena  
+##  5 &lt;NA&gt;                              198  Besalisk
+##  6 &lt;NA&gt;                              198  Cerean  
+##  7 &lt;NA&gt;                              196  Chagrian
+##  8 &lt;NA&gt;                              168  Clawdite
+##  9 &lt;NA&gt;                              131. Droid   
+## 10 &lt;NA&gt;                              112  Dug     
+## # … with 31 more rows</code></pre>
+<p>I’m not sure why this doesn’t work:</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="tidy-evaluation.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vars &lt;- quos(gender, species)</span></span>
+<span id="cb72-2"><a href="tidy-evaluation.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb72-3"><a href="tidy-evaluation.html#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="co"># map_df(vars, ~ {</span></span>
+<span id="cb72-4"><a href="tidy-evaluation.html#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   starwars %&gt;%</span></span>
+<span id="cb72-5"><a href="tidy-evaluation.html#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="co">#     group_by(!! .) %&gt;%</span></span>
+<span id="cb72-6"><a href="tidy-evaluation.html#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="co">#     summarise(mean(height, na.rm = TRUE))</span></span>
+<span id="cb72-7"><a href="tidy-evaluation.html#cb72-7" aria-hidden="true" tabindex="-1"></a><span class="co"># })</span></span></code></pre></div>
+<p>The answer is to use “.x” instead of “.”:</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="tidy-evaluation.html#cb73-1" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">quos</span>(gender, species)</span>
+<span id="cb73-2"><a href="tidy-evaluation.html#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="tidy-evaluation.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map_df</span>(vars, <span class="sc">~</span> {</span>
+<span id="cb73-4"><a href="tidy-evaluation.html#cb73-4" aria-hidden="true" tabindex="-1"></a>  starwars <span class="sc">%&gt;%</span></span>
+<span id="cb73-5"><a href="tidy-evaluation.html#cb73-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(<span class="sc">!!</span> .x) <span class="sc">%&gt;%</span></span>
+<span id="cb73-6"><a href="tidy-evaluation.html#cb73-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb73-7"><a href="tidy-evaluation.html#cb73-7" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<pre><code>## # A tibble: 41 x 3
+##    gender    `mean(height, na.rm = TRUE)` species 
+##    &lt;chr&gt;                            &lt;dbl&gt; &lt;chr&gt;   
+##  1 feminine                          165. &lt;NA&gt;    
+##  2 masculine                         177. &lt;NA&gt;    
+##  3 &lt;NA&gt;                              181. &lt;NA&gt;    
+##  4 &lt;NA&gt;                               79  Aleena  
+##  5 &lt;NA&gt;                              198  Besalisk
+##  6 &lt;NA&gt;                              198  Cerean  
+##  7 &lt;NA&gt;                              196  Chagrian
+##  8 &lt;NA&gt;                              168  Clawdite
+##  9 &lt;NA&gt;                              131. Droid   
+## 10 &lt;NA&gt;                              112  Dug     
+## # … with 31 more rows</code></pre>
+<p>However, I’m not entirely sure why. When I have more time, I’d like to figure this out.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="tidy-evaluation.html#cb75-1" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">quos</span>(gender, species)</span>
+<span id="cb75-2"><a href="tidy-evaluation.html#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-3"><a href="tidy-evaluation.html#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(vars, <span class="cf">function</span>(x) {</span>
+<span id="cb75-4"><a href="tidy-evaluation.html#cb75-4" aria-hidden="true" tabindex="-1"></a>  x</span>
+<span id="cb75-5"><a href="tidy-evaluation.html#cb75-5" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<pre><code>## [[1]]
+## &lt;quosure&gt;
+## expr: ^gender
+## env:  global
+## 
+## [[2]]
+## &lt;quosure&gt;
+## expr: ^species
+## env:  global</code></pre>
+</div>
+<div id="quirks" class="section level2" number="3.10">
+<h2><span class="header-section-number">3.10</span> Other Quirks and Lessons Learned</h2>
+<div id="when-doesnt-work" class="section level3" number="3.10.1">
+<h3><span class="header-section-number">3.10.1</span> When !! doesn’t work</h3>
+<p>I’ve noticed that using <code>!!</code> doesn’t always work. At this point, I’m not exactly sure the rules related to when it works and when it doesn’t work, but I do want to write down some examples and fixes.</p>
+<p>Sometimes it’s my fault:</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="tidy-evaluation.html#cb77-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="cf">function</span>(df, var, ...) {</span>
+<span id="cb77-2"><a href="tidy-evaluation.html#cb77-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">enquo</span>(var)</span>
+<span id="cb77-3"><a href="tidy-evaluation.html#cb77-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb77-4"><a href="tidy-evaluation.html#cb77-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="sc">!!</span>x) <span class="co"># This doesn&#39;t work - need to associate the quoture variable with its data frame</span></span>
+<span id="cb77-5"><a href="tidy-evaluation.html#cb77-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb77-6"><a href="tidy-evaluation.html#cb77-6" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(hair_color)</span></code></pre></div>
+<pre><code>## Error: Quosures can only be unquoted within a quasiquotation context.
+## 
+##   # Bad:
+##   list(!!myquosure)
+## 
+##   # Good:
+##   dplyr::mutate(data, !!myquosure)</code></pre>
+<p>Fix:</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="tidy-evaluation.html#cb79-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="cf">function</span>(df, var, ...) {</span>
+<span id="cb79-2"><a href="tidy-evaluation.html#cb79-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">enquo</span>(var)</span>
+<span id="cb79-3"><a href="tidy-evaluation.html#cb79-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb79-4"><a href="tidy-evaluation.html#cb79-4" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">!!</span>x) <span class="sc">%&gt;%</span> <span class="fu">print</span>()</span>
+<span id="cb79-5"><a href="tidy-evaluation.html#cb79-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb79-6"><a href="tidy-evaluation.html#cb79-6" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(hair_color)</span></code></pre></div>
+<pre><code>## # A tibble: 87 x 1
+##    hair_color   
+##    &lt;chr&gt;        
+##  1 blond        
+##  2 &lt;NA&gt;         
+##  3 &lt;NA&gt;         
+##  4 none         
+##  5 brown        
+##  6 brown, grey  
+##  7 brown        
+##  8 &lt;NA&gt;         
+##  9 black        
+## 10 auburn, white
+## # … with 77 more rows</code></pre>
+</div>
+<div id="unquoting-inside-non-dplyr-functions" class="section level3" number="3.10.2">
+<h3><span class="header-section-number">3.10.2</span> Unquoting inside non-dplyr functions</h3>
+<p>I’ve notice some weirdness when trying to unquote quotures inside functions that are inside dplyr functions. For example, if_else inside of mutate.</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="tidy-evaluation.html#cb81-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="cf">function</span>(df, var) {</span>
+<span id="cb81-2"><a href="tidy-evaluation.html#cb81-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">enquo</span>(var)</span>
+<span id="cb81-3"><a href="tidy-evaluation.html#cb81-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb81-4"><a href="tidy-evaluation.html#cb81-4" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
+<span id="cb81-5"><a href="tidy-evaluation.html#cb81-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">hair_color =</span> <span class="fu">if_else</span>(<span class="sc">!!</span>x <span class="sc">==</span> <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;blond&quot;</span>, <span class="sc">!!</span>x))</span>
+<span id="cb81-6"><a href="tidy-evaluation.html#cb81-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb81-7"><a href="tidy-evaluation.html#cb81-7" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(hair_color)</span></code></pre></div>
+<pre><code>## # A tibble: 87 x 15
+##    name    height  mass hair_color  skin_color eye_color birth_year sex   gender
+##    &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1 Luke S…    172    77 blond       fair       blue            19   male  mascu…
+##  2 C-3PO      167    75 &lt;NA&gt;        gold       yellow         112   none  mascu…
+##  3 R2-D2       96    32 &lt;NA&gt;        white, bl… red             33   none  mascu…
+##  4 Darth …    202   136 none        white      yellow          41.9 male  mascu…
+##  5 Leia O…    150    49 brown       light      brown           19   fema… femin…
+##  6 Owen L…    178   120 brown, grey light      blue            52   male  mascu…
+##  7 Beru W…    165    75 brown       light      blue            47   fema… femin…
+##  8 R5-D4       97    32 &lt;NA&gt;        white, red red             NA   none  mascu…
+##  9 Biggs …    183    84 black       light      brown           24   male  mascu…
+## 10 Obi-Wa…    182    77 auburn, wh… fair       blue-gray       57   male  mascu…
+## # … with 77 more rows, and 6 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
+## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;, human &lt;chr&gt;</code></pre>
+<p>Fix:</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="tidy-evaluation.html#cb83-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="cf">function</span>(df, var) {</span>
+<span id="cb83-2"><a href="tidy-evaluation.html#cb83-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">enquo</span>(var)</span>
+<span id="cb83-3"><a href="tidy-evaluation.html#cb83-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb83-4"><a href="tidy-evaluation.html#cb83-4" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
+<span id="cb83-5"><a href="tidy-evaluation.html#cb83-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">hair_color =</span> <span class="fu">if_else</span>(rlang<span class="sc">::</span><span class="fu">UQ</span>(x) <span class="sc">==</span> <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;blond&quot;</span>, rlang<span class="sc">::</span><span class="fu">UQ</span>(x)))</span>
+<span id="cb83-6"><a href="tidy-evaluation.html#cb83-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb83-7"><a href="tidy-evaluation.html#cb83-7" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(hair_color)</span></code></pre></div>
+<pre><code>## Warning: Prefixing `UQ()` with the rlang namespace is deprecated as of rlang 0.3.0.
+## Please use the non-prefixed form or `!!` instead.
+## 
+##   # Bad:
+##   rlang::expr(mean(rlang::UQ(var) * 100))
+## 
+##   # Ok:
+##   rlang::expr(mean(UQ(var) * 100))
+## 
+##   # Good:
+##   rlang::expr(mean(!!var * 100))
+## 
+## This warning is displayed once per session.</code></pre>
+<pre><code>## # A tibble: 87 x 15
+##    name    height  mass hair_color  skin_color eye_color birth_year sex   gender
+##    &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1 Luke S…    172    77 blond       fair       blue            19   male  mascu…
+##  2 C-3PO      167    75 &lt;NA&gt;        gold       yellow         112   none  mascu…
+##  3 R2-D2       96    32 &lt;NA&gt;        white, bl… red             33   none  mascu…
+##  4 Darth …    202   136 none        white      yellow          41.9 male  mascu…
+##  5 Leia O…    150    49 brown       light      brown           19   fema… femin…
+##  6 Owen L…    178   120 brown, grey light      blue            52   male  mascu…
+##  7 Beru W…    165    75 brown       light      blue            47   fema… femin…
+##  8 R5-D4       97    32 &lt;NA&gt;        white, red red             NA   none  mascu…
+##  9 Biggs …    183    84 black       light      brown           24   male  mascu…
+## 10 Obi-Wa…    182    77 auburn, wh… fair       blue-gray       57   male  mascu…
+## # … with 77 more rows, and 6 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
+## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;, human &lt;chr&gt;</code></pre>
+</div>
+<div id="using-a-quoture-to-create-variable-name-in-mutate" class="section level3" number="3.10.3">
+<h3><span class="header-section-number">3.10.3</span> Using a quoture to create variable name in mutate</h3>
+<p>Additionally, sometimes there is some trickiness to naming (or overwriting) a variable name inside of mutate.</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="tidy-evaluation.html#cb86-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="cf">function</span>(df, var) {</span>
+<span id="cb86-2"><a href="tidy-evaluation.html#cb86-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">enquo</span>(var)</span>
+<span id="cb86-3"><a href="tidy-evaluation.html#cb86-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb86-4"><a href="tidy-evaluation.html#cb86-4" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
+<span id="cb86-5"><a href="tidy-evaluation.html#cb86-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="sc">!!</span><span class="at">x =</span> <span class="fu">if_else</span>(rlang<span class="sc">::</span><span class="fu">UQ</span>(x) <span class="sc">==</span> <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;blond&quot;</span>, rlang<span class="sc">::</span><span class="fu">UQ</span>(x)))</span>
+<span id="cb86-6"><a href="tidy-evaluation.html#cb86-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb86-7"><a href="tidy-evaluation.html#cb86-7" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(hair_color)</span></code></pre></div>
+<pre><code>## Error: &lt;text&gt;:5:16: unexpected &#39;=&#39;
+## 4:   df %&gt;% 
+## 5:     mutate(!!x =
+##                   ^</code></pre>
+<p>This doesn’t help either:</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="tidy-evaluation.html#cb88-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="cf">function</span>(df, var) {</span>
+<span id="cb88-2"><a href="tidy-evaluation.html#cb88-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">enquo</span>(var)</span>
+<span id="cb88-3"><a href="tidy-evaluation.html#cb88-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb88-4"><a href="tidy-evaluation.html#cb88-4" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
+<span id="cb88-5"><a href="tidy-evaluation.html#cb88-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="sc">!!</span><span class="at">x :=</span> <span class="fu">if_else</span>(rlang<span class="sc">::</span><span class="fu">UQ</span>(x) <span class="sc">==</span> <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;blond&quot;</span>, rlang<span class="sc">::</span><span class="fu">UQ</span>(x)))</span>
+<span id="cb88-6"><a href="tidy-evaluation.html#cb88-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb88-7"><a href="tidy-evaluation.html#cb88-7" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(hair_color)</span></code></pre></div>
+<pre><code>## # A tibble: 87 x 15
+##    name    height  mass hair_color  skin_color eye_color birth_year sex   gender
+##    &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1 Luke S…    172    77 blond       fair       blue            19   male  mascu…
+##  2 C-3PO      167    75 &lt;NA&gt;        gold       yellow         112   none  mascu…
+##  3 R2-D2       96    32 &lt;NA&gt;        white, bl… red             33   none  mascu…
+##  4 Darth …    202   136 none        white      yellow          41.9 male  mascu…
+##  5 Leia O…    150    49 brown       light      brown           19   fema… femin…
+##  6 Owen L…    178   120 brown, grey light      blue            52   male  mascu…
+##  7 Beru W…    165    75 brown       light      blue            47   fema… femin…
+##  8 R5-D4       97    32 &lt;NA&gt;        white, red red             NA   none  mascu…
+##  9 Biggs …    183    84 black       light      brown           24   male  mascu…
+## 10 Obi-Wa…    182    77 auburn, wh… fair       blue-gray       57   male  mascu…
+## # … with 77 more rows, and 6 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
+## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;, human &lt;chr&gt;</code></pre>
+<p>Fix:</p>
+<p>Must have !! in front of quo_name(). Must use := instead of =.</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="tidy-evaluation.html#cb90-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="cf">function</span>(df, var) {</span>
+<span id="cb90-2"><a href="tidy-evaluation.html#cb90-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">enquo</span>(var)</span>
+<span id="cb90-3"><a href="tidy-evaluation.html#cb90-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb90-4"><a href="tidy-evaluation.html#cb90-4" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
+<span id="cb90-5"><a href="tidy-evaluation.html#cb90-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="sc">!!</span><span class="fu">quo_name</span>(x) <span class="sc">:</span><span class="er">=</span> <span class="fu">if_else</span>(rlang<span class="sc">::</span><span class="fu">UQ</span>(x) <span class="sc">==</span> <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;blond&quot;</span>, rlang<span class="sc">::</span><span class="fu">UQ</span>(x)))</span>
+<span id="cb90-6"><a href="tidy-evaluation.html#cb90-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb90-7"><a href="tidy-evaluation.html#cb90-7" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(hair_color)</span></code></pre></div>
+<pre><code>## # A tibble: 87 x 15
+##    name    height  mass hair_color  skin_color eye_color birth_year sex   gender
+##    &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1 Luke S…    172    77 blond       fair       blue            19   male  mascu…
+##  2 C-3PO      167    75 &lt;NA&gt;        gold       yellow         112   none  mascu…
+##  3 R2-D2       96    32 &lt;NA&gt;        white, bl… red             33   none  mascu…
+##  4 Darth …    202   136 none        white      yellow          41.9 male  mascu…
+##  5 Leia O…    150    49 brown       light      brown           19   fema… femin…
+##  6 Owen L…    178   120 brown, grey light      blue            52   male  mascu…
+##  7 Beru W…    165    75 brown       light      blue            47   fema… femin…
+##  8 R5-D4       97    32 &lt;NA&gt;        white, red red             NA   none  mascu…
+##  9 Biggs …    183    84 black       light      brown           24   male  mascu…
+## 10 Obi-Wa…    182    77 auburn, wh… fair       blue-gray       57   male  mascu…
+## # … with 77 more rows, and 6 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
+## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;, human &lt;chr&gt;</code></pre>
+</div>
+<div id="using-a-quoture-to-turn-a-variable-name-into-a-constant-value" class="section level3" number="3.10.4">
+<h3><span class="header-section-number">3.10.4</span> Using a quoture to turn a variable name into a constant value</h3>
+<p>When I’m looping over many variables, I often want to create a variable in my output called “characteristic” or “variable” that captures the current variable name as a value.</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="tidy-evaluation.html#cb92-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="cf">function</span>(df, var) {</span>
+<span id="cb92-2"><a href="tidy-evaluation.html#cb92-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">enquo</span>(var)                              <span class="co"># Make sure to use enquo here</span></span>
+<span id="cb92-3"><a href="tidy-evaluation.html#cb92-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb92-4"><a href="tidy-evaluation.html#cb92-4" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
+<span id="cb92-5"><a href="tidy-evaluation.html#cb92-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb92-6"><a href="tidy-evaluation.html#cb92-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">Mean =</span> <span class="fu">mean</span>(<span class="sc">!!</span>x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb92-7"><a href="tidy-evaluation.html#cb92-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb92-8"><a href="tidy-evaluation.html#cb92-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Characteristic =</span> <span class="sc">!!</span><span class="fu">quo_name</span>(x)) <span class="sc">%&gt;%</span> <span class="co"># Make sure to use !!quo_name()</span></span>
+<span id="cb92-9"><a href="tidy-evaluation.html#cb92-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Characteristic, Mean)</span>
+<span id="cb92-10"><a href="tidy-evaluation.html#cb92-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb92-11"><a href="tidy-evaluation.html#cb92-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-12"><a href="tidy-evaluation.html#cb92-12" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(height)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 2
+##   Characteristic  Mean
+##   &lt;chr&gt;          &lt;dbl&gt;
+## 1 height          174.</code></pre>
+</div>
+<div id="convert-a-string-to-a-quoture" class="section level3" number="3.10.5">
+<h3><span class="header-section-number">3.10.5</span> Convert a string to a quoture</h3>
+<p>Here are some useful websites:</p>
+<p><a href="https://github.com/tidyverse/rlang/issues/116" class="uri">https://github.com/tidyverse/rlang/issues/116</a></p>
+<p><a href="https://stackoverflow.com/questions/27975124/pass-arguments-to-dplyr-functions/44594223#44594223" class="uri">https://stackoverflow.com/questions/27975124/pass-arguments-to-dplyr-functions/44594223#44594223</a></p>
+<p><a href="https://stackoverflow.com/questions/44593596/how-to-pass-strings-denoting-expressions-to-dplyr-0-7-verbs/44593617#44593617" class="uri">https://stackoverflow.com/questions/44593596/how-to-pass-strings-denoting-expressions-to-dplyr-0-7-verbs/44593617#44593617</a></p>
+<p>Sometimes, I want to pass a variable name as a string to a function. It then needs to be converted to a quoture for evaluation.</p>
+<div id="simple-example---now-this-works" class="section level4" number="3.10.5.1">
+<h4><span class="header-section-number">3.10.5.1</span> Simple example - Now this works</h4>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="tidy-evaluation.html#cb94-1" aria-hidden="true" tabindex="-1"></a>my_col <span class="ot">&lt;-</span> <span class="fu">names</span>(starwars[<span class="dv">2</span>]) <span class="co"># Have a variable name as a quoted string</span></span>
+<span id="cb94-2"><a href="tidy-evaluation.html#cb94-2" aria-hidden="true" tabindex="-1"></a>my_col <span class="ot">&lt;-</span> <span class="st">&quot;mass&quot;</span></span>
+<span id="cb94-3"><a href="tidy-evaluation.html#cb94-3" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">!!</span>my_col) <span class="co"># Now this works</span></span></code></pre></div>
+<pre><code>## # A tibble: 87 x 1
+##     mass
+##    &lt;dbl&gt;
+##  1    77
+##  2    75
+##  3    32
+##  4   136
+##  5    49
+##  6   120
+##  7    75
+##  8    32
+##  9    84
+## 10    77
+## # … with 77 more rows</code></pre>
+</div>
+<div id="when-the-string-is-created-inside-the-function" class="section level4" number="3.10.5.2">
+<h4><span class="header-section-number">3.10.5.2</span> When the string is created inside the function</h4>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="tidy-evaluation.html#cb96-1" aria-hidden="true" tabindex="-1"></a>starwars<span class="sc">$</span>height_squared <span class="ot">&lt;-</span> starwars<span class="sc">$</span>height<span class="sc">**</span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="tidy-evaluation.html#cb97-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="cf">function</span>(df, var) {</span>
+<span id="cb97-2"><a href="tidy-evaluation.html#cb97-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb97-3"><a href="tidy-evaluation.html#cb97-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">enquo</span>(var)  <span class="co"># First, turn var without the suffix into a quoture - must be first</span></span>
+<span id="cb97-4"><a href="tidy-evaluation.html#cb97-4" aria-hidden="true" tabindex="-1"></a>  squared <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">quo_name</span>(x), <span class="st">&quot;squared&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="co"># Must use quo_name()</span></span>
+<span id="cb97-5"><a href="tidy-evaluation.html#cb97-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb97-6"><a href="tidy-evaluation.html#cb97-6" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
+<span id="cb97-7"><a href="tidy-evaluation.html#cb97-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb97-8"><a href="tidy-evaluation.html#cb97-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">Mean =</span> <span class="fu">mean</span>(<span class="sc">!!</span>squared, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb97-9"><a href="tidy-evaluation.html#cb97-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb97-10"><a href="tidy-evaluation.html#cb97-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb97-11"><a href="tidy-evaluation.html#cb97-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-12"><a href="tidy-evaluation.html#cb97-12" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(height)</span></code></pre></div>
+<pre><code>## Warning in mean.default(&quot;height_squared&quot;, na.rm = TRUE): argument is not numeric
+## or logical: returning NA</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##    Mean
+##   &lt;dbl&gt;
+## 1    NA</code></pre>
+<p>Fix (Method prefered by Hadley and Lionel):</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="tidy-evaluation.html#cb100-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="cf">function</span>(df, var) {</span>
+<span id="cb100-2"><a href="tidy-evaluation.html#cb100-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb100-3"><a href="tidy-evaluation.html#cb100-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">enquo</span>(var)  <span class="co"># First, turn var without the suffix into a quoture - must be first</span></span>
+<span id="cb100-4"><a href="tidy-evaluation.html#cb100-4" aria-hidden="true" tabindex="-1"></a>  squared <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">quo_name</span>(x), <span class="st">&quot;squared&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="co"># Must use quo_name()</span></span>
+<span id="cb100-5"><a href="tidy-evaluation.html#cb100-5" aria-hidden="true" tabindex="-1"></a>  squared <span class="ot">&lt;-</span> rlang<span class="sc">::</span><span class="fu">sym</span>(squared) <span class="co"># Wrap with sym()</span></span>
+<span id="cb100-6"><a href="tidy-evaluation.html#cb100-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-7"><a href="tidy-evaluation.html#cb100-7" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span></span>
+<span id="cb100-8"><a href="tidy-evaluation.html#cb100-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb100-9"><a href="tidy-evaluation.html#cb100-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">Mean =</span> <span class="fu">mean</span>(<span class="sc">!!</span>squared, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb100-10"><a href="tidy-evaluation.html#cb100-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb100-11"><a href="tidy-evaluation.html#cb100-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb100-12"><a href="tidy-evaluation.html#cb100-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-13"><a href="tidy-evaluation.html#cb100-13" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(height)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 1
+##     Mean
+##    &lt;dbl&gt;
+## 1 31595.</code></pre>
+<p>Or:</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="tidy-evaluation.html#cb102-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="cf">function</span>(df, var) {</span>
+<span id="cb102-2"><a href="tidy-evaluation.html#cb102-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb102-3"><a href="tidy-evaluation.html#cb102-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">enquo</span>(var)  <span class="co"># First, turn var without the suffix into a quoture - must be first</span></span>
+<span id="cb102-4"><a href="tidy-evaluation.html#cb102-4" aria-hidden="true" tabindex="-1"></a>  squared <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">quo_name</span>(x), <span class="st">&quot;squared&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="co"># Must use quo_name()</span></span>
+<span id="cb102-5"><a href="tidy-evaluation.html#cb102-5" aria-hidden="true" tabindex="-1"></a>  squared <span class="ot">&lt;-</span> <span class="fu">as.name</span>(squared) <span class="co"># Wrap with as.name()</span></span>
+<span id="cb102-6"><a href="tidy-evaluation.html#cb102-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-7"><a href="tidy-evaluation.html#cb102-7" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span></span>
+<span id="cb102-8"><a href="tidy-evaluation.html#cb102-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb102-9"><a href="tidy-evaluation.html#cb102-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">Mean =</span> <span class="fu">mean</span>(<span class="sc">!!</span>squared, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb102-10"><a href="tidy-evaluation.html#cb102-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb102-11"><a href="tidy-evaluation.html#cb102-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb102-12"><a href="tidy-evaluation.html#cb102-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-13"><a href="tidy-evaluation.html#cb102-13" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(height)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 1
+##     Mean
+##    &lt;dbl&gt;
+## 1 31595.</code></pre>
+<p>Or:</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="tidy-evaluation.html#cb104-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="cf">function</span>(df, var) {</span>
+<span id="cb104-2"><a href="tidy-evaluation.html#cb104-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb104-3"><a href="tidy-evaluation.html#cb104-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">enquo</span>(var)  <span class="co"># First, turn var without the suffix into a quoture - must be first</span></span>
+<span id="cb104-4"><a href="tidy-evaluation.html#cb104-4" aria-hidden="true" tabindex="-1"></a>  squared <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">quo_name</span>(x), <span class="st">&quot;squared&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="co"># Must use quo_name()</span></span>
+<span id="cb104-5"><a href="tidy-evaluation.html#cb104-5" aria-hidden="true" tabindex="-1"></a>  squared <span class="ot">&lt;-</span> rlang<span class="sc">::</span><span class="fu">parse_quosure</span>(squared) <span class="co"># Wrap with parse_quosure</span></span>
+<span id="cb104-6"><a href="tidy-evaluation.html#cb104-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-7"><a href="tidy-evaluation.html#cb104-7" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span></span>
+<span id="cb104-8"><a href="tidy-evaluation.html#cb104-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb104-9"><a href="tidy-evaluation.html#cb104-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">Mean =</span> <span class="fu">mean</span>(<span class="sc">!!</span>squared, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb104-10"><a href="tidy-evaluation.html#cb104-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb104-11"><a href="tidy-evaluation.html#cb104-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb104-12"><a href="tidy-evaluation.html#cb104-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-13"><a href="tidy-evaluation.html#cb104-13" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(height)</span></code></pre></div>
+<pre><code>## Warning: `parse_quosure()` is deprecated as of rlang 0.2.0.
+## Please use `parse_quo()` instead.
+## This warning is displayed once per session.</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##     Mean
+##    &lt;dbl&gt;
+## 1 31595.</code></pre>
+</div>
+<div id="grouping-by-all-columns-in-the-data-frame" class="section level4" number="3.10.5.3">
+<h4><span class="header-section-number">3.10.5.3</span> Grouping by all columns in the data frame</h4>
+<p>Ran into this situation while checking for duplicate rows in APS data (DETECT pilot test)</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="tidy-evaluation.html#cb107-1" aria-hidden="true" tabindex="-1"></a>starwars_2 <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>films, <span class="sc">-</span>vehicles, <span class="sc">-</span>starships) <span class="co"># Remove list columns</span></span>
+<span id="cb107-2"><a href="tidy-evaluation.html#cb107-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-3"><a href="tidy-evaluation.html#cb107-3" aria-hidden="true" tabindex="-1"></a>starwars_2 <span class="sc">%&gt;%</span> </span>
+<span id="cb107-4"><a href="tidy-evaluation.html#cb107-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="fu">names</span>(starwars)) <span class="sc">%&gt;%</span> </span>
+<span id="cb107-5"><a href="tidy-evaluation.html#cb107-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb107-6"><a href="tidy-evaluation.html#cb107-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb107-7"><a href="tidy-evaluation.html#cb107-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb107-8"><a href="tidy-evaluation.html#cb107-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(n)</span></code></pre></div>
+<pre><code>## Error: Problem adding computed columns in `group_by()`.
+## x Problem with `mutate()` input `..1`.
+## ℹ `..1 = names(starwars)`.
+## ℹ `..1` must be size 87 or 1, not 16.</code></pre>
+<p>Fix: In this case, we could have used the built-in group_by_all</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="tidy-evaluation.html#cb109-1" aria-hidden="true" tabindex="-1"></a>starwars_2 <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>films, <span class="sc">-</span>vehicles, <span class="sc">-</span>starships) <span class="co"># Remove list columns</span></span>
+<span id="cb109-2"><a href="tidy-evaluation.html#cb109-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-3"><a href="tidy-evaluation.html#cb109-3" aria-hidden="true" tabindex="-1"></a>starwars_2 <span class="sc">%&gt;%</span> </span>
+<span id="cb109-4"><a href="tidy-evaluation.html#cb109-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by_all</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb109-5"><a href="tidy-evaluation.html#cb109-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb109-6"><a href="tidy-evaluation.html#cb109-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb109-7"><a href="tidy-evaluation.html#cb109-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb109-8"><a href="tidy-evaluation.html#cb109-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(n)</span></code></pre></div>
+<pre><code>## # A tibble: 0 x 1
+## # … with 1 variable: n &lt;int&gt;</code></pre>
+<p>And, there are no duplicates.</p>
+<p>Another, more general solution for using all column names is:</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="tidy-evaluation.html#cb111-1" aria-hidden="true" tabindex="-1"></a>starwars_2 <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>films, <span class="sc">-</span>vehicles, <span class="sc">-</span>starships) <span class="co"># Remove list columns</span></span>
+<span id="cb111-2"><a href="tidy-evaluation.html#cb111-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-3"><a href="tidy-evaluation.html#cb111-3" aria-hidden="true" tabindex="-1"></a>my_cols <span class="ot">&lt;-</span> starwars_2 <span class="sc">%&gt;%</span> <span class="fu">names</span>() <span class="sc">%&gt;%</span> rlang<span class="sc">::</span><span class="fu">syms</span>()</span>
+<span id="cb111-4"><a href="tidy-evaluation.html#cb111-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-5"><a href="tidy-evaluation.html#cb111-5" aria-hidden="true" tabindex="-1"></a>starwars_2 <span class="sc">%&gt;%</span> </span>
+<span id="cb111-6"><a href="tidy-evaluation.html#cb111-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="sc">!!!</span>my_cols) <span class="sc">%&gt;%</span> <span class="co"># Remember to use splice &#39;!!!&#39;</span></span>
+<span id="cb111-7"><a href="tidy-evaluation.html#cb111-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb111-8"><a href="tidy-evaluation.html#cb111-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb111-9"><a href="tidy-evaluation.html#cb111-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb111-10"><a href="tidy-evaluation.html#cb111-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(n)</span></code></pre></div>
+<pre><code>## # A tibble: 0 x 1
+## # … with 1 variable: n &lt;int&gt;</code></pre>
+<p><a href="#top">top</a></p>
+</div>
+</div>
+</div>
+<div id="example-i-created-for-steph-yap" class="section level2" number="3.11">
+<h2><span class="header-section-number">3.11</span> Example I created for Steph Yap</h2>
+<p>Need to clean this up, but I don’t have time now.</p>
+<p><strong>Here is a worked example using some toy data</strong></p>
+<p>aps_cleaned &lt;- tibble(
+case_num = 1:3,
+valid_physical_neglect = c(0, 1, 0),
+valid_sexual_abuse = 0
+)
+discrepancies_valid_physical_neglect &lt;-tibble(
+case_num = 1,
+valid_physical_neglect = 1
+)
+discrepancies_valid_sexual_abuse &lt;- tibble(
+case_num = 3,
+valid_sexual_abuse = 1
+)</p>
+<p><strong>Create the function</strong></p>
+<p>Here is a refernce to help with the tidy evaluation stuff: <a href="https://dplyr.tidyverse.org/articles/programming.html" class="uri">https://dplyr.tidyverse.org/articles/programming.html</a></p>
+<p>join_aps &lt;- function(.data = aps_cleaned, join_df, valid_col) {
+# Create column names to use in the code below
+col_x &lt;- sym(paste0(quo_name(enquo(valid_col)), “.x”))
+col_y &lt;- sym(paste0(quo_name(enquo(valid_col)), “.y”))</p>
+<p>.data %&gt;%
+left_join(join_df, by = “case_num”) %&gt;%
+mutate(
+"{{valid_col}}_cleaned" := if_else(
+is.na({{ col_y }}), {{ col_x }}, {{ col_y }}
+)
+)
+}</p>
+<p><strong>Test function</strong></p>
+<p>aps_cleaned %&gt;%
+join_aps(discrepancies_valid_physical_neglect, valid_physical_neglect)</p>
+</div>
+<div id="other" class="section level2" number="3.12">
+<h2><span class="header-section-number">3.12</span> Other questions / notes / reminders</h2>
+<ul>
+<li><p>Go back and add more basic information about rlang::sym() and some of the other rlang functions</p></li>
+<li><p>There is also some function to see what is going on “under the hood.” I don’t recall what it is right now, but I should probably discuss it as well.</p></li>
+</ul>
+<!--
+Clean up and add session info
+-->
+<pre><code>## R version 4.1.0 (2021-05-18)
+## Platform: x86_64-apple-darwin17.0 (64-bit)
+## Running under: macOS Big Sur 10.16
+## 
+## Matrix products: default
+## BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+## [1] purrr_0.3.4 tidyr_1.1.3 dplyr_1.0.6
+## 
+## loaded via a namespace (and not attached):
+##  [1] rstudioapi_0.13   knitr_1.33        magrittr_2.0.1    tidyselect_1.1.1 
+##  [5] R6_2.5.0          rlang_0.4.11      fansi_0.5.0       stringr_1.4.0    
+##  [9] highr_0.9         tools_4.1.0       xfun_0.23         utf8_1.2.1       
+## [13] cli_2.5.0         DBI_1.1.1         jquerylib_0.1.4   ellipsis_0.3.2   
+## [17] htmltools_0.5.1.1 assertthat_0.2.1  yaml_2.2.1        digest_0.6.27    
+## [21] tibble_3.1.2      lifecycle_1.0.0   crayon_1.4.1      bookdown_0.22    
+## [25] sass_0.4.0        vctrs_0.3.8       glue_1.4.2        evaluate_0.14    
+## [29] rmarkdown_2.8     stringi_1.6.2     compiler_4.1.0    bslib_0.2.5.1    
+## [33] pillar_1.6.1      generics_0.1.0    jsonlite_1.7.2    pkgconfig_2.0.3</code></pre>
+
+</div>
+</div>
+
+
+
+
+</div>
+
+
+
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="creating-rmd-templates.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="arranging-columns-with-across.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>

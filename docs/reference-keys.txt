@@ -86,3 +86,9 @@ modify-index.rmd
 creating-bookdown-chapters
 knitting-the-book
 errors-and-warnings
+flexdashboard
+overview-4
+useful-websites-4
+load-packages-1
+tips
+simulate-data-1

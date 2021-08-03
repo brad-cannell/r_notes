@@ -1,0 +1,89 @@
+# Language for publications
+
+<!--
+Hidden comments placeholder
+-->
+
+```{r, echo=FALSE}
+knitr::include_graphics("https://picsum.photos/200/300")
+```
+
+## ⭐️Overview
+
+This chapter is about language I often need to use and adapt for peer reviewed publications.
+
+
+## 🌎Useful websites
+
+* [R.Version](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Version.html)   
+* [Cite R and R packages](https://www.blopig.com/blog/2013/07/citing-r-packages-in-your-thesispaperassignments/#:~:text=citation()%20To%20cite%20R,R%2Dproject.org%2F.)   
+
+
+## 📦Load packages
+
+```{r message=FALSE}
+library(tidyverse, warn.conflicts = FALSE)
+library(freqtables)
+library(meantables)
+```
+
+
+## Statistical software
+
+In manuscripts, I often want to say something about the software I used to conduct the statistical analyses. Here is an example.
+
+### R
+
+> Statistical analyses were conducted using R version 4.1.0 (R Core Team, 2021) in RStudio version 1.4.1717 (RStudio Team, 2021) with the following packages: tidyverse (Wickham et al., 2019), freqtables (Cannell, 2020), meantables (Cannell, 2020).
+
+The functions below can be used to get citations and version numbers.
+
+```{r}
+citation()
+```
+
+```{r}
+R.Version()$version.string
+```
+
+```{r error=TRUE}
+# Won't run when I build book, but this is how you get the RStudio version number
+rstudioapi::versionInfo()
+```
+
+
+```{r}
+citation("tidyverse")
+```
+
+```{r}
+citation("freqtables")
+```
+
+### Stata
+
+> All analyses were conducted using Stata 13 (StataCorp, 2013)
+
+### SAS 
+
+> All analyses were completed with SAS version 9.4 (SAS Institute, Cary, NC). 
+
+## IRB
+
+> The Committee for the Protection of Human Subjects at the University of Texas Health Science Center approved this project.
+
+> The design and conduct of this study was reviewed and approved by the Committee for the Protection of Human Subjects at the University of Texas Health Science Center at Houston.
+
+> The University of Florida’s IRB approved the use of de-identified data to conduct this analysis.
+
+<!--
+Clean up and add session info
+-->
+
+```{r echo=FALSE}
+rm(list = ls())
+```
+
+```{r echo=FALSE}
+sessionInfo()
+```

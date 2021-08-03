@@ -113,3 +113,12 @@ useful-websites-5
 load-packages-2
 tips
 simulate-data-2
+language-for-publications
+overview-6
+useful-websites-6
+load-packages-3
+statistical-software
+r
+stata
+sas
+irb

@@ -1,0 +1,11 @@
+# =============================================================================
+# dev folder notes
+# Created: 2021-09-01
+# =============================================================================
+
+Why create the dev folder?
+Sometimes note ideas will come to me while I’m working on a project, but I won’t have time to complete them right at that time. Of course, there are still files in the old R notes folder that need to be moved over to the R Notes bookdown project, but I’m going to put new partial notes in the dev folder.
+
+Link to task list on GitHub: https://github.com/brad-cannell/r_notes/projects/1
+
+Add unfinished notes to the task list above.

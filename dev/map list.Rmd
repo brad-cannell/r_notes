@@ -1,0 +1,69 @@
+---
+title: "Map lists"
+---
+
+Add to R Notes
+
+Is there a way to turn a list of data frames into a big data frame?
+
+```{r}
+cat_stats_list <- cat_cols %>%
+  set_names(cat_cols) %>%
+  map(~ cat_stats_fn(v1_use_app, use_app_f, !! sym(.x)))
+```
+
+```{r}
+cat_stats_list$have_data_plan_f <- v1_use_app %>%
+  filter(!is.na(have_data_plan_f)) %>%
+  cat_stats_fn(use_app_f, have_data_plan_f)
+```
+
+```{r}
+cont_stats_list <- cont_cols %>%
+  set_names(cont_cols) %>%
+  map(~ cont_stats_fn(v1_use_app, use_app_f, !! sym(.x)))
+```
+
+# Bind together categorical and continuous stats
+
+```{r}
+bind_rows(cat_stats_list)
+```
+
+
+```{r}
+cont_stats_list$age %>%
+  bind_rows(cat_stats_list$gender_f) %>%
+  bind_rows(cat_stats_list$race_eth_4_cat_f) %>%
+  bind_rows(cat_stats_list$high_school_grad_f) %>%
+  bind_rows(cat_stats_list$employ_5_cat_f) %>%
+  bind_rows(cat_stats_list$genhealth_f) %>%
+  bind_rows(cat_stats_list$ment_health_treat_f) %>%
+  bind_rows(cont_stats_list$lifetime_homeless) %>%
+  bind_rows(cont_stats_list$lifetime_jail) %>%
+  bind_rows(cat_stats_list$have_mobile_f) %>%
+  bind_rows(cat_stats_list$have_data_plan_f)
+```
+
+```{r}
+bind_rows(
+  cont_stats_list$age, 
+  cat_stats_list$gender_f, 
+  cat_stats_list$race_eth_4_cat_f,
+  cat_stats_list$high_school_grad_f,
+  cat_stats_list$employ_5_cat_f,
+  cat_stats_list$genhealth_f,
+  cat_stats_list$ment_health_treat_f,
+  cont_stats_list$lifetime_homeless,
+  cont_stats_list$lifetime_jail,
+  cat_stats_list$have_mobile_f,
+  cat_stats_list$have_data_plan_f
+)
+```
+
+# Left off here...
+
+
+This was works, but so much repetition. Let's add it to R Notes just in case. May even want to add using `set_names()` to name the list created by `map()` to the purrr chapter.
+
+https://stackoverflow.com/questions/43935160/use-input-of-purrrs-map-function-to-create-a-named-list-as-output-in-r

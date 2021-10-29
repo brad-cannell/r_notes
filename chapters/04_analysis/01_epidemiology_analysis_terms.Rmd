@@ -1,0 +1,51 @@
+# Epidemiology Analysis Terms
+
+<!--
+Hidden comments placeholder
+-->
+
+```{r random-pic-from-url, echo=FALSE}
+knitr::include_graphics("https://picsum.photos/200/300")
+```
+
+## ⭐️Overview
+
+There are so many terms in epidemiology that are used inconsistently. This note is supposed to help keep track of them all.
+
+## 🌎Useful websites
+
+* https://stackoverflow.com/
+
+## 📖Terms
+
+### General Terms
+
+<p class="note"> 🗒**Side Note:** At some point, you may want to improve the organization of this note and/or add some graphics. </p>
+
+*Cohort*. A group of persons for whom membership is defined in a permanent fashion, or a population in which membership is determined by satisfying a set of defining events and so becomes permanent. An example of a cohort would be the members of the graduating class of a school in a given year... With this definition, the members of any cohort constitute a closed population along the time axis in which the chronologically last defining event (e.g., birth with Down syndrome or study recruitment) is taken as the index time. @Lash2021-rz
+
+*Closed population*. A closed population adds no new members over time and loses members only to death. @Lash2021-rz
+
+*Open population*. Open populations may gain members over time, through immigration or birth, or lose members over time through emigration or death. @Lash2021-rz Think of a population defined by a geographic area or political boundary.
+
+### Basic quantities
+
+*Odds*. 
+
+*Proportion*.
+
+*Percentage*.
+
+*Ratio*.
+
+<!--
+Clean up and add session info
+-->
+
+```{r echo=FALSE}
+rm(list = ls())
+```
+
+```{r echo=FALSE}
+sessionInfo()
+```

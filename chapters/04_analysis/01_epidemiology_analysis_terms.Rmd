@@ -1,7 +1,7 @@
 # Epidemiology Analysis Terms
 
 <!--
-Hidden comments placeholder
+I'm not in love with this title. May want to change it in the future.
 -->
 
 ```{r random-pic-from-url, echo=FALSE}

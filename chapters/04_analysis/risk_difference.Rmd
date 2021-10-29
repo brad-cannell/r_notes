@@ -1,7 +1,7 @@
 # Risk Difference
 
 <!--
-Hidden comments placeholder
+Risk difference may be too narrow for a chapter. At some point, I will probably change this note to measures of disease occurance. I just don't have time to do it tonight.
 -->
 
 ```{r random-pic-from-url, echo=FALSE}
@@ -18,12 +18,15 @@ How do you interpret an attributable risk? <https://sphweb.bumc.bu.edu/otlt/mph-
 
 ## 🌎Useful websites
 
--   [Boston University](https://sphweb.bumc.bu.edu/otlt/mph-modules/ep/ep713_association/ep713_association_print.html)
+* Then note on [Contingency Tables]
+
+* [Boston University](https://sphweb.bumc.bu.edu/otlt/mph-modules/ep/ep713_association/ep713_association_print.html)
 
 ## 📦Load packages
 
 ```{r message=FALSE}
 library(dplyr, warn.conflicts = FALSE)
+library(ggplot2)
 ```
 
 Using an example from the [Boston University website](https://sphweb.bumc.bu.edu/otlt/mph-modules/ep/ep713_association/ep713_association_print.html):
@@ -41,28 +44,37 @@ Consider the following example regarding the management of Hodgkin lymphoma, a c
 
 ## 🔢Simulate data
 
-First, simulate the data as a 2x2 contingency table.
+First, simulate the data as a 2x2 contingency table. Here, we will experiment with structuring the contingency table in a few different ways. 
+
+### Simulate a matrix object
+
+
+
+### Simulate a table object
 
 ```{r}
-# First, make a Matrix
-crosstab <- matrix(
-  c(a = 7, b = 124, c = 1, d = 78),
-  ncol = 2,
-  byrow = TRUE
-)
-# Add names to make the crosstab more readable
-rownames(crosstab) <- c("Appendectomy", "No Appendectomy")
-colnames(crosstab) <- c("Infection", "No Infection")
 
-# Convert matrix to table
-crosstab <- as.table(crosstab)
+```
+
+
+```{r}
+crosstab <- as.table(crosstab_mat)
 
 # Add margins
 crosstab <- addmargins(crosstab)
 crosstab
 ```
 
-Let's also play around with simulating a tibble.
+### Simulate a base R data frame
+
+```{r}
+crosstab_df <- as.data.frame(crosstab_mat)
+crosstab_df
+```
+
+### Simulate a tibble
+
+Unlike the other objects, this object won't have the standard contingency table layout. 
 
 ```{r}
 tbl <- tribble(
@@ -85,6 +97,46 @@ tbl %>%
 
 ## 📈Analysis
 
+### Incidence proportion
+
+Before calculating any other measures of occurrence, we first need to calculate the incidence proportion in each exposure group. 
+
+#### Matrix
+
+```{r}
+crosstab_mat <- cbind(crosstab_mat, rowsum = rowSums(crosstab_mat))
+crosstab_mat
+```
+
+```{r}
+ip_mat <- crosstab_mat[, "Infection"] / crosstab_mat[, "rowsum"]
+crosstab_mat <- cbind(crosstab_mat, ip_mat)
+crosstab_mat
+```
+
+#### Table
+
+```{r}
+ip_tab <- crosstab[, "Infection"] / crosstab[, "Sum"]
+crosstab <- cbind(crosstab, ip_tab)
+crosstab
+```
+
+#### data frame
+
+```{r}
+crosstab_df <- crosstab_df %>% 
+  mutate(
+    rowsum = rowSums(crosstab_df),
+    ip_df = `Infection` / rowsum
+  )
+
+crosstab_df
+```
+
+#### Tibble
+
+
 ### Risk Differences
 
 Instead of comparing two measures of disease frequency by calculating their ratio, one can compare them in terms of their absolute difference. The risk difference is calculated by subtracting the cumulative incidence in the unexposed group (or least exposed group) from the cumulative incidence in the group with the exposure. 
@@ -92,6 +144,29 @@ Instead of comparing two measures of disease frequency by calculating their rati
 $$ \text{Risk Difference (RD)} = CI_e - CI_u $$
 
 where ($CI_e$) = cumulative incidence among the exposed subjects, and ($CI_u$) is the cumulative incidence among unexposed subjects.
+
+The risk difference focuses on absolute effect of the risk factor, or the excess risk of disease in those who have the factor compared with those who don't. Recall that in the wound infection study, the cumulative incidence of infection was 5.3% in the incidental appendectomy group, and only 1.3% in the group without appendectomies. The risk ratio was 4.2, but we can also compute the absolute difference, which is 5.3 / 100 - 1.3 / 100 = 4 per 100 excess wound infections among those who had the incidental appendectomy. $CI_$u provides an estimate of the baseline risk (i.e., in the absence of the exposure), and the exposure factor imposes an additional (excess) risk on top of that.
+
+<p class="note"> 🗒**Side Note:** Modern Epidemiology 4th edition uses the term incience proportion instead of cumulative incidence. @Lash2021-rz </p>
+
+```{r}
+tibble(
+  appendectomy = factor(c("No", "No", "Yes", "Yes")),
+  base_rate = c("Yes", "No", "Yes", "No"),
+  incidence = c(1.3, 0.0, 1.3, 4.0) 
+) %>% 
+ggplot() +
+  geom_col(aes(x = appendectomy, y = incidence, fill = base_rate)) +
+  scale_fill_manual(values = c("red", "gray")) +
+  labs(
+    x = "Had Incidental Appendectomy",
+    y = "Wound Infection Incidence per 100"
+  ) +
+  theme_classic() +
+  theme(legend.position = "none") 
+```
+
+<p class="note"> 🗒**Side Note:** At some point, come back and annotate this to match the figure [here](https://sphweb.bumc.bu.edu/otlt/mph-modules/ep/ep713_association/ep713_association_print.html). You may also want to add this to the data visualization note. </p>
 
 <!--
 Clean up and add session info

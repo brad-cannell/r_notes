@@ -1,0 +1,104 @@
+# Contingency Tables
+
+<!--
+Don't forget to add code for converting from a contingency table back into raw data. See the useful websites below. 
+-->
+
+```{r random-pic-from-url, echo=FALSE}
+knitr::include_graphics("https://picsum.photos/200/300")
+```
+
+## ⭐️Overview
+
+In Epi III (and epidemiology in general) we use a lot of contingency tables - especially 2x2 contingency tables. In this note, we play around with several different ways of creating contingency tables and explore the pros and cons of each.
+
+
+## 🌎Useful websites
+
+* [Boston University](https://sphweb.bumc.bu.edu/otlt/mph-modules/ep/ep713_association/ep713_association_print.html)
+
+* [Tables in R – A quick practical overview](https://cran.r-project.org/web/packages/DescTools/vignettes/TablesInR.pdf). By Andri Signorell.
+
+* [Stack Overflow: Repeat each row of data.frame the number of times specified in a column](https://stackoverflow.com/questions/2894775/repeat-each-row-of-data-frame-the-number-of-times-specified-in-a-column)
+
+* [Cookbook for R](https://www.bookstack.cn/read/cookbook-r-en/781d02230715aca4.md)
+
+
+## 📦Load packages
+
+```{r message=FALSE}
+library(dplyr, warn.conflicts = FALSE)
+```
+
+
+## Scenario
+
+This scenario is borrowed from the [Boston University](https://sphweb.bumc.bu.edu/otlt/mph-modules/ep/ep713_association/ep713_association_print.html) website. 
+
+Data Summary
+
+Consider the following example regarding the management of Hodgkin lymphoma, a cancer of the lymphatic system. Years ago when a patient was diagnosed with Hodgkin Disease, they would frequently undergo a surgical procedure called a "staging laparotomy." The purpose of the staging laparotomy was to determine the extent to which the cancer had spread, because this was important information for determining the patient's prognosis and optimizing treatment. At times, the surgeons performing this procedure would also remove the patient's appendix, not because it was inflamed; it was done "incidentally" in order to ensure that the patient never had to worry about getting appendicitis. However, performing an appendectomy requires transecting it, and this has the potential to contaminate the abdomen and the wound edges with bacteria normally contained inside the appendix. Some surgeons felt that doing this "incidental appendectomy" did the patient a favor by ensuring that they would never get appendicitis, but others felt that it meant unnecessarily increasing the patient's risk of getting a post-operative wound infection by spreading around the bacteria that was once inside the appendix. To address this, the surgeons at a large hospital performed a retrospective cohort study. They began by going through the hospital's medical records to identify all subjects who had had a "staging laparotomy performed for Hodgkin." They then reviewed the medical record and looked at the operative report to determine whether the patient had an incidental appendectomy or not. They then reviewed the progress notes, the laboratory reports, the nurses notes, and the discharge summary to determine whether the patient had developed a wound infection during the week after surgery. The investigators reviewed the records of 210 patients who had undergone the staging procedure and found that 131 had also had an incidental appendectomy, while the other 79 had not. The data from that study are summarized in the table below. The numbers in the second and third columns indicate the number of subjects who did or did not develop a post-operative wound infection among those who had the incidental appendectomy (in the "Yes" row) and those who did not have the incidental appendectomy (in the "No" row). For example, the upper left cell indicates that seven of the subjects who had an incidental appendectomy (the exposure of interest) subsequently developed a wound infection. The upper right cell indicates that the other 124 subjects who had an incidental appendectomy did NOT develop a wound infection.
+
+|                              |                 |                    |       |
+|------------------------------|-----------------|--------------------|-------|
+| Had incidental appendectomy? | Wound infection | No wound infection | Total |
+| Yes                          | 7               | 124                | 131   |
+| No                           | 1               | 78                 | 79    |
+| Total                        | 8               | 202                | 210   |
+
+
+## Manually create data
+
+First, we can manually create tibble with one row for each person represented in the data above. Ordinarily, this is how the data would come to us. Then, we can use various different techniques -- some of which are demonstrated below -- to summarize the data as a 2x2 contingency table. In this case, we are working backwards from the data summary to the raw data just to show one way that it can be done. This isn't necessarily a good way to do it, however. Later, we will demonstrate more efficient and less error-prone ways to create raw data from summary tables. 
+
+```{r}
+df <- tibble(
+  appendectomy = factor(c(rep("Yes", 7), rep("Yes", 124), "No", rep("No", 78))),
+  infection    = factor(c(rep("Yes", 7), rep("No", 124), "Yes", rep("No", 78)))
+)
+
+df
+```
+
+
+## Matrix
+
+Create a contingency table using a matrix object. 
+
+```{r}
+matrix <- matrix(
+  c(a = 7, b = 124, c = 1, d = 78),
+  ncol = 2,
+  byrow = TRUE
+)
+
+# Add names to make the matrix more readable
+rownames(matrix) <- c("Appendectomy", "No Appendectomy")
+colnames(matrix) <- c("Infection", "No Infection")
+
+matrix
+```
+
+Adding summary rows/columns to the matrix.
+
+```{r}
+matrix <- cbind(matrix, rowsum = rowSums(matrix))
+matrix <- rbind(matrix, colsum = colSums(matrix))
+matrix
+```
+
+
+
+
+
+<!--
+Clean up and add session info
+-->
+
+```{r echo=FALSE}
+rm(list = ls())
+```
+
+```{r echo=FALSE}
+sessionInfo()
+```

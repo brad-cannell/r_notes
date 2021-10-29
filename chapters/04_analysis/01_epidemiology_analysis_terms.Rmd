@@ -38,6 +38,16 @@ There are so many terms in epidemiology that are used inconsistently. This note 
 
 *Ratio*.
 
+### Measures of occurence
+
+*Incident*. A single occurrence of an outcome of interest. We might also talk about the number of incident cases. 
+
+*Incidence*. 
+
+*Incidence proportion*. 
+
+*Prevalence*. 
+
 <!--
 Clean up and add session info
 -->

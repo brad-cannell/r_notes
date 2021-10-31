@@ -1,8 +1,22 @@
-# Epidemiology Analysis Terms
+# Appendix A: Terms and Definitions
 
 <!--
 I'm not in love with this title. May want to change it in the future.
 -->
+
+
+Need to sort:
+
+Terms to add to R Notes:
+* Probability. Look up
+* Risk. 57, but look up.
+* Incidence time. 58
+* Censoring. 59
+* Person time at risk. 60
+* Incidence rate. 61
+* Inverse time. I think it just means per year, per month, per week, etc. 61
+
+
 
 ```{r random-pic-from-url, echo=FALSE}
 knitr::include_graphics("https://picsum.photos/200/300")
@@ -28,7 +42,7 @@ There are so many terms in epidemiology that are used inconsistently. This note 
 
 *Open population*. Open populations may gain members over time, through immigration or birth, or lose members over time through emigration or death. @Lash2021-rz Think of a population defined by a geographic area or political boundary.
 
-### Basic quantities
+### General statistics terms
 
 *Odds*. 
 

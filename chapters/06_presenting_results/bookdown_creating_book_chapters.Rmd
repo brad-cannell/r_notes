@@ -48,8 +48,7 @@ knitr::include_graphics("img/06_presenting_results/bookdown_creating_book_chapte
 
 * Don't forget to add "echo=FALSE" to the code chunk.
 
-* To cross-reference figures. Name the figure in the code chunk (e.g., `{r console, echo=FALSE})`. Then add `\@ref(fig:console)` to the text.
-  - The figure reference should go outside of punctuation. With a space.
+* Details on cross-referencing figures are given [below](#cr-figs).  
 
 * Every figure doesn't need a caption. It can actually make things look sloppy. The only figures that NEED a caption are those figures that are cross-referenced.
 
@@ -80,52 +79,74 @@ Use unordered lists for these sections. It allows for nested lists and code. Add
 
 ### Cross-referencing figures {#cr-figs}
 
-To cross-reference figures:      
-  1. name the figure in the code chunk (e.g., `{r exampe-bookdown-img, echo=FALSE})`.    
-  2. Then add `\@ref(fig:exampe-bookdown-img)` to the text. 
+To cross-reference figures:
+
+  1. Label the code chunk that contains the figure (e.g., `{r label, echo=FALSE})`.    
+  2. Give the code chunk that contains the figure a caption (e.g., `{r label, echo=FALSE, fig.cap="Some text."})`)
+  2. Then add `\@ref(fig:exampe-bookdown-img)` to the text where you want to cross-reference the figure.   
+
+<p class="warning"> ⚠️**Warning:** The figure reference must go outside of punctuation. With a space. </p>
+
+<p class="warning"> ⚠️**Warning:** If you want to cross-reference figures or tables generated from a code chunk, please make sure the chunk label only contains alphanumeric characters (a-z, A-Z, 0-9), slashes (/), or dashes (-). </p>
+
+<p class="warning"> ⚠️**Warning:** If you want to cross-reference figures or tables generated from a code chunk, you must give the code chunk a caption. </p>
 
 Example:   
-  * The sentence below is written as "As seen in the figure above. `\@ref(fig:exampe-bookdown-img)`"    
-  * As seen in the figure above. \@ref(fig:exampe-bookdown-img)
 
-<p class="warning"> ⚠️**Warning:** he figure reference must go outside of punctuation. With a space. </p>
+  * The sentence below is written as "As seen in the figure below. `\@ref(fig:paperpile)`"    
+  * As seen in the figure below. \@ref(fig:paperpile)
 
 ### Cross-referencing chapters
 
 There are a couple different ways you can cross-reference other chapters or other sections of the book. This is adapted from Jenny Bryan's [Happy Git and GitHub for the useR](https://happygitwithr.com/bookdown-cheat-sheet.html) book.
 
-*Method 1.* You can add a CSS id the behind the header using a hashtag inside curly braces (i.e., `{#id}`). Later, you can reference that section by writing the hash id inside parentheses (i.e., `[some text to link](#id)`). Alternatively, you can use the `\@ref(#id)` format to make the cross-reference appear as a linked chapter/section number rather than linked text. 
+#### Method 1.
+
+You can add a CSS id the behind the header using a hashtag inside curly braces (i.e., `{#id}`). Later, you can reference that section by writing the hash id inside parentheses (i.e., `[some text to link](#id)`).  
 
 Method 1 is a good method when the section name is difficult or unwieldy to write out. It may also just be a good idea when you know ahead of time that you will want to cross-reference a section.     
 
 Example:    
+
   * I added the CSS id `{#cr-figs}` to the section above called "Cross-referencing figures".   
   * The sentence below is written as "`See the section above on [cross-referencing figures](#cr-figs)`".   
   * See the section above on [cross-referencing figures](#cr-figs).   
   
-*Method 2.* You can add a CSS id the behind the header using a hashtag inside curly braces (i.e., `{#id}`). Later, you can use the `\@ref(#id)` format to make the cross-reference appear as a linked chapter/section number rather than linked text. 
+#### Method 2
+
+You can add a CSS id the behind the header using a hashtag inside curly braces (i.e., `{#id}`). Later, you can use the `\@ref(#id)` format to make the cross-reference appear as a linked chapter/section number rather than linked text. 
 
 Method 1 & 2 are good methods when the section name is difficult or unwieldy to write out. They may also just be a good idea when you know ahead of time that you will want to cross-reference a section. The difference is really just a matter of style.     
   
 Example:    
+
   * I added the CSS id `{#cr-figs}` to the section above called "Cross-referencing figures".   
-  * The sentence below is written as "`See the section \@ref(#cr-figs) above about cross-referencing figures.`".   
-  * See the section \@ref(#cr-figs) above about cross-referencing figures.    
+  * The sentence below is written as "`See the section \@ref(cr-figs) above about cross-referencing figures.`".   
+  * See the section \@ref(cr-figs) above about cross-referencing figures.    
+  * Notice that I did NOT include the hashtag symbol when referencing the section.   
   
-*Method 3.* Simply write out the chapter/section header name inside square brackets (i.e., `[Section header name]` to create a text link to the chapter/section header. 
+#### Method 3
+
+Simply write out the chapter/section header name inside square brackets (i.e., `[Section header name]` to create a text link to the chapter/section header. 
 
 Example:    
-  * This section is titled "Cross-references".       
-  * The sentence below is written as "`See the section \@ref(#cr-figs) above about cross-referencing figures.`".   
-  * See the [cross-references] section above.    
-  * Make sure to capitalize first letter when cross-referencing the chapter by name.
 
-# How to use odds ratios {#ors}
-  - Refer to it like this: The the [chapter on odds ratios](#ors)
-  - Capitalize first letter when cross-referencing the chapter by name -- the Let's get programming chapter. Written as "the [Let's get programming] chapter."  
-  - Don't capitalize the first letter when describing the contents of a chapter in the cross-reference -- the chapter on exporting data. Written as "We were first introduced to [factor vectors][Factor vectors] in the chapter.."
+  * This section is titled "Cross-references".       
+  * The sentence below is written as "`See the [cross-references] section above.`".   
+  * See the [cross-references] section above.    
   
+<p class="warning"> ⚠️**Warning:** When using the chapter/section name inside square brackets, make sure to replace spaces with dashes (-). </p>
   
+#### Method 4
+
+Write out some text that you want linked to the chapter/section header inside of square brackets, then immediately follow it with the chapter/section header name inside square brackets (i.e., `[linked text][Section header name]` to create a text link to the chapter/section header. 
+
+Example:    
+
+  * This section is titled "Cross-references".       
+  * The sentence below is written as "`See the [section above on cross-referencing][Cross-references]`".   
+  * See the [section above on cross-referencing][Cross-references].    
+
 ## Citations
 
 For more details, see [Yihui Xie's Bookdown book](https://bookdown.org/yihui/bookdown/citations.html).
@@ -136,7 +157,7 @@ For more details, see [Yihui Xie's Bookdown book](https://bookdown.org/yihui/boo
 4. Click the drop-down arrow next to the "Cite" button.   
 5. Click the BibTeX option. This will copy a BibTeX citation to your clipboard.    
 
-```{r echo=FALSE}
+```{r paperpile, echo=FALSE, fig.cap="A screenshot of selecting BibTex in PaperPile."}
 knitr::include_graphics("img/06_presenting_results/bookdown_creating_book_chapters/paperpile.png")
 ```
 

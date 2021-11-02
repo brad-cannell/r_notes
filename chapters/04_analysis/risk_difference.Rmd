@@ -50,7 +50,7 @@ First, simulate the data as a 2x2 contingency table. Here, we will experiment wi
 
 ### Simulate a matrix object
 
-# 🔴 Left off here... 
+## 🔴 Left off here... 
 I'm trying to move all the different ways for creating a contingency table over to it's own note -- contingency_tables.Rmd. You can test out and document all the pros and cons of each method there. Then, come back and just use the best one here, where the focus should be on measures of occurrence, not creating contingency tables. You can (and probably should) link to that note here [contingency tables]. 
 
 ```{r}

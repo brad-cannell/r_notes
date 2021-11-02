@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>10 Bookdown: Quick Start | R Notes</title>
+  <title>8 Risk Difference | R Notes</title>
   <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="10 Bookdown: Quick Start | R Notes" />
+  <meta property="og:title" content="8 Risk Difference | R Notes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://brad-cannell.github.io/r_notes/" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="brad-cannell/r_notes" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="10 Bookdown: Quick Start | R Notes" />
+  <meta name="twitter:title" content="8 Risk Difference | R Notes" />
   
   <meta name="twitter:description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="book-chapters.html"/>
-<link rel="next" href="flexdashboard.html"/>
+<link rel="prev" href="effect-measure-modification.html"/>
+<link rel="next" href="book-chapters.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -408,244 +408,209 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="bookdown-quick-start" class="section level1" number="10">
-<h1><span class="header-section-number">10</span> Bookdown: Quick Start</h1>
+<div id="risk-difference" class="section level1" number="8">
+<h1><span class="header-section-number">8</span> Risk Difference</h1>
 <!--
-Hidden comments placeholder
+Hidden notes. 
 -->
-<div id="overview-7" class="section level2" number="10.1">
-<h2><span class="header-section-number">10.1</span> ⭐️Overview</h2>
-<p>Document the process of creating a bookdown book. Think of it as a quick start guide.</p>
-<p>Complete documentation at: <a href="https://bookdown.org/yihui/bookdown/" class="uri">https://bookdown.org/yihui/bookdown/</a></p>
+<p class="note">
+🗒<strong>Side Note:</strong> Risk difference may be too narrow for a chapter. At some point, I will probably change this note to measures of disease occurrence. I just don’t have time to do it tonight.
+</p>
+<p><img src="https://picsum.photos/200/300" /><!-- --></p>
+<div id="overview-6" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> ⭐️Overview</h2>
+<p>This chapter is about calculating and interpreting risk differences.</p>
+<p>Are a risk difference in an attributable risk the same thing? Yes, but attributable risk is an older term and it’s use is discouraged. <a href="https://sphweb.bumc.bu.edu/otlt/mph-modules/ep/ep713_association/ep713_association_print.html" class="uri">https://sphweb.bumc.bu.edu/otlt/mph-modules/ep/ep713_association/ep713_association_print.html</a></p>
+<p>How do you interpret an attributable risk? <a href="https://sphweb.bumc.bu.edu/otlt/mph-modules/ep/ep713_association/ep713_association_print.html" class="uri">https://sphweb.bumc.bu.edu/otlt/mph-modules/ep/ep713_association/ep713_association_print.html</a></p>
 </div>
-<div id="useful-websites-7" class="section level2" number="10.2">
-<h2><span class="header-section-number">10.2</span> 🌎Useful websites</h2>
+<div id="useful-websites-6" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> 🌎Useful websites</h2>
 <ul>
-<li><a href="https://bookdown.org/yihui/bookdown/">Yihui Xie’s Bookdown book</a></li>
+<li><p>Then note on <a href="contingency-tables.html#contingency-tables">Contingency Tables</a></p></li>
+<li><p><a href="https://sphweb.bumc.bu.edu/otlt/mph-modules/ep/ep713_association/ep713_association_print.html">Boston University</a></p></li>
 </ul>
 </div>
-<div id="creating-the-bookdown-project-locally" class="section level2" number="10.3">
-<h2><span class="header-section-number">10.3</span> Creating the bookdown project locally</h2>
-<ol style="list-style-type: decimal">
-<li><p>Start by clicking New Project -&gt; New Directory -&gt; Book project using Bookdown.</p></li>
-<li><p>Add a NOTES file and add it to <code>.gitignore</code> and <code>.Rbuildignore</code> using <code>usethis</code>:</p>
-<ul>
-<li><code>usethis::use_build_ignore("NOTES")</code><br />
-</li>
-<li><code>usethis::use_git_ignore("NOTES")</code></li>
-</ul></li>
-<li><p>Delete all Rmd files except <code>index.Rmd</code></p></li>
-<li><p>Create a folder named <em>chapters</em>.</p></li>
-<li><p>Edit the README file. It can say whatever you want it to. For examples, see here:</p>
-<ul>
-<li><a href="https://github.com/brad-cannell/r4epi" class="uri">https://github.com/brad-cannell/r4epi</a><br />
-</li>
-<li><a href="https://github.com/brad-cannell/r_notes" class="uri">https://github.com/brad-cannell/r_notes</a><br />
-</li>
-<li><a href="https://creativecommons.org/licenses/">Use this website to create a creative commons license</a></li>
-</ul></li>
-<li><p>Add a license file to the project’s root directory. Here is an example.</p></li>
-</ol>
-<p>This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. To view a copy of this license, visit <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" class="uri">http://creativecommons.org/licenses/by-nc-nd/4.0/</a> or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.</p>
+<div id="load-packages-4" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> 📦Load packages</h2>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="risk-difference.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb204-2"><a href="risk-difference.html#cb204-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<p>Using an example from the <a href="https://sphweb.bumc.bu.edu/otlt/mph-modules/ep/ep713_association/ep713_association_print.html">Boston University website</a>:</p>
+<p>Data Summary</p>
+<p>Consider the following example regarding the management of Hodgkin lymphoma, a cancer of the lymphatic system. Years ago when a patient was diagnosed with Hodgkin Disease, they would frequently undergo a surgical procedure called a “staging laparotomy.” The purpose of the staging laparotomy was to determine the extent to which the cancer had spread, because this was important information for determining the patient’s prognosis and optimizing treatment. At times, the surgeons performing this procedure would also remove the patient’s appendix, not because it was inflamed; it was done “incidentally” in order to ensure that the patient never had to worry about getting appendicitis. However, performing an appendectomy requires transecting it, and this has the potential to contaminate the abdomen and the wound edges with bacteria normally contained inside the appendix. Some surgeons felt that doing this “incidental appendectomy” did the patient a favor by ensuring that they would never get appendicitis, but others felt that it meant unnecessarily increasing the patient’s risk of getting a post-operative wound infection by spreading around the bacteria that was once inside the appendix. To address this, the surgeons at a large hospital performed a retrospective cohort study. They began by going through the hospital’s medical records to identify all subjects who had had a “staging laparotomy performed for Hodgkin.” They then reviewed the medical record and looked at the operative report to determine whether the patient had an incidental appendectomy or not. They then reviewed the progress notes, the laboratory reports, the nurses notes, and the discharge summary to determine whether the patient had developed a wound infection during the week after surgery. The investigators reviewed the records of 210 patients who had undergone the staging procedure and found that 131 had also had an incidental appendectomy, while the other 79 had not. The data from that study are summarized in the table below. The numbers in the second and third columns indicate the number of subjects who did or did not develop a post-operative wound infection among those who had the incidental appendectomy (in the “Yes” row) and those who did not have the incidental appendectomy (in the “No” row). For example, the upper left cell indicates that seven of the subjects who had an incidental appendectomy (the exposure of interest) subsequently developed a wound infection. The upper right cell indicates that the other 124 subjects who had an incidental appendectomy did NOT develop a wound infection.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>Had incidental appendectomy?</td>
+<td>Wound infection</td>
+<td>No wound infection</td>
+<td>Total</td>
+</tr>
+<tr class="even">
+<td>Yes</td>
+<td>7</td>
+<td>124</td>
+<td>131</td>
+</tr>
+<tr class="odd">
+<td>No</td>
+<td>1</td>
+<td>78</td>
+<td>79</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td>8</td>
+<td>202</td>
+<td>210</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="initiate-a-git-repository" class="section level2" number="10.4">
-<h2><span class="header-section-number">10.4</span> Initiate a git repository</h2>
-<p>You need to do this in order to connect to GitHub, and you need to connect to GitHub before editing some of the books configuration files because you will need to add links to the repository.</p>
-<ol style="list-style-type: decimal">
-<li>Type “usethis::use_git(message =”Initial commit“)” in the R console.</li>
-</ol>
+<div id="simulate-data-3" class="section level2" number="8.4">
+<h2><span class="header-section-number">8.4</span> 🔢Simulate data</h2>
+<p>First, simulate the data as a 2x2 contingency table. Here, we will experiment with structuring the contingency table in a few different ways.</p>
+<div id="simulate-a-matrix-object" class="section level3" number="8.4.1">
+<h3><span class="header-section-number">8.4.1</span> Simulate a matrix object</h3>
 </div>
-<div id="create-a-github-repository-for-the-book" class="section level2" number="10.5">
-<h2><span class="header-section-number">10.5</span> Create a github repository for the book</h2>
-<ol style="list-style-type: decimal">
-<li><p>Go to: <a href="https://github.com/orgs/brad-cannell/dashboard" class="uri">https://github.com/orgs/brad-cannell/dashboard</a></p></li>
-<li><p>Click New</p></li>
-<li><p>Name the repository. For example, “r_notes”</p></li>
-<li><p>Optionally, type in a description. For example, “This is the repository for my R notes bookdown project.”</p></li>
-<li><p>Make the repository public</p></li>
-<li><p>Don’t check the boxes for README, .gitignore, or license</p></li>
-<li><p>Click create repository</p></li>
-<li><p>Follow GitHub’s instructions for pushing the repository to GitHub.</p></li>
-</ol>
-<p>At this point, the GitHub repository should be set up.</p>
 </div>
-<div id="configuring-a-publishing-source-for-the-github-pages-site" class="section level2" number="10.6">
-<h2><span class="header-section-number">10.6</span> Configuring a publishing source for the GitHub Pages site</h2>
-<p>Useful websites:<br />
-* <a href="https://bookdown.org/yihui/bookdown/github.html" class="uri">https://bookdown.org/yihui/bookdown/github.html</a><br />
-* <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" class="uri">https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site</a></p>
-<ol style="list-style-type: decimal">
-<li><p>In the repository, click on Settings, then pages (on the left sidebar).</p></li>
-<li><p>Change the source to Branch:master, folder = docs</p></li>
-</ol>
+<div id="left-off-here" class="section level2" number="8.5">
+<h2><span class="header-section-number">8.5</span> 🔴 Left off here…</h2>
+<p>I’m trying to move all the different ways for creating a contingency table over to it’s own note – contingency_tables.Rmd. You can test out and document all the pros and cons of each method there. Then, come back and just use the best one here, where the focus should be on measures of occurrence, not creating contingency tables. You can (and probably should) link to that note here <a href="contingency-tables.html#contingency-tables">contingency tables</a>.</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="risk-difference.html#cb205-1" aria-hidden="true" tabindex="-1"></a>crosstab_mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb205-2"><a href="risk-difference.html#cb205-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">7</span>, <span class="at">b =</span> <span class="dv">124</span>, <span class="at">c =</span> <span class="dv">1</span>, <span class="at">d =</span> <span class="dv">78</span>),</span>
+<span id="cb205-3"><a href="risk-difference.html#cb205-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>,</span>
+<span id="cb205-4"><a href="risk-difference.html#cb205-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb205-5"><a href="risk-difference.html#cb205-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb205-6"><a href="risk-difference.html#cb205-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb205-7"><a href="risk-difference.html#cb205-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Add names to make the matrix more readable</span></span>
+<span id="cb205-8"><a href="risk-difference.html#cb205-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(crosstab_mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Appendectomy&quot;</span>, <span class="st">&quot;No Appendectomy&quot;</span>)</span>
+<span id="cb205-9"><a href="risk-difference.html#cb205-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(crosstab_mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Infection&quot;</span>, <span class="st">&quot;No Infection&quot;</span>)</span>
+<span id="cb205-10"><a href="risk-difference.html#cb205-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb205-11"><a href="risk-difference.html#cb205-11" aria-hidden="true" tabindex="-1"></a>crosstab_mat</span></code></pre></div>
+<pre><code>##                 Infection No Infection
+## Appendectomy            7          124
+## No Appendectomy         1           78</code></pre>
+<div id="simulate-a-table-object" class="section level3" number="8.5.1">
+<h3><span class="header-section-number">8.5.1</span> Simulate a table object</h3>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="risk-difference.html#cb207-1" aria-hidden="true" tabindex="-1"></a>crosstab <span class="ot">&lt;-</span> <span class="fu">as.table</span>(crosstab_mat)</span>
+<span id="cb207-2"><a href="risk-difference.html#cb207-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb207-3"><a href="risk-difference.html#cb207-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Add margins</span></span>
+<span id="cb207-4"><a href="risk-difference.html#cb207-4" aria-hidden="true" tabindex="-1"></a>crosstab <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(crosstab)</span>
+<span id="cb207-5"><a href="risk-difference.html#cb207-5" aria-hidden="true" tabindex="-1"></a>crosstab</span></code></pre></div>
+<pre><code>##                 Infection No Infection Sum
+## Appendectomy            7          124 131
+## No Appendectomy         1           78  79
+## Sum                     8          202 210</code></pre>
 </div>
-<div id="modify-_bookdown.yml" class="section level2" number="10.7">
-<h2><span class="header-section-number">10.7</span> Modify _bookdown.yml</h2>
-<p>Start with this example and modify as needed</p>
-<pre eval="FALSE"><code>book_filename: &quot;R 4 Epidemiology&quot;
-repo: https://github.com/brad-cannell/r4epi
-output_dir: docs
-delete_merged_file: true
-language:
-  ui:
-    chapter_name: &quot;&quot;
-new_session: no
-rmd_subdir: [&quot;chapters&quot;]</code></pre>
+<div id="simulate-a-base-r-data-frame" class="section level3" number="8.5.2">
+<h3><span class="header-section-number">8.5.2</span> Simulate a base R data frame</h3>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="risk-difference.html#cb209-1" aria-hidden="true" tabindex="-1"></a>crosstab_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(crosstab_mat)</span>
+<span id="cb209-2"><a href="risk-difference.html#cb209-2" aria-hidden="true" tabindex="-1"></a>crosstab_df</span></code></pre></div>
+<pre><code>##                 Infection No Infection
+## Appendectomy            7          124
+## No Appendectomy         1           78</code></pre>
 </div>
-<div id="modify-_output.yml" class="section level2" number="10.8">
-<h2><span class="header-section-number">10.8</span> Modify _output.yml</h2>
-<p>Start with this example and modify as needed</p>
-<pre eval="FALSE"><code>bookdown::gitbook:
-  css: style.css
-  config:
-    toc:
-      collapse: section
-      scroll_highlight: yes
-      before: |
-        &lt;li&gt;&lt;a href=&quot;./&quot;&gt;R for Epidemiology&lt;/a&gt;&lt;/li&gt;
-      after: |
-        &lt;li&gt;&lt;a href=&quot;https://github.com/rstudio/bookdown&quot; target=&quot;blank&quot;&gt;Published with bookdown&lt;/a&gt;&lt;/li&gt;</code></pre>
+<div id="simulate-a-tibble" class="section level3" number="8.5.3">
+<h3><span class="header-section-number">8.5.3</span> Simulate a tibble</h3>
+<p>Unlike the other objects, this object won’t have the standard contingency table layout.</p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="risk-difference.html#cb211-1" aria-hidden="true" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb211-2"><a href="risk-difference.html#cb211-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>appendectomy, <span class="sc">~</span>infection, <span class="sc">~</span>count,</span>
+<span id="cb211-3"><a href="risk-difference.html#cb211-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="dv">7</span>,</span>
+<span id="cb211-4"><a href="risk-difference.html#cb211-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>,  <span class="dv">124</span>,</span>
+<span id="cb211-5"><a href="risk-difference.html#cb211-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;No&quot;</span>,  <span class="st">&quot;Yes&quot;</span>, <span class="dv">1</span>,</span>
+<span id="cb211-6"><a href="risk-difference.html#cb211-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;No&quot;</span>,  <span class="st">&quot;No&quot;</span>,  <span class="dv">78</span></span>
+<span id="cb211-7"><a href="risk-difference.html#cb211-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb211-8"><a href="risk-difference.html#cb211-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb211-9"><a href="risk-difference.html#cb211-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add margins</span></span>
+<span id="cb211-10"><a href="risk-difference.html#cb211-10" aria-hidden="true" tabindex="-1"></a>tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb211-11"><a href="risk-difference.html#cb211-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(appendectomy) <span class="sc">%&gt;%</span> </span>
+<span id="cb211-12"><a href="risk-difference.html#cb211-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">appendectomy_totals =</span> <span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span> </span>
+<span id="cb211-13"><a href="risk-difference.html#cb211-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(infection) <span class="sc">%&gt;%</span> </span>
+<span id="cb211-14"><a href="risk-difference.html#cb211-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">infection_totals =</span> <span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span> </span>
+<span id="cb211-15"><a href="risk-difference.html#cb211-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb211-16"><a href="risk-difference.html#cb211-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">margin_total =</span> <span class="fu">sum</span>(count))</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 6
+##   appendectomy infection count appendectomy_totals infection_totals margin_total
+##   &lt;chr&gt;        &lt;chr&gt;     &lt;dbl&gt;               &lt;dbl&gt;            &lt;dbl&gt;        &lt;dbl&gt;
+## 1 Yes          Yes           7                 131                8          210
+## 2 Yes          No          124                 131              202          210
+## 3 No           Yes           1                  79                8          210
+## 4 No           No           78                  79              202          210</code></pre>
 </div>
-<div id="modify-style.css" class="section level2" number="10.9">
-<h2><span class="header-section-number">10.9</span> Modify style.css</h2>
-<div class="sourceCode" id="cb227"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb227-1"><a href="bookdown-quick-start.html#cb227-1" aria-hidden="true" tabindex="-1"></a><span class="co">/******************************************************************************</span></span>
-<span id="cb227-2"><a href="bookdown-quick-start.html#cb227-2" aria-hidden="true" tabindex="-1"></a><span class="co">CSS for the R4Epi textbook</span></span>
-<span id="cb227-3"><a href="bookdown-quick-start.html#cb227-3" aria-hidden="true" tabindex="-1"></a><span class="co">******************************************************************************/</span></span>
-<span id="cb227-4"><a href="bookdown-quick-start.html#cb227-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb227-5"><a href="bookdown-quick-start.html#cb227-5" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
-<span id="cb227-6"><a href="bookdown-quick-start.html#cb227-6" aria-hidden="true" tabindex="-1"></a><span class="co">CSS that came with bookdown</span></span>
-<span id="cb227-7"><a href="bookdown-quick-start.html#cb227-7" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
-<span id="cb227-8"><a href="bookdown-quick-start.html#cb227-8" aria-hidden="true" tabindex="-1"></a>p<span class="fu">.caption</span> {</span>
-<span id="cb227-9"><a href="bookdown-quick-start.html#cb227-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">#777</span><span class="op">;</span></span>
-<span id="cb227-10"><a href="bookdown-quick-start.html#cb227-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">margin-top</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb227-11"><a href="bookdown-quick-start.html#cb227-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb227-12"><a href="bookdown-quick-start.html#cb227-12" aria-hidden="true" tabindex="-1"></a>p code {</span>
-<span id="cb227-13"><a href="bookdown-quick-start.html#cb227-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">white-space</span>: <span class="bu">inherit</span><span class="op">;</span></span>
-<span id="cb227-14"><a href="bookdown-quick-start.html#cb227-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb227-15"><a href="bookdown-quick-start.html#cb227-15" aria-hidden="true" tabindex="-1"></a>pre {</span>
-<span id="cb227-16"><a href="bookdown-quick-start.html#cb227-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">word-break</span>: <span class="dv">normal</span><span class="op">;</span></span>
-<span id="cb227-17"><a href="bookdown-quick-start.html#cb227-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">word-wrap</span>: <span class="dv">normal</span><span class="op">;</span></span>
-<span id="cb227-18"><a href="bookdown-quick-start.html#cb227-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb227-19"><a href="bookdown-quick-start.html#cb227-19" aria-hidden="true" tabindex="-1"></a>pre code {</span>
-<span id="cb227-20"><a href="bookdown-quick-start.html#cb227-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">white-space</span>: <span class="bu">inherit</span><span class="op">;</span></span>
-<span id="cb227-21"><a href="bookdown-quick-start.html#cb227-21" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb227-22"><a href="bookdown-quick-start.html#cb227-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb227-23"><a href="bookdown-quick-start.html#cb227-23" aria-hidden="true" tabindex="-1"></a><span class="co">/* </span></span>
-<span id="cb227-24"><a href="bookdown-quick-start.html#cb227-24" aria-hidden="true" tabindex="-1"></a><span class="co">Font Styles</span></span>
-<span id="cb227-25"><a href="bookdown-quick-start.html#cb227-25" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
-<span id="cb227-26"><a href="bookdown-quick-start.html#cb227-26" aria-hidden="true" tabindex="-1"></a><span class="fu">.large-bold</span> {</span>
-<span id="cb227-27"><a href="bookdown-quick-start.html#cb227-27" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-size</span>: <span class="dv">2</span><span class="dt">em</span><span class="op">;</span></span>
-<span id="cb227-28"><a href="bookdown-quick-start.html#cb227-28" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-weight</span>: <span class="dv">bold</span><span class="op">;</span></span>
-<span id="cb227-29"><a href="bookdown-quick-start.html#cb227-29" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb227-30"><a href="bookdown-quick-start.html#cb227-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb227-31"><a href="bookdown-quick-start.html#cb227-31" aria-hidden="true" tabindex="-1"></a><span class="fu">.underline</span> {</span>
-<span id="cb227-32"><a href="bookdown-quick-start.html#cb227-32" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-decoration</span>: <span class="dv">underline</span><span class="op">;</span></span>
-<span id="cb227-33"><a href="bookdown-quick-start.html#cb227-33" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb227-34"><a href="bookdown-quick-start.html#cb227-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb227-35"><a href="bookdown-quick-start.html#cb227-35" aria-hidden="true" tabindex="-1"></a><span class="fu">.red-text</span> {</span>
-<span id="cb227-36"><a href="bookdown-quick-start.html#cb227-36" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">red</span><span class="op">;</span></span>
-<span id="cb227-37"><a href="bookdown-quick-start.html#cb227-37" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb227-38"><a href="bookdown-quick-start.html#cb227-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb227-39"><a href="bookdown-quick-start.html#cb227-39" aria-hidden="true" tabindex="-1"></a><span class="fu">.code</span> {</span>
-<span id="cb227-40"><a href="bookdown-quick-start.html#cb227-40" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">#0365C0</span><span class="op">;</span></span>
-<span id="cb227-41"><a href="bookdown-quick-start.html#cb227-41" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-family</span>: <span class="st">&quot;Courier New&quot;</span><span class="op">,</span> Courier<span class="op">,</span> <span class="dv">monospace</span><span class="op">;</span></span>
-<span id="cb227-42"><a href="bookdown-quick-start.html#cb227-42" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb227-43"><a href="bookdown-quick-start.html#cb227-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb227-44"><a href="bookdown-quick-start.html#cb227-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb227-45"><a href="bookdown-quick-start.html#cb227-45" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
-<span id="cb227-46"><a href="bookdown-quick-start.html#cb227-46" aria-hidden="true" tabindex="-1"></a><span class="co">Note styles</span></span>
-<span id="cb227-47"><a href="bookdown-quick-start.html#cb227-47" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
-<span id="cb227-48"><a href="bookdown-quick-start.html#cb227-48" aria-hidden="true" tabindex="-1"></a><span class="fu">.note</span> {</span>
-<span id="cb227-49"><a href="bookdown-quick-start.html#cb227-49" aria-hidden="true" tabindex="-1"></a>  <span class="kw">-moz-border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb227-50"><a href="bookdown-quick-start.html#cb227-50" aria-hidden="true" tabindex="-1"></a>  <span class="kw">-webkit-border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb227-51"><a href="bookdown-quick-start.html#cb227-51" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-color</span>: <span class="cn">#f0f7fb</span><span class="op">;</span></span>
-<span id="cb227-52"><a href="bookdown-quick-start.html#cb227-52" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border</span>: <span class="dv">solid</span> <span class="dv">1</span><span class="dt">px</span> <span class="cn">#3498db</span><span class="op">;</span></span>
-<span id="cb227-53"><a href="bookdown-quick-start.html#cb227-53" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb227-54"><a href="bookdown-quick-start.html#cb227-54" aria-hidden="true" tabindex="-1"></a>  <span class="kw">line-height</span>: <span class="dv">18</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb227-55"><a href="bookdown-quick-start.html#cb227-55" aria-hidden="true" tabindex="-1"></a>  <span class="kw">overflow</span>: <span class="dv">hidden</span><span class="op">;</span></span>
-<span id="cb227-56"><a href="bookdown-quick-start.html#cb227-56" aria-hidden="true" tabindex="-1"></a>  <span class="kw">padding</span>: <span class="dv">15</span><span class="dt">px</span> <span class="dv">15</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb227-57"><a href="bookdown-quick-start.html#cb227-57" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb227-58"><a href="bookdown-quick-start.html#cb227-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb227-59"><a href="bookdown-quick-start.html#cb227-59" aria-hidden="true" tabindex="-1"></a><span class="fu">.warning</span> {</span>
-<span id="cb227-60"><a href="bookdown-quick-start.html#cb227-60" aria-hidden="true" tabindex="-1"></a>  <span class="kw">-moz-border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb227-61"><a href="bookdown-quick-start.html#cb227-61" aria-hidden="true" tabindex="-1"></a>  <span class="kw">-webkit-border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb227-62"><a href="bookdown-quick-start.html#cb227-62" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-color</span>: <span class="cn">#FEFBEA</span><span class="op">;</span></span>
-<span id="cb227-63"><a href="bookdown-quick-start.html#cb227-63" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border</span>: <span class="dv">solid</span> <span class="dv">1</span><span class="dt">px</span> <span class="cn">#F2E394</span><span class="op">;</span></span>
-<span id="cb227-64"><a href="bookdown-quick-start.html#cb227-64" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb227-65"><a href="bookdown-quick-start.html#cb227-65" aria-hidden="true" tabindex="-1"></a>  <span class="kw">line-height</span>: <span class="dv">18</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb227-66"><a href="bookdown-quick-start.html#cb227-66" aria-hidden="true" tabindex="-1"></a>  <span class="kw">overflow</span>: <span class="dv">hidden</span><span class="op">;</span></span>
-<span id="cb227-67"><a href="bookdown-quick-start.html#cb227-67" aria-hidden="true" tabindex="-1"></a>  <span class="kw">padding</span>: <span class="dv">15</span><span class="dt">px</span> <span class="dv">15</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb227-68"><a href="bookdown-quick-start.html#cb227-68" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
-<div id="modify-index.rmd" class="section level2" number="10.10">
-<h2><span class="header-section-number">10.10</span> Modify index.Rmd</h2>
-<ol style="list-style-type: decimal">
-<li><p>Delete all the example text.</p></li>
-<li><p>Modify the YAML header. Here is an example:</p></li>
-</ol>
-<pre eval="FALSE"><code>--- 
-title: &quot;R for Epidemiology&quot;
-author: &quot;Brad Cannell&quot;
-date: &quot;2021-11-02&quot;
-site: bookdown::bookdown_site
-documentclass: book
-bibliography: [book.bib, packages.bib]
-link-citations: yes
-csl: ama.csl
-github-repo: brad-cannell/r4epi
-url: &#39;https://brad-cannell.github.io/r4epi/&#39;
-description: &quot;This is the textbook for Brad Cannell&#39;s Introduction to R Programming for Epidemiologic Research course.&quot;
----</code></pre>
-<ul>
-<li><p>The <code>csl: ama.csl</code> part of the YAML header allows you to change the bibliography style. You can find a list of styles here: <a href="https://github.com/citation-style-language/styles" class="uri">https://github.com/citation-style-language/styles</a></p></li>
-<li><p>For AMA, which I frequently want, you can just copy and paste from your templates folder.</p></li>
-</ul>
-<ol start="3" style="list-style-type: decimal">
-<li>First-level headers become chapters. Use <code>{-}</code> at the end of the header if you don’t want the chapter to be numbered. For example <code># Welcome {-}</code></li>
-</ol>
+<div id="analysis" class="section level2" number="8.6">
+<h2><span class="header-section-number">8.6</span> 📈Analysis</h2>
+<div id="incidence-proportion" class="section level3" number="8.6.1">
+<h3><span class="header-section-number">8.6.1</span> Incidence proportion</h3>
+<p>Before calculating any other measures of occurrence, we first need to calculate the incidence proportion in each exposure group.</p>
+<div id="matrix-1" class="section level4" number="8.6.1.1">
+<h4><span class="header-section-number">8.6.1.1</span> Matrix</h4>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="risk-difference.html#cb213-1" aria-hidden="true" tabindex="-1"></a>crosstab_mat <span class="ot">&lt;-</span> <span class="fu">cbind</span>(crosstab_mat, <span class="at">rowsum =</span> <span class="fu">rowSums</span>(crosstab_mat))</span>
+<span id="cb213-2"><a href="risk-difference.html#cb213-2" aria-hidden="true" tabindex="-1"></a>crosstab_mat</span></code></pre></div>
+<pre><code>##                 Infection No Infection rowsum
+## Appendectomy            7          124    131
+## No Appendectomy         1           78     79</code></pre>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="risk-difference.html#cb215-1" aria-hidden="true" tabindex="-1"></a>ip_mat <span class="ot">&lt;-</span> crosstab_mat[, <span class="st">&quot;Infection&quot;</span>] <span class="sc">/</span> crosstab_mat[, <span class="st">&quot;rowsum&quot;</span>]</span>
+<span id="cb215-2"><a href="risk-difference.html#cb215-2" aria-hidden="true" tabindex="-1"></a>crosstab_mat <span class="ot">&lt;-</span> <span class="fu">cbind</span>(crosstab_mat, ip_mat)</span>
+<span id="cb215-3"><a href="risk-difference.html#cb215-3" aria-hidden="true" tabindex="-1"></a>crosstab_mat</span></code></pre></div>
+<pre><code>##                 Infection No Infection rowsum     ip_mat
+## Appendectomy            7          124    131 0.05343511
+## No Appendectomy         1           78     79 0.01265823</code></pre>
 </div>
-<div id="creating-bookdown-chapters" class="section level2" number="10.11">
-<h2><span class="header-section-number">10.11</span> Creating bookdown chapters</h2>
-<p>Each Rmd file is a chapter. Chapters can be broken up into parts. To do so, create a subdirectory for each part inside the <code>chapters</code> folder. The individual Rmd files (i.e. chapters) go inside these folders.</p>
-<p>I typically prefix each folder name that aligns with the order the parts should appear in. For example 01_getting_started, 02_best_practices, etc.</p>
-<p>The first Rmd file in each part folder should have only this content:</p>
-<pre eval="FALSE"><code># (PART) Getting Started {-}
-
-&lt;!-- This Rmd just creates a part heading in the table of contents --&gt;</code></pre>
-<p>Name the file <code>00_part_&lt;part_name&gt;</code></p>
-<p>All subsequent content chapters should start with a first level heading only – No YAML. For example, <code># R scripts</code>.</p>
-<p>For more on chapter content, see <a href="#bookdown-template">Bookdown template chapter</a></p>
+<div id="table" class="section level4" number="8.6.1.2">
+<h4><span class="header-section-number">8.6.1.2</span> Table</h4>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="risk-difference.html#cb217-1" aria-hidden="true" tabindex="-1"></a>ip_tab <span class="ot">&lt;-</span> crosstab[, <span class="st">&quot;Infection&quot;</span>] <span class="sc">/</span> crosstab[, <span class="st">&quot;Sum&quot;</span>]</span>
+<span id="cb217-2"><a href="risk-difference.html#cb217-2" aria-hidden="true" tabindex="-1"></a>crosstab <span class="ot">&lt;-</span> <span class="fu">cbind</span>(crosstab, ip_tab)</span>
+<span id="cb217-3"><a href="risk-difference.html#cb217-3" aria-hidden="true" tabindex="-1"></a>crosstab</span></code></pre></div>
+<pre><code>##                 Infection No Infection Sum     ip_tab
+## Appendectomy            7          124 131 0.05343511
+## No Appendectomy         1           78  79 0.01265823
+## Sum                     8          202 210 0.03809524</code></pre>
 </div>
-<div id="knitting-the-book" class="section level2" number="10.12">
-<h2><span class="header-section-number">10.12</span> Knitting the book</h2>
-<ol style="list-style-type: decimal">
-<li><p>Click on the build tab, then click “Build Book.”</p></li>
-<li><p>Commit the changes and push to GitHub.</p></li>
-<li><p>After a few minutes, you should see the GitHub pages version working.</p></li>
-</ol>
+<div id="data-frame" class="section level4" number="8.6.1.3">
+<h4><span class="header-section-number">8.6.1.3</span> data frame</h4>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="risk-difference.html#cb219-1" aria-hidden="true" tabindex="-1"></a>crosstab_df <span class="ot">&lt;-</span> crosstab_df <span class="sc">%&gt;%</span> </span>
+<span id="cb219-2"><a href="risk-difference.html#cb219-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb219-3"><a href="risk-difference.html#cb219-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">rowsum =</span> <span class="fu">rowSums</span>(crosstab_df),</span>
+<span id="cb219-4"><a href="risk-difference.html#cb219-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">ip_df =</span> <span class="st">`</span><span class="at">Infection</span><span class="st">`</span> <span class="sc">/</span> rowsum</span>
+<span id="cb219-5"><a href="risk-difference.html#cb219-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb219-6"><a href="risk-difference.html#cb219-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb219-7"><a href="risk-difference.html#cb219-7" aria-hidden="true" tabindex="-1"></a>crosstab_df</span></code></pre></div>
+<pre><code>##                 Infection No Infection rowsum      ip_df
+## Appendectomy            7          124    131 0.05343511
+## No Appendectomy         1           78     79 0.01265823</code></pre>
 </div>
-<div id="errors-and-warnings" class="section level2" number="10.13">
-<h2><span class="header-section-number">10.13</span> Errors and warnings</h2>
-<blockquote>
-<p>Output created: docs/index.html Warning message: In split_chapters(output, gitbook_page, number_sections, split_by, : You have 3 Rmd input file(s) but only 2 first-level heading(s). Did you forget first-level headings in certain Rmd files?</p>
-</blockquote>
-<p><strong>Solution:</strong> Just ignore this.</p>
-<blockquote>
-<p>tlmgr: Local TeX Live (2019) is older than remote repository (2020).</p>
-</blockquote>
-<p><strong>Solution:</strong> Run tinytex::reinstall_tinytex()</p>
-<blockquote>
-<p>! LaTeX Error: Cannot determine size of graphic in img/getting_started/01_install_r/download_r_mac.gif (no BoundingBox).</p>
-</blockquote>
-<p><strong>Solution:</strong> This is from trying to make a pdf document with a gif in it. LaTeX doesn’t support gifs. Just make a just build the book in gitbook format.</p>
-<blockquote>
-<p>2: The label(s) fig:source1 not found.</p>
-</blockquote>
-<p><strong>Solution:</strong> Figures must have a caption in order to cross reference them.</p>
-<blockquote>
-<p>[WARNING] Citeproc: citation examples not found</p>
-</blockquote>
-<p><strong>Solution:</strong> I haven’t found a solution yet, but so far the warning seems ignorable.</p>
+<div id="tibble" class="section level4" number="8.6.1.4">
+<h4><span class="header-section-number">8.6.1.4</span> Tibble</h4>
+</div>
+</div>
+<div id="risk-differences" class="section level3" number="8.6.2">
+<h3><span class="header-section-number">8.6.2</span> Risk Differences</h3>
+<p>Instead of comparing two measures of disease frequency by calculating their ratio, one can compare them in terms of their absolute difference. The risk difference is calculated by subtracting the cumulative incidence in the unexposed group (or least exposed group) from the cumulative incidence in the group with the exposure.</p>
+<p><span class="math display">\[ \text{Risk Difference (RD)} = CI_e - CI_u \]</span></p>
+<p>where (<span class="math inline">\(CI_e\)</span>) = cumulative incidence among the exposed subjects, and (<span class="math inline">\(CI_u\)</span>) is the cumulative incidence among unexposed subjects.</p>
+<p>The risk difference focuses on absolute effect of the risk factor, or the excess risk of disease in those who have the factor compared with those who don’t. Recall that in the wound infection study, the cumulative incidence of infection was 5.3% in the incidental appendectomy group, and only 1.3% in the group without appendectomies. The risk ratio was 4.2, but we can also compute the absolute difference, which is 5.3 / 100 - 1.3 / 100 = 4 per 100 excess wound infections among those who had the incidental appendectomy. <span class="math inline">\(CI_\)</span>u provides an estimate of the baseline risk (i.e., in the absence of the exposure), and the exposure factor imposes an additional (excess) risk on top of that.</p>
+<p class="note">
+🗒<strong>Side Note:</strong> Modern Epidemiology 4th edition uses the term incience proportion instead of cumulative incidence.<span class="citation"><sup><a href="#ref-Lash2021-rz" role="doc-biblioref">1</a></sup></span>
+</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="risk-difference.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb221-2"><a href="risk-difference.html#cb221-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">appendectomy =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>)),</span>
+<span id="cb221-3"><a href="risk-difference.html#cb221-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">base_rate =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
+<span id="cb221-4"><a href="risk-difference.html#cb221-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">incidence =</span> <span class="fu">c</span>(<span class="fl">1.3</span>, <span class="fl">0.0</span>, <span class="fl">1.3</span>, <span class="fl">4.0</span>) </span>
+<span id="cb221-5"><a href="risk-difference.html#cb221-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb221-6"><a href="risk-difference.html#cb221-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb221-7"><a href="risk-difference.html#cb221-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">x =</span> appendectomy, <span class="at">y =</span> incidence, <span class="at">fill =</span> base_rate)) <span class="sc">+</span></span>
+<span id="cb221-8"><a href="risk-difference.html#cb221-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;gray&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb221-9"><a href="risk-difference.html#cb221-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb221-10"><a href="risk-difference.html#cb221-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Had Incidental Appendectomy&quot;</span>,</span>
+<span id="cb221-11"><a href="risk-difference.html#cb221-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Wound Infection Incidence per 100&quot;</span></span>
+<span id="cb221-12"><a href="risk-difference.html#cb221-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb221-13"><a href="risk-difference.html#cb221-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb221-14"><a href="risk-difference.html#cb221-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) </span></code></pre></div>
+<p><img src="R-Notes_files/figure-html/unnamed-chunk-150-1.png" width="672" /></p>
+<p class="note">
+🗒<strong>Side Note:</strong> At some point, come back and annotate this to match the figure <a href="https://sphweb.bumc.bu.edu/otlt/mph-modules/ep/ep713_association/ep713_association_print.html">here</a>. You may also want to add this to the data visualization note.
+</p>
 <!--
 Clean up and add session info
 -->
@@ -687,13 +652,30 @@ Clean up and add session info
 
 </div>
 </div>
+</div>
+
+
+
+
+</div>
+
+
+
+
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body">
+<div id="ref-Lash2021-rz" class="csl-entry">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Lash TL, Rothman KJ. Measures of occurrence. In: <em>Modern Epidemiology</em>. fourth. Wolters Kluwer; 2021:53-77.</div>
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="book-chapters.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="flexdashboard.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="effect-measure-modification.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="book-chapters.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

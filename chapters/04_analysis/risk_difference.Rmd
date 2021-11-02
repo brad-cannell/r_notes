@@ -6,7 +6,7 @@ Hidden notes.
 
 <p class="note"> 🗒**Side Note:** Risk difference may be too narrow for a chapter. At some point, I will probably change this note to measures of disease occurrence. I just don't have time to do it tonight. </p>
 
-```{r random-pic-from-url, echo=FALSE}
+```{r echo=FALSE}
 knitr::include_graphics("https://picsum.photos/200/300")
 ```
 
@@ -53,12 +53,22 @@ First, simulate the data as a 2x2 contingency table. Here, we will experiment wi
 # 🔴 Left off here... 
 I'm trying to move all the different ways for creating a contingency table over to it's own note -- contingency_tables.Rmd. You can test out and document all the pros and cons of each method there. Then, come back and just use the best one here, where the focus should be on measures of occurrence, not creating contingency tables. You can (and probably should) link to that note here [contingency tables]. 
 
-### Simulate a table object
-
 ```{r}
+crosstab_mat <- matrix(
+  c(a = 7, b = 124, c = 1, d = 78),
+  ncol = 2,
+  byrow = TRUE
+)
 
+# Add names to make the matrix more readable
+rownames(crosstab_mat) <- c("Appendectomy", "No Appendectomy")
+colnames(crosstab_mat) <- c("Infection", "No Infection")
+
+crosstab_mat
 ```
 
+
+### Simulate a table object
 
 ```{r}
 crosstab <- as.table(crosstab_mat)

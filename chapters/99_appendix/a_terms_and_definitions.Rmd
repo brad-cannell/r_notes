@@ -18,7 +18,7 @@ Terms to add to R Notes:
 
 
 
-```{r random-pic-from-url, echo=FALSE}
+```{r echo=FALSE}
 knitr::include_graphics("https://picsum.photos/200/300")
 ```
 

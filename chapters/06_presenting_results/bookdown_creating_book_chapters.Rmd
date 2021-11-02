@@ -78,11 +78,49 @@ Use unordered lists for these sections. It allows for nested lists and code. Add
 
 ## Cross-references
 
-* To cross-reference figures. Name the figure in the code chunk (e.g., `{r console, echo=FALSE})`. Then add `\@ref(fig:console)` to the text.
-  - The figure reference should go outside of punctuation. With a space.
+### Cross-referencing figures {#cr-figs}
+
+To cross-reference figures:      
+  1. name the figure in the code chunk (e.g., `{r exampe-bookdown-img, echo=FALSE})`.    
+  2. Then add `\@ref(fig:exampe-bookdown-img)` to the text. 
+
+Example:   
+  * The sentence below is written as "As seen in the figure above. `\@ref(fig:exampe-bookdown-img)`"    
+  * As seen in the figure above. \@ref(fig:exampe-bookdown-img)
+
+<p class="warning"> ⚠️**Warning:** he figure reference must go outside of punctuation. With a space. </p>
+
+### Cross-referencing chapters
+
+There are a couple different ways you can cross-reference other chapters or other sections of the book. This is adapted from Jenny Bryan's [Happy Git and GitHub for the useR](https://happygitwithr.com/bookdown-cheat-sheet.html) book.
+
+*Method 1.* You can add a CSS id the behind the header using a hashtag inside curly braces (i.e., `{#id}`). Later, you can reference that section by writing the hash id inside parentheses (i.e., `[some text to link](#id)`). Alternatively, you can use the `\@ref(#id)` format to make the cross-reference appear as a linked chapter/section number rather than linked text. 
+
+Method 1 is a good method when the section name is difficult or unwieldy to write out. It may also just be a good idea when you know ahead of time that you will want to cross-reference a section.     
+
+Example:    
+  * I added the CSS id `{#cr-figs}` to the section above called "Cross-referencing figures".   
+  * The sentence below is written as "`See the section above on [cross-referencing figures](#cr-figs)`".   
+  * See the section above on [cross-referencing figures](#cr-figs).   
   
-* To cross-reference chapters: https://happygitwithr.com/bookdown-cheat-sheet.html
-  - Add CSS id the behind the header # How to use odds ratios {#ors}
+*Method 2.* You can add a CSS id the behind the header using a hashtag inside curly braces (i.e., `{#id}`). Later, you can use the `\@ref(#id)` format to make the cross-reference appear as a linked chapter/section number rather than linked text. 
+
+Method 1 & 2 are good methods when the section name is difficult or unwieldy to write out. They may also just be a good idea when you know ahead of time that you will want to cross-reference a section. The difference is really just a matter of style.     
+  
+Example:    
+  * I added the CSS id `{#cr-figs}` to the section above called "Cross-referencing figures".   
+  * The sentence below is written as "`See the section \@ref(#cr-figs) above about cross-referencing figures.`".   
+  * See the section \@ref(#cr-figs) above about cross-referencing figures.    
+  
+*Method 3.* Simply write out the chapter/section header name inside square brackets (i.e., `[Section header name]` to create a text link to the chapter/section header. 
+
+Example:    
+  * This section is titled "Cross-references".       
+  * The sentence below is written as "`See the section \@ref(#cr-figs) above about cross-referencing figures.`".   
+  * See the [cross-references] section above.    
+  * Make sure to capitalize first letter when cross-referencing the chapter by name.
+
+# How to use odds ratios {#ors}
   - Refer to it like this: The the [chapter on odds ratios](#ors)
   - Capitalize first letter when cross-referencing the chapter by name -- the Let's get programming chapter. Written as "the [Let's get programming] chapter."  
   - Don't capitalize the first letter when describing the contents of a chapter in the cross-reference -- the chapter on exporting data. Written as "We were first introduced to [factor vectors][Factor vectors] in the chapter.."

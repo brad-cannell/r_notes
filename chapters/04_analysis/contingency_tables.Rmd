@@ -4,7 +4,7 @@
 Don't forget to add code for converting from a contingency table back into raw data. See the useful websites below. 
 -->
 
-```{r random-pic-from-url, echo=FALSE}
+```{r echo=FALSE}
 knitr::include_graphics("https://picsum.photos/200/300")
 ```
 

@@ -1,11 +1,11 @@
 # Appendix A: Terms and Definitions
 
 <!--
-I'm not in love with this title. May want to change it in the future.
+Hidden Notes
 -->
 
 
-Need to sort:
+Need to sort and define:
 
 Terms to add to R Notes:
 * Probability. Look up

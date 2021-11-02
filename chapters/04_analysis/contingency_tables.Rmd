@@ -60,7 +60,6 @@ df <- tibble(
 df
 ```
 
-
 ## Matrix
 
 Create a contingency table using a matrix object. 
@@ -82,14 +81,94 @@ matrix
 Adding summary rows/columns to the matrix.
 
 ```{r}
-matrix <- cbind(matrix, rowsum = rowSums(matrix))
-matrix <- rbind(matrix, colsum = colSums(matrix))
-matrix
+matrix_w_margins <- cbind(matrix, rowsum = rowSums(matrix))
+matrix_w_margins <- rbind(matrix_w_margins, colsum = colSums(matrix_w_margins))
+matrix_w_margins
 ```
 
+## Table
 
+You can coerce a matrix object into a table object. I haven't found a way to create a table object from scratch (i.e., without making a matrix or data frame first).
 
+```{r}
+table <- as.table(matrix)
+table
+```
 
+```{r}
+# Add margins
+table_w_margins <- addmargins(table)
+table_w_margins
+```
+
+Aside from adding margins in one step, it isn't clear what the advantage of coercing the matrix to a table is at this point. However, there may be advantages later when we calculate incidence and other measures of occurrence and association. 
+
+## Base R data frame with rownames
+
+Create from scratch:
+
+```{r}
+df <- data.frame(
+  Infection = c(7, 1),
+  `No Infection` = c(124, 78)
+)
+
+# Add row names
+rownames(df) <- c("Appendectomy", "No Appendectomy")
+
+df
+```
+
+Add margins:
+
+```{r}
+df_w_margins <- df
+df_w_margins <- cbind(df_w_margins, rowsum = rowSums(df_w_margins))
+df_w_margins <- rbind(df_w_margins, colsum = colSums(df_w_margins))
+df_w_margins
+```
+
+As far as I can tell, there doesn't seem to be an advantage to creating a df from scratch over creating a matrix from scratch. 
+
+Create a base R data frame by coercing the matrix object to a data frame:
+
+```{r}
+df_w_margins <- as.data.frame(matrix_w_margins)
+df_w_margins
+```
+
+Coercing the table object to a data frame gives a different result:
+
+```{r}
+as.data.frame(table)
+```
+
+At this point, I think it still makes sense to start with a matrix. You can easily convert a matrix to a data frame later if you need to. 
+
+## Tibble
+
+Unlike the other objects, this object won't have the standard contingency table layout. 
+
+```{r}
+tbl <- tribble(
+  ~appendectomy, ~infection, ~count,
+  "Yes", "Yes", 7,
+  "Yes", "No",  124,
+  "No",  "Yes", 1,
+  "No",  "No",  78
+)
+
+# Add margins
+tbl %>% 
+  group_by(appendectomy) %>% 
+  mutate(appendectomy_totals = sum(count)) %>% 
+  group_by(infection) %>% 
+  mutate(infection_totals = sum(count)) %>% 
+  ungroup() %>% 
+  mutate(margin_total = sum(count))
+```
+
+This layout can be useful, but this note is really about working with a contingency table layout. 
 
 <!--
 Clean up and add session info

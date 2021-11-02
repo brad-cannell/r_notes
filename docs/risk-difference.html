@@ -283,6 +283,9 @@ div.csl-indent {
 <li class="chapter" data-level="6.4" data-path="contingency-tables.html"><a href="contingency-tables.html#scenario"><i class="fa fa-check"></i><b>6.4</b> Scenario</a></li>
 <li class="chapter" data-level="6.5" data-path="contingency-tables.html"><a href="contingency-tables.html#manually-create-data"><i class="fa fa-check"></i><b>6.5</b> Manually create data</a></li>
 <li class="chapter" data-level="6.6" data-path="contingency-tables.html"><a href="contingency-tables.html#matrix"><i class="fa fa-check"></i><b>6.6</b> Matrix</a></li>
+<li class="chapter" data-level="6.7" data-path="contingency-tables.html"><a href="contingency-tables.html#table"><i class="fa fa-check"></i><b>6.7</b> Table</a></li>
+<li class="chapter" data-level="6.8" data-path="contingency-tables.html"><a href="contingency-tables.html#base-r-data-frame-with-rownames"><i class="fa fa-check"></i><b>6.8</b> Base R data frame with rownames</a></li>
+<li class="chapter" data-level="6.9" data-path="contingency-tables.html"><a href="contingency-tables.html#tibble"><i class="fa fa-check"></i><b>6.9</b> Tibble</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="effect-measure-modification.html"><a href="effect-measure-modification.html"><i class="fa fa-check"></i><b>7</b> Effect-measure modification</a>
 <ul>
@@ -432,8 +435,8 @@ Hidden notes.
 </div>
 <div id="load-packages-4" class="section level2" number="8.3">
 <h2><span class="header-section-number">8.3</span> 📦Load packages</h2>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="risk-difference.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb204-2"><a href="risk-difference.html#cb204-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="risk-difference.html#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb219-2"><a href="risk-difference.html#cb219-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 <p>Using an example from the <a href="https://sphweb.bumc.bu.edu/otlt/mph-modules/ep/ep713_association/ep713_association_print.html">Boston University website</a>:</p>
 <p>Data Summary</p>
 <p>Consider the following example regarding the management of Hodgkin lymphoma, a cancer of the lymphatic system. Years ago when a patient was diagnosed with Hodgkin Disease, they would frequently undergo a surgical procedure called a “staging laparotomy.” The purpose of the staging laparotomy was to determine the extent to which the cancer had spread, because this was important information for determining the patient’s prognosis and optimizing treatment. At times, the surgeons performing this procedure would also remove the patient’s appendix, not because it was inflamed; it was done “incidentally” in order to ensure that the patient never had to worry about getting appendicitis. However, performing an appendectomy requires transecting it, and this has the potential to contaminate the abdomen and the wound edges with bacteria normally contained inside the appendix. Some surgeons felt that doing this “incidental appendectomy” did the patient a favor by ensuring that they would never get appendicitis, but others felt that it meant unnecessarily increasing the patient’s risk of getting a post-operative wound infection by spreading around the bacteria that was once inside the appendix. To address this, the surgeons at a large hospital performed a retrospective cohort study. They began by going through the hospital’s medical records to identify all subjects who had had a “staging laparotomy performed for Hodgkin.” They then reviewed the medical record and looked at the operative report to determine whether the patient had an incidental appendectomy or not. They then reviewed the progress notes, the laboratory reports, the nurses notes, and the discharge summary to determine whether the patient had developed a wound infection during the week after surgery. The investigators reviewed the records of 210 patients who had undergone the staging procedure and found that 131 had also had an incidental appendectomy, while the other 79 had not. The data from that study are summarized in the table below. The numbers in the second and third columns indicate the number of subjects who did or did not develop a post-operative wound infection among those who had the incidental appendectomy (in the “Yes” row) and those who did not have the incidental appendectomy (in the “No” row). For example, the upper left cell indicates that seven of the subjects who had an incidental appendectomy (the exposure of interest) subsequently developed a wound infection. The upper right cell indicates that the other 124 subjects who had an incidental appendectomy did NOT develop a wound infection.</p>
@@ -476,27 +479,27 @@ Hidden notes.
 <div id="left-off-here" class="section level2" number="8.5">
 <h2><span class="header-section-number">8.5</span> 🔴 Left off here…</h2>
 <p>I’m trying to move all the different ways for creating a contingency table over to it’s own note – contingency_tables.Rmd. You can test out and document all the pros and cons of each method there. Then, come back and just use the best one here, where the focus should be on measures of occurrence, not creating contingency tables. You can (and probably should) link to that note here <a href="contingency-tables.html#contingency-tables">contingency tables</a>.</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="risk-difference.html#cb205-1" aria-hidden="true" tabindex="-1"></a>crosstab_mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb205-2"><a href="risk-difference.html#cb205-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">7</span>, <span class="at">b =</span> <span class="dv">124</span>, <span class="at">c =</span> <span class="dv">1</span>, <span class="at">d =</span> <span class="dv">78</span>),</span>
-<span id="cb205-3"><a href="risk-difference.html#cb205-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>,</span>
-<span id="cb205-4"><a href="risk-difference.html#cb205-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb205-5"><a href="risk-difference.html#cb205-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb205-6"><a href="risk-difference.html#cb205-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb205-7"><a href="risk-difference.html#cb205-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Add names to make the matrix more readable</span></span>
-<span id="cb205-8"><a href="risk-difference.html#cb205-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(crosstab_mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Appendectomy&quot;</span>, <span class="st">&quot;No Appendectomy&quot;</span>)</span>
-<span id="cb205-9"><a href="risk-difference.html#cb205-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(crosstab_mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Infection&quot;</span>, <span class="st">&quot;No Infection&quot;</span>)</span>
-<span id="cb205-10"><a href="risk-difference.html#cb205-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb205-11"><a href="risk-difference.html#cb205-11" aria-hidden="true" tabindex="-1"></a>crosstab_mat</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="risk-difference.html#cb220-1" aria-hidden="true" tabindex="-1"></a>crosstab_mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb220-2"><a href="risk-difference.html#cb220-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">7</span>, <span class="at">b =</span> <span class="dv">124</span>, <span class="at">c =</span> <span class="dv">1</span>, <span class="at">d =</span> <span class="dv">78</span>),</span>
+<span id="cb220-3"><a href="risk-difference.html#cb220-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>,</span>
+<span id="cb220-4"><a href="risk-difference.html#cb220-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb220-5"><a href="risk-difference.html#cb220-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb220-6"><a href="risk-difference.html#cb220-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-7"><a href="risk-difference.html#cb220-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Add names to make the matrix more readable</span></span>
+<span id="cb220-8"><a href="risk-difference.html#cb220-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(crosstab_mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Appendectomy&quot;</span>, <span class="st">&quot;No Appendectomy&quot;</span>)</span>
+<span id="cb220-9"><a href="risk-difference.html#cb220-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(crosstab_mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Infection&quot;</span>, <span class="st">&quot;No Infection&quot;</span>)</span>
+<span id="cb220-10"><a href="risk-difference.html#cb220-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-11"><a href="risk-difference.html#cb220-11" aria-hidden="true" tabindex="-1"></a>crosstab_mat</span></code></pre></div>
 <pre><code>##                 Infection No Infection
 ## Appendectomy            7          124
 ## No Appendectomy         1           78</code></pre>
 <div id="simulate-a-table-object" class="section level3" number="8.5.1">
 <h3><span class="header-section-number">8.5.1</span> Simulate a table object</h3>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="risk-difference.html#cb207-1" aria-hidden="true" tabindex="-1"></a>crosstab <span class="ot">&lt;-</span> <span class="fu">as.table</span>(crosstab_mat)</span>
-<span id="cb207-2"><a href="risk-difference.html#cb207-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb207-3"><a href="risk-difference.html#cb207-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Add margins</span></span>
-<span id="cb207-4"><a href="risk-difference.html#cb207-4" aria-hidden="true" tabindex="-1"></a>crosstab <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(crosstab)</span>
-<span id="cb207-5"><a href="risk-difference.html#cb207-5" aria-hidden="true" tabindex="-1"></a>crosstab</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="risk-difference.html#cb222-1" aria-hidden="true" tabindex="-1"></a>crosstab <span class="ot">&lt;-</span> <span class="fu">as.table</span>(crosstab_mat)</span>
+<span id="cb222-2"><a href="risk-difference.html#cb222-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb222-3"><a href="risk-difference.html#cb222-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Add margins</span></span>
+<span id="cb222-4"><a href="risk-difference.html#cb222-4" aria-hidden="true" tabindex="-1"></a>crosstab <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(crosstab)</span>
+<span id="cb222-5"><a href="risk-difference.html#cb222-5" aria-hidden="true" tabindex="-1"></a>crosstab</span></code></pre></div>
 <pre><code>##                 Infection No Infection Sum
 ## Appendectomy            7          124 131
 ## No Appendectomy         1           78  79
@@ -504,8 +507,8 @@ Hidden notes.
 </div>
 <div id="simulate-a-base-r-data-frame" class="section level3" number="8.5.2">
 <h3><span class="header-section-number">8.5.2</span> Simulate a base R data frame</h3>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="risk-difference.html#cb209-1" aria-hidden="true" tabindex="-1"></a>crosstab_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(crosstab_mat)</span>
-<span id="cb209-2"><a href="risk-difference.html#cb209-2" aria-hidden="true" tabindex="-1"></a>crosstab_df</span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="risk-difference.html#cb224-1" aria-hidden="true" tabindex="-1"></a>crosstab_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(crosstab_mat)</span>
+<span id="cb224-2"><a href="risk-difference.html#cb224-2" aria-hidden="true" tabindex="-1"></a>crosstab_df</span></code></pre></div>
 <pre><code>##                 Infection No Infection
 ## Appendectomy            7          124
 ## No Appendectomy         1           78</code></pre>
@@ -513,22 +516,22 @@ Hidden notes.
 <div id="simulate-a-tibble" class="section level3" number="8.5.3">
 <h3><span class="header-section-number">8.5.3</span> Simulate a tibble</h3>
 <p>Unlike the other objects, this object won’t have the standard contingency table layout.</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="risk-difference.html#cb211-1" aria-hidden="true" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb211-2"><a href="risk-difference.html#cb211-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>appendectomy, <span class="sc">~</span>infection, <span class="sc">~</span>count,</span>
-<span id="cb211-3"><a href="risk-difference.html#cb211-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="dv">7</span>,</span>
-<span id="cb211-4"><a href="risk-difference.html#cb211-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>,  <span class="dv">124</span>,</span>
-<span id="cb211-5"><a href="risk-difference.html#cb211-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;No&quot;</span>,  <span class="st">&quot;Yes&quot;</span>, <span class="dv">1</span>,</span>
-<span id="cb211-6"><a href="risk-difference.html#cb211-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;No&quot;</span>,  <span class="st">&quot;No&quot;</span>,  <span class="dv">78</span></span>
-<span id="cb211-7"><a href="risk-difference.html#cb211-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb211-8"><a href="risk-difference.html#cb211-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb211-9"><a href="risk-difference.html#cb211-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add margins</span></span>
-<span id="cb211-10"><a href="risk-difference.html#cb211-10" aria-hidden="true" tabindex="-1"></a>tbl <span class="sc">%&gt;%</span> </span>
-<span id="cb211-11"><a href="risk-difference.html#cb211-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(appendectomy) <span class="sc">%&gt;%</span> </span>
-<span id="cb211-12"><a href="risk-difference.html#cb211-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">appendectomy_totals =</span> <span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span> </span>
-<span id="cb211-13"><a href="risk-difference.html#cb211-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(infection) <span class="sc">%&gt;%</span> </span>
-<span id="cb211-14"><a href="risk-difference.html#cb211-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">infection_totals =</span> <span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span> </span>
-<span id="cb211-15"><a href="risk-difference.html#cb211-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb211-16"><a href="risk-difference.html#cb211-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">margin_total =</span> <span class="fu">sum</span>(count))</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="risk-difference.html#cb226-1" aria-hidden="true" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb226-2"><a href="risk-difference.html#cb226-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>appendectomy, <span class="sc">~</span>infection, <span class="sc">~</span>count,</span>
+<span id="cb226-3"><a href="risk-difference.html#cb226-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="dv">7</span>,</span>
+<span id="cb226-4"><a href="risk-difference.html#cb226-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>,  <span class="dv">124</span>,</span>
+<span id="cb226-5"><a href="risk-difference.html#cb226-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;No&quot;</span>,  <span class="st">&quot;Yes&quot;</span>, <span class="dv">1</span>,</span>
+<span id="cb226-6"><a href="risk-difference.html#cb226-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;No&quot;</span>,  <span class="st">&quot;No&quot;</span>,  <span class="dv">78</span></span>
+<span id="cb226-7"><a href="risk-difference.html#cb226-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb226-8"><a href="risk-difference.html#cb226-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb226-9"><a href="risk-difference.html#cb226-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add margins</span></span>
+<span id="cb226-10"><a href="risk-difference.html#cb226-10" aria-hidden="true" tabindex="-1"></a>tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb226-11"><a href="risk-difference.html#cb226-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(appendectomy) <span class="sc">%&gt;%</span> </span>
+<span id="cb226-12"><a href="risk-difference.html#cb226-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">appendectomy_totals =</span> <span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span> </span>
+<span id="cb226-13"><a href="risk-difference.html#cb226-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(infection) <span class="sc">%&gt;%</span> </span>
+<span id="cb226-14"><a href="risk-difference.html#cb226-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">infection_totals =</span> <span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span> </span>
+<span id="cb226-15"><a href="risk-difference.html#cb226-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb226-16"><a href="risk-difference.html#cb226-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">margin_total =</span> <span class="fu">sum</span>(count))</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 6
 ##   appendectomy infection count appendectomy_totals infection_totals margin_total
 ##   &lt;chr&gt;        &lt;chr&gt;     &lt;dbl&gt;               &lt;dbl&gt;            &lt;dbl&gt;        &lt;dbl&gt;
@@ -545,23 +548,23 @@ Hidden notes.
 <p>Before calculating any other measures of occurrence, we first need to calculate the incidence proportion in each exposure group.</p>
 <div id="matrix-1" class="section level4" number="8.6.1.1">
 <h4><span class="header-section-number">8.6.1.1</span> Matrix</h4>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="risk-difference.html#cb213-1" aria-hidden="true" tabindex="-1"></a>crosstab_mat <span class="ot">&lt;-</span> <span class="fu">cbind</span>(crosstab_mat, <span class="at">rowsum =</span> <span class="fu">rowSums</span>(crosstab_mat))</span>
-<span id="cb213-2"><a href="risk-difference.html#cb213-2" aria-hidden="true" tabindex="-1"></a>crosstab_mat</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="risk-difference.html#cb228-1" aria-hidden="true" tabindex="-1"></a>crosstab_mat <span class="ot">&lt;-</span> <span class="fu">cbind</span>(crosstab_mat, <span class="at">rowsum =</span> <span class="fu">rowSums</span>(crosstab_mat))</span>
+<span id="cb228-2"><a href="risk-difference.html#cb228-2" aria-hidden="true" tabindex="-1"></a>crosstab_mat</span></code></pre></div>
 <pre><code>##                 Infection No Infection rowsum
 ## Appendectomy            7          124    131
 ## No Appendectomy         1           78     79</code></pre>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="risk-difference.html#cb215-1" aria-hidden="true" tabindex="-1"></a>ip_mat <span class="ot">&lt;-</span> crosstab_mat[, <span class="st">&quot;Infection&quot;</span>] <span class="sc">/</span> crosstab_mat[, <span class="st">&quot;rowsum&quot;</span>]</span>
-<span id="cb215-2"><a href="risk-difference.html#cb215-2" aria-hidden="true" tabindex="-1"></a>crosstab_mat <span class="ot">&lt;-</span> <span class="fu">cbind</span>(crosstab_mat, ip_mat)</span>
-<span id="cb215-3"><a href="risk-difference.html#cb215-3" aria-hidden="true" tabindex="-1"></a>crosstab_mat</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="risk-difference.html#cb230-1" aria-hidden="true" tabindex="-1"></a>ip_mat <span class="ot">&lt;-</span> crosstab_mat[, <span class="st">&quot;Infection&quot;</span>] <span class="sc">/</span> crosstab_mat[, <span class="st">&quot;rowsum&quot;</span>]</span>
+<span id="cb230-2"><a href="risk-difference.html#cb230-2" aria-hidden="true" tabindex="-1"></a>crosstab_mat <span class="ot">&lt;-</span> <span class="fu">cbind</span>(crosstab_mat, ip_mat)</span>
+<span id="cb230-3"><a href="risk-difference.html#cb230-3" aria-hidden="true" tabindex="-1"></a>crosstab_mat</span></code></pre></div>
 <pre><code>##                 Infection No Infection rowsum     ip_mat
 ## Appendectomy            7          124    131 0.05343511
 ## No Appendectomy         1           78     79 0.01265823</code></pre>
 </div>
-<div id="table" class="section level4" number="8.6.1.2">
+<div id="table-1" class="section level4" number="8.6.1.2">
 <h4><span class="header-section-number">8.6.1.2</span> Table</h4>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="risk-difference.html#cb217-1" aria-hidden="true" tabindex="-1"></a>ip_tab <span class="ot">&lt;-</span> crosstab[, <span class="st">&quot;Infection&quot;</span>] <span class="sc">/</span> crosstab[, <span class="st">&quot;Sum&quot;</span>]</span>
-<span id="cb217-2"><a href="risk-difference.html#cb217-2" aria-hidden="true" tabindex="-1"></a>crosstab <span class="ot">&lt;-</span> <span class="fu">cbind</span>(crosstab, ip_tab)</span>
-<span id="cb217-3"><a href="risk-difference.html#cb217-3" aria-hidden="true" tabindex="-1"></a>crosstab</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="risk-difference.html#cb232-1" aria-hidden="true" tabindex="-1"></a>ip_tab <span class="ot">&lt;-</span> crosstab[, <span class="st">&quot;Infection&quot;</span>] <span class="sc">/</span> crosstab[, <span class="st">&quot;Sum&quot;</span>]</span>
+<span id="cb232-2"><a href="risk-difference.html#cb232-2" aria-hidden="true" tabindex="-1"></a>crosstab <span class="ot">&lt;-</span> <span class="fu">cbind</span>(crosstab, ip_tab)</span>
+<span id="cb232-3"><a href="risk-difference.html#cb232-3" aria-hidden="true" tabindex="-1"></a>crosstab</span></code></pre></div>
 <pre><code>##                 Infection No Infection Sum     ip_tab
 ## Appendectomy            7          124 131 0.05343511
 ## No Appendectomy         1           78  79 0.01265823
@@ -569,18 +572,18 @@ Hidden notes.
 </div>
 <div id="data-frame" class="section level4" number="8.6.1.3">
 <h4><span class="header-section-number">8.6.1.3</span> data frame</h4>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="risk-difference.html#cb219-1" aria-hidden="true" tabindex="-1"></a>crosstab_df <span class="ot">&lt;-</span> crosstab_df <span class="sc">%&gt;%</span> </span>
-<span id="cb219-2"><a href="risk-difference.html#cb219-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb219-3"><a href="risk-difference.html#cb219-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">rowsum =</span> <span class="fu">rowSums</span>(crosstab_df),</span>
-<span id="cb219-4"><a href="risk-difference.html#cb219-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">ip_df =</span> <span class="st">`</span><span class="at">Infection</span><span class="st">`</span> <span class="sc">/</span> rowsum</span>
-<span id="cb219-5"><a href="risk-difference.html#cb219-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb219-6"><a href="risk-difference.html#cb219-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb219-7"><a href="risk-difference.html#cb219-7" aria-hidden="true" tabindex="-1"></a>crosstab_df</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="risk-difference.html#cb234-1" aria-hidden="true" tabindex="-1"></a>crosstab_df <span class="ot">&lt;-</span> crosstab_df <span class="sc">%&gt;%</span> </span>
+<span id="cb234-2"><a href="risk-difference.html#cb234-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb234-3"><a href="risk-difference.html#cb234-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">rowsum =</span> <span class="fu">rowSums</span>(crosstab_df),</span>
+<span id="cb234-4"><a href="risk-difference.html#cb234-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">ip_df =</span> <span class="st">`</span><span class="at">Infection</span><span class="st">`</span> <span class="sc">/</span> rowsum</span>
+<span id="cb234-5"><a href="risk-difference.html#cb234-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb234-6"><a href="risk-difference.html#cb234-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb234-7"><a href="risk-difference.html#cb234-7" aria-hidden="true" tabindex="-1"></a>crosstab_df</span></code></pre></div>
 <pre><code>##                 Infection No Infection rowsum      ip_df
 ## Appendectomy            7          124    131 0.05343511
 ## No Appendectomy         1           78     79 0.01265823</code></pre>
 </div>
-<div id="tibble" class="section level4" number="8.6.1.4">
+<div id="tibble-1" class="section level4" number="8.6.1.4">
 <h4><span class="header-section-number">8.6.1.4</span> Tibble</h4>
 </div>
 </div>
@@ -593,21 +596,21 @@ Hidden notes.
 <p class="note">
 🗒<strong>Side Note:</strong> Modern Epidemiology 4th edition uses the term incience proportion instead of cumulative incidence.<span class="citation"><sup><a href="#ref-Lash2021-rz" role="doc-biblioref">1</a></sup></span>
 </p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="risk-difference.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb221-2"><a href="risk-difference.html#cb221-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">appendectomy =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>)),</span>
-<span id="cb221-3"><a href="risk-difference.html#cb221-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">base_rate =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
-<span id="cb221-4"><a href="risk-difference.html#cb221-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">incidence =</span> <span class="fu">c</span>(<span class="fl">1.3</span>, <span class="fl">0.0</span>, <span class="fl">1.3</span>, <span class="fl">4.0</span>) </span>
-<span id="cb221-5"><a href="risk-difference.html#cb221-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb221-6"><a href="risk-difference.html#cb221-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb221-7"><a href="risk-difference.html#cb221-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">x =</span> appendectomy, <span class="at">y =</span> incidence, <span class="at">fill =</span> base_rate)) <span class="sc">+</span></span>
-<span id="cb221-8"><a href="risk-difference.html#cb221-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;gray&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb221-9"><a href="risk-difference.html#cb221-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb221-10"><a href="risk-difference.html#cb221-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Had Incidental Appendectomy&quot;</span>,</span>
-<span id="cb221-11"><a href="risk-difference.html#cb221-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Wound Infection Incidence per 100&quot;</span></span>
-<span id="cb221-12"><a href="risk-difference.html#cb221-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb221-13"><a href="risk-difference.html#cb221-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb221-14"><a href="risk-difference.html#cb221-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) </span></code></pre></div>
-<p><img src="R-Notes_files/figure-html/unnamed-chunk-150-1.png" width="672" /></p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="risk-difference.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb236-2"><a href="risk-difference.html#cb236-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">appendectomy =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>)),</span>
+<span id="cb236-3"><a href="risk-difference.html#cb236-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">base_rate =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
+<span id="cb236-4"><a href="risk-difference.html#cb236-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">incidence =</span> <span class="fu">c</span>(<span class="fl">1.3</span>, <span class="fl">0.0</span>, <span class="fl">1.3</span>, <span class="fl">4.0</span>) </span>
+<span id="cb236-5"><a href="risk-difference.html#cb236-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb236-6"><a href="risk-difference.html#cb236-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb236-7"><a href="risk-difference.html#cb236-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">x =</span> appendectomy, <span class="at">y =</span> incidence, <span class="at">fill =</span> base_rate)) <span class="sc">+</span></span>
+<span id="cb236-8"><a href="risk-difference.html#cb236-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;gray&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb236-9"><a href="risk-difference.html#cb236-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb236-10"><a href="risk-difference.html#cb236-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Had Incidental Appendectomy&quot;</span>,</span>
+<span id="cb236-11"><a href="risk-difference.html#cb236-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Wound Infection Incidence per 100&quot;</span></span>
+<span id="cb236-12"><a href="risk-difference.html#cb236-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb236-13"><a href="risk-difference.html#cb236-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb236-14"><a href="risk-difference.html#cb236-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) </span></code></pre></div>
+<p><img src="R-Notes_files/figure-html/unnamed-chunk-157-1.png" width="672" /></p>
 <p class="note">
 🗒<strong>Side Note:</strong> At some point, come back and annotate this to match the figure <a href="https://sphweb.bumc.bu.edu/otlt/mph-modules/ep/ep713_association/ep713_association_print.html">here</a>. You may also want to add this to the data visualization note.
 </p>

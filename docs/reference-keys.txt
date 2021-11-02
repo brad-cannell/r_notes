@@ -85,6 +85,9 @@ load-packages-2
 scenario
 manually-create-data
 matrix
+table
+base-r-data-frame-with-rownames
+tibble
 effect-measure-modification
 overview-5
 useful-websites-5
@@ -103,9 +106,9 @@ simulate-a-tibble
 analysis
 incidence-proportion
 matrix-1
-table
+table-1
 data-frame
-tibble
+tibble-1
 risk-differences
 book-chapters
 chapter-overview

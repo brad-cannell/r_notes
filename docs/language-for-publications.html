@@ -24,7 +24,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2021-11-02" />
+<meta name="date" content="2021-11-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -299,15 +299,10 @@ div.csl-indent {
 <li class="chapter" data-level="8.1" data-path="risk-difference.html"><a href="risk-difference.html#overview-6"><i class="fa fa-check"></i><b>8.1</b> ⭐️Overview</a></li>
 <li class="chapter" data-level="8.2" data-path="risk-difference.html"><a href="risk-difference.html#useful-websites-6"><i class="fa fa-check"></i><b>8.2</b> 🌎Useful websites</a></li>
 <li class="chapter" data-level="8.3" data-path="risk-difference.html"><a href="risk-difference.html#load-packages-4"><i class="fa fa-check"></i><b>8.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="8.4" data-path="risk-difference.html"><a href="risk-difference.html#simulate-data-3"><i class="fa fa-check"></i><b>8.4</b> 🔢Simulate data</a>
+<li class="chapter" data-level="8.4" data-path="risk-difference.html"><a href="risk-difference.html#data-summary"><i class="fa fa-check"></i><b>8.4</b> Data Summary</a></li>
+<li class="chapter" data-level="8.5" data-path="risk-difference.html"><a href="risk-difference.html#simulate-data-3"><i class="fa fa-check"></i><b>8.5</b> 🔢Simulate data</a>
 <ul>
-<li class="chapter" data-level="8.4.1" data-path="risk-difference.html"><a href="risk-difference.html#simulate-a-matrix-object"><i class="fa fa-check"></i><b>8.4.1</b> Simulate a matrix object</a></li>
-</ul></li>
-<li class="chapter" data-level="8.5" data-path="risk-difference.html"><a href="risk-difference.html#left-off-here"><i class="fa fa-check"></i><b>8.5</b> 🔴 Left off here…</a>
-<ul>
-<li class="chapter" data-level="8.5.1" data-path="risk-difference.html"><a href="risk-difference.html#simulate-a-table-object"><i class="fa fa-check"></i><b>8.5.1</b> Simulate a table object</a></li>
-<li class="chapter" data-level="8.5.2" data-path="risk-difference.html"><a href="risk-difference.html#simulate-a-base-r-data-frame"><i class="fa fa-check"></i><b>8.5.2</b> Simulate a base R data frame</a></li>
-<li class="chapter" data-level="8.5.3" data-path="risk-difference.html"><a href="risk-difference.html#simulate-a-tibble"><i class="fa fa-check"></i><b>8.5.3</b> Simulate a tibble</a></li>
+<li class="chapter" data-level="8.5.1" data-path="risk-difference.html"><a href="risk-difference.html#simulate-a-matrix-object"><i class="fa fa-check"></i><b>8.5.1</b> Simulate a matrix object</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="risk-difference.html"><a href="risk-difference.html#analysis"><i class="fa fa-check"></i><b>8.6</b> 📈Analysis</a>
 <ul>
@@ -431,9 +426,9 @@ Hidden comments placeholder
 </div>
 <div id="load-packages-6" class="section level2" number="12.3">
 <h2><span class="header-section-number">12.3</span> 📦Load packages</h2>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="language-for-publications.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb249-2"><a href="language-for-publications.html#cb249-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(freqtables)</span>
-<span id="cb249-3"><a href="language-for-publications.html#cb249-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(meantables)</span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="language-for-publications.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb242-2"><a href="language-for-publications.html#cb242-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(freqtables)</span>
+<span id="cb242-3"><a href="language-for-publications.html#cb242-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(meantables)</span></code></pre></div>
 </div>
 <div id="statistical-software" class="section level2" number="12.4">
 <h2><span class="header-section-number">12.4</span> Statistical software</h2>
@@ -444,7 +439,7 @@ Hidden comments placeholder
 <p>Statistical analyses were conducted using R version 4.1.0 (R Core Team, 2021) in RStudio version 1.4.1717 (RStudio Team, 2021) with the following packages: tidyverse (Wickham et al., 2019), freqtables (Cannell, 2020), meantables (Cannell, 2020).</p>
 </blockquote>
 <p>The functions below can be used to get citations and version numbers.</p>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="language-for-publications.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="language-for-publications.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>()</span></code></pre></div>
 <pre><code>## 
 ## To cite R in publications use:
 ## 
@@ -466,12 +461,12 @@ Hidden comments placeholder
 ## We have invested a lot of time and effort in creating R, please cite it
 ## when using it for data analysis. See also &#39;citation(&quot;pkgname&quot;)&#39; for
 ## citing R packages.</code></pre>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="language-for-publications.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">R.Version</span>()<span class="sc">$</span>version.string</span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="language-for-publications.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="fu">R.Version</span>()<span class="sc">$</span>version.string</span></code></pre></div>
 <pre><code>## [1] &quot;R version 4.1.0 (2021-05-18)&quot;</code></pre>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="language-for-publications.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Won&#39;t run when I build book, but this is how you get the RStudio version number</span></span>
-<span id="cb254-2"><a href="language-for-publications.html#cb254-2" aria-hidden="true" tabindex="-1"></a>rstudioapi<span class="sc">::</span><span class="fu">versionInfo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="language-for-publications.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Won&#39;t run when I build book, but this is how you get the RStudio version number</span></span>
+<span id="cb247-2"><a href="language-for-publications.html#cb247-2" aria-hidden="true" tabindex="-1"></a>rstudioapi<span class="sc">::</span><span class="fu">versionInfo</span>()</span></code></pre></div>
 <pre><code>## Error: RStudio not running</code></pre>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="language-for-publications.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="language-for-publications.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##   Wickham et al., (2019). Welcome to the tidyverse. Journal of Open
 ##   Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686
@@ -488,7 +483,7 @@ Hidden comments placeholder
 ##     pages = {1686},
 ##     doi = {10.21105/joss.01686},
 ##   }</code></pre>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="language-for-publications.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">&quot;freqtables&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="language-for-publications.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">&quot;freqtables&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## To cite package &#39;freqtables&#39; in publications use:
 ## 

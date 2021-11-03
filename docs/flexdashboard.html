@@ -24,7 +24,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2021-11-02" />
+<meta name="date" content="2021-11-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -299,15 +299,10 @@ div.csl-indent {
 <li class="chapter" data-level="8.1" data-path="risk-difference.html"><a href="risk-difference.html#overview-6"><i class="fa fa-check"></i><b>8.1</b> ⭐️Overview</a></li>
 <li class="chapter" data-level="8.2" data-path="risk-difference.html"><a href="risk-difference.html#useful-websites-6"><i class="fa fa-check"></i><b>8.2</b> 🌎Useful websites</a></li>
 <li class="chapter" data-level="8.3" data-path="risk-difference.html"><a href="risk-difference.html#load-packages-4"><i class="fa fa-check"></i><b>8.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="8.4" data-path="risk-difference.html"><a href="risk-difference.html#simulate-data-3"><i class="fa fa-check"></i><b>8.4</b> 🔢Simulate data</a>
+<li class="chapter" data-level="8.4" data-path="risk-difference.html"><a href="risk-difference.html#data-summary"><i class="fa fa-check"></i><b>8.4</b> Data Summary</a></li>
+<li class="chapter" data-level="8.5" data-path="risk-difference.html"><a href="risk-difference.html#simulate-data-3"><i class="fa fa-check"></i><b>8.5</b> 🔢Simulate data</a>
 <ul>
-<li class="chapter" data-level="8.4.1" data-path="risk-difference.html"><a href="risk-difference.html#simulate-a-matrix-object"><i class="fa fa-check"></i><b>8.4.1</b> Simulate a matrix object</a></li>
-</ul></li>
-<li class="chapter" data-level="8.5" data-path="risk-difference.html"><a href="risk-difference.html#left-off-here"><i class="fa fa-check"></i><b>8.5</b> 🔴 Left off here…</a>
-<ul>
-<li class="chapter" data-level="8.5.1" data-path="risk-difference.html"><a href="risk-difference.html#simulate-a-table-object"><i class="fa fa-check"></i><b>8.5.1</b> Simulate a table object</a></li>
-<li class="chapter" data-level="8.5.2" data-path="risk-difference.html"><a href="risk-difference.html#simulate-a-base-r-data-frame"><i class="fa fa-check"></i><b>8.5.2</b> Simulate a base R data frame</a></li>
-<li class="chapter" data-level="8.5.3" data-path="risk-difference.html"><a href="risk-difference.html#simulate-a-tibble"><i class="fa fa-check"></i><b>8.5.3</b> Simulate a tibble</a></li>
+<li class="chapter" data-level="8.5.1" data-path="risk-difference.html"><a href="risk-difference.html#simulate-a-matrix-object"><i class="fa fa-check"></i><b>8.5.1</b> Simulate a matrix object</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="risk-difference.html"><a href="risk-difference.html#analysis"><i class="fa fa-check"></i><b>8.6</b> 📈Analysis</a>
 <ul>
@@ -429,8 +424,8 @@ Hidden comments placeholder
 </div>
 <div id="load-packages-5" class="section level2" number="11.3">
 <h2><span class="header-section-number">11.3</span> 📦Load packages</h2>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="flexdashboard.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb246-2"><a href="flexdashboard.html#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flexdashboard)</span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="flexdashboard.html#cb239-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb239-2"><a href="flexdashboard.html#cb239-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flexdashboard)</span></code></pre></div>
 </div>
 <div id="tips" class="section level2" number="11.4">
 <h2><span class="header-section-number">11.4</span> Tips</h2>
@@ -442,11 +437,11 @@ Hidden comments placeholder
 </div>
 <div id="simulate-data-4" class="section level2" number="11.5">
 <h2><span class="header-section-number">11.5</span> 🔢Simulate data</h2>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="flexdashboard.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb247-2"><a href="flexdashboard.html#cb247-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb247-3"><a href="flexdashboard.html#cb247-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">26</span>),</span>
-<span id="cb247-4"><a href="flexdashboard.html#cb247-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> letters</span>
-<span id="cb247-5"><a href="flexdashboard.html#cb247-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="flexdashboard.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb240-2"><a href="flexdashboard.html#cb240-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb240-3"><a href="flexdashboard.html#cb240-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">26</span>),</span>
+<span id="cb240-4"><a href="flexdashboard.html#cb240-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> letters</span>
+<span id="cb240-5"><a href="flexdashboard.html#cb240-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <!--
 Clean up and add session info
 -->

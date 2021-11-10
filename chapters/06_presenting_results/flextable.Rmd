@@ -26,6 +26,11 @@ Good examples to check out:
 * L2C quarterly reports.    
 
 
+## Need to add
+
+1. There is lots of good stuff in the L2C paper_smartphone_app folder. There are useful functions for flextable themes and there and table_use_app.Rmd has good examples.
+
+
 ## 🌎Useful websites
 
 * [Using the flextable R package](https://ardata-fr.github.io/flextable-book/)   

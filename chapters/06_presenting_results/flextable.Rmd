@@ -1,0 +1,220 @@
+# Flextable
+
+<!--
+Hidden comments placeholder
+-->
+
+```{r echo=FALSE}
+knitr::include_graphics("https://picsum.photos/200/300")
+```
+
+## ⭐️Overview
+
+Using the Flextable package
+
+Some overlap with:   
+
+* officer.Rmd    
+* descriptive_notes.Rmd   
+* tables_descriptive.Rmd   
+
+Good examples to check out:
+
+* LEAD panel monthly report.   
+* Sun Study report.   
+* stroke study -> table_characteristics_by_network.Rmd.   
+* L2C quarterly reports.    
+
+
+## 🌎Useful websites
+
+* [Using the flextable R package](https://ardata-fr.github.io/flextable-book/)   
+* [Flextable R package](https://davidgohel.github.io/flextable/)
+
+
+## 📦Load packages
+
+```{r message=FALSE}
+library(dplyr, warn.conflicts = FALSE)
+library(officer, warn.conflicts = FALSE)
+library(flextable, warn.conflicts = FALSE)
+```
+
+
+## 🔢Simulate data 
+
+```{r}
+data("mtcars")
+```
+
+
+## Adding blank rows
+
+Actually, might just create this in Word and post on [StackOverflow](https://stackoverflow.com/questions/64932726/add-a-blank-row-in-flextable).
+
+When creating tables in Word reports, I often want to add blank rows in between variables. As a trivial toy example:
+
+```{r}
+doc <- read_docx()
+```
+
+```{r}
+table_no_breaks <- mtcars %>% 
+  count(cyl)
+
+table_no_breaks
+```
+
+```{r}
+table_no_breaks_ft <- flextable(table_no_breaks)
+
+table_no_breaks_ft
+```
+
+```{r}
+doc <- doc %>% 
+  body_add_flextable(table_no_breaks_ft) %>% 
+  body_add_par("")
+```
+
+```{r}
+print(
+  doc, 
+  "examples/flextable_no_blank_rows.docx"
+)
+```
+
+Results in a table that looks like this: [flextable_no_blank_rows.docx](https://www.dropbox.com/s/09weee9je1sdj7f/flextable_no_blank_rows.docx?dl=0)
+
+I can add line breaks directly to the data frame like this:
+
+```{r}
+table_breaks <- table_no_breaks %>% 
+  mutate(
+    across(
+      everything(),
+      as.character
+    )
+  ) %>% 
+  add_row(cyl = NA, n = NA, .after = 1) %>% 
+  add_row(cyl = NA, n = NA, .after = 3) %>%
+  add_row(cyl = NA, n = NA, .after = 5)
+
+table_breaks
+```
+
+```{r}
+table_breaks_ft <- flextable(table_breaks)
+
+table_breaks_ft
+```
+
+```{r}
+doc <- doc %>% 
+  body_add_flextable(table_breaks_ft)
+```
+
+```{r}
+print(
+  doc, 
+  "examples/flextable_blank_rows.docx"
+)
+```
+
+Which results in the Word table that I want: [flextable_blank_rows.docx](https://www.dropbox.com/s/smq0x7qlf5muhvf/flextable_blank_rows.docx?dl=0)
+
+However, I would prefer to be able to add the blank rows directly to the flextable rather than the data frame the flextable is built from. To me, this is a formatting issue rather than a data issue, and I prefer to keep data issues (manipulation of data frames) and formatting issues (manipulation of Word tables) separate. Any advice is greatly appreciated!
+
+## Autofit to window
+
+```{r}
+table_breaks_ft %>% 
+  set_table_properties(layout = "autofit")
+```
+
+## Change font to TNR
+
+```{r}
+table_breaks_ft %>% 
+  font(fontname = "Times New Roman", part = "all")
+```
+
+## Bold part of the table title
+
+From SO 2020-08-23: https://stackoverflow.com/questions/63530204/is-there-a-way-to-bold-part-of-a-character-string-being-passed-to-add-header-lin?noredirect=1#comment112346997_63530204
+
+```{r}
+mtcars_ft <- flextable(head(mtcars)) %>% 
+  # Add a blank title line to top of table
+  add_header_lines("") %>% 
+  # Use compose to bold "Table #."
+  compose(
+    i = 1, part = "header",
+    value = as_paragraph(
+      as_chunk("Table 1. ", props = fp_text(bold = TRUE)),
+      "Here is my example mtcars ft."
+    ),
+  )
+
+mtcars_ft
+```
+
+
+## Conditional formatting
+
+From LEAD panel summarize votes -- Doesn't work here. Need to turn this into a working example at some point.
+
+```{r eval=FALSE}
+title <- "Table 2. Presence/absence of unanimous agreement for each abuse type by case number."
+
+summary_agreement_ad_abuse_type_ft <- flextable(
+  # Remove unneeded columns
+  summary_agreement_ad_abuse_type %>% 
+    select(
+      CaseID, physical, sexual, emotional, neglect, 
+      abandonment, financial, selfneglect
+    )
+  ) %>% 
+  # Column width: Trial and error
+  # Make a table and play with properties
+  width(
+    j = c(1:8), 
+    width = c(0.98, 0.66, 0.56, 0.78, 0.71, 1.01, 0.71, 0.90)
+  ) %>% 
+  # Improve readability of column headers
+  set_header_labels(CaseID = "Case Number", selfneglect = "Self Neglect") %>% 
+  # Add title to top of table
+  add_header_lines(title) %>%
+  # Change font to times new roman
+  font(fontname = "Times New Roman", part = "all") %>% 
+  # Change background color of first column
+  bg(j = 1, bg = "#E5E8E8", part = "body") %>% 
+  # Center column headings
+  align(i = 2, align = "center", part = "header") %>% 
+  # Center body text
+  align(align = "center", part = "body") %>% 
+  # Conditionally format disagree to red
+  color(i = ~ physical == "Disagree", j = c("CaseID", "physical"), color = "red") %>%
+  color(i = ~ sexual == "Disagree", j = c("CaseID", "sexual"), color = "red") %>%
+  color(i = ~ emotional == "Disagree", j = c("CaseID", "emotional"), color = "red") %>%
+  color(i = ~ neglect == "Disagree", j = c("CaseID", "neglect"), color = "red") %>%
+  color(i = ~ abandonment == "Disagree", j = c("CaseID", "abandonment"), color = "red") %>%
+  color(i = ~ financial == "Disagree", j = c("CaseID", "financial"), color = "red") %>%
+  color(i = ~ selfneglect == "Disagree", j = c("CaseID", "selfneglect"), color = "red")
+
+# For checking
+# summary_agreement_ad_abuse_type_ft
+```
+
+
+<!--
+Clean up and add session info
+-->
+
+```{r echo=FALSE}
+rm(list = ls())
+```
+
+```{r echo=FALSE}
+sessionInfo()
+```

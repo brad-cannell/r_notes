@@ -1,0 +1,241 @@
+# Officer
+
+<!--
+Hidden comments placeholder
+-->
+
+```{r echo=FALSE}
+knitr::include_graphics("https://picsum.photos/200/300")
+```
+
+## ⭐️Overview
+
+I don't have time to do this right today, but I do make some good notes on using officer. 
+
+Good examples to check out:
+
+* LEAD panel monthly report.    
+* Sun Study report.    
+* stroke study -> table_characteristics_by_network.Rmd.    
+* L2C quarterly reports.    
+* L2C Distress Tolerance Scale Paper    
+
+At least until you figure out make files, I think the best thing to do is save tables and figures as files in the docs folder. Create a single R script to compile them all together and create the report. Use comments to specify what file the table/figure is created in.
+
+Still trying to figure out if it's better to write text in Word and then add in tables and charts with bookmarks, or is it better to write everything in R?
+
+In general, it seems helpful/expedient to do as much of the prose and formatting as possible directly in the Word template. Then, just add numbers, tables, and graphs from R with bookmarks. 
+
+<p class="warning"> ⚠️**Warning:** When editing the code chunks below, you will need to add "../../" in front of file paths that retrieve Word docs from or save word docs to the examples folder if you want them to work when you run them interactively. For example, "../../examples/Word Template for Officer.docx". However, you have to delete the "../../" from the file paths in order for build book to work. </p>
+
+## 🌎Useful websites
+
+* https://stackoverflow.com/
+
+
+## 📦Load packages
+
+```{r message=FALSE}
+library(dplyr, warn.conflicts = FALSE)
+library(officer, warn.conflicts = FALSE)
+library(flextable, warn.conflicts = FALSE)
+```
+
+
+## Formatted text
+
+Can start with a template
+
+```{r eval=FALSE}
+doc <- read_docx("officer_word_template.docx")
+```
+
+Or not
+
+```{r}
+doc <- read_docx() %>%
+  body_add_par("DETECT LEAD Panel Initial Review Report", style = "heading 1") %>%
+  body_add_par(paste("Updated: ", Sys.Date())) %>%
+  body_add_par("") %>%
+  body_add_fpar(
+    fpar(
+      ftext(
+        "Total Initial Assessments:",
+        prop = fp_text(
+          font.family = "Times New Roman", font.size = 11
+        )
+      )
+    )
+  )
+```
+
+```{r}
+print(
+  doc, 
+  "examples/officer_formatted_text.docx"
+)
+```
+
+[Link to Word Document on Dropbox](https://www.dropbox.com/s/3f8c0omkfahdc8l/officer_formatted_text.docx?dl=0)
+
+```{r eval=FALSE}
+# Output Word document
+# Update the year and month in the file name dynamically
+print(
+  doc, 
+  paste(Sys.Date() %>% format("%Y-%m"), " Initial Review Report.docx")
+)
+```
+
+
+## Bulleted list
+
+It's possible to do. You need to make sure you create a bullet style in the template Word doc.
+
+See here: https://github.com/davidgohel/officer/issues/262
+
+```{r eval=FALSE}
+#  Create Word doc
+ss_report <- read_docx("examples/Word Template for Officer.docx") %>%
+  body_add_par("Sun Study Outcomes Report", style = "heading 1") %>% 
+  body_add_par("\n") %>% 
+  body_add_par(paste("Updated: ", Sys.Date())) %>% 
+  body_add_par("\n") %>% 
+  
+  # Add bulleted list
+  body_add_par("item 1", style = "bullet") %>%
+  body_add_par("item 2", style = "bullet") %>%
+  body_add_par("item 3", style = "bullet")
+```
+
+```{r eval=FALSE}
+# Output Word document
+print(
+  ss_report, 
+  "examples/officer_bullets.docx"
+)
+```
+
+[Link to Word Document on Dropbox](https://www.dropbox.com/s/qc57o5oa54hqnev/officer_bullets.docx?dl=0)
+
+
+## Adding on to the end of a file. 
+
+From the Sun Study. Need to clean up when I get time.
+
+Start with the same document we just made above. 
+
+```{r}
+#  Create Word doc
+ss_report <- read_docx("examples/Word Template for Officer.docx") %>%
+  body_add_par("Sun Study Outcomes Report", style = "heading 1") %>% 
+  body_add_par("\n") %>% 
+  body_add_par(paste("Updated: ", Sys.Date())) %>% 
+  body_add_par("\n")
+```
+
+```{r}
+# Output Word document
+print(
+  ss_report, 
+  "examples/officer_bullets.docx"
+)
+```
+
+[Link to Word Document on Dropbox](https://www.dropbox.com/s/qc57o5oa54hqnev/officer_bullets.docx?dl=0)
+
+Now add a new section to the document. 
+
+Section 1. Report on missing data 
+
+```{r}
+# Load report and add to the end?
+ss_report <- read_docx("examples/officer_bullets.docx") %>%
+  body_add_par("Test Text")
+```
+
+```{r}
+# Output Word document
+print(
+  ss_report, 
+  "examples/officer_add_to_end.docx"
+)
+```
+
+[Link to Word Document on Dropbox](https://www.dropbox.com/s/ucnt8pm3r28qj42/officer_add_to_end.docx?dl=0)
+
+This works. However, there was no advantage to doing it this way in the Sun Study example. In fact, what I've found in general is that it typically works best to do as much adding text and formatting things as possible directly in the Word template. Then, just pretty much add flextables and plots to the Word template. 
+
+
+## Using bookmarks
+
+Writing everything in an R script and then compiling to a Word document works alright, but wrapping everything in officer functions makes it hard to read. In this section, I'm seeing if I can type all the narrative in the Word template, then just add tables and figures into the Word template at bookmarks.
+
+Website about bookmarks: https://davidgohel.github.io/officer/reference/body_replace_text_at_bkm.html
+
+Have to create this with point and click in Word: http://howtomicrosoftofficetutorials.blogspot.com/2017/03/use-bookmarks-in-word-2016-for-mac.html
+
+Use Insert > Links > Bookmark
+
+If you don't add other text around the bookmark, you will get this error: Error: bookmark 'example_table' does not end in the same paragraph (or is on the whole paragraph)
+
+A hacky fix is to enclose bookmark text with bm text <bm>. Make sure only the "text" part is the bookmark.
+
+I also found that you can't continue piping the document after you've added a flextable at a bookmark. You have to start overwriting the Word document object. See LEAD Panel Summary Report as an example.
+
+```{r}
+doc_w_bookmarks <- read_docx("examples/Word Template for Officer Bookmarks.docx") %>% 
+  body_replace_flextable_at_bkm(
+    bookmark = "example_table",
+    value = flextable(head(mtcars))
+  )
+
+print(
+  doc_w_bookmarks,
+  "examples/officer_bookmarks.docx"
+)
+```
+
+[Link to Word Document on Dropbox](https://www.dropbox.com/s/drgw3okcqwp9eqy/officer_bookmarks.docx?dl=0)
+
+After figuring this out, I think it makes more sense to write in Word and replace tables and figures with bookmarks.
+
+For ggplot graphs, it looks like you need to use ggsave to save the plot as an image file. Then, use the image file as the value to body_replace_img_at_bkm()
+
+**Don't forget to use external_img()**
+
+Example from L2C quarterly report: 
+
+```{r eval=FALSE}
+doc <- doc %>% 
+  body_replace_text_at_bkm("n_phone_terminations", as.character(n_phone_terminations)) %>% 
+  body_replace_img_at_bkm(
+    "fig_phone_terminations", 
+    external_img("fig_1.jpeg", width = 7, height = 4)
+  )
+```
+
+
+For images, just add the bookmark to the end of the title without surrounding it with "bm". For example, "Figure 1. Overall trend in sunscreen application outcomes by study p_overall" Where "p_overall is the bookmark. Otherwise, the "bm" will still be there.
+
+For best results, the width and height used in ggsave() should match the width and height in external_img(). Deciding on the correct width and height might take some trial and error.
+
+To add an updated date, use this:
+
+```{r eval=FALSE}
+doc_w_bookmarks <- doc_w_bookmarks %>% 
+  body_replace_text_at_bkm("date", as.character(Sys.Date()))
+```
+
+
+<!--
+Clean up and add session info
+-->
+
+```{r echo=FALSE}
+rm(list = ls())
+```
+
+```{r echo=FALSE}
+sessionInfo()
+```

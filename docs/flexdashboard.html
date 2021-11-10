@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>11 flexdashboard | R Notes</title>
+  <title>11 Flexdashboard | R Notes</title>
   <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="11 flexdashboard | R Notes" />
+  <meta property="og:title" content="11 Flexdashboard | R Notes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://brad-cannell.github.io/r_notes/" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="brad-cannell/r_notes" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11 flexdashboard | R Notes" />
+  <meta name="twitter:title" content="11 Flexdashboard | R Notes" />
   
   <meta name="twitter:description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2021-11-03" />
+<meta name="date" content="2021-11-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="bookdown-quick-start.html"/>
-<link rel="next" href="language-for-publications.html"/>
+<link rel="next" href="flextable.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -61,6 +61,7 @@
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -354,7 +355,7 @@ div.csl-indent {
 <li class="chapter" data-level="10.12" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#knitting-the-book"><i class="fa fa-check"></i><b>10.12</b> Knitting the book</a></li>
 <li class="chapter" data-level="10.13" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#errors-and-warnings"><i class="fa fa-check"></i><b>10.13</b> Errors and warnings</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="flexdashboard.html"><a href="flexdashboard.html"><i class="fa fa-check"></i><b>11</b> flexdashboard</a>
+<li class="chapter" data-level="11" data-path="flexdashboard.html"><a href="flexdashboard.html"><i class="fa fa-check"></i><b>11</b> Flexdashboard</a>
 <ul>
 <li class="chapter" data-level="11.1" data-path="flexdashboard.html"><a href="flexdashboard.html#overview-8"><i class="fa fa-check"></i><b>11.1</b> ⭐️Overview</a></li>
 <li class="chapter" data-level="11.2" data-path="flexdashboard.html"><a href="flexdashboard.html#useful-websites-8"><i class="fa fa-check"></i><b>11.2</b> 🌎Useful websites</a></li>
@@ -362,29 +363,51 @@ div.csl-indent {
 <li class="chapter" data-level="11.4" data-path="flexdashboard.html"><a href="flexdashboard.html#tips"><i class="fa fa-check"></i><b>11.4</b> Tips</a></li>
 <li class="chapter" data-level="11.5" data-path="flexdashboard.html"><a href="flexdashboard.html#simulate-data-4"><i class="fa fa-check"></i><b>11.5</b> 🔢Simulate data</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="language-for-publications.html"><a href="language-for-publications.html"><i class="fa fa-check"></i><b>12</b> Language for publications</a>
+<li class="chapter" data-level="12" data-path="flextable.html"><a href="flextable.html"><i class="fa fa-check"></i><b>12</b> Flextable</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="language-for-publications.html"><a href="language-for-publications.html#overview-9"><i class="fa fa-check"></i><b>12.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="12.2" data-path="language-for-publications.html"><a href="language-for-publications.html#useful-websites-9"><i class="fa fa-check"></i><b>12.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="12.3" data-path="language-for-publications.html"><a href="language-for-publications.html#load-packages-6"><i class="fa fa-check"></i><b>12.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="12.4" data-path="language-for-publications.html"><a href="language-for-publications.html#statistical-software"><i class="fa fa-check"></i><b>12.4</b> Statistical software</a>
-<ul>
-<li class="chapter" data-level="12.4.1" data-path="language-for-publications.html"><a href="language-for-publications.html#r"><i class="fa fa-check"></i><b>12.4.1</b> R</a></li>
-<li class="chapter" data-level="12.4.2" data-path="language-for-publications.html"><a href="language-for-publications.html#stata"><i class="fa fa-check"></i><b>12.4.2</b> Stata</a></li>
-<li class="chapter" data-level="12.4.3" data-path="language-for-publications.html"><a href="language-for-publications.html#sas"><i class="fa fa-check"></i><b>12.4.3</b> SAS</a></li>
+<li class="chapter" data-level="12.1" data-path="flextable.html"><a href="flextable.html#overview-9"><i class="fa fa-check"></i><b>12.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="12.2" data-path="flextable.html"><a href="flextable.html#useful-websites-9"><i class="fa fa-check"></i><b>12.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="12.3" data-path="flextable.html"><a href="flextable.html#load-packages-6"><i class="fa fa-check"></i><b>12.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="12.4" data-path="flextable.html"><a href="flextable.html#simulate-data-5"><i class="fa fa-check"></i><b>12.4</b> 🔢Simulate data</a></li>
+<li class="chapter" data-level="12.5" data-path="flextable.html"><a href="flextable.html#adding-blank-rows"><i class="fa fa-check"></i><b>12.5</b> Adding blank rows</a></li>
+<li class="chapter" data-level="12.6" data-path="flextable.html"><a href="flextable.html#autofit-to-window"><i class="fa fa-check"></i><b>12.6</b> Autofit to window</a></li>
+<li class="chapter" data-level="12.7" data-path="flextable.html"><a href="flextable.html#change-font-to-tnr"><i class="fa fa-check"></i><b>12.7</b> Change font to TNR</a></li>
+<li class="chapter" data-level="12.8" data-path="flextable.html"><a href="flextable.html#bold-part-of-the-table-title"><i class="fa fa-check"></i><b>12.8</b> Bold part of the table title</a></li>
+<li class="chapter" data-level="12.9" data-path="flextable.html"><a href="flextable.html#conditional-formatting"><i class="fa fa-check"></i><b>12.9</b> Conditional formatting</a></li>
 </ul></li>
-<li class="chapter" data-level="12.5" data-path="language-for-publications.html"><a href="language-for-publications.html#irb"><i class="fa fa-check"></i><b>12.5</b> IRB</a></li>
+<li class="chapter" data-level="13" data-path="language-for-publications.html"><a href="language-for-publications.html"><i class="fa fa-check"></i><b>13</b> Language for publications</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="language-for-publications.html"><a href="language-for-publications.html#overview-10"><i class="fa fa-check"></i><b>13.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="13.2" data-path="language-for-publications.html"><a href="language-for-publications.html#useful-websites-10"><i class="fa fa-check"></i><b>13.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="13.3" data-path="language-for-publications.html"><a href="language-for-publications.html#load-packages-7"><i class="fa fa-check"></i><b>13.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="13.4" data-path="language-for-publications.html"><a href="language-for-publications.html#statistical-software"><i class="fa fa-check"></i><b>13.4</b> Statistical software</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="language-for-publications.html"><a href="language-for-publications.html#r"><i class="fa fa-check"></i><b>13.4.1</b> R</a></li>
+<li class="chapter" data-level="13.4.2" data-path="language-for-publications.html"><a href="language-for-publications.html#stata"><i class="fa fa-check"></i><b>13.4.2</b> Stata</a></li>
+<li class="chapter" data-level="13.4.3" data-path="language-for-publications.html"><a href="language-for-publications.html#sas"><i class="fa fa-check"></i><b>13.4.3</b> SAS</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="language-for-publications.html"><a href="language-for-publications.html#irb"><i class="fa fa-check"></i><b>13.5</b> IRB</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="officer.html"><a href="officer.html"><i class="fa fa-check"></i><b>14</b> Officer</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="officer.html"><a href="officer.html#overview-11"><i class="fa fa-check"></i><b>14.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="14.2" data-path="officer.html"><a href="officer.html#useful-websites-11"><i class="fa fa-check"></i><b>14.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="14.3" data-path="officer.html"><a href="officer.html#load-packages-8"><i class="fa fa-check"></i><b>14.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="14.4" data-path="officer.html"><a href="officer.html#formatted-text"><i class="fa fa-check"></i><b>14.4</b> Formatted text</a></li>
+<li class="chapter" data-level="14.5" data-path="officer.html"><a href="officer.html#bulleted-list"><i class="fa fa-check"></i><b>14.5</b> Bulleted list</a></li>
+<li class="chapter" data-level="14.6" data-path="officer.html"><a href="officer.html#adding-on-to-the-end-of-a-file."><i class="fa fa-check"></i><b>14.6</b> Adding on to the end of a file.</a></li>
+<li class="chapter" data-level="14.7" data-path="officer.html"><a href="officer.html#using-bookmarks"><i class="fa fa-check"></i><b>14.7</b> Using bookmarks</a></li>
 </ul></li>
 <li class="part"><span><b>VII Shiny</b></span></li>
-<li class="chapter" data-level="13" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html"><i class="fa fa-check"></i><b>13</b> Appendix A: Terms and Definitions</a>
+<li class="chapter" data-level="15" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html"><i class="fa fa-check"></i><b>15</b> Appendix A: Terms and Definitions</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#overview-10"><i class="fa fa-check"></i><b>13.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="13.2" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#useful-websites-10"><i class="fa fa-check"></i><b>13.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="13.3" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#terms"><i class="fa fa-check"></i><b>13.3</b> 📖Terms</a>
+<li class="chapter" data-level="15.1" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#overview-12"><i class="fa fa-check"></i><b>15.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="15.2" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#useful-websites-12"><i class="fa fa-check"></i><b>15.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="15.3" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#terms"><i class="fa fa-check"></i><b>15.3</b> 📖Terms</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#general-terms"><i class="fa fa-check"></i><b>13.3.1</b> General Terms</a></li>
-<li class="chapter" data-level="13.3.2" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#general-statistics-terms"><i class="fa fa-check"></i><b>13.3.2</b> General statistics terms</a></li>
-<li class="chapter" data-level="13.3.3" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#measures-of-occurence"><i class="fa fa-check"></i><b>13.3.3</b> Measures of occurence</a></li>
+<li class="chapter" data-level="15.3.1" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#general-terms"><i class="fa fa-check"></i><b>15.3.1</b> General Terms</a></li>
+<li class="chapter" data-level="15.3.2" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#general-statistics-terms"><i class="fa fa-check"></i><b>15.3.2</b> General statistics terms</a></li>
+<li class="chapter" data-level="15.3.3" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#measures-of-occurence"><i class="fa fa-check"></i><b>15.3.3</b> Measures of occurence</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -407,7 +430,7 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="flexdashboard" class="section level1" number="11">
-<h1><span class="header-section-number">11</span> flexdashboard</h1>
+<h1><span class="header-section-number">11</span> Flexdashboard</h1>
 <!--
 Hidden comments placeholder
 -->
@@ -489,7 +512,7 @@ Clean up and add session info
         </div>
       </div>
 <a href="bookdown-quick-start.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="language-for-publications.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="flextable.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

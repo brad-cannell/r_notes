@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>12 Flextable | R Notes</title>
+  <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="12 Flextable | R Notes" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://brad-cannell.github.io/r_notes/" />
+  
+  <meta property="og:description" content="This is the Bookdown for Brad Cannell’s R Notes." />
+  <meta name="github-repo" content="brad-cannell/r_notes" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="12 Flextable | R Notes" />
+  
+  <meta name="twitter:description" content="This is the Bookdown for Brad Cannell’s R Notes." />
+  
+
+<meta name="author" content="Brad Cannell" />
+
+
+<meta name="date" content="2021-11-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="flexdashboard.html"/>
+<link rel="next" href="language-for-publications.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#organization"><i class="fa fa-check"></i>Organization</a></li>
+</ul></li>
+<li class="part"><span><b>I Programming</b></span></li>
+<li class="chapter" data-level="1" data-path="my-package-notes.html"><a href="my-package-notes.html"><i class="fa fa-check"></i><b>1</b> Packages: Quick Start</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="my-package-notes.html"><a href="my-package-notes.html#overview"><i class="fa fa-check"></i><b>1.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="1.2" data-path="my-package-notes.html"><a href="my-package-notes.html#useful-websites"><i class="fa fa-check"></i><b>1.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="1.3" data-path="my-package-notes.html"><a href="my-package-notes.html#step-1-create-the-package-project"><i class="fa fa-check"></i><b>1.3</b> Step 1: Create the package project</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="my-package-notes.html"><a href="my-package-notes.html#step-2-modify-the-description-file"><i class="fa fa-check"></i><b>1.3.1</b> Step 2: Modify the description file</a></li>
+<li class="chapter" data-level="1.3.2" data-path="my-package-notes.html"><a href="my-package-notes.html#working-with-r-scripts"><i class="fa fa-check"></i><b>1.3.2</b> Working with R scripts</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="my-package-notes.html"><a href="my-package-notes.html#step-3-writing-help-pages"><i class="fa fa-check"></i><b>1.4</b> Step 3: Writing help pages</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="my-package-notes.html"><a href="my-package-notes.html#example-roxygen-header"><i class="fa fa-check"></i><b>1.4.1</b> Example <code>roxygen</code> header</a></li>
+<li class="chapter" data-level="1.4.2" data-path="my-package-notes.html"><a href="my-package-notes.html#documenting-package"><i class="fa fa-check"></i><b>1.4.2</b> Documenting Package:</a></li>
+<li class="chapter" data-level="1.4.3" data-path="my-package-notes.html"><a href="my-package-notes.html#once-package-is-complete-ish"><i class="fa fa-check"></i><b>1.4.3</b> Once package is complete (ish)</a></li>
+<li class="chapter" data-level="1.4.4" data-path="my-package-notes.html"><a href="my-package-notes.html#notes-about-package-notes"><i class="fa fa-check"></i><b>1.4.4</b> Notes about package notes:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="my-package-notes.html"><a href="my-package-notes.html#step-4-synchronize-with-github"><i class="fa fa-check"></i><b>1.5</b> Step 4: Synchronize with GitHub</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="my-package-notes.html"><a href="my-package-notes.html#example-modify-description"><i class="fa fa-check"></i><b>1.5.1</b> Example: Modify Description</a></li>
+<li class="chapter" data-level="1.5.2" data-path="my-package-notes.html"><a href="my-package-notes.html#example-installation-instructions-for-readme"><i class="fa fa-check"></i><b>1.5.2</b> Example Installation instructions for README:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="my-package-notes.html"><a href="my-package-notes.html#step-5-testing"><i class="fa fa-check"></i><b>1.6</b> Step 5: Testing</a></li>
+<li class="chapter" data-level="1.7" data-path="my-package-notes.html"><a href="my-package-notes.html#vignettes"><i class="fa fa-check"></i><b>1.7</b> Vignettes</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="my-package-notes.html"><a href="my-package-notes.html#to-create-a-vignette"><i class="fa fa-check"></i><b>1.7.1</b> To create a vignette:</a></li>
+<li class="chapter" data-level="1.7.2" data-path="my-package-notes.html"><a href="my-package-notes.html#vignette-notes"><i class="fa fa-check"></i><b>1.7.2</b> Vignette Notes:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="my-package-notes.html"><a href="my-package-notes.html#adding-and-documenting-data"><i class="fa fa-check"></i><b>1.8</b> Adding and documenting data</a></li>
+<li class="chapter" data-level="1.9" data-path="my-package-notes.html"><a href="my-package-notes.html#errors-warnings-notes"><i class="fa fa-check"></i><b>1.9</b> Errors, warnings, notes</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html"><i class="fa fa-check"></i><b>2</b> Creating Rmd Templates</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#overview-1"><i class="fa fa-check"></i><b>2.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="2.2" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#useful-websites-1"><i class="fa fa-check"></i><b>2.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="2.3" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#create-a-package"><i class="fa fa-check"></i><b>2.3</b> Create a package</a></li>
+<li class="chapter" data-level="2.4" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#add-a-template-to-your-package"><i class="fa fa-check"></i><b>2.4</b> Add a template to your package</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html"><i class="fa fa-check"></i><b>3</b> Tidy Evaluation</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#overview-2"><i class="fa fa-check"></i><b>3.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="3.2" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#useful-websites-2"><i class="fa fa-check"></i><b>3.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="3.3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#load-packages"><i class="fa fa-check"></i><b>3.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="3.4" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#simulate-data"><i class="fa fa-check"></i><b>3.4</b> 🔢Simulate data</a></li>
+<li class="chapter" data-level="3.5" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#load-starwars-data"><i class="fa fa-check"></i><b>3.5</b> Load Starwars data</a></li>
+<li class="chapter" data-level="3.6" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#key_functions"><i class="fa fa-check"></i><b>3.6</b> Key Functions</a></li>
+<li class="chapter" data-level="3.7" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#for_loop"><i class="fa fa-check"></i><b>3.7</b> Example using Tidy Eval in For Loop</a></li>
+<li class="chapter" data-level="3.8" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#functions"><i class="fa fa-check"></i><b>3.8</b> Example using Tidy Eval in Functions</a></li>
+<li class="chapter" data-level="3.9" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#purrr"><i class="fa fa-check"></i><b>3.9</b> Using tidyeval with purrr</a></li>
+<li class="chapter" data-level="3.10" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#quirks"><i class="fa fa-check"></i><b>3.10</b> Other Quirks and Lessons Learned</a>
+<ul>
+<li class="chapter" data-level="3.10.1" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#when-doesnt-work"><i class="fa fa-check"></i><b>3.10.1</b> When !! doesn’t work</a></li>
+<li class="chapter" data-level="3.10.2" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#unquoting-inside-non-dplyr-functions"><i class="fa fa-check"></i><b>3.10.2</b> Unquoting inside non-dplyr functions</a></li>
+<li class="chapter" data-level="3.10.3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-create-variable-name-in-mutate"><i class="fa fa-check"></i><b>3.10.3</b> Using a quoture to create variable name in mutate</a></li>
+<li class="chapter" data-level="3.10.4" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-turn-a-variable-name-into-a-constant-value"><i class="fa fa-check"></i><b>3.10.4</b> Using a quoture to turn a variable name into a constant value</a></li>
+<li class="chapter" data-level="3.10.5" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#convert-a-string-to-a-quoture"><i class="fa fa-check"></i><b>3.10.5</b> Convert a string to a quoture</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#example-i-created-for-steph-yap"><i class="fa fa-check"></i><b>3.11</b> Example I created for Steph Yap</a></li>
+<li class="chapter" data-level="3.12" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#other"><i class="fa fa-check"></i><b>3.12</b> Other questions / notes / reminders</a></li>
+</ul></li>
+<li class="part"><span><b>II Working with External Files</b></span></li>
+<li class="part"><span><b>III Data Management</b></span></li>
+<li class="chapter" data-level="4" data-path="arranging-columns-with-across.html"><a href="arranging-columns-with-across.html"><i class="fa fa-check"></i><b>4</b> Arranging Columns with Across</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="arranging-columns-with-across.html"><a href="arranging-columns-with-across.html#solution-by-lmc"><i class="fa fa-check"></i><b>4.1</b> Solution by LMc:</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html"><i class="fa fa-check"></i><b>5</b> Column Names: Prepping Many for Merge</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#overview-3"><i class="fa fa-check"></i><b>5.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="5.2" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#useful-websites-3"><i class="fa fa-check"></i><b>5.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="5.3" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#load-packages-1"><i class="fa fa-check"></i><b>5.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="5.4" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#simulate-data-1"><i class="fa fa-check"></i><b>5.4</b> 🔢Simulate data</a></li>
+<li class="chapter" data-level="5.5" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#get-the-existing-column-names"><i class="fa fa-check"></i><b>5.5</b> Get the existing column names</a></li>
+<li class="chapter" data-level="5.6" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#standardize-new-column-names"><i class="fa fa-check"></i><b>5.6</b> Standardize new column names</a></li>
+<li class="chapter" data-level="5.7" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#turn-this-into-a-function"><i class="fa fa-check"></i><b>5.7</b> Turn this into a function</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#make-a-unit-test-for-the-function"><i class="fa fa-check"></i><b>5.7.1</b> Make a unit test for the function</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#manual-changes-to-column-names"><i class="fa fa-check"></i><b>5.8</b> Manual changes to column names</a></li>
+<li class="chapter" data-level="5.9" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#have-r-write-out-the-rename-code"><i class="fa fa-check"></i><b>5.9</b> Have R write out the rename code</a>
+<ul>
+<li class="chapter" data-level="5.9.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#make-it-a-function"><i class="fa fa-check"></i><b>5.9.1</b> Make it a function</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#rename-the-columns"><i class="fa fa-check"></i><b>5.10</b> Rename the columns</a></li>
+<li class="chapter" data-level="5.11" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#repeat-the-process-for-v2"><i class="fa fa-check"></i><b>5.11</b> Repeat the process for V2</a></li>
+<li class="chapter" data-level="5.12" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#repeat-the-process-for-v3"><i class="fa fa-check"></i><b>5.12</b> Repeat the process for V3</a></li>
+<li class="chapter" data-level="5.13" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#merge-all-3-visits"><i class="fa fa-check"></i><b>5.13</b> Merge all 3 visits</a></li>
+<li class="chapter" data-level="5.14" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#final-data-cleaning"><i class="fa fa-check"></i><b>5.14</b> Final data cleaning</a></li>
+<li class="chapter" data-level="5.15" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#the-dplyr-way"><i class="fa fa-check"></i><b>5.15</b> 🟣The dplyr way</a>
+<ul>
+<li class="chapter" data-level="5.15.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#standardize-new-column-names-1"><i class="fa fa-check"></i><b>5.15.1</b> Standardize new column names</a></li>
+<li class="chapter" data-level="5.15.2" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#manual-changes-to-column-names-1"><i class="fa fa-check"></i><b>5.15.2</b> Manual changes to column names 1</a></li>
+<li class="chapter" data-level="5.15.3" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#merge-all-3-visits-1"><i class="fa fa-check"></i><b>5.15.3</b> Merge all 3 visits</a></li>
+<li class="chapter" data-level="5.15.4" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#manual-changes-to-column-names-2"><i class="fa fa-check"></i><b>5.15.4</b> Manual changes to column names 2</a></li>
+<li class="chapter" data-level="5.15.5" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#final-data-cleaning-1"><i class="fa fa-check"></i><b>5.15.5</b> Final data cleaning</a></li>
+</ul></li>
+<li class="chapter" data-level="5.16" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#making-a-key-in-google-sheets"><i class="fa fa-check"></i><b>5.16</b> 🟢 Making a key in Google Sheets</a>
+<ul>
+<li class="chapter" data-level="5.16.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#create-the-google-sheet-column-name-key"><i class="fa fa-check"></i><b>5.16.1</b> Create the Google Sheet column name key</a></li>
+<li class="chapter" data-level="5.16.2" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#import-the-google-sheet-column-name-key"><i class="fa fa-check"></i><b>5.16.2</b> Import the Google Sheet column name key</a></li>
+<li class="chapter" data-level="5.16.3" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#reorder-and-rename-the-current-data-frame"><i class="fa fa-check"></i><b>5.16.3</b> Reorder and rename the current data frame</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV Analysis</b></span></li>
+<li class="chapter" data-level="6" data-path="contingency-tables.html"><a href="contingency-tables.html"><i class="fa fa-check"></i><b>6</b> Contingency Tables</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="contingency-tables.html"><a href="contingency-tables.html#overview-4"><i class="fa fa-check"></i><b>6.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="6.2" data-path="contingency-tables.html"><a href="contingency-tables.html#useful-websites-4"><i class="fa fa-check"></i><b>6.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="6.3" data-path="contingency-tables.html"><a href="contingency-tables.html#load-packages-2"><i class="fa fa-check"></i><b>6.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="6.4" data-path="contingency-tables.html"><a href="contingency-tables.html#scenario"><i class="fa fa-check"></i><b>6.4</b> Scenario</a></li>
+<li class="chapter" data-level="6.5" data-path="contingency-tables.html"><a href="contingency-tables.html#manually-create-data"><i class="fa fa-check"></i><b>6.5</b> Manually create data</a></li>
+<li class="chapter" data-level="6.6" data-path="contingency-tables.html"><a href="contingency-tables.html#matrix"><i class="fa fa-check"></i><b>6.6</b> Matrix</a></li>
+<li class="chapter" data-level="6.7" data-path="contingency-tables.html"><a href="contingency-tables.html#table"><i class="fa fa-check"></i><b>6.7</b> Table</a></li>
+<li class="chapter" data-level="6.8" data-path="contingency-tables.html"><a href="contingency-tables.html#base-r-data-frame-with-rownames"><i class="fa fa-check"></i><b>6.8</b> Base R data frame with rownames</a></li>
+<li class="chapter" data-level="6.9" data-path="contingency-tables.html"><a href="contingency-tables.html#tibble"><i class="fa fa-check"></i><b>6.9</b> Tibble</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="effect-measure-modification.html"><a href="effect-measure-modification.html"><i class="fa fa-check"></i><b>7</b> Effect-measure modification</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="effect-measure-modification.html"><a href="effect-measure-modification.html#overview-5"><i class="fa fa-check"></i><b>7.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="7.2" data-path="effect-measure-modification.html"><a href="effect-measure-modification.html#useful-websites-5"><i class="fa fa-check"></i><b>7.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="7.3" data-path="effect-measure-modification.html"><a href="effect-measure-modification.html#load-packages-3"><i class="fa fa-check"></i><b>7.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="7.4" data-path="effect-measure-modification.html"><a href="effect-measure-modification.html#simulate-data-2"><i class="fa fa-check"></i><b>7.4</b> 🔢Simulate data</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="risk-difference.html"><a href="risk-difference.html"><i class="fa fa-check"></i><b>8</b> Risk Difference</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="risk-difference.html"><a href="risk-difference.html#overview-6"><i class="fa fa-check"></i><b>8.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="8.2" data-path="risk-difference.html"><a href="risk-difference.html#useful-websites-6"><i class="fa fa-check"></i><b>8.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="8.3" data-path="risk-difference.html"><a href="risk-difference.html#load-packages-4"><i class="fa fa-check"></i><b>8.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="8.4" data-path="risk-difference.html"><a href="risk-difference.html#data-summary"><i class="fa fa-check"></i><b>8.4</b> Data Summary</a></li>
+<li class="chapter" data-level="8.5" data-path="risk-difference.html"><a href="risk-difference.html#simulate-data-3"><i class="fa fa-check"></i><b>8.5</b> 🔢Simulate data</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="risk-difference.html"><a href="risk-difference.html#simulate-a-matrix-object"><i class="fa fa-check"></i><b>8.5.1</b> Simulate a matrix object</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="risk-difference.html"><a href="risk-difference.html#analysis"><i class="fa fa-check"></i><b>8.6</b> 📈Analysis</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="risk-difference.html"><a href="risk-difference.html#incidence-proportion"><i class="fa fa-check"></i><b>8.6.1</b> Incidence proportion</a></li>
+<li class="chapter" data-level="8.6.2" data-path="risk-difference.html"><a href="risk-difference.html#risk-differences"><i class="fa fa-check"></i><b>8.6.2</b> Risk Differences</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>V Data Visualization</b></span></li>
+<li class="part"><span><b>VI Presenting Results</b></span></li>
+<li class="chapter" data-level="9" data-path="book-chapters.html"><a href="book-chapters.html"><i class="fa fa-check"></i><b>9</b> Bookdown: Creating Book Chapters</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="book-chapters.html"><a href="book-chapters.html#chapter-overview"><i class="fa fa-check"></i><b>9.1</b> Chapter overview</a></li>
+<li class="chapter" data-level="9.2" data-path="book-chapters.html"><a href="book-chapters.html#motivating-example"><i class="fa fa-check"></i><b>9.2</b> Motivating example</a></li>
+<li class="chapter" data-level="9.3" data-path="book-chapters.html"><a href="book-chapters.html#body"><i class="fa fa-check"></i><b>9.3</b> Body</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="book-chapters.html"><a href="book-chapters.html#language"><i class="fa fa-check"></i><b>9.3.1</b> Language</a></li>
+<li class="chapter" data-level="9.3.2" data-path="book-chapters.html"><a href="book-chapters.html#text-conventions"><i class="fa fa-check"></i><b>9.3.2</b> Text conventions</a></li>
+<li class="chapter" data-level="9.3.3" data-path="book-chapters.html"><a href="book-chapters.html#special-sections"><i class="fa fa-check"></i><b>9.3.3</b> Special sections</a></li>
+<li class="chapter" data-level="9.3.4" data-path="book-chapters.html"><a href="book-chapters.html#images"><i class="fa fa-check"></i><b>9.3.4</b> Images</a></li>
+<li class="chapter" data-level="9.3.5" data-path="book-chapters.html"><a href="book-chapters.html#code-blocks"><i class="fa fa-check"></i><b>9.3.5</b> Code blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="book-chapters.html"><a href="book-chapters.html#cross-references"><i class="fa fa-check"></i><b>9.4</b> Cross-references</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="book-chapters.html"><a href="book-chapters.html#cr-figs"><i class="fa fa-check"></i><b>9.4.1</b> Cross-referencing figures</a></li>
+<li class="chapter" data-level="9.4.2" data-path="book-chapters.html"><a href="book-chapters.html#cross-referencing-chapters"><i class="fa fa-check"></i><b>9.4.2</b> Cross-referencing chapters</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="book-chapters.html"><a href="book-chapters.html#citations"><i class="fa fa-check"></i><b>9.5</b> Citations</a></li>
+<li class="chapter" data-level="9.6" data-path="book-chapters.html"><a href="book-chapters.html#previewing-the-chapter"><i class="fa fa-check"></i><b>9.6</b> Previewing the chapter</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="book-chapters.html"><a href="book-chapters.html#miscelaneous"><i class="fa fa-check"></i><b>9.6.1</b> Miscelaneous</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="book-chapters.html"><a href="book-chapters.html#additional-resources-function-to-check"><i class="fa fa-check"></i><b>9.7</b> Additional resources: function to check</a></li>
+<li class="chapter" data-level="9.8" data-path="book-chapters.html"><a href="book-chapters.html#key-terms-function-to-add-to-appendix"><i class="fa fa-check"></i><b>9.8</b> Key terms : function to add to appendix</a></li>
+<li class="chapter" data-level="9.9" data-path="book-chapters.html"><a href="book-chapters.html#final-example-code-function-to-add-to-appendix"><i class="fa fa-check"></i><b>9.9</b> Final example code : function to add to appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html"><i class="fa fa-check"></i><b>10</b> Bookdown: Quick Start</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#overview-7"><i class="fa fa-check"></i><b>10.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="10.2" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#useful-websites-7"><i class="fa fa-check"></i><b>10.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="10.3" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#creating-the-bookdown-project-locally"><i class="fa fa-check"></i><b>10.3</b> Creating the bookdown project locally</a></li>
+<li class="chapter" data-level="10.4" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#initiate-a-git-repository"><i class="fa fa-check"></i><b>10.4</b> Initiate a git repository</a></li>
+<li class="chapter" data-level="10.5" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#create-a-github-repository-for-the-book"><i class="fa fa-check"></i><b>10.5</b> Create a github repository for the book</a></li>
+<li class="chapter" data-level="10.6" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#configuring-a-publishing-source-for-the-github-pages-site"><i class="fa fa-check"></i><b>10.6</b> Configuring a publishing source for the GitHub Pages site</a></li>
+<li class="chapter" data-level="10.7" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-_bookdown.yml"><i class="fa fa-check"></i><b>10.7</b> Modify _bookdown.yml</a></li>
+<li class="chapter" data-level="10.8" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-_output.yml"><i class="fa fa-check"></i><b>10.8</b> Modify _output.yml</a></li>
+<li class="chapter" data-level="10.9" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-style.css"><i class="fa fa-check"></i><b>10.9</b> Modify style.css</a></li>
+<li class="chapter" data-level="10.10" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-index.rmd"><i class="fa fa-check"></i><b>10.10</b> Modify index.Rmd</a></li>
+<li class="chapter" data-level="10.11" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#creating-bookdown-chapters"><i class="fa fa-check"></i><b>10.11</b> Creating bookdown chapters</a></li>
+<li class="chapter" data-level="10.12" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#knitting-the-book"><i class="fa fa-check"></i><b>10.12</b> Knitting the book</a></li>
+<li class="chapter" data-level="10.13" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#errors-and-warnings"><i class="fa fa-check"></i><b>10.13</b> Errors and warnings</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="flexdashboard.html"><a href="flexdashboard.html"><i class="fa fa-check"></i><b>11</b> Flexdashboard</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="flexdashboard.html"><a href="flexdashboard.html#overview-8"><i class="fa fa-check"></i><b>11.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="11.2" data-path="flexdashboard.html"><a href="flexdashboard.html#useful-websites-8"><i class="fa fa-check"></i><b>11.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="11.3" data-path="flexdashboard.html"><a href="flexdashboard.html#load-packages-5"><i class="fa fa-check"></i><b>11.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="11.4" data-path="flexdashboard.html"><a href="flexdashboard.html#tips"><i class="fa fa-check"></i><b>11.4</b> Tips</a></li>
+<li class="chapter" data-level="11.5" data-path="flexdashboard.html"><a href="flexdashboard.html#simulate-data-4"><i class="fa fa-check"></i><b>11.5</b> 🔢Simulate data</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="flextable.html"><a href="flextable.html"><i class="fa fa-check"></i><b>12</b> Flextable</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="flextable.html"><a href="flextable.html#overview-9"><i class="fa fa-check"></i><b>12.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="12.2" data-path="flextable.html"><a href="flextable.html#useful-websites-9"><i class="fa fa-check"></i><b>12.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="12.3" data-path="flextable.html"><a href="flextable.html#load-packages-6"><i class="fa fa-check"></i><b>12.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="12.4" data-path="flextable.html"><a href="flextable.html#simulate-data-5"><i class="fa fa-check"></i><b>12.4</b> 🔢Simulate data</a></li>
+<li class="chapter" data-level="12.5" data-path="flextable.html"><a href="flextable.html#adding-blank-rows"><i class="fa fa-check"></i><b>12.5</b> Adding blank rows</a></li>
+<li class="chapter" data-level="12.6" data-path="flextable.html"><a href="flextable.html#autofit-to-window"><i class="fa fa-check"></i><b>12.6</b> Autofit to window</a></li>
+<li class="chapter" data-level="12.7" data-path="flextable.html"><a href="flextable.html#change-font-to-tnr"><i class="fa fa-check"></i><b>12.7</b> Change font to TNR</a></li>
+<li class="chapter" data-level="12.8" data-path="flextable.html"><a href="flextable.html#bold-part-of-the-table-title"><i class="fa fa-check"></i><b>12.8</b> Bold part of the table title</a></li>
+<li class="chapter" data-level="12.9" data-path="flextable.html"><a href="flextable.html#conditional-formatting"><i class="fa fa-check"></i><b>12.9</b> Conditional formatting</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="language-for-publications.html"><a href="language-for-publications.html"><i class="fa fa-check"></i><b>13</b> Language for publications</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="language-for-publications.html"><a href="language-for-publications.html#overview-10"><i class="fa fa-check"></i><b>13.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="13.2" data-path="language-for-publications.html"><a href="language-for-publications.html#useful-websites-10"><i class="fa fa-check"></i><b>13.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="13.3" data-path="language-for-publications.html"><a href="language-for-publications.html#load-packages-7"><i class="fa fa-check"></i><b>13.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="13.4" data-path="language-for-publications.html"><a href="language-for-publications.html#statistical-software"><i class="fa fa-check"></i><b>13.4</b> Statistical software</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="language-for-publications.html"><a href="language-for-publications.html#r"><i class="fa fa-check"></i><b>13.4.1</b> R</a></li>
+<li class="chapter" data-level="13.4.2" data-path="language-for-publications.html"><a href="language-for-publications.html#stata"><i class="fa fa-check"></i><b>13.4.2</b> Stata</a></li>
+<li class="chapter" data-level="13.4.3" data-path="language-for-publications.html"><a href="language-for-publications.html#sas"><i class="fa fa-check"></i><b>13.4.3</b> SAS</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="language-for-publications.html"><a href="language-for-publications.html#irb"><i class="fa fa-check"></i><b>13.5</b> IRB</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="officer.html"><a href="officer.html"><i class="fa fa-check"></i><b>14</b> Officer</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="officer.html"><a href="officer.html#overview-11"><i class="fa fa-check"></i><b>14.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="14.2" data-path="officer.html"><a href="officer.html#useful-websites-11"><i class="fa fa-check"></i><b>14.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="14.3" data-path="officer.html"><a href="officer.html#load-packages-8"><i class="fa fa-check"></i><b>14.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="14.4" data-path="officer.html"><a href="officer.html#formatted-text"><i class="fa fa-check"></i><b>14.4</b> Formatted text</a></li>
+<li class="chapter" data-level="14.5" data-path="officer.html"><a href="officer.html#bulleted-list"><i class="fa fa-check"></i><b>14.5</b> Bulleted list</a></li>
+<li class="chapter" data-level="14.6" data-path="officer.html"><a href="officer.html#adding-on-to-the-end-of-a-file."><i class="fa fa-check"></i><b>14.6</b> Adding on to the end of a file.</a></li>
+<li class="chapter" data-level="14.7" data-path="officer.html"><a href="officer.html#using-bookmarks"><i class="fa fa-check"></i><b>14.7</b> Using bookmarks</a></li>
+</ul></li>
+<li class="part"><span><b>VII Shiny</b></span></li>
+<li class="chapter" data-level="15" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html"><i class="fa fa-check"></i><b>15</b> Appendix A: Terms and Definitions</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#overview-12"><i class="fa fa-check"></i><b>15.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="15.2" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#useful-websites-12"><i class="fa fa-check"></i><b>15.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="15.3" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#terms"><i class="fa fa-check"></i><b>15.3</b> 📖Terms</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#general-terms"><i class="fa fa-check"></i><b>15.3.1</b> General Terms</a></li>
+<li class="chapter" data-level="15.3.2" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#general-statistics-terms"><i class="fa fa-check"></i><b>15.3.2</b> General statistics terms</a></li>
+<li class="chapter" data-level="15.3.3" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#measures-of-occurence"><i class="fa fa-check"></i><b>15.3.3</b> Measures of occurence</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="flextable" class="section level1" number="12">
+<h1><span class="header-section-number">12</span> Flextable</h1>
+<!--
+Hidden comments placeholder
+-->
+<p><img src="https://picsum.photos/200/300" /><!-- --></p>
+<div id="overview-9" class="section level2" number="12.1">
+<h2><span class="header-section-number">12.1</span> ⭐️Overview</h2>
+<p>Using the Flextable package</p>
+<p>Some overlap with:</p>
+<ul>
+<li>officer.Rmd<br />
+</li>
+<li>descriptive_notes.Rmd<br />
+</li>
+<li>tables_descriptive.Rmd</li>
+</ul>
+<p>Good examples to check out:</p>
+<ul>
+<li>LEAD panel monthly report.<br />
+</li>
+<li>Sun Study report.<br />
+</li>
+<li>stroke study -&gt; table_characteristics_by_network.Rmd.<br />
+</li>
+<li>L2C quarterly reports.</li>
+</ul>
+</div>
+<div id="useful-websites-9" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> 🌎Useful websites</h2>
+<ul>
+<li><a href="https://ardata-fr.github.io/flextable-book/">Using the flextable R package</a><br />
+</li>
+<li><a href="https://davidgohel.github.io/flextable/">Flextable R package</a></li>
+</ul>
+</div>
+<div id="load-packages-6" class="section level2" number="12.3">
+<h2><span class="header-section-number">12.3</span> 📦Load packages</h2>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="flextable.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb242-2"><a href="flextable.html#cb242-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(officer, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb242-3"><a href="flextable.html#cb242-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+</div>
+<div id="simulate-data-5" class="section level2" number="12.4">
+<h2><span class="header-section-number">12.4</span> 🔢Simulate data</h2>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="flextable.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;mtcars&quot;</span>)</span></code></pre></div>
+</div>
+<div id="adding-blank-rows" class="section level2" number="12.5">
+<h2><span class="header-section-number">12.5</span> Adding blank rows</h2>
+<p>Actually, might just create this in Word and post on <a href="https://stackoverflow.com/questions/64932726/add-a-blank-row-in-flextable">StackOverflow</a>.</p>
+<p>When creating tables in Word reports, I often want to add blank rows in between variables. As a trivial toy example:</p>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="flextable.html#cb244-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_docx</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="flextable.html#cb245-1" aria-hidden="true" tabindex="-1"></a>table_no_breaks <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb245-2"><a href="flextable.html#cb245-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(cyl)</span>
+<span id="cb245-3"><a href="flextable.html#cb245-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb245-4"><a href="flextable.html#cb245-4" aria-hidden="true" tabindex="-1"></a>table_no_breaks</span></code></pre></div>
+<pre><code>##   cyl  n
+## 1   4 11
+## 2   6  7
+## 3   8 14</code></pre>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="flextable.html#cb247-1" aria-hidden="true" tabindex="-1"></a>table_no_breaks_ft <span class="ot">&lt;-</span> <span class="fu">flextable</span>(table_no_breaks)</span>
+<span id="cb247-2"><a href="flextable.html#cb247-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb247-3"><a href="flextable.html#cb247-3" aria-hidden="true" tabindex="-1"></a>table_no_breaks_ft</span></code></pre></div>
+<template id="9f06fe00-4fc9-445f-9849-551df8a59d83"><style>
+.tabwid table{
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-spacing: 0;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-25f8fc20{border-collapse:collapse;}.cl-25f2d052{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-25f2e4de{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-25f30d10{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-25f30d2e{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-25f30d38{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-25f8fc20'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-25f30d38"><p class="cl-25f2e4de"><span class="cl-25f2d052">cyl</span></p></td><td class="cl-25f30d38"><p class="cl-25f2e4de"><span class="cl-25f2d052">n</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-25f30d10"><p class="cl-25f2e4de"><span class="cl-25f2d052">4</span></p></td><td class="cl-25f30d10"><p class="cl-25f2e4de"><span class="cl-25f2d052">11</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-25f30d10"><p class="cl-25f2e4de"><span class="cl-25f2d052">6</span></p></td><td class="cl-25f30d10"><p class="cl-25f2e4de"><span class="cl-25f2d052">7</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-25f30d2e"><p class="cl-25f2e4de"><span class="cl-25f2d052">8</span></p></td><td class="cl-25f30d2e"><p class="cl-25f2e4de"><span class="cl-25f2d052">14</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="e6a9a05e-ca60-4bb9-b11b-05e9e097f2cf"></div>
+<script>
+var dest = document.getElementById("e6a9a05e-ca60-4bb9-b11b-05e9e097f2cf");
+var template = document.getElementById("9f06fe00-4fc9-445f-9849-551df8a59d83");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="flextable.html#cb248-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> doc <span class="sc">%&gt;%</span> </span>
+<span id="cb248-2"><a href="flextable.html#cb248-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_add_flextable</span>(table_no_breaks_ft) <span class="sc">%&gt;%</span> </span>
+<span id="cb248-3"><a href="flextable.html#cb248-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="flextable.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(</span>
+<span id="cb249-2"><a href="flextable.html#cb249-2" aria-hidden="true" tabindex="-1"></a>  doc, </span>
+<span id="cb249-3"><a href="flextable.html#cb249-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;examples/flextable_no_blank_rows.docx&quot;</span></span>
+<span id="cb249-4"><a href="flextable.html#cb249-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Results in a table that looks like this: <a href="https://www.dropbox.com/s/09weee9je1sdj7f/flextable_no_blank_rows.docx?dl=0">flextable_no_blank_rows.docx</a></p>
+<p>I can add line breaks directly to the data frame like this:</p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="flextable.html#cb250-1" aria-hidden="true" tabindex="-1"></a>table_breaks <span class="ot">&lt;-</span> table_no_breaks <span class="sc">%&gt;%</span> </span>
+<span id="cb250-2"><a href="flextable.html#cb250-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb250-3"><a href="flextable.html#cb250-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
+<span id="cb250-4"><a href="flextable.html#cb250-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">everything</span>(),</span>
+<span id="cb250-5"><a href="flextable.html#cb250-5" aria-hidden="true" tabindex="-1"></a>      as.character</span>
+<span id="cb250-6"><a href="flextable.html#cb250-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb250-7"><a href="flextable.html#cb250-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb250-8"><a href="flextable.html#cb250-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_row</span>(<span class="at">cyl =</span> <span class="cn">NA</span>, <span class="at">n =</span> <span class="cn">NA</span>, <span class="at">.after =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb250-9"><a href="flextable.html#cb250-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_row</span>(<span class="at">cyl =</span> <span class="cn">NA</span>, <span class="at">n =</span> <span class="cn">NA</span>, <span class="at">.after =</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb250-10"><a href="flextable.html#cb250-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_row</span>(<span class="at">cyl =</span> <span class="cn">NA</span>, <span class="at">n =</span> <span class="cn">NA</span>, <span class="at">.after =</span> <span class="dv">5</span>)</span>
+<span id="cb250-11"><a href="flextable.html#cb250-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb250-12"><a href="flextable.html#cb250-12" aria-hidden="true" tabindex="-1"></a>table_breaks</span></code></pre></div>
+<pre><code>##    cyl    n
+## 1    4   11
+## 2 &lt;NA&gt; &lt;NA&gt;
+## 3    6    7
+## 4 &lt;NA&gt; &lt;NA&gt;
+## 5    8   14
+## 6 &lt;NA&gt; &lt;NA&gt;</code></pre>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="flextable.html#cb252-1" aria-hidden="true" tabindex="-1"></a>table_breaks_ft <span class="ot">&lt;-</span> <span class="fu">flextable</span>(table_breaks)</span>
+<span id="cb252-2"><a href="flextable.html#cb252-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb252-3"><a href="flextable.html#cb252-3" aria-hidden="true" tabindex="-1"></a>table_breaks_ft</span></code></pre></div>
+<template id="f9d6c42f-51d3-44b6-9d0a-92ea46945f0b"><style>
+.tabwid table{
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-spacing: 0;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-261bd506{border-collapse:collapse;}.cl-261611f2{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-26162110{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-261647ee{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26164802{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2616480c{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-261bd506'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-2616480c"><p class="cl-26162110"><span class="cl-261611f2">cyl</span></p></td><td class="cl-2616480c"><p class="cl-26162110"><span class="cl-261611f2">n</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-261647ee"><p class="cl-26162110"><span class="cl-261611f2">4</span></p></td><td class="cl-261647ee"><p class="cl-26162110"><span class="cl-261611f2">11</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-261647ee"><p class="cl-26162110"><span class="cl-261611f2"></span></p></td><td class="cl-261647ee"><p class="cl-26162110"><span class="cl-261611f2"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-261647ee"><p class="cl-26162110"><span class="cl-261611f2">6</span></p></td><td class="cl-261647ee"><p class="cl-26162110"><span class="cl-261611f2">7</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-261647ee"><p class="cl-26162110"><span class="cl-261611f2"></span></p></td><td class="cl-261647ee"><p class="cl-26162110"><span class="cl-261611f2"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-261647ee"><p class="cl-26162110"><span class="cl-261611f2">8</span></p></td><td class="cl-261647ee"><p class="cl-26162110"><span class="cl-261611f2">14</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-26164802"><p class="cl-26162110"><span class="cl-261611f2"></span></p></td><td class="cl-26164802"><p class="cl-26162110"><span class="cl-261611f2"></span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="5effa7d9-6a85-4f34-9fa9-ac2f51b1522f"></div>
+<script>
+var dest = document.getElementById("5effa7d9-6a85-4f34-9fa9-ac2f51b1522f");
+var template = document.getElementById("f9d6c42f-51d3-44b6-9d0a-92ea46945f0b");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="flextable.html#cb253-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> doc <span class="sc">%&gt;%</span> </span>
+<span id="cb253-2"><a href="flextable.html#cb253-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_add_flextable</span>(table_breaks_ft)</span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="flextable.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(</span>
+<span id="cb254-2"><a href="flextable.html#cb254-2" aria-hidden="true" tabindex="-1"></a>  doc, </span>
+<span id="cb254-3"><a href="flextable.html#cb254-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;examples/flextable_blank_rows.docx&quot;</span></span>
+<span id="cb254-4"><a href="flextable.html#cb254-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Which results in the Word table that I want: <a href="https://www.dropbox.com/s/smq0x7qlf5muhvf/flextable_blank_rows.docx?dl=0">flextable_blank_rows.docx</a></p>
+<p>However, I would prefer to be able to add the blank rows directly to the flextable rather than the data frame the flextable is built from. To me, this is a formatting issue rather than a data issue, and I prefer to keep data issues (manipulation of data frames) and formatting issues (manipulation of Word tables) separate. Any advice is greatly appreciated!</p>
+</div>
+<div id="autofit-to-window" class="section level2" number="12.6">
+<h2><span class="header-section-number">12.6</span> Autofit to window</h2>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="flextable.html#cb255-1" aria-hidden="true" tabindex="-1"></a>table_breaks_ft <span class="sc">%&gt;%</span> </span>
+<span id="cb255-2"><a href="flextable.html#cb255-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_table_properties</span>(<span class="at">layout =</span> <span class="st">&quot;autofit&quot;</span>)</span></code></pre></div>
+<template id="2d7ebb19-c634-4113-8798-ed3299da835d"><style>
+.tabwid table{
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-spacing: 0;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-26316326{table-layout:auto;border-collapse:collapse;width:100%;}.cl-262c43e6{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-262c5124{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-262c7460{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-262c7474{background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-262c747e{background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-26316326'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-262c747e"><p class="cl-262c5124"><span class="cl-262c43e6">cyl</span></p></td><td class="cl-262c747e"><p class="cl-262c5124"><span class="cl-262c43e6">n</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-262c7460"><p class="cl-262c5124"><span class="cl-262c43e6">4</span></p></td><td class="cl-262c7460"><p class="cl-262c5124"><span class="cl-262c43e6">11</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-262c7460"><p class="cl-262c5124"><span class="cl-262c43e6"></span></p></td><td class="cl-262c7460"><p class="cl-262c5124"><span class="cl-262c43e6"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-262c7460"><p class="cl-262c5124"><span class="cl-262c43e6">6</span></p></td><td class="cl-262c7460"><p class="cl-262c5124"><span class="cl-262c43e6">7</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-262c7460"><p class="cl-262c5124"><span class="cl-262c43e6"></span></p></td><td class="cl-262c7460"><p class="cl-262c5124"><span class="cl-262c43e6"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-262c7460"><p class="cl-262c5124"><span class="cl-262c43e6">8</span></p></td><td class="cl-262c7460"><p class="cl-262c5124"><span class="cl-262c43e6">14</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-262c7474"><p class="cl-262c5124"><span class="cl-262c43e6"></span></p></td><td class="cl-262c7474"><p class="cl-262c5124"><span class="cl-262c43e6"></span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="a2172180-89c1-4839-bc56-15df45d56cbf"></div>
+<script>
+var dest = document.getElementById("a2172180-89c1-4839-bc56-15df45d56cbf");
+var template = document.getElementById("2d7ebb19-c634-4113-8798-ed3299da835d");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+</div>
+<div id="change-font-to-tnr" class="section level2" number="12.7">
+<h2><span class="header-section-number">12.7</span> Change font to TNR</h2>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="flextable.html#cb256-1" aria-hidden="true" tabindex="-1"></a>table_breaks_ft <span class="sc">%&gt;%</span> </span>
+<span id="cb256-2"><a href="flextable.html#cb256-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">font</span>(<span class="at">fontname =</span> <span class="st">&quot;Times New Roman&quot;</span>, <span class="at">part =</span> <span class="st">&quot;all&quot;</span>)</span></code></pre></div>
+<template id="68f261f9-c724-43aa-84a8-99b6ed0bb7cc"><style>
+.tabwid table{
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-spacing: 0;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-263bba10{border-collapse:collapse;}.cl-2636b786{font-family:'Times New Roman';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-2636c564{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-2636ea6c{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2636ea80{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2636ea8a{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-263bba10'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-2636ea8a"><p class="cl-2636c564"><span class="cl-2636b786">cyl</span></p></td><td class="cl-2636ea8a"><p class="cl-2636c564"><span class="cl-2636b786">n</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-2636ea6c"><p class="cl-2636c564"><span class="cl-2636b786">4</span></p></td><td class="cl-2636ea6c"><p class="cl-2636c564"><span class="cl-2636b786">11</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2636ea6c"><p class="cl-2636c564"><span class="cl-2636b786"></span></p></td><td class="cl-2636ea6c"><p class="cl-2636c564"><span class="cl-2636b786"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2636ea6c"><p class="cl-2636c564"><span class="cl-2636b786">6</span></p></td><td class="cl-2636ea6c"><p class="cl-2636c564"><span class="cl-2636b786">7</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2636ea6c"><p class="cl-2636c564"><span class="cl-2636b786"></span></p></td><td class="cl-2636ea6c"><p class="cl-2636c564"><span class="cl-2636b786"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2636ea6c"><p class="cl-2636c564"><span class="cl-2636b786">8</span></p></td><td class="cl-2636ea6c"><p class="cl-2636c564"><span class="cl-2636b786">14</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2636ea80"><p class="cl-2636c564"><span class="cl-2636b786"></span></p></td><td class="cl-2636ea80"><p class="cl-2636c564"><span class="cl-2636b786"></span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="7183de4f-26eb-4b54-8205-ab1168c58c2f"></div>
+<script>
+var dest = document.getElementById("7183de4f-26eb-4b54-8205-ab1168c58c2f");
+var template = document.getElementById("68f261f9-c724-43aa-84a8-99b6ed0bb7cc");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+</div>
+<div id="bold-part-of-the-table-title" class="section level2" number="12.8">
+<h2><span class="header-section-number">12.8</span> Bold part of the table title</h2>
+<p>From SO 2020-08-23: <a href="https://stackoverflow.com/questions/63530204/is-there-a-way-to-bold-part-of-a-character-string-being-passed-to-add-header-lin?noredirect=1#comment112346997_63530204" class="uri">https://stackoverflow.com/questions/63530204/is-there-a-way-to-bold-part-of-a-character-string-being-passed-to-add-header-lin?noredirect=1#comment112346997_63530204</a></p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="flextable.html#cb257-1" aria-hidden="true" tabindex="-1"></a>mtcars_ft <span class="ot">&lt;-</span> <span class="fu">flextable</span>(<span class="fu">head</span>(mtcars)) <span class="sc">%&gt;%</span> </span>
+<span id="cb257-2"><a href="flextable.html#cb257-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add a blank title line to top of table</span></span>
+<span id="cb257-3"><a href="flextable.html#cb257-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_header_lines</span>(<span class="st">&quot;&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb257-4"><a href="flextable.html#cb257-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Use compose to bold &quot;Table #.&quot;</span></span>
+<span id="cb257-5"><a href="flextable.html#cb257-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compose</span>(</span>
+<span id="cb257-6"><a href="flextable.html#cb257-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">i =</span> <span class="dv">1</span>, <span class="at">part =</span> <span class="st">&quot;header&quot;</span>,</span>
+<span id="cb257-7"><a href="flextable.html#cb257-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">value =</span> <span class="fu">as_paragraph</span>(</span>
+<span id="cb257-8"><a href="flextable.html#cb257-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">as_chunk</span>(<span class="st">&quot;Table 1. &quot;</span>, <span class="at">props =</span> <span class="fu">fp_text</span>(<span class="at">bold =</span> <span class="cn">TRUE</span>)),</span>
+<span id="cb257-9"><a href="flextable.html#cb257-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Here is my example mtcars ft.&quot;</span></span>
+<span id="cb257-10"><a href="flextable.html#cb257-10" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb257-11"><a href="flextable.html#cb257-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb257-12"><a href="flextable.html#cb257-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb257-13"><a href="flextable.html#cb257-13" aria-hidden="true" tabindex="-1"></a>mtcars_ft</span></code></pre></div>
+<template id="eea08ed2-0a31-4da6-91fe-d45284bb60d7"><style>
+.tabwid table{
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-spacing: 0;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-26595714{border-collapse:collapse;}.cl-26538ab4{font-family:'Arial';font-size:10pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-26538ac8{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-26539978{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-2653998c{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-2653db90{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2653dba4{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2653dbae{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2653dbb8{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-26595714'>
+<thead><tr style="overflow-wrap:break-word;"><td  colspan="11"class="cl-2653dbae"><p class="cl-26539978"><span class="cl-26538ab4">Table 1. </span><span class="cl-26538ac8">Here is my example mtcars ft.</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2653dbb8"><p class="cl-2653998c"><span class="cl-26538ac8">mpg</span></p></td><td class="cl-2653dbb8"><p class="cl-2653998c"><span class="cl-26538ac8">cyl</span></p></td><td class="cl-2653dbb8"><p class="cl-2653998c"><span class="cl-26538ac8">disp</span></p></td><td class="cl-2653dbb8"><p class="cl-2653998c"><span class="cl-26538ac8">hp</span></p></td><td class="cl-2653dbb8"><p class="cl-2653998c"><span class="cl-26538ac8">drat</span></p></td><td class="cl-2653dbb8"><p class="cl-2653998c"><span class="cl-26538ac8">wt</span></p></td><td class="cl-2653dbb8"><p class="cl-2653998c"><span class="cl-26538ac8">qsec</span></p></td><td class="cl-2653dbb8"><p class="cl-2653998c"><span class="cl-26538ac8">vs</span></p></td><td class="cl-2653dbb8"><p class="cl-2653998c"><span class="cl-26538ac8">am</span></p></td><td class="cl-2653dbb8"><p class="cl-2653998c"><span class="cl-26538ac8">gear</span></p></td><td class="cl-2653dbb8"><p class="cl-2653998c"><span class="cl-26538ac8">carb</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">21.0</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">6</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">160</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">110</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">3.90</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">2.620</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">16.46</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">0</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">1</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">4</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">21.0</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">6</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">160</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">110</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">3.90</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">2.875</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">17.02</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">0</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">1</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">4</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">22.8</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">4</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">108</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">93</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">3.85</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">2.320</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">18.61</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">1</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">1</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">4</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">21.4</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">6</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">258</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">110</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">3.08</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">3.215</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">19.44</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">1</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">0</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">3</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">18.7</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">8</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">360</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">175</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">3.15</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">3.440</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">17.02</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">0</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">0</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">3</span></p></td><td class="cl-2653db90"><p class="cl-2653998c"><span class="cl-26538ac8">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2653dba4"><p class="cl-2653998c"><span class="cl-26538ac8">18.1</span></p></td><td class="cl-2653dba4"><p class="cl-2653998c"><span class="cl-26538ac8">6</span></p></td><td class="cl-2653dba4"><p class="cl-2653998c"><span class="cl-26538ac8">225</span></p></td><td class="cl-2653dba4"><p class="cl-2653998c"><span class="cl-26538ac8">105</span></p></td><td class="cl-2653dba4"><p class="cl-2653998c"><span class="cl-26538ac8">2.76</span></p></td><td class="cl-2653dba4"><p class="cl-2653998c"><span class="cl-26538ac8">3.460</span></p></td><td class="cl-2653dba4"><p class="cl-2653998c"><span class="cl-26538ac8">20.22</span></p></td><td class="cl-2653dba4"><p class="cl-2653998c"><span class="cl-26538ac8">1</span></p></td><td class="cl-2653dba4"><p class="cl-2653998c"><span class="cl-26538ac8">0</span></p></td><td class="cl-2653dba4"><p class="cl-2653998c"><span class="cl-26538ac8">3</span></p></td><td class="cl-2653dba4"><p class="cl-2653998c"><span class="cl-26538ac8">1</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="78df6ecc-1604-47e5-b81a-2cb829a8e26b"></div>
+<script>
+var dest = document.getElementById("78df6ecc-1604-47e5-b81a-2cb829a8e26b");
+var template = document.getElementById("eea08ed2-0a31-4da6-91fe-d45284bb60d7");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+</div>
+<div id="conditional-formatting" class="section level2" number="12.9">
+<h2><span class="header-section-number">12.9</span> Conditional formatting</h2>
+<p>From LEAD panel summarize votes – Doesn’t work here. Need to turn this into a working example at some point.</p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="flextable.html#cb258-1" aria-hidden="true" tabindex="-1"></a>title <span class="ot">&lt;-</span> <span class="st">&quot;Table 2. Presence/absence of unanimous agreement for each abuse type by case number.&quot;</span></span>
+<span id="cb258-2"><a href="flextable.html#cb258-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb258-3"><a href="flextable.html#cb258-3" aria-hidden="true" tabindex="-1"></a>summary_agreement_ad_abuse_type_ft <span class="ot">&lt;-</span> <span class="fu">flextable</span>(</span>
+<span id="cb258-4"><a href="flextable.html#cb258-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove unneeded columns</span></span>
+<span id="cb258-5"><a href="flextable.html#cb258-5" aria-hidden="true" tabindex="-1"></a>  summary_agreement_ad_abuse_type <span class="sc">%&gt;%</span> </span>
+<span id="cb258-6"><a href="flextable.html#cb258-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(</span>
+<span id="cb258-7"><a href="flextable.html#cb258-7" aria-hidden="true" tabindex="-1"></a>      CaseID, physical, sexual, emotional, neglect, </span>
+<span id="cb258-8"><a href="flextable.html#cb258-8" aria-hidden="true" tabindex="-1"></a>      abandonment, financial, selfneglect</span>
+<span id="cb258-9"><a href="flextable.html#cb258-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb258-10"><a href="flextable.html#cb258-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb258-11"><a href="flextable.html#cb258-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Column width: Trial and error</span></span>
+<span id="cb258-12"><a href="flextable.html#cb258-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Make a table and play with properties</span></span>
+<span id="cb258-13"><a href="flextable.html#cb258-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">width</span>(</span>
+<span id="cb258-14"><a href="flextable.html#cb258-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">j =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>), </span>
+<span id="cb258-15"><a href="flextable.html#cb258-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="fu">c</span>(<span class="fl">0.98</span>, <span class="fl">0.66</span>, <span class="fl">0.56</span>, <span class="fl">0.78</span>, <span class="fl">0.71</span>, <span class="fl">1.01</span>, <span class="fl">0.71</span>, <span class="fl">0.90</span>)</span>
+<span id="cb258-16"><a href="flextable.html#cb258-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb258-17"><a href="flextable.html#cb258-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Improve readability of column headers</span></span>
+<span id="cb258-18"><a href="flextable.html#cb258-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_header_labels</span>(<span class="at">CaseID =</span> <span class="st">&quot;Case Number&quot;</span>, <span class="at">selfneglect =</span> <span class="st">&quot;Self Neglect&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb258-19"><a href="flextable.html#cb258-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add title to top of table</span></span>
+<span id="cb258-20"><a href="flextable.html#cb258-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_header_lines</span>(title) <span class="sc">%&gt;%</span></span>
+<span id="cb258-21"><a href="flextable.html#cb258-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Change font to times new roman</span></span>
+<span id="cb258-22"><a href="flextable.html#cb258-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">font</span>(<span class="at">fontname =</span> <span class="st">&quot;Times New Roman&quot;</span>, <span class="at">part =</span> <span class="st">&quot;all&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb258-23"><a href="flextable.html#cb258-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Change background color of first column</span></span>
+<span id="cb258-24"><a href="flextable.html#cb258-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bg</span>(<span class="at">j =</span> <span class="dv">1</span>, <span class="at">bg =</span> <span class="st">&quot;#E5E8E8&quot;</span>, <span class="at">part =</span> <span class="st">&quot;body&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb258-25"><a href="flextable.html#cb258-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Center column headings</span></span>
+<span id="cb258-26"><a href="flextable.html#cb258-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">align</span>(<span class="at">i =</span> <span class="dv">2</span>, <span class="at">align =</span> <span class="st">&quot;center&quot;</span>, <span class="at">part =</span> <span class="st">&quot;header&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb258-27"><a href="flextable.html#cb258-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Center body text</span></span>
+<span id="cb258-28"><a href="flextable.html#cb258-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">align</span>(<span class="at">align =</span> <span class="st">&quot;center&quot;</span>, <span class="at">part =</span> <span class="st">&quot;body&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb258-29"><a href="flextable.html#cb258-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Conditionally format disagree to red</span></span>
+<span id="cb258-30"><a href="flextable.html#cb258-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">color</span>(<span class="at">i =</span> <span class="sc">~</span> physical <span class="sc">==</span> <span class="st">&quot;Disagree&quot;</span>, <span class="at">j =</span> <span class="fu">c</span>(<span class="st">&quot;CaseID&quot;</span>, <span class="st">&quot;physical&quot;</span>), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb258-31"><a href="flextable.html#cb258-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">color</span>(<span class="at">i =</span> <span class="sc">~</span> sexual <span class="sc">==</span> <span class="st">&quot;Disagree&quot;</span>, <span class="at">j =</span> <span class="fu">c</span>(<span class="st">&quot;CaseID&quot;</span>, <span class="st">&quot;sexual&quot;</span>), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb258-32"><a href="flextable.html#cb258-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">color</span>(<span class="at">i =</span> <span class="sc">~</span> emotional <span class="sc">==</span> <span class="st">&quot;Disagree&quot;</span>, <span class="at">j =</span> <span class="fu">c</span>(<span class="st">&quot;CaseID&quot;</span>, <span class="st">&quot;emotional&quot;</span>), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb258-33"><a href="flextable.html#cb258-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">color</span>(<span class="at">i =</span> <span class="sc">~</span> neglect <span class="sc">==</span> <span class="st">&quot;Disagree&quot;</span>, <span class="at">j =</span> <span class="fu">c</span>(<span class="st">&quot;CaseID&quot;</span>, <span class="st">&quot;neglect&quot;</span>), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb258-34"><a href="flextable.html#cb258-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">color</span>(<span class="at">i =</span> <span class="sc">~</span> abandonment <span class="sc">==</span> <span class="st">&quot;Disagree&quot;</span>, <span class="at">j =</span> <span class="fu">c</span>(<span class="st">&quot;CaseID&quot;</span>, <span class="st">&quot;abandonment&quot;</span>), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb258-35"><a href="flextable.html#cb258-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">color</span>(<span class="at">i =</span> <span class="sc">~</span> financial <span class="sc">==</span> <span class="st">&quot;Disagree&quot;</span>, <span class="at">j =</span> <span class="fu">c</span>(<span class="st">&quot;CaseID&quot;</span>, <span class="st">&quot;financial&quot;</span>), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb258-36"><a href="flextable.html#cb258-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">color</span>(<span class="at">i =</span> <span class="sc">~</span> selfneglect <span class="sc">==</span> <span class="st">&quot;Disagree&quot;</span>, <span class="at">j =</span> <span class="fu">c</span>(<span class="st">&quot;CaseID&quot;</span>, <span class="st">&quot;selfneglect&quot;</span>), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb258-37"><a href="flextable.html#cb258-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb258-38"><a href="flextable.html#cb258-38" aria-hidden="true" tabindex="-1"></a><span class="co"># For checking</span></span>
+<span id="cb258-39"><a href="flextable.html#cb258-39" aria-hidden="true" tabindex="-1"></a><span class="co"># summary_agreement_ad_abuse_type_ft</span></span></code></pre></div>
+<!--
+Clean up and add session info
+-->
+<pre><code>## R version 4.1.0 (2021-05-18)
+## Platform: x86_64-apple-darwin17.0 (64-bit)
+## Running under: macOS Big Sur 10.16
+## 
+## Matrix products: default
+## BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+##  [1] flextable_0.6.7     officer_0.3.19      flexdashboard_0.5.2
+##  [4] ggplot2_3.3.5       googlesheets4_1.0.0 testthat_3.0.4     
+##  [7] stringr_1.4.0       purrr_0.3.4         tidyr_1.1.3        
+## [10] dplyr_1.0.7        
+## 
+## loaded via a namespace (and not attached):
+##  [1] Rcpp_1.0.7        assertthat_0.2.1  rprojroot_2.0.2   digest_0.6.27    
+##  [5] utf8_1.2.1        R6_2.5.0          cellranger_1.1.0  evaluate_0.14    
+##  [9] httr_1.4.2        highr_0.9         pillar_1.6.1      gdtools_0.2.3    
+## [13] rlang_0.4.11      curl_4.3.2        uuid_0.1-4        data.table_1.14.0
+## [17] rstudioapi_0.13   jquerylib_0.1.4   DT_0.18           rmarkdown_2.9    
+## [21] desc_1.3.0        labeling_0.4.2    googledrive_2.0.0 htmlwidgets_1.5.3
+## [25] munsell_0.5.0     compiler_4.1.0    xfun_0.24         systemfonts_1.0.2
+## [29] base64enc_0.1-3   pkgconfig_2.0.3   askpass_1.1       htmltools_0.5.1.1
+## [33] openssl_1.4.4     tidyselect_1.1.1  tibble_3.1.3      bookdown_0.22    
+## [37] fansi_0.5.0       crayon_1.4.1      withr_2.4.2       rappdirs_0.3.3   
+## [41] grid_4.1.0        jsonlite_1.7.2    gtable_0.3.0      lifecycle_1.0.0  
+## [45] DBI_1.1.1         magrittr_2.0.1    scales_1.1.1      zip_2.2.0        
+## [49] cli_3.0.1         stringi_1.7.3     farver_2.1.0      fs_1.5.0         
+## [53] xml2_1.3.2        bslib_0.2.5.1     ellipsis_0.3.2    generics_0.1.0   
+## [57] vctrs_0.3.8       tools_4.1.0       glue_1.4.2        crosstalk_1.1.1  
+## [61] pkgload_1.2.1     yaml_2.2.1        colorspace_2.0-2  gargle_1.2.0     
+## [65] knitr_1.33        sass_0.4.0</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="flexdashboard.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="language-for-publications.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

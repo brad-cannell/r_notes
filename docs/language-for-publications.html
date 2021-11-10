@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>12 Language for publications | R Notes</title>
+  <title>13 Language for publications | R Notes</title>
   <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="12 Language for publications | R Notes" />
+  <meta property="og:title" content="13 Language for publications | R Notes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://brad-cannell.github.io/r_notes/" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="brad-cannell/r_notes" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="12 Language for publications | R Notes" />
+  <meta name="twitter:title" content="13 Language for publications | R Notes" />
   
   <meta name="twitter:description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2021-11-03" />
+<meta name="date" content="2021-11-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="flexdashboard.html"/>
-<link rel="next" href="appendix-a-terms-and-definitions.html"/>
+<link rel="prev" href="flextable.html"/>
+<link rel="next" href="officer.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -61,6 +61,7 @@
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -354,7 +355,7 @@ div.csl-indent {
 <li class="chapter" data-level="10.12" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#knitting-the-book"><i class="fa fa-check"></i><b>10.12</b> Knitting the book</a></li>
 <li class="chapter" data-level="10.13" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#errors-and-warnings"><i class="fa fa-check"></i><b>10.13</b> Errors and warnings</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="flexdashboard.html"><a href="flexdashboard.html"><i class="fa fa-check"></i><b>11</b> flexdashboard</a>
+<li class="chapter" data-level="11" data-path="flexdashboard.html"><a href="flexdashboard.html"><i class="fa fa-check"></i><b>11</b> Flexdashboard</a>
 <ul>
 <li class="chapter" data-level="11.1" data-path="flexdashboard.html"><a href="flexdashboard.html#overview-8"><i class="fa fa-check"></i><b>11.1</b> ⭐️Overview</a></li>
 <li class="chapter" data-level="11.2" data-path="flexdashboard.html"><a href="flexdashboard.html#useful-websites-8"><i class="fa fa-check"></i><b>11.2</b> 🌎Useful websites</a></li>
@@ -362,29 +363,51 @@ div.csl-indent {
 <li class="chapter" data-level="11.4" data-path="flexdashboard.html"><a href="flexdashboard.html#tips"><i class="fa fa-check"></i><b>11.4</b> Tips</a></li>
 <li class="chapter" data-level="11.5" data-path="flexdashboard.html"><a href="flexdashboard.html#simulate-data-4"><i class="fa fa-check"></i><b>11.5</b> 🔢Simulate data</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="language-for-publications.html"><a href="language-for-publications.html"><i class="fa fa-check"></i><b>12</b> Language for publications</a>
+<li class="chapter" data-level="12" data-path="flextable.html"><a href="flextable.html"><i class="fa fa-check"></i><b>12</b> Flextable</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="language-for-publications.html"><a href="language-for-publications.html#overview-9"><i class="fa fa-check"></i><b>12.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="12.2" data-path="language-for-publications.html"><a href="language-for-publications.html#useful-websites-9"><i class="fa fa-check"></i><b>12.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="12.3" data-path="language-for-publications.html"><a href="language-for-publications.html#load-packages-6"><i class="fa fa-check"></i><b>12.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="12.4" data-path="language-for-publications.html"><a href="language-for-publications.html#statistical-software"><i class="fa fa-check"></i><b>12.4</b> Statistical software</a>
-<ul>
-<li class="chapter" data-level="12.4.1" data-path="language-for-publications.html"><a href="language-for-publications.html#r"><i class="fa fa-check"></i><b>12.4.1</b> R</a></li>
-<li class="chapter" data-level="12.4.2" data-path="language-for-publications.html"><a href="language-for-publications.html#stata"><i class="fa fa-check"></i><b>12.4.2</b> Stata</a></li>
-<li class="chapter" data-level="12.4.3" data-path="language-for-publications.html"><a href="language-for-publications.html#sas"><i class="fa fa-check"></i><b>12.4.3</b> SAS</a></li>
+<li class="chapter" data-level="12.1" data-path="flextable.html"><a href="flextable.html#overview-9"><i class="fa fa-check"></i><b>12.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="12.2" data-path="flextable.html"><a href="flextable.html#useful-websites-9"><i class="fa fa-check"></i><b>12.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="12.3" data-path="flextable.html"><a href="flextable.html#load-packages-6"><i class="fa fa-check"></i><b>12.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="12.4" data-path="flextable.html"><a href="flextable.html#simulate-data-5"><i class="fa fa-check"></i><b>12.4</b> 🔢Simulate data</a></li>
+<li class="chapter" data-level="12.5" data-path="flextable.html"><a href="flextable.html#adding-blank-rows"><i class="fa fa-check"></i><b>12.5</b> Adding blank rows</a></li>
+<li class="chapter" data-level="12.6" data-path="flextable.html"><a href="flextable.html#autofit-to-window"><i class="fa fa-check"></i><b>12.6</b> Autofit to window</a></li>
+<li class="chapter" data-level="12.7" data-path="flextable.html"><a href="flextable.html#change-font-to-tnr"><i class="fa fa-check"></i><b>12.7</b> Change font to TNR</a></li>
+<li class="chapter" data-level="12.8" data-path="flextable.html"><a href="flextable.html#bold-part-of-the-table-title"><i class="fa fa-check"></i><b>12.8</b> Bold part of the table title</a></li>
+<li class="chapter" data-level="12.9" data-path="flextable.html"><a href="flextable.html#conditional-formatting"><i class="fa fa-check"></i><b>12.9</b> Conditional formatting</a></li>
 </ul></li>
-<li class="chapter" data-level="12.5" data-path="language-for-publications.html"><a href="language-for-publications.html#irb"><i class="fa fa-check"></i><b>12.5</b> IRB</a></li>
+<li class="chapter" data-level="13" data-path="language-for-publications.html"><a href="language-for-publications.html"><i class="fa fa-check"></i><b>13</b> Language for publications</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="language-for-publications.html"><a href="language-for-publications.html#overview-10"><i class="fa fa-check"></i><b>13.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="13.2" data-path="language-for-publications.html"><a href="language-for-publications.html#useful-websites-10"><i class="fa fa-check"></i><b>13.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="13.3" data-path="language-for-publications.html"><a href="language-for-publications.html#load-packages-7"><i class="fa fa-check"></i><b>13.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="13.4" data-path="language-for-publications.html"><a href="language-for-publications.html#statistical-software"><i class="fa fa-check"></i><b>13.4</b> Statistical software</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="language-for-publications.html"><a href="language-for-publications.html#r"><i class="fa fa-check"></i><b>13.4.1</b> R</a></li>
+<li class="chapter" data-level="13.4.2" data-path="language-for-publications.html"><a href="language-for-publications.html#stata"><i class="fa fa-check"></i><b>13.4.2</b> Stata</a></li>
+<li class="chapter" data-level="13.4.3" data-path="language-for-publications.html"><a href="language-for-publications.html#sas"><i class="fa fa-check"></i><b>13.4.3</b> SAS</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="language-for-publications.html"><a href="language-for-publications.html#irb"><i class="fa fa-check"></i><b>13.5</b> IRB</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="officer.html"><a href="officer.html"><i class="fa fa-check"></i><b>14</b> Officer</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="officer.html"><a href="officer.html#overview-11"><i class="fa fa-check"></i><b>14.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="14.2" data-path="officer.html"><a href="officer.html#useful-websites-11"><i class="fa fa-check"></i><b>14.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="14.3" data-path="officer.html"><a href="officer.html#load-packages-8"><i class="fa fa-check"></i><b>14.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="14.4" data-path="officer.html"><a href="officer.html#formatted-text"><i class="fa fa-check"></i><b>14.4</b> Formatted text</a></li>
+<li class="chapter" data-level="14.5" data-path="officer.html"><a href="officer.html#bulleted-list"><i class="fa fa-check"></i><b>14.5</b> Bulleted list</a></li>
+<li class="chapter" data-level="14.6" data-path="officer.html"><a href="officer.html#adding-on-to-the-end-of-a-file."><i class="fa fa-check"></i><b>14.6</b> Adding on to the end of a file.</a></li>
+<li class="chapter" data-level="14.7" data-path="officer.html"><a href="officer.html#using-bookmarks"><i class="fa fa-check"></i><b>14.7</b> Using bookmarks</a></li>
 </ul></li>
 <li class="part"><span><b>VII Shiny</b></span></li>
-<li class="chapter" data-level="13" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html"><i class="fa fa-check"></i><b>13</b> Appendix A: Terms and Definitions</a>
+<li class="chapter" data-level="15" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html"><i class="fa fa-check"></i><b>15</b> Appendix A: Terms and Definitions</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#overview-10"><i class="fa fa-check"></i><b>13.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="13.2" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#useful-websites-10"><i class="fa fa-check"></i><b>13.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="13.3" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#terms"><i class="fa fa-check"></i><b>13.3</b> 📖Terms</a>
+<li class="chapter" data-level="15.1" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#overview-12"><i class="fa fa-check"></i><b>15.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="15.2" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#useful-websites-12"><i class="fa fa-check"></i><b>15.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="15.3" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#terms"><i class="fa fa-check"></i><b>15.3</b> 📖Terms</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#general-terms"><i class="fa fa-check"></i><b>13.3.1</b> General Terms</a></li>
-<li class="chapter" data-level="13.3.2" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#general-statistics-terms"><i class="fa fa-check"></i><b>13.3.2</b> General statistics terms</a></li>
-<li class="chapter" data-level="13.3.3" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#measures-of-occurence"><i class="fa fa-check"></i><b>13.3.3</b> Measures of occurence</a></li>
+<li class="chapter" data-level="15.3.1" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#general-terms"><i class="fa fa-check"></i><b>15.3.1</b> General Terms</a></li>
+<li class="chapter" data-level="15.3.2" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#general-statistics-terms"><i class="fa fa-check"></i><b>15.3.2</b> General statistics terms</a></li>
+<li class="chapter" data-level="15.3.3" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#measures-of-occurence"><i class="fa fa-check"></i><b>15.3.3</b> Measures of occurence</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -406,40 +429,40 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="language-for-publications" class="section level1" number="12">
-<h1><span class="header-section-number">12</span> Language for publications</h1>
+<div id="language-for-publications" class="section level1" number="13">
+<h1><span class="header-section-number">13</span> Language for publications</h1>
 <!--
 Hidden comments placeholder
 -->
 <p><img src="https://picsum.photos/200/300" /><!-- --></p>
-<div id="overview-9" class="section level2" number="12.1">
-<h2><span class="header-section-number">12.1</span> ⭐️Overview</h2>
+<div id="overview-10" class="section level2" number="13.1">
+<h2><span class="header-section-number">13.1</span> ⭐️Overview</h2>
 <p>This chapter is about language I often need to use and adapt for peer reviewed publications.</p>
 </div>
-<div id="useful-websites-9" class="section level2" number="12.2">
-<h2><span class="header-section-number">12.2</span> 🌎Useful websites</h2>
+<div id="useful-websites-10" class="section level2" number="13.2">
+<h2><span class="header-section-number">13.2</span> 🌎Useful websites</h2>
 <ul>
 <li><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Version.html">R.Version</a><br />
 </li>
 <li><a href="https://www.blopig.com/blog/2013/07/citing-r-packages-in-your-thesispaperassignments/#:~:text=citation()%20To%20cite%20R,R%2Dproject.org%2F.">Cite R and R packages</a></li>
 </ul>
 </div>
-<div id="load-packages-6" class="section level2" number="12.3">
-<h2><span class="header-section-number">12.3</span> 📦Load packages</h2>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="language-for-publications.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb242-2"><a href="language-for-publications.html#cb242-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(freqtables)</span>
-<span id="cb242-3"><a href="language-for-publications.html#cb242-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(meantables)</span></code></pre></div>
+<div id="load-packages-7" class="section level2" number="13.3">
+<h2><span class="header-section-number">13.3</span> 📦Load packages</h2>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="language-for-publications.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb260-2"><a href="language-for-publications.html#cb260-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(freqtables)</span>
+<span id="cb260-3"><a href="language-for-publications.html#cb260-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(meantables)</span></code></pre></div>
 </div>
-<div id="statistical-software" class="section level2" number="12.4">
-<h2><span class="header-section-number">12.4</span> Statistical software</h2>
+<div id="statistical-software" class="section level2" number="13.4">
+<h2><span class="header-section-number">13.4</span> Statistical software</h2>
 <p>In manuscripts, I often want to say something about the software I used to conduct the statistical analyses. Here is an example.</p>
-<div id="r" class="section level3" number="12.4.1">
-<h3><span class="header-section-number">12.4.1</span> R</h3>
+<div id="r" class="section level3" number="13.4.1">
+<h3><span class="header-section-number">13.4.1</span> R</h3>
 <blockquote>
 <p>Statistical analyses were conducted using R version 4.1.0 (R Core Team, 2021) in RStudio version 1.4.1717 (RStudio Team, 2021) with the following packages: tidyverse (Wickham et al., 2019), freqtables (Cannell, 2020), meantables (Cannell, 2020).</p>
 </blockquote>
 <p>The functions below can be used to get citations and version numbers.</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="language-for-publications.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="language-for-publications.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>()</span></code></pre></div>
 <pre><code>## 
 ## To cite R in publications use:
 ## 
@@ -461,12 +484,12 @@ Hidden comments placeholder
 ## We have invested a lot of time and effort in creating R, please cite it
 ## when using it for data analysis. See also &#39;citation(&quot;pkgname&quot;)&#39; for
 ## citing R packages.</code></pre>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="language-for-publications.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="fu">R.Version</span>()<span class="sc">$</span>version.string</span></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="language-for-publications.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">R.Version</span>()<span class="sc">$</span>version.string</span></code></pre></div>
 <pre><code>## [1] &quot;R version 4.1.0 (2021-05-18)&quot;</code></pre>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="language-for-publications.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Won&#39;t run when I build book, but this is how you get the RStudio version number</span></span>
-<span id="cb247-2"><a href="language-for-publications.html#cb247-2" aria-hidden="true" tabindex="-1"></a>rstudioapi<span class="sc">::</span><span class="fu">versionInfo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="language-for-publications.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Won&#39;t run when I build book, but this is how you get the RStudio version number</span></span>
+<span id="cb265-2"><a href="language-for-publications.html#cb265-2" aria-hidden="true" tabindex="-1"></a>rstudioapi<span class="sc">::</span><span class="fu">versionInfo</span>()</span></code></pre></div>
 <pre><code>## Error: RStudio not running</code></pre>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="language-for-publications.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="language-for-publications.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##   Wickham et al., (2019). Welcome to the tidyverse. Journal of Open
 ##   Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686
@@ -483,7 +506,7 @@ Hidden comments placeholder
 ##     pages = {1686},
 ##     doi = {10.21105/joss.01686},
 ##   }</code></pre>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="language-for-publications.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">&quot;freqtables&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="language-for-publications.html#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">&quot;freqtables&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## To cite package &#39;freqtables&#39; in publications use:
 ## 
@@ -501,21 +524,21 @@ Hidden comments placeholder
 ##     url = {https://CRAN.R-project.org/package=freqtables},
 ##   }</code></pre>
 </div>
-<div id="stata" class="section level3" number="12.4.2">
-<h3><span class="header-section-number">12.4.2</span> Stata</h3>
+<div id="stata" class="section level3" number="13.4.2">
+<h3><span class="header-section-number">13.4.2</span> Stata</h3>
 <blockquote>
 <p>All analyses were conducted using Stata 13 (StataCorp, 2013)</p>
 </blockquote>
 </div>
-<div id="sas" class="section level3" number="12.4.3">
-<h3><span class="header-section-number">12.4.3</span> SAS</h3>
+<div id="sas" class="section level3" number="13.4.3">
+<h3><span class="header-section-number">13.4.3</span> SAS</h3>
 <blockquote>
 <p>All analyses were completed with SAS version 9.4 (SAS Institute, Cary, NC).</p>
 </blockquote>
 </div>
 </div>
-<div id="irb" class="section level2" number="12.5">
-<h2><span class="header-section-number">12.5</span> IRB</h2>
+<div id="irb" class="section level2" number="13.5">
+<h2><span class="header-section-number">13.5</span> IRB</h2>
 <blockquote>
 <p>The Committee for the Protection of Human Subjects at the University of Texas Health Science Center approved this project.</p>
 </blockquote>
@@ -545,44 +568,41 @@ Clean up and add session info
 ## other attached packages:
 ##  [1] meantables_0.1.0    freqtables_0.1.0    forcats_0.5.1      
 ##  [4] readr_2.0.0         tibble_3.1.3        tidyverse_1.3.1    
-##  [7] flexdashboard_0.5.2 ggplot2_3.3.5       googlesheets4_1.0.0
-## [10] testthat_3.0.4      stringr_1.4.0       purrr_0.3.4        
-## [13] tidyr_1.1.3         dplyr_1.0.7        
+##  [7] flextable_0.6.7     officer_0.3.19      flexdashboard_0.5.2
+## [10] ggplot2_3.3.5       googlesheets4_1.0.0 testthat_3.0.4     
+## [13] stringr_1.4.0       purrr_0.3.4         tidyr_1.1.3        
+## [16] dplyr_1.0.7        
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] httr_1.4.2        sass_0.4.0        pkgload_1.2.1     jsonlite_1.7.2   
-##  [5] modelr_0.1.8      bslib_0.2.5.1     assertthat_0.2.1  askpass_1.1      
-##  [9] highr_0.9         cellranger_1.1.0  yaml_2.2.1        pillar_1.6.1     
-## [13] backports_1.2.1   glue_1.4.2        digest_0.6.27     rvest_1.0.0      
-## [17] colorspace_2.0-2  htmltools_0.5.1.1 pkgconfig_2.0.3   broom_0.7.8      
-## [21] haven_2.4.1       bookdown_0.22     scales_1.1.1      tzdb_0.1.2       
-## [25] openssl_1.4.4     googledrive_2.0.0 generics_0.1.0    farver_2.1.0     
-## [29] ellipsis_0.3.2    DT_0.18           withr_2.4.2       cli_3.0.1        
-## [33] magrittr_2.0.1    crayon_1.4.1      readxl_1.3.1      evaluate_0.14    
-## [37] fs_1.5.0          fansi_0.5.0       xml2_1.3.2        tools_4.1.0      
-## [41] hms_1.1.0         gargle_1.2.0      lifecycle_1.0.0   munsell_0.5.0    
-## [45] reprex_2.0.0      compiler_4.1.0    jquerylib_0.1.4   rlang_0.4.11     
-## [49] grid_4.1.0        rstudioapi_0.13   rappdirs_0.3.3    htmlwidgets_1.5.3
-## [53] crosstalk_1.1.1   labeling_0.4.2    rmarkdown_2.9     gtable_0.3.0     
-## [57] DBI_1.1.1         curl_4.3.2        R6_2.5.0          lubridate_1.7.10 
-## [61] knitr_1.33        utf8_1.2.1        rprojroot_2.0.2   desc_1.3.0       
-## [65] stringi_1.7.3     Rcpp_1.0.7        vctrs_0.3.8       dbplyr_2.1.1     
-## [69] tidyselect_1.1.1  xfun_0.24</code></pre>
+##  [1] fs_1.5.0          lubridate_1.7.10  httr_1.4.2        rprojroot_2.0.2  
+##  [5] tools_4.1.0       backports_1.2.1   bslib_0.2.5.1     utf8_1.2.1       
+##  [9] R6_2.5.0          DT_0.18           DBI_1.1.1         colorspace_2.0-2 
+## [13] withr_2.4.2       tidyselect_1.1.1  curl_4.3.2        compiler_4.1.0   
+## [17] cli_3.0.1         rvest_1.0.0       xml2_1.3.2        desc_1.3.0       
+## [21] labeling_0.4.2    bookdown_0.22     sass_0.4.0        scales_1.1.1     
+## [25] askpass_1.1       rappdirs_0.3.3    systemfonts_1.0.2 digest_0.6.27    
+## [29] rmarkdown_2.9     base64enc_0.1-3   pkgconfig_2.0.3   htmltools_0.5.1.1
+## [33] dbplyr_2.1.1      highr_0.9         htmlwidgets_1.5.3 rlang_0.4.11     
+## [37] readxl_1.3.1      rstudioapi_0.13   jquerylib_0.1.4   farver_2.1.0     
+## [41] generics_0.1.0    jsonlite_1.7.2    crosstalk_1.1.1   zip_2.2.0        
+## [45] magrittr_2.0.1    Rcpp_1.0.7        munsell_0.5.0     fansi_0.5.0      
+## [49] gdtools_0.2.3     lifecycle_1.0.0   stringi_1.7.3     yaml_2.2.1       
+## [53] grid_4.1.0        crayon_1.4.1      haven_2.4.1       hms_1.1.0        
+## [57] knitr_1.33        pillar_1.6.1      uuid_0.1-4        pkgload_1.2.1    
+## [61] reprex_2.0.0      glue_1.4.2        evaluate_0.14     data.table_1.14.0
+## [65] modelr_0.1.8      vctrs_0.3.8       tzdb_0.1.2        cellranger_1.1.0 
+## [69] gtable_0.3.0      openssl_1.4.4     assertthat_0.2.1  xfun_0.24        
+## [73] broom_0.7.8       googledrive_2.0.0 gargle_1.2.0      ellipsis_0.3.2</code></pre>
 
 </div>
-</div>
-
-
-
-
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="flexdashboard.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="appendix-a-terms-and-definitions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="flextable.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="officer.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

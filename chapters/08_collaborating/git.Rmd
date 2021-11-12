@@ -1,0 +1,108 @@
+# Git and GitHub
+
+<!--
+Hidden comments placeholder
+-->
+
+```{r echo=FALSE}
+knitr::include_graphics("https://picsum.photos/200/300")
+```
+
+## ⭐️Overview
+
+This chapter is about using [Git](https://git-scm.com/) and [GitHub](https://github.com/) to collaborate. 
+
+The goal is not to make you a git expert — I’m not a git expert myself. Instead, the goal is to teach you enough git to work with me and my team on research projects. I will also provide you with some additional resources in case you want to become an expert.
+
+
+## 🌎Useful websites
+
+* [How to Use Git/GitHub with R](https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/)   
+* [Git Book](https://git-scm.com/book/en/v2)   
+* [Happy Git and GitHub for the useR](https://happygitwithr.com/)   
+* [GitHub Hello World tutorial](https://docs.github.com/en/get-started/quickstart/hello-world) 
+
+
+## Get rid of .DS_Store
+
+The `.DS_Store` file can be an annoyance when working with Git on MacOS. [Here is a link](https://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository/107921) to instructions for removing `.DS_Store` from your repository. Do it early and never worry about it again. 
+
+In the terminal, run the following code from the root directory:
+
+```{bash eval=FALSE}
+# Remove existing files from the repository:
+find . -name "*.DS_Store" -type f -exec git-rm {} \;
+```
+
+```{bash eval=FALSE}
+# Add .DS_Store to .gitignore
+echo .DS_Store >> .gitignore
+```
+
+```{bash eval=FALSE}
+# Commit the file to the repo
+git add .gitignore
+git commit -m '.DS_Store banished!'
+```
+
+
+## Amend
+
+* Edit -> commit -> edit -> amend -> commit = no problem!   
+* Edit -> commit -> push -> edit -> amend -> commit -> push  = problem!   
+* [Short answer, don’t do it.](https://stackoverflow.com/questions/43289444/git-merge-conflict-after-git-amend-your-branch-and-origin-master-have-diver)     
+* [Adding more chages to your last commit](https://medium.com/@igor_marques/git-basics-adding-more-changes-to-your-last-commit-1629344cb9a8)    
+
+## Pull Requests
+
+* [Instructions for leaving comments](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-proposed-changes-in-a-pull-request)    
+* Very simple merge conflicts can be resolved directly on GitHub.com    
+* Use command line instructions to try out the code to resolve more complex merge conflicts.    
+
+Example command line pull request merge conflict
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_merge_conflict.png")
+```
+
+If there are already changes on the branch (so you can’t pull), you need to either:    
+
+* Commit the changes on the branch (if you want to keep them)    
+* Throw away local changes with git checkout -f, and then remove untracked files with git clean -fd    
+
+## Branches
+
+Naming convention:
+issue-#-short-description
+
+Basic workflow:
+
+1. Create new branch - never develop on Master   
+2. Push new branch to remote   
+3. Do some work - commit - amend - push along the way    
+4. When work is done, create a pull request for Master    
+5. Deal with merge conflicts if they exist, and merge into Master    
+6. Delete development branch    
+
+[Merging specific files from another branch.](https://jasonrudolph.com/blog/2009/02/25/git-tip-how-to-merge-specific-files-from-another-branch/)
+
+Also, if you haven’t committed the files you don’t want to move over yet:
+
+* Commit just the files you DO want to merge into master.    
+* Push    
+* Create a request to pull the changes you just committed into the master branch.     
+* Don’t delete the issue branch. Just continue working on the files you don’t commit and merge with the pull request.    
+
+
+
+
+<!--
+Clean up and add session info
+-->
+
+```{r echo=FALSE}
+rm(list = ls())
+```
+
+```{r echo=FALSE}
+sessionInfo()
+```

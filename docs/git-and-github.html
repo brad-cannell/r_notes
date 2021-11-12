@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>18 Appendix A: Terms and Definitions | R Notes</title>
+  <title>17 Git and GitHub | R Notes</title>
   <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="18 Appendix A: Terms and Definitions | R Notes" />
+  <meta property="og:title" content="17 Git and GitHub | R Notes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://brad-cannell.github.io/r_notes/" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="brad-cannell/r_notes" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="18 Appendix A: Terms and Definitions | R Notes" />
+  <meta name="twitter:title" content="17 Git and GitHub | R Notes" />
   
   <meta name="twitter:description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="git-and-github.html"/>
-
+<link rel="prev" href="stuff-from.html"/>
+<link rel="next" href="appendix-a-terms-and-definitions.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -458,55 +458,100 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="appendix-a-terms-and-definitions" class="section level1" number="18">
-<h1><span class="header-section-number">18</span> Appendix A: Terms and Definitions</h1>
+<div id="git-and-github" class="section level1" number="17">
+<h1><span class="header-section-number">17</span> Git and GitHub</h1>
 <!--
-Hidden Notes
+Hidden comments placeholder
 -->
-<p>Need to sort and define:</p>
-<p>Terms to add to R Notes:
-* Probability. Look up
-* Risk. 57, but look up.
-* Incidence time. 58
-* Censoring. 59
-* Person time at risk. 60
-* Incidence rate. 61
-* Inverse time. I think it just means per year, per month, per week, etc. 61</p>
 <p><img src="https://picsum.photos/200/300" /><!-- --></p>
-<div id="overview-14" class="section level2" number="18.1">
-<h2><span class="header-section-number">18.1</span> ⭐️Overview</h2>
-<p>There are so many terms in epidemiology that are used inconsistently. This note is supposed to help keep track of them all.</p>
+<div id="overview-13" class="section level2" number="17.1">
+<h2><span class="header-section-number">17.1</span> ⭐️Overview</h2>
+<p>This chapter is about using <a href="https://git-scm.com/">Git</a> and <a href="https://github.com/">GitHub</a> to collaborate.</p>
+<p>The goal is not to make you a git expert — I’m not a git expert myself. Instead, the goal is to teach you enough git to work with me and my team on research projects. I will also provide you with some additional resources in case you want to become an expert.</p>
 </div>
-<div id="useful-websites-14" class="section level2" number="18.2">
-<h2><span class="header-section-number">18.2</span> 🌎Useful websites</h2>
+<div id="useful-websites-13" class="section level2" number="17.2">
+<h2><span class="header-section-number">17.2</span> 🌎Useful websites</h2>
 <ul>
-<li><a href="https://stackoverflow.com/" class="uri">https://stackoverflow.com/</a></li>
+<li><a href="https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/">How to Use Git/GitHub with R</a><br />
+</li>
+<li><a href="https://git-scm.com/book/en/v2">Git Book</a><br />
+</li>
+<li><a href="https://happygitwithr.com/">Happy Git and GitHub for the useR</a><br />
+</li>
+<li><a href="https://docs.github.com/en/get-started/quickstart/hello-world">GitHub Hello World tutorial</a></li>
 </ul>
 </div>
-<div id="terms" class="section level2" number="18.3">
-<h2><span class="header-section-number">18.3</span> 📖Terms</h2>
-<div id="general-terms" class="section level3" number="18.3.1">
-<h3><span class="header-section-number">18.3.1</span> General Terms</h3>
-<p class="note">
-🗒<strong>Side Note:</strong> At some point, you may want to improve the organization of this note and/or add some graphics.
-</p>
-<p><em>Cohort</em>. A group of persons for whom membership is defined in a permanent fashion, or a population in which membership is determined by satisfying a set of defining events and so becomes permanent. An example of a cohort would be the members of the graduating class of a school in a given year… With this definition, the members of any cohort constitute a closed population along the time axis in which the chronologically last defining event (e.g., birth with Down syndrome or study recruitment) is taken as the index time.<span class="citation"><sup><a href="#ref-Lash2021-rz" role="doc-biblioref">1</a></sup></span></p>
-<p><em>Closed population</em>. A closed population adds no new members over time and loses members only to death.<span class="citation"><sup><a href="#ref-Lash2021-rz" role="doc-biblioref">1</a></sup></span></p>
-<p><em>Open population</em>. Open populations may gain members over time, through immigration or birth, or lose members over time through emigration or death.<span class="citation"><sup><a href="#ref-Lash2021-rz" role="doc-biblioref">1</a></sup></span> Think of a population defined by a geographic area or political boundary.</p>
+<div id="get-rid-of-.ds_store-1" class="section level2" number="17.3">
+<h2><span class="header-section-number">17.3</span> Get rid of .DS_Store</h2>
+<p>The <code>.DS_Store</code> file can be an annoyance when working with Git on MacOS. <a href="https://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository/107921">Here is a link</a> to instructions for removing <code>.DS_Store</code> from your repository. Do it early and never worry about it again.</p>
+<p>In the terminal, run the following code from the root directory:</p>
+<div class="sourceCode" id="cb299"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb299-1"><a href="git-and-github.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove existing files from the repository:</span></span>
+<span id="cb299-2"><a href="git-and-github.html#cb299-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.DS_Store&quot;</span> <span class="at">-type</span> f <span class="at">-exec</span> git-rm {} <span class="dt">\;</span></span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb300-1"><a href="git-and-github.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add .DS_Store to .gitignore</span></span>
+<span id="cb300-2"><a href="git-and-github.html#cb300-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> .DS_Store <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb301-1"><a href="git-and-github.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Commit the file to the repo</span></span>
+<span id="cb301-2"><a href="git-and-github.html#cb301-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .gitignore</span>
+<span id="cb301-3"><a href="git-and-github.html#cb301-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&#39;.DS_Store banished!&#39;</span></span></code></pre></div>
 </div>
-<div id="general-statistics-terms" class="section level3" number="18.3.2">
-<h3><span class="header-section-number">18.3.2</span> General statistics terms</h3>
-<p><em>Odds</em>.</p>
-<p><em>Proportion</em>.</p>
-<p><em>Percentage</em>.</p>
-<p><em>Ratio</em>.</p>
+<div id="amend" class="section level2" number="17.4">
+<h2><span class="header-section-number">17.4</span> Amend</h2>
+<ul>
+<li>Edit -&gt; commit -&gt; edit -&gt; amend -&gt; commit = no problem!<br />
+</li>
+<li>Edit -&gt; commit -&gt; push -&gt; edit -&gt; amend -&gt; commit -&gt; push = problem!<br />
+</li>
+<li><a href="https://stackoverflow.com/questions/43289444/git-merge-conflict-after-git-amend-your-branch-and-origin-master-have-diver">Short answer, don’t do it.</a><br />
+</li>
+<li><a href="https://medium.com/@igor_marques/git-basics-adding-more-changes-to-your-last-commit-1629344cb9a8">Adding more chages to your last commit</a></li>
+</ul>
 </div>
-<div id="measures-of-occurence" class="section level3" number="18.3.3">
-<h3><span class="header-section-number">18.3.3</span> Measures of occurence</h3>
-<p><em>Incident</em>. A single occurrence of an outcome of interest. We might also talk about the number of incident cases.</p>
-<p><em>Incidence</em>.</p>
-<p><em>Incidence proportion</em>.</p>
-<p><em>Prevalence</em>.</p>
+<div id="pull-requests" class="section level2" number="17.5">
+<h2><span class="header-section-number">17.5</span> Pull Requests</h2>
+<ul>
+<li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-proposed-changes-in-a-pull-request">Instructions for leaving comments</a><br />
+</li>
+<li>Very simple merge conflicts can be resolved directly on GitHub.com<br />
+</li>
+<li>Use command line instructions to try out the code to resolve more complex merge conflicts.</li>
+</ul>
+<p>Example command line pull request merge conflict
+<img src="img/08_collaborating/git_merge_conflict.png" /><!-- --></p>
+<p>If there are already changes on the branch (so you can’t pull), you need to either:</p>
+<ul>
+<li>Commit the changes on the branch (if you want to keep them)<br />
+</li>
+<li>Throw away local changes with git checkout -f, and then remove untracked files with git clean -fd</li>
+</ul>
+</div>
+<div id="branches" class="section level2" number="17.6">
+<h2><span class="header-section-number">17.6</span> Branches</h2>
+<p>Naming convention:
+issue-#-short-description</p>
+<p>Basic workflow:</p>
+<ol style="list-style-type: decimal">
+<li>Create new branch - never develop on Master<br />
+</li>
+<li>Push new branch to remote<br />
+</li>
+<li>Do some work - commit - amend - push along the way<br />
+</li>
+<li>When work is done, create a pull request for Master<br />
+</li>
+<li>Deal with merge conflicts if they exist, and merge into Master<br />
+</li>
+<li>Delete development branch</li>
+</ol>
+<p><a href="https://jasonrudolph.com/blog/2009/02/25/git-tip-how-to-merge-specific-files-from-another-branch/">Merging specific files from another branch.</a></p>
+<p>Also, if you haven’t committed the files you don’t want to move over yet:</p>
+<ul>
+<li>Commit just the files you DO want to merge into master.<br />
+</li>
+<li>Push<br />
+</li>
+<li>Create a request to pull the changes you just committed into the master branch.<br />
+</li>
+<li>Don’t delete the issue branch. Just continue working on the files you don’t commit and merge with the pull request.</li>
+</ul>
 <!--
 Clean up and add session info
 -->
@@ -553,30 +598,20 @@ Clean up and add session info
 ## [69] openssl_1.4.4     assertthat_0.2.1  xfun_0.24         broom_0.7.8      
 ## [73] googledrive_2.0.0 gargle_1.2.0      ellipsis_0.3.2</code></pre>
 
-<div id="refs" class="references csl-bib-body">
-<div class="csl-entry">
-<div class="csl-left-margin">1. </div><div class="csl-right-inline">Lash TL, Rothman KJ. Measures of occurrence. In: <em>Modern Epidemiology</em>. fourth. Wolters Kluwer; 2021:53-77.</div>
-</div>
-<div class="csl-entry">
-<div class="csl-left-margin">2. </div><div class="csl-right-inline">Xie Y. Bookdown: Authoring books and technical documents with <span>R</span> markdown. Published online July 2021.</div>
 </div>
 </div>
-</div>
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body">
-<div id="ref-Lash2021-rz" class="csl-entry">
-<div class="csl-left-margin">1. </div><div class="csl-right-inline">Lash TL, Rothman KJ. Measures of occurrence. In: <em>Modern Epidemiology</em>. fourth. Wolters Kluwer; 2021:53-77.</div>
-</div>
+
+
+
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="git-and-github.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="stuff-from.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="appendix-a-terms-and-definitions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

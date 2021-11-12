@@ -263,6 +263,28 @@ Note: to exculde files from add them to `.gitignore` manually, or by clicking Gi
 
 10. Go to your GitHub page and look at the DESCRIPTION
 
+### Get rid of .DS_Store
+
+The `.DS_Store` file can be an annoyance when working with Git on MacOS. [Here is a link](https://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository/107921) to instructions for removing `.DS_Store` from your repository. Do it early and never worry about it again. 
+
+In the terminal, run the following code from the root directory:
+
+```{bash eval=FALSE}
+# Remove existing files from the repository:
+find . -name "*.DS_Store" -type f -exec git-rm {} \;
+```
+
+```{bash eval=FALSE}
+# Add .DS_Store to .gitignore
+echo .DS_Store >> .gitignore
+```
+
+```{bash eval=FALSE}
+# Commit the file to the repo
+git add .gitignore
+git commit -m '.DS_Store banished!'
+```
+
 ### Example: Modify Description
 
 ```{r eval = FALSE}

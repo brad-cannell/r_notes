@@ -12,6 +12,7 @@ documenting-package
 once-package-is-complete-ish
 notes-about-package-notes
 step-4-synchronize-with-github
+get-rid-of-.ds_store
 example-modify-description
 example-installation-instructions-for-readme
 step-5-testing
@@ -188,9 +189,16 @@ outcome-distribution
 create-helper-functions
 continuous-stats-function
 stuff-from
-appendix-a-terms-and-definitions
+git-and-github
 overview-13
 useful-websites-13
+get-rid-of-.ds_store-1
+amend
+pull-requests
+branches
+appendix-a-terms-and-definitions
+overview-14
+useful-websites-14
 terms
 general-terms
 general-statistics-terms

@@ -8,6 +8,7 @@ working-with-r-scripts
 step-3-writing-help-pages
 example-roxygen-header
 dont-run-the-examples
+keyboard-shortcut-for-inserting-roxygen-comment
 documenting-package
 once-package-is-complete-ish
 notes-about-package-notes

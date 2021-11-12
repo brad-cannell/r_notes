@@ -206,6 +206,11 @@ If you don't want the examples to actually run, You can surround the example cod
 ```
 
 
+### Keyboard shortcut for inserting roxygen #' comment
+
+There doesn't appear to be a keyboard shortcut, but this [StackOverflow post](https://stackoverflow.com/questions/33399203/keyboard-shortcut-for-inserting-roxygen-comment-start#:~:text=But%20you%20can%20add%20an,%2Balt%2Bshift%2BR%20.) shows a good method for using RStudio's find and replace.
+
+
 ### Documenting Package:
 
 You can use roxygen to provide a help page for your package as a whole. <a href = "http://r-pkgs.had.co.nz/man.html" target = "_blank">More information is available from Hadley here</a>.

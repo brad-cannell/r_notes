@@ -186,9 +186,10 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="1.4.1" data-path="my-package-notes.html"><a href="my-package-notes.html#example-roxygen-header"><i class="fa fa-check"></i><b>1.4.1</b> Example <code>roxygen</code> header</a></li>
 <li class="chapter" data-level="1.4.2" data-path="my-package-notes.html"><a href="my-package-notes.html#dont-run-the-examples"><i class="fa fa-check"></i><b>1.4.2</b> Don’t run the examples</a></li>
-<li class="chapter" data-level="1.4.3" data-path="my-package-notes.html"><a href="my-package-notes.html#documenting-package"><i class="fa fa-check"></i><b>1.4.3</b> Documenting Package:</a></li>
-<li class="chapter" data-level="1.4.4" data-path="my-package-notes.html"><a href="my-package-notes.html#once-package-is-complete-ish"><i class="fa fa-check"></i><b>1.4.4</b> Once package is complete (ish)</a></li>
-<li class="chapter" data-level="1.4.5" data-path="my-package-notes.html"><a href="my-package-notes.html#notes-about-package-notes"><i class="fa fa-check"></i><b>1.4.5</b> Notes about package notes:</a></li>
+<li class="chapter" data-level="1.4.3" data-path="my-package-notes.html"><a href="my-package-notes.html#keyboard-shortcut-for-inserting-roxygen-comment"><i class="fa fa-check"></i><b>1.4.3</b> Keyboard shortcut for inserting roxygen #’ comment</a></li>
+<li class="chapter" data-level="1.4.4" data-path="my-package-notes.html"><a href="my-package-notes.html#documenting-package"><i class="fa fa-check"></i><b>1.4.4</b> Documenting Package:</a></li>
+<li class="chapter" data-level="1.4.5" data-path="my-package-notes.html"><a href="my-package-notes.html#once-package-is-complete-ish"><i class="fa fa-check"></i><b>1.4.5</b> Once package is complete (ish)</a></li>
+<li class="chapter" data-level="1.4.6" data-path="my-package-notes.html"><a href="my-package-notes.html#notes-about-package-notes"><i class="fa fa-check"></i><b>1.4.6</b> Notes about package notes:</a></li>
 </ul></li>
 <li class="chapter" data-level="1.5" data-path="my-package-notes.html"><a href="my-package-notes.html#step-4-synchronize-with-github"><i class="fa fa-check"></i><b>1.5</b> Step 4: Synchronize with GitHub</a>
 <ul>
@@ -639,13 +640,17 @@ Hidden comments placeholder
 <span id="cb5-16"><a href="my-package-notes.html#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; 1 mpg             32  20.1  6.03  1.07  17.9  22.3  10.4  33.9</span></span>
 <span id="cb5-17"><a href="my-package-notes.html#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; }</span></span></code></pre></div>
 </div>
-<div id="documenting-package" class="section level3" number="1.4.3">
-<h3><span class="header-section-number">1.4.3</span> Documenting Package:</h3>
+<div id="keyboard-shortcut-for-inserting-roxygen-comment" class="section level3" number="1.4.3">
+<h3><span class="header-section-number">1.4.3</span> Keyboard shortcut for inserting roxygen #’ comment</h3>
+<p>There doesn’t appear to be a keyboard shortcut, but this <a href="https://stackoverflow.com/questions/33399203/keyboard-shortcut-for-inserting-roxygen-comment-start#:~:text=But%20you%20can%20add%20an,%2Balt%2Bshift%2BR%20.">StackOverflow post</a> shows a good method for using RStudio’s find and replace.</p>
+</div>
+<div id="documenting-package" class="section level3" number="1.4.4">
+<h3><span class="header-section-number">1.4.4</span> Documenting Package:</h3>
 <p>You can use roxygen to provide a help page for your package as a whole. <a href = "http://r-pkgs.had.co.nz/man.html" target = "_blank">More information is available from Hadley here</a>.</p>
 <p><strong>At this point, you have a usable package</strong></p>
 </div>
-<div id="once-package-is-complete-ish" class="section level3" number="1.4.4">
-<h3><span class="header-section-number">1.4.4</span> Once package is complete (ish)</h3>
+<div id="once-package-is-complete-ish" class="section level3" number="1.4.5">
+<h3><span class="header-section-number">1.4.5</span> Once package is complete (ish)</h3>
 <ol style="list-style-type: decimal">
 <li><p>Update documentation (help pages). Build &gt; More &gt; Document, or shift + cmd + D.</p></li>
 <li><p>Check the package by clicking Build &gt; Check. This will look for common package problems</p></li>
@@ -654,8 +659,8 @@ Hidden comments placeholder
 <li><p>If you are using GitHub, you need to commit changes and then push them to GitHub. More information about using Git and GitHub are available <a href = "http://r-pkgs.had.co.nz/git.html" target = "_blank">here</a>. Other users can install your package directly from GitHub with <code>install.packages("devtools")</code> followed by <code>devtools::install_github("username/packagename")</code>.</p></li>
 </ol>
 </div>
-<div id="notes-about-package-notes" class="section level3" number="1.4.5">
-<h3><span class="header-section-number">1.4.5</span> Notes about package notes:</h3>
+<div id="notes-about-package-notes" class="section level3" number="1.4.6">
+<h3><span class="header-section-number">1.4.6</span> Notes about package notes:</h3>
 <ul>
 <li><p>Because packages are almost always a work in progress, you will want to add notes to yourself about the project in the source package that you don’t want others to see. You can do this by creating a notes directory, and then listing that directory in <code>.Rbuildignore</code>. You can add to buildignore using <code>usethis::use_build_ignore("notes")</code>. More information is available <a href="http://r-pkgs.had.co.nz/package.html">here</a>.</p></li>
 <li><p>Also make sure to add NOTES to <code>.gitignore</code> with <code>usethis::use_git_ignore("notes")</code></p></li>

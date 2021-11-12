@@ -186,10 +186,12 @@ load-packages-9
 simulate-data-6
 example-table-1
 come-back-and-do-this-after-the-table-is-made-in-word
-outcome-distribution
+step-1.-calculate-the-outcome-distribution
+step-2.-create-a-data-frame-that-contains-our-summary-statistics
+calculate-statistics-for-single-variables
+one-continuous-variable
 create-helper-functions
 continuous-stats-function
-stuff-from
 git-and-github
 overview-13
 useful-websites-13

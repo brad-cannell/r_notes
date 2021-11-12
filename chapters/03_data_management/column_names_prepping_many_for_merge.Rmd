@@ -719,6 +719,4 @@ Clean up and add session info
 rm(list = ls())
 ```
 
-```{r echo=FALSE}
-sessionInfo()
-```
+

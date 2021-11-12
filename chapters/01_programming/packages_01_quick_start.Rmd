@@ -431,7 +431,3 @@ Clean up and add session info
 ```{r echo=FALSE}
 rm(list = ls())
 ```
-
-```{r echo=FALSE}
-sessionInfo()
-```

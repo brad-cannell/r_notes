@@ -2,8 +2,6 @@
 
 <!--
 Hidden comments placeholder
-Left off working on the code chunk on line 172. It works, but we may want to break it into smaller code chunks to show how each section works. 
-Then, continue moving code over from line 192 of table_use_app.Rmd
 -->
 
 ```{r random-pic-from-url, echo=FALSE}
@@ -48,6 +46,7 @@ This chapter also kind of overlaps with the [Flexdashboard] and [Officer] chapte
 ```{r message=FALSE}
 library(dplyr, warn.conflicts = FALSE)
 library(DT)
+library(meantables)
 library(freqtables)
 library(tidyr)
 library(purrr)
@@ -135,7 +134,7 @@ datatable(study, options = list(scrollX = TRUE))
 ```
 
 
-## Example: Table 1
+## 🔵 Example: Table 1
 
 This first example is perhaps the most common type of table we will create -- a Table 1 -- or basic descriptive table about our participants. 
 
@@ -146,9 +145,9 @@ Let's start by looking at a complete example:
 
 After cleaning your data, which isn't covered in this chapter, a typical workflow for creating a Table 1 like this may look like the following:
 
-### Outcome distribution
+### Step 1. Calculate the outcome distribution
 
-First, we typically want to see how many people have each value for the outcome of interest. Later, we will want to add these values to our table header as (N = XX).
+As our first step, we typically want to see how many people have each value for the outcome of interest. We will also store these values so that we can add them to our table header as (N = XX) later.
 
 ```{r}
 n_outcome <- study %>% 
@@ -159,15 +158,38 @@ n_outcome <- study %>%
 n_outcome
 ```
 
-### Create helper functions
+### Step 2. Create a data frame that contains our summary statistics
 
-For calculating statistics of interest. 
+In general, we won't want to __present__ or __distribute__ summary statistics in the form of an R data frame. However, the first step in creating our final table -- regardless of the method we use -- will usually be to create an R data frame that contains our summary statistics of interest.
 
-**Note:** This chapter isn't about how to calculate or interpret all the various different statistics we may want to calculate from project to project. For more details on descriptve statistics see:
+#### Calculate statistics for single variables
+
+Eventually, we are going to want to calculate summary statistics for multiple different variables that will go into our Table 1. Before we do that, it can be useful to write code that will calculate the summary statistics we are interested in for one continuous variable and one categorical variable. Later, we can use [iterative processing] to apply that code to all of the variables we are interested in.
+
+<div class="note"> 🗒**Side Note:** This chapter isn't about how to calculate or interpret all the various different statistics we may want to calculate from project to project. For more details on descriptive statistics see:
 
 * [R4Epi Descriptive Analysis](https://www.r4epi.com/introduction-to-descriptive-analysis.html)    
 * [meantables](placeholder)   
 * [freqtables](placeholder)    
+</div>
+
+##### One continuous variable
+
+In this example, we will want to calculate the mean and standard deviaton for continuous variables.
+
+```{r}
+study %>% 
+  mean
+```
+
+
+
+
+#### Create helper functions
+
+For calculating statistics of interest. 
+
+
 
 Of course, we don't have to create helper functions -- this step is totally optional -- but, it will make our code easier to maintain.
 
@@ -176,6 +198,8 @@ Typically, we will make one helper function for our continuous variables and one
 #### Continuous stats function
 
 Before we make our function, let's start by calculating our statistics of interest for a single variable.
+
+In the code below, I will step through some key (albeit optional) steps 
 
 ```{r}
 # For testing
@@ -200,21 +224,18 @@ study %>%
   # Add blank row below
   add_row(var = "", No = "", Yes = "")
 ```
-
+Left off working on the code chunk on line 172. It works, but we may want to break it into smaller code chunks to show how each section works. 
+Then, continue moving code over from line 192 of table_use_app.Rmd
 
 <!--
 Clean up and add session info
 -->
 
-# Stuff from 
-
 ```{r echo=FALSE}
 rm(list = ls())
 ```
 
-```{r echo=FALSE}
-sessionInfo()
-```
+
 
 
 

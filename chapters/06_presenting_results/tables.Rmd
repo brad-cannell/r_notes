@@ -2,6 +2,8 @@
 
 <!--
 Hidden comments placeholder
+Left off working on the code chunk on line 172. It works, but we may want to break it into smaller code chunks to show how each section works. 
+Then, continue moving code over from line 192 of table_use_app.Rmd
 -->
 
 ```{r random-pic-from-url, echo=FALSE}
@@ -10,7 +12,7 @@ knitr::include_graphics("https://picsum.photos/200/300")
 
 ## ⭐️Overview
 
-This chapter is about formatting and presenting statistical results in tables.
+This chapter is about **formatting and presenting statistical results in tables.**
 
 The immediate results of statistical analyses are rarely fit for general consumption. This chapter walks through strategies and functions we can use to make our results ready for presentation/dissemination.
 
@@ -31,20 +33,22 @@ I used a little different method in Link2Care > paper_smartphone_app > table_use
 
 /Users/bradcannell/Dropbox/01 Research/Elder Abuse/DETECT NIH RFA-AG-18-010/LEAD Panel/summarise_lead_votes/report_filemaker.Rmd
 
-This chapter also kind of overlaps with the [Flexdashboard] and [Officer] chapters. At some point, I should think about the best way to link and organize the chapters. Another option is to put all the flextable stuff in this chapter. I might still want a separate chapter about officeer. 
+This chapter also kind of overlaps with the [Flexdashboard] and [Officer] chapters. At some point, I should think about the best way to link and organize the chapters. Another option is to put all the flextable stuff in this chapter. I might still want a separate chapter about officer. 
 
 
 ## 🌎Useful websites
 
 * [Officer Word document generation](https://davidgohel.github.io/officer/articles/offcran/word.html)   
 * [Flextable Overview](https://davidgohel.github.io/flextable/articles/overview.html)   
+* [R gtsummary package](http://www.danieldsjoberg.com/gtsummary/)   
 
 
 ## 📦Load packages
 
 ```{r message=FALSE}
-library(dplyr)
+library(dplyr, warn.conflicts = FALSE)
 library(DT)
+library(freqtables)
 library(tidyr)
 library(purrr)
 ```
@@ -56,19 +60,20 @@ Have you noticed how we will often calculate the same statistical measures for m
 
 ```{r}
 study <- tibble(
+  id        = 1:68,
   age       = c(32, 30, 32, 29, 24, 38, 25, 24, 48, 29, 22, 29, 24, 28, 24, 25, 
                 25, 22, 25, 24, 25, 24, 23, 24, 31, 24, 29, 24, 22, 23, 26, 23, 
                 24, 25, 24, 33, 27, 25, 26, 26, 26, 26, 26, 27, 24, 43, 25, 24, 
                 27, 28, 29, 24, 26, 28, 25, 24, 26, 24, 26, 31, 24, 26, 31, 34, 
-                26, 25, 27, NA),
+                26, 25, 27, 40),
   age_group = c(2, 2, 2, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
                 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 
                 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 
-                2, 1, 1, 1, NA),
+                2, 1, 1, 1, 2),
   gender    = c(2, 1, 1, 2, 1, 1, 1, 2, 2, 2, 1, 1, 2, 1, 1, 1, 1, 2, 2, 1, 1, 
                 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 1, 1, 2, 2, 1, 2, 2, 1, 2, 2, 1, 
                 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 2, 1, 1, 2, 1, 2, 1, 
-                1, 1, 2, 1, NA),
+                1, 1, 2, 1, 2),
   ht_in     = c(70, 63, 62, 67, 67, 58, 64, 69, 65, 68, 63, 68, 69, 66, 67, 65, 
                 64, 75, 67, 63, 60, 67, 64, 73, 62, 69, 67, 62, 68, 66, 66, 62, 
                 64, 68, NA, 68, 70, 68, 68, 66, 71, 61, 62, 64, 64, 63, 67, 66, 
@@ -93,11 +98,29 @@ study <- tibble(
                 1, 1, 1, 1, 1, 1, 1, 2, NA, 3, 1, 1, 1, 1, 1, 1, 1, NA, 2, 1, 
                 1, 1, 1, 1, 1, NA)
 ) %>% 
-  mutate(
-    age_group = factor(age_group, labels = c("Younger than 30", "30 and Older")),
-    gender    = factor(gender, labels = c("Female", "Male")),
-    bmi_3cat  = factor(bmi_3cat, labels = c("Normal", "Overweight", "Obese"))
+# Create exposure and outcome where,
+# Exposure is more likely in people over age 30 and 
+# Outcome is more likely in peeople with exposure
+mutate(
+  exposure = if_else(
+    age_group == 1, 
+    sample(c(0,1), 68, TRUE, c(.9, .1)),
+    sample(c(0,1), 68, TRUE, c(.7, .3))
+  ),
+  outcome = if_else(
+    exposure == 1, 
+    sample(c(0,1), 68, TRUE, c(.8, .2)),
+    sample(c(0,1), 68, TRUE, c(.5, .5))
   )
+) %>% 
+# Make factors
+mutate(
+  age_group = factor(age_group, labels = c("Younger than 30", "30 and Older")),
+  gender    = factor(gender, labels = c("Female", "Male")),
+  bmi_3cat  = factor(bmi_3cat, labels = c("Normal", "Overweight", "Obese")),
+  exposure  = factor(exposure, labels = c("No", "Yes")),
+  outcome   = factor(outcome, labels = c("No", "Yes"))
+)
 ```
 
 ```{r}
@@ -105,15 +128,71 @@ datatable(study, options = list(scrollX = TRUE))
 ```
 
 
-# Example: Table 1
+## Example: Table 1
 
 This first example is perhaps the most common type of table we will create -- a Table 1 -- or basic descriptive table about our participants. 
 
+## 🔴 Come back and do this after the table is made in Word
 Let's start by looking at a complete example: 
 
 [Create a table 1 from the study data and insert a screen shot here]
 
-A typical workflow looks like this...
+After cleaning your data, which isn't covered in this chapter, a typical workflow for creating a Table 1 like this may look like the following:
+
+### Outcome distribution
+
+First, we typically want to see how many people have each value for the outcome of interest. Later, we will want to add these values to our table header as (N = XX).
+
+```{r}
+n_outcome <- study %>% 
+  count(outcome) %>% 
+  pull(n) %>%
+  set_names(levels(study$outcome))
+
+n_outcome
+```
+
+### Create helper functions
+
+For calculating statistics of interest. 
+
+**Note:** This chapter isn't about how to calculate or interpret all the various different statistics we may want to calculate from project to project. For more details on descriptve statistics see:
+
+* [R4Epi Descriptive Analysis](https://www.r4epi.com/introduction-to-descriptive-analysis.html)    
+* [meantables](placeholder)   
+* [freqtables](placeholder)    
+
+Of course, we don't have to create helper functions -- this step is totally optional -- but, it will make our code easier to maintain.
+
+Typically, we will make one helper function for our continuous variables and one helper function for our categorical variables. We do this because the stats we want to calculate for continuous variables (e.g., mean) are almost always different than the stats we want to calculate for categorical variables (e.g., percentages).
+
+#### Continuous stats function
+
+Before we make our function, let's start by calculating our statistics of interest for a single variable.
+
+```{r}
+# For testing
+study %>% 
+  # Remove missing here so we don't have to add na.rm below
+  filter(!is.na(age)) %>% 
+  group_by(outcome) %>% 
+  summarise(
+    var = "age",
+    mean = mean(age),
+    sd = sd(age),
+  ) %>% 
+  freq_format("mean (sd)", digits = 1) %>% 
+  # Currently, the  first column is named with the group_by variable.
+  # We are changing the column name to group_cat to make it easier to row bind
+  # later. 
+  select(var, group_cat = 1, formatted_stats) %>% 
+  tidyr::pivot_wider(
+    names_from = "group_cat",
+    values_from = "formatted_stats"
+  ) %>% 
+  # Add blank row below
+  add_row(var = "", No = "", Yes = "")
+```
 
 
 <!--
@@ -129,3 +208,22 @@ rm(list = ls())
 ```{r echo=FALSE}
 sessionInfo()
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

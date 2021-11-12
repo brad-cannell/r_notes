@@ -1,7 +1,15 @@
 # Tables
 
 <!--
-Hidden comments placeholder
+Links to fix if you add to R4Epi (search):
+- Flexdashboard
+- Officer
+- iterative processing
+- R4Epi Descriptive Analysis
+- meantables
+- freqtables
+- restructuring data frames
+- writing functions
 -->
 
 ```{r random-pic-from-url, echo=FALSE}
@@ -50,6 +58,8 @@ library(meantables)
 library(freqtables)
 library(tidyr)
 library(purrr)
+library(flextable, warn.conflicts = FALSE)
+library(officer)
 ```
 
 
@@ -143,6 +153,9 @@ Let's start by looking at a complete example:
 
 [Create a table 1 from the study data and insert a screen shot here]
 
+## 🔴 Come back and do this after the table is made in Word
+Here is the minimum code needed to acheive the result in the screenshot above. Below, we will break this code down step-by-step.
+
 After cleaning your data, which isn't covered in this chapter, a typical workflow for creating a Table 1 like this may look like the following:
 
 ### Step 1. Calculate the outcome distribution
@@ -158,13 +171,11 @@ n_outcome <- study %>%
 n_outcome
 ```
 
-### Step 2. Create a data frame that contains our summary statistics
-
-In general, we won't want to __present__ or __distribute__ summary statistics in the form of an R data frame. However, the first step in creating our final table -- regardless of the method we use -- will usually be to create an R data frame that contains our summary statistics of interest.
+### Step 2. Prepare to calculate summary statistics 
 
 #### Calculate statistics for single variables
 
-Eventually, we are going to want to calculate summary statistics for multiple different variables that will go into our Table 1. Before we do that, it can be useful to write code that will calculate the summary statistics we are interested in for one continuous variable and one categorical variable. Later, we can use [iterative processing] to apply that code to all of the variables we are interested in.
+Eventually, we are going to want to calculate summary statistics for multiple different variables that will go into our Table 1. Before we do that, it can be useful to write code that will calculate the summary statistics we are interested in for one continuous variable and one categorical variable. Later, we can use [iterative processing](https://www.r4epi.com/introduction-to-repeated-operations.html) to apply that code to all of the variables we are interested in.
 
 <div class="note"> 🗒**Side Note:** This chapter isn't about how to calculate or interpret all the various different statistics we may want to calculate from project to project. For more details on descriptive statistics see:
 
@@ -175,57 +186,351 @@ Eventually, we are going to want to calculate summary statistics for multiple di
 
 ##### One continuous variable
 
-In this example, we will want to calculate the mean and standard deviaton for continuous variables.
+In this example, we want to calculate the mean and 95% confidence interval for continuous variables. Because this is an example, we will break it down into multiple steps. In a real analysis, we would probably put all of the code in this section into a single code chunk. 
+
+###### Calculations
+
+Do the basic calculations. Here we are using the `mean_table()` function from the `meantables` package. 
 
 ```{r}
-study %>% 
-  mean
-```
-
-
-
-
-#### Create helper functions
-
-For calculating statistics of interest. 
-
-
-
-Of course, we don't have to create helper functions -- this step is totally optional -- but, it will make our code easier to maintain.
-
-Typically, we will make one helper function for our continuous variables and one helper function for our categorical variables. We do this because the stats we want to calculate for continuous variables (e.g., mean) are almost always different than the stats we want to calculate for categorical variables (e.g., percentages).
-
-#### Continuous stats function
-
-Before we make our function, let's start by calculating our statistics of interest for a single variable.
-
-In the code below, I will step through some key (albeit optional) steps 
-
-```{r}
-# For testing
-study %>% 
-  # Remove missing here so we don't have to add na.rm below
-  filter(!is.na(age)) %>% 
+one_cont_var <- study %>% 
   group_by(outcome) %>% 
-  summarise(
-    var = "age",
-    mean = mean(age),
-    sd = sd(age),
-  ) %>% 
-  freq_format("mean (sd)", digits = 1) %>% 
-  # Currently, the  first column is named with the group_by variable.
-  # We are changing the column name to group_cat to make it easier to row bind
-  # later. 
-  select(var, group_cat = 1, formatted_stats) %>% 
-  tidyr::pivot_wider(
-    names_from = "group_cat",
-    values_from = "formatted_stats"
-  ) %>% 
-  # Add blank row below
-  add_row(var = "", No = "", Yes = "")
+  mean_table(age) %>% 
+  print()
 ```
-Left off working on the code chunk on line 172. It works, but we may want to break it into smaller code chunks to show how each section works. 
-Then, continue moving code over from line 192 of table_use_app.Rmd
+
+###### Format statistics
+
+Combine the mean and 95% confidence interval into a single variable and keep only the columns of interest for reporting.
+
+Additionally, we no longer need the `group_var` column and we will rename `response_var` to `var` to make it easier to row bind with our categorical variables later.
+
+```{r}
+one_cont_var <- one_cont_var %>% 
+  mean_format("mean (lcl - ucl)", name = "mean_95") %>% 
+  select(var = response_var, group_cat, mean_95) %>% 
+  print()
+```
+
+###### Display by group_cat
+
+In the final table, we don't want the results stacked on top of each other vertically, we want them spread out horizontally across columns -- one column for each level (i.e., category) of our outcome variable. We can use `pivot_wider()` from the `tidyr` package to do this. See the chapter on [restructuring data frames](https://www.r4epi.com/restructuring-data-frames.html) for more info on pivot_wider.
+
+```{r}
+one_cont_var <- one_cont_var %>% 
+  pivot_wider(
+    names_from = "group_cat",
+    values_from = "mean_95"
+  ) %>% 
+  print()
+```
+
+###### Add a blank row
+
+Finally, we want to add a blank row to the bottom of our results table. This will create some vertical separation between variables in our table when we eventually row bind all the variables together.
+
+```{r}
+one_cont_var <- one_cont_var %>%
+  add_row(var = "") %>% 
+  print()
+```
+
+###### Putting it all together
+
+And that's the final result we are looking for. Putting it all together, it looks like this:
+
+```{r}
+one_cont_var <- study %>% 
+  # Calculations
+  group_by(outcome) %>% 
+  mean_table(age) %>% 
+  # Format statistics
+  mean_format("mean (lcl - ucl)", name = "mean_95") %>% 
+  select(var = response_var, group_cat, mean_95) %>% 
+  # Display by group_cat
+  pivot_wider(
+    names_from = "group_cat",
+    values_from = "mean_95"
+  ) %>%
+  # Add a blank row
+  add_row(var = "") %>% 
+  print()
+```
+
+[Below](#table-functions-1), we will combine the whole sequence together into a function that we can call repeatedly on each of our continuous variables.
+
+##### One categorical variable
+
+In this example, we want to calculate the row percent and 95% confidence interval for categorical variables. Because this is an example, we will break it down into multiple steps. In a real analysis, we would probably put all of the code in this section into a single code chunk. 
+
+###### Calculations
+
+Do the basic calculations. Here we are using the `freq_table()` function from the `freqtables` package. 
+
+```{r}
+one_cat_var <- study %>% 
+  freq_table(outcome, age_group) %>% 
+  print()
+```
+
+###### Format statistics
+
+Combine the row percent and 95% confidence interval into a single variable and keep only the columns of interest for reporting.
+
+```{r}
+one_cat_var <- one_cat_var %>%
+  freq_format("percent_row (lcl_row - ucl_row)", name = "percent_95", digits = 2) %>% 
+  print()
+```
+
+###### Keep columns of interest
+
+We only need the values from `row_cat`, `col_var`, `col_cat`, and `percent_95` in our final table. Additionally, we will rename `col_var` to `var` to make it easier to row bind with our continuous variables later.
+
+```{r}
+one_cat_var <- one_cat_var %>%
+  select(row_cat, var = col_var, col_cat, percent_95) %>% 
+  print()
+```
+
+###### Display by row_cat
+
+In the final table, we don't want all of the results stacked on top of each other vertically as it is above. Instead, we want the results spread out horizontally across columns -- one column for each level (i.e., category) of our outcome variable. We can use `pivot_wider()` from the `tidyr` package to do this. See the chapter on [restructuring data frames](https://www.r4epi.com/restructuring-data-frames.html) for more info on pivot_wider. 
+
+```{r}
+one_cat_var <- one_cat_var %>% 
+  pivot_wider(
+    names_from = "row_cat",
+    values_from = "percent_95"
+  ) %>% 
+  print()
+```
+
+###### Add spaces in front of category labels
+
+In our final Word table, we will want our category labels (e.g., "Younger than 30" and "30 and Older") to be indented slightly relative to the row variable label (e.g., "age_group"). We will go ahead and add 2 spaces now. 
+
+<p class="note"> 🗒**Side Note:** The spaces won't be visible while testing in RStudio, but they will show up in the final Word document. </p>
+
+```{r}
+one_cat_var <- one_cat_var %>% 
+  mutate(col_cat = paste0("  ", col_cat)) %>%
+  print()
+```
+
+###### Slide category labels under row variable label
+
+In our final Word table, we will want our category labels (e.g., "Younger than 30" and "30 and Older") to be in the same column -- and underneath -- the row variable label (e.g., "age_group"). 
+
+In other words, we want our final table to look like this:
+
+| Characteristic    | No                    | Yes                   |
+| :---------------- | :-------------------: | :-------------------: |
+| Age Group         |                       |                       |
+|   Younger than 30 | 56.14 (42.86 - 68.59) | 65.12 (49.54 - 78.02) |
+|   30 and Older    | 43.86 (31.41 - 57.14) | 34.88 (21.98 - 50.46) |
+
+Instead of this:
+
+| Characteristic | Category         | No                    | Yes                   |
+| :------------- | :--------------: | :-------------------: | :-------------------: |
+| Age Group      | Younger than 30  | 56.14 (42.86 - 68.59) | 65.12 (49.54 - 78.02) |
+| Age group      | 30 and Older     | 43.86 (31.41 - 57.14) | 34.88 (21.98 - 50.46) |
+
+To do this, we will: 
+
+1. Add a new top row to the data frame that will contain the variable label in the current col_cat column.   
+2. Drop the current `var` column, which is no longer needed.   
+3. Rename the `col_cat` to `var` to make it easier to row bind with our categorical variables later.   
+
+```{r}
+one_cat_var <- one_cat_var %>%
+  add_row(col_cat = "age_group", .before = 1) %>%
+  select(-var, var = col_cat) %>% 
+  print()
+```
+
+###### Add a blank row
+
+Finally, we want to add a blank row to the bottom of our results table. This will create some vertical separation between variables in our table when we eventually row bind all the variables together.
+
+```{r}
+one_cat_var <- one_cat_var %>%
+  add_row(var = "") %>% 
+  print()
+```
+
+###### Putting it all together
+
+And that's the final result we are looking for. Putting it all together, it looks like this:
+
+```{r}
+one_cat_var <- study %>% 
+  # Calculations
+  freq_table(outcome, age_group) %>%  
+  # Format statistics
+  freq_format("percent_row (lcl_row - ucl_row)", name = "percent_95", digits = 2) %>%
+  # Keep columns of interest
+  select(row_cat, var = col_var, col_cat, percent_95) %>% 
+  # Display by row_cat
+  pivot_wider(
+    names_from = "row_cat",
+    values_from = "percent_95"
+  ) %>% 
+  # Add spaces in front of category labels
+  mutate(col_cat = paste0("  ", col_cat)) %>% 
+  # Slide category labels under row variable label
+  add_row(col_cat = "age_group", .before = 1) %>% 
+  select(-var, var = col_cat) %>% 
+  # Add a blank row
+  add_row(var = "") %>% 
+  print()
+```
+
+[Below](#table-functions-1), we will combine the whole sequence together into a function that we can call repeatedly on each of our continuous variables.
+
+#### Create helper functions {#table-functions-1}
+
+Above, we saw how to calculate the summary statistics we wanted for one continuous variable and one categorical variable. We could repeat that process for each variable we are interested in using copy and paste, but it is much more efficient and much less error prone to wrap those processes in a function that we can call repeatedly on each variable we want to analyze. That's what we will do in this section.
+
+In each of the code chunks below, all we're going to do is cut the copy the code from above, paste it below, wrap it in the `function()` function, and then make a few tweaks that will allow us to repeatedly pass variable names into the code. See the chapter on [writing functions](https://www.r4epi.com/writing-functions.html) for more info on pivot_wider.
+
+##### Continuous stats function
+
+```{r}
+cont_stats_fn <- function(.data, .outcome, .pred, .digits = 0) {
+  .data %>% 
+    # Calculations
+    group_by({{ .outcome }}) %>% 
+    mean_table({{ .pred }}) %>% 
+    # Format statistics
+    mean_format("mean (lcl - ucl)", name = "mean_95") %>% 
+    select(var = response_var, group_cat, mean_95) %>% 
+    # Display by group_cat
+    pivot_wider(
+      names_from = "group_cat",
+      values_from = "mean_95"
+    ) %>%
+    # Add a blank row
+    add_row(var = "")
+}
+
+# For testing
+cont_stats_fn(study, outcome, age, .digits = 1)
+```
+
+##### Categoorical stats function
+
+```{r}
+cat_stats_fn <- function(.data, .outcome, .pred, .digits = 0) {
+  .data %>% 
+    # Remove rows with missing values
+    filter(!is.na({{ .pred }})) %>% 
+    # Calculations
+    freq_table({{ .outcome }}, {{ .pred }}) %>%  
+    # Format statistics
+    freq_format("percent_row (lcl_row - ucl_row)", name = "percent_95", digits = 2) %>%
+    # Keep columns of interest
+    select(row_cat, var = col_var, col_cat, percent_95) %>% 
+    # Display by row_cat
+    pivot_wider(
+      names_from = "row_cat",
+      values_from = "percent_95"
+    ) %>% 
+    # Add spaces in front of category labels
+    mutate(col_cat = paste0("  ", col_cat)) %>% 
+    # Slide category labels under row variable label
+    add_row(col_cat = !!quo_name(enquo(.pred)), .before = 1) %>% 
+    select(-var, var = col_cat) %>% 
+    # Add a blank row
+    add_row(var = "")
+}
+
+# For testing
+cat_stats_fn(study, outcome, bmi_4cat, .digits = 1)
+```
+
+### Step 3. Create a data frame that contains our summary statistics
+
+In general, we won't want to __present__ or __distribute__ summary statistics in the form of an R data frame. However, an preliminary step in creating our final table -- regardless of the method we use -- will usually be to create an R data frame that contains our summary statistics of interest.
+
+The next step in this proc
+
+```{r}
+cont_cols <- c("age", "ht_in", "wt_lbs", "bmi")
+```
+
+```{r}
+cat_cols <- c("age_group", "gender", "bmi_4cat", "exposure")
+```
+
+#### Repeatedly apply cont_stats_fn
+
+Calculate summary statistics for each of the continuous variables we are interested in. Each time we pass a new variable to `cont_stats_fn` the result will be a data frame of summary statistics for that variable. For now, we will save each of those data frames to a list that we can later reorder and row bind together.
+
+```{r}
+stats_list <- cont_cols %>%
+  set_names(cont_cols) %>% 
+  map(~ cont_stats_fn(study, outcome, !! sym(.x)))
+```
+
+#### Repeatedly apply cat_stats_fn
+
+Calculate summary statistics for each of the categorical variables we are interested in. Each time we pass a new variable to `cat_stats_fn` the result will be a data frame of summary statistics for that variable. For now, we will save each of those data frames to a list that we can later reorder and row bind together.
+
+```{r}
+stats_list <- c(
+  stats_list,
+  cat_cols %>%
+    set_names(cat_cols) %>% 
+    map(~ cat_stats_fn(study, outcome, !! sym(.x)))
+)
+```
+
+At this point, `stats_list` contains all of our summary statistics of interest as a list of data frames. 
+
+#### Bind together the continuous and categorical summary stats
+
+```{r}
+table_1 <- map_dfr(
+  .x = c("exposure", "age", "age_group", "gender", "ht_in", "wt_lbs", "bmi", "bmi_4cat"),
+  .f = ~ bind_rows(stats_list[[.x]])
+) %>% 
+print()
+```
+
+Remove the final blank row. It makes the Word table look cleaner.
+
+```{r}
+table_1 <- slice(table_1, -nrow(table_1))
+```
+
+<p class="note"> 🗒**Side Note:** It might be interesting/worthwhile to come back to this at some point and turn everything from in "Step 3. Create a data frame that contains our summary statistics" into a function. </p>
+
+### Step 5. Create flextable
+
+At this point, we have a complete table of summary statistics and it is roughly laid out in the way we want it to be. But, as we discussed above, we don't want to __present__ or __distribute__ summary statistics in the form of an R data frame. The `flextable` package is one awesome tool we can use to transform our data frames of summary statistics into presentation-ready tables for Word, PowerPoint, or HTML documents. The [flextable] chapter gives more details on using the `flextable` package. But, for the sake of completeness, we will go ahead and finish our formatted Table 1.
+
+Technically, the following single function call will turn our Table 1 into a `flextable` object. 
+
+```{r}
+table_1_ft <- flextable(table_1)
+table_1_ft
+```
+
+### Step 6. Formatting flextable
+
+The `flextable` object we created above is a good start; however, we will still want to do some additional formatting before presenting our final table 1 to others. 
+
+<p class="note"> 🗒**Side Note:** We could have done some of this formatting directly in the R data frame, but it's generally a good idea to do formatting in the `flextable` object when possible. </p>
+
+## 🔴 Left off here
+Just make the flextable pretty. 
+Add it to the word doc
+Take a screen shot - insert it in the top of this example
+Insert a brief version of the code at the top of this example
+Build book
+Push to GitHub
 
 <!--
 Clean up and add session info

@@ -181,6 +181,31 @@ To use roxygen:
 #' "p25", "p50", "median", "p75", "p90", "p95", "p99", "iqr", "q"))
 ```
 
+### Don't run the examples
+
+If you don't want the examples to actually run, You can surround the example code with \dontrun{} like this:
+
+```{r}
+#' @examples
+#' \dontrun{
+#' library(dplyr)
+#' library(meantables)
+#'
+#' data(mtcars)
+#'
+#' # Overall mean table with defaults
+#'
+#' mtcars %>%
+#'   mean_table(mpg)
+#'
+#' # A tibble: 1 x 9
+#'   response_var     n  mean    sd   sem   lcl   ucl   min   max
+#'   <chr>        <int> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+#' 1 mpg             32  20.1  6.03  1.07  17.9  22.3  10.4  33.9
+#' }
+```
+
+
 ### Documenting Package:
 
 You can use roxygen to provide a help page for your package as a whole. <a href = "http://r-pkgs.had.co.nz/man.html" target = "_blank">More information is available from Hadley here</a>.

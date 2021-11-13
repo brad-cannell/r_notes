@@ -12,7 +12,7 @@ Links to fix if you add to R4Epi (search):
 - writing functions
 -->
 
-```{r random-pic-from-url, echo=FALSE}
+```{r echo=FALSE}
 knitr::include_graphics("https://picsum.photos/200/300")
 ```
 
@@ -148,13 +148,144 @@ datatable(study, options = list(scrollX = TRUE))
 
 This first example is perhaps the most common type of table we will create -- a Table 1 -- or basic descriptive table about our participants. 
 
-## 🔴 Come back and do this after the table is made in Word
-Let's start by looking at a complete example: 
+Let's start by looking at a complete example:
 
-[Create a table 1 from the study data and insert a screen shot here]
+```{r random-pic-from-url, echo=FALSE}
+knitr::include_graphics("img/06_presenting_results/example_table_1.png")
+```
 
-## 🔴 Come back and do this after the table is made in Word
-Here is the minimum code needed to acheive the result in the screenshot above. Below, we will break this code down step-by-step.
+Here is the minimum code needed to achieve the result in the screenshot above. Below, we will break this code down step-by-step.
+
+```{r}
+n_outcome <- study %>% 
+  count(outcome) %>% 
+  pull(n) %>%
+  set_names(levels(study$outcome))
+```
+
+```{r}
+cont_stats_fn <- function(.data, .outcome, .pred, .digits = 0) {
+  .data %>% 
+    # Calculations
+    group_by({{ .outcome }}) %>% 
+    mean_table({{ .pred }}) %>% 
+    # Format statistics
+    mean_format("mean (lcl - ucl)", name = "mean_95") %>% 
+    select(var = response_var, group_cat, mean_95) %>% 
+    # Display by group_cat
+    pivot_wider(
+      names_from = "group_cat",
+      values_from = "mean_95"
+    ) %>%
+    # Add a blank row
+    add_row(var = "")
+}
+```
+
+```{r}
+cat_stats_fn <- function(.data, .outcome, .pred, .digits = 0) {
+  .data %>% 
+    # Remove rows with missing values
+    filter(!is.na({{ .pred }})) %>% 
+    # Calculations
+    freq_table({{ .outcome }}, {{ .pred }}) %>%  
+    # Format statistics
+    freq_format("percent_row (lcl_row - ucl_row)", name = "percent_95", digits = 2) %>%
+    # Keep columns of interest
+    select(row_cat, var = col_var, col_cat, percent_95) %>% 
+    # Display by row_cat
+    pivot_wider(
+      names_from = "row_cat",
+      values_from = "percent_95"
+    ) %>% 
+    # Add spaces in front of category labels
+    mutate(col_cat = paste0("  ", col_cat)) %>% 
+    # Slide category labels under row variable label
+    add_row(col_cat = !!quo_name(enquo(.pred)), .before = 1) %>% 
+    select(-var, var = col_cat) %>% 
+    # Add a blank row
+    add_row(var = "")
+}
+```
+
+```{r}
+cont_cols <- c("age", "ht_in", "wt_lbs", "bmi")
+```
+
+```{r}
+cat_cols <- c("age_group", "gender", "bmi_4cat", "exposure")
+```
+
+```{r}
+stats_list <- c(
+  cont_cols %>%
+    set_names(cont_cols) %>% 
+    map(~ cont_stats_fn(study, outcome, !! sym(.x))),
+  cat_cols %>%
+    set_names(cat_cols) %>% 
+    map(~ cat_stats_fn(study, outcome, !! sym(.x)))
+)
+```
+
+```{r}
+table_1 <- map_dfr(
+  .x = c("exposure", "age", "age_group", "gender", "ht_in", "wt_lbs", "bmi", "bmi_4cat"),
+  .f = ~ bind_rows(stats_list[[.x]])
+)
+```
+
+```{r}
+table_1_ft <- flextable(table_1) %>% 
+  # Change column widths. figure out through trial and error
+  width(width = c(2.5, 2.01, 2.01)) %>% 
+  # Center the final two columns
+  align(j = c(2, 3), align = "center", part = "all") %>% 
+  # Change header names -- add subgroup Ns to headers
+  set_header_labels(
+    var = "Characteristic",
+    No = paste0("No\n(n=", n_outcome["No"], ")"), 
+    Yes = paste0("Yes\n(n=", n_outcome["Yes"], ")")
+  ) %>% 
+  # Bold column headers
+  bold(part = "header") %>% 
+  # Edit row headers
+  compose(i = ~ var == "exposure", j = 1, as_paragraph("Exposure, row percent (95% CI)")) %>% 
+  compose(i = ~ var == "age", j = 1, as_paragraph("Age, mean (95% CI)")) %>% 
+  compose(i = ~ var == "age_group", j = 1, as_paragraph("Age group, row percent (95% CI)")) %>%
+  compose(i = ~ var == "gender", j = 1, as_paragraph("Gender, row percent (95% CI)")) %>% 
+  compose(i = ~ var == "ht_in", j = 1, as_paragraph("Height, mean (95% CI)")) %>% 
+  compose(i = ~ var == "wt_lbs", j = 1, as_paragraph("Weight, mean (95% CI)")) %>% 
+  compose(i = ~ var == "bmi", j = 1, as_paragraph("BMI, mean (95% CI)")) %>% 
+  compose(i = ~ var == "bmi_4cat", j = 1, as_paragraph("BMI category, row percent (95% CI)")) %>% 
+  # Add footnotes
+  footnote(
+    i = c(5, 15, 17), j = 1,
+    value = as_paragraph(
+      c("Age in years.", "Height in inches.", "Weight in pounds.")
+    )
+  ) %>% 
+  # Remove vertical cell padding
+  padding(padding.top = 0, padding.bottom = 0, part = "all") %>%
+  # Change font to TNR 11
+  font(fontname = "Times New Roman", part = "all") %>% 
+  fontsize(part = "all", size = 11)
+```
+
+```{r}
+doc <- read_docx("examples/template_descriptive_analysis.docx") %>%
+  body_replace_text_at_bkm("date", as.character(Sys.Date())) %>% 
+  body_replace_text_at_bkm("n_table_1", as.character(sum(n_outcome))) %>% 
+  body_replace_flextable_at_bkm("table_1", table_1_ft)
+```
+
+```{r}
+print(
+  doc,
+  "examples/Example Table 1.docx"
+)
+```
+
+[Link to Word Document on Dropbox](https://www.dropbox.com/s/hgludqft5mpdtf0/Example%20Table%201.docx?dl=0)
 
 After cleaning your data, which isn't covered in this chapter, a typical workflow for creating a Table 1 like this may look like the following:
 
@@ -524,13 +655,68 @@ The `flextable` object we created above is a good start; however, we will still 
 
 <p class="note"> 🗒**Side Note:** We could have done some of this formatting directly in the R data frame, but it's generally a good idea to do formatting in the `flextable` object when possible. </p>
 
-## 🔴 Left off here
-Just make the flextable pretty. 
-Add it to the word doc
-Take a screen shot - insert it in the top of this example
-Insert a brief version of the code at the top of this example
-Build book
-Push to GitHub
+```{r}
+table_1_ft <- table_1_ft %>% 
+  # Change column widths. figure out through trial and error
+  width(width = c(2.5, 2.01, 2.01)) %>% 
+  # Center the final two columns
+  align(j = c(2, 3), align = "center", part = "all") %>% 
+  # Change header names -- add subgroup Ns to headers
+  set_header_labels(
+    var = "Characteristic",
+    No = paste0("No\n(n=", n_outcome["No"], ")"), 
+    Yes = paste0("Yes\n(n=", n_outcome["Yes"], ")")
+  ) %>% 
+  # Bold column headers
+  bold(part = "header") %>% 
+  # Edit row headers
+  compose(i = ~ var == "exposure", j = 1, as_paragraph("Exposure, row percent (95% CI)")) %>% 
+  compose(i = ~ var == "age", j = 1, as_paragraph("Age, mean (95% CI)")) %>% 
+  compose(i = ~ var == "age_group", j = 1, as_paragraph("Age group, row percent (95% CI)")) %>%
+  compose(i = ~ var == "gender", j = 1, as_paragraph("Gender, row percent (95% CI)")) %>% 
+  compose(i = ~ var == "ht_in", j = 1, as_paragraph("Height, mean (95% CI)")) %>% 
+  compose(i = ~ var == "wt_lbs", j = 1, as_paragraph("Weight, mean (95% CI)")) %>% 
+  compose(i = ~ var == "bmi", j = 1, as_paragraph("BMI, mean (95% CI)")) %>% 
+  compose(i = ~ var == "bmi_4cat", j = 1, as_paragraph("BMI category, row percent (95% CI)")) %>% 
+  # Add footnotes
+  footnote(
+    i = c(5, 15, 17), j = 1,
+    value = as_paragraph(
+      c("Age in years.", "Height in inches.", "Weight in pounds.")
+    )
+  ) %>% 
+  # Remove vertical cell padding
+  padding(padding.top = 0, padding.bottom = 0, part = "all") %>%
+  # Change font to TNR 11
+  font(fontname = "Times New Roman", part = "all") %>% 
+  fontsize(part = "all", size = 11)
+  
+table_1_ft
+```
+
+
+### 📝 Load Word template for officer
+
+In general, it seems helpful/expedient to do as much of the prose and formatting as possible directly in the Word template. Then, just add numbers, tables, and graphs from R with bookmarks. 
+
+```{r}
+doc <- read_docx("examples/template_descriptive_analysis.docx") %>%
+  body_replace_text_at_bkm("date", as.character(Sys.Date())) %>% 
+  body_replace_text_at_bkm("n_table_1", as.character(sum(n_outcome))) %>% 
+  body_replace_flextable_at_bkm("table_1", table_1_ft)
+```
+
+
+### 📝 Generate Word reports
+
+```{r}
+print(
+  doc,
+  "examples/Example Table 1.docx"
+)
+```
+
+[Link to Word Document on Dropbox](https://www.dropbox.com/s/hgludqft5mpdtf0/Example%20Table%201.docx?dl=0)
 
 <!--
 Clean up and add session info

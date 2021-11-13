@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7 Effect-measure modification | R Notes</title>
   <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7 Effect-measure modification | R Notes" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2021-11-12" />
+<meta name="date" content="2021-11-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,8 @@
   
 <link rel="prev" href="contingency-tables.html"/>
 <link rel="next" href="risk-difference.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,16 +51,14 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.18/datatables.js"></script>
+<script src="libs/datatables-binding-0.19/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
 
 
@@ -127,29 +125,6 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -369,15 +344,32 @@ div.csl-indent {
 <li class="chapter" data-level="12" data-path="flextable.html"><a href="flextable.html"><i class="fa fa-check"></i><b>12</b> Flextable</a>
 <ul>
 <li class="chapter" data-level="12.1" data-path="flextable.html"><a href="flextable.html#overview-9"><i class="fa fa-check"></i><b>12.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="12.2" data-path="flextable.html"><a href="flextable.html#need-to-add"><i class="fa fa-check"></i><b>12.2</b> Need to add</a></li>
-<li class="chapter" data-level="12.3" data-path="flextable.html"><a href="flextable.html#useful-websites-9"><i class="fa fa-check"></i><b>12.3</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="12.4" data-path="flextable.html"><a href="flextable.html#load-packages-6"><i class="fa fa-check"></i><b>12.4</b> 📦Load packages</a></li>
-<li class="chapter" data-level="12.5" data-path="flextable.html"><a href="flextable.html#simulate-data-5"><i class="fa fa-check"></i><b>12.5</b> 🔢Simulate data</a></li>
-<li class="chapter" data-level="12.6" data-path="flextable.html"><a href="flextable.html#adding-blank-rows"><i class="fa fa-check"></i><b>12.6</b> Adding blank rows</a></li>
-<li class="chapter" data-level="12.7" data-path="flextable.html"><a href="flextable.html#autofit-to-window"><i class="fa fa-check"></i><b>12.7</b> Autofit to window</a></li>
-<li class="chapter" data-level="12.8" data-path="flextable.html"><a href="flextable.html#change-font-to-tnr"><i class="fa fa-check"></i><b>12.8</b> Change font to TNR</a></li>
-<li class="chapter" data-level="12.9" data-path="flextable.html"><a href="flextable.html#bold-part-of-the-table-title"><i class="fa fa-check"></i><b>12.9</b> Bold part of the table title</a></li>
-<li class="chapter" data-level="12.10" data-path="flextable.html"><a href="flextable.html#conditional-formatting"><i class="fa fa-check"></i><b>12.10</b> Conditional formatting</a></li>
+<li class="chapter" data-level="12.2" data-path="flextable.html"><a href="flextable.html#useful-websites-9"><i class="fa fa-check"></i><b>12.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="12.3" data-path="flextable.html"><a href="flextable.html#load-packages-6"><i class="fa fa-check"></i><b>12.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="12.4" data-path="flextable.html"><a href="flextable.html#load-data"><i class="fa fa-check"></i><b>12.4</b> Load data</a></li>
+<li class="chapter" data-level="12.5" data-path="flextable.html"><a href="flextable.html#i-and-j"><i class="fa fa-check"></i><b>12.5</b> 🔵 i and j</a></li>
+<li class="chapter" data-level="12.6" data-path="flextable.html"><a href="flextable.html#flextable-wrappers"><i class="fa fa-check"></i><b>12.6</b> 🔵 Flextable wrappers</a></li>
+<li class="chapter" data-level="12.7" data-path="flextable.html"><a href="flextable.html#addingmodifying-table-content"><i class="fa fa-check"></i><b>12.7</b> 🔵 Adding/modifying table content</a>
+<ul>
+<li class="chapter" data-level="12.7.1" data-path="flextable.html"><a href="flextable.html#add-table-title-with-bold-part"><i class="fa fa-check"></i><b>12.7.1</b> Add table title with bold part</a></li>
+<li class="chapter" data-level="12.7.2" data-path="flextable.html"><a href="flextable.html#adding-blank-rows"><i class="fa fa-check"></i><b>12.7.2</b> Adding blank rows</a></li>
+<li class="chapter" data-level="12.7.3" data-path="flextable.html"><a href="flextable.html#change-column-header-text"><i class="fa fa-check"></i><b>12.7.3</b> Change column header text</a></li>
+<li class="chapter" data-level="12.7.4" data-path="flextable.html"><a href="flextable.html#change-row-header-text"><i class="fa fa-check"></i><b>12.7.4</b> Change row header text</a></li>
+<li class="chapter" data-level="12.7.5" data-path="flextable.html"><a href="flextable.html#add-footnote"><i class="fa fa-check"></i><b>12.7.5</b> Add footnote</a></li>
+</ul></li>
+<li class="chapter" data-level="12.8" data-path="flextable.html"><a href="flextable.html#formatting"><i class="fa fa-check"></i><b>12.8</b> 🔵 Formatting</a>
+<ul>
+<li class="chapter" data-level="12.8.1" data-path="flextable.html"><a href="flextable.html#change-font-to-tnr"><i class="fa fa-check"></i><b>12.8.1</b> Change font to TNR</a></li>
+<li class="chapter" data-level="12.8.2" data-path="flextable.html"><a href="flextable.html#conditional-formatting"><i class="fa fa-check"></i><b>12.8.2</b> Conditional formatting</a></li>
+</ul></li>
+<li class="chapter" data-level="12.9" data-path="flextable.html"><a href="flextable.html#layout"><i class="fa fa-check"></i><b>12.9</b> 🔵Layout</a>
+<ul>
+<li class="chapter" data-level="12.9.1" data-path="flextable.html"><a href="flextable.html#autofit-to-contents"><i class="fa fa-check"></i><b>12.9.1</b> Autofit to contents</a></li>
+</ul></li>
+<li class="chapter" data-level="12.10" data-path="flextable.html"><a href="flextable.html#examples"><i class="fa fa-check"></i><b>12.10</b> 🔵 Examples</a>
+<ul>
+<li class="chapter" data-level="12.10.1" data-path="flextable.html"><a href="flextable.html#lead-panel-summarize-votes"><i class="fa fa-check"></i><b>12.10.1</b> LEAD panel summarize votes</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="language-for-publications.html"><a href="language-for-publications.html"><i class="fa fa-check"></i><b>13</b> Language for publications</a>
 <ul>
@@ -408,12 +400,16 @@ div.csl-indent {
 <li class="chapter" data-level="15.2" data-path="tables.html"><a href="tables.html#projects-to-review-and-incorporate"><i class="fa fa-check"></i><b>15.2</b> Projects to review and incorporate</a></li>
 <li class="chapter" data-level="15.3" data-path="tables.html"><a href="tables.html#useful-websites-12"><i class="fa fa-check"></i><b>15.3</b> 🌎Useful websites</a></li>
 <li class="chapter" data-level="15.4" data-path="tables.html"><a href="tables.html#load-packages-9"><i class="fa fa-check"></i><b>15.4</b> 📦Load packages</a></li>
-<li class="chapter" data-level="15.5" data-path="tables.html"><a href="tables.html#simulate-data-6"><i class="fa fa-check"></i><b>15.5</b> 🔢Simulate data</a></li>
-<li class="chapter" data-level="15.6" data-path="tables.html"><a href="tables.html#example-table-1"><i class="fa fa-check"></i><b>15.6</b> 🔵 Example: Table 1</a></li>
-<li class="chapter" data-level="15.7" data-path="tables.html"><a href="tables.html#come-back-and-do-this-after-the-table-is-made-in-word"><i class="fa fa-check"></i><b>15.7</b> 🔴 Come back and do this after the table is made in Word</a>
+<li class="chapter" data-level="15.5" data-path="tables.html"><a href="tables.html#simulate-data-5"><i class="fa fa-check"></i><b>15.5</b> 🔢Simulate data</a></li>
+<li class="chapter" data-level="15.6" data-path="tables.html"><a href="tables.html#example-table-1"><i class="fa fa-check"></i><b>15.6</b> 🔵 Example: Table 1</a>
 <ul>
-<li class="chapter" data-level="15.7.1" data-path="tables.html"><a href="tables.html#step-1.-calculate-the-outcome-distribution"><i class="fa fa-check"></i><b>15.7.1</b> Step 1. Calculate the outcome distribution</a></li>
-<li class="chapter" data-level="15.7.2" data-path="tables.html"><a href="tables.html#step-2.-create-a-data-frame-that-contains-our-summary-statistics"><i class="fa fa-check"></i><b>15.7.2</b> Step 2. Create a data frame that contains our summary statistics</a></li>
+<li class="chapter" data-level="15.6.1" data-path="tables.html"><a href="tables.html#step-1.-calculate-the-outcome-distribution"><i class="fa fa-check"></i><b>15.6.1</b> Step 1. Calculate the outcome distribution</a></li>
+<li class="chapter" data-level="15.6.2" data-path="tables.html"><a href="tables.html#step-2.-prepare-to-calculate-summary-statistics"><i class="fa fa-check"></i><b>15.6.2</b> Step 2. Prepare to calculate summary statistics</a></li>
+<li class="chapter" data-level="15.6.3" data-path="tables.html"><a href="tables.html#step-3.-create-a-data-frame-that-contains-our-summary-statistics"><i class="fa fa-check"></i><b>15.6.3</b> Step 3. Create a data frame that contains our summary statistics</a></li>
+<li class="chapter" data-level="15.6.4" data-path="tables.html"><a href="tables.html#step-5.-create-flextable"><i class="fa fa-check"></i><b>15.6.4</b> Step 5. Create flextable</a></li>
+<li class="chapter" data-level="15.6.5" data-path="tables.html"><a href="tables.html#step-6.-formatting-flextable"><i class="fa fa-check"></i><b>15.6.5</b> Step 6. Formatting flextable</a></li>
+<li class="chapter" data-level="15.6.6" data-path="tables.html"><a href="tables.html#load-word-template-for-officer"><i class="fa fa-check"></i><b>15.6.6</b> 📝 Load Word template for officer</a></li>
+<li class="chapter" data-level="15.6.7" data-path="tables.html"><a href="tables.html#generate-word-reports"><i class="fa fa-check"></i><b>15.6.7</b> 📝 Generate Word reports</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Shiny</b></span></li>
@@ -525,7 +521,6 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

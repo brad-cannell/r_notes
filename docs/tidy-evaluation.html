@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 Tidy Evaluation | R Notes</title>
   <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Tidy Evaluation | R Notes" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2021-11-13" />
+<meta name="date" content="2021-11-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,8 @@
   
 <link rel="prev" href="creating-rmd-templates.html"/>
 <link rel="next" href="arranging-columns-with-across.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,14 +51,16 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.19/datatables.js"></script>
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
 
 
@@ -125,6 +127,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -456,7 +481,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="tidy-evaluation" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> Tidy Evaluation</h1>
-<p>Created: 2017-06-24 <br> Updated: 2021-11-13</p>
+<p>Created: 2017-06-24 <br> Updated: 2021-11-15</p>
 <!--
 Hidden comments placeholder
 -->
@@ -536,7 +561,7 @@ Hidden comments placeholder
 <span id="cb21-7"><a href="tidy-evaluation.html#cb21-7" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb21-8"><a href="tidy-evaluation.html#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-9"><a href="tidy-evaluation.html#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="fu">freq_table</span>(<span class="at">df =</span> starwars, <span class="at">x =</span> <span class="fu">quo</span>(species))</span></code></pre></div>
-<pre><code>## # A tibble: 3 x 2
+<pre><code>## # A tibble: 3 × 2
 ##   species     N
 ##   &lt;chr&gt;   &lt;int&gt;
 ## 1 Droid       6
@@ -558,7 +583,7 @@ Hidden comments placeholder
 <span id="cb23-8"><a href="tidy-evaluation.html#cb23-8" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb23-9"><a href="tidy-evaluation.html#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-10"><a href="tidy-evaluation.html#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="fu">freq_table</span>(<span class="at">df =</span> starwars, <span class="at">x =</span> species) <span class="co"># Notice we no longer need to wrop species with quo()</span></span></code></pre></div>
-<pre><code>## # A tibble: 3 x 2
+<pre><code>## # A tibble: 3 × 2
 ##   species     N
 ##   &lt;chr&gt;   &lt;int&gt;
 ## 1 Droid       6
@@ -601,11 +626,11 @@ Hidden comments placeholder
 <span id="cb29-3"><a href="tidy-evaluation.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(my_quos)) {</span>
 <span id="cb29-4"><a href="tidy-evaluation.html#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(starwars, <span class="at">n_miss =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(<span class="sc">!!</span>my_quos[[i]]))) <span class="sc">%&gt;%</span> print <span class="co"># Can use !! or !!! in this case</span></span>
 <span id="cb29-5"><a href="tidy-evaluation.html#cb29-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 1
+<pre><code>## # A tibble: 1 × 1
 ##   n_miss
 ##    &lt;int&gt;
 ## 1      4
-## # A tibble: 1 x 1
+## # A tibble: 1 × 1
 ##   n_miss
 ##    &lt;int&gt;
 ## 1      0</code></pre>
@@ -621,7 +646,7 @@ Hidden comments placeholder
 <span id="cb31-10"><a href="tidy-evaluation.html#cb31-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-11"><a href="tidy-evaluation.html#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="fu">freq_table</span>(<span class="at">df =</span> starwars, species, hair_color)</span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;species&#39;. You can override using the `.groups` argument.</code></pre>
-<pre><code>## # A tibble: 5 x 3
+<pre><code>## # A tibble: 5 × 3
 ##   species  hair_color     N
 ##   &lt;chr&gt;    &lt;chr&gt;      &lt;int&gt;
 ## 1 Aleena   none           1
@@ -656,7 +681,7 @@ Hidden comments placeholder
 <span id="cb38-12"><a href="tidy-evaluation.html#cb38-12" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb38-13"><a href="tidy-evaluation.html#cb38-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-14"><a href="tidy-evaluation.html#cb38-14" aria-hidden="true" tabindex="-1"></a><span class="fu">continuous_table</span>(starwars, height)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 2
+<pre><code>## # A tibble: 1 × 2
 ##   mean_height sum_height
 ##         &lt;dbl&gt;      &lt;int&gt;
 ## 1        174.      14123</code></pre>
@@ -698,7 +723,7 @@ Hidden comments placeholder
 <span id="cb46-3"><a href="tidy-evaluation.html#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
 <span id="cb46-4"><a href="tidy-evaluation.html#cb46-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(<span class="sc">!!</span>my_col, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb46-5"><a href="tidy-evaluation.html#cb46-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 1
+<pre><code>## # A tibble: 1 × 1
 ##    mean
 ##   &lt;dbl&gt;
 ## 1  174.</code></pre>
@@ -737,7 +762,7 @@ Hidden comments placeholder
 <span id="cb52-8"><a href="tidy-evaluation.html#cb52-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb52-9"><a href="tidy-evaluation.html#cb52-9" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_df</span>(my_cols, summarise_avg, <span class="at">data =</span> starwars)</span>
 <span id="cb52-10"><a href="tidy-evaluation.html#cb52-10" aria-hidden="true" tabindex="-1"></a>results</span></code></pre></div>
-<pre><code>## # A tibble: 2 x 1
+<pre><code>## # A tibble: 2 × 1
 ##     avg
 ##   &lt;dbl&gt;
 ## 1 174. 
@@ -771,7 +796,7 @@ Hidden comments placeholder
 <span id="cb55-20"><a href="tidy-evaluation.html#cb55-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;)&quot;</span></span>
 <span id="cb55-21"><a href="tidy-evaluation.html#cb55-21" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="tidy-evaluation.html#cb56-1" aria-hidden="true" tabindex="-1"></a>table</span></code></pre></div>
-<pre><code>## # A tibble: 4 x 3
+<pre><code>## # A tibble: 4 × 3
 ##   Variable Human      `Not Human`
 ##   &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;      
 ## 1 &quot;&quot;       &quot;(N = 35)&quot; &quot;(N = 48)&quot; 
@@ -792,7 +817,7 @@ Hidden comments placeholder
 <span id="cb58-11"><a href="tidy-evaluation.html#cb58-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Variable, Yes, No)</span>
 <span id="cb58-12"><a href="tidy-evaluation.html#cb58-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="tidy-evaluation.html#cb59-1" aria-hidden="true" tabindex="-1"></a>table</span></code></pre></div>
-<pre><code>## # A tibble: 4 x 3
+<pre><code>## # A tibble: 4 × 3
 ##   Variable     Human      `Not Human`
 ##   &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;      
 ## 1 &quot;&quot;           &quot;(N = 35)&quot; (N = 48)   
@@ -813,7 +838,7 @@ Hidden comments placeholder
 <span id="cb61-11"><a href="tidy-evaluation.html#cb61-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Variable, Yes, No)</span>
 <span id="cb61-12"><a href="tidy-evaluation.html#cb61-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="tidy-evaluation.html#cb62-1" aria-hidden="true" tabindex="-1"></a>table</span></code></pre></div>
-<pre><code>## # A tibble: 4 x 3
+<pre><code>## # A tibble: 4 × 3
 ##   Variable     Human      `Not Human`
 ##   &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;      
 ## 1 &quot;&quot;           &quot;(N = 35)&quot; (N = 48)   
@@ -849,7 +874,7 @@ Hidden comments placeholder
 <span id="cb65-20"><a href="tidy-evaluation.html#cb65-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;)&quot;</span></span>
 <span id="cb65-21"><a href="tidy-evaluation.html#cb65-21" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="tidy-evaluation.html#cb66-1" aria-hidden="true" tabindex="-1"></a>table</span></code></pre></div>
-<pre><code>## # A tibble: 4 x 3
+<pre><code>## # A tibble: 4 × 3
 ##   Variable Human      `Not Human`
 ##   &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;      
 ## 1 &quot;&quot;       &quot;(N = 35)&quot; &quot;(N = 48)&quot; 
@@ -879,7 +904,7 @@ Hidden comments placeholder
 <span id="cb68-20"><a href="tidy-evaluation.html#cb68-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="tidy-evaluation.html#cb69-1" aria-hidden="true" tabindex="-1"></a>table[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>, ] <span class="ot">&lt;-</span> <span class="fu">my_stats</span>(height, mass, birth_year)            <span class="co"># Notice that we no longer need to us quo</span></span></code></pre></div>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="tidy-evaluation.html#cb70-1" aria-hidden="true" tabindex="-1"></a>table</span></code></pre></div>
-<pre><code>## # A tibble: 4 x 3
+<pre><code>## # A tibble: 4 × 3
 ##   Variable     Human      `Not Human`
 ##   &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;      
 ## 1 &quot;&quot;           &quot;(N = 35)&quot; (N = 48)   
@@ -900,7 +925,7 @@ Hidden comments placeholder
 <span id="cb72-5"><a href="tidy-evaluation.html#cb72-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(<span class="sc">!!</span> x) <span class="sc">%&gt;%</span></span>
 <span id="cb72-6"><a href="tidy-evaluation.html#cb72-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
 <span id="cb72-7"><a href="tidy-evaluation.html#cb72-7" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
-<pre><code>## # A tibble: 41 x 3
+<pre><code>## # A tibble: 41 × 3
 ##    gender    `mean(height, na.rm = TRUE)` species 
 ##    &lt;chr&gt;                            &lt;dbl&gt; &lt;chr&gt;   
 ##  1 feminine                          165. &lt;NA&gt;    
@@ -930,7 +955,7 @@ Hidden comments placeholder
 <span id="cb75-5"><a href="tidy-evaluation.html#cb75-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(<span class="sc">!!</span> .x) <span class="sc">%&gt;%</span></span>
 <span id="cb75-6"><a href="tidy-evaluation.html#cb75-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
 <span id="cb75-7"><a href="tidy-evaluation.html#cb75-7" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
-<pre><code>## # A tibble: 41 x 3
+<pre><code>## # A tibble: 41 × 3
 ##    gender    `mean(height, na.rm = TRUE)` species 
 ##    &lt;chr&gt;                            &lt;dbl&gt; &lt;chr&gt;   
 ##  1 feminine                          165. &lt;NA&gt;    
@@ -986,7 +1011,7 @@ Hidden comments placeholder
 <span id="cb81-4"><a href="tidy-evaluation.html#cb81-4" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">!!</span>x) <span class="sc">%&gt;%</span> <span class="fu">print</span>()</span>
 <span id="cb81-5"><a href="tidy-evaluation.html#cb81-5" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb81-6"><a href="tidy-evaluation.html#cb81-6" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(hair_color)</span></code></pre></div>
-<pre><code>## # A tibble: 87 x 1
+<pre><code>## # A tibble: 87 × 1
 ##    hair_color   
 ##    &lt;chr&gt;        
 ##  1 blond        
@@ -1011,7 +1036,7 @@ Hidden comments placeholder
 <span id="cb83-5"><a href="tidy-evaluation.html#cb83-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">hair_color =</span> <span class="fu">if_else</span>(<span class="sc">!!</span>x <span class="sc">==</span> <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;blond&quot;</span>, <span class="sc">!!</span>x))</span>
 <span id="cb83-6"><a href="tidy-evaluation.html#cb83-6" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb83-7"><a href="tidy-evaluation.html#cb83-7" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(hair_color)</span></code></pre></div>
-<pre><code>## # A tibble: 87 x 15
+<pre><code>## # A tibble: 87 × 15
 ##    name    height  mass hair_color  skin_color eye_color birth_year sex   gender
 ##    &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
 ##  1 Luke S…    172    77 blond       fair       blue            19   male  mascu…
@@ -1047,7 +1072,7 @@ Hidden comments placeholder
 ##   rlang::expr(mean(!!var * 100))
 ## 
 ## This warning is displayed once per session.</code></pre>
-<pre><code>## # A tibble: 87 x 15
+<pre><code>## # A tibble: 87 × 15
 ##    name    height  mass hair_color  skin_color eye_color birth_year sex   gender
 ##    &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
 ##  1 Luke S…    172    77 blond       fair       blue            19   male  mascu…
@@ -1085,7 +1110,7 @@ Hidden comments placeholder
 <span id="cb90-5"><a href="tidy-evaluation.html#cb90-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="sc">!!</span><span class="at">x :=</span> <span class="fu">if_else</span>(rlang<span class="sc">::</span><span class="fu">UQ</span>(x) <span class="sc">==</span> <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;blond&quot;</span>, rlang<span class="sc">::</span><span class="fu">UQ</span>(x)))</span>
 <span id="cb90-6"><a href="tidy-evaluation.html#cb90-6" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb90-7"><a href="tidy-evaluation.html#cb90-7" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(hair_color)</span></code></pre></div>
-<pre><code>## # A tibble: 87 x 15
+<pre><code>## # A tibble: 87 × 15
 ##    name    height  mass hair_color  skin_color eye_color birth_year sex   gender
 ##    &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
 ##  1 Luke S…    172    77 blond       fair       blue            19   male  mascu…
@@ -1109,7 +1134,7 @@ Hidden comments placeholder
 <span id="cb92-5"><a href="tidy-evaluation.html#cb92-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="sc">!!</span><span class="fu">quo_name</span>(x) <span class="sc">:</span><span class="er">=</span> <span class="fu">if_else</span>(rlang<span class="sc">::</span><span class="fu">UQ</span>(x) <span class="sc">==</span> <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;blond&quot;</span>, rlang<span class="sc">::</span><span class="fu">UQ</span>(x)))</span>
 <span id="cb92-6"><a href="tidy-evaluation.html#cb92-6" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb92-7"><a href="tidy-evaluation.html#cb92-7" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(hair_color)</span></code></pre></div>
-<pre><code>## # A tibble: 87 x 15
+<pre><code>## # A tibble: 87 × 15
 ##    name    height  mass hair_color  skin_color eye_color birth_year sex   gender
 ##    &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
 ##  1 Luke S…    172    77 blond       fair       blue            19   male  mascu…
@@ -1140,7 +1165,7 @@ Hidden comments placeholder
 <span id="cb94-10"><a href="tidy-evaluation.html#cb94-10" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb94-11"><a href="tidy-evaluation.html#cb94-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb94-12"><a href="tidy-evaluation.html#cb94-12" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(height)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 2
+<pre><code>## # A tibble: 1 × 2
 ##   Characteristic  Mean
 ##   &lt;chr&gt;          &lt;dbl&gt;
 ## 1 height          174.</code></pre>
@@ -1157,7 +1182,7 @@ Hidden comments placeholder
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="tidy-evaluation.html#cb96-1" aria-hidden="true" tabindex="-1"></a>my_col <span class="ot">&lt;-</span> <span class="fu">names</span>(starwars[<span class="dv">2</span>]) <span class="co"># Have a variable name as a quoted string</span></span>
 <span id="cb96-2"><a href="tidy-evaluation.html#cb96-2" aria-hidden="true" tabindex="-1"></a>my_col <span class="ot">&lt;-</span> <span class="st">&quot;mass&quot;</span></span>
 <span id="cb96-3"><a href="tidy-evaluation.html#cb96-3" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">!!</span>my_col) <span class="co"># Now this works</span></span></code></pre></div>
-<pre><code>## # A tibble: 87 x 1
+<pre><code>## # A tibble: 87 × 1
 ##     mass
 ##    &lt;dbl&gt;
 ##  1    77
@@ -1189,7 +1214,7 @@ Hidden comments placeholder
 <span id="cb99-12"><a href="tidy-evaluation.html#cb99-12" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(height)</span></code></pre></div>
 <pre><code>## Warning in mean.default(&quot;height_squared&quot;, na.rm = TRUE): argument is not numeric
 ## or logical: returning NA</code></pre>
-<pre><code>## # A tibble: 1 x 1
+<pre><code>## # A tibble: 1 × 1
 ##    Mean
 ##   &lt;dbl&gt;
 ## 1    NA</code></pre>
@@ -1207,7 +1232,7 @@ Hidden comments placeholder
 <span id="cb102-11"><a href="tidy-evaluation.html#cb102-11" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb102-12"><a href="tidy-evaluation.html#cb102-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb102-13"><a href="tidy-evaluation.html#cb102-13" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(height)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 1
+<pre><code>## # A tibble: 1 × 1
 ##     Mean
 ##    &lt;dbl&gt;
 ## 1 31595.</code></pre>
@@ -1225,7 +1250,7 @@ Hidden comments placeholder
 <span id="cb104-11"><a href="tidy-evaluation.html#cb104-11" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb104-12"><a href="tidy-evaluation.html#cb104-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb104-13"><a href="tidy-evaluation.html#cb104-13" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(height)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 1
+<pre><code>## # A tibble: 1 × 1
 ##     Mean
 ##    &lt;dbl&gt;
 ## 1 31595.</code></pre>
@@ -1246,7 +1271,7 @@ Hidden comments placeholder
 <pre><code>## Warning: `parse_quosure()` is deprecated as of rlang 0.2.0.
 ## Please use `parse_quo()` instead.
 ## This warning is displayed once per session.</code></pre>
-<pre><code>## # A tibble: 1 x 1
+<pre><code>## # A tibble: 1 × 1
 ##     Mean
 ##    &lt;dbl&gt;
 ## 1 31595.</code></pre>
@@ -1275,7 +1300,7 @@ Hidden comments placeholder
 <span id="cb111-6"><a href="tidy-evaluation.html#cb111-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb111-7"><a href="tidy-evaluation.html#cb111-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb111-8"><a href="tidy-evaluation.html#cb111-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(n)</span></code></pre></div>
-<pre><code>## # A tibble: 0 x 1
+<pre><code>## # A tibble: 0 × 1
 ## # … with 1 variable: n &lt;int&gt;</code></pre>
 <p>And, there are no duplicates.</p>
 <p>Another, more general solution for using all column names is:</p>
@@ -1289,7 +1314,7 @@ Hidden comments placeholder
 <span id="cb113-8"><a href="tidy-evaluation.html#cb113-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb113-9"><a href="tidy-evaluation.html#cb113-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb113-10"><a href="tidy-evaluation.html#cb113-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(n)</span></code></pre></div>
-<pre><code>## # A tibble: 0 x 1
+<pre><code>## # A tibble: 0 × 1
 ## # … with 1 variable: n &lt;int&gt;</code></pre>
 <p><a href="#top">top</a></p>
 </div>
@@ -1381,6 +1406,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

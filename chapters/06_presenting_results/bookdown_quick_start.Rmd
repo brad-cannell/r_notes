@@ -254,6 +254,12 @@ For more on chapter content, see [Bookdown template chapter](#bookdown-template)
 
 **Solution:** Run tinytex::reinstall_tinytex()   
 
+> ! sh: xelatex: command not found
+
+You might get this error when trying to build a book in pdf format.
+
+**Solution:** Install MacTEX: https://www.tug.org/mactex/
+
 > ! LaTeX Error: Cannot determine size of graphic in img/getting_started/01_install_r/download_r_mac.gif (no BoundingBox).   
 
 **Solution:** This is from trying to make a pdf document with a gif in it. LaTeX doesn't support gifs. Just make a just build the book in gitbook format.   

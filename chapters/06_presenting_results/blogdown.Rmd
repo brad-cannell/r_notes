@@ -1,0 +1,148 @@
+# Blogdown
+
+<!--
+Hidden comments placeholder
+-->
+
+```{r echo=FALSE}
+knitr::include_graphics("https://picsum.photos/200/300")
+```
+
+## ⭐️Overview
+
+This chapter contains blogdown notes. I started writing it as I was creating my [bradcannell](www.bradcannell.com) website on 2021-12-21.
+
+
+## 🌎Useful websites
+
+* [Blogdown Book](https://bookdown.org/yihui/blogdown/)   
+* [Up & running with blogdown in 2021](https://www.apreshill.com/blog/2020-12-new-year-new-blogdown/)   
+* [Wowchemy docs](https://wowchemy.com/docs/)   
+* [Netlify custom domains](https://docs.netlify.com/domains-https/custom-domains/)   
+* [Configure external DNS for a custom domain](https://docs.netlify.com/domains-https/custom-domains/configure-external-dns/)   
+
+
+
+## 📦Load packages
+
+```{r message=FALSE}
+library(dplyr, warn.conflicts = FALSE)
+library(blogdown)
+```
+
+When creating my site, I closely followed the steps outlined in [Up & running with blogdown in 2021](https://www.apreshill.com/blog/2020-12-new-year-new-blogdown/).
+
+Below there are some additional notes, and solutions I used for issues I came up against along the way.
+
+
+## Blogdown commands to remember
+
+When you start a new R session, it can be useful to view a preview of the site in the Viewer window. You do that with
+
+```{r eval=FALSE}
+blogdown::serve_site()
+```
+
+To check content
+
+```{r eval=FALSE}
+blogdown::check_content()
+```
+
+To check the status of Netlify
+
+```{r eval=FALSE}
+blogdown::check_netlify()
+```
+
+In the past I got the following error:   
+
+> Checking netlify.toml...    
+Error in find_config() :     
+  Cannot find the configuration file config.toml | config.yaml | config/_default/config.toml | config/_default/config.yaml of the website   
+
+Ultimately, I just had to quit R and reopen -- not just restart R session.
+
+To check the Hugo versions
+
+```{r eval=FALSE}
+blogdown::check_hugo()
+```
+
+Let’s run one final check, which wraps all 5 checking functions we’ve used so far into a single final checklist:
+
+```{r eval=FALSE}
+blogdown::check_site()
+```
+
+
+
+## Editing widget metadata
+
+content > home
+
+
+## Editing about widget content
+
+This includes degrees and social media stuff. 
+
+authors > admin > _index.md
+
+
+## Adjusting site configuration files
+
+For example, nav bar.
+
+config > _default > 
+
+
+## Other little adjustments
+
+**Banner image** 
+To make my banner image full screen I had to add 
+
+advanced:
+  css_class: fullscreen
+  
+To content > home > banner.md
+
+**Map zoom in the contacts widget** 
+
+I changed the map zoom in the contacts widget to 9 instead of 15. I changed it in `params.yaml`.
+
+**Copyright**
+
+I added a copyright to the website in config.yaml
+I removed the license stuff from the footer in params.yaml. Search for copyright_license.
+
+
+## Changing the domain
+
+* [Netlify custom domains](https://docs.netlify.com/domains-https/custom-domains/)   
+* [Configure external DNS for a custom domain](https://docs.netlify.com/domains-https/custom-domains/configure-external-dns/)   
+
+I had to add bradcannell.netlify.app to the www CNAME on godaddy.
+
+
+## Error fixes
+
+### blogdown::check_netlify()
+
+> Checking netlify.toml...    
+Error in find_config() :     
+  Cannot find the configuration file config.toml | config.yaml | config/_default/config.toml | config/_default/config.yaml of the website   
+
+Ultimately, I just had to quit R and reopen -- not just restart R session.
+
+
+
+
+<!--
+Clean up and add session info
+-->
+
+```{r echo=FALSE}
+rm(list = ls())
+```
+
+

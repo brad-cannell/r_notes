@@ -128,6 +128,8 @@ language
 text-conventions
 special-sections
 images
+font-awesome
+links
 code-blocks
 cross-references
 cr-figs

@@ -36,7 +36,15 @@ Use "we" and "our" language. Make it friendly and informal.
 
 ### Special sections
 
+```{html eval=FALSE}
 <p class="note"> 🗒**Side Note:** This is an example note. </p>
+```
+
+<p class="note"> 🗒**Side Note:** This is an example note. </p>
+
+```{html eval=FALSE}
+<p class="warning"> ⚠️**Warning:** This is an example warning </p>
+```
 
 <p class="warning"> ⚠️**Warning:** This is an example warning </p>
 
@@ -54,17 +62,43 @@ knitr::include_graphics("img/06_presenting_results/bookdown_creating_book_chapte
 
 * Because of the way the files are structured, You won't be able to see pictures directly in the Rmd files without including "../../" on the front the file paths. However, having "../../" on the front of the file paths prevents the book from building appropriately.
 
+You can also directly use img tags. Here's the one I used for my photo in R4Epi
+
+```{html eval=FALSE}
+<!-- Cannell profile photo -->
+<img align="right" src="img/index/cannell-headshot copy.png" alt="R4Epi hex logo" width="250" style="margin: 0 1em 0 1em; border-radius: 20px 0px 20px 0px;">
+```
+
+Yihui talks about some of the advantages of using `knitr::include_graphics()` here: https://bookdown.org/yihui/bookdown/figures.html. Most of them have to do with creating PDF documents. For HTML only, the img tag seems to be a little more customizable.
+
+### Font Awesome
+
+There are few different ways to incorporate font awesome icons into your output. The font awesome package (https://github.com/rstudio/fontawesome) is my favorite so far. Here are the social media links I added to [R4Epi](https://www.r4epi.com/about-the-authors.html):
+
+```{html eval=FALSE}
+**Contact**   
+Connect with Dr. Cannell and follow his work.   
+<a href="https://www.bradcannell.com" target="_blank">`r fa("globe", fill = "#003087", height="2em")`</a>
+<a href="https://www.facebook.com/Brad-Cannell-PhD-MPH-109345984850672" target="_blank">`r fa("facebook-square", fill = "#4267B2", height="2em")`</a>
+<a href="https://www.linkedin.com/in/bradcannell/" target="_blank">`r fa("linkedin", fill = "#2867B2", height="2em")`</a>
+<a href="https://twitter.com/brad_cannell" target="_blank">`r fa("twitter-square", fill = "#198CD8", height="2em")`</a>
+<a href="https://www.instagram.com/brad_cannell/" target="_blank">`r fa("instagram-square", fill = "#833AB4", height="2em")`</a>
+```
+
+### Links
+
+You can use standard markdown syntax for links: `[Visible text](link_to_somewhere)`. Or you can use anchor tags. Anchor tags seem to be the only way to open links in a new tab (https://stackoverflow.com/questions/4425198/can-i-create-links-with-target-blank-in-markdown). See the social media icons above for an example.
+
+
 ### Code blocks
 
-```{r}
-
-```
+Add the following below code blocks...
 
 👆**Here's what we did above:**
 
 Use unordered lists for these sections. It allows for nested lists and code. Add line breaks in between the bullets.
 
-```{eval=FALSE}
+```{html eval=FALSE}
 <ul>
   <li>You can type `?mutate` into your R console to view the help documentation for this function and follow along with the explanation below./li>
   

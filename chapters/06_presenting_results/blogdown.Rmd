@@ -76,6 +76,88 @@ blogdown::check_site()
 ```
 
 
+## Creating new content
+
+Here are some notes from when I created the "Students" section of the [brad.cannell website](https://www.bradcannell.com/). Basically, I want a page were students can view currently available opportunities to get involved in research and find guidance on a range of topics. 
+
+When creating new content with the Academic template, you can choose to add a widget to the homepage or to create a new page (or set of pages), which can also include widgets. I wanted "students" to be a separate page - not displayed on my homepage. 
+
+I'm following guidance on Wowchemy's [Create content](https://wowchemy.com/docs/content/) page to make the `students` page.
+
+### Step 1. Create a landing page
+
+I followed the guidance on Wowchemy's [Create a landing page](https://wowchemy.com/docs/content/landing-pages/) documentation for this step. As a reminder, landing pages don't necessarily contain much actual content. They contain widgets that link to content. 
+
+1. Create the `content/students` folder.   
+2. Create `index.md` inside `content/students`, and add a YAML header. This will be a widget page like the homepage.   
+3. Create a nav bar link to the `index.md`.   
+    - Open `config/_default/menus.yaml`   
+    - Create a new entry   
+        - Set `name:` to `Students` (or whatever you want to appear in the nav bar)   
+        - Set `url:` to `'studetns/'` (the name of the folder we created in 1 above)    
+        - Adjust the weight to control the placement of the link on the nav bar   
+        
+### Step 2. Add widgets to the landing page
+
+I followed the guidance on Wowchemy's [page builder](https://wowchemy.com/docs/getting-started/page-builder/) documentation for this step. 
+
+I think I want to create the individual jobs (or job categories) as "blog posts" then display them on the students page in a [portfolio widget](https://wowchemy.com/docs/widget/portfolio/) or a [featured content](https://wowchemy.com/docs/widget/featured/) widget. I'm playing around with both. 
+
+#### Add a welcome section
+
+1. I added a [blank widget](https://wowchemy.com/docs/widget/blank/) to the top of the students page and added some welcome text below the YAML header.    
+
+#### Add a portfolio widget to the students landing page
+
+1. I opened `home/projects.md` and saved it as `students/opportunities_portfolio.md`.   
+2. Change `active: false` to `active: true`. At that point, the widget should should up on the students landing page.    
+3. I started adjusting some of the parameters in the YAML header. For example, I changed the weight to 20, added a title, etc.    
+4. Ultimately, I didn't use the featured content widget. But, if you use it in the future, make sure the `featured:` parameter in the YAML header is set to `true`. Otherwise, the post won't show up in the featured content widget.    
+
+### Step 3. Add content to the widgets
+
+Individual content pages seem to always go in folders. The folders contain index.md files for written content and they also contain any other files the page needs (e.g., images or citation files). The banner photo has to be named `featured`.     
+
+For the research opportunities widget on the students page, I created a new folder called `opportunites` in `content`. I tried putting it directly in the `students` folder, but that didn't work.   
+
+You tell markdown document that creates the widget (i.e., `students/opportunities_portfolio.md`) to use the documents in the `content/opportunites` folder by setting the `content: page_type:` parameter to the folder name. In this case, `content: page_type: opportunites`.   
+
+If you want an image on the content page, it needs to be stored in the same folder as the `index.md` file that contains the content. Additionally, the image file must be named `featured`.
+
+Here was the YAML header for the GRA content page I made
+
+```{r eval=FALSE}
+---
+# GRA page accessed from the students page via a widget.
+title: Graduate research assistantships
+summary: Graduate research assistantships (GRAs) are paid positions. As a GRA, you are sort of a jack of all trades. You may be asked to help with completing human subjects protection documentation for the Institutional Review Board (IRB), data collection, data management and analysis, literature reviews for papers and grants, paper and grant writing, submitting reports to funding agencies, and administrative tasks (e.g., purchasing and arranging travel).
+date: "2022-03-04"
+authors:
+- admin
+featured: true
+image:
+  caption: 'Photo by <a href="https://unsplash.com/@esteejanssens?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Estée Janssens</a> on <a href="https://unsplash.com/s/photos/schedule?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'
+  focal_point: ""
+  preview_only: false
+tags:
+- GRAs
+---
+```
+
+You can add markdown content below the YAML header.
+
+### Step 4. Add a banner image to the landing page.
+
+1. I found an image I wanted to use on [unsplash](https://unsplash.com/).    
+2. Add it to the landing page by... LEFT OFF HERE... 
+
+Don't forget to give attribution to the photographer. For example:    
+
+```{r, eval=FALSE}
+Photo by <a href="https://unsplash.com/@homajob?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Scott Graham</a> on <a href="https://unsplash.com/@mbcann01/likes?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+```
+
+Produces: Photo by <a href="https://unsplash.com/@homajob?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Scott Graham</a> on <a href="https://unsplash.com/@mbcann01/likes?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
 ## Editing widget metadata
 
@@ -135,6 +217,9 @@ Error in find_config() :
 Ultimately, I just had to quit R and reopen -- not just restart R session.
 
 
+# Adding Google Analytics 
+
+Under construction...
 
 
 <!--

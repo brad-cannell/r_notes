@@ -113,6 +113,13 @@ overview-7
 useful-websites-7
 load-packages-5
 blogdown-commands-to-remember
+creating-new-content
+step-1.-create-a-landing-page
+step-2.-add-widgets-to-the-landing-page
+add-a-welcome-section
+add-a-portfolio-widget-to-the-students-landing-page
+step-3.-add-content-to-the-widgets
+step-4.-add-a-banner-image-to-the-landing-page.
 editing-widget-metadata
 editing-about-widget-content
 adjusting-site-configuration-files
@@ -120,6 +127,7 @@ other-little-adjustments
 changing-the-domain
 error-fixes
 blogdowncheck_netlify
+adding-google-analytics
 book-chapters
 chapter-overview
 motivating-example

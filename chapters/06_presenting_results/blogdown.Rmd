@@ -149,7 +149,10 @@ You can add markdown content below the YAML header.
 ### Step 4. Add a banner image to the landing page.
 
 1. I found an image I wanted to use on [unsplash](https://unsplash.com/).    
-2. Add it to the landing page by... LEFT OFF HERE... 
+2. Copy `home/banner.md` to `students/banner.md`.    
+3. The image file goes in `assets/media/`.    
+4. Update the path to the picture and play around with other settings as needed.    
+    - I adjusted the image size by experimenting with `spacing:padding: ["250px", "0", "100px", "0"]`.    
 
 Don't forget to give attribution to the photographer. For example:    
 
@@ -163,20 +166,17 @@ Produces: Photo by <a href="https://unsplash.com/@homajob?utm_source=unsplash&ut
 
 content > home
 
-
 ## Editing about widget content
 
 This includes degrees and social media stuff. 
 
 authors > admin > _index.md
 
-
 ## Adjusting site configuration files
 
 For example, nav bar.
 
 config > _default > 
-
 
 ## Other little adjustments
 
@@ -196,6 +196,12 @@ I changed the map zoom in the contacts widget to 9 instead of 15. I changed it i
 
 I added a copyright to the website in config.yaml
 I removed the license stuff from the footer in params.yaml. Search for copyright_license.
+
+## Custom CSS
+
+Here is the [Wowchemy documentation](https://wowchemy.com/docs/hugo-tutorials/extending-wowchemy/).
+
+I created a custom CSS file at `assets/scss/custom.scss`.    
 
 
 ## Changing the domain

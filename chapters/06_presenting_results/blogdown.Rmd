@@ -223,7 +223,7 @@ Error in find_config() :
 Ultimately, I just had to quit R and reopen -- not just restart R session.
 
 
-# Adding Google Analytics 
+## Adding Google Analytics 
 
 https://wowchemy.com/docs/hugo-tutorials/analytic
 

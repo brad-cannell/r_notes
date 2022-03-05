@@ -225,7 +225,7 @@ Ultimately, I just had to quit R and reopen -- not just restart R session.
 
 # Adding Google Analytics 
 
-Under construction...
+https://wowchemy.com/docs/hugo-tutorials/analytic
 
 
 <!--

@@ -24,7 +24,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-03-04" />
+<meta name="date" content="2022-03-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -204,7 +204,8 @@ div.csl-indent {
 <li class="chapter" data-level="1.7.2" data-path="my-package-notes.html"><a href="my-package-notes.html#vignette-notes"><i class="fa fa-check"></i><b>1.7.2</b> Vignette Notes:</a></li>
 </ul></li>
 <li class="chapter" data-level="1.8" data-path="my-package-notes.html"><a href="my-package-notes.html#adding-and-documenting-data"><i class="fa fa-check"></i><b>1.8</b> Adding and documenting data</a></li>
-<li class="chapter" data-level="1.9" data-path="my-package-notes.html"><a href="my-package-notes.html#errors-warnings-notes"><i class="fa fa-check"></i><b>1.9</b> Errors, warnings, notes</a></li>
+<li class="chapter" data-level="1.9" data-path="my-package-notes.html"><a href="my-package-notes.html#submitting-to-cran"><i class="fa fa-check"></i><b>1.9</b> Submitting to CRAN</a></li>
+<li class="chapter" data-level="1.10" data-path="my-package-notes.html"><a href="my-package-notes.html#errors-warnings-notes"><i class="fa fa-check"></i><b>1.10</b> Errors, warnings, notes</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html"><i class="fa fa-check"></i><b>2</b> Creating Rmd Templates</a>
 <ul>
@@ -812,8 +813,34 @@ Need to find a way to make the vignettes more “front and center”</p>
 <h2><span class="header-section-number">1.8</span> Adding and documenting data</h2>
 <p>The explanation in the <a href="https://r-pkgs.org/data.html">R Packages book</a> is good, short, and easy to follow.</p>
 </div>
-<div id="errors-warnings-notes" class="section level2" number="1.9">
-<h2><span class="header-section-number">1.9</span> Errors, warnings, notes</h2>
+<div id="submitting-to-cran" class="section level2" number="1.9">
+<h2><span class="header-section-number">1.9</span> Submitting to CRAN</h2>
+<p>Useful website: <a href="http://r-pkgs.had.co.nz/release.html" class="uri">http://r-pkgs.had.co.nz/release.html</a></p>
+<ol style="list-style-type: decimal">
+<li><p>Update README before submission. It should roughly match the examples in the roxygen documentation.</p>
+<ul>
+<li>Update <code>README.Rmd</code>, not <code>README.md</code>.<br />
+</li>
+<li>Knit <code>README.Rmd</code> after making changes. This will automatically update <code>README.md</code></li>
+</ul></li>
+<li><p>Update vignettes using <code>devtools::document()</code></p></li>
+<li><p>Update news.md. Here’s dplyr’s: <a href="https://raw.githubusercontent.com/tidyverse/dplyr/master/NEWS.md" class="uri">https://raw.githubusercontent.com/tidyverse/dplyr/master/NEWS.md</a></p></li>
+<li><p>If you were on a development branch, merge with main branch.</p></li>
+<li><p>Use <code>devtools::check()</code></p></li>
+<li><p>Use <code>devtools::check_win_devel()</code> to test the package on Windows</p></li>
+<li><p>Update <code>cran-comments</code>.<br />
+</p></li>
+</ol>
+<ul>
+<li>If this is a resubmission, add a bulleted list of changes made under ## Resubmission.</li>
+</ul>
+<ol start="8" style="list-style-type: decimal">
+<li>Submit with <code>devtools::release()</code></li>
+</ol>
+<p>After the package is accepted, do this stuff: <a href="http://r-pkgs.had.co.nz/release.html#post-release" class="uri">http://r-pkgs.had.co.nz/release.html#post-release</a></p>
+</div>
+<div id="errors-warnings-notes" class="section level2" number="1.10">
+<h2><span class="header-section-number">1.10</span> Errors, warnings, notes</h2>
 <p>Below are some common errors, warnings and notes I’ve encountered during build tests.</p>
 <blockquote>
 <p>W checking for unstated dependencies in examples …

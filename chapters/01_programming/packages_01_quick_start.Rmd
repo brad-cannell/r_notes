@@ -372,6 +372,31 @@ Need to find a way to make the vignettes more "front and center"
 
 The explanation in the [R Packages book](https://r-pkgs.org/data.html) is good, short, and easy to follow.
 
+## Submitting to CRAN
+
+Useful website: http://r-pkgs.had.co.nz/release.html
+
+1. Update README before submission. It should roughly match the examples in the roxygen documentation.
+   - Update `README.Rmd`, not `README.md`.   
+   - Knit `README.Rmd` after making changes. This will automatically update `README.md`   
+  
+2. Update vignettes using `devtools::document()`
+
+3. Update news.md. Here's dplyr's: https://raw.githubusercontent.com/tidyverse/dplyr/master/NEWS.md
+
+4. If you were on a development branch, merge with main branch.
+
+5. Use `devtools::check()`
+
+6. Use `devtools::check_win_devel()` to test the package on Windows
+
+7. Update `cran-comments`.   
+ - If this is a resubmission, add a bulleted list of changes made under ## Resubmission.
+
+8. Submit with `devtools::release()`
+
+After the package is accepted, do this stuff: http://r-pkgs.had.co.nz/release.html#post-release
+
 
 ## Errors, warnings, notes
 

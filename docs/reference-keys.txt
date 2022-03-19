@@ -21,6 +21,7 @@ vignettes
 to-create-a-vignette
 vignette-notes
 adding-and-documenting-data
+submitting-to-cran
 errors-warnings-notes
 creating-rmd-templates
 overview-1

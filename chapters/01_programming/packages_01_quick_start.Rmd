@@ -8,14 +8,6 @@ Hidden comments placeholder
 
 This chapter is my quick start guide for creating packages. 
 
-**Using packages to create reproducible analyses**
-
-This is proposed in the [Robert Flight's Blog](http://rmflight.github.io/posts/2014/07/vignetteAnalysis.html). I played around with it, but have decided that it's better to do analysis as a project rather than a package.   
-
-* You can get most of the benefits of this technique - including Git and Packrat - using a project.   
-* Just share the entire project folder with a collaborator and / or post on Github.   
-* Packages require a bunch of extra work on the front end and are harder to keep up to date.   
-
 ## 🌎Useful websites
 
 * [Hadley Wickham and Jenny Bryan's R Packages book](https://r-pkgs.org/)   
@@ -25,6 +17,13 @@ This is proposed in the [Robert Flight's Blog](http://rmflight.github.io/posts/2
 
 
 ## Step 1: Create the package project
+
+Call create_package() to initialize a new package in a directory on your computer (and create the directory, if necessary).
+
+```{r, eval=FALSE}
+usethis::create_package("/Users/bradcannell/Dropbox/R/Packages/codebook")
+```
+
 
 1. File > New Project
 

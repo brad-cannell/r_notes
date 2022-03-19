@@ -607,74 +607,74 @@ rmd_subdir: [&quot;chapters&quot;]</code></pre>
 </div>
 <div id="modify-style.css" class="section level2" number="11.9">
 <h2><span class="header-section-number">11.9</span> Modify style.css</h2>
-<div class="sourceCode" id="cb244"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb244-1"><a href="bookdown-quick-start.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="co">/******************************************************************************</span></span>
-<span id="cb244-2"><a href="bookdown-quick-start.html#cb244-2" aria-hidden="true" tabindex="-1"></a><span class="co">CSS for the R4Epi textbook</span></span>
-<span id="cb244-3"><a href="bookdown-quick-start.html#cb244-3" aria-hidden="true" tabindex="-1"></a><span class="co">******************************************************************************/</span></span>
-<span id="cb244-4"><a href="bookdown-quick-start.html#cb244-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb244-5"><a href="bookdown-quick-start.html#cb244-5" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
-<span id="cb244-6"><a href="bookdown-quick-start.html#cb244-6" aria-hidden="true" tabindex="-1"></a><span class="co">CSS that came with bookdown</span></span>
-<span id="cb244-7"><a href="bookdown-quick-start.html#cb244-7" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
-<span id="cb244-8"><a href="bookdown-quick-start.html#cb244-8" aria-hidden="true" tabindex="-1"></a>p<span class="fu">.caption</span> {</span>
-<span id="cb244-9"><a href="bookdown-quick-start.html#cb244-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">#777</span><span class="op">;</span></span>
-<span id="cb244-10"><a href="bookdown-quick-start.html#cb244-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">margin-top</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb244-11"><a href="bookdown-quick-start.html#cb244-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb244-12"><a href="bookdown-quick-start.html#cb244-12" aria-hidden="true" tabindex="-1"></a>p code {</span>
-<span id="cb244-13"><a href="bookdown-quick-start.html#cb244-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">white-space</span>: <span class="bu">inherit</span><span class="op">;</span></span>
-<span id="cb244-14"><a href="bookdown-quick-start.html#cb244-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb244-15"><a href="bookdown-quick-start.html#cb244-15" aria-hidden="true" tabindex="-1"></a>pre {</span>
-<span id="cb244-16"><a href="bookdown-quick-start.html#cb244-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">word-break</span>: <span class="dv">normal</span><span class="op">;</span></span>
-<span id="cb244-17"><a href="bookdown-quick-start.html#cb244-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">word-wrap</span>: <span class="dv">normal</span><span class="op">;</span></span>
-<span id="cb244-18"><a href="bookdown-quick-start.html#cb244-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb244-19"><a href="bookdown-quick-start.html#cb244-19" aria-hidden="true" tabindex="-1"></a>pre code {</span>
-<span id="cb244-20"><a href="bookdown-quick-start.html#cb244-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">white-space</span>: <span class="bu">inherit</span><span class="op">;</span></span>
-<span id="cb244-21"><a href="bookdown-quick-start.html#cb244-21" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb244-22"><a href="bookdown-quick-start.html#cb244-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb244-23"><a href="bookdown-quick-start.html#cb244-23" aria-hidden="true" tabindex="-1"></a><span class="co">/* </span></span>
-<span id="cb244-24"><a href="bookdown-quick-start.html#cb244-24" aria-hidden="true" tabindex="-1"></a><span class="co">Font Styles</span></span>
-<span id="cb244-25"><a href="bookdown-quick-start.html#cb244-25" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
-<span id="cb244-26"><a href="bookdown-quick-start.html#cb244-26" aria-hidden="true" tabindex="-1"></a><span class="fu">.large-bold</span> {</span>
-<span id="cb244-27"><a href="bookdown-quick-start.html#cb244-27" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-size</span>: <span class="dv">2</span><span class="dt">em</span><span class="op">;</span></span>
-<span id="cb244-28"><a href="bookdown-quick-start.html#cb244-28" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-weight</span>: <span class="dv">bold</span><span class="op">;</span></span>
-<span id="cb244-29"><a href="bookdown-quick-start.html#cb244-29" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb244-30"><a href="bookdown-quick-start.html#cb244-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb244-31"><a href="bookdown-quick-start.html#cb244-31" aria-hidden="true" tabindex="-1"></a><span class="fu">.underline</span> {</span>
-<span id="cb244-32"><a href="bookdown-quick-start.html#cb244-32" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-decoration</span>: <span class="dv">underline</span><span class="op">;</span></span>
-<span id="cb244-33"><a href="bookdown-quick-start.html#cb244-33" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb244-34"><a href="bookdown-quick-start.html#cb244-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb244-35"><a href="bookdown-quick-start.html#cb244-35" aria-hidden="true" tabindex="-1"></a><span class="fu">.red-text</span> {</span>
-<span id="cb244-36"><a href="bookdown-quick-start.html#cb244-36" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">red</span><span class="op">;</span></span>
-<span id="cb244-37"><a href="bookdown-quick-start.html#cb244-37" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb244-38"><a href="bookdown-quick-start.html#cb244-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb244-39"><a href="bookdown-quick-start.html#cb244-39" aria-hidden="true" tabindex="-1"></a><span class="fu">.code</span> {</span>
-<span id="cb244-40"><a href="bookdown-quick-start.html#cb244-40" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">#0365C0</span><span class="op">;</span></span>
-<span id="cb244-41"><a href="bookdown-quick-start.html#cb244-41" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-family</span>: <span class="st">&quot;Courier New&quot;</span><span class="op">,</span> Courier<span class="op">,</span> <span class="dv">monospace</span><span class="op">;</span></span>
-<span id="cb244-42"><a href="bookdown-quick-start.html#cb244-42" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb244-43"><a href="bookdown-quick-start.html#cb244-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb244-44"><a href="bookdown-quick-start.html#cb244-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb244-45"><a href="bookdown-quick-start.html#cb244-45" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
-<span id="cb244-46"><a href="bookdown-quick-start.html#cb244-46" aria-hidden="true" tabindex="-1"></a><span class="co">Note styles</span></span>
-<span id="cb244-47"><a href="bookdown-quick-start.html#cb244-47" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
-<span id="cb244-48"><a href="bookdown-quick-start.html#cb244-48" aria-hidden="true" tabindex="-1"></a><span class="fu">.note</span> {</span>
-<span id="cb244-49"><a href="bookdown-quick-start.html#cb244-49" aria-hidden="true" tabindex="-1"></a>  <span class="kw">-moz-border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb244-50"><a href="bookdown-quick-start.html#cb244-50" aria-hidden="true" tabindex="-1"></a>  <span class="kw">-webkit-border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb244-51"><a href="bookdown-quick-start.html#cb244-51" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-color</span>: <span class="cn">#f0f7fb</span><span class="op">;</span></span>
-<span id="cb244-52"><a href="bookdown-quick-start.html#cb244-52" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border</span>: <span class="dv">solid</span> <span class="dv">1</span><span class="dt">px</span> <span class="cn">#3498db</span><span class="op">;</span></span>
-<span id="cb244-53"><a href="bookdown-quick-start.html#cb244-53" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb244-54"><a href="bookdown-quick-start.html#cb244-54" aria-hidden="true" tabindex="-1"></a>  <span class="kw">line-height</span>: <span class="dv">18</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb244-55"><a href="bookdown-quick-start.html#cb244-55" aria-hidden="true" tabindex="-1"></a>  <span class="kw">overflow</span>: <span class="dv">hidden</span><span class="op">;</span></span>
-<span id="cb244-56"><a href="bookdown-quick-start.html#cb244-56" aria-hidden="true" tabindex="-1"></a>  <span class="kw">padding</span>: <span class="dv">15</span><span class="dt">px</span> <span class="dv">15</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb244-57"><a href="bookdown-quick-start.html#cb244-57" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb244-58"><a href="bookdown-quick-start.html#cb244-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb244-59"><a href="bookdown-quick-start.html#cb244-59" aria-hidden="true" tabindex="-1"></a><span class="fu">.warning</span> {</span>
-<span id="cb244-60"><a href="bookdown-quick-start.html#cb244-60" aria-hidden="true" tabindex="-1"></a>  <span class="kw">-moz-border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb244-61"><a href="bookdown-quick-start.html#cb244-61" aria-hidden="true" tabindex="-1"></a>  <span class="kw">-webkit-border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb244-62"><a href="bookdown-quick-start.html#cb244-62" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-color</span>: <span class="cn">#FEFBEA</span><span class="op">;</span></span>
-<span id="cb244-63"><a href="bookdown-quick-start.html#cb244-63" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border</span>: <span class="dv">solid</span> <span class="dv">1</span><span class="dt">px</span> <span class="cn">#F2E394</span><span class="op">;</span></span>
-<span id="cb244-64"><a href="bookdown-quick-start.html#cb244-64" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb244-65"><a href="bookdown-quick-start.html#cb244-65" aria-hidden="true" tabindex="-1"></a>  <span class="kw">line-height</span>: <span class="dv">18</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb244-66"><a href="bookdown-quick-start.html#cb244-66" aria-hidden="true" tabindex="-1"></a>  <span class="kw">overflow</span>: <span class="dv">hidden</span><span class="op">;</span></span>
-<span id="cb244-67"><a href="bookdown-quick-start.html#cb244-67" aria-hidden="true" tabindex="-1"></a>  <span class="kw">padding</span>: <span class="dv">15</span><span class="dt">px</span> <span class="dv">15</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb244-68"><a href="bookdown-quick-start.html#cb244-68" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb243-1"><a href="bookdown-quick-start.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="co">/******************************************************************************</span></span>
+<span id="cb243-2"><a href="bookdown-quick-start.html#cb243-2" aria-hidden="true" tabindex="-1"></a><span class="co">CSS for the R4Epi textbook</span></span>
+<span id="cb243-3"><a href="bookdown-quick-start.html#cb243-3" aria-hidden="true" tabindex="-1"></a><span class="co">******************************************************************************/</span></span>
+<span id="cb243-4"><a href="bookdown-quick-start.html#cb243-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb243-5"><a href="bookdown-quick-start.html#cb243-5" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb243-6"><a href="bookdown-quick-start.html#cb243-6" aria-hidden="true" tabindex="-1"></a><span class="co">CSS that came with bookdown</span></span>
+<span id="cb243-7"><a href="bookdown-quick-start.html#cb243-7" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
+<span id="cb243-8"><a href="bookdown-quick-start.html#cb243-8" aria-hidden="true" tabindex="-1"></a>p<span class="fu">.caption</span> {</span>
+<span id="cb243-9"><a href="bookdown-quick-start.html#cb243-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">#777</span><span class="op">;</span></span>
+<span id="cb243-10"><a href="bookdown-quick-start.html#cb243-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">margin-top</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb243-11"><a href="bookdown-quick-start.html#cb243-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb243-12"><a href="bookdown-quick-start.html#cb243-12" aria-hidden="true" tabindex="-1"></a>p code {</span>
+<span id="cb243-13"><a href="bookdown-quick-start.html#cb243-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">white-space</span>: <span class="bu">inherit</span><span class="op">;</span></span>
+<span id="cb243-14"><a href="bookdown-quick-start.html#cb243-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb243-15"><a href="bookdown-quick-start.html#cb243-15" aria-hidden="true" tabindex="-1"></a>pre {</span>
+<span id="cb243-16"><a href="bookdown-quick-start.html#cb243-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">word-break</span>: <span class="dv">normal</span><span class="op">;</span></span>
+<span id="cb243-17"><a href="bookdown-quick-start.html#cb243-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">word-wrap</span>: <span class="dv">normal</span><span class="op">;</span></span>
+<span id="cb243-18"><a href="bookdown-quick-start.html#cb243-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb243-19"><a href="bookdown-quick-start.html#cb243-19" aria-hidden="true" tabindex="-1"></a>pre code {</span>
+<span id="cb243-20"><a href="bookdown-quick-start.html#cb243-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">white-space</span>: <span class="bu">inherit</span><span class="op">;</span></span>
+<span id="cb243-21"><a href="bookdown-quick-start.html#cb243-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb243-22"><a href="bookdown-quick-start.html#cb243-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb243-23"><a href="bookdown-quick-start.html#cb243-23" aria-hidden="true" tabindex="-1"></a><span class="co">/* </span></span>
+<span id="cb243-24"><a href="bookdown-quick-start.html#cb243-24" aria-hidden="true" tabindex="-1"></a><span class="co">Font Styles</span></span>
+<span id="cb243-25"><a href="bookdown-quick-start.html#cb243-25" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
+<span id="cb243-26"><a href="bookdown-quick-start.html#cb243-26" aria-hidden="true" tabindex="-1"></a><span class="fu">.large-bold</span> {</span>
+<span id="cb243-27"><a href="bookdown-quick-start.html#cb243-27" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-size</span>: <span class="dv">2</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb243-28"><a href="bookdown-quick-start.html#cb243-28" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-weight</span>: <span class="dv">bold</span><span class="op">;</span></span>
+<span id="cb243-29"><a href="bookdown-quick-start.html#cb243-29" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb243-30"><a href="bookdown-quick-start.html#cb243-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb243-31"><a href="bookdown-quick-start.html#cb243-31" aria-hidden="true" tabindex="-1"></a><span class="fu">.underline</span> {</span>
+<span id="cb243-32"><a href="bookdown-quick-start.html#cb243-32" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-decoration</span>: <span class="dv">underline</span><span class="op">;</span></span>
+<span id="cb243-33"><a href="bookdown-quick-start.html#cb243-33" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb243-34"><a href="bookdown-quick-start.html#cb243-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb243-35"><a href="bookdown-quick-start.html#cb243-35" aria-hidden="true" tabindex="-1"></a><span class="fu">.red-text</span> {</span>
+<span id="cb243-36"><a href="bookdown-quick-start.html#cb243-36" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">red</span><span class="op">;</span></span>
+<span id="cb243-37"><a href="bookdown-quick-start.html#cb243-37" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb243-38"><a href="bookdown-quick-start.html#cb243-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb243-39"><a href="bookdown-quick-start.html#cb243-39" aria-hidden="true" tabindex="-1"></a><span class="fu">.code</span> {</span>
+<span id="cb243-40"><a href="bookdown-quick-start.html#cb243-40" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">#0365C0</span><span class="op">;</span></span>
+<span id="cb243-41"><a href="bookdown-quick-start.html#cb243-41" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-family</span>: <span class="st">&quot;Courier New&quot;</span><span class="op">,</span> Courier<span class="op">,</span> <span class="dv">monospace</span><span class="op">;</span></span>
+<span id="cb243-42"><a href="bookdown-quick-start.html#cb243-42" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb243-43"><a href="bookdown-quick-start.html#cb243-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb243-44"><a href="bookdown-quick-start.html#cb243-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb243-45"><a href="bookdown-quick-start.html#cb243-45" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb243-46"><a href="bookdown-quick-start.html#cb243-46" aria-hidden="true" tabindex="-1"></a><span class="co">Note styles</span></span>
+<span id="cb243-47"><a href="bookdown-quick-start.html#cb243-47" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
+<span id="cb243-48"><a href="bookdown-quick-start.html#cb243-48" aria-hidden="true" tabindex="-1"></a><span class="fu">.note</span> {</span>
+<span id="cb243-49"><a href="bookdown-quick-start.html#cb243-49" aria-hidden="true" tabindex="-1"></a>  <span class="kw">-moz-border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb243-50"><a href="bookdown-quick-start.html#cb243-50" aria-hidden="true" tabindex="-1"></a>  <span class="kw">-webkit-border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb243-51"><a href="bookdown-quick-start.html#cb243-51" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-color</span>: <span class="cn">#f0f7fb</span><span class="op">;</span></span>
+<span id="cb243-52"><a href="bookdown-quick-start.html#cb243-52" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border</span>: <span class="dv">solid</span> <span class="dv">1</span><span class="dt">px</span> <span class="cn">#3498db</span><span class="op">;</span></span>
+<span id="cb243-53"><a href="bookdown-quick-start.html#cb243-53" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb243-54"><a href="bookdown-quick-start.html#cb243-54" aria-hidden="true" tabindex="-1"></a>  <span class="kw">line-height</span>: <span class="dv">18</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb243-55"><a href="bookdown-quick-start.html#cb243-55" aria-hidden="true" tabindex="-1"></a>  <span class="kw">overflow</span>: <span class="dv">hidden</span><span class="op">;</span></span>
+<span id="cb243-56"><a href="bookdown-quick-start.html#cb243-56" aria-hidden="true" tabindex="-1"></a>  <span class="kw">padding</span>: <span class="dv">15</span><span class="dt">px</span> <span class="dv">15</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb243-57"><a href="bookdown-quick-start.html#cb243-57" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb243-58"><a href="bookdown-quick-start.html#cb243-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb243-59"><a href="bookdown-quick-start.html#cb243-59" aria-hidden="true" tabindex="-1"></a><span class="fu">.warning</span> {</span>
+<span id="cb243-60"><a href="bookdown-quick-start.html#cb243-60" aria-hidden="true" tabindex="-1"></a>  <span class="kw">-moz-border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb243-61"><a href="bookdown-quick-start.html#cb243-61" aria-hidden="true" tabindex="-1"></a>  <span class="kw">-webkit-border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb243-62"><a href="bookdown-quick-start.html#cb243-62" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-color</span>: <span class="cn">#FEFBEA</span><span class="op">;</span></span>
+<span id="cb243-63"><a href="bookdown-quick-start.html#cb243-63" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border</span>: <span class="dv">solid</span> <span class="dv">1</span><span class="dt">px</span> <span class="cn">#F2E394</span><span class="op">;</span></span>
+<span id="cb243-64"><a href="bookdown-quick-start.html#cb243-64" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb243-65"><a href="bookdown-quick-start.html#cb243-65" aria-hidden="true" tabindex="-1"></a>  <span class="kw">line-height</span>: <span class="dv">18</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb243-66"><a href="bookdown-quick-start.html#cb243-66" aria-hidden="true" tabindex="-1"></a>  <span class="kw">overflow</span>: <span class="dv">hidden</span><span class="op">;</span></span>
+<span id="cb243-67"><a href="bookdown-quick-start.html#cb243-67" aria-hidden="true" tabindex="-1"></a>  <span class="kw">padding</span>: <span class="dv">15</span><span class="dt">px</span> <span class="dv">15</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb243-68"><a href="bookdown-quick-start.html#cb243-68" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="modify-index.rmd" class="section level2" number="11.10">
 <h2><span class="header-section-number">11.10</span> Modify index.Rmd</h2>

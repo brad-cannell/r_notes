@@ -876,6 +876,11 @@ Undefined global functions or variables:
 </blockquote>
 <p><a href="http://r-pkgs.had.co.nz/namespace.html#imports">Info on fixing this issue</a></p>
 <p>Short answer: Add the following directly inside the roxygen2 header in the R script where the function is defined: <code>@importFrom dplyr %&gt;%</code>. You must also make sure that it gets to the NAMESPACE. Run <code>usethis::use_namespace()</code> and then <code>devtools::document()</code> to get it into NAMESPACE.</p>
+<blockquote>
+<p>Non-standard file/directory found at top level: ‘meantables_hex’</p>
+</blockquote>
+<p>I got this error after submitting meantables to CRAN. The problem is with the hex sticker file in the meantable hex sticker I added for the README. This SO issue gives some advice: <a href="https://stackoverflow.com/questions/44113759/note-or-warning-from-package-check-when-readme-md-includes-images" class="uri">https://stackoverflow.com/questions/44113759/note-or-warning-from-package-check-when-readme-md-includes-images</a></p>
+<p>I moved the stickers to <code>man/figures</code>. It seems to have solved the problem.</p>
 <!--
 Clean up and add session info
 -->

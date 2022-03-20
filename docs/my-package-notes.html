@@ -539,13 +539,13 @@ Hidden comments placeholder
 <div id="quick-process" class="section level2" number="1.3">
 <h2><span class="header-section-number">1.3</span> Quick Process</h2>
 <ol style="list-style-type: decimal">
-<li><p><a href="my-package-notes.html#create">Create new project/package directory</a> with <code>usethis::create_package()</code>. (Restart)</p></li>
+<li><p><a href="my-package-notes.html#create">Create new project/package directory</a> with <code>usethis::create_package()</code>. Restart.</p></li>
 <li><p><a href="my-package-notes.html#notes">Add a NOTES file</a>.</p></li>
-<li><p><a href="my-package-notes.html#license">Add license</a>.</p></li>
+<li><p><a href="my-package-notes.html#license">Add license</a> with <code>usethis::use_mit_license()</code>.</p></li>
 <li><p><a href="my-package-notes.html#modify">Modify the description file</a>.</p></li>
-<li><p><a href="my-package-notes.html#readme">Add README</a>.</p></li>
-<li><p><a href="my-package-notes.html#git">Add Git</a>.</p></li>
-<li><p><a href="my-package-notes.html#github">Connect to GitHub</a>.</p></li>
+<li><p><a href="my-package-notes.html#readme">Add README</a> with <code>usethis::use_readme_rmd()</code> and <code>devtools::build_readme()</code>.</p></li>
+<li><p><a href="my-package-notes.html#git">Add Git</a> with <code>usethis::use_git()</code>. Restart.</p></li>
+<li><p><a href="my-package-notes.html#github">Connect to GitHub</a> with <code>usethis::use_github()</code>.</p></li>
 <li><p><a href="my-package-notes.html#package-functions">Add functions to the package</a>.</p></li>
 </ol>
 </div>
@@ -664,11 +664,12 @@ Hidden comments placeholder
 <ul>
 <li><p>I generally just copy the Description section from the <code>DESCRIPTION</code> file and use it replace the “The goal of codebook is to …” sentence that that <code>use_readme_rmd()</code> creates by default.</p></li>
 <li><p>Comment out all of the code chunks that <code>use_readme_rmd()</code> creates by default.</p></li>
-<li><p>Add installation instructions to README</p></li>
+<li><p>Add installation instructions to README. Although we haven’t created the repository yet, we know what it’s going to be called.</p></li>
 </ul>
 <p>The README file already contains the following lines:</p>
 <p><img src="img/01_programming/install_placeholder.png" width="627" /></p>
 <p>We just need to replace it with:</p>
+<p><strong>Make sure to set the <code>eval=FALSE</code> code chunk option.</strong></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="my-package-notes.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
 <span id="cb9-2"><a href="my-package-notes.html#cb9-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;brad-cannell/codebook&quot;</span>)</span></code></pre></div>
 <ul>
@@ -689,6 +690,12 @@ Hidden comments placeholder
 </div>
 <div id="github" class="section level2" number="1.11">
 <h2><span class="header-section-number">1.11</span> Step 7: Connect to GitHub</h2>
+<p><strong>Caution</strong></p>
+<p>So far, using this method will add the repo to my personal account (mbcann01), not to my organization. You can either:</p>
+<ul>
+<li><p>Create the repo manually on GitHub first, then follow GitHub’s instructions for syncing.</p></li>
+<li><p>After you create the repo on mbcann01, transfer ownership to brad-cannell in the Settings menu.</p></li>
+</ul>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="my-package-notes.html#cb12-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>()</span></code></pre></div>
 <p>The function will do all of this:</p>
 <p><img src="img/01_programming/use_github.png" width="749" /></p>

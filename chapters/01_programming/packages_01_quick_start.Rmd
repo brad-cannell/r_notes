@@ -20,19 +20,19 @@ This is not meant to be a comprehensive guide to creating packages. [Hadley Wick
 
 ## Quick Process 
 
-1. [Create new project/package directory](#create) with `usethis::create_package()`. (Restart)  
+1. [Create new project/package directory](#create) with `usethis::create_package()`. Restart.
 
 2. [Add a NOTES file](#notes).
 
-3. [Add license](#license).
+3. [Add license](#license) with `usethis::use_mit_license()`.
 
 4. [Modify the description file](#modify).
 
-5. [Add README](#readme).
+5. [Add README](#readme) with `usethis::use_readme_rmd()` and `devtools::build_readme()`.
 
-6. [Add Git](#git).
+6. [Add Git](#git) with `usethis::use_git()`. Restart.
 
-7. [Connect to GitHub](#github).
+7. [Connect to GitHub](#github) with `usethis::use_github()`.
 
 8. [Add functions to the package](#package-functions).
 
@@ -195,7 +195,7 @@ usethis::use_readme_rmd()
 
 * Comment out all of the code chunks that `use_readme_rmd()` creates by default.
 
-* Add installation instructions to README 
+* Add installation instructions to README. Although we haven't created the repository yet, we know what it's going to be called.    
 
 The README file already contains the following lines:
 
@@ -204,6 +204,8 @@ knitr::include_graphics("img/01_programming/install_placeholder.png")
 ```
 
 We just need to replace it with:
+
+**Make sure to set the `eval=FALSE` code chunk option.**
 
 ```{r eval=FALSE}
 # install.packages("devtools")
@@ -235,6 +237,14 @@ usethis::use_git()
 
 
 ## Step 7: Connect to GitHub {#github}
+
+**Caution**
+
+So far, using this method will add the repo to my personal account (mbcann01), not to my organization. You can either:
+
+* Create the repo manually on GitHub first, then follow GitHub's instructions for syncing.
+
+* After you create the repo on mbcann01, transfer ownership to brad-cannell in the Settings menu.  
 
 ```{r eval=FALSE}
 usethis::use_github()

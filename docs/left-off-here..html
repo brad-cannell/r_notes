@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>12 Bookdown: Quick Start | R Notes</title>
+  <title>2 Left off here…. | R Notes</title>
   <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="12 Bookdown: Quick Start | R Notes" />
+  <meta property="og:title" content="2 Left off here…. | R Notes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://brad-cannell.github.io/r_notes/" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="brad-cannell/r_notes" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="12 Bookdown: Quick Start | R Notes" />
+  <meta name="twitter:title" content="2 Left off here…. | R Notes" />
   
   <meta name="twitter:description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="book-chapters.html"/>
-<link rel="next" href="flexdashboard.html"/>
+<link rel="prev" href="my-package-notes.html"/>
+<link rel="next" href="creating-rmd-templates.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -516,249 +516,310 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="bookdown-quick-start" class="section level1" number="12">
-<h1><span class="header-section-number">12</span> Bookdown: Quick Start</h1>
-<!--
-Hidden comments placeholder
--->
-<div id="overview-8" class="section level2" number="12.1">
-<h2><span class="header-section-number">12.1</span> ⭐️Overview</h2>
-<p>Document the process of creating a bookdown book. Think of it as a quick start guide.</p>
-<p>Complete documentation at: <a href="https://bookdown.org/yihui/bookdown/" class="uri">https://bookdown.org/yihui/bookdown/</a></p>
+<div id="left-off-here." class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Left off here….</h1>
+<div id="working-with-r-scripts" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Working with R scripts</h2>
+<ol style="list-style-type: decimal">
+<li><p>Don’t write or alter your functions in the console as you would in a typical interactive session. If you do, it’s easy for the version you’re using interactively and the version you are actually including in your package to get out of sync. Instead, <em>load</em> the package.</p></li>
+<li><p>Click the build tab &gt; More &gt; Load All, or <code>devtools::load_all</code>, or shift + cmd + L</p></li>
+</ol>
 </div>
-<div id="useful-websites-8" class="section level2" number="12.2">
-<h2><span class="header-section-number">12.2</span> 🌎Useful websites</h2>
+<div id="step-3-writing-help-pages" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Step 3: Writing help pages</h2>
+<p>Help pages are contained in .Rd files saved in the man folder. It’s best practice to use <code>roxygen</code> with your script files to automatically generate the .Rd files. Doing so helps to keep your scripts and your help pages in sync.</p>
+<p>To use roxygen:</p>
+<ol style="list-style-type: decimal">
+<li><p>Make sure the R script you want to document is active.</p></li>
+<li><p>Click Project Options &gt; Build Tools &gt; Generate documentation with Roxygen</p></li>
+<li><p>Place your cursor in the function you want to document</p></li>
+<li><p>Insert a Roxygen skeleton with the keyboard shortcut cmd + alt + shift + R</p></li>
+<li><p>After you’ve filled in the skeleton click Build &gt; More &gt; Document, or use the keyboard shortcut shift + cmd + D. RStudio will then automatically generate the help pages in your man folder.</p></li>
+<li><p>Click the build tab &gt; More &gt; Load All, or <code>devtools::load_all</code>, or shift + cmd + L</p></li>
+<li><p>Check your help page by typing ?function_name in the console.</p></li>
+</ol>
+<div id="example-roxygen-header" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Example <code>roxygen</code> header</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="left-off-here..html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @title Compact Table of Summary Statistics</span></span>
+<span id="cb13-2"><a href="left-off-here..html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb13-3"><a href="left-off-here..html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @description  Based on Stata&#39;s &quot;tabstat&quot; command. &quot;tabstat displays summary</span></span>
+<span id="cb13-4"><a href="left-off-here..html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  statistics for a series of numeric variables in one table.  It allows you</span></span>
+<span id="cb13-5"><a href="left-off-here..html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  to specify the list of statistics to be displayed.  Statistics can be</span></span>
+<span id="cb13-6"><a href="left-off-here..html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  calculated (conditioned on) another variable.  tabstat allows substantial</span></span>
+<span id="cb13-7"><a href="left-off-here..html#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  flexibility in terms of the statistics presented and the format of the</span></span>
+<span id="cb13-8"><a href="left-off-here..html#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  table&quot; (Stata, 2016).</span></span>
+<span id="cb13-9"><a href="left-off-here..html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb13-10"><a href="left-off-here..html#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param x A continuous variable.</span></span>
+<span id="cb13-11"><a href="left-off-here..html#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param digits Rounds the values returned to the specified number of decimal</span></span>
+<span id="cb13-12"><a href="left-off-here..html#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  places (default 3).</span></span>
+<span id="cb13-13"><a href="left-off-here..html#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param stats Return specified statistics. Options include:</span></span>
+<span id="cb13-14"><a href="left-off-here..html#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  \describe{</span></span>
+<span id="cb13-15"><a href="left-off-here..html#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{n}{Count of nonmissing values of x}</span></span>
+<span id="cb13-16"><a href="left-off-here..html#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{nmiss}{Count of missing values of x}</span></span>
+<span id="cb13-17"><a href="left-off-here..html#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{ci}{95 percent confidence interval for the mean of x}</span></span>
+<span id="cb13-18"><a href="left-off-here..html#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{sum}{Sum of x}</span></span>
+<span id="cb13-19"><a href="left-off-here..html#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{max}{Maximum value of x}</span></span>
+<span id="cb13-20"><a href="left-off-here..html#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{min}{Minimum value of x}</span></span>
+<span id="cb13-21"><a href="left-off-here..html#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{range}{(Maximum value of x) - (minimum value of x)}</span></span>
+<span id="cb13-22"><a href="left-off-here..html#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{sd}{Standard deviation of x}</span></span>
+<span id="cb13-23"><a href="left-off-here..html#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{var}{Variance of x}</span></span>
+<span id="cb13-24"><a href="left-off-here..html#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{cv}{Coefficient of variation (sd / mean) of x}</span></span>
+<span id="cb13-25"><a href="left-off-here..html#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{sem}{Standard error of the mean of x}</span></span>
+<span id="cb13-26"><a href="left-off-here..html#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{skew}{Skewness of x}</span></span>
+<span id="cb13-27"><a href="left-off-here..html#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{kurt}{Kurtosis of x}</span></span>
+<span id="cb13-28"><a href="left-off-here..html#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p1}{1st percentile of x}</span></span>
+<span id="cb13-29"><a href="left-off-here..html#cb13-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p5}{5th percentile of x}</span></span>
+<span id="cb13-30"><a href="left-off-here..html#cb13-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p10}{10th percentile of x}</span></span>
+<span id="cb13-31"><a href="left-off-here..html#cb13-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p25}{25th percentile of x}</span></span>
+<span id="cb13-32"><a href="left-off-here..html#cb13-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p50}{Median value of x}</span></span>
+<span id="cb13-33"><a href="left-off-here..html#cb13-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{median}{Median value of x}</span></span>
+<span id="cb13-34"><a href="left-off-here..html#cb13-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p75}{75th percentile of x}</span></span>
+<span id="cb13-35"><a href="left-off-here..html#cb13-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p90}{90th percentile of x}</span></span>
+<span id="cb13-36"><a href="left-off-here..html#cb13-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p95}{95th percentile of x}</span></span>
+<span id="cb13-37"><a href="left-off-here..html#cb13-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p99}{99th percentile of x}</span></span>
+<span id="cb13-38"><a href="left-off-here..html#cb13-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{iqr}{Interquartile range (p75 - p25)}</span></span>
+<span id="cb13-39"><a href="left-off-here..html#cb13-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{q}{Equivalent to specifying p25 p50 p75}</span></span>
+<span id="cb13-40"><a href="left-off-here..html#cb13-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  }</span></span>
+<span id="cb13-41"><a href="left-off-here..html#cb13-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb13-42"><a href="left-off-here..html#cb13-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return A data frame. By default, the data frame contains the variable name</span></span>
+<span id="cb13-43"><a href="left-off-here..html#cb13-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  and mean.</span></span>
+<span id="cb13-44"><a href="left-off-here..html#cb13-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb13-45"><a href="left-off-here..html#cb13-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb13-46"><a href="left-off-here..html#cb13-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @references Stata 14 help for tabstat</span></span>
+<span id="cb13-47"><a href="left-off-here..html#cb13-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  \url{http://www.stata.com/help.cgi?tabstat}</span></span>
+<span id="cb13-48"><a href="left-off-here..html#cb13-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb13-49"><a href="left-off-here..html#cb13-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb13-50"><a href="left-off-here..html#cb13-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; data(mtcars)</span></span>
+<span id="cb13-51"><a href="left-off-here..html#cb13-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb13-52"><a href="left-off-here..html#cb13-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; # Single univariate analysis with Defaults</span></span>
+<span id="cb13-53"><a href="left-off-here..html#cb13-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; tabstat(mtcars$mpg)</span></span>
+<span id="cb13-54"><a href="left-off-here..html#cb13-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb13-55"><a href="left-off-here..html#cb13-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; # Single univariate analysis with all stats</span></span>
+<span id="cb13-56"><a href="left-off-here..html#cb13-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; tabstat(mtcars$mpg, stats = c(&quot;n&quot;, &quot;nmiss&quot;, &quot;ci&quot;, &quot;sum&quot;, &quot;max&quot;, &quot;min&quot;,</span></span>
+<span id="cb13-57"><a href="left-off-here..html#cb13-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; &quot;range&quot;, &quot;sd&quot;, &quot;var&quot;, &quot;cv&quot;, &quot;sem&quot;, &quot;skew&quot;, &quot;kurt&quot;, &quot;p1&quot;, &quot;p5&quot;, &quot;p10&quot;,</span></span>
+<span id="cb13-58"><a href="left-off-here..html#cb13-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; &quot;p25&quot;, &quot;p50&quot;, &quot;median&quot;, &quot;p75&quot;, &quot;p90&quot;, &quot;p95&quot;, &quot;p99&quot;, &quot;iqr&quot;, &quot;q&quot;))</span></span></code></pre></div>
+</div>
+<div id="dont-run-the-examples" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Don’t run the examples</h3>
+<p>If you don’t want the examples to actually run, You can surround the example code with  like this:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="left-off-here..html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb14-2"><a href="left-off-here..html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; \dontrun{</span></span>
+<span id="cb14-3"><a href="left-off-here..html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; library(dplyr)</span></span>
+<span id="cb14-4"><a href="left-off-here..html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; library(meantables)</span></span>
+<span id="cb14-5"><a href="left-off-here..html#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb14-6"><a href="left-off-here..html#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; data(mtcars)</span></span>
+<span id="cb14-7"><a href="left-off-here..html#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb14-8"><a href="left-off-here..html#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; # Overall mean table with defaults</span></span>
+<span id="cb14-9"><a href="left-off-here..html#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb14-10"><a href="left-off-here..html#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; mtcars %&gt;%</span></span>
+<span id="cb14-11"><a href="left-off-here..html#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;   mean_table(mpg)</span></span>
+<span id="cb14-12"><a href="left-off-here..html#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb14-13"><a href="left-off-here..html#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; # A tibble: 1 x 9</span></span>
+<span id="cb14-14"><a href="left-off-here..html#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;   response_var     n  mean    sd   sem   lcl   ucl   min   max</span></span>
+<span id="cb14-15"><a href="left-off-here..html#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;   &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb14-16"><a href="left-off-here..html#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; 1 mpg             32  20.1  6.03  1.07  17.9  22.3  10.4  33.9</span></span>
+<span id="cb14-17"><a href="left-off-here..html#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; }</span></span></code></pre></div>
+</div>
+<div id="keyboard-shortcut-for-inserting-roxygen-comment" class="section level3" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Keyboard shortcut for inserting roxygen #’ comment</h3>
+<p>There doesn’t appear to be a keyboard shortcut, but this <a href="https://stackoverflow.com/questions/33399203/keyboard-shortcut-for-inserting-roxygen-comment-start#:~:text=But%20you%20can%20add%20an,%2Balt%2Bshift%2BR%20.">StackOverflow post</a> shows a good method for using RStudio’s find and replace.</p>
+</div>
+<div id="documenting-package" class="section level3" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Documenting Package:</h3>
+<p>You can use roxygen to provide a help page for your package as a whole. <a href = "http://r-pkgs.had.co.nz/man.html" target = "_blank">More information is available from Hadley here</a>.</p>
+<p><strong>At this point, you have a usable package</strong></p>
+</div>
+<div id="once-package-is-complete-ish" class="section level3" number="2.2.5">
+<h3><span class="header-section-number">2.2.5</span> Once package is complete (ish)</h3>
+<ol style="list-style-type: decimal">
+<li><p>Update documentation (help pages). Build &gt; More &gt; Document, or shift + cmd + D.</p></li>
+<li><p>Check the package by clicking Build &gt; Check. This will look for common package problems</p></li>
+<li><p>Click Build &gt; Build &amp; Reload. That will build the package and install it in your local package directory</p></li>
+<li><p>If you want to copy the package to send to someone else, click Build &gt; More &gt; Build source package. RStudio will build the package and save it as a .tar.gz file. You can then send it to another user to be installed on their system.</p></li>
+<li><p>If you are using GitHub, you need to commit changes and then push them to GitHub. More information about using Git and GitHub are available <a href = "http://r-pkgs.had.co.nz/git.html" target = "_blank">here</a>. Other users can install your package directly from GitHub with <code>install.packages("devtools")</code> followed by <code>devtools::install_github("username/packagename")</code>.</p></li>
+</ol>
+</div>
+<div id="notes-about-package-notes" class="section level3" number="2.2.6">
+<h3><span class="header-section-number">2.2.6</span> Notes about package notes:</h3>
 <ul>
-<li><a href="https://bookdown.org/yihui/bookdown/">Yihui Xie’s Bookdown book</a></li>
+<li><p>Because packages are almost always a work in progress, you will want to add notes to yourself about the project in the source package that you don’t want others to see. You can do this by creating a notes directory, and then listing that directory in <code>.Rbuildignore</code>. You can add to buildignore using <code>usethis::use_build_ignore("notes")</code>. More information is available <a href="http://r-pkgs.had.co.nz/package.html">here</a>.</p></li>
+<li><p>Also make sure to add NOTES to <code>.gitignore</code> with <code>usethis::use_git_ignore("notes")</code></p></li>
+<li><p>Use NOTES for notes, but not tasks. Why or how, but not what. Tasks go into issues.</p></li>
+<li><p>There is a NOTES template in R/Templates.</p></li>
 </ul>
 </div>
-<div id="creating-the-bookdown-project-locally" class="section level2" number="12.3">
-<h2><span class="header-section-number">12.3</span> Creating the bookdown project locally</h2>
+</div>
+<div id="step-4-synchronize-with-github" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Step 4: Synchronize with GitHub</h2>
+<p>Again, details are available in <a href = "http://r-pkgs.had.co.nz/git.html" target = "_blank">Hadley Wickham’s Book</a>.</p>
+<p>Note: to exculde files from add them to <code>.gitignore</code> manually, or by clicking Git &gt; More &gt; Ignore.</p>
 <ol style="list-style-type: decimal">
-<li><p>Start by clicking New Project -&gt; New Directory -&gt; Book project using Bookdown.</p></li>
-<li><p>Add a NOTES file and add it to <code>.gitignore</code> and <code>.Rbuildignore</code> using <code>usethis</code>:</p>
+<li><p>If you didn’t check “Create a git repository” in step 1, you’ll need to create one now. Do so by clicking Project Options &gt; Git/SVN &gt; Version Control System.</p></li>
+<li><p>May need to restart R</p></li>
+<li><p><a href="http://r-pkgs.had.co.nz/release.html#readme">Create a README.md file</a> (<code>devtools::use_readme_rmd()</code>)</p></li>
+</ol>
 <ul>
-<li><code>usethis::use_build_ignore("NOTES")</code><br />
-</li>
-<li><code>usethis::use_git_ignore("NOTES")</code></li>
-</ul></li>
-<li><p>Delete all Rmd files except <code>index.Rmd</code></p></li>
-<li><p>Create a folder named <em>chapters</em>.</p></li>
-<li><p>Edit the README file. It can say whatever you want it to. For examples, see here:</p>
-<ul>
-<li><a href="https://github.com/brad-cannell/r4epi" class="uri">https://github.com/brad-cannell/r4epi</a><br />
-</li>
-<li><a href="https://github.com/brad-cannell/r_notes" class="uri">https://github.com/brad-cannell/r_notes</a><br />
-</li>
-<li><a href="https://creativecommons.org/licenses/">Use this website to create a creative commons license</a></li>
-</ul></li>
-<li><p>Add a license file to the project’s root directory. Here is an example.</p></li>
-</ol>
-<p>This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. To view a copy of this license, visit <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" class="uri">http://creativecommons.org/licenses/by-nc-nd/4.0/</a> or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.</p>
-</div>
-<div id="initiate-a-git-repository" class="section level2" number="12.4">
-<h2><span class="header-section-number">12.4</span> Initiate a git repository</h2>
-<p>You need to do this in order to connect to GitHub, and you need to connect to GitHub before editing some of the books configuration files because you will need to add links to the repository.</p>
-<ol style="list-style-type: decimal">
-<li>Type “usethis::use_git(message =”Initial commit“)” in the R console.</li>
-</ol>
-</div>
-<div id="create-a-github-repository-for-the-book" class="section level2" number="12.5">
-<h2><span class="header-section-number">12.5</span> Create a github repository for the book</h2>
-<ol style="list-style-type: decimal">
-<li><p>Go to: <a href="https://github.com/orgs/brad-cannell/dashboard" class="uri">https://github.com/orgs/brad-cannell/dashboard</a></p></li>
-<li><p>Click New</p></li>
-<li><p>Name the repository. For example, “r_notes”</p></li>
-<li><p>Optionally, type in a description. For example, “This is the repository for my R notes bookdown project.”</p></li>
-<li><p>Make the repository public</p></li>
-<li><p>Don’t check the boxes for README, .gitignore, or license</p></li>
-<li><p>Click create repository</p></li>
-<li><p>Follow GitHub’s instructions for pushing the repository to GitHub.</p></li>
-</ol>
-<p>At this point, the GitHub repository should be set up.</p>
-</div>
-<div id="configuring-a-publishing-source-for-the-github-pages-site" class="section level2" number="12.6">
-<h2><span class="header-section-number">12.6</span> Configuring a publishing source for the GitHub Pages site</h2>
-<p>Useful websites:<br />
-* <a href="https://bookdown.org/yihui/bookdown/github.html" class="uri">https://bookdown.org/yihui/bookdown/github.html</a><br />
-* <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" class="uri">https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site</a></p>
-<ol style="list-style-type: decimal">
-<li><p>In the repository, click on Settings, then pages (on the left sidebar).</p></li>
-<li><p>Change the source to Branch:master, folder = docs</p></li>
-</ol>
-</div>
-<div id="modify-_bookdown.yml" class="section level2" number="12.7">
-<h2><span class="header-section-number">12.7</span> Modify _bookdown.yml</h2>
-<p>Start with this example and modify as needed</p>
-<pre eval="FALSE"><code>book_filename: &quot;R 4 Epidemiology&quot;
-repo: https://github.com/brad-cannell/r4epi
-output_dir: docs
-delete_merged_file: true
-language:
-  ui:
-    chapter_name: &quot;&quot;
-new_session: no
-rmd_subdir: [&quot;chapters&quot;]</code></pre>
-</div>
-<div id="modify-_output.yml" class="section level2" number="12.8">
-<h2><span class="header-section-number">12.8</span> Modify _output.yml</h2>
-<p>Start with this example and modify as needed</p>
-<pre eval="FALSE"><code>bookdown::gitbook:
-  css: style.css
-  config:
-    toc:
-      collapse: section
-      scroll_highlight: yes
-      before: |
-        &lt;li&gt;&lt;a href=&quot;./&quot;&gt;R for Epidemiology&lt;/a&gt;&lt;/li&gt;
-      after: |
-        &lt;li&gt;&lt;a href=&quot;https://github.com/rstudio/bookdown&quot; target=&quot;blank&quot;&gt;Published with bookdown&lt;/a&gt;&lt;/li&gt;</code></pre>
-</div>
-<div id="modify-style.css" class="section level2" number="12.9">
-<h2><span class="header-section-number">12.9</span> Modify style.css</h2>
-<div class="sourceCode" id="cb251"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb251-1"><a href="bookdown-quick-start.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="co">/******************************************************************************</span></span>
-<span id="cb251-2"><a href="bookdown-quick-start.html#cb251-2" aria-hidden="true" tabindex="-1"></a><span class="co">CSS for the R4Epi textbook</span></span>
-<span id="cb251-3"><a href="bookdown-quick-start.html#cb251-3" aria-hidden="true" tabindex="-1"></a><span class="co">******************************************************************************/</span></span>
-<span id="cb251-4"><a href="bookdown-quick-start.html#cb251-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb251-5"><a href="bookdown-quick-start.html#cb251-5" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
-<span id="cb251-6"><a href="bookdown-quick-start.html#cb251-6" aria-hidden="true" tabindex="-1"></a><span class="co">CSS that came with bookdown</span></span>
-<span id="cb251-7"><a href="bookdown-quick-start.html#cb251-7" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
-<span id="cb251-8"><a href="bookdown-quick-start.html#cb251-8" aria-hidden="true" tabindex="-1"></a>p<span class="fu">.caption</span> {</span>
-<span id="cb251-9"><a href="bookdown-quick-start.html#cb251-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">#777</span><span class="op">;</span></span>
-<span id="cb251-10"><a href="bookdown-quick-start.html#cb251-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">margin-top</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb251-11"><a href="bookdown-quick-start.html#cb251-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb251-12"><a href="bookdown-quick-start.html#cb251-12" aria-hidden="true" tabindex="-1"></a>p code {</span>
-<span id="cb251-13"><a href="bookdown-quick-start.html#cb251-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">white-space</span>: <span class="bu">inherit</span><span class="op">;</span></span>
-<span id="cb251-14"><a href="bookdown-quick-start.html#cb251-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb251-15"><a href="bookdown-quick-start.html#cb251-15" aria-hidden="true" tabindex="-1"></a>pre {</span>
-<span id="cb251-16"><a href="bookdown-quick-start.html#cb251-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">word-break</span>: <span class="dv">normal</span><span class="op">;</span></span>
-<span id="cb251-17"><a href="bookdown-quick-start.html#cb251-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">word-wrap</span>: <span class="dv">normal</span><span class="op">;</span></span>
-<span id="cb251-18"><a href="bookdown-quick-start.html#cb251-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb251-19"><a href="bookdown-quick-start.html#cb251-19" aria-hidden="true" tabindex="-1"></a>pre code {</span>
-<span id="cb251-20"><a href="bookdown-quick-start.html#cb251-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">white-space</span>: <span class="bu">inherit</span><span class="op">;</span></span>
-<span id="cb251-21"><a href="bookdown-quick-start.html#cb251-21" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb251-22"><a href="bookdown-quick-start.html#cb251-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb251-23"><a href="bookdown-quick-start.html#cb251-23" aria-hidden="true" tabindex="-1"></a><span class="co">/* </span></span>
-<span id="cb251-24"><a href="bookdown-quick-start.html#cb251-24" aria-hidden="true" tabindex="-1"></a><span class="co">Font Styles</span></span>
-<span id="cb251-25"><a href="bookdown-quick-start.html#cb251-25" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
-<span id="cb251-26"><a href="bookdown-quick-start.html#cb251-26" aria-hidden="true" tabindex="-1"></a><span class="fu">.large-bold</span> {</span>
-<span id="cb251-27"><a href="bookdown-quick-start.html#cb251-27" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-size</span>: <span class="dv">2</span><span class="dt">em</span><span class="op">;</span></span>
-<span id="cb251-28"><a href="bookdown-quick-start.html#cb251-28" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-weight</span>: <span class="dv">bold</span><span class="op">;</span></span>
-<span id="cb251-29"><a href="bookdown-quick-start.html#cb251-29" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb251-30"><a href="bookdown-quick-start.html#cb251-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb251-31"><a href="bookdown-quick-start.html#cb251-31" aria-hidden="true" tabindex="-1"></a><span class="fu">.underline</span> {</span>
-<span id="cb251-32"><a href="bookdown-quick-start.html#cb251-32" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-decoration</span>: <span class="dv">underline</span><span class="op">;</span></span>
-<span id="cb251-33"><a href="bookdown-quick-start.html#cb251-33" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb251-34"><a href="bookdown-quick-start.html#cb251-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb251-35"><a href="bookdown-quick-start.html#cb251-35" aria-hidden="true" tabindex="-1"></a><span class="fu">.red-text</span> {</span>
-<span id="cb251-36"><a href="bookdown-quick-start.html#cb251-36" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">red</span><span class="op">;</span></span>
-<span id="cb251-37"><a href="bookdown-quick-start.html#cb251-37" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb251-38"><a href="bookdown-quick-start.html#cb251-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb251-39"><a href="bookdown-quick-start.html#cb251-39" aria-hidden="true" tabindex="-1"></a><span class="fu">.code</span> {</span>
-<span id="cb251-40"><a href="bookdown-quick-start.html#cb251-40" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">#0365C0</span><span class="op">;</span></span>
-<span id="cb251-41"><a href="bookdown-quick-start.html#cb251-41" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-family</span>: <span class="st">&quot;Courier New&quot;</span><span class="op">,</span> Courier<span class="op">,</span> <span class="dv">monospace</span><span class="op">;</span></span>
-<span id="cb251-42"><a href="bookdown-quick-start.html#cb251-42" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb251-43"><a href="bookdown-quick-start.html#cb251-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb251-44"><a href="bookdown-quick-start.html#cb251-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb251-45"><a href="bookdown-quick-start.html#cb251-45" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
-<span id="cb251-46"><a href="bookdown-quick-start.html#cb251-46" aria-hidden="true" tabindex="-1"></a><span class="co">Note styles</span></span>
-<span id="cb251-47"><a href="bookdown-quick-start.html#cb251-47" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
-<span id="cb251-48"><a href="bookdown-quick-start.html#cb251-48" aria-hidden="true" tabindex="-1"></a><span class="fu">.note</span> {</span>
-<span id="cb251-49"><a href="bookdown-quick-start.html#cb251-49" aria-hidden="true" tabindex="-1"></a>  <span class="kw">-moz-border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb251-50"><a href="bookdown-quick-start.html#cb251-50" aria-hidden="true" tabindex="-1"></a>  <span class="kw">-webkit-border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb251-51"><a href="bookdown-quick-start.html#cb251-51" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-color</span>: <span class="cn">#f0f7fb</span><span class="op">;</span></span>
-<span id="cb251-52"><a href="bookdown-quick-start.html#cb251-52" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border</span>: <span class="dv">solid</span> <span class="dv">1</span><span class="dt">px</span> <span class="cn">#3498db</span><span class="op">;</span></span>
-<span id="cb251-53"><a href="bookdown-quick-start.html#cb251-53" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb251-54"><a href="bookdown-quick-start.html#cb251-54" aria-hidden="true" tabindex="-1"></a>  <span class="kw">line-height</span>: <span class="dv">18</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb251-55"><a href="bookdown-quick-start.html#cb251-55" aria-hidden="true" tabindex="-1"></a>  <span class="kw">overflow</span>: <span class="dv">hidden</span><span class="op">;</span></span>
-<span id="cb251-56"><a href="bookdown-quick-start.html#cb251-56" aria-hidden="true" tabindex="-1"></a>  <span class="kw">padding</span>: <span class="dv">15</span><span class="dt">px</span> <span class="dv">15</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb251-57"><a href="bookdown-quick-start.html#cb251-57" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb251-58"><a href="bookdown-quick-start.html#cb251-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb251-59"><a href="bookdown-quick-start.html#cb251-59" aria-hidden="true" tabindex="-1"></a><span class="fu">.warning</span> {</span>
-<span id="cb251-60"><a href="bookdown-quick-start.html#cb251-60" aria-hidden="true" tabindex="-1"></a>  <span class="kw">-moz-border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb251-61"><a href="bookdown-quick-start.html#cb251-61" aria-hidden="true" tabindex="-1"></a>  <span class="kw">-webkit-border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb251-62"><a href="bookdown-quick-start.html#cb251-62" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-color</span>: <span class="cn">#FEFBEA</span><span class="op">;</span></span>
-<span id="cb251-63"><a href="bookdown-quick-start.html#cb251-63" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border</span>: <span class="dv">solid</span> <span class="dv">1</span><span class="dt">px</span> <span class="cn">#F2E394</span><span class="op">;</span></span>
-<span id="cb251-64"><a href="bookdown-quick-start.html#cb251-64" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border-radius</span>: <span class="dv">6</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb251-65"><a href="bookdown-quick-start.html#cb251-65" aria-hidden="true" tabindex="-1"></a>  <span class="kw">line-height</span>: <span class="dv">18</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb251-66"><a href="bookdown-quick-start.html#cb251-66" aria-hidden="true" tabindex="-1"></a>  <span class="kw">overflow</span>: <span class="dv">hidden</span><span class="op">;</span></span>
-<span id="cb251-67"><a href="bookdown-quick-start.html#cb251-67" aria-hidden="true" tabindex="-1"></a>  <span class="kw">padding</span>: <span class="dv">15</span><span class="dt">px</span> <span class="dv">15</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb251-68"><a href="bookdown-quick-start.html#cb251-68" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-</div>
-<div id="modify-index.rmd" class="section level2" number="12.10">
-<h2><span class="header-section-number">12.10</span> Modify index.Rmd</h2>
-<ol style="list-style-type: decimal">
-<li><p>Delete all the example text.</p></li>
-<li><p>Modify the YAML header. Here is an example:</p></li>
-</ol>
-<pre eval="FALSE"><code>--- 
-title: &quot;R for Epidemiology&quot;
-author: &quot;Brad Cannell&quot;
-date: &quot;2022-03-19&quot;
-site: bookdown::bookdown_site
-documentclass: book
-bibliography: [book.bib, packages.bib]
-link-citations: yes
-csl: ama.csl
-github-repo: brad-cannell/r4epi
-url: &#39;https://brad-cannell.github.io/r4epi/&#39;
-description: &quot;This is the textbook for Brad Cannell&#39;s Introduction to R Programming for Epidemiologic Research course.&quot;
----</code></pre>
-<ul>
-<li><p>The <code>csl: ama.csl</code> part of the YAML header allows you to change the bibliography style. You can find a list of styles here: <a href="https://github.com/citation-style-language/styles" class="uri">https://github.com/citation-style-language/styles</a></p></li>
-<li><p>For AMA, which I frequently want, you can just copy and paste from your templates folder.</p></li>
+<li>Note: This only works if you set up the project as a package. Do this, even if you don’t intend to create a package. There are just nice extra tools avaialable when you select project type &gt; R Package.</li>
 </ul>
-<ol start="3" style="list-style-type: decimal">
-<li>First-level headers become chapters. Use <code>{-}</code> at the end of the header if you don’t want the chapter to be numbered. For example <code># Welcome {-}</code></li>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Create a new repo on GitHub: <a href="https://github.com/new" class="uri">https://github.com/new</a>. Give it the same name as your package, and include the package title as the repo description. Leave all the other options as is, then click Submit.</p></li>
+<li><p>Open a shell, then type <code>git remote add origin https://github.com/mbcann01/dataclean.git</code></p></li>
+<li><p>Modify DESCRIPTION to add URL and BugReports fields that link to your new GitHub site.</p></li>
+<li><p>Save the file and commit (with the message “Updating DESCRIPTION to add links to GitHub site”)</p></li>
+<li><p>Open a shell, then type <code>git push -u origin master</code></p></li>
+<li><p>Enter username <code>mbcann01</code> and password <code>asdf1234</code></p></li>
+<li><p>Go to your GitHub page and look at the DESCRIPTION</p></li>
 </ol>
+<div id="get-rid-of-.ds_store" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Get rid of .DS_Store</h3>
+<p>The <code>.DS_Store</code> file can be an annoyance when working with Git on MacOS. <a href="https://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository/107921">Here is a link</a> to instructions for removing <code>.DS_Store</code> from your repository. Do it early and never worry about it again.</p>
+<p>In the terminal, run the following code from the root directory:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="left-off-here..html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove existing files from the repository:</span></span>
+<span id="cb15-2"><a href="left-off-here..html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.DS_Store&quot;</span> <span class="at">-type</span> f <span class="at">-exec</span> git-rm {} <span class="dt">\;</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="left-off-here..html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add .DS_Store to .gitignore</span></span>
+<span id="cb16-2"><a href="left-off-here..html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> .DS_Store <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="left-off-here..html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Commit the file to the repo</span></span>
+<span id="cb17-2"><a href="left-off-here..html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .gitignore</span>
+<span id="cb17-3"><a href="left-off-here..html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&#39;.DS_Store banished!&#39;</span></span></code></pre></div>
 </div>
-<div id="creating-bookdown-chapters" class="section level2" number="12.11">
-<h2><span class="header-section-number">12.11</span> Creating bookdown chapters</h2>
-<p>Each Rmd file is a chapter. Chapters can be broken up into parts. To do so, create a subdirectory for each part inside the <code>chapters</code> folder. The individual Rmd files (i.e. chapters) go inside these folders.</p>
-<p>I typically prefix each folder name that aligns with the order the parts should appear in. For example 01_getting_started, 02_best_practices, etc.</p>
-<p>The first Rmd file in each part folder should have only this content:</p>
-<pre eval="FALSE"><code># (PART) Getting Started {-}
-
-&lt;!-- This Rmd just creates a part heading in the table of contents --&gt;</code></pre>
-<p>Name the file <code>00_part_&lt;part_name&gt;</code></p>
-<p>All subsequent content chapters should start with a first level heading only – No YAML. For example, <code># R scripts</code>.</p>
-<p>For more on chapter content, see <a href="#bookdown-template">Bookdown template chapter</a></p>
+<div id="example-modify-description" class="section level3" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Example: Modify Description</h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="left-off-here..html#cb18-1" aria-hidden="true" tabindex="-1"></a>URL<span class="sc">:</span> https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>mbcann01<span class="sc">/</span>dataclean</span>
+<span id="cb18-2"><a href="left-off-here..html#cb18-2" aria-hidden="true" tabindex="-1"></a>BugReports<span class="sc">:</span> https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>mbcann01<span class="sc">/</span>dataclean<span class="sc">/</span>issues</span></code></pre></div>
 </div>
-<div id="knitting-the-book" class="section level2" number="12.12">
-<h2><span class="header-section-number">12.12</span> Knitting the book</h2>
+<div id="example-installation-instructions-for-readme" class="section level3" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Example Installation instructions for README:</h3>
+<p>All files can be viewed directly on Github. To install this package locally, simply use <code>devtools</code>:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="left-off-here..html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
+<span id="cb19-2"><a href="left-off-here..html#cb19-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;mbcann01/detectPilotTest&quot;</span>)</span>
+<span id="cb19-3"><a href="left-off-here..html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(detectPilotTest)</span>
+<span id="cb19-4"><a href="left-off-here..html#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">browseVignettes</span>(<span class="st">&quot;detectPilotTest&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="step-5-testing" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Step 5: Testing</h2>
+<p>Testing is an important part of programming. For detailed information on testing see the appropriate chapter in <a href = "http://r-pkgs.had.co.nz/tests.html" target = "_blank">Hadley Wickham’s Book</a>.</p>
+<p>Further guidance is available <a href = "https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf" target = "_blank">at the R Journal</a>.</p>
+<p>Get started with <code>devtools::use_testthat()</code>.</p>
 <ol style="list-style-type: decimal">
-<li><p>Click on the build tab, then click “Build Book.”</p></li>
-<li><p>Commit the changes and push to GitHub.</p></li>
-<li><p>After a few minutes, you should see the GitHub pages version working.</p></li>
+<li><p>Create test file. Must be in <code>tests/testhat</code>. File name should start with test_ and the function name. For example, <code>test_check_catvars</code>.</p></li>
+<li><p>Modify your code or tests</p></li>
+<li><p>Test your package with Ctrl/Cmd + Shift + T or <code>devtools::test()</code>.</p></li>
+<li><p>Repeat until all tests pass.</p></li>
 </ol>
 </div>
-<div id="errors-and-warnings" class="section level2" number="12.13">
-<h2><span class="header-section-number">12.13</span> Errors and warnings</h2>
+<div id="vignettes" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Vignettes</h2>
+<p>There are some great vignette resources on the internet:</p>
+<ul>
+<li><p><a href = "http://r-pkgs.had.co.nz/vignettes.html" target = "_blank">Chapter on vignettes in Hadley’s Package book</a></p></li>
+<li><p><a href = "ftp://cran.r-project.org/pub/R/doc/contrib/Leisch-CreatingPackages.pdf" target = "_blank">Leisch’s creating R packages tutorial</a></p></li>
+<li><p><a href = "http://rmflight.github.io/posts/2014/07/vignetteAnalysis.html" target = "_blank">Flight’s article on creating an analysis as a package and vignette</a></p></li>
+</ul>
+<div id="to-create-a-vignette" class="section level3" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> To create a vignette:</h3>
+<ul>
+<li><p>run <code>usethis::use_vignette("my-vignette")</code></p></li>
+<li><p>Open <code>vignettes/my-vignette.Rmd</code></p></li>
+<li><p>Create the vignette</p></li>
+<li><p>Unlike R scripts, install and load packages directly in the vignettes.</p></li>
+<li><p>Knit the vignette - The default action will be to create a version of the vignette that can be viewed in RStudio. However, <code>devtools::install_github()</code> (and friends) will not build vignettes by default because they’re time consuming and may require additional packages. So, in order to be able to view the vignette in RStudio, you must use vignettes = TRUE, e.g., devtools::install_github(“brad-cannell/bfuncs,” build_vignettes = TRUE) instead.</p></li>
+<li><p>Use <code>devtools::build_vignettes()</code> to create an html version of the vignette in <code>inst/doc</code> that you can provide a link to on your Github README page. By default, these folders will be added to .gitignore. Remove them from .gitignore to be able to view/use them on Github. Create a rawgit version of the html vignette file, and providea link to it on README.</p></li>
+<li><p>use use <code>devtools::build()</code> to create a package bundle with the vignettes included. RStudio’s “Build &amp; reload” does not build vignettes to save time.</p></li>
+<li><p>When you add or update vignettes, push to Github again.</p></li>
+</ul>
+</div>
+<div id="vignette-notes" class="section level3" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Vignette Notes:</h3>
+<p>This builds the vignettes, and is probably fine for a regular package of functions. However, when using packages as a means for reproducible, self-contained analysis projects, the vignettes have greater importance, and by default are not easily accessible.<br />
+Need to find a way to make the vignettes more “front and center”</p>
+<ul>
+<li><p>Create a help page for the entire package that includes links to the vignettes?</p></li>
+<li><p>Include links to the README.md file and upload to GitHub (with the data sets excluded)?</p></li>
+<li><p>Remember to use <code>system.file()</code> when reading in data inside a code chunk. If you have trouble getting it to work, try build &amp; reload.</p></li>
+<li><p>To save a data frame to <code>data/</code> inside a vignette, you can use the <a href = "https://github.com/krlmlr/rprojroot" target = "_blank">rprojroot package</a>. use <code>rprojroot::find_root("DESCRIPTION")</code></p></li>
+</ul>
+</div>
+</div>
+<div id="adding-and-documenting-data" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> Adding and documenting data</h2>
+<p>The explanation in the <a href="https://r-pkgs.org/data.html">R Packages book</a> is good, short, and easy to follow.</p>
+</div>
+<div id="submitting-to-cran" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> Submitting to CRAN</h2>
+<p>Useful website: <a href="http://r-pkgs.had.co.nz/release.html" class="uri">http://r-pkgs.had.co.nz/release.html</a></p>
+<ol style="list-style-type: decimal">
+<li><p>Update README before submission. It should roughly match the examples in the roxygen documentation.</p>
+<ul>
+<li>Update <code>README.Rmd</code>, not <code>README.md</code>.<br />
+</li>
+<li>Knit <code>README.Rmd</code> after making changes. This will automatically update <code>README.md</code></li>
+</ul></li>
+<li><p>Update vignettes using <code>devtools::document()</code></p></li>
+<li><p>Update news.md. Here’s dplyr’s: <a href="https://raw.githubusercontent.com/tidyverse/dplyr/master/NEWS.md" class="uri">https://raw.githubusercontent.com/tidyverse/dplyr/master/NEWS.md</a></p></li>
+<li><p>If you were on a development branch, merge with main branch.</p></li>
+<li><p>Use <code>devtools::check()</code></p></li>
+<li><p>Use <code>devtools::check_win_devel()</code> to test the package on Windows</p></li>
+<li><p>Update <code>cran-comments</code>.<br />
+</p></li>
+</ol>
+<ul>
+<li>If this is a resubmission, add a bulleted list of changes made under ## Resubmission.</li>
+</ul>
+<ol start="8" style="list-style-type: decimal">
+<li>Submit with <code>devtools::release()</code></li>
+</ol>
+<p>After the package is accepted, do this stuff: <a href="http://r-pkgs.had.co.nz/release.html#post-release" class="uri">http://r-pkgs.had.co.nz/release.html#post-release</a></p>
+</div>
+<div id="errors-warnings-notes" class="section level2" number="2.8">
+<h2><span class="header-section-number">2.8</span> Errors, warnings, notes</h2>
+<p>Below are some common errors, warnings and notes I’ve encountered during build tests.</p>
 <blockquote>
-<p>Output created: docs/index.html Warning message: In split_chapters(output, gitbook_page, number_sections, split_by, : You have 3 Rmd input file(s) but only 2 first-level heading(s). Did you forget first-level headings in certain Rmd files?</p>
+<p>W checking for unstated dependencies in examples …
+‘library’ or ‘require’ call not declared from: ‘tidyverse’
+E checking examples (707ms)
+Running examples in ‘freqtables-Ex.R’ failed
+The error most likely occurred in:</p>
 </blockquote>
-<p><strong>Solution:</strong> Just ignore this.</p>
+<p>I got this error because I had <code>library(tidyverse)</code> in the<span class="citation"><sup><a href="#ref-examples" role="doc-biblioref"><strong>examples?</strong></a></sup></span> section of my roxygen2 header in one of my R scripts, but I did not have <code>tidyverse</code> in the Imports section of my DESCRIPTION file. I could add <code>tidyverse</code> to the DESCRIPTION file (<code>usethis::use_package("tidyverse", type = "Imports")</code>). However, in this case I chose to use <code>library(dplyr)</code>, which was already in the Imports section of my DESCRIPTION file, instead.</p>
 <blockquote>
-<p>tlmgr: Local TeX Live (2019) is older than remote repository (2020).</p>
+<p>W checking dependencies in R code (369ms)
+‘::’ or ‘:::’ import not declared from: ‘rlang’</p>
 </blockquote>
-<p><strong>Solution:</strong> Run tinytex::reinstall_tinytex()</p>
+<p>To fix this one simply run the following code in the console: <code>usethis::use_package("rlang", type = "Imports")</code></p>
 <blockquote>
-<p>! sh: xelatex: command not found</p>
+<p>Warning: ‘inst/doc’ files … ignored as vignettes have been rebuilt.</p>
 </blockquote>
-<p>You might get this error when trying to build a book in pdf format.</p>
-<p><strong>Solution:</strong> Install MacTEX: <a href="https://www.tug.org/mactex/" class="uri">https://www.tug.org/mactex/</a></p>
+<p>Just ignore this one.</p>
 <blockquote>
-<p>! LaTeX Error: Cannot determine size of graphic in img/getting_started/01_install_r/download_r_mac.gif (no BoundingBox).</p>
+<p>Warning in strptime(xx, f &lt;- “%Y-%m-%d %H:%M:%OS,” tz = tz) : unknown timezone ‘zone/tz/2017c.1.0/zoneinfo/America/Chicago’</p>
 </blockquote>
-<p><strong>Solution:</strong> This is from trying to make a pdf document with a gif in it. LaTeX doesn’t support gifs. Just make a just build the book in gitbook format.</p>
+<p>Just ingnore this one. It’s a problem with my computer, not with the package code.</p>
 <blockquote>
-<p>2: The label(s) fig:source1 not found.</p>
+<p>Non-standard files/directories found at top level: ‘develop_test_table.Rmd’ ‘develop_test_table.nb.html’</p>
 </blockquote>
-<p><strong>Solution:</strong> Figures must have a caption in order to cross reference them.</p>
+<p>Need to delete these files when I’m done developing chi-square test.</p>
 <blockquote>
-<p>[WARNING] Citeproc: citation examples not found</p>
+<p>Prevents R CMD check: “no visible binding for global variable ‘.’”</p>
 </blockquote>
-<p><strong>Solution:</strong> I haven’t found a solution yet, but so far the warning seems ignorable.</p>
+<p>Put the following (for example) directly inside the function definition in the R script where the function is defined:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="left-off-here..html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------</span></span>
+<span id="cb20-2"><a href="left-off-here..html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Prevents R CMD check: &quot;no visible binding for global variable ‘.’&quot;</span></span>
+<span id="cb20-3"><a href="left-off-here..html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------</span></span>
+<span id="cb20-4"><a href="left-off-here..html#cb20-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> n_total <span class="ot">=</span> prop <span class="ot">=</span> t_crit <span class="ot">=</span> se <span class="ot">=</span> lcl_wald <span class="ot">=</span> ucl_wald <span class="ot">=</span> percent <span class="ot">=</span> <span class="cn">NULL</span></span></code></pre></div>
+<blockquote>
+<p>N checking R code for possible problems (1.8s)
+get_group_n: no visible global function definition for ‘%&gt;%’
+Undefined global functions or variables:
+%&gt;%</p>
+</blockquote>
+<p><a href="http://r-pkgs.had.co.nz/namespace.html#imports">Info on fixing this issue</a></p>
+<p>Short answer: Add the following directly inside the roxygen2 header in the R script where the function is defined: <code>@importFrom dplyr %&gt;%</code>. You must also make sure that it gets to the NAMESPACE. Run <code>usethis::use_namespace()</code> and then <code>devtools::document()</code> to get it into NAMESPACE.</p>
+<blockquote>
+<p>Non-standard file/directory found at top level: ‘meantables_hex’</p>
+</blockquote>
+<p>I got this error after submitting meantables to CRAN. The problem is with the hex sticker file in the meantable hex sticker I added for the README. This SO issue gives some advice: <a href="https://stackoverflow.com/questions/44113759/note-or-warning-from-package-check-when-readme-md-includes-images" class="uri">https://stackoverflow.com/questions/44113759/note-or-warning-from-package-check-when-readme-md-includes-images</a></p>
+<p>I moved the stickers to <code>man/figures</code>. It seems to have solved the problem.</p>
 <!--
 Clean up and add session info
 -->
@@ -770,8 +831,8 @@ Clean up and add session info
           </div>
         </div>
       </div>
-<a href="book-chapters.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="flexdashboard.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="my-package-notes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="creating-rmd-templates.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

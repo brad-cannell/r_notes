@@ -36,13 +36,13 @@ Use "we" and "our" language. Make it friendly and informal.
 
 ### Special sections
 
-```{html eval=FALSE}
+```{r eval=FALSE}
 <p class="note"> 🗒**Side Note:** This is an example note. </p>
 ```
 
 <p class="note"> 🗒**Side Note:** This is an example note. </p>
 
-```{html eval=FALSE}
+```{r eval=FALSE}
 <p class="warning"> ⚠️**Warning:** This is an example warning </p>
 ```
 
@@ -64,7 +64,7 @@ knitr::include_graphics("img/06_presenting_results/bookdown_creating_book_chapte
 
 You can also directly use img tags. Here's the one I used for my photo in R4Epi
 
-```{html eval=FALSE}
+```{r eval=FALSE}
 <!-- Cannell profile photo -->
 <img align="right" src="img/index/cannell-headshot copy.png" alt="R4Epi hex logo" width="250" style="margin: 0 1em 0 1em; border-radius: 20px 0px 20px 0px;">
 ```
@@ -75,7 +75,7 @@ Yihui talks about some of the advantages of using `knitr::include_graphics()` he
 
 There are few different ways to incorporate font awesome icons into your output. The font awesome package (https://github.com/rstudio/fontawesome) is my favorite so far. Here are the social media links I added to [R4Epi](https://www.r4epi.com/about-the-authors.html):
 
-```{html eval=FALSE}
+```{r eval=FALSE}
 **Contact**   
 Connect with Dr. Cannell and follow his work.   
 <a href="https://www.bradcannell.com" target="_blank">`r fa("globe", fill = "#003087", height="2em")`</a>
@@ -98,7 +98,7 @@ Add the following below code blocks...
 
 Use unordered lists for these sections. It allows for nested lists and code. Add line breaks in between the bullets.
 
-```{html eval=FALSE}
+```{r eval=FALSE}
 <ul>
   <li>You can type `?mutate` into your R console to view the help documentation for this function and follow along with the explanation below./li>
   

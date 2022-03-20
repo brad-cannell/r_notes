@@ -6,91 +6,263 @@ Hidden comments placeholder
 
 ## ⭐️Overview
 
-This chapter is my quick start guide for creating packages. 
+This chapter is my quick start guide for creating packages. I'm going to walk through the process I used to create the `codebook` package, plus add some extra notes that have been helpful along the way when creating other packages. 
+
+This is not meant to be a comprehensive guide to creating packages. [Hadley Wickham and Jenny Bryan's R Packages book](https://r-pkgs.org/) already exists for that purpose. This is supposed to just be a quick overview and some notes to remember in the future. 
+
 
 ## 🌎Useful websites
 
 * [Hadley Wickham and Jenny Bryan's R Packages book](https://r-pkgs.org/)   
-* [RStudio Tutorial](https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-programming-part-3/)
 * [devtools package](https://github.com/r-lib/devtools)   
 * [usethis package](https://github.com/r-lib/usethis)
 
 
-## Step 1: Create the package project
+## Quick Process 
 
-Call create_package() to initialize a new package in a directory on your computer (and create the directory, if necessary).
+1. [Create new project/package directory](#create) with `usethis::create_package()`. (Restart)  
+
+2. [Add a NOTES file](#notes).
+
+3. [Add license](#license).
+
+4. [Modify the description file](#modify).
+
+5. [Add README](#readme).
+
+6. [Add Git](#git).
+
+7. [Connect to GitHub](#github).
+
+8. [Add functions to the package](#package-functions).
+
+
+## Before creating the package
+
+Give the package a new ([Hadley's naming strategies](http://r-pkgs.had.co.nz/package.html))
+
+
+## Step 1: Create the package project {#create}
+
+Call `create_package()` to initialize a new package in a directory on your computer (and create the directory, if necessary).
 
 ```{r, eval=FALSE}
 usethis::create_package("/Users/bradcannell/Dropbox/R/Packages/codebook")
 ```
 
+The function will do all of this:
 
-1. File > New Project
-
-2. New Directory > R Package
-
-3. Give the package a new ([Hadley's naming strategies](http://r-pkgs.had.co.nz/package.html))
-
-4. If you have R scripts written already, and wish to add them to the package, you can do so using the dialogue box titled "Create package based on source files"
-
-5. Check "Create a git repository" (You can add later)
-
-At this point RStudio should automatically open up the Rproj file we just created.   
-
-* Make sure you have the latest version of R, then run the following code to get the packages you’ll need:
-
-```{r eval=FALSE}
-install.packages(c("devtools", "roxygen2", "testthat", "knitr"))
-```
-
-Use the following code to access new devtools functions as I develop them. This is particularly important during the development of the book.
-
-```{r eval=FALSE}
-devtools::install_github("hadley/devtools")
-library(devtools)
-has_devel()
+```{r echo=FALSE}
+knitr::include_graphics("img/01_programming/create_package.png")
 ```
 
 
-### Step 2: Modify the description file
+## Step 2: Add a NOTES file {#notes}
 
-Open the description file and make some changes. Here is an example:
+The [R Packages book](https://r-pkgs.org/) doesn't mention creating a `NOTES` file, but it's something I like to do. I use the notes file to help me remember little things related to the development of the package that aren't meant to be shared publicly. 
+
+1. Create a new text file, add the following template to the top of the file, and fill it out appropriately. 
 
 ```{r eval=FALSE}
-Package: freqtables
-Type: Package
-Title: Make Quick Descriptive Tables For Categorical Variables
-Description: Quickly make tables of descriptive statistics (i.e., counts, 
-    percentages, confidence intervals) for categorical variables. This 
-    package is designed to work in a tidyverse pipeline, and consideration
-    has been given to get results from R to Microsoft Word ® with minimal pain.
-Version: 0.1.0
+# =============================================================================
+# codebook notes
+# =============================================================================
+
+Use NOTES for notes, but not tasks. Why or how, but not what.
+
+...
+
+
+Submission Notes:
+-----------------
+* Useful website: http://r-pkgs.had.co.nz/release.html
+* Update README before submission. It should roughly match the examples in the roxygen documentation.
+  - Update README.Rmd, not README.md.
+  - Knit README.Rmd after making changes. This will automatically update README.md
+* Update vignettes using devtools::document()
+* Update news.md. Here's dplyr's (https://raw.githubusercontent.com/tidyverse/dplyr/master/NEWS.md)
+* If you were on a development branch, merge with main branch.
+* Use devtools::check()
+* Use devtools::check_win_devel() to test the package on Windows
+* Update cran-comments.
+  - If this is a resubmission, add a bulleted list of changes made under ## Resubmission.
+* Submit with devtools::release()
+* After the package is accepted, do this stuff: http://r-pkgs.had.co.nz/release.html#post-release
+```
+
+2. Save as `NOTES`
+
+3. Add to gitignore.
+
+```{r eval=FALSE}
+usethis::use_git_ignore("NOTES")
+```
+
+4. Add to buildignore. 
+
+```{r eval=FALSE}
+usethis::use_build_ignore("NOTES")
+```
+
+
+## Step 3: Add license {#license} 
+
+```{r, eval=FALSE}
+usethis::use_mit_license()
+```
+
+The function will do all of this:
+
+```{r echo=FALSE}
+knitr::include_graphics("img/01_programming/use_mit_license.png")
+```
+
+You will still need to open the new `LICENSE` file and change `COPYRIGHT HOLDER:` to "Brad Cannell". You can also look in the templates folder for more elaborate licenses. 
+
+
+## Step 4: Modify the description file {#modify}
+
+Open the description file and make some changes. 
+
+Here is a minimal example from `codebook`:
+
+```{r eval=FALSE}
+Package: codebook
+Title: Create Codebooks From Data Frames
+Version: 0.0.0.9000
 Authors@R: person("Brad", "Cannell", email = "brad.cannell@gmail.com",
-  role = c("aut", "cre"))
+  role = c("aut", "cre", "cph"))
 Maintainer: Brad Cannell <brad.cannell@gmail.com>
-URL: https://github.com/brad-cannell/freqtables
-BugReports: https://github.com/brad-cannell/freqtables/issues
+Description: The codebook package is intended to make it easy for users to 
+  create codebooks (i.e. data dictionaries) directly from data frame.
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.0.2
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+```
+
+Here is a slightly more elaborate example from `meantables`:
+
+```{r eval=FALSE}
+Package: meantables
+Type: Package
+Title: Make Quick Descriptive Tables for Continuous Variables
+Description: Quickly make tables of descriptive statistics (i.e., counts, 
+    means, confidence intervals) for continuous variables. This 
+    package is designed to work in a Tidyverse pipeline, and consideration
+    has been given to get results from R to 'Microsoft Word' ® with minimal pain.
+Version: 0.1.2
+Authors@R: person("Brad", "Cannell", email = "brad.cannell@gmail.com",
+  role = c("aut", "cre", "cph"))
+Maintainer: Brad Cannell <brad.cannell@gmail.com>
+License: MIT + file LICENSE
+Encoding: UTF-8
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: knitr
+RoxygenNote: 7.1.2
 Imports: 
-    dplyr
+    dplyr,
+    tibble,
+    rlang,
+    stringr
 ```
 
 * Remember that Title Case is required for the Title
 
-* **Do Not** use `library(package)` in R scripts - instead add package dependencies to the `Imports` or `Remotes` field in the DESCRIPTION. **Do** use `library(package)` in vignette .Rmd files, and **do not** add these package dependencies to the DESCRIPTION
+* **Do Not** use `library(package)` in R scripts - instead add package dependencies to the `Imports` or `Remotes` field in the DESCRIPTION. **Do** use `library(package)` in vignette .Rmd files, and **DO NOT** add these package dependencies to the DESCRIPTION
 
-* If we added R scripts to the package in Step 1, bullet 4 above, we need to open them now and make sure to remove all the library functions. Note that these R scripts are not linked to the original R scripts. In other words, if I make a change to props.R inside my package, those changes are reflected in the original props.R script.
-
-* If you use MIT license, remember to add the license file (without file extension) to the main package directory.
+* If we already added R scripts to the package directory, we need to open them now and make sure to remove all the `library()` functions. 
 
 * When adding CRAN packages to imports, you must first make sure they are installed.
 
 * <a href = "https://github.com/hadley/devtools/blob/master/vignettes/dependencies.Rmd" target = "_blank">Instructions for installing dependencies from sources other than CRAN are given here</a>.
 
-### Working with R scripts
+
+## Step 5: Add README {#readme}
+
+In [R Packages, Chapter 2: The Whole Game](https://r-pkgs.org/whole-game.html), Hadley and Jenny basically create all the package code before connecting their project to their remote repository on GitHub. I actually like to connect my project to GitHub before I write any code. I do this for several reasons, one of which is that I can start using GitHub's issues and project boards right away to take notes and plan package development. 
+
+And, I like to create the README file before I initialize Git or connect with GitHub. That's what we will do in this step. 
+
+```{r, eval=FALSE}
+usethis::use_readme_rmd()
+```
+
+* I generally just copy the Description section from the `DESCRIPTION` file and use it replace the "The goal of codebook is to ..." sentence that that `use_readme_rmd()` creates by default. 
+
+* Comment out all of the code chunks that `use_readme_rmd()` creates by default.
+
+* Add installation instructions to README 
+
+The README file already contains the following lines:
+
+```{r echo=FALSE}
+knitr::include_graphics("img/01_programming/install_placeholder.png")
+```
+
+We just need to replace it with:
+
+```{r eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("brad-cannell/codebook")
+```
+
+* Just replace "codebook" in the path above with the name of the repository for the package project you are currently working on. 
+
+* You can leave everything else as-is for now. 
+
+**Render README**
+
+Don’t forget to render it to make README.md! The pre-commit hook should remind you if you try to commit README.Rmd, but not README.md, and also when README.md appears to be out-of-date.
+
+The very best way to render README.Rmd is with build_readme(), because it takes care to render with the most current version of your package, i.e. it installs a temporary copy from the current source.
+
+```{r, eval=FALSE}
+devtools::build_readme()
+```
+
+
+## Step 6: Add Git {#git}
+
+```{r, eval=FALSE}
+usethis::use_git()
+```
+
+* Go ahead and commit all the files in the directory so far, and agree to restart R. 
+
+
+## Step 7: Connect to GitHub {#github}
+
+```{r eval=FALSE}
+usethis::use_github()
+```
+
+The function will do all of this:
+
+```{r echo=FALSE}
+knitr::include_graphics("img/01_programming/use_github.png")
+```
+
+* Go ahead and agree to commit. 
+
+
+## Step 8: Add functions to the package {#package-functions}
+
+At this point, we have an (empty) working package, which can be downloaded from our GitHub repository. Now, we just need to add the functions, data, and documentation that will make it actually worth using. 
+
+
+
+
+# Left off here....
+
+
+
+
+
+## Working with R scripts
 
 1. Don't write or alter your functions in the console as you would in a typical interactive session. If you do, it's easy for the version you're using interactively and the version you are actually including in your package to get out of sync. Instead, _load_ the package.
 

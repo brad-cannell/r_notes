@@ -20,7 +20,7 @@ How do you interpret an attributable risk? <https://sphweb.bumc.bu.edu/otlt/mph-
 
 ## 🌎Useful websites
 
-* Then note on [Contingency Tables]
+* The note on [Contingency Tables]
 
 * [Boston University](https://sphweb.bumc.bu.edu/otlt/mph-modules/ep/ep713_association/ep713_association_print.html)
 

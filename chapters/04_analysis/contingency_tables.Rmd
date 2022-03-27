@@ -31,7 +31,6 @@ In Epi III (and epidemiology in general) we use a lot of contingency tables - es
 
 ```{r message=FALSE}
 library(dplyr, warn.conflicts = FALSE)
-library(freqtables)
 ```
 
 
@@ -84,9 +83,15 @@ We go through each of these operations below.
 
 This scenario is borrowed from the [Boston University](https://sphweb.bumc.bu.edu/otlt/mph-modules/ep/ep713_association/ep713_association_print.html) website. 
 
-Data Summary
+**Data Summary**
 
-Consider the following example regarding the management of Hodgkin lymphoma, a cancer of the lymphatic system. Years ago when a patient was diagnosed with Hodgkin Disease, they would frequently undergo a surgical procedure called a "staging laparotomy." The purpose of the staging laparotomy was to determine the extent to which the cancer had spread, because this was important information for determining the patient's prognosis and optimizing treatment. At times, the surgeons performing this procedure would also remove the patient's appendix, not because it was inflamed; it was done "incidentally" in order to ensure that the patient never had to worry about getting appendicitis. However, performing an appendectomy requires transecting it, and this has the potential to contaminate the abdomen and the wound edges with bacteria normally contained inside the appendix. Some surgeons felt that doing this "incidental appendectomy" did the patient a favor by ensuring that they would never get appendicitis, but others felt that it meant unnecessarily increasing the patient's risk of getting a post-operative wound infection by spreading around the bacteria that was once inside the appendix. To address this, the surgeons at a large hospital performed a retrospective cohort study. They began by going through the hospital's medical records to identify all subjects who had had a "staging laparotomy performed for Hodgkin." They then reviewed the medical record and looked at the operative report to determine whether the patient had an incidental appendectomy or not. They then reviewed the progress notes, the laboratory reports, the nurses notes, and the discharge summary to determine whether the patient had developed a wound infection during the week after surgery. The investigators reviewed the records of 210 patients who had undergone the staging procedure and found that 131 had also had an incidental appendectomy, while the other 79 had not. The data from that study are summarized in the table below. The numbers in the second and third columns indicate the number of subjects who did or did not develop a post-operative wound infection among those who had the incidental appendectomy (in the "Yes" row) and those who did not have the incidental appendectomy (in the "No" row). For example, the upper left cell indicates that seven of the subjects who had an incidental appendectomy (the exposure of interest) subsequently developed a wound infection. The upper right cell indicates that the other 124 subjects who had an incidental appendectomy did NOT develop a wound infection.
+Consider the following example regarding the management of Hodgkin lymphoma, a cancer of the lymphatic system. 
+
+Years ago when a patient was diagnosed with Hodgkin Disease, they would frequently undergo a surgical procedure called a "staging laparotomy." The purpose of the staging laparotomy was to determine the extent to which the cancer had spread, because this was important information for determining the patient's prognosis and optimizing treatment. At times, the surgeons performing this procedure would also remove the patient's appendix, not because it was inflamed; it was done "incidentally" in order to ensure that the patient never had to worry about getting appendicitis. However, performing an appendectomy requires transecting it, and this has the potential to contaminate the abdomen and the wound edges with bacteria normally contained inside the appendix. Some surgeons felt that doing this "incidental appendectomy" did the patient a favor by ensuring that they would never get appendicitis, but others felt that it meant unnecessarily increasing the patient's risk of getting a post-operative wound infection by spreading around the bacteria that was once inside the appendix. 
+
+To address this, the surgeons at a large hospital performed a retrospective cohort study. They began by going through the hospital's medical records to identify all subjects who had had a "staging laparotomy performed for Hodgkin." They then reviewed the medical record and looked at the operative report to determine whether the patient had an incidental appendectomy or not. They then reviewed the progress notes, the laboratory reports, the nurses notes, and the discharge summary to determine whether the patient had developed a wound infection during the week after surgery. 
+
+The investigators reviewed the records of 210 patients who had undergone the staging procedure and found that 131 had also had an incidental appendectomy, while the other 79 had not. The data from that study are summarized in the table below. The numbers in the second and third columns indicate the number of subjects who did or did not develop a post-operative wound infection among those who had the incidental appendectomy (in the "Yes" row) and those who did not have the incidental appendectomy (in the "No" row). For example, the upper left cell indicates that seven of the subjects who had an incidental appendectomy (the exposure of interest) subsequently developed a wound infection. The upper right cell indicates that the other 124 subjects who had an incidental appendectomy did NOT develop a wound infection.
 
 |                              |                 |                    |       |
 |------------------------------|-----------------|--------------------|-------|
@@ -109,22 +114,72 @@ df <- tibble(
   appendectomy = factor(c(rep("Yes", 7), rep("Yes", 124), "No", rep("No", 78))),
   infection    = factor(c(rep("Yes", 7), rep("No", 124), "Yes", rep("No", 78)))
 ) %>% 
-print()
+  print()
+```
+
+### Frequency table {#man-freq-tbl}
+
+Next, we will manually create a frequency table. In our experience, it isn't common for analysts or investigators to manually create a frequency table representation of data. However, creating frequency tables this way is pretty straightforward and easy to do.
+
+We can do using the `tibble()` (or `data.frame()`) function.
+
+```{r}
+freq_tbl <- tibble(
+  appendectomy = c("Yes", "Yes", "No", "No"),
+  infection    = c("Yes", "No", "Yes", "No"),
+  count        = c(7, 124, 1, 78)
+) %>% 
+  print()
+```
+
+Or by using the `tribble()` function. 
+
+```{r}
+freq_tbl <- tribble(
+  ~appendectomy, ~infection, ~count,
+  "Yes", "Yes", 7,
+  "Yes", "No",  124,
+  "No",  "Yes", 1,
+  "No",  "No",  78
+) %>% 
+  print()
+```
+
+Either way, the end result is exactly the same. Which method of data entry you use is largely a matter of preference. 
+
+As you can see below, we can also add marginal totals to our frequency table, which can be useful for other analyses we may want to do.
+
+```{r}
+# Add margins
+freq_tbl %>% 
+  group_by(appendectomy) %>% 
+  mutate(appendectomy_totals = sum(count)) %>% 
+  group_by(infection) %>% 
+  mutate(infection_totals = sum(count)) %>% 
+  ungroup() %>% 
+  mutate(margin_total = sum(count))
 ```
 
 ### Contingency tables
 
-#### Matrix object
+The third type of data structure we will manually create is the contingency table -- the focus of this chapter. There are several ways to manually create contingency tables in R. We will demonstrate many of them below.
 
-Create a contingency table as a **matrix** object. 
+#### Matrix object {#manual-matrix-ct}
+
+First, we can manually create a contingency table as a matrix object. 
 
 ```{r}
 matrix_ct <- matrix(
   c(a = 7, b = 124, c = 1, d = 78),
   ncol = 2,
   byrow = TRUE
-)
+) %>% 
+  print()
+```
 
+Then, we can add row and column names to make the matrix more readable.
+
+```{r}
 # Add names to make the matrix more readable
 rownames(matrix_ct) <- c("Appendectomy", "No Appendectomy")
 colnames(matrix_ct) <- c("Infection", "No Infection")
@@ -132,21 +187,79 @@ colnames(matrix_ct) <- c("Infection", "No Infection")
 matrix_ct
 ```
 
-Adding summary rows/columns to the matrix.
+Or alternatively like this.
 
 ```{r}
-matrix_ct_margins <- cbind(matrix_ct, rowsum = rowSums(matrix_ct))
-matrix_ct_margins <- rbind(matrix_ct_margins, colsum = colSums(matrix_ct_margins))
+dimnames(matrix_ct) <- list(
+  c("Appendectomy", "No Appendectomy"),
+  c("Infection", "No Infection")
+)
+
+matrix_ct
+```
+
+Or alternatively like this.
+
+```{r}
+dimnames(matrix_ct) <- list(
+  Appendectomy = c("Yes", "No"),
+  Infection = c("Yes", "No")
+)
+
+matrix_ct
+```
+
+
+Notice that the third method of adding row and column names produces slightly different results.
+
+And we can add marginal totals to the matrix.
+
+```{r}
+addmargins(matrix_ct)
+```
+
+So, putting it all together, there are at least two processes to create a matrix with marginal totals.
+
+```{r}
+# Method 1. Calculate the marginal totals before using dimnames()
+matrix_ct <- matrix(
+  c(a = 7, b = 124, c = 1, d = 78),
+  ncol = 2,
+  byrow = TRUE
+)
+
+matrix_ct_margins <- addmargins(matrix_ct)
+
+dimnames(matrix_ct_margins) <- list(
+  Appendectomy = c("Yes", "No", "colsum"),
+  Infection = c("Yes", "No", "rowsum")
+)
+
 matrix_ct_margins
 ```
 
-#### Table object
+```{r}
+# Method 2. Use rownames() and colnames() instead of dimnames()
+matrix_ct <- matrix(
+  c(a = 7, b = 124, c = 1, d = 78),
+  ncol = 2,
+  byrow = TRUE
+)
 
-The table function "uses the cross-classifying factors to build a contingency table of the counts at each combination of factor levels." (https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/table). This is really R's built-in method for working with contingency tables. However, I haven't found a way to create a table object from scratch (i.e., without making a matrix or data frame first). Because this section is about manually creating each data structure, we won't say anything more about tables here. Later, we will use the `table()` function to convert matrices and data frames to table objects. 
+dimnames(matrix_ct) <- list(
+  Appendectomy = c("Yes", "No"),
+  Infection = c("Yes", "No")
+)
+
+matrix_ct_margins <- addmargins(matrix_ct)
+matrix_ct_margins
+```
+
+At this point, I think I prefer method 2. Only because it leaves `matrix_ct` more readable.
 
 #### Base R data frame with rownames
 
-A third option for manually creating a contingency table is to start with a base R data frame with row names. 
+Another option for manually creating a contingency table is to start with a base R data frame with row names (tibbles drop row names by default, which is usually a good thing).
 
 ```{r}
 df_ct <- data.frame(
@@ -160,7 +273,13 @@ rownames(df_ct) <- c("Appendectomy", "No Appendectomy")
 df_ct
 ```
 
-Add margins:
+And we can add marginal totals to the data frame. However, we cannot do so with the `addmargins()` function. 
+
+```{r error=TRUE}
+addmargins(df_ct)
+```
+
+Therefore, it takes a little bit more code to add margins a contingency table created as a base R data frame. 
 
 ```{r}
 df_ct_margins <- df_ct
@@ -169,65 +288,106 @@ df_ct_margins <- rbind(df_ct_margins, colsum = colSums(df_ct_margins))
 df_ct_margins
 ```
 
-As far as I can tell, there doesn't seem to be an advantage to creating a df from scratch over creating a matrix from scratch. 
-
-### Frequency table
-
-Unlike the other objects, this object won't have the standard contingency table layout. 
-
-```{r}
-freq_tbl <- tribble(
-  ~appendectomy, ~infection, ~count,
-  "Yes", "Yes", 7,
-  "Yes", "No",  124,
-  "No",  "Yes", 1,
-  "No",  "No",  78
-)
-
-# Add margins
-freq_tbl %>% 
-  group_by(appendectomy) %>% 
-  mutate(appendectomy_totals = sum(count)) %>% 
-  group_by(infection) %>% 
-  mutate(infection_totals = sum(count)) %>% 
-  ungroup() %>% 
-  mutate(margin_total = sum(count))
-```
+At this point, I prefer manually creating a contingency table by starting with a matrix than by starting with a base R data frame. This is primarily due to the fact that it's easier to add margins to the matrix than it is to the data frame. 
 
 
 ## Table objects
 
-As stated above, the table object is really R's built-in method for working with contingency tables. However, I haven't found a way to create a table object from scratch (i.e., without making a matrix or data frame first). In this section, we briefly demonstrate how to create a table object from a matrix and from a data frame.
+The `table()` function "uses the cross-classifying factors to build a contingency table of the counts at each combination of factor levels." (https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/table), and this is really R's built-in method for working with contingency tables. However, I haven't found a way to create a table object from scratch (i.e., without making a matrix or data frame first). 
+
+In this section, we briefly demonstrate how to create a table object from a matrix and from a data frame.
 
 ### Table object from matrix
 
-First, we will create a table from a matrix object. 
+First, we will create a table from a matrix object. The code used here to first create the matrix is identical to [the code above](#manual-matrix-ct).
+
+```{r}
+matrix_ct <- matrix(
+  c(a = 7, b = 124, c = 1, d = 78),
+  ncol = 2,
+  byrow = TRUE
+)
+
+dimnames(matrix_ct) <- list(
+  Appendectomy = c("Yes", "No"),
+  Infection = c("Yes", "No")
+)
+
+matrix_ct
+```
 
 ```{r}
 table_from_matrix <- as.table(matrix_ct)
 table_from_matrix
 ```
 
+The results look the same, but they are different under the hood.
+
 ```{r}
-# Add margins
-table_from_matrix_margins <- addmargins(table_from_matrix)
-table_from_matrix_margins
+list(
+  matrix_ct = class(matrix_ct),
+  table_from_matrix = class(table_from_matrix)
+)
 ```
 
-Potential advantages to converting a matrix to a table object:   
+And again, we can add margins to the table object with the `addmargins()` function.
 
-* Adding margins in one step.
+```{r}
+addmargins(table_from_matrix)
+```
 
-* Later, it's easier to convert a table object to a data frame of observations than it is to convert a matrix object to a data frame of observations. 
+
+[Tables in R – A quick practical overview](https://cran.r-project.org/web/packages/DescTools/vignettes/TablesInR.pdf) shows an alternative way to create a table object using a matrix as an intermediate step -- the `rbind()` function. 
+
+```{r}
+table_from_matrix <- as.table(
+  rbind(
+    c(7, 124), 
+    c(1, 78)
+  )
+)
+
+dimnames(table_from_matrix) <- list(
+  Appendectomy = c("Yes", "No"),
+  Infection = c("Yes", "No")
+)
+
+table_from_matrix
+```
+
+And again, we can add margins to the table object with the `addmargins()` function.
+
+```{r}
+addmargins(table_from_matrix)
+```
 
 ### Table object from df
 
-Next, we will create a table from a data frame object.
+Next, we will create a table from a data frame of observations. This is where the `table()` function comes in really handy!
 
 ```{r}
 table_from_df <- table(df)
 table_from_df
 ```
+
+<p class="warning"> ⚠️**Warning:** Notice that the "No" category comes before the "Yes" category by default when passing a data frame of observations to the `table()` function. This typically not the order we would put them in for analysis. To prevent this from happening, change the ordering of the factor levels in the data frame of observations (demonstrated below).</p>
+
+```{r}
+# Make "Yes" the first factor level. Then, create the table.
+df_yn <- df %>% 
+  mutate(
+    appendectomy = factor(appendectomy, levels = c("Yes", "No")),
+    infection = factor(infection, levels = c("Yes", "No"))
+  )
+```
+
+
+```{r}
+table_from_df <- table(df_yn)
+table_from_df
+```
+
+And again, we can add margins to the table object with the `addmargins()` function.
 
 ```{r}
 # Add margins
@@ -235,16 +395,33 @@ table_from_df_margins <- addmargins(table_from_df)
 table_from_df_margins
 ```
 
-Potential advantages to converting a data frame contingency table to a table object:   
+### Why use table objects? {#why}
 
-* Adding margins in one step.
+I used to think the table class allowed us to more easily manipulate and perform calculations on contingency tables than the matrix class does, but now I'm not sure it does. For example, `addmargins()` and `prop.table()` both work on the matrix object. Calculations (like incidence proportions below) work on both too.
 
-* Later, it's easier to convert a table object to a data frame of observations than it is to convert a data frame contingency table to a data frame of observations. 
+```{r}
+prop.table(matrix_ct)
+```
+
+```{r}
+addmargins(matrix_ct)
+```
+
+```{r}
+# Add incidence proportion to a matrix contingency table
+ip <- matrix_ct_margins[, "Yes"] / matrix_ct_margins[, "Sum"]
+matrix_ct_margins_ip <- cbind(matrix_ct_margins, ip)
+matrix_ct_margins_ip
+```
+
+However, using the `table()` function is still the easiest way to convert a data frame of observations to a contingency table. 
+
+Further, when we [convert a contingency table into a data frame of observations](#convert-ct-to-df) below, converting to a table object is a necessary intermediate step. 
 
 
-## Convert a contingency table into a frequency table.
+## Convert a contingency table into a frequency table
 
-### Matrix object
+### Matrix object 
 
 When starting with a matrix contingency table, the easiest way to convert it to a frequency table is to first convert it to a [table object][Table-objects] using `as.table()`. Then, we pass that result to `as.data.frame()` to create a frequency table. This solution comes from [Stack Overflow](https://stackoverflow.com/questions/48330888/r-convert-contingency-table-to-long-data-frame).
 
@@ -254,19 +431,19 @@ matrix_ct %>%
   as.data.frame()
 ```
 
-### Table object from df
+### Table object from df 
 
-When starting with a [table object made from a df][Table-object-from-df], we only need to pass it to the `as.data.frame()` function. Notice that the result is slightly different than above. 
+When starting with a [table object made from a df][Table-object-from-df], we only need to pass it to the `as.data.frame()` function. Notice that the result is slightly different than above -- the order of
 
 ```{r}
-df %>% 
+df_yn %>% 
   table() %>% 
   as.data.frame()
 ```
 
 ### Data frame contingency table
 
-When starting from a [base R data frame contingency table][base-r-data-frame-with-rownames], there are a couple of options. [These two come from Stack Overflow](https://stackoverflow.com/questions/48330888/r-convert-contingency-table-to-long-data-frame). 
+When starting from a [base R data frame contingency table][base-r-data-frame-with-rownames] (again, we don't recommend doing this), there are a couple of options. [These two come from Stack Overflow](https://stackoverflow.com/questions/48330888/r-convert-contingency-table-to-long-data-frame). 
 
 The first method is a bit convoluted, but uses only base R functions. 
 
@@ -286,11 +463,7 @@ df_ct %>%
 ```
 
 
-# 🔴Here down needs refinement
-
-Also, do we want to create a section of functions that can do each of these things in a single step?
-
-## Convert a contingency table into a data frame of observations.
+## Convert a contingency table into a data frame of observations {#convert-ct-to-df}
 
 This is a really common conversion to want to make. We often come across data that is already in a 2x2 table and decide that we want to convert it into a data frame of observations to experiment with it or for some statistical procedures (e.g., regression).
 
@@ -301,6 +474,7 @@ All of the methods I've found so far require creating a frequency table as an in
 ```{r}
 # Convert from data frame of counts to data frame of cases.
 # `countcol` is the name of the column containing the counts
+# From: https://cran.r-project.org/web/packages/DescTools/vignettes/TablesInR.pdf
 countsToCases <- function(x, countcol = "Freq") {
     # Get the row indices to pull from x
     idx <- rep.int(seq_len(nrow(x)), x[[countcol]])
@@ -321,11 +495,59 @@ matrix_ct %>%
   tibble()
 ```
 
-Works, but I don't like it.
+(Delete)
+Works, but I don't like it. I'm trying to figure out why. Maybe because it uses a table object and a frequency table object as an intermediate step? Why do I care about that, though? Also, perhaps I don't like the final result? Do I want Yes/No values or variable name values in the final result (compare this result to the result below for "Convert a frequency table into a data frame of observations").
+
+Let's pull this function apart and really understand how it works.
+
+```{r}
+test_mat_ct_to_df <- matrix_ct %>% 
+  as.table() %>% 
+  as.data.frame()
+
+test_mat_ct_to_df 
+```
+
+At this point, we have a frequency table of class data frame.
+
+```{r}
+# Create a vector if the number of times each combination (each row) from the 
+# frequency table is to appear in the new data frame of observations
+
+# Count the number of rows in the df
+rows <- nrow(test_mat_ct_to_df)
+# Create a sequence of integers from 1 to rows
+one_to_n_rows <- seq_len(rows)
+# Pull vector of frequencies
+freqs <- test_mat_ct_to_df[["Freq"]]
+# Rep.int is just a faster, simplified version of rep
+combo_reps <- rep.int(one_to_n_rows, freqs)
+combo_reps
+```
+
+```{r}
+# Drop the count (Freq) column from the frequency table
+test_mat_ct_to_df[["Freq"]] <- NULL
+test_mat_ct_to_df
+```
+
+```{r}
+# Repeat each row of test_mat_ct_to_df according to combo_reps
+df_obs_from_matrix_ct <- test_mat_ct_to_df[combo_reps, ]
+
+# Drop weird numbered rownames
+rownames(df_obs_from_matrix_ct) <- NULL
+
+df_obs_from_matrix_ct
+```
+
+```{r echo=FALSE}
+rm(test_mat_ct_to_df)
+```
 
 ### Table object {#table-from-matrix-to-df-obs}
 
-Same as above, there are just fewer steps because you don't have to convert to a table object first.
+Same as the matrix example above, there is just one less step because you've already converted the matrix to a table object.
 
 ```{r}
 table_from_matrix %>% 
@@ -334,6 +556,8 @@ table_from_matrix %>%
   tibble()
 ```
 
+And for completeness, here is the table object we previously created from a data frame of observations. 
+
 ```{r}
 table_from_df %>% 
   as.data.frame() %>% 
@@ -341,23 +565,34 @@ table_from_df %>%
   tibble()
 ```
 
-Again, these work, but I don't like them. I guess I could just drop the row numbers. 
-
 
 ## Convert a frequency table into a contingency table. 
 
-http://www.cookbook-r.com/Manipulating_data/Converting_between_data_frames_and_contingency_tables/
+The [Cookbook for R](http://www.cookbook-r.com/Manipulating_data/Converting_between_data_frames_and_contingency_tables/) also shows how you can convert a frequency table into a contingency table using the base R `xtabs()` function. 
+
+As a reminder, `freq_tbl` was created above in the section on [manually creating a frequency table.](#man-freq-tbl)
 
 ```{r}
 xtabs(count ~ appendectomy + infection, data = freq_tbl)
 ```
 
-Again, this works, but I don't love it for some reason. One reason is that "No" is above "Yes".
+<p class="warning"> ⚠️**Warning:** Notice that the "No" category comes before the "Yes" category by default when passing a frequency table to the `xtabs()` function. This typically not the order we would put them in for analysis. To prevent this from happening, change the ordering of the factor levels in the frequency table (demonstrated below).</p>
 
+```{r}
+freq_tbl_yn <- freq_tbl %>% 
+  mutate(
+    appendectomy = factor(appendectomy, levels = c("Yes", "No")),
+    infection = factor(infection, levels = c("Yes", "No"))
+  )
+```
+
+```{r}
+xtabs(count ~ appendectomy + infection, data = freq_tbl_yn)
+```
 
 ## Convert a frequency table into a data frame of observations.
 
-We already saw how to do this [above](#table-from-matrix-to-df-obs) as an intermediate stepe between a contingency table and a data frame of observations. 
+We already saw how to do this [above](#table-from-matrix-to-df-obs) as an intermediate step between a contingency table and a data frame of observations. 
 
 ```{r}
 freq_tbl %>% 
@@ -365,27 +600,9 @@ freq_tbl %>%
 ```
 
 
-## Other convertions 
-
-I'm not sure where to put this stuff yet. 
-
-Create a base R data frame by coercing the matrix object to a data frame:
-
-```{r}
-df_from_matrix_margins <- as.data.frame(matrix_ct_margins)
-df_from_matrix_margins
-```
-
-Coercing the table object to a data frame gives a different result:
-
-```{r}
-as.data.frame(table_from_df_margins)
-```
-
-At this point, I think it still makes sense to start with a matrix. You can easily convert a matrix to a data frame later if you need to. 
-
-
 ## Bottom line
+
+This section briefly distill down everything from above into the most common scenario we are actually working on -- Manually create a contingency table and then convert it to a data frame of observations.
 
 When we open a open a book or journal article and see a 2x2 table, or when we just decide to create a 2x2 table from scratch to do some experimenting, it looks like it's best to start with a matrix and convert it to a table object. 
 
@@ -396,53 +613,181 @@ matrix_ct <- matrix(
   byrow = TRUE
 )
 
-# Add names to make the matrix more readable
-rownames(matrix_ct) <- c("Appendectomy", "No Appendectomy")
-colnames(matrix_ct) <- c("Infection", "No Infection")
+dimnames(matrix_ct) <- list(
+  Appendectomy = c("Yes", "No"),
+  Infection = c("Yes", "No")
+)
 
-matrix_ct
+matrix_ct_margins <- addmargins(matrix_ct)
+matrix_ct_margins
 ```
 
+You can go ahead and convert to a table at this point, but you don't have to. Look back at the [section on why to consider using a table object](#why), but for now, I can't come up with a good reason to do this off the top of my head. 
+
+To then convert that contingency table to a data frame of observations, we use can simply use the following code.
+
 ```{r}
-table_from_matrix <- matrix_ct %>% 
+matrix_ct %>% 
   as.table() %>% 
-  print()
-```
-
-Optionally add margins
-
-```{r}
-table_from_matrix %>% 
-  addmargins()
-```
-
-We can condense all of this down into a function that makes it easy to do in one step.
-
-[Insert function code here]
-
-To then convert that contingency table to a data frame of observations (another common scenario), we use...
-
-```{r}
-table_from_matrix %>% 
   as.data.frame() %>% 
   countsToCases() %>% 
   tibble()
 ```
 
-Again, we can condense all of this down into a function that makes it easy to do in one step.
+
+## Helper functions 
+
+In some of the cases above, the solutions may be slightly unsatisfying, but they seem to work reasonably well. In this section, we create some helper functions to make working with contingency tables even easier -- especially in the context of working with the `freqtables` package. At some point, these functions may work their way into the `freqtables` package.
+
+### Create a contingency table
+
+After playing around with this a little bit, I couldn't come up with a function that was really any better (i.e., less lines of code or easier to understand) than just creating the matrix using the standard base R functions. This is especially true when contingency tables However, I'm leaving the code here just in case. 
+
+```{r}
+# Code for manually creating a matrix contingency table.
+matrix_ct <- matrix(
+  c(a = 7, b = 124, c = 1, d = 78),
+  ncol = 2,
+  byrow = TRUE
+)
+
+dimnames(matrix_ct) <- list(
+  Appendectomy = c("Yes", "No"),
+  Infection = c("Yes", "No")
+)
+
+matrix_ct_margins <- addmargins(matrix_ct)
+matrix_ct_margins
+```
+
+Here is the function code
+
+```{r}
+contingency_table <- function(.values, ncol, dim_names, margins = FALSE) {
+  # Create the matrix
+  matrix_ct <- matrix(.values, ncol = ncol, byrow = TRUE)
+  
+  # Optionally add dimnames
+  if (!missing(dim_names)) {
+    dimnames(matrix_ct) <- dim_names
+  }
+  
+  # Optionally add margins
+  if (margins) {
+    matrix_ct <- addmargins(matrix_ct)
+  }
+  
+  # Return contingency table
+  matrix_ct
+}
+```
+
+Testing with a 2x2 table
+
+```{r}
+contingency_table(
+  .values = c(
+    7, 224,
+    1, 78
+  ),
+  ncol = 2,
+  dim_names = list(
+    Appendectomy = c("Yes", "No"),
+    Infection    = c("Yes", "No")
+  ),
+  margins = TRUE
+)
+```
+
+
+What if we need to make a contingency table for variables with more than two levels? For example:
+
+```{r}
+matrix_3_ct <- matrix(
+  c(
+    1, 2, 1,
+    0, 1, 1,
+    0, 1, 2
+  ),
+  ncol = 3,
+  byrow = TRUE
+)
+
+dimnames(matrix_3_ct) <- list(
+  age      = c("Young", "Middle", "Old"),
+  severity = c("Mild", "Moderate", "Severe")
+)
+
+addmargins(matrix_3_ct)
+```
+
+Testing with a 3x3 table
+
+```{r}
+contingency_table(
+  .values = c(
+    1, 2, 1,
+    0, 1, 1,
+    0, 1, 2
+  ),
+  ncol = 3,
+  dim_names = list(
+    age      = c("Young", "Middle", "Old"),
+    severity = c("Mild", "Moderate", "Severe")
+  ),
+  margins = TRUE
+)
+```
+
+This works, but I'm not sure what advantage it has over the manual code. It's roughly the same number of lines and it's necessarily any easier to read or understand. 
+
+What would the ideal solution even look like? Maybe something like this?
+
+```{r eval=FALSE}
+# Doesn't run
+contingency_table(
+                          | Wound infection |
+|-------------------------|-----------------|-----|
+| Incidental appendectomy | Yes             | No  | 
+| Yes                     | 7               | 124 |
+| No                      | 1               | 78  |
+)
+```
+
+Or perhaps a Shiny app that would allow to enter data into a spreadsheet-like interface?
+
+
+### 🔴Here down needs refinement
+
+
+### Counts to cases
+
+Rewrite this function
+
+```{r}
+# Convert from data frame of counts to data frame of cases.
+# `countcol` is the name of the column containing the counts
+# From: https://cran.r-project.org/web/packages/DescTools/vignettes/TablesInR.pdf
+countsToCases <- function(x, countcol = "Freq") {
+    # Get the row indices to pull from x
+    idx <- rep.int(seq_len(nrow(x)), x[[countcol]])
+
+    # Drop count column
+    x[[countcol]] <- NULL
+
+    # Get the rows from x
+    x[idx, ]
+}
+```
 
 [Insert function code here]
 
 
-I still want to rewrite the contsToCases code for some reason. 
+### Freqtable to contingency table
 
-It comes from here: http://www.cookbook-r.com/Manipulating_data/Converting_between_data_frames_and_contingency_tables/
+### Contingency table to freqtable
 
-Check: https://stackoverflow.com/questions/2894775/repeat-each-row-of-data-frame-the-number-of-times-specified-in-a-column
-
-And: https://stackoverflow.com/questions/48330888/r-convert-contingency-table-to-long-data-frame
-
-For alternatives.
+### Freqtable to data frame of observations
 
 
 <!--

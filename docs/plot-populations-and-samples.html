@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>R Notes</title>
+  <title>10 Plot populations and samples | R Notes</title>
   <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="R Notes" />
+  <meta property="og:title" content="10 Plot populations and samples | R Notes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://brad-cannell.github.io/r_notes/" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="brad-cannell/r_notes" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="R Notes" />
+  <meta name="twitter:title" content="10 Plot populations and samples | R Notes" />
   
   <meta name="twitter:description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="my-package-notes.html"/>
+<link rel="prev" href="risk-difference.html"/>
+<link rel="next" href="blogdown.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -554,38 +554,46 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">R Notes</h1>
-<p class="author"><em>Brad Cannell</em></p>
-<p class="date"><em>2022-03-27</em></p>
+<div id="plot-populations-and-samples" class="section level1" number="10">
+<h1><span class="header-section-number">10</span> Plot populations and samples</h1>
+<!--
+Hidden comments placeholder
+-->
+<p><img src="https://picsum.photos/200/300" /><!-- --></p>
+<div id="overview-7" class="section level2" number="10.1">
+<h2><span class="header-section-number">10.1</span> ⭐️Overview</h2>
+<p>This chapter is about plotting out populations (usually of people) and samples (usually of people). This are mostly useful for teaching and training purposes</p>
 </div>
-<div id="welcome" class="section level1 unnumbered">
-<h1>Welcome</h1>
-<p>Welcome to Brad Cannell’s R Notes!</p>
-<p>This is a <a href="https://bookdown.org/">Bookdown</a> version Brad Cannell’s R Notes. I’m really making this “book” for me, but even better if you find it useful too!</p>
-<p>Why am I doing this (as opposed to just keeping notes locally)?</p>
+<div id="useful-websites-7" class="section level2" number="10.2">
+<h2><span class="header-section-number">10.2</span> 🌎Useful websites</h2>
 <ul>
-<li>Better organized (e.g., chapter structure and search)<br />
-</li>
-<li>Easy access – just click on the bookmark on web browser<br />
-</li>
-<li>Practice using bookdown<br />
-</li>
-<li>Might help with R4Epi – This can be sort of a sandbox for developing before I add things to R4Epi.</li>
+<li><p>The note on <a href="contingency-tables.html#contingency-tables-1">Contingency Tables</a></p></li>
+<li><p><a href="https://stackoverflow.com/questions/62882457/how-to-evenly-plot-geom-text-in-r">Stack Overflow: How to evenly plot geom_text in R?</a></p></li>
+<li><p><a href="https://stackoverflow.com/questions/68619095/how-to-randomly-scatter-points-inside-a-circle-with-ggplot-without-clustering-a">Stack Overflow: How to randomly scatter points inside a circle with ggplot, without clustering around the center?</a> (In case you want to distribute them randomly)</p></li>
 </ul>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
-<div id="organization" class="section level2 unnumbered">
-<h2>Organization</h2>
-<p>These notes are loosely organized into the following parts:</p>
-<ol style="list-style-type: decimal">
-<li><p><strong>Programming:</strong> Things that have to do with optimizing code, writing functions, creating packages, and repeated operations.</p></li>
-<li><p><strong>Working with external files:</strong> Things like data transfer, web scraping, PDF scraping, and using Officer to scrape Microsoft Office documents.</p></li>
-<li><p><strong>Data management:</strong> Things related to manipulating/transforming/filtering data that is already in R.</p></li>
-<li><p><strong>Data analysis:</strong> Things related to creating numerical summaries of data.</p></li>
-<li><p><strong>Data visualization:</strong> Things related to graphical summaries of data. A lot of this will be about ggplot.</p></li>
-<li><p><strong>Presenting results:</strong> Things related to making numerical and graphical summaries accessible outside of R. This can include webpages, static dashboards, PDF documents, Microsoft Office documents, ect. This does not include Shiny apps.</p></li>
-<li><p><strong>Shiny:</strong> Things related to using Shiny to create interactive web apps. Eventually, this may need its own Bookdown project.</p></li>
-</ol>
+</div>
+<div id="load-packages-5" class="section level2" number="10.3">
+<h2><span class="header-section-number">10.3</span> 📦Load packages</h2>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="plot-populations-and-samples.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb320-2"><a href="plot-populations-and-samples.html#cb320-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb320-3"><a href="plot-populations-and-samples.html#cb320-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(freqtables)</span></code></pre></div>
+</div>
+<div id="simulate-data-4" class="section level2" number="10.4">
+<h2><span class="header-section-number">10.4</span> 🔢Simulate data</h2>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="plot-populations-and-samples.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb321-2"><a href="plot-populations-and-samples.html#cb321-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb321-3"><a href="plot-populations-and-samples.html#cb321-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">medication =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">10</span>)),</span>
+<span id="cb321-4"><a href="plot-populations-and-samples.html#cb321-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">fall =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">8</span>), <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">6</span>), <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">4</span>))</span>
+<span id="cb321-5"><a href="plot-populations-and-samples.html#cb321-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="plot-populations-and-samples.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df)</span></code></pre></div>
+<pre><code>##           fall
+## medication 0 1
+##          0 8 2
+##          1 6 4</code></pre>
+<p>Need to reorder this 1,0 instead of 0,1. Work on this in the contingency tables file.</p>
+<!--
+Clean up and add session info
+-->
 
 </div>
 </div>
@@ -599,8 +607,8 @@ div.csl-indent {
           </div>
         </div>
       </div>
-
-<a href="my-package-notes.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="risk-difference.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="blogdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,0 +1,62 @@
+# Plot populations and samples
+
+<!--
+Hidden comments placeholder
+-->
+
+```{r echo=FALSE}
+knitr::include_graphics("https://picsum.photos/200/300")
+```
+
+## ⭐️Overview
+
+This chapter is about plotting out populations (usually of people) and samples (usually of people). This are mostly useful for teaching and training purposes
+
+
+## 🌎Useful websites
+
+* The note on [Contingency Tables]
+
+* [Stack Overflow: How to evenly plot geom_text in R?](https://stackoverflow.com/questions/62882457/how-to-evenly-plot-geom-text-in-r)
+
+* [Stack Overflow: How to randomly scatter points inside a circle with ggplot, without clustering around the center?](https://stackoverflow.com/questions/68619095/how-to-randomly-scatter-points-inside-a-circle-with-ggplot-without-clustering-a) (In case you want to distribute them randomly)
+
+
+## 📦Load packages
+
+```{r message=FALSE}
+library(dplyr, warn.conflicts = FALSE)
+library(ggplot2, warn.conflicts = FALSE)
+library(freqtables)
+```
+
+
+## 🔢Simulate data 
+
+```{r}
+set.seed(123)
+df <- tibble(
+  medication = c(rep(0, 10), rep(1, 10)),
+  fall = c(rep(0, 8), rep(1, 2), rep(0, 6), rep(1, 4))
+)
+```
+
+```{r}
+table(df)
+```
+
+Need to reorder this 1,0 instead of 0,1. Work on this in the contingency tables file. 
+
+
+
+
+
+<!--
+Clean up and add session info
+-->
+
+```{r echo=FALSE}
+rm(list = ls())
+```
+
+

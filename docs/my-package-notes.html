@@ -24,7 +24,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-03-27" />
+<meta name="date" content="2022-03-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="left-off-here..html"/>
+<link rel="next" href="creating-rmd-templates.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -186,353 +186,347 @@ div.csl-indent {
 <li class="chapter" data-level="1.9" data-path="my-package-notes.html"><a href="my-package-notes.html#readme"><i class="fa fa-check"></i><b>1.9</b> Step 5: Add README</a></li>
 <li class="chapter" data-level="1.10" data-path="my-package-notes.html"><a href="my-package-notes.html#git"><i class="fa fa-check"></i><b>1.10</b> Step 6: Add Git</a></li>
 <li class="chapter" data-level="1.11" data-path="my-package-notes.html"><a href="my-package-notes.html#github"><i class="fa fa-check"></i><b>1.11</b> Step 7: Connect to GitHub</a></li>
-<li class="chapter" data-level="1.12" data-path="my-package-notes.html"><a href="my-package-notes.html#package-functions"><i class="fa fa-check"></i><b>1.12</b> Step 8: Add functions to the package</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="left-off-here..html"><a href="left-off-here..html"><i class="fa fa-check"></i><b>2</b> Left off here….</a>
+<li class="chapter" data-level="1.12" data-path="my-package-notes.html"><a href="my-package-notes.html#package-functions"><i class="fa fa-check"></i><b>1.12</b> Step 8: Adding content to the package</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="left-off-here..html"><a href="left-off-here..html#working-with-r-scripts"><i class="fa fa-check"></i><b>2.1</b> Working with R scripts</a></li>
-<li class="chapter" data-level="2.2" data-path="left-off-here..html"><a href="left-off-here..html#step-3-writing-help-pages"><i class="fa fa-check"></i><b>2.2</b> Step 3: Writing help pages</a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="left-off-here..html"><a href="left-off-here..html#example-roxygen-header"><i class="fa fa-check"></i><b>2.2.1</b> Example <code>roxygen</code> header</a></li>
-<li class="chapter" data-level="2.2.2" data-path="left-off-here..html"><a href="left-off-here..html#dont-run-the-examples"><i class="fa fa-check"></i><b>2.2.2</b> Don’t run the examples</a></li>
-<li class="chapter" data-level="2.2.3" data-path="left-off-here..html"><a href="left-off-here..html#keyboard-shortcut-for-inserting-roxygen-comment"><i class="fa fa-check"></i><b>2.2.3</b> Keyboard shortcut for inserting roxygen #’ comment</a></li>
-<li class="chapter" data-level="2.2.4" data-path="left-off-here..html"><a href="left-off-here..html#documenting-package"><i class="fa fa-check"></i><b>2.2.4</b> Documenting Package:</a></li>
-<li class="chapter" data-level="2.2.5" data-path="left-off-here..html"><a href="left-off-here..html#once-package-is-complete-ish"><i class="fa fa-check"></i><b>2.2.5</b> Once package is complete (ish)</a></li>
-<li class="chapter" data-level="2.2.6" data-path="left-off-here..html"><a href="left-off-here..html#notes-about-package-notes"><i class="fa fa-check"></i><b>2.2.6</b> Notes about package notes:</a></li>
+<li class="chapter" data-level="1.12.1" data-path="my-package-notes.html"><a href="my-package-notes.html#working-with-r-scripts"><i class="fa fa-check"></i><b>1.12.1</b> Working with R scripts</a></li>
+<li class="chapter" data-level="1.12.2" data-path="my-package-notes.html"><a href="my-package-notes.html#adding-help-pages-to-functions"><i class="fa fa-check"></i><b>1.12.2</b> Adding help pages to functions</a></li>
+<li class="chapter" data-level="1.12.3" data-path="my-package-notes.html"><a href="my-package-notes.html#example-roxygen-header"><i class="fa fa-check"></i><b>1.12.3</b> Example <code>roxygen</code> header</a></li>
+<li class="chapter" data-level="1.12.4" data-path="my-package-notes.html"><a href="my-package-notes.html#dont-run-the-examples"><i class="fa fa-check"></i><b>1.12.4</b> Don’t run the examples</a></li>
+<li class="chapter" data-level="1.12.5" data-path="my-package-notes.html"><a href="my-package-notes.html#keyboard-shortcut-for-inserting-roxygen-comment"><i class="fa fa-check"></i><b>1.12.5</b> Keyboard shortcut for inserting roxygen #’ comment</a></li>
+<li class="chapter" data-level="1.12.6" data-path="my-package-notes.html"><a href="my-package-notes.html#adding-and-documenting-data"><i class="fa fa-check"></i><b>1.12.6</b> Adding and documenting data</a></li>
+<li class="chapter" data-level="1.12.7" data-path="my-package-notes.html"><a href="my-package-notes.html#documenting-package"><i class="fa fa-check"></i><b>1.12.7</b> Documenting Package</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="left-off-here..html"><a href="left-off-here..html#step-4-synchronize-with-github"><i class="fa fa-check"></i><b>2.3</b> Step 4: Synchronize with GitHub</a>
+<li class="chapter" data-level="1.13" data-path="my-package-notes.html"><a href="my-package-notes.html#testing"><i class="fa fa-check"></i><b>1.13</b> Step 9: Creating unit tests</a></li>
+<li class="chapter" data-level="1.14" data-path="my-package-notes.html"><a href="my-package-notes.html#vignettes"><i class="fa fa-check"></i><b>1.14</b> Step 10: Vignettes</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="left-off-here..html"><a href="left-off-here..html#get-rid-of-.ds_store"><i class="fa fa-check"></i><b>2.3.1</b> Get rid of .DS_Store</a></li>
-<li class="chapter" data-level="2.3.2" data-path="left-off-here..html"><a href="left-off-here..html#example-modify-description"><i class="fa fa-check"></i><b>2.3.2</b> Example: Modify Description</a></li>
-<li class="chapter" data-level="2.3.3" data-path="left-off-here..html"><a href="left-off-here..html#example-installation-instructions-for-readme"><i class="fa fa-check"></i><b>2.3.3</b> Example Installation instructions for README:</a></li>
+<li class="chapter" data-level="1.14.1" data-path="my-package-notes.html"><a href="my-package-notes.html#to-create-a-vignette"><i class="fa fa-check"></i><b>1.14.1</b> To create a vignette:</a></li>
+<li class="chapter" data-level="1.14.2" data-path="my-package-notes.html"><a href="my-package-notes.html#vignette-notes"><i class="fa fa-check"></i><b>1.14.2</b> Vignette Notes:</a></li>
+<li class="chapter" data-level="1.14.3" data-path="my-package-notes.html"><a href="my-package-notes.html#pkgdown"><i class="fa fa-check"></i><b>1.14.3</b> Pkgdown</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="left-off-here..html"><a href="left-off-here..html#step-5-testing"><i class="fa fa-check"></i><b>2.4</b> Step 5: Testing</a></li>
-<li class="chapter" data-level="2.5" data-path="left-off-here..html"><a href="left-off-here..html#vignettes"><i class="fa fa-check"></i><b>2.5</b> Vignettes</a>
+<li class="chapter" data-level="1.15" data-path="my-package-notes.html"><a href="my-package-notes.html#cran"><i class="fa fa-check"></i><b>1.15</b> Submitting to CRAN</a></li>
+<li class="chapter" data-level="1.16" data-path="my-package-notes.html"><a href="my-package-notes.html#other-random-notes"><i class="fa fa-check"></i><b>1.16</b> Other random notes</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="left-off-here..html"><a href="left-off-here..html#to-create-a-vignette"><i class="fa fa-check"></i><b>2.5.1</b> To create a vignette:</a></li>
-<li class="chapter" data-level="2.5.2" data-path="left-off-here..html"><a href="left-off-here..html#vignette-notes"><i class="fa fa-check"></i><b>2.5.2</b> Vignette Notes:</a></li>
+<li class="chapter" data-level="1.16.1" data-path="my-package-notes.html"><a href="my-package-notes.html#get-rid-of-.ds_store"><i class="fa fa-check"></i><b>1.16.1</b> Get rid of .DS_Store</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="left-off-here..html"><a href="left-off-here..html#adding-and-documenting-data"><i class="fa fa-check"></i><b>2.6</b> Adding and documenting data</a></li>
-<li class="chapter" data-level="2.7" data-path="left-off-here..html"><a href="left-off-here..html#submitting-to-cran"><i class="fa fa-check"></i><b>2.7</b> Submitting to CRAN</a></li>
-<li class="chapter" data-level="2.8" data-path="left-off-here..html"><a href="left-off-here..html#errors-warnings-notes"><i class="fa fa-check"></i><b>2.8</b> Errors, warnings, notes</a></li>
+<li class="chapter" data-level="1.17" data-path="my-package-notes.html"><a href="my-package-notes.html#errors-warnings-notes"><i class="fa fa-check"></i><b>1.17</b> Errors, warnings, notes</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html"><i class="fa fa-check"></i><b>3</b> Creating Rmd Templates</a>
+<li class="chapter" data-level="2" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html"><i class="fa fa-check"></i><b>2</b> Creating Rmd Templates</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#overview-1"><i class="fa fa-check"></i><b>3.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="3.2" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#useful-websites-1"><i class="fa fa-check"></i><b>3.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="3.3" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#create-a-package"><i class="fa fa-check"></i><b>3.3</b> Create a package</a></li>
-<li class="chapter" data-level="3.4" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#add-a-template-to-your-package"><i class="fa fa-check"></i><b>3.4</b> Add a template to your package</a></li>
+<li class="chapter" data-level="2.1" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#overview-1"><i class="fa fa-check"></i><b>2.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="2.2" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#useful-websites-1"><i class="fa fa-check"></i><b>2.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="2.3" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#create-a-package"><i class="fa fa-check"></i><b>2.3</b> Create a package</a></li>
+<li class="chapter" data-level="2.4" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html#add-a-template-to-your-package"><i class="fa fa-check"></i><b>2.4</b> Add a template to your package</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html"><i class="fa fa-check"></i><b>4</b> Tidy Evaluation</a>
+<li class="chapter" data-level="3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html"><i class="fa fa-check"></i><b>3</b> Tidy Evaluation</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#overview-2"><i class="fa fa-check"></i><b>4.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="4.2" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#useful-websites-2"><i class="fa fa-check"></i><b>4.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="4.3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#load-packages"><i class="fa fa-check"></i><b>4.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="4.4" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#simulate-data"><i class="fa fa-check"></i><b>4.4</b> 🔢Simulate data</a></li>
-<li class="chapter" data-level="4.5" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#load-starwars-data"><i class="fa fa-check"></i><b>4.5</b> Load Starwars data</a></li>
-<li class="chapter" data-level="4.6" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#key_functions"><i class="fa fa-check"></i><b>4.6</b> Key Functions</a></li>
-<li class="chapter" data-level="4.7" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#for_loop"><i class="fa fa-check"></i><b>4.7</b> Example using Tidy Eval in For Loop</a></li>
-<li class="chapter" data-level="4.8" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#functions"><i class="fa fa-check"></i><b>4.8</b> Example using Tidy Eval in Functions</a></li>
-<li class="chapter" data-level="4.9" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#purrr"><i class="fa fa-check"></i><b>4.9</b> Using tidyeval with purrr</a></li>
-<li class="chapter" data-level="4.10" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#quirks"><i class="fa fa-check"></i><b>4.10</b> Other Quirks and Lessons Learned</a>
+<li class="chapter" data-level="3.1" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#overview-2"><i class="fa fa-check"></i><b>3.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="3.2" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#useful-websites-2"><i class="fa fa-check"></i><b>3.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="3.3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#load-packages"><i class="fa fa-check"></i><b>3.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="3.4" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#simulate-data"><i class="fa fa-check"></i><b>3.4</b> 🔢Simulate data</a></li>
+<li class="chapter" data-level="3.5" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#load-starwars-data"><i class="fa fa-check"></i><b>3.5</b> Load Starwars data</a></li>
+<li class="chapter" data-level="3.6" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#key_functions"><i class="fa fa-check"></i><b>3.6</b> Key Functions</a></li>
+<li class="chapter" data-level="3.7" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#for_loop"><i class="fa fa-check"></i><b>3.7</b> Example using Tidy Eval in For Loop</a></li>
+<li class="chapter" data-level="3.8" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#functions"><i class="fa fa-check"></i><b>3.8</b> Example using Tidy Eval in Functions</a></li>
+<li class="chapter" data-level="3.9" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#purrr"><i class="fa fa-check"></i><b>3.9</b> Using tidyeval with purrr</a></li>
+<li class="chapter" data-level="3.10" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#quirks"><i class="fa fa-check"></i><b>3.10</b> Other Quirks and Lessons Learned</a>
 <ul>
-<li class="chapter" data-level="4.10.1" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#when-doesnt-work"><i class="fa fa-check"></i><b>4.10.1</b> When !! doesn’t work</a></li>
-<li class="chapter" data-level="4.10.2" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#unquoting-inside-non-dplyr-functions"><i class="fa fa-check"></i><b>4.10.2</b> Unquoting inside non-dplyr functions</a></li>
-<li class="chapter" data-level="4.10.3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-create-variable-name-in-mutate"><i class="fa fa-check"></i><b>4.10.3</b> Using a quoture to create variable name in mutate</a></li>
-<li class="chapter" data-level="4.10.4" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-turn-a-variable-name-into-a-constant-value"><i class="fa fa-check"></i><b>4.10.4</b> Using a quoture to turn a variable name into a constant value</a></li>
-<li class="chapter" data-level="4.10.5" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#convert-a-string-to-a-quoture"><i class="fa fa-check"></i><b>4.10.5</b> Convert a string to a quoture</a></li>
+<li class="chapter" data-level="3.10.1" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#when-doesnt-work"><i class="fa fa-check"></i><b>3.10.1</b> When !! doesn’t work</a></li>
+<li class="chapter" data-level="3.10.2" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#unquoting-inside-non-dplyr-functions"><i class="fa fa-check"></i><b>3.10.2</b> Unquoting inside non-dplyr functions</a></li>
+<li class="chapter" data-level="3.10.3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-create-variable-name-in-mutate"><i class="fa fa-check"></i><b>3.10.3</b> Using a quoture to create variable name in mutate</a></li>
+<li class="chapter" data-level="3.10.4" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-turn-a-variable-name-into-a-constant-value"><i class="fa fa-check"></i><b>3.10.4</b> Using a quoture to turn a variable name into a constant value</a></li>
+<li class="chapter" data-level="3.10.5" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#convert-a-string-to-a-quoture"><i class="fa fa-check"></i><b>3.10.5</b> Convert a string to a quoture</a></li>
 </ul></li>
-<li class="chapter" data-level="4.11" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#example-i-created-for-steph-yap"><i class="fa fa-check"></i><b>4.11</b> Example I created for Steph Yap</a></li>
-<li class="chapter" data-level="4.12" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#other"><i class="fa fa-check"></i><b>4.12</b> Other questions / notes / reminders</a></li>
+<li class="chapter" data-level="3.11" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#example-i-created-for-steph-yap"><i class="fa fa-check"></i><b>3.11</b> Example I created for Steph Yap</a></li>
+<li class="chapter" data-level="3.12" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#other"><i class="fa fa-check"></i><b>3.12</b> Other questions / notes / reminders</a></li>
 </ul></li>
 <li class="part"><span><b>II Working with External Files</b></span></li>
 <li class="part"><span><b>III Data Management</b></span></li>
-<li class="chapter" data-level="5" data-path="arranging-columns-with-across.html"><a href="arranging-columns-with-across.html"><i class="fa fa-check"></i><b>5</b> Arranging Columns with Across</a>
+<li class="chapter" data-level="4" data-path="arranging-columns-with-across.html"><a href="arranging-columns-with-across.html"><i class="fa fa-check"></i><b>4</b> Arranging Columns with Across</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="arranging-columns-with-across.html"><a href="arranging-columns-with-across.html#solution-by-lmc"><i class="fa fa-check"></i><b>5.1</b> Solution by LMc:</a></li>
+<li class="chapter" data-level="4.1" data-path="arranging-columns-with-across.html"><a href="arranging-columns-with-across.html#solution-by-lmc"><i class="fa fa-check"></i><b>4.1</b> Solution by LMc:</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html"><i class="fa fa-check"></i><b>6</b> Column Names: Prepping Many for Merge</a>
+<li class="chapter" data-level="5" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html"><i class="fa fa-check"></i><b>5</b> Column Names: Prepping Many for Merge</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#overview-3"><i class="fa fa-check"></i><b>6.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="6.2" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#useful-websites-3"><i class="fa fa-check"></i><b>6.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="6.3" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#load-packages-1"><i class="fa fa-check"></i><b>6.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="6.4" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#simulate-data-1"><i class="fa fa-check"></i><b>6.4</b> 🔢Simulate data</a></li>
-<li class="chapter" data-level="6.5" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#get-the-existing-column-names"><i class="fa fa-check"></i><b>6.5</b> Get the existing column names</a></li>
-<li class="chapter" data-level="6.6" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#standardize-new-column-names"><i class="fa fa-check"></i><b>6.6</b> Standardize new column names</a></li>
-<li class="chapter" data-level="6.7" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#turn-this-into-a-function"><i class="fa fa-check"></i><b>6.7</b> Turn this into a function</a>
+<li class="chapter" data-level="5.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#overview-3"><i class="fa fa-check"></i><b>5.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="5.2" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#useful-websites-3"><i class="fa fa-check"></i><b>5.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="5.3" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#load-packages-1"><i class="fa fa-check"></i><b>5.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="5.4" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#simulate-data-1"><i class="fa fa-check"></i><b>5.4</b> 🔢Simulate data</a></li>
+<li class="chapter" data-level="5.5" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#get-the-existing-column-names"><i class="fa fa-check"></i><b>5.5</b> Get the existing column names</a></li>
+<li class="chapter" data-level="5.6" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#standardize-new-column-names"><i class="fa fa-check"></i><b>5.6</b> Standardize new column names</a></li>
+<li class="chapter" data-level="5.7" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#turn-this-into-a-function"><i class="fa fa-check"></i><b>5.7</b> Turn this into a function</a>
 <ul>
-<li class="chapter" data-level="6.7.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#make-a-unit-test-for-the-function"><i class="fa fa-check"></i><b>6.7.1</b> Make a unit test for the function</a></li>
+<li class="chapter" data-level="5.7.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#make-a-unit-test-for-the-function"><i class="fa fa-check"></i><b>5.7.1</b> Make a unit test for the function</a></li>
 </ul></li>
-<li class="chapter" data-level="6.8" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#manual-changes-to-column-names"><i class="fa fa-check"></i><b>6.8</b> Manual changes to column names</a></li>
-<li class="chapter" data-level="6.9" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#have-r-write-out-the-rename-code"><i class="fa fa-check"></i><b>6.9</b> Have R write out the rename code</a>
+<li class="chapter" data-level="5.8" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#manual-changes-to-column-names"><i class="fa fa-check"></i><b>5.8</b> Manual changes to column names</a></li>
+<li class="chapter" data-level="5.9" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#have-r-write-out-the-rename-code"><i class="fa fa-check"></i><b>5.9</b> Have R write out the rename code</a>
 <ul>
-<li class="chapter" data-level="6.9.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#make-it-a-function"><i class="fa fa-check"></i><b>6.9.1</b> Make it a function</a></li>
+<li class="chapter" data-level="5.9.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#make-it-a-function"><i class="fa fa-check"></i><b>5.9.1</b> Make it a function</a></li>
 </ul></li>
-<li class="chapter" data-level="6.10" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#rename-the-columns"><i class="fa fa-check"></i><b>6.10</b> Rename the columns</a></li>
-<li class="chapter" data-level="6.11" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#repeat-the-process-for-v2"><i class="fa fa-check"></i><b>6.11</b> Repeat the process for V2</a></li>
-<li class="chapter" data-level="6.12" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#repeat-the-process-for-v3"><i class="fa fa-check"></i><b>6.12</b> Repeat the process for V3</a></li>
-<li class="chapter" data-level="6.13" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#merge-all-3-visits"><i class="fa fa-check"></i><b>6.13</b> Merge all 3 visits</a></li>
-<li class="chapter" data-level="6.14" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#final-data-cleaning"><i class="fa fa-check"></i><b>6.14</b> Final data cleaning</a></li>
-<li class="chapter" data-level="6.15" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#the-dplyr-way"><i class="fa fa-check"></i><b>6.15</b> 🟣The dplyr way</a>
+<li class="chapter" data-level="5.10" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#rename-the-columns"><i class="fa fa-check"></i><b>5.10</b> Rename the columns</a></li>
+<li class="chapter" data-level="5.11" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#repeat-the-process-for-v2"><i class="fa fa-check"></i><b>5.11</b> Repeat the process for V2</a></li>
+<li class="chapter" data-level="5.12" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#repeat-the-process-for-v3"><i class="fa fa-check"></i><b>5.12</b> Repeat the process for V3</a></li>
+<li class="chapter" data-level="5.13" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#merge-all-3-visits"><i class="fa fa-check"></i><b>5.13</b> Merge all 3 visits</a></li>
+<li class="chapter" data-level="5.14" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#final-data-cleaning"><i class="fa fa-check"></i><b>5.14</b> Final data cleaning</a></li>
+<li class="chapter" data-level="5.15" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#the-dplyr-way"><i class="fa fa-check"></i><b>5.15</b> 🟣The dplyr way</a>
 <ul>
-<li class="chapter" data-level="6.15.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#standardize-new-column-names-1"><i class="fa fa-check"></i><b>6.15.1</b> Standardize new column names</a></li>
-<li class="chapter" data-level="6.15.2" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#manual-changes-to-column-names-1"><i class="fa fa-check"></i><b>6.15.2</b> Manual changes to column names 1</a></li>
-<li class="chapter" data-level="6.15.3" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#merge-all-3-visits-1"><i class="fa fa-check"></i><b>6.15.3</b> Merge all 3 visits</a></li>
-<li class="chapter" data-level="6.15.4" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#manual-changes-to-column-names-2"><i class="fa fa-check"></i><b>6.15.4</b> Manual changes to column names 2</a></li>
-<li class="chapter" data-level="6.15.5" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#final-data-cleaning-1"><i class="fa fa-check"></i><b>6.15.5</b> Final data cleaning</a></li>
+<li class="chapter" data-level="5.15.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#standardize-new-column-names-1"><i class="fa fa-check"></i><b>5.15.1</b> Standardize new column names</a></li>
+<li class="chapter" data-level="5.15.2" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#manual-changes-to-column-names-1"><i class="fa fa-check"></i><b>5.15.2</b> Manual changes to column names 1</a></li>
+<li class="chapter" data-level="5.15.3" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#merge-all-3-visits-1"><i class="fa fa-check"></i><b>5.15.3</b> Merge all 3 visits</a></li>
+<li class="chapter" data-level="5.15.4" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#manual-changes-to-column-names-2"><i class="fa fa-check"></i><b>5.15.4</b> Manual changes to column names 2</a></li>
+<li class="chapter" data-level="5.15.5" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#final-data-cleaning-1"><i class="fa fa-check"></i><b>5.15.5</b> Final data cleaning</a></li>
 </ul></li>
-<li class="chapter" data-level="6.16" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#making-a-key-in-google-sheets"><i class="fa fa-check"></i><b>6.16</b> 🟢 Making a key in Google Sheets</a>
+<li class="chapter" data-level="5.16" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#making-a-key-in-google-sheets"><i class="fa fa-check"></i><b>5.16</b> 🟢 Making a key in Google Sheets</a>
 <ul>
-<li class="chapter" data-level="6.16.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#create-the-google-sheet-column-name-key"><i class="fa fa-check"></i><b>6.16.1</b> Create the Google Sheet column name key</a></li>
-<li class="chapter" data-level="6.16.2" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#import-the-google-sheet-column-name-key"><i class="fa fa-check"></i><b>6.16.2</b> Import the Google Sheet column name key</a></li>
-<li class="chapter" data-level="6.16.3" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#reorder-and-rename-the-current-data-frame"><i class="fa fa-check"></i><b>6.16.3</b> Reorder and rename the current data frame</a></li>
+<li class="chapter" data-level="5.16.1" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#create-the-google-sheet-column-name-key"><i class="fa fa-check"></i><b>5.16.1</b> Create the Google Sheet column name key</a></li>
+<li class="chapter" data-level="5.16.2" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#import-the-google-sheet-column-name-key"><i class="fa fa-check"></i><b>5.16.2</b> Import the Google Sheet column name key</a></li>
+<li class="chapter" data-level="5.16.3" data-path="column-names-prepping-many-for-merge.html"><a href="column-names-prepping-many-for-merge.html#reorder-and-rename-the-current-data-frame"><i class="fa fa-check"></i><b>5.16.3</b> Reorder and rename the current data frame</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IV Analysis</b></span></li>
-<li class="chapter" data-level="7" data-path="contingency-tables.html"><a href="contingency-tables.html"><i class="fa fa-check"></i><b>7</b> Contingency Tables</a>
+<li class="chapter" data-level="6" data-path="contingency-tables.html"><a href="contingency-tables.html"><i class="fa fa-check"></i><b>6</b> Contingency Tables</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="contingency-tables.html"><a href="contingency-tables.html#overview-4"><i class="fa fa-check"></i><b>7.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="7.2" data-path="contingency-tables.html"><a href="contingency-tables.html#useful-websites-4"><i class="fa fa-check"></i><b>7.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="7.3" data-path="contingency-tables.html"><a href="contingency-tables.html#load-packages-2"><i class="fa fa-check"></i><b>7.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="7.4" data-path="contingency-tables.html"><a href="contingency-tables.html#terminology"><i class="fa fa-check"></i><b>7.4</b> Terminology</a></li>
-<li class="chapter" data-level="7.5" data-path="contingency-tables.html"><a href="contingency-tables.html#scenario"><i class="fa fa-check"></i><b>7.5</b> Scenario</a></li>
-<li class="chapter" data-level="7.6" data-path="contingency-tables.html"><a href="contingency-tables.html#manually-creating-each-data-structure"><i class="fa fa-check"></i><b>7.6</b> Manually creating each data structure</a>
+<li class="chapter" data-level="6.1" data-path="contingency-tables.html"><a href="contingency-tables.html#overview-4"><i class="fa fa-check"></i><b>6.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="6.2" data-path="contingency-tables.html"><a href="contingency-tables.html#useful-websites-4"><i class="fa fa-check"></i><b>6.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="6.3" data-path="contingency-tables.html"><a href="contingency-tables.html#load-packages-2"><i class="fa fa-check"></i><b>6.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="6.4" data-path="contingency-tables.html"><a href="contingency-tables.html#terminology"><i class="fa fa-check"></i><b>6.4</b> Terminology</a></li>
+<li class="chapter" data-level="6.5" data-path="contingency-tables.html"><a href="contingency-tables.html#scenario"><i class="fa fa-check"></i><b>6.5</b> Scenario</a></li>
+<li class="chapter" data-level="6.6" data-path="contingency-tables.html"><a href="contingency-tables.html#manually-creating-each-data-structure"><i class="fa fa-check"></i><b>6.6</b> Manually creating each data structure</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="contingency-tables.html"><a href="contingency-tables.html#data-frame-of-observations"><i class="fa fa-check"></i><b>7.6.1</b> Data frame of observations</a></li>
-<li class="chapter" data-level="7.6.2" data-path="contingency-tables.html"><a href="contingency-tables.html#man-freq-tbl"><i class="fa fa-check"></i><b>7.6.2</b> Frequency table</a></li>
-<li class="chapter" data-level="7.6.3" data-path="contingency-tables.html"><a href="contingency-tables.html#contingency-tables-1"><i class="fa fa-check"></i><b>7.6.3</b> Contingency tables</a></li>
+<li class="chapter" data-level="6.6.1" data-path="contingency-tables.html"><a href="contingency-tables.html#data-frame-of-observations"><i class="fa fa-check"></i><b>6.6.1</b> Data frame of observations</a></li>
+<li class="chapter" data-level="6.6.2" data-path="contingency-tables.html"><a href="contingency-tables.html#man-freq-tbl"><i class="fa fa-check"></i><b>6.6.2</b> Frequency table</a></li>
+<li class="chapter" data-level="6.6.3" data-path="contingency-tables.html"><a href="contingency-tables.html#contingency-tables-1"><i class="fa fa-check"></i><b>6.6.3</b> Contingency tables</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="contingency-tables.html"><a href="contingency-tables.html#table-objects"><i class="fa fa-check"></i><b>7.7</b> Table objects</a>
+<li class="chapter" data-level="6.7" data-path="contingency-tables.html"><a href="contingency-tables.html#table-objects"><i class="fa fa-check"></i><b>6.7</b> Table objects</a>
 <ul>
-<li class="chapter" data-level="7.7.1" data-path="contingency-tables.html"><a href="contingency-tables.html#table-object-from-matrix"><i class="fa fa-check"></i><b>7.7.1</b> Table object from matrix</a></li>
-<li class="chapter" data-level="7.7.2" data-path="contingency-tables.html"><a href="contingency-tables.html#table-object-from-df"><i class="fa fa-check"></i><b>7.7.2</b> Table object from df</a></li>
-<li class="chapter" data-level="7.7.3" data-path="contingency-tables.html"><a href="contingency-tables.html#why"><i class="fa fa-check"></i><b>7.7.3</b> Why use table objects?</a></li>
+<li class="chapter" data-level="6.7.1" data-path="contingency-tables.html"><a href="contingency-tables.html#table-object-from-matrix"><i class="fa fa-check"></i><b>6.7.1</b> Table object from matrix</a></li>
+<li class="chapter" data-level="6.7.2" data-path="contingency-tables.html"><a href="contingency-tables.html#table-object-from-df"><i class="fa fa-check"></i><b>6.7.2</b> Table object from df</a></li>
+<li class="chapter" data-level="6.7.3" data-path="contingency-tables.html"><a href="contingency-tables.html#why"><i class="fa fa-check"></i><b>6.7.3</b> Why use table objects?</a></li>
 </ul></li>
-<li class="chapter" data-level="7.8" data-path="contingency-tables.html"><a href="contingency-tables.html#convert-a-contingency-table-into-a-frequency-table"><i class="fa fa-check"></i><b>7.8</b> Convert a contingency table into a frequency table</a>
+<li class="chapter" data-level="6.8" data-path="contingency-tables.html"><a href="contingency-tables.html#convert-a-contingency-table-into-a-frequency-table"><i class="fa fa-check"></i><b>6.8</b> Convert a contingency table into a frequency table</a>
 <ul>
-<li class="chapter" data-level="7.8.1" data-path="contingency-tables.html"><a href="contingency-tables.html#matrix-object"><i class="fa fa-check"></i><b>7.8.1</b> Matrix object</a></li>
-<li class="chapter" data-level="7.8.2" data-path="contingency-tables.html"><a href="contingency-tables.html#table-object-from-df-1"><i class="fa fa-check"></i><b>7.8.2</b> Table object from df</a></li>
-<li class="chapter" data-level="7.8.3" data-path="contingency-tables.html"><a href="contingency-tables.html#data-frame-contingency-table"><i class="fa fa-check"></i><b>7.8.3</b> Data frame contingency table</a></li>
+<li class="chapter" data-level="6.8.1" data-path="contingency-tables.html"><a href="contingency-tables.html#matrix-object"><i class="fa fa-check"></i><b>6.8.1</b> Matrix object</a></li>
+<li class="chapter" data-level="6.8.2" data-path="contingency-tables.html"><a href="contingency-tables.html#table-object-from-df-1"><i class="fa fa-check"></i><b>6.8.2</b> Table object from df</a></li>
+<li class="chapter" data-level="6.8.3" data-path="contingency-tables.html"><a href="contingency-tables.html#data-frame-contingency-table"><i class="fa fa-check"></i><b>6.8.3</b> Data frame contingency table</a></li>
 </ul></li>
-<li class="chapter" data-level="7.9" data-path="contingency-tables.html"><a href="contingency-tables.html#convert-ct-to-df"><i class="fa fa-check"></i><b>7.9</b> Convert a contingency table into a data frame of observations</a>
+<li class="chapter" data-level="6.9" data-path="contingency-tables.html"><a href="contingency-tables.html#convert-ct-to-df"><i class="fa fa-check"></i><b>6.9</b> Convert a contingency table into a data frame of observations</a>
 <ul>
-<li class="chapter" data-level="7.9.1" data-path="contingency-tables.html"><a href="contingency-tables.html#matrix-object-1"><i class="fa fa-check"></i><b>7.9.1</b> Matrix object</a></li>
-<li class="chapter" data-level="7.9.2" data-path="contingency-tables.html"><a href="contingency-tables.html#table-from-matrix-to-df-obs"><i class="fa fa-check"></i><b>7.9.2</b> Table object</a></li>
+<li class="chapter" data-level="6.9.1" data-path="contingency-tables.html"><a href="contingency-tables.html#matrix-object-1"><i class="fa fa-check"></i><b>6.9.1</b> Matrix object</a></li>
+<li class="chapter" data-level="6.9.2" data-path="contingency-tables.html"><a href="contingency-tables.html#table-from-matrix-to-df-obs"><i class="fa fa-check"></i><b>6.9.2</b> Table object</a></li>
 </ul></li>
-<li class="chapter" data-level="7.10" data-path="contingency-tables.html"><a href="contingency-tables.html#convert-a-frequency-table-into-a-contingency-table."><i class="fa fa-check"></i><b>7.10</b> Convert a frequency table into a contingency table.</a></li>
-<li class="chapter" data-level="7.11" data-path="contingency-tables.html"><a href="contingency-tables.html#convert-a-frequency-table-into-a-data-frame-of-observations."><i class="fa fa-check"></i><b>7.11</b> Convert a frequency table into a data frame of observations.</a></li>
-<li class="chapter" data-level="7.12" data-path="contingency-tables.html"><a href="contingency-tables.html#bottom-line"><i class="fa fa-check"></i><b>7.12</b> Bottom line</a></li>
-<li class="chapter" data-level="7.13" data-path="contingency-tables.html"><a href="contingency-tables.html#helper-functions"><i class="fa fa-check"></i><b>7.13</b> Helper functions</a>
+<li class="chapter" data-level="6.10" data-path="contingency-tables.html"><a href="contingency-tables.html#convert-a-frequency-table-into-a-contingency-table."><i class="fa fa-check"></i><b>6.10</b> Convert a frequency table into a contingency table.</a></li>
+<li class="chapter" data-level="6.11" data-path="contingency-tables.html"><a href="contingency-tables.html#convert-a-frequency-table-into-a-data-frame-of-observations."><i class="fa fa-check"></i><b>6.11</b> Convert a frequency table into a data frame of observations.</a></li>
+<li class="chapter" data-level="6.12" data-path="contingency-tables.html"><a href="contingency-tables.html#bottom-line"><i class="fa fa-check"></i><b>6.12</b> Bottom line</a></li>
+<li class="chapter" data-level="6.13" data-path="contingency-tables.html"><a href="contingency-tables.html#helper-functions"><i class="fa fa-check"></i><b>6.13</b> Helper functions</a>
 <ul>
-<li class="chapter" data-level="7.13.1" data-path="contingency-tables.html"><a href="contingency-tables.html#create-a-contingency-table"><i class="fa fa-check"></i><b>7.13.1</b> Create a contingency table</a></li>
-<li class="chapter" data-level="7.13.2" data-path="contingency-tables.html"><a href="contingency-tables.html#here-down-needs-refinement"><i class="fa fa-check"></i><b>7.13.2</b> 🔴Here down needs refinement</a></li>
-<li class="chapter" data-level="7.13.3" data-path="contingency-tables.html"><a href="contingency-tables.html#counts-to-cases"><i class="fa fa-check"></i><b>7.13.3</b> Counts to cases</a></li>
-<li class="chapter" data-level="7.13.4" data-path="contingency-tables.html"><a href="contingency-tables.html#freqtable-to-contingency-table"><i class="fa fa-check"></i><b>7.13.4</b> Freqtable to contingency table</a></li>
-<li class="chapter" data-level="7.13.5" data-path="contingency-tables.html"><a href="contingency-tables.html#contingency-table-to-freqtable"><i class="fa fa-check"></i><b>7.13.5</b> Contingency table to freqtable</a></li>
-<li class="chapter" data-level="7.13.6" data-path="contingency-tables.html"><a href="contingency-tables.html#freqtable-to-data-frame-of-observations"><i class="fa fa-check"></i><b>7.13.6</b> Freqtable to data frame of observations</a></li>
+<li class="chapter" data-level="6.13.1" data-path="contingency-tables.html"><a href="contingency-tables.html#create-a-contingency-table"><i class="fa fa-check"></i><b>6.13.1</b> Create a contingency table</a></li>
+<li class="chapter" data-level="6.13.2" data-path="contingency-tables.html"><a href="contingency-tables.html#here-down-needs-refinement"><i class="fa fa-check"></i><b>6.13.2</b> 🔴Here down needs refinement</a></li>
+<li class="chapter" data-level="6.13.3" data-path="contingency-tables.html"><a href="contingency-tables.html#counts-to-cases"><i class="fa fa-check"></i><b>6.13.3</b> Counts to cases</a></li>
+<li class="chapter" data-level="6.13.4" data-path="contingency-tables.html"><a href="contingency-tables.html#freqtable-to-contingency-table"><i class="fa fa-check"></i><b>6.13.4</b> Freqtable to contingency table</a></li>
+<li class="chapter" data-level="6.13.5" data-path="contingency-tables.html"><a href="contingency-tables.html#contingency-table-to-freqtable"><i class="fa fa-check"></i><b>6.13.5</b> Contingency table to freqtable</a></li>
+<li class="chapter" data-level="6.13.6" data-path="contingency-tables.html"><a href="contingency-tables.html#freqtable-to-data-frame-of-observations"><i class="fa fa-check"></i><b>6.13.6</b> Freqtable to data frame of observations</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="effect-measure-modification.html"><a href="effect-measure-modification.html"><i class="fa fa-check"></i><b>8</b> Effect-measure modification</a>
+<li class="chapter" data-level="7" data-path="effect-measure-modification.html"><a href="effect-measure-modification.html"><i class="fa fa-check"></i><b>7</b> Effect-measure modification</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="effect-measure-modification.html"><a href="effect-measure-modification.html#overview-5"><i class="fa fa-check"></i><b>8.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="8.2" data-path="effect-measure-modification.html"><a href="effect-measure-modification.html#useful-websites-5"><i class="fa fa-check"></i><b>8.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="8.3" data-path="effect-measure-modification.html"><a href="effect-measure-modification.html#load-packages-3"><i class="fa fa-check"></i><b>8.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="8.4" data-path="effect-measure-modification.html"><a href="effect-measure-modification.html#simulate-data-2"><i class="fa fa-check"></i><b>8.4</b> 🔢Simulate data</a></li>
+<li class="chapter" data-level="7.1" data-path="effect-measure-modification.html"><a href="effect-measure-modification.html#overview-5"><i class="fa fa-check"></i><b>7.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="7.2" data-path="effect-measure-modification.html"><a href="effect-measure-modification.html#useful-websites-5"><i class="fa fa-check"></i><b>7.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="7.3" data-path="effect-measure-modification.html"><a href="effect-measure-modification.html#load-packages-3"><i class="fa fa-check"></i><b>7.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="7.4" data-path="effect-measure-modification.html"><a href="effect-measure-modification.html#simulate-data-2"><i class="fa fa-check"></i><b>7.4</b> 🔢Simulate data</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="risk-difference.html"><a href="risk-difference.html"><i class="fa fa-check"></i><b>9</b> Risk Difference</a>
+<li class="chapter" data-level="8" data-path="risk-difference.html"><a href="risk-difference.html"><i class="fa fa-check"></i><b>8</b> Risk Difference</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="risk-difference.html"><a href="risk-difference.html#overview-6"><i class="fa fa-check"></i><b>9.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="9.2" data-path="risk-difference.html"><a href="risk-difference.html#useful-websites-6"><i class="fa fa-check"></i><b>9.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="9.3" data-path="risk-difference.html"><a href="risk-difference.html#load-packages-4"><i class="fa fa-check"></i><b>9.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="9.4" data-path="risk-difference.html"><a href="risk-difference.html#data-summary"><i class="fa fa-check"></i><b>9.4</b> Data Summary</a></li>
-<li class="chapter" data-level="9.5" data-path="risk-difference.html"><a href="risk-difference.html#simulate-data-3"><i class="fa fa-check"></i><b>9.5</b> 🔢Simulate data</a>
+<li class="chapter" data-level="8.1" data-path="risk-difference.html"><a href="risk-difference.html#overview-6"><i class="fa fa-check"></i><b>8.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="8.2" data-path="risk-difference.html"><a href="risk-difference.html#useful-websites-6"><i class="fa fa-check"></i><b>8.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="8.3" data-path="risk-difference.html"><a href="risk-difference.html#load-packages-4"><i class="fa fa-check"></i><b>8.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="8.4" data-path="risk-difference.html"><a href="risk-difference.html#data-summary"><i class="fa fa-check"></i><b>8.4</b> Data Summary</a></li>
+<li class="chapter" data-level="8.5" data-path="risk-difference.html"><a href="risk-difference.html#simulate-data-3"><i class="fa fa-check"></i><b>8.5</b> 🔢Simulate data</a>
 <ul>
-<li class="chapter" data-level="9.5.1" data-path="risk-difference.html"><a href="risk-difference.html#simulate-a-matrix-object"><i class="fa fa-check"></i><b>9.5.1</b> Simulate a matrix object</a></li>
+<li class="chapter" data-level="8.5.1" data-path="risk-difference.html"><a href="risk-difference.html#simulate-a-matrix-object"><i class="fa fa-check"></i><b>8.5.1</b> Simulate a matrix object</a></li>
 </ul></li>
-<li class="chapter" data-level="9.6" data-path="risk-difference.html"><a href="risk-difference.html#analysis"><i class="fa fa-check"></i><b>9.6</b> 📈Analysis</a>
+<li class="chapter" data-level="8.6" data-path="risk-difference.html"><a href="risk-difference.html#analysis"><i class="fa fa-check"></i><b>8.6</b> 📈Analysis</a>
 <ul>
-<li class="chapter" data-level="9.6.1" data-path="risk-difference.html"><a href="risk-difference.html#incidence-proportion"><i class="fa fa-check"></i><b>9.6.1</b> Incidence proportion</a></li>
-<li class="chapter" data-level="9.6.2" data-path="risk-difference.html"><a href="risk-difference.html#risk-differences"><i class="fa fa-check"></i><b>9.6.2</b> Risk Differences</a></li>
+<li class="chapter" data-level="8.6.1" data-path="risk-difference.html"><a href="risk-difference.html#incidence-proportion"><i class="fa fa-check"></i><b>8.6.1</b> Incidence proportion</a></li>
+<li class="chapter" data-level="8.6.2" data-path="risk-difference.html"><a href="risk-difference.html#risk-differences"><i class="fa fa-check"></i><b>8.6.2</b> Risk Differences</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>V Data Visualization</b></span></li>
-<li class="chapter" data-level="10" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html"><i class="fa fa-check"></i><b>10</b> Plot populations and samples</a>
+<li class="chapter" data-level="9" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html"><i class="fa fa-check"></i><b>9</b> Plot populations and samples</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#overview-7"><i class="fa fa-check"></i><b>10.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="10.2" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#useful-websites-7"><i class="fa fa-check"></i><b>10.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="10.3" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#load-packages-5"><i class="fa fa-check"></i><b>10.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="10.4" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#simulate-data-4"><i class="fa fa-check"></i><b>10.4</b> 🔢Simulate data</a></li>
+<li class="chapter" data-level="9.1" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#overview-7"><i class="fa fa-check"></i><b>9.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="9.2" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#useful-websites-7"><i class="fa fa-check"></i><b>9.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="9.3" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#load-packages-5"><i class="fa fa-check"></i><b>9.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="9.4" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#simulate-data-4"><i class="fa fa-check"></i><b>9.4</b> 🔢Simulate data</a></li>
 </ul></li>
 <li class="part"><span><b>VI Presenting Results</b></span></li>
-<li class="chapter" data-level="11" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>11</b> Blogdown</a>
+<li class="chapter" data-level="10" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>10</b> Blogdown</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="blogdown.html"><a href="blogdown.html#overview-8"><i class="fa fa-check"></i><b>11.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="11.2" data-path="blogdown.html"><a href="blogdown.html#useful-websites-8"><i class="fa fa-check"></i><b>11.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="11.3" data-path="blogdown.html"><a href="blogdown.html#load-packages-6"><i class="fa fa-check"></i><b>11.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="11.4" data-path="blogdown.html"><a href="blogdown.html#blogdown-commands-to-remember"><i class="fa fa-check"></i><b>11.4</b> Blogdown commands to remember</a></li>
-<li class="chapter" data-level="11.5" data-path="blogdown.html"><a href="blogdown.html#creating-new-content"><i class="fa fa-check"></i><b>11.5</b> Creating new content</a>
+<li class="chapter" data-level="10.1" data-path="blogdown.html"><a href="blogdown.html#overview-8"><i class="fa fa-check"></i><b>10.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="10.2" data-path="blogdown.html"><a href="blogdown.html#useful-websites-8"><i class="fa fa-check"></i><b>10.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="10.3" data-path="blogdown.html"><a href="blogdown.html#load-packages-6"><i class="fa fa-check"></i><b>10.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="10.4" data-path="blogdown.html"><a href="blogdown.html#blogdown-commands-to-remember"><i class="fa fa-check"></i><b>10.4</b> Blogdown commands to remember</a></li>
+<li class="chapter" data-level="10.5" data-path="blogdown.html"><a href="blogdown.html#creating-new-content"><i class="fa fa-check"></i><b>10.5</b> Creating new content</a>
 <ul>
-<li class="chapter" data-level="11.5.1" data-path="blogdown.html"><a href="blogdown.html#step-1.-create-a-landing-page"><i class="fa fa-check"></i><b>11.5.1</b> Step 1. Create a landing page</a></li>
-<li class="chapter" data-level="11.5.2" data-path="blogdown.html"><a href="blogdown.html#step-2.-add-widgets-to-the-landing-page"><i class="fa fa-check"></i><b>11.5.2</b> Step 2. Add widgets to the landing page</a></li>
-<li class="chapter" data-level="11.5.3" data-path="blogdown.html"><a href="blogdown.html#step-3.-add-content-to-the-widgets"><i class="fa fa-check"></i><b>11.5.3</b> Step 3. Add content to the widgets</a></li>
-<li class="chapter" data-level="11.5.4" data-path="blogdown.html"><a href="blogdown.html#step-4.-add-a-banner-image-to-the-landing-page."><i class="fa fa-check"></i><b>11.5.4</b> Step 4. Add a banner image to the landing page.</a></li>
+<li class="chapter" data-level="10.5.1" data-path="blogdown.html"><a href="blogdown.html#step-1.-create-a-landing-page"><i class="fa fa-check"></i><b>10.5.1</b> Step 1. Create a landing page</a></li>
+<li class="chapter" data-level="10.5.2" data-path="blogdown.html"><a href="blogdown.html#step-2.-add-widgets-to-the-landing-page"><i class="fa fa-check"></i><b>10.5.2</b> Step 2. Add widgets to the landing page</a></li>
+<li class="chapter" data-level="10.5.3" data-path="blogdown.html"><a href="blogdown.html#step-3.-add-content-to-the-widgets"><i class="fa fa-check"></i><b>10.5.3</b> Step 3. Add content to the widgets</a></li>
+<li class="chapter" data-level="10.5.4" data-path="blogdown.html"><a href="blogdown.html#step-4.-add-a-banner-image-to-the-landing-page."><i class="fa fa-check"></i><b>10.5.4</b> Step 4. Add a banner image to the landing page.</a></li>
 </ul></li>
-<li class="chapter" data-level="11.6" data-path="blogdown.html"><a href="blogdown.html#editing-widget-metadata"><i class="fa fa-check"></i><b>11.6</b> Editing widget metadata</a></li>
-<li class="chapter" data-level="11.7" data-path="blogdown.html"><a href="blogdown.html#editing-about-widget-content"><i class="fa fa-check"></i><b>11.7</b> Editing about widget content</a></li>
-<li class="chapter" data-level="11.8" data-path="blogdown.html"><a href="blogdown.html#adjusting-site-configuration-files"><i class="fa fa-check"></i><b>11.8</b> Adjusting site configuration files</a></li>
-<li class="chapter" data-level="11.9" data-path="blogdown.html"><a href="blogdown.html#other-little-adjustments"><i class="fa fa-check"></i><b>11.9</b> Other little adjustments</a></li>
-<li class="chapter" data-level="11.10" data-path="blogdown.html"><a href="blogdown.html#custom-css"><i class="fa fa-check"></i><b>11.10</b> Custom CSS</a></li>
-<li class="chapter" data-level="11.11" data-path="blogdown.html"><a href="blogdown.html#changing-the-domain"><i class="fa fa-check"></i><b>11.11</b> Changing the domain</a></li>
-<li class="chapter" data-level="11.12" data-path="blogdown.html"><a href="blogdown.html#error-fixes"><i class="fa fa-check"></i><b>11.12</b> Error fixes</a>
+<li class="chapter" data-level="10.6" data-path="blogdown.html"><a href="blogdown.html#editing-widget-metadata"><i class="fa fa-check"></i><b>10.6</b> Editing widget metadata</a></li>
+<li class="chapter" data-level="10.7" data-path="blogdown.html"><a href="blogdown.html#editing-about-widget-content"><i class="fa fa-check"></i><b>10.7</b> Editing about widget content</a></li>
+<li class="chapter" data-level="10.8" data-path="blogdown.html"><a href="blogdown.html#adjusting-site-configuration-files"><i class="fa fa-check"></i><b>10.8</b> Adjusting site configuration files</a></li>
+<li class="chapter" data-level="10.9" data-path="blogdown.html"><a href="blogdown.html#other-little-adjustments"><i class="fa fa-check"></i><b>10.9</b> Other little adjustments</a></li>
+<li class="chapter" data-level="10.10" data-path="blogdown.html"><a href="blogdown.html#custom-css"><i class="fa fa-check"></i><b>10.10</b> Custom CSS</a></li>
+<li class="chapter" data-level="10.11" data-path="blogdown.html"><a href="blogdown.html#changing-the-domain"><i class="fa fa-check"></i><b>10.11</b> Changing the domain</a></li>
+<li class="chapter" data-level="10.12" data-path="blogdown.html"><a href="blogdown.html#error-fixes"><i class="fa fa-check"></i><b>10.12</b> Error fixes</a>
 <ul>
-<li class="chapter" data-level="11.12.1" data-path="blogdown.html"><a href="blogdown.html#blogdowncheck_netlify"><i class="fa fa-check"></i><b>11.12.1</b> blogdown::check_netlify()</a></li>
+<li class="chapter" data-level="10.12.1" data-path="blogdown.html"><a href="blogdown.html#blogdowncheck_netlify"><i class="fa fa-check"></i><b>10.12.1</b> blogdown::check_netlify()</a></li>
 </ul></li>
-<li class="chapter" data-level="11.13" data-path="blogdown.html"><a href="blogdown.html#adding-google-analytics"><i class="fa fa-check"></i><b>11.13</b> Adding Google Analytics</a></li>
+<li class="chapter" data-level="10.13" data-path="blogdown.html"><a href="blogdown.html#adding-google-analytics"><i class="fa fa-check"></i><b>10.13</b> Adding Google Analytics</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="book-chapters.html"><a href="book-chapters.html"><i class="fa fa-check"></i><b>12</b> Bookdown: Creating Book Chapters</a>
+<li class="chapter" data-level="11" data-path="book-chapters.html"><a href="book-chapters.html"><i class="fa fa-check"></i><b>11</b> Bookdown: Creating Book Chapters</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="book-chapters.html"><a href="book-chapters.html#chapter-overview"><i class="fa fa-check"></i><b>12.1</b> Chapter overview</a></li>
-<li class="chapter" data-level="12.2" data-path="book-chapters.html"><a href="book-chapters.html#motivating-example"><i class="fa fa-check"></i><b>12.2</b> Motivating example</a></li>
-<li class="chapter" data-level="12.3" data-path="book-chapters.html"><a href="book-chapters.html#body"><i class="fa fa-check"></i><b>12.3</b> Body</a>
+<li class="chapter" data-level="11.1" data-path="book-chapters.html"><a href="book-chapters.html#chapter-overview"><i class="fa fa-check"></i><b>11.1</b> Chapter overview</a></li>
+<li class="chapter" data-level="11.2" data-path="book-chapters.html"><a href="book-chapters.html#motivating-example"><i class="fa fa-check"></i><b>11.2</b> Motivating example</a></li>
+<li class="chapter" data-level="11.3" data-path="book-chapters.html"><a href="book-chapters.html#body"><i class="fa fa-check"></i><b>11.3</b> Body</a>
 <ul>
-<li class="chapter" data-level="12.3.1" data-path="book-chapters.html"><a href="book-chapters.html#language"><i class="fa fa-check"></i><b>12.3.1</b> Language</a></li>
-<li class="chapter" data-level="12.3.2" data-path="book-chapters.html"><a href="book-chapters.html#text-conventions"><i class="fa fa-check"></i><b>12.3.2</b> Text conventions</a></li>
-<li class="chapter" data-level="12.3.3" data-path="book-chapters.html"><a href="book-chapters.html#special-sections"><i class="fa fa-check"></i><b>12.3.3</b> Special sections</a></li>
-<li class="chapter" data-level="12.3.4" data-path="book-chapters.html"><a href="book-chapters.html#images"><i class="fa fa-check"></i><b>12.3.4</b> Images</a></li>
-<li class="chapter" data-level="12.3.5" data-path="book-chapters.html"><a href="book-chapters.html#font-awesome"><i class="fa fa-check"></i><b>12.3.5</b> Font Awesome</a></li>
-<li class="chapter" data-level="12.3.6" data-path="book-chapters.html"><a href="book-chapters.html#links"><i class="fa fa-check"></i><b>12.3.6</b> Links</a></li>
-<li class="chapter" data-level="12.3.7" data-path="book-chapters.html"><a href="book-chapters.html#code-blocks"><i class="fa fa-check"></i><b>12.3.7</b> Code blocks</a></li>
+<li class="chapter" data-level="11.3.1" data-path="book-chapters.html"><a href="book-chapters.html#language"><i class="fa fa-check"></i><b>11.3.1</b> Language</a></li>
+<li class="chapter" data-level="11.3.2" data-path="book-chapters.html"><a href="book-chapters.html#text-conventions"><i class="fa fa-check"></i><b>11.3.2</b> Text conventions</a></li>
+<li class="chapter" data-level="11.3.3" data-path="book-chapters.html"><a href="book-chapters.html#special-sections"><i class="fa fa-check"></i><b>11.3.3</b> Special sections</a></li>
+<li class="chapter" data-level="11.3.4" data-path="book-chapters.html"><a href="book-chapters.html#images"><i class="fa fa-check"></i><b>11.3.4</b> Images</a></li>
+<li class="chapter" data-level="11.3.5" data-path="book-chapters.html"><a href="book-chapters.html#font-awesome"><i class="fa fa-check"></i><b>11.3.5</b> Font Awesome</a></li>
+<li class="chapter" data-level="11.3.6" data-path="book-chapters.html"><a href="book-chapters.html#links"><i class="fa fa-check"></i><b>11.3.6</b> Links</a></li>
+<li class="chapter" data-level="11.3.7" data-path="book-chapters.html"><a href="book-chapters.html#code-blocks"><i class="fa fa-check"></i><b>11.3.7</b> Code blocks</a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="book-chapters.html"><a href="book-chapters.html#cross-references"><i class="fa fa-check"></i><b>12.4</b> Cross-references</a>
+<li class="chapter" data-level="11.4" data-path="book-chapters.html"><a href="book-chapters.html#cross-references"><i class="fa fa-check"></i><b>11.4</b> Cross-references</a>
 <ul>
-<li class="chapter" data-level="12.4.1" data-path="book-chapters.html"><a href="book-chapters.html#cr-figs"><i class="fa fa-check"></i><b>12.4.1</b> Cross-referencing figures</a></li>
-<li class="chapter" data-level="12.4.2" data-path="book-chapters.html"><a href="book-chapters.html#cross-referencing-chapters"><i class="fa fa-check"></i><b>12.4.2</b> Cross-referencing chapters</a></li>
+<li class="chapter" data-level="11.4.1" data-path="book-chapters.html"><a href="book-chapters.html#cr-figs"><i class="fa fa-check"></i><b>11.4.1</b> Cross-referencing figures</a></li>
+<li class="chapter" data-level="11.4.2" data-path="book-chapters.html"><a href="book-chapters.html#cross-referencing-chapters"><i class="fa fa-check"></i><b>11.4.2</b> Cross-referencing chapters</a></li>
 </ul></li>
-<li class="chapter" data-level="12.5" data-path="book-chapters.html"><a href="book-chapters.html#citations"><i class="fa fa-check"></i><b>12.5</b> Citations</a></li>
-<li class="chapter" data-level="12.6" data-path="book-chapters.html"><a href="book-chapters.html#previewing-the-chapter"><i class="fa fa-check"></i><b>12.6</b> Previewing the chapter</a>
+<li class="chapter" data-level="11.5" data-path="book-chapters.html"><a href="book-chapters.html#citations"><i class="fa fa-check"></i><b>11.5</b> Citations</a></li>
+<li class="chapter" data-level="11.6" data-path="book-chapters.html"><a href="book-chapters.html#previewing-the-chapter"><i class="fa fa-check"></i><b>11.6</b> Previewing the chapter</a>
 <ul>
-<li class="chapter" data-level="12.6.1" data-path="book-chapters.html"><a href="book-chapters.html#miscelaneous"><i class="fa fa-check"></i><b>12.6.1</b> Miscelaneous</a></li>
+<li class="chapter" data-level="11.6.1" data-path="book-chapters.html"><a href="book-chapters.html#miscelaneous"><i class="fa fa-check"></i><b>11.6.1</b> Miscelaneous</a></li>
 </ul></li>
-<li class="chapter" data-level="12.7" data-path="book-chapters.html"><a href="book-chapters.html#additional-resources-function-to-check"><i class="fa fa-check"></i><b>12.7</b> Additional resources: function to check</a></li>
-<li class="chapter" data-level="12.8" data-path="book-chapters.html"><a href="book-chapters.html#key-terms-function-to-add-to-appendix"><i class="fa fa-check"></i><b>12.8</b> Key terms : function to add to appendix</a></li>
-<li class="chapter" data-level="12.9" data-path="book-chapters.html"><a href="book-chapters.html#final-example-code-function-to-add-to-appendix"><i class="fa fa-check"></i><b>12.9</b> Final example code : function to add to appendix</a></li>
+<li class="chapter" data-level="11.7" data-path="book-chapters.html"><a href="book-chapters.html#additional-resources-function-to-check"><i class="fa fa-check"></i><b>11.7</b> Additional resources: function to check</a></li>
+<li class="chapter" data-level="11.8" data-path="book-chapters.html"><a href="book-chapters.html#key-terms-function-to-add-to-appendix"><i class="fa fa-check"></i><b>11.8</b> Key terms : function to add to appendix</a></li>
+<li class="chapter" data-level="11.9" data-path="book-chapters.html"><a href="book-chapters.html#final-example-code-function-to-add-to-appendix"><i class="fa fa-check"></i><b>11.9</b> Final example code : function to add to appendix</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html"><i class="fa fa-check"></i><b>13</b> Bookdown: Quick Start</a>
+<li class="chapter" data-level="12" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html"><i class="fa fa-check"></i><b>12</b> Bookdown: Quick Start</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#overview-9"><i class="fa fa-check"></i><b>13.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="13.2" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#useful-websites-9"><i class="fa fa-check"></i><b>13.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="13.3" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#creating-the-bookdown-project-locally"><i class="fa fa-check"></i><b>13.3</b> Creating the bookdown project locally</a></li>
-<li class="chapter" data-level="13.4" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#initiate-a-git-repository"><i class="fa fa-check"></i><b>13.4</b> Initiate a git repository</a></li>
-<li class="chapter" data-level="13.5" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#create-a-github-repository-for-the-book"><i class="fa fa-check"></i><b>13.5</b> Create a github repository for the book</a></li>
-<li class="chapter" data-level="13.6" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#configuring-a-publishing-source-for-the-github-pages-site"><i class="fa fa-check"></i><b>13.6</b> Configuring a publishing source for the GitHub Pages site</a></li>
-<li class="chapter" data-level="13.7" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-_bookdown.yml"><i class="fa fa-check"></i><b>13.7</b> Modify _bookdown.yml</a></li>
-<li class="chapter" data-level="13.8" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-_output.yml"><i class="fa fa-check"></i><b>13.8</b> Modify _output.yml</a></li>
-<li class="chapter" data-level="13.9" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-style.css"><i class="fa fa-check"></i><b>13.9</b> Modify style.css</a></li>
-<li class="chapter" data-level="13.10" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-index.rmd"><i class="fa fa-check"></i><b>13.10</b> Modify index.Rmd</a></li>
-<li class="chapter" data-level="13.11" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#creating-bookdown-chapters"><i class="fa fa-check"></i><b>13.11</b> Creating bookdown chapters</a></li>
-<li class="chapter" data-level="13.12" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#knitting-the-book"><i class="fa fa-check"></i><b>13.12</b> Knitting the book</a></li>
-<li class="chapter" data-level="13.13" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#errors-and-warnings"><i class="fa fa-check"></i><b>13.13</b> Errors and warnings</a></li>
+<li class="chapter" data-level="12.1" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#overview-9"><i class="fa fa-check"></i><b>12.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="12.2" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#useful-websites-9"><i class="fa fa-check"></i><b>12.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="12.3" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#creating-the-bookdown-project-locally"><i class="fa fa-check"></i><b>12.3</b> Creating the bookdown project locally</a></li>
+<li class="chapter" data-level="12.4" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#initiate-a-git-repository"><i class="fa fa-check"></i><b>12.4</b> Initiate a git repository</a></li>
+<li class="chapter" data-level="12.5" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#create-a-github-repository-for-the-book"><i class="fa fa-check"></i><b>12.5</b> Create a github repository for the book</a></li>
+<li class="chapter" data-level="12.6" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#configuring-a-publishing-source-for-the-github-pages-site"><i class="fa fa-check"></i><b>12.6</b> Configuring a publishing source for the GitHub Pages site</a></li>
+<li class="chapter" data-level="12.7" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-_bookdown.yml"><i class="fa fa-check"></i><b>12.7</b> Modify _bookdown.yml</a></li>
+<li class="chapter" data-level="12.8" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-_output.yml"><i class="fa fa-check"></i><b>12.8</b> Modify _output.yml</a></li>
+<li class="chapter" data-level="12.9" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-style.css"><i class="fa fa-check"></i><b>12.9</b> Modify style.css</a></li>
+<li class="chapter" data-level="12.10" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-index.rmd"><i class="fa fa-check"></i><b>12.10</b> Modify index.Rmd</a></li>
+<li class="chapter" data-level="12.11" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#creating-bookdown-chapters"><i class="fa fa-check"></i><b>12.11</b> Creating bookdown chapters</a></li>
+<li class="chapter" data-level="12.12" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#knitting-the-book"><i class="fa fa-check"></i><b>12.12</b> Knitting the book</a></li>
+<li class="chapter" data-level="12.13" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#errors-and-warnings"><i class="fa fa-check"></i><b>12.13</b> Errors and warnings</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="flexdashboard.html"><a href="flexdashboard.html"><i class="fa fa-check"></i><b>14</b> Flexdashboard</a>
+<li class="chapter" data-level="13" data-path="flexdashboard.html"><a href="flexdashboard.html"><i class="fa fa-check"></i><b>13</b> Flexdashboard</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="flexdashboard.html"><a href="flexdashboard.html#overview-10"><i class="fa fa-check"></i><b>14.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="14.2" data-path="flexdashboard.html"><a href="flexdashboard.html#useful-websites-10"><i class="fa fa-check"></i><b>14.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="14.3" data-path="flexdashboard.html"><a href="flexdashboard.html#load-packages-7"><i class="fa fa-check"></i><b>14.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="14.4" data-path="flexdashboard.html"><a href="flexdashboard.html#tips"><i class="fa fa-check"></i><b>14.4</b> Tips</a></li>
-<li class="chapter" data-level="14.5" data-path="flexdashboard.html"><a href="flexdashboard.html#simulate-data-5"><i class="fa fa-check"></i><b>14.5</b> 🔢Simulate data</a></li>
+<li class="chapter" data-level="13.1" data-path="flexdashboard.html"><a href="flexdashboard.html#overview-10"><i class="fa fa-check"></i><b>13.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="13.2" data-path="flexdashboard.html"><a href="flexdashboard.html#useful-websites-10"><i class="fa fa-check"></i><b>13.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="13.3" data-path="flexdashboard.html"><a href="flexdashboard.html#load-packages-7"><i class="fa fa-check"></i><b>13.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="13.4" data-path="flexdashboard.html"><a href="flexdashboard.html#tips"><i class="fa fa-check"></i><b>13.4</b> Tips</a></li>
+<li class="chapter" data-level="13.5" data-path="flexdashboard.html"><a href="flexdashboard.html#simulate-data-5"><i class="fa fa-check"></i><b>13.5</b> 🔢Simulate data</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="flextable.html"><a href="flextable.html"><i class="fa fa-check"></i><b>15</b> Flextable</a>
+<li class="chapter" data-level="14" data-path="flextable.html"><a href="flextable.html"><i class="fa fa-check"></i><b>14</b> Flextable</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="flextable.html"><a href="flextable.html#overview-11"><i class="fa fa-check"></i><b>15.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="15.2" data-path="flextable.html"><a href="flextable.html#useful-websites-11"><i class="fa fa-check"></i><b>15.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="15.3" data-path="flextable.html"><a href="flextable.html#load-packages-8"><i class="fa fa-check"></i><b>15.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="15.4" data-path="flextable.html"><a href="flextable.html#load-data"><i class="fa fa-check"></i><b>15.4</b> Load data</a></li>
-<li class="chapter" data-level="15.5" data-path="flextable.html"><a href="flextable.html#i-and-j"><i class="fa fa-check"></i><b>15.5</b> 🔵 i and j</a></li>
-<li class="chapter" data-level="15.6" data-path="flextable.html"><a href="flextable.html#flextable-wrappers"><i class="fa fa-check"></i><b>15.6</b> 🔵 Flextable wrappers</a></li>
-<li class="chapter" data-level="15.7" data-path="flextable.html"><a href="flextable.html#addingmodifying-table-content"><i class="fa fa-check"></i><b>15.7</b> 🔵 Adding/modifying table content</a>
+<li class="chapter" data-level="14.1" data-path="flextable.html"><a href="flextable.html#overview-11"><i class="fa fa-check"></i><b>14.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="14.2" data-path="flextable.html"><a href="flextable.html#useful-websites-11"><i class="fa fa-check"></i><b>14.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="14.3" data-path="flextable.html"><a href="flextable.html#load-packages-8"><i class="fa fa-check"></i><b>14.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="14.4" data-path="flextable.html"><a href="flextable.html#load-data"><i class="fa fa-check"></i><b>14.4</b> Load data</a></li>
+<li class="chapter" data-level="14.5" data-path="flextable.html"><a href="flextable.html#i-and-j"><i class="fa fa-check"></i><b>14.5</b> 🔵 i and j</a></li>
+<li class="chapter" data-level="14.6" data-path="flextable.html"><a href="flextable.html#flextable-wrappers"><i class="fa fa-check"></i><b>14.6</b> 🔵 Flextable wrappers</a></li>
+<li class="chapter" data-level="14.7" data-path="flextable.html"><a href="flextable.html#addingmodifying-table-content"><i class="fa fa-check"></i><b>14.7</b> 🔵 Adding/modifying table content</a>
 <ul>
-<li class="chapter" data-level="15.7.1" data-path="flextable.html"><a href="flextable.html#add-table-title-with-bold-part"><i class="fa fa-check"></i><b>15.7.1</b> Add table title with bold part</a></li>
-<li class="chapter" data-level="15.7.2" data-path="flextable.html"><a href="flextable.html#adding-blank-rows"><i class="fa fa-check"></i><b>15.7.2</b> Adding blank rows</a></li>
-<li class="chapter" data-level="15.7.3" data-path="flextable.html"><a href="flextable.html#change-column-header-text"><i class="fa fa-check"></i><b>15.7.3</b> Change column header text</a></li>
-<li class="chapter" data-level="15.7.4" data-path="flextable.html"><a href="flextable.html#change-row-header-text"><i class="fa fa-check"></i><b>15.7.4</b> Change row header text</a></li>
-<li class="chapter" data-level="15.7.5" data-path="flextable.html"><a href="flextable.html#add-footnote"><i class="fa fa-check"></i><b>15.7.5</b> Add footnote</a></li>
+<li class="chapter" data-level="14.7.1" data-path="flextable.html"><a href="flextable.html#add-table-title-with-bold-part"><i class="fa fa-check"></i><b>14.7.1</b> Add table title with bold part</a></li>
+<li class="chapter" data-level="14.7.2" data-path="flextable.html"><a href="flextable.html#adding-blank-rows"><i class="fa fa-check"></i><b>14.7.2</b> Adding blank rows</a></li>
+<li class="chapter" data-level="14.7.3" data-path="flextable.html"><a href="flextable.html#change-column-header-text"><i class="fa fa-check"></i><b>14.7.3</b> Change column header text</a></li>
+<li class="chapter" data-level="14.7.4" data-path="flextable.html"><a href="flextable.html#change-row-header-text"><i class="fa fa-check"></i><b>14.7.4</b> Change row header text</a></li>
+<li class="chapter" data-level="14.7.5" data-path="flextable.html"><a href="flextable.html#add-footnote"><i class="fa fa-check"></i><b>14.7.5</b> Add footnote</a></li>
 </ul></li>
-<li class="chapter" data-level="15.8" data-path="flextable.html"><a href="flextable.html#formatting"><i class="fa fa-check"></i><b>15.8</b> 🔵 Formatting</a>
+<li class="chapter" data-level="14.8" data-path="flextable.html"><a href="flextable.html#formatting"><i class="fa fa-check"></i><b>14.8</b> 🔵 Formatting</a>
 <ul>
-<li class="chapter" data-level="15.8.1" data-path="flextable.html"><a href="flextable.html#change-font-to-tnr"><i class="fa fa-check"></i><b>15.8.1</b> Change font to TNR</a></li>
-<li class="chapter" data-level="15.8.2" data-path="flextable.html"><a href="flextable.html#conditional-formatting"><i class="fa fa-check"></i><b>15.8.2</b> Conditional formatting</a></li>
+<li class="chapter" data-level="14.8.1" data-path="flextable.html"><a href="flextable.html#change-font-to-tnr"><i class="fa fa-check"></i><b>14.8.1</b> Change font to TNR</a></li>
+<li class="chapter" data-level="14.8.2" data-path="flextable.html"><a href="flextable.html#conditional-formatting"><i class="fa fa-check"></i><b>14.8.2</b> Conditional formatting</a></li>
 </ul></li>
-<li class="chapter" data-level="15.9" data-path="flextable.html"><a href="flextable.html#layout"><i class="fa fa-check"></i><b>15.9</b> 🔵Layout</a>
+<li class="chapter" data-level="14.9" data-path="flextable.html"><a href="flextable.html#layout"><i class="fa fa-check"></i><b>14.9</b> 🔵Layout</a>
 <ul>
-<li class="chapter" data-level="15.9.1" data-path="flextable.html"><a href="flextable.html#autofit-to-contents"><i class="fa fa-check"></i><b>15.9.1</b> Autofit to contents</a></li>
+<li class="chapter" data-level="14.9.1" data-path="flextable.html"><a href="flextable.html#autofit-to-contents"><i class="fa fa-check"></i><b>14.9.1</b> Autofit to contents</a></li>
 </ul></li>
-<li class="chapter" data-level="15.10" data-path="flextable.html"><a href="flextable.html#examples"><i class="fa fa-check"></i><b>15.10</b> 🔵 Examples</a>
+<li class="chapter" data-level="14.10" data-path="flextable.html"><a href="flextable.html#examples"><i class="fa fa-check"></i><b>14.10</b> 🔵 Examples</a>
 <ul>
-<li class="chapter" data-level="15.10.1" data-path="flextable.html"><a href="flextable.html#lead-panel-summarize-votes"><i class="fa fa-check"></i><b>15.10.1</b> LEAD panel summarize votes</a></li>
+<li class="chapter" data-level="14.10.1" data-path="flextable.html"><a href="flextable.html#lead-panel-summarize-votes"><i class="fa fa-check"></i><b>14.10.1</b> LEAD panel summarize votes</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="language-for-publications.html"><a href="language-for-publications.html"><i class="fa fa-check"></i><b>16</b> Language for publications</a>
+<li class="chapter" data-level="15" data-path="language-for-publications.html"><a href="language-for-publications.html"><i class="fa fa-check"></i><b>15</b> Language for publications</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="language-for-publications.html"><a href="language-for-publications.html#overview-12"><i class="fa fa-check"></i><b>16.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="16.2" data-path="language-for-publications.html"><a href="language-for-publications.html#useful-websites-12"><i class="fa fa-check"></i><b>16.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="16.3" data-path="language-for-publications.html"><a href="language-for-publications.html#load-packages-9"><i class="fa fa-check"></i><b>16.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="16.4" data-path="language-for-publications.html"><a href="language-for-publications.html#statistical-software"><i class="fa fa-check"></i><b>16.4</b> Statistical software</a>
+<li class="chapter" data-level="15.1" data-path="language-for-publications.html"><a href="language-for-publications.html#overview-12"><i class="fa fa-check"></i><b>15.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="15.2" data-path="language-for-publications.html"><a href="language-for-publications.html#useful-websites-12"><i class="fa fa-check"></i><b>15.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="15.3" data-path="language-for-publications.html"><a href="language-for-publications.html#load-packages-9"><i class="fa fa-check"></i><b>15.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="15.4" data-path="language-for-publications.html"><a href="language-for-publications.html#statistical-software"><i class="fa fa-check"></i><b>15.4</b> Statistical software</a>
 <ul>
-<li class="chapter" data-level="16.4.1" data-path="language-for-publications.html"><a href="language-for-publications.html#r"><i class="fa fa-check"></i><b>16.4.1</b> R</a></li>
-<li class="chapter" data-level="16.4.2" data-path="language-for-publications.html"><a href="language-for-publications.html#stata"><i class="fa fa-check"></i><b>16.4.2</b> Stata</a></li>
-<li class="chapter" data-level="16.4.3" data-path="language-for-publications.html"><a href="language-for-publications.html#sas"><i class="fa fa-check"></i><b>16.4.3</b> SAS</a></li>
+<li class="chapter" data-level="15.4.1" data-path="language-for-publications.html"><a href="language-for-publications.html#r"><i class="fa fa-check"></i><b>15.4.1</b> R</a></li>
+<li class="chapter" data-level="15.4.2" data-path="language-for-publications.html"><a href="language-for-publications.html#stata"><i class="fa fa-check"></i><b>15.4.2</b> Stata</a></li>
+<li class="chapter" data-level="15.4.3" data-path="language-for-publications.html"><a href="language-for-publications.html#sas"><i class="fa fa-check"></i><b>15.4.3</b> SAS</a></li>
 </ul></li>
-<li class="chapter" data-level="16.5" data-path="language-for-publications.html"><a href="language-for-publications.html#irb"><i class="fa fa-check"></i><b>16.5</b> IRB</a></li>
+<li class="chapter" data-level="15.5" data-path="language-for-publications.html"><a href="language-for-publications.html#irb"><i class="fa fa-check"></i><b>15.5</b> IRB</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="officer.html"><a href="officer.html"><i class="fa fa-check"></i><b>17</b> Officer</a>
+<li class="chapter" data-level="16" data-path="officer.html"><a href="officer.html"><i class="fa fa-check"></i><b>16</b> Officer</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="officer.html"><a href="officer.html#overview-13"><i class="fa fa-check"></i><b>17.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="17.2" data-path="officer.html"><a href="officer.html#useful-websites-13"><i class="fa fa-check"></i><b>17.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="17.3" data-path="officer.html"><a href="officer.html#load-packages-10"><i class="fa fa-check"></i><b>17.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="17.4" data-path="officer.html"><a href="officer.html#formatted-text"><i class="fa fa-check"></i><b>17.4</b> Formatted text</a></li>
-<li class="chapter" data-level="17.5" data-path="officer.html"><a href="officer.html#bulleted-list"><i class="fa fa-check"></i><b>17.5</b> Bulleted list</a></li>
-<li class="chapter" data-level="17.6" data-path="officer.html"><a href="officer.html#adding-on-to-the-end-of-a-file."><i class="fa fa-check"></i><b>17.6</b> Adding on to the end of a file.</a></li>
-<li class="chapter" data-level="17.7" data-path="officer.html"><a href="officer.html#using-bookmarks"><i class="fa fa-check"></i><b>17.7</b> Using bookmarks</a></li>
+<li class="chapter" data-level="16.1" data-path="officer.html"><a href="officer.html#overview-13"><i class="fa fa-check"></i><b>16.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="16.2" data-path="officer.html"><a href="officer.html#useful-websites-13"><i class="fa fa-check"></i><b>16.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="16.3" data-path="officer.html"><a href="officer.html#load-packages-10"><i class="fa fa-check"></i><b>16.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="16.4" data-path="officer.html"><a href="officer.html#formatted-text"><i class="fa fa-check"></i><b>16.4</b> Formatted text</a></li>
+<li class="chapter" data-level="16.5" data-path="officer.html"><a href="officer.html#bulleted-list"><i class="fa fa-check"></i><b>16.5</b> Bulleted list</a></li>
+<li class="chapter" data-level="16.6" data-path="officer.html"><a href="officer.html#adding-on-to-the-end-of-a-file."><i class="fa fa-check"></i><b>16.6</b> Adding on to the end of a file.</a></li>
+<li class="chapter" data-level="16.7" data-path="officer.html"><a href="officer.html#using-bookmarks"><i class="fa fa-check"></i><b>16.7</b> Using bookmarks</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>18</b> Tables</a>
+<li class="chapter" data-level="17" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>17</b> Tables</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="tables.html"><a href="tables.html#overview-14"><i class="fa fa-check"></i><b>18.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="18.2" data-path="tables.html"><a href="tables.html#projects-to-review-and-incorporate"><i class="fa fa-check"></i><b>18.2</b> Projects to review and incorporate</a></li>
-<li class="chapter" data-level="18.3" data-path="tables.html"><a href="tables.html#useful-websites-14"><i class="fa fa-check"></i><b>18.3</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="18.4" data-path="tables.html"><a href="tables.html#load-packages-11"><i class="fa fa-check"></i><b>18.4</b> 📦Load packages</a></li>
-<li class="chapter" data-level="18.5" data-path="tables.html"><a href="tables.html#simulate-data-6"><i class="fa fa-check"></i><b>18.5</b> 🔢Simulate data</a></li>
-<li class="chapter" data-level="18.6" data-path="tables.html"><a href="tables.html#example-table-1"><i class="fa fa-check"></i><b>18.6</b> 🔵 Example: Table 1</a>
+<li class="chapter" data-level="17.1" data-path="tables.html"><a href="tables.html#overview-14"><i class="fa fa-check"></i><b>17.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="17.2" data-path="tables.html"><a href="tables.html#projects-to-review-and-incorporate"><i class="fa fa-check"></i><b>17.2</b> Projects to review and incorporate</a></li>
+<li class="chapter" data-level="17.3" data-path="tables.html"><a href="tables.html#useful-websites-14"><i class="fa fa-check"></i><b>17.3</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="17.4" data-path="tables.html"><a href="tables.html#load-packages-11"><i class="fa fa-check"></i><b>17.4</b> 📦Load packages</a></li>
+<li class="chapter" data-level="17.5" data-path="tables.html"><a href="tables.html#simulate-data-6"><i class="fa fa-check"></i><b>17.5</b> 🔢Simulate data</a></li>
+<li class="chapter" data-level="17.6" data-path="tables.html"><a href="tables.html#example-table-1"><i class="fa fa-check"></i><b>17.6</b> 🔵 Example: Table 1</a>
 <ul>
-<li class="chapter" data-level="18.6.1" data-path="tables.html"><a href="tables.html#step-1.-calculate-the-outcome-distribution"><i class="fa fa-check"></i><b>18.6.1</b> Step 1. Calculate the outcome distribution</a></li>
-<li class="chapter" data-level="18.6.2" data-path="tables.html"><a href="tables.html#step-2.-prepare-to-calculate-summary-statistics"><i class="fa fa-check"></i><b>18.6.2</b> Step 2. Prepare to calculate summary statistics</a></li>
-<li class="chapter" data-level="18.6.3" data-path="tables.html"><a href="tables.html#step-3.-create-a-data-frame-that-contains-our-summary-statistics"><i class="fa fa-check"></i><b>18.6.3</b> Step 3. Create a data frame that contains our summary statistics</a></li>
-<li class="chapter" data-level="18.6.4" data-path="tables.html"><a href="tables.html#step-5.-create-flextable"><i class="fa fa-check"></i><b>18.6.4</b> Step 5. Create flextable</a></li>
-<li class="chapter" data-level="18.6.5" data-path="tables.html"><a href="tables.html#step-6.-formatting-flextable"><i class="fa fa-check"></i><b>18.6.5</b> Step 6. Formatting flextable</a></li>
-<li class="chapter" data-level="18.6.6" data-path="tables.html"><a href="tables.html#load-word-template-for-officer"><i class="fa fa-check"></i><b>18.6.6</b> 📝 Load Word template for officer</a></li>
-<li class="chapter" data-level="18.6.7" data-path="tables.html"><a href="tables.html#generate-word-reports"><i class="fa fa-check"></i><b>18.6.7</b> 📝 Generate Word reports</a></li>
+<li class="chapter" data-level="17.6.1" data-path="tables.html"><a href="tables.html#step-1.-calculate-the-outcome-distribution"><i class="fa fa-check"></i><b>17.6.1</b> Step 1. Calculate the outcome distribution</a></li>
+<li class="chapter" data-level="17.6.2" data-path="tables.html"><a href="tables.html#step-2.-prepare-to-calculate-summary-statistics"><i class="fa fa-check"></i><b>17.6.2</b> Step 2. Prepare to calculate summary statistics</a></li>
+<li class="chapter" data-level="17.6.3" data-path="tables.html"><a href="tables.html#step-3.-create-a-data-frame-that-contains-our-summary-statistics"><i class="fa fa-check"></i><b>17.6.3</b> Step 3. Create a data frame that contains our summary statistics</a></li>
+<li class="chapter" data-level="17.6.4" data-path="tables.html"><a href="tables.html#step-5.-create-flextable"><i class="fa fa-check"></i><b>17.6.4</b> Step 5. Create flextable</a></li>
+<li class="chapter" data-level="17.6.5" data-path="tables.html"><a href="tables.html#step-6.-formatting-flextable"><i class="fa fa-check"></i><b>17.6.5</b> Step 6. Formatting flextable</a></li>
+<li class="chapter" data-level="17.6.6" data-path="tables.html"><a href="tables.html#load-word-template-for-officer"><i class="fa fa-check"></i><b>17.6.6</b> 📝 Load Word template for officer</a></li>
+<li class="chapter" data-level="17.6.7" data-path="tables.html"><a href="tables.html#generate-word-reports"><i class="fa fa-check"></i><b>17.6.7</b> 📝 Generate Word reports</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Shiny</b></span></li>
 <li class="part"><span><b>VIII Collaborating</b></span></li>
-<li class="chapter" data-level="19" data-path="git-and-github.html"><a href="git-and-github.html"><i class="fa fa-check"></i><b>19</b> Git and GitHub</a>
+<li class="chapter" data-level="18" data-path="git-and-github.html"><a href="git-and-github.html"><i class="fa fa-check"></i><b>18</b> Git and GitHub</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="git-and-github.html"><a href="git-and-github.html#overview-15"><i class="fa fa-check"></i><b>19.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="19.2" data-path="git-and-github.html"><a href="git-and-github.html#useful-websites-15"><i class="fa fa-check"></i><b>19.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="19.3" data-path="git-and-github.html"><a href="git-and-github.html#get-rid-of-.ds_store-1"><i class="fa fa-check"></i><b>19.3</b> Get rid of .DS_Store</a></li>
-<li class="chapter" data-level="19.4" data-path="git-and-github.html"><a href="git-and-github.html#amend"><i class="fa fa-check"></i><b>19.4</b> Amend</a></li>
-<li class="chapter" data-level="19.5" data-path="git-and-github.html"><a href="git-and-github.html#pull-requests"><i class="fa fa-check"></i><b>19.5</b> Pull Requests</a></li>
-<li class="chapter" data-level="19.6" data-path="git-and-github.html"><a href="git-and-github.html#branches"><i class="fa fa-check"></i><b>19.6</b> Branches</a></li>
+<li class="chapter" data-level="18.1" data-path="git-and-github.html"><a href="git-and-github.html#overview-15"><i class="fa fa-check"></i><b>18.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="18.2" data-path="git-and-github.html"><a href="git-and-github.html#useful-websites-15"><i class="fa fa-check"></i><b>18.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="18.3" data-path="git-and-github.html"><a href="git-and-github.html#get-rid-of-.ds_store-1"><i class="fa fa-check"></i><b>18.3</b> Get rid of .DS_Store</a></li>
+<li class="chapter" data-level="18.4" data-path="git-and-github.html"><a href="git-and-github.html#amend"><i class="fa fa-check"></i><b>18.4</b> Amend</a></li>
+<li class="chapter" data-level="18.5" data-path="git-and-github.html"><a href="git-and-github.html#pull-requests"><i class="fa fa-check"></i><b>18.5</b> Pull Requests</a></li>
+<li class="chapter" data-level="18.6" data-path="git-and-github.html"><a href="git-and-github.html#branches"><i class="fa fa-check"></i><b>18.6</b> Branches</a></li>
 </ul></li>
 <li class="part"><span><b>IX Appendix</b></span></li>
-<li class="chapter" data-level="20" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html"><i class="fa fa-check"></i><b>20</b> Appendix A: Terms and Definitions</a>
+<li class="chapter" data-level="19" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html"><i class="fa fa-check"></i><b>19</b> Appendix A: Terms and Definitions</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#overview-16"><i class="fa fa-check"></i><b>20.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="20.2" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#useful-websites-16"><i class="fa fa-check"></i><b>20.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="20.3" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#terms"><i class="fa fa-check"></i><b>20.3</b> 📖Terms</a>
+<li class="chapter" data-level="19.1" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#overview-16"><i class="fa fa-check"></i><b>19.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="19.2" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#useful-websites-16"><i class="fa fa-check"></i><b>19.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="19.3" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#terms"><i class="fa fa-check"></i><b>19.3</b> 📖Terms</a>
 <ul>
-<li class="chapter" data-level="20.3.1" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#general-terms"><i class="fa fa-check"></i><b>20.3.1</b> General Terms</a></li>
-<li class="chapter" data-level="20.3.2" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#general-statistics-terms"><i class="fa fa-check"></i><b>20.3.2</b> General statistics terms</a></li>
-<li class="chapter" data-level="20.3.3" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#measures-of-occurence"><i class="fa fa-check"></i><b>20.3.3</b> Measures of occurence</a></li>
+<li class="chapter" data-level="19.3.1" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#general-terms"><i class="fa fa-check"></i><b>19.3.1</b> General Terms</a></li>
+<li class="chapter" data-level="19.3.2" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#general-statistics-terms"><i class="fa fa-check"></i><b>19.3.2</b> General statistics terms</a></li>
+<li class="chapter" data-level="19.3.3" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#measures-of-occurence"><i class="fa fa-check"></i><b>19.3.3</b> Measures of occurence</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -585,6 +579,9 @@ Hidden comments placeholder
 <li><p><a href="my-package-notes.html#git">Add Git</a> with <code>usethis::use_git()</code>. Restart.</p></li>
 <li><p><a href="my-package-notes.html#github">Connect to GitHub</a> with <code>usethis::use_github()</code>.</p></li>
 <li><p><a href="my-package-notes.html#package-functions">Add functions to the package</a>.</p></li>
+<li><p><a href="my-package-notes.html#testing">Creating unit tests</a>.</p></li>
+<li><p><a href="my-package-notes.html#vignettes">Creating vignettes</a>.</p></li>
+<li><p><a href="my-package-notes.html#cran">Completing a version of the package and (optionally) submitting to CRAN</a>.</p></li>
 </ol>
 </div>
 <div id="before-creating-the-package" class="section level2" number="1.4">
@@ -742,8 +739,293 @@ Hidden comments placeholder
 </ul>
 </div>
 <div id="package-functions" class="section level2" number="1.12">
-<h2><span class="header-section-number">1.12</span> Step 8: Add functions to the package</h2>
+<h2><span class="header-section-number">1.12</span> Step 8: Adding content to the package</h2>
 <p>At this point, we have an (empty) working package, which can be downloaded from our GitHub repository. Now, we just need to add the functions, data, and documentation that will make it actually worth using.</p>
+<div id="working-with-r-scripts" class="section level3" number="1.12.1">
+<h3><span class="header-section-number">1.12.1</span> Working with R scripts</h3>
+<ol style="list-style-type: decimal">
+<li><p>Don’t write or alter your functions in the console as you would in a typical interactive session. If you do, it’s easy for the version you’re using interactively and the version you are actually including in your package to get out of sync. Instead, <em>load</em> the package.</p></li>
+<li><p>Click the build tab &gt; More &gt; Load All, or <code>devtools::load_all</code>, or shift + cmd + L</p></li>
+</ol>
+</div>
+<div id="adding-help-pages-to-functions" class="section level3" number="1.12.2">
+<h3><span class="header-section-number">1.12.2</span> Adding help pages to functions</h3>
+<p>Help pages are contained in .Rd files saved in the man folder. It’s best practice to use <code>roxygen</code> with your script files to automatically generate the .Rd files. Doing so helps to keep your scripts and your help pages in sync.</p>
+<p>To use roxygen:</p>
+<ol style="list-style-type: decimal">
+<li><p>Make sure the R script you want to document is active.</p></li>
+<li><p>Click Project Options &gt; Build Tools &gt; Generate documentation with Roxygen</p></li>
+<li><p>Place your cursor in the function you want to document</p></li>
+<li><p>Insert a Roxygen skeleton with the keyboard shortcut cmd + alt + shift + R</p></li>
+<li><p>After you’ve filled in the skeleton click Build &gt; More &gt; Document, or use the keyboard shortcut shift + cmd + D. RStudio will then automatically generate the help pages in your man folder.</p></li>
+<li><p>Click the build tab &gt; More &gt; Load All, or <code>devtools::load_all</code>, or shift + cmd + L</p></li>
+<li><p>Check your help page by typing ?function_name in the console.</p></li>
+</ol>
+</div>
+<div id="example-roxygen-header" class="section level3" number="1.12.3">
+<h3><span class="header-section-number">1.12.3</span> Example <code>roxygen</code> header</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="my-package-notes.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @title Compact Table of Summary Statistics</span></span>
+<span id="cb13-2"><a href="my-package-notes.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb13-3"><a href="my-package-notes.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @description  Based on Stata&#39;s &quot;tabstat&quot; command. &quot;tabstat displays summary</span></span>
+<span id="cb13-4"><a href="my-package-notes.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  statistics for a series of numeric variables in one table.  It allows you</span></span>
+<span id="cb13-5"><a href="my-package-notes.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  to specify the list of statistics to be displayed.  Statistics can be</span></span>
+<span id="cb13-6"><a href="my-package-notes.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  calculated (conditioned on) another variable.  tabstat allows substantial</span></span>
+<span id="cb13-7"><a href="my-package-notes.html#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  flexibility in terms of the statistics presented and the format of the</span></span>
+<span id="cb13-8"><a href="my-package-notes.html#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  table&quot; (Stata, 2016).</span></span>
+<span id="cb13-9"><a href="my-package-notes.html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb13-10"><a href="my-package-notes.html#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param x A continuous variable.</span></span>
+<span id="cb13-11"><a href="my-package-notes.html#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param digits Rounds the values returned to the specified number of decimal</span></span>
+<span id="cb13-12"><a href="my-package-notes.html#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  places (default 3).</span></span>
+<span id="cb13-13"><a href="my-package-notes.html#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param stats Return specified statistics. Options include:</span></span>
+<span id="cb13-14"><a href="my-package-notes.html#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  \describe{</span></span>
+<span id="cb13-15"><a href="my-package-notes.html#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{n}{Count of nonmissing values of x}</span></span>
+<span id="cb13-16"><a href="my-package-notes.html#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{nmiss}{Count of missing values of x}</span></span>
+<span id="cb13-17"><a href="my-package-notes.html#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{ci}{95 percent confidence interval for the mean of x}</span></span>
+<span id="cb13-18"><a href="my-package-notes.html#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{sum}{Sum of x}</span></span>
+<span id="cb13-19"><a href="my-package-notes.html#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{max}{Maximum value of x}</span></span>
+<span id="cb13-20"><a href="my-package-notes.html#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{min}{Minimum value of x}</span></span>
+<span id="cb13-21"><a href="my-package-notes.html#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{range}{(Maximum value of x) - (minimum value of x)}</span></span>
+<span id="cb13-22"><a href="my-package-notes.html#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{sd}{Standard deviation of x}</span></span>
+<span id="cb13-23"><a href="my-package-notes.html#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{var}{Variance of x}</span></span>
+<span id="cb13-24"><a href="my-package-notes.html#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{cv}{Coefficient of variation (sd / mean) of x}</span></span>
+<span id="cb13-25"><a href="my-package-notes.html#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{sem}{Standard error of the mean of x}</span></span>
+<span id="cb13-26"><a href="my-package-notes.html#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{skew}{Skewness of x}</span></span>
+<span id="cb13-27"><a href="my-package-notes.html#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{kurt}{Kurtosis of x}</span></span>
+<span id="cb13-28"><a href="my-package-notes.html#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p1}{1st percentile of x}</span></span>
+<span id="cb13-29"><a href="my-package-notes.html#cb13-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p5}{5th percentile of x}</span></span>
+<span id="cb13-30"><a href="my-package-notes.html#cb13-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p10}{10th percentile of x}</span></span>
+<span id="cb13-31"><a href="my-package-notes.html#cb13-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p25}{25th percentile of x}</span></span>
+<span id="cb13-32"><a href="my-package-notes.html#cb13-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p50}{Median value of x}</span></span>
+<span id="cb13-33"><a href="my-package-notes.html#cb13-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{median}{Median value of x}</span></span>
+<span id="cb13-34"><a href="my-package-notes.html#cb13-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p75}{75th percentile of x}</span></span>
+<span id="cb13-35"><a href="my-package-notes.html#cb13-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p90}{90th percentile of x}</span></span>
+<span id="cb13-36"><a href="my-package-notes.html#cb13-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p95}{95th percentile of x}</span></span>
+<span id="cb13-37"><a href="my-package-notes.html#cb13-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p99}{99th percentile of x}</span></span>
+<span id="cb13-38"><a href="my-package-notes.html#cb13-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{iqr}{Interquartile range (p75 - p25)}</span></span>
+<span id="cb13-39"><a href="my-package-notes.html#cb13-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{q}{Equivalent to specifying p25 p50 p75}</span></span>
+<span id="cb13-40"><a href="my-package-notes.html#cb13-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  }</span></span>
+<span id="cb13-41"><a href="my-package-notes.html#cb13-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb13-42"><a href="my-package-notes.html#cb13-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return A data frame. By default, the data frame contains the variable name</span></span>
+<span id="cb13-43"><a href="my-package-notes.html#cb13-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  and mean.</span></span>
+<span id="cb13-44"><a href="my-package-notes.html#cb13-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb13-45"><a href="my-package-notes.html#cb13-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb13-46"><a href="my-package-notes.html#cb13-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @references Stata 14 help for tabstat</span></span>
+<span id="cb13-47"><a href="my-package-notes.html#cb13-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  \url{http://www.stata.com/help.cgi?tabstat}</span></span>
+<span id="cb13-48"><a href="my-package-notes.html#cb13-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb13-49"><a href="my-package-notes.html#cb13-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb13-50"><a href="my-package-notes.html#cb13-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; data(mtcars)</span></span>
+<span id="cb13-51"><a href="my-package-notes.html#cb13-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb13-52"><a href="my-package-notes.html#cb13-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; # Single univariate analysis with Defaults</span></span>
+<span id="cb13-53"><a href="my-package-notes.html#cb13-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; tabstat(mtcars$mpg)</span></span>
+<span id="cb13-54"><a href="my-package-notes.html#cb13-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb13-55"><a href="my-package-notes.html#cb13-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; # Single univariate analysis with all stats</span></span>
+<span id="cb13-56"><a href="my-package-notes.html#cb13-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; tabstat(mtcars$mpg, stats = c(&quot;n&quot;, &quot;nmiss&quot;, &quot;ci&quot;, &quot;sum&quot;, &quot;max&quot;, &quot;min&quot;,</span></span>
+<span id="cb13-57"><a href="my-package-notes.html#cb13-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; &quot;range&quot;, &quot;sd&quot;, &quot;var&quot;, &quot;cv&quot;, &quot;sem&quot;, &quot;skew&quot;, &quot;kurt&quot;, &quot;p1&quot;, &quot;p5&quot;, &quot;p10&quot;,</span></span>
+<span id="cb13-58"><a href="my-package-notes.html#cb13-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; &quot;p25&quot;, &quot;p50&quot;, &quot;median&quot;, &quot;p75&quot;, &quot;p90&quot;, &quot;p95&quot;, &quot;p99&quot;, &quot;iqr&quot;, &quot;q&quot;))</span></span></code></pre></div>
+</div>
+<div id="dont-run-the-examples" class="section level3" number="1.12.4">
+<h3><span class="header-section-number">1.12.4</span> Don’t run the examples</h3>
+<p>If you don’t want the examples to actually run, You can surround the example code with  like this:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="my-package-notes.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb14-2"><a href="my-package-notes.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; \dontrun{</span></span>
+<span id="cb14-3"><a href="my-package-notes.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; library(dplyr)</span></span>
+<span id="cb14-4"><a href="my-package-notes.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; library(meantables)</span></span>
+<span id="cb14-5"><a href="my-package-notes.html#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb14-6"><a href="my-package-notes.html#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; data(mtcars)</span></span>
+<span id="cb14-7"><a href="my-package-notes.html#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb14-8"><a href="my-package-notes.html#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; # Overall mean table with defaults</span></span>
+<span id="cb14-9"><a href="my-package-notes.html#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb14-10"><a href="my-package-notes.html#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; mtcars %&gt;%</span></span>
+<span id="cb14-11"><a href="my-package-notes.html#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;   mean_table(mpg)</span></span>
+<span id="cb14-12"><a href="my-package-notes.html#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb14-13"><a href="my-package-notes.html#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; # A tibble: 1 x 9</span></span>
+<span id="cb14-14"><a href="my-package-notes.html#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;   response_var     n  mean    sd   sem   lcl   ucl   min   max</span></span>
+<span id="cb14-15"><a href="my-package-notes.html#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;   &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb14-16"><a href="my-package-notes.html#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; 1 mpg             32  20.1  6.03  1.07  17.9  22.3  10.4  33.9</span></span>
+<span id="cb14-17"><a href="my-package-notes.html#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; }</span></span></code></pre></div>
+</div>
+<div id="keyboard-shortcut-for-inserting-roxygen-comment" class="section level3" number="1.12.5">
+<h3><span class="header-section-number">1.12.5</span> Keyboard shortcut for inserting roxygen #’ comment</h3>
+<p>There doesn’t appear to be a keyboard shortcut, but this <a href="https://stackoverflow.com/questions/33399203/keyboard-shortcut-for-inserting-roxygen-comment-start#:~:text=But%20you%20can%20add%20an,%2Balt%2Bshift%2BR%20.">StackOverflow post</a> shows a good method for using RStudio’s find and replace.</p>
+</div>
+<div id="adding-and-documenting-data" class="section level3" number="1.12.6">
+<h3><span class="header-section-number">1.12.6</span> Adding and documenting data</h3>
+<p>The explanation in the <a href="https://r-pkgs.org/data.html">R Packages book</a> is good, short, and easy to follow.</p>
+</div>
+<div id="documenting-package" class="section level3" number="1.12.7">
+<h3><span class="header-section-number">1.12.7</span> Documenting Package</h3>
+<p>You can use roxygen to provide a help page for your package as a whole. As described in <a href="https://r-pkgs.org/man.html#man-packages">section 10.6 of R Packages</a>,<span class="citation"><sup><a href="#ref-Wickham2022-ff" role="doc-biblioref">1</a></sup></span></p>
+<blockquote>
+<p>You can use roxygen to provide a help page for your package as a whole. This is accessed with <code>package?foo</code>, and can be used to describe the most important components of your package. It’s a useful supplement to vignettes, as described in the next chapter.</p>
+</blockquote>
+<blockquote>
+<p>There’s no object that corresponds to a package, so you need to document NULL, and then manually label it with <code>@docType</code> package and <code>@name &lt;package-name&gt;</code>. This is also an excellent place to use the <code>@section tag</code> to divide up page into useful categories.</p>
+</blockquote>
+<blockquote>
+<p>I usually put this documentation in a file called <code>&lt;package-name&gt;.R</code>. It’s also a good place to put the package level import statements that you’ll learn about in imports.</p>
+</blockquote>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="my-package-notes.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; foo: A package for computating the notorious bar statistic</span></span>
+<span id="cb15-2"><a href="my-package-notes.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb15-3"><a href="my-package-notes.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; The foo package provides three categories of important functions:</span></span>
+<span id="cb15-4"><a href="my-package-notes.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; foo, bar and baz.</span></span>
+<span id="cb15-5"><a href="my-package-notes.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb15-6"><a href="my-package-notes.html#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @section Foo functions:</span></span>
+<span id="cb15-7"><a href="my-package-notes.html#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; The foo functions ...</span></span>
+<span id="cb15-8"><a href="my-package-notes.html#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb15-9"><a href="my-package-notes.html#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @docType package</span></span>
+<span id="cb15-10"><a href="my-package-notes.html#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @name foo</span></span>
+<span id="cb15-11"><a href="my-package-notes.html#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="cn">NULL</span></span></code></pre></div>
+</div>
+</div>
+<div id="testing" class="section level2" number="1.13">
+<h2><span class="header-section-number">1.13</span> Step 9: Creating unit tests</h2>
+<p>Testing is an important part of programming. For detailed information on testing see the appropriate <a href="https://r-pkgs.org/tests.html">testing chapter in R Packages</a>.<span class="citation"><sup><a href="#ref-Wickham2022-ff" role="doc-biblioref">1</a></sup></span></p>
+<p>Get started with <code>devtools::use_testthat()</code>.</p>
+<ol style="list-style-type: decimal">
+<li><p>Create test file. Must be in <code>tests/testhat</code>. File name should start with test_ and the function name. For example, <code>test_check_catvars</code>.</p></li>
+<li><p>Modify your code or tests</p></li>
+<li><p>Test your package with Ctrl/Cmd + Shift + T or <code>devtools::test()</code>.</p></li>
+<li><p>Repeat until all tests pass.</p></li>
+</ol>
+</div>
+<div id="vignettes" class="section level2" number="1.14">
+<h2><span class="header-section-number">1.14</span> Step 10: Vignettes</h2>
+<p>There are some great vignette resources on the internet:</p>
+<ul>
+<li><p><a href = "http://r-pkgs.had.co.nz/vignettes.html" target = "_blank">Chapter on vignettes in Hadley’s Package book</a></p></li>
+<li><p><a href = "ftp://cran.r-project.org/pub/R/doc/contrib/Leisch-CreatingPackages.pdf" target = "_blank">Leisch’s creating R packages tutorial</a></p></li>
+<li><p><a href = "http://rmflight.github.io/posts/2014/07/vignetteAnalysis.html" target = "_blank">Flight’s article on creating an analysis as a package and vignette</a></p></li>
+</ul>
+<div id="to-create-a-vignette" class="section level3" number="1.14.1">
+<h3><span class="header-section-number">1.14.1</span> To create a vignette:</h3>
+<ul>
+<li><p>run <code>usethis::use_vignette("my-vignette")</code></p></li>
+<li><p>Open <code>vignettes/my-vignette.Rmd</code></p></li>
+<li><p>Create the vignette</p></li>
+<li><p>Unlike R scripts, install and load packages directly in the vignettes.</p></li>
+<li><p>Knit the vignette - The default action will be to create a version of the vignette that can be viewed in RStudio. However, <code>devtools::install_github()</code> (and friends) will not build vignettes by default because they’re time consuming and may require additional packages. So, in order to be able to view the vignette in RStudio, you must use vignettes = TRUE, e.g., devtools::install_github(“brad-cannell/bfuncs,” build_vignettes = TRUE) instead.</p></li>
+<li><p>Use <code>devtools::build_vignettes()</code> to create an html version of the vignette in <code>inst/doc</code> that you can provide a link to on your Github README page. By default, these folders will be added to .gitignore. Remove them from .gitignore to be able to view/use them on Github. Create a rawgit version of the html vignette file, and providea link to it on README.</p></li>
+<li><p>use use <code>devtools::build()</code> to create a package bundle with the vignettes included. RStudio’s “Build &amp; reload” does not build vignettes to save time.</p></li>
+<li><p>When you add or update vignettes, push to Github again.</p></li>
+</ul>
+</div>
+<div id="vignette-notes" class="section level3" number="1.14.2">
+<h3><span class="header-section-number">1.14.2</span> Vignette Notes:</h3>
+<p>This builds the vignettes, and is probably fine for a regular package of functions. However, when using packages as a means for reproducible, self-contained analysis projects, the vignettes have greater importance, and by default are not easily accessible.<br />
+Need to find a way to make the vignettes more “front and center”</p>
+<ul>
+<li><p>Create a help page for the entire package that includes links to the vignettes?</p></li>
+<li><p>Include links to the README.md file and upload to GitHub (with the data sets excluded)?</p></li>
+<li><p>Remember to use <code>system.file()</code> when reading in data inside a code chunk. If you have trouble getting it to work, try build &amp; reload.</p></li>
+<li><p>To save a data frame to <code>data/</code> inside a vignette, you can use the <a href = "https://github.com/krlmlr/rprojroot" target = "_blank">rprojroot package</a>. use <code>rprojroot::find_root("DESCRIPTION")</code></p></li>
+</ul>
+</div>
+<div id="pkgdown" class="section level3" number="1.14.3">
+<h3><span class="header-section-number">1.14.3</span> Pkgdown</h3>
+<p>I haven’t tried the <a href="https://pkgdown.r-lib.org/">pkgdown</a> package yet, but I think it is essentially a collection supercharged vignettes for your package. I’d like to try it soon.</p>
+</div>
+</div>
+<div id="cran" class="section level2" number="1.15">
+<h2><span class="header-section-number">1.15</span> Submitting to CRAN</h2>
+<p>You can also do this stuff when you complete a “version” of the package even if you aren’t submitting it to CRAN.</p>
+<p>Useful website: <a href="http://r-pkgs.had.co.nz/release.html" class="uri">http://r-pkgs.had.co.nz/release.html</a></p>
+<ol style="list-style-type: decimal">
+<li><p>Update README before submission. It should roughly match the examples in the roxygen documentation.</p>
+<ul>
+<li>Update <code>README.Rmd</code>, not <code>README.md</code>.<br />
+</li>
+<li>Knit <code>README.Rmd</code> after making changes. This will automatically update <code>README.md</code></li>
+</ul></li>
+<li><p>Update documentation/vignettes using <code>devtools::document()</code></p></li>
+<li><p>Update news.md. Here’s dplyr’s: <a href="https://raw.githubusercontent.com/tidyverse/dplyr/master/NEWS.md" class="uri">https://raw.githubusercontent.com/tidyverse/dplyr/master/NEWS.md</a></p></li>
+<li><p>If you were on a development branch, merge with main branch.</p></li>
+<li><p>Use <code>devtools::check()</code></p></li>
+<li><p>Use <code>devtools::check_win_devel()</code> to test the package on Windows</p></li>
+<li><p>Update <code>cran-comments</code>.<br />
+</p></li>
+</ol>
+<ul>
+<li>If this is a resubmission, add a bulleted list of changes made under ## Resubmission.</li>
+</ul>
+<ol start="8" style="list-style-type: decimal">
+<li>Submit with <code>devtools::release()</code></li>
+</ol>
+<p>After the package is accepted, do this stuff: <a href="http://r-pkgs.had.co.nz/release.html#post-release" class="uri">http://r-pkgs.had.co.nz/release.html#post-release</a></p>
+</div>
+<div id="other-random-notes" class="section level2" number="1.16">
+<h2><span class="header-section-number">1.16</span> Other random notes</h2>
+<div id="get-rid-of-.ds_store" class="section level3" number="1.16.1">
+<h3><span class="header-section-number">1.16.1</span> Get rid of .DS_Store</h3>
+<p>The <code>.DS_Store</code> file can be an annoyance when working with Git on MacOS. <a href="https://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository/107921">Here is a link</a> to instructions for removing <code>.DS_Store</code> from your repository. Do it early and never worry about it again.</p>
+<p>In the terminal, run the following code from the root directory:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="my-package-notes.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove existing files from the repository:</span></span>
+<span id="cb16-2"><a href="my-package-notes.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.DS_Store&quot;</span> <span class="at">-type</span> f <span class="at">-exec</span> git-rm {} <span class="dt">\;</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="my-package-notes.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add .DS_Store to .gitignore</span></span>
+<span id="cb17-2"><a href="my-package-notes.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> .DS_Store <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="my-package-notes.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Commit the file to the repo</span></span>
+<span id="cb18-2"><a href="my-package-notes.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .gitignore</span>
+<span id="cb18-3"><a href="my-package-notes.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&#39;.DS_Store banished!&#39;</span></span></code></pre></div>
+</div>
+</div>
+<div id="errors-warnings-notes" class="section level2" number="1.17">
+<h2><span class="header-section-number">1.17</span> Errors, warnings, notes</h2>
+<p>Below are some common errors, warnings and notes I’ve encountered during build tests.</p>
+<blockquote>
+<p>W checking for unstated dependencies in examples …
+‘library’ or ‘require’ call not declared from: ‘tidyverse’
+E checking examples (707ms)
+Running examples in ‘freqtables-Ex.R’ failed
+The error most likely occurred in:</p>
+</blockquote>
+<p>I got this error because I had <code>library(tidyverse)</code> in the<span class="citation"><sup><a href="#ref-examples" role="doc-biblioref"><strong>examples?</strong></a></sup></span> section of my roxygen2 header in one of my R scripts, but I did not have <code>tidyverse</code> in the Imports section of my DESCRIPTION file. I could add <code>tidyverse</code> to the DESCRIPTION file (<code>usethis::use_package("tidyverse", type = "Imports")</code>). However, in this case I chose to use <code>library(dplyr)</code>, which was already in the Imports section of my DESCRIPTION file, instead.</p>
+<blockquote>
+<p>W checking dependencies in R code (369ms)
+‘::’ or ‘:::’ import not declared from: ‘rlang’</p>
+</blockquote>
+<p>To fix this one simply run the following code in the console: <code>usethis::use_package("rlang", type = "Imports")</code></p>
+<blockquote>
+<p>Warning: ‘inst/doc’ files … ignored as vignettes have been rebuilt.</p>
+</blockquote>
+<p>Just ignore this one.</p>
+<blockquote>
+<p>Warning in strptime(xx, f &lt;- “%Y-%m-%d %H:%M:%OS,” tz = tz) : unknown timezone ‘zone/tz/2017c.1.0/zoneinfo/America/Chicago’</p>
+</blockquote>
+<p>Just ingnore this one. It’s a problem with my computer, not with the package code.</p>
+<blockquote>
+<p>Non-standard files/directories found at top level: ‘develop_test_table.Rmd’ ‘develop_test_table.nb.html’</p>
+</blockquote>
+<p>Need to delete these files when I’m done developing chi-square test.</p>
+<blockquote>
+<p>Prevents R CMD check: “no visible binding for global variable ‘.’”</p>
+</blockquote>
+<p>Put the following (for example) directly inside the function definition in the R script where the function is defined:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="my-package-notes.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------</span></span>
+<span id="cb19-2"><a href="my-package-notes.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Prevents R CMD check: &quot;no visible binding for global variable ‘.’&quot;</span></span>
+<span id="cb19-3"><a href="my-package-notes.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------</span></span>
+<span id="cb19-4"><a href="my-package-notes.html#cb19-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> n_total <span class="ot">=</span> prop <span class="ot">=</span> t_crit <span class="ot">=</span> se <span class="ot">=</span> lcl_wald <span class="ot">=</span> ucl_wald <span class="ot">=</span> percent <span class="ot">=</span> <span class="cn">NULL</span></span></code></pre></div>
+<blockquote>
+<p>N checking R code for possible problems (1.8s)
+get_group_n: no visible global function definition for ‘%&gt;%’
+Undefined global functions or variables:
+%&gt;%</p>
+</blockquote>
+<p><a href="http://r-pkgs.had.co.nz/namespace.html#imports">Info on fixing this issue</a></p>
+<p>Short answer: Add the following directly inside the roxygen2 header in the R script where the function is defined: <code>@importFrom dplyr %&gt;%</code>. You must also make sure that it gets to the NAMESPACE. Run <code>usethis::use_namespace()</code> and then <code>devtools::document()</code> to get it into NAMESPACE.</p>
+<blockquote>
+<p>Non-standard file/directory found at top level: ‘meantables_hex’</p>
+</blockquote>
+<p>I got this error after submitting meantables to CRAN. The problem is with the hex sticker file in the meantable hex sticker I added for the README. This SO issue gives some advice: <a href="https://stackoverflow.com/questions/44113759/note-or-warning-from-package-check-when-readme-md-includes-images" class="uri">https://stackoverflow.com/questions/44113759/note-or-warning-from-package-check-when-readme-md-includes-images</a></p>
+<p>I moved the stickers to <code>man/figures</code>. It seems to have solved the problem.</p>
+<!--
+Clean up and add session info
+-->
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body">
+<div id="ref-Wickham2022-ff" class="csl-entry">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Wickham H, Bryan J. <em><span>R</span> Packages</em>. second.; 2022.</div>
 </div>
 </div>
             </section>
@@ -752,7 +1034,7 @@ Hidden comments placeholder
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="left-off-here..html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="creating-rmd-templates.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

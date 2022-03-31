@@ -36,6 +36,12 @@ This is not meant to be a comprehensive guide to creating packages. [Hadley Wick
 
 8. [Add functions to the package](#package-functions).
 
+9. [Creating unit tests](#testing).
+
+10. [Creating vignettes](#vignettes).
+
+11. [Completing a version of the package and (optionally) submitting to CRAN](#cran).
+
 
 ## Before creating the package
 
@@ -259,27 +265,17 @@ knitr::include_graphics("img/01_programming/use_github.png")
 * Go ahead and agree to commit. 
 
 
-## Step 8: Add functions to the package {#package-functions}
+## Step 8: Adding content to the package {#package-functions}
 
 At this point, we have an (empty) working package, which can be downloaded from our GitHub repository. Now, we just need to add the functions, data, and documentation that will make it actually worth using. 
 
-
-
-
-# Left off here....
-
-
-
-
-
-## Working with R scripts
+### Working with R scripts
 
 1. Don't write or alter your functions in the console as you would in a typical interactive session. If you do, it's easy for the version you're using interactively and the version you are actually including in your package to get out of sync. Instead, _load_ the package.
 
 2. Click the build tab > More > Load All, or `devtools::load_all`, or shift + cmd + L
 
-
-## Step 3: Writing help pages
+### Adding help pages to functions
 
 Help pages are contained in .Rd files saved in the man folder. It's best practice to use `roxygen` with your script files to automatically generate the .Rd files. Doing so helps to keep your scripts and your help pages in sync.
 
@@ -386,115 +382,42 @@ If you don't want the examples to actually run, You can surround the example cod
 #' }
 ```
 
-
 ### Keyboard shortcut for inserting roxygen #' comment
 
 There doesn't appear to be a keyboard shortcut, but this [StackOverflow post](https://stackoverflow.com/questions/33399203/keyboard-shortcut-for-inserting-roxygen-comment-start#:~:text=But%20you%20can%20add%20an,%2Balt%2Bshift%2BR%20.) shows a good method for using RStudio's find and replace.
 
+### Adding and documenting data
 
-### Documenting Package:
+The explanation in the [R Packages book](https://r-pkgs.org/data.html) is good, short, and easy to follow.
 
-You can use roxygen to provide a help page for your package as a whole. <a href = "http://r-pkgs.had.co.nz/man.html" target = "_blank">More information is available from Hadley here</a>.
+### Documenting Package
 
-**At this point, you have a usable package**
+You can use roxygen to provide a help page for your package as a whole. As described in [section 10.6 of R Packages](https://r-pkgs.org/man.html#man-packages), @Wickham2022-ff
 
-### Once package is complete (ish)
+> You can use roxygen to provide a help page for your package as a whole. This is accessed with `package?foo`, and can be used to describe the most important components of your package. It’s a useful supplement to vignettes, as described in the next chapter.
 
-1. Update documentation (help pages). Build > More > Document, or shift + cmd + D.
+> There’s no object that corresponds to a package, so you need to document NULL, and then manually label it with `@docType` package and `@name <package-name>`. This is also an excellent place to use the `@section tag` to divide up page into useful categories.
 
-2. Check the package by clicking Build > Check. This will look for common package problems
+>I usually put this documentation in a file called `<package-name>.R`. It’s also a good place to put the package level import statements that you’ll learn about in imports.
 
-3. Click Build > Build & Reload. That will build the package and install it in your local package directory
-
-4. If you want to copy the package to send to someone else, click Build > More > Build source package. RStudio will build the package and save it as a .tar.gz file. You can then send it to another user to be installed on their system.
-
-5. If you are using GitHub, you need to commit changes and then push them to GitHub. More information about using Git and GitHub are available <a href = "http://r-pkgs.had.co.nz/git.html" target = "_blank">here</a>. Other users can install your package directly from GitHub with `install.packages("devtools")` followed by `devtools::install_github("username/packagename")`.
-
-### Notes about package notes:   
-
-* Because packages are almost always a work in progress, you will want to add notes to yourself about the project in the source package that you don't want others to see. You can do this by creating a notes directory, and then listing that directory in `.Rbuildignore`. You can add to buildignore using `usethis::use_build_ignore("notes")`. More information is available [here](http://r-pkgs.had.co.nz/package.html).
-
-* Also make sure to add NOTES to `.gitignore` with `usethis::use_git_ignore("notes")`
-
-* Use NOTES for notes, but not tasks. Why or how, but not what. Tasks go into issues.
-
-* There is a NOTES template in R/Templates.
-
-
-## Step 4: Synchronize with GitHub
-
-Again, details are available in <a href = "http://r-pkgs.had.co.nz/git.html" target = "_blank">Hadley Wickham's Book</a>.   
-
-Note: to exculde files from add them to `.gitignore` manually, or by clicking Git > More > Ignore.
-
-1. If you didn't check "Create a git repository" in step 1, you'll need to create one now. Do so by clicking Project Options > Git/SVN > Version Control System.   
-
-2. May need to restart R
-
-3. [Create a README.md file](http://r-pkgs.had.co.nz/release.html#readme) (`devtools::use_readme_rmd()`)
-
-* Note: This only works if you set up the project as a package. Do this, even if you don't intend to create a package. There are just nice extra tools avaialable when you select project type > R Package.
-
-4. Create a new repo on GitHub: https://github.com/new. Give it the same name as your package, and include the package title as the repo description. Leave all the other options as is, then click Submit.   
-
-5. Open a shell, then type `git remote add origin https://github.com/mbcann01/dataclean.git`   
-
-6. Modify DESCRIPTION to add URL and BugReports fields that link to your new GitHub site.
-
-7. Save the file and commit (with the message “Updating DESCRIPTION to add links to GitHub site”)
-
-8. Open a shell, then type `git push -u origin master`
-
-9. Enter username `mbcann01` and password `asdf1234`
-
-10. Go to your GitHub page and look at the DESCRIPTION
-
-### Get rid of .DS_Store
-
-The `.DS_Store` file can be an annoyance when working with Git on MacOS. [Here is a link](https://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository/107921) to instructions for removing `.DS_Store` from your repository. Do it early and never worry about it again. 
-
-In the terminal, run the following code from the root directory:
-
-```{bash eval=FALSE}
-# Remove existing files from the repository:
-find . -name "*.DS_Store" -type f -exec git-rm {} \;
-```
-
-```{bash eval=FALSE}
-# Add .DS_Store to .gitignore
-echo .DS_Store >> .gitignore
-```
-
-```{bash eval=FALSE}
-# Commit the file to the repo
-git add .gitignore
-git commit -m '.DS_Store banished!'
-```
-
-### Example: Modify Description
-
-```{r eval = FALSE}
-URL: https://github.com/mbcann01/dataclean
-BugReports: https://github.com/mbcann01/dataclean/issues
-```
-
-### Example Installation instructions for README:
-
-All files can be viewed directly on Github. To install this package locally, simply use `devtools`:
-
-```{r eval = FALSE}
-library(devtools)
-devtools::install_github("mbcann01/detectPilotTest")
-library(detectPilotTest)
-browseVignettes("detectPilotTest")
+```{r eval=FALSE}
+#' foo: A package for computating the notorious bar statistic
+#'
+#' The foo package provides three categories of important functions:
+#' foo, bar and baz.
+#' 
+#' @section Foo functions:
+#' The foo functions ...
+#'
+#' @docType package
+#' @name foo
+NULL
 ```
 
 
-## Step 5: Testing
+## Step 9: Creating unit tests {#testing}
 
-Testing is an important part of programming. For detailed information on testing see the appropriate chapter in <a href = "http://r-pkgs.had.co.nz/tests.html" target = "_blank">Hadley Wickham's Book</a>.   
-
-Further guidance is available <a href = "https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf" target = "_blank">at the R Journal</a>.   
+Testing is an important part of programming. For detailed information on testing see the appropriate [testing chapter in R Packages](https://r-pkgs.org/tests.html). @Wickham2022-ff 
 
 Get started with `devtools::use_testthat()`.
 
@@ -507,7 +430,7 @@ Get started with `devtools::use_testthat()`.
 4. Repeat until all tests pass.
 
 
-## Vignettes
+## Step 10: Vignettes {#vignettes}
 
 There are some great vignette resources on the internet: 
 
@@ -549,11 +472,14 @@ Need to find a way to make the vignettes more "front and center"
 
 * To save a data frame to `data/` inside a vignette, you can use the <a href = "https://github.com/krlmlr/rprojroot" target = "_blank">rprojroot package</a>. use `rprojroot::find_root("DESCRIPTION")`
 
-## Adding and documenting data
+### Pkgdown
 
-The explanation in the [R Packages book](https://r-pkgs.org/data.html) is good, short, and easy to follow.
+I haven't tried the [pkgdown](https://pkgdown.r-lib.org/) package yet, but I think it is essentially a collection supercharged vignettes for your package. I'd like to try it soon.
 
-## Submitting to CRAN
+
+## Submitting to CRAN {#cran}
+
+You can also do this stuff when you complete a "version" of the package even if you aren't submitting it to CRAN. 
 
 Useful website: http://r-pkgs.had.co.nz/release.html
 
@@ -561,7 +487,7 @@ Useful website: http://r-pkgs.had.co.nz/release.html
    - Update `README.Rmd`, not `README.md`.   
    - Knit `README.Rmd` after making changes. This will automatically update `README.md`   
   
-2. Update vignettes using `devtools::document()`
+2. Update documentation/vignettes using `devtools::document()`
 
 3. Update news.md. Here's dplyr's: https://raw.githubusercontent.com/tidyverse/dplyr/master/NEWS.md
 
@@ -577,6 +503,31 @@ Useful website: http://r-pkgs.had.co.nz/release.html
 8. Submit with `devtools::release()`
 
 After the package is accepted, do this stuff: http://r-pkgs.had.co.nz/release.html#post-release
+
+
+## Other random notes
+
+### Get rid of .DS_Store
+
+The `.DS_Store` file can be an annoyance when working with Git on MacOS. [Here is a link](https://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository/107921) to instructions for removing `.DS_Store` from your repository. Do it early and never worry about it again. 
+
+In the terminal, run the following code from the root directory:
+
+```{bash eval=FALSE}
+# Remove existing files from the repository:
+find . -name "*.DS_Store" -type f -exec git-rm {} \;
+```
+
+```{bash eval=FALSE}
+# Add .DS_Store to .gitignore
+echo .DS_Store >> .gitignore
+```
+
+```{bash eval=FALSE}
+# Commit the file to the repo
+git add .gitignore
+git commit -m '.DS_Store banished!'
+```
 
 
 ## Errors, warnings, notes

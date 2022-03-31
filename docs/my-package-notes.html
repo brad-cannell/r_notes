@@ -941,13 +941,14 @@ Need to find a way to make the vignettes more “front and center”</p>
 <li><p>If you were on a development branch, merge with main branch.</p></li>
 <li><p>Use <code>devtools::check()</code></p></li>
 <li><p>Use <code>devtools::check_win_devel()</code> to test the package on Windows</p></li>
+<li><p>If you don’t plan to submit to CRAN, this is probably a good time to use <code>devtools::install()</code> to re-build and install the package locally.</p></li>
 <li><p>Update <code>cran-comments</code>.<br />
 </p></li>
 </ol>
 <ul>
 <li>If this is a resubmission, add a bulleted list of changes made under ## Resubmission.</li>
 </ul>
-<ol start="8" style="list-style-type: decimal">
+<ol start="9" style="list-style-type: decimal">
 <li>Submit with <code>devtools::release()</code></li>
 </ol>
 <p>After the package is accepted, do this stuff: <a href="http://r-pkgs.had.co.nz/release.html#post-release" class="uri">http://r-pkgs.had.co.nz/release.html#post-release</a></p>

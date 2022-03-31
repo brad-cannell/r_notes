@@ -497,10 +497,12 @@ Useful website: http://r-pkgs.had.co.nz/release.html
 
 6. Use `devtools::check_win_devel()` to test the package on Windows
 
-7. Update `cran-comments`.   
+7. If you don't plan to submit to CRAN, this is probably a good time to use `devtools::install()` to re-build and install the package locally.
+
+8. Update `cran-comments`.   
  - If this is a resubmission, add a bulleted list of changes made under ## Resubmission.
 
-8. Submit with `devtools::release()`
+9. Submit with `devtools::release()`
 
 After the package is accepted, do this stuff: http://r-pkgs.had.co.nz/release.html#post-release
 

@@ -24,7 +24,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-03-30" />
+<meta name="date" content="2022-04-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -930,6 +930,7 @@ Need to find a way to make the vignettes more “front and center”</p>
 <p>You can also do this stuff when you complete a “version” of the package even if you aren’t submitting it to CRAN.</p>
 <p>Useful website: <a href="http://r-pkgs.had.co.nz/release.html" class="uri">http://r-pkgs.had.co.nz/release.html</a></p>
 <ol style="list-style-type: decimal">
+<li><p>Make sure you using the most updated code before checks. devtools::load_all()</p></li>
 <li><p>Update README before submission. It should roughly match the examples in the roxygen documentation.</p>
 <ul>
 <li>Update <code>README.Rmd</code>, not <code>README.md</code>.<br />
@@ -941,6 +942,8 @@ Need to find a way to make the vignettes more “front and center”</p>
 <li><p>If you were on a development branch, merge with main branch.</p></li>
 <li><p>Use <code>devtools::check()</code></p></li>
 <li><p>Use <code>devtools::check_win_devel()</code> to test the package on Windows</p></li>
+<li><p>Use <code>devtools::check_rhub()</code></p></li>
+<li><p>If you are using a development part from the version number in the DESCRIPTION file.</p></li>
 <li><p>If you don’t plan to submit to CRAN, this is probably a good time to use <code>devtools::install()</code> to re-build and install the package locally.</p></li>
 <li><p>Update <code>cran-comments</code>.<br />
 </p></li>
@@ -948,10 +951,14 @@ Need to find a way to make the vignettes more “front and center”</p>
 <ul>
 <li>If this is a resubmission, add a bulleted list of changes made under ## Resubmission.</li>
 </ul>
-<ol start="9" style="list-style-type: decimal">
+<ol start="12" style="list-style-type: decimal">
 <li>Submit with <code>devtools::release()</code></li>
 </ol>
 <p>After the package is accepted, do this stuff: <a href="http://r-pkgs.had.co.nz/release.html#post-release" class="uri">http://r-pkgs.had.co.nz/release.html#post-release</a></p>
+<ul>
+<li><p>If you use GitHub, go to the repository release page. Create a new release with tag version v1.2.3 (i.e. “v” followed by the version of your package). Copy and paste the contents of the relevant NEWS.md section into the release notes.</p></li>
+<li><p>Add the .9000 suffix to the Version field in the DESCRIPTION to indicate that this is a development version. Create a new heading in NEWS.md and commit the changes.</p></li>
+</ul>
 </div>
 <div id="other-random-notes" class="section level2" number="1.16">
 <h2><span class="header-section-number">1.16</span> Other random notes</h2>

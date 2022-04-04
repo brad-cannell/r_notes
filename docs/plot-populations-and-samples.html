@@ -24,7 +24,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-03-30" />
+<meta name="date" content="2022-04-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -568,18 +568,18 @@ Hidden comments placeholder
 </div>
 <div id="load-packages-5" class="section level2" number="9.3">
 <h2><span class="header-section-number">9.3</span> 📦Load packages</h2>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="plot-populations-and-samples.html#cb319-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb319-2"><a href="plot-populations-and-samples.html#cb319-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb319-3"><a href="plot-populations-and-samples.html#cb319-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(freqtables)</span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="plot-populations-and-samples.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb320-2"><a href="plot-populations-and-samples.html#cb320-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb320-3"><a href="plot-populations-and-samples.html#cb320-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(freqtables)</span></code></pre></div>
 </div>
 <div id="simulate-data-4" class="section level2" number="9.4">
 <h2><span class="header-section-number">9.4</span> 🔢Simulate data</h2>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="plot-populations-and-samples.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb320-2"><a href="plot-populations-and-samples.html#cb320-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb320-3"><a href="plot-populations-and-samples.html#cb320-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">medication =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">10</span>)),</span>
-<span id="cb320-4"><a href="plot-populations-and-samples.html#cb320-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">fall =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">8</span>), <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">6</span>), <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">4</span>))</span>
-<span id="cb320-5"><a href="plot-populations-and-samples.html#cb320-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="plot-populations-and-samples.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="plot-populations-and-samples.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb321-2"><a href="plot-populations-and-samples.html#cb321-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb321-3"><a href="plot-populations-and-samples.html#cb321-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">medication =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">10</span>)),</span>
+<span id="cb321-4"><a href="plot-populations-and-samples.html#cb321-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">fall =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">8</span>), <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">6</span>), <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">4</span>))</span>
+<span id="cb321-5"><a href="plot-populations-and-samples.html#cb321-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="plot-populations-and-samples.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df)</span></code></pre></div>
 <pre><code>##           fall
 ## medication 0 1
 ##          0 8 2

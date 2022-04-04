@@ -483,28 +483,38 @@ You can also do this stuff when you complete a "version" of the package even if 
 
 Useful website: http://r-pkgs.had.co.nz/release.html
 
-1. Update README before submission. It should roughly match the examples in the roxygen documentation.
+1. Make sure you using the most updated code before checks. devtools::load_all()
+
+2. Update README before submission. It should roughly match the examples in the roxygen documentation.
    - Update `README.Rmd`, not `README.md`.   
    - Knit `README.Rmd` after making changes. This will automatically update `README.md`   
   
-2. Update documentation/vignettes using `devtools::document()`
+3. Update documentation/vignettes using `devtools::document()`
 
-3. Update news.md. Here's dplyr's: https://raw.githubusercontent.com/tidyverse/dplyr/master/NEWS.md
+4. Update news.md. Here's dplyr's: https://raw.githubusercontent.com/tidyverse/dplyr/master/NEWS.md
 
-4. If you were on a development branch, merge with main branch.
+5. If you were on a development branch, merge with main branch.
 
-5. Use `devtools::check()`
+6. Use `devtools::check()`
 
-6. Use `devtools::check_win_devel()` to test the package on Windows
+7. Use `devtools::check_win_devel()` to test the package on Windows
 
-7. If you don't plan to submit to CRAN, this is probably a good time to use `devtools::install()` to re-build and install the package locally.
+8. Use `devtools::check_rhub()`
 
-8. Update `cran-comments`.   
+9. If you are using a development part from the version number in the DESCRIPTION file. 
+
+10. If you don't plan to submit to CRAN, this is probably a good time to use `devtools::install()` to re-build and install the package locally.
+
+11. Update `cran-comments`.   
  - If this is a resubmission, add a bulleted list of changes made under ## Resubmission.
 
-9. Submit with `devtools::release()`
+12. Submit with `devtools::release()`
 
 After the package is accepted, do this stuff: http://r-pkgs.had.co.nz/release.html#post-release
+
+* If you use GitHub, go to the repository release page. Create a new release with tag version v1.2.3 (i.e. “v” followed by the version of your package). Copy and paste the contents of the relevant NEWS.md section into the release notes.
+
+* Add the .9000 suffix to the Version field in the DESCRIPTION to indicate that this is a development version. Create a new heading in NEWS.md and commit the changes.
 
 
 ## Other random notes

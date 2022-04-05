@@ -193,8 +193,9 @@ div.csl-indent {
 <li class="chapter" data-level="1.12.3" data-path="my-package-notes.html"><a href="my-package-notes.html#example-roxygen-header"><i class="fa fa-check"></i><b>1.12.3</b> Example <code>roxygen</code> header</a></li>
 <li class="chapter" data-level="1.12.4" data-path="my-package-notes.html"><a href="my-package-notes.html#dont-run-the-examples"><i class="fa fa-check"></i><b>1.12.4</b> Don’t run the examples</a></li>
 <li class="chapter" data-level="1.12.5" data-path="my-package-notes.html"><a href="my-package-notes.html#keyboard-shortcut-for-inserting-roxygen-comment"><i class="fa fa-check"></i><b>1.12.5</b> Keyboard shortcut for inserting roxygen #’ comment</a></li>
-<li class="chapter" data-level="1.12.6" data-path="my-package-notes.html"><a href="my-package-notes.html#adding-and-documenting-data"><i class="fa fa-check"></i><b>1.12.6</b> Adding and documenting data</a></li>
-<li class="chapter" data-level="1.12.7" data-path="my-package-notes.html"><a href="my-package-notes.html#documenting-package"><i class="fa fa-check"></i><b>1.12.7</b> Documenting Package</a></li>
+<li class="chapter" data-level="1.12.6" data-path="my-package-notes.html"><a href="my-package-notes.html#simulating-data"><i class="fa fa-check"></i><b>1.12.6</b> Simulating data</a></li>
+<li class="chapter" data-level="1.12.7" data-path="my-package-notes.html"><a href="my-package-notes.html#documenting-data"><i class="fa fa-check"></i><b>1.12.7</b> Documenting data</a></li>
+<li class="chapter" data-level="1.12.8" data-path="my-package-notes.html"><a href="my-package-notes.html#documenting-package"><i class="fa fa-check"></i><b>1.12.8</b> Documenting Package</a></li>
 </ul></li>
 <li class="chapter" data-level="1.13" data-path="my-package-notes.html"><a href="my-package-notes.html#testing"><i class="fa fa-check"></i><b>1.13</b> Step 9: Creating unit tests</a></li>
 <li class="chapter" data-level="1.14" data-path="my-package-notes.html"><a href="my-package-notes.html#vignettes"><i class="fa fa-check"></i><b>1.14</b> Step 10: Vignettes</a>
@@ -848,12 +849,53 @@ Hidden comments placeholder
 <h3><span class="header-section-number">1.12.5</span> Keyboard shortcut for inserting roxygen #’ comment</h3>
 <p>There doesn’t appear to be a keyboard shortcut, but this <a href="https://stackoverflow.com/questions/33399203/keyboard-shortcut-for-inserting-roxygen-comment-start#:~:text=But%20you%20can%20add%20an,%2Balt%2Bshift%2BR%20.">StackOverflow post</a> shows a good method for using RStudio’s find and replace.</p>
 </div>
-<div id="adding-and-documenting-data" class="section level3" number="1.12.6">
-<h3><span class="header-section-number">1.12.6</span> Adding and documenting data</h3>
-<p>The explanation in the <a href="https://r-pkgs.org/data.html">R Packages book</a> is good, short, and easy to follow.</p>
+<div id="simulating-data" class="section level3" number="1.12.6">
+<h3><span class="header-section-number">1.12.6</span> Simulating data</h3>
+<p>The explanation in the <a href="https://r-pkgs.org/data.html">R Packages book</a> is good, short, and easy to follow. As explained in there, the code to create and/or clean the data will go in the <code>data-raw</code> directory and the data will eventually go in the <code>data/</code> directory.</p>
+<p>For the <code>codebook</code> package, I wanted to simulate some really simple data that could be used for package examples. Here’s how I did it.</p>
+<p>I started by running <code>usethis::use_data_raw("study")</code>. Among other things, this creates the R script to be used to simulate the <code>study</code> data. Here is the header for the study data.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="my-package-notes.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># =============================================================================</span></span>
+<span id="cb15-2"><a href="my-package-notes.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Study data</span></span>
+<span id="cb15-3"><a href="my-package-notes.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the code to create the study data - a simulated data set that can be</span></span>
+<span id="cb15-4"><a href="my-package-notes.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># used to demonstrate how to use the codebook package.</span></span>
+<span id="cb15-5"><a href="my-package-notes.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Created: 2022-04-04</span></span>
+<span id="cb15-6"><a href="my-package-notes.html#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Brad Cannell</span></span>
+<span id="cb15-7"><a href="my-package-notes.html#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># =============================================================================</span></span>
+<span id="cb15-8"><a href="my-package-notes.html#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="my-package-notes.html#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Insert simulation code here...</span></span>
+<span id="cb15-10"><a href="my-package-notes.html#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="my-package-notes.html#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="my-package-notes.html#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the simulated data to the data directory.</span></span>
+<span id="cb15-13"><a href="my-package-notes.html#cb15-13" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_data</span>(study, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
-<div id="documenting-package" class="section level3" number="1.12.7">
-<h3><span class="header-section-number">1.12.7</span> Documenting Package</h3>
+<div id="documenting-data" class="section level3" number="1.12.7">
+<h3><span class="header-section-number">1.12.7</span> Documenting data</h3>
+<blockquote>
+<p>Objects in data/ are always effectively exported (they use a slightly different mechanism than NAMESPACE but the details are not important). This means that they must be documented. Documenting data is like documenting a function with a few minor differences. Instead of documenting the data directly, you document the name of the dataset and save it in R/.<span class="citation"><sup><a href="#ref-Wickham2022-ff" role="doc-biblioref">1</a></sup></span></p>
+</blockquote>
+<p>For example, the roxygen2 block used to document the <code>study</code> data in the <code>codebook</code> package is saved as R/data.R and looks something like this:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="my-package-notes.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Simulated study data.</span></span>
+<span id="cb16-2"><a href="my-package-notes.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb16-3"><a href="my-package-notes.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; This is the code to create the study data - a simulated data set that can be</span></span>
+<span id="cb16-4"><a href="my-package-notes.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; used to demonstrate how to use the codebook package.</span></span>
+<span id="cb16-5"><a href="my-package-notes.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb16-6"><a href="my-package-notes.html#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @format A data frame with 20 rows and 4 variables:</span></span>
+<span id="cb16-7"><a href="my-package-notes.html#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; \describe{</span></span>
+<span id="cb16-8"><a href="my-package-notes.html#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;   \item{id}{participant id}</span></span>
+<span id="cb16-9"><a href="my-package-notes.html#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;   \item{gender}{participant gender, female/male}</span></span>
+<span id="cb16-10"><a href="my-package-notes.html#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;   \item{date}{date of enrollment}</span></span>
+<span id="cb16-11"><a href="my-package-notes.html#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;   \item{height}{participant height, in inches}</span></span>
+<span id="cb16-12"><a href="my-package-notes.html#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; }</span></span>
+<span id="cb16-13"><a href="my-package-notes.html#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;study&quot;</span></span></code></pre></div>
+<ul>
+<li><p>“<code>@format</code> gives an overview of the dataset. For data frames, you should include a definition list that describes each variable. It’s usually a good idea to describe variables’ units here.”<span class="citation"><sup><a href="#ref-Wickham2022-ff" role="doc-biblioref">1</a></sup></span></p></li>
+<li><p>“Never<span class="citation"><sup><a href="#ref-export" role="doc-biblioref"><strong>export?</strong></a></sup></span> a data set.”<span class="citation"><sup><a href="#ref-Wickham2022-ff" role="doc-biblioref">1</a></sup></span></p></li>
+<li><p>The file is save as <code>R/data.R</code>.</p></li>
+</ul>
+<p><a href="https://r-pkgs.org/data.html#documenting-data">Click here to view the documentation for ggplot’s diamonds data</a>.</p>
+</div>
+<div id="documenting-package" class="section level3" number="1.12.8">
+<h3><span class="header-section-number">1.12.8</span> Documenting Package</h3>
 <p>You can use roxygen to provide a help page for your package as a whole. As described in <a href="https://r-pkgs.org/man.html#man-packages">section 10.6 of R Packages</a>,<span class="citation"><sup><a href="#ref-Wickham2022-ff" role="doc-biblioref">1</a></sup></span></p>
 <blockquote>
 <p>You can use roxygen to provide a help page for your package as a whole. This is accessed with <code>package?foo</code>, and can be used to describe the most important components of your package. It’s a useful supplement to vignettes, as described in the next chapter.</p>
@@ -864,17 +906,17 @@ Hidden comments placeholder
 <blockquote>
 <p>I usually put this documentation in a file called <code>&lt;package-name&gt;.R</code>. It’s also a good place to put the package level import statements that you’ll learn about in imports.</p>
 </blockquote>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="my-package-notes.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; foo: A package for computating the notorious bar statistic</span></span>
-<span id="cb15-2"><a href="my-package-notes.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb15-3"><a href="my-package-notes.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; The foo package provides three categories of important functions:</span></span>
-<span id="cb15-4"><a href="my-package-notes.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; foo, bar and baz.</span></span>
-<span id="cb15-5"><a href="my-package-notes.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
-<span id="cb15-6"><a href="my-package-notes.html#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @section Foo functions:</span></span>
-<span id="cb15-7"><a href="my-package-notes.html#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; The foo functions ...</span></span>
-<span id="cb15-8"><a href="my-package-notes.html#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb15-9"><a href="my-package-notes.html#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @docType package</span></span>
-<span id="cb15-10"><a href="my-package-notes.html#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @name foo</span></span>
-<span id="cb15-11"><a href="my-package-notes.html#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="cn">NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="my-package-notes.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; foo: A package for computating the notorious bar statistic</span></span>
+<span id="cb17-2"><a href="my-package-notes.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb17-3"><a href="my-package-notes.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; The foo package provides three categories of important functions:</span></span>
+<span id="cb17-4"><a href="my-package-notes.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; foo, bar and baz.</span></span>
+<span id="cb17-5"><a href="my-package-notes.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb17-6"><a href="my-package-notes.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @section Foo functions:</span></span>
+<span id="cb17-7"><a href="my-package-notes.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; The foo functions ...</span></span>
+<span id="cb17-8"><a href="my-package-notes.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb17-9"><a href="my-package-notes.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @docType package</span></span>
+<span id="cb17-10"><a href="my-package-notes.html#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @name foo</span></span>
+<span id="cb17-11"><a href="my-package-notes.html#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="cn">NULL</span></span></code></pre></div>
 </div>
 </div>
 <div id="testing" class="section level2" number="1.13">
@@ -966,13 +1008,13 @@ Need to find a way to make the vignettes more “front and center”</p>
 <h3><span class="header-section-number">1.16.1</span> Get rid of .DS_Store</h3>
 <p>The <code>.DS_Store</code> file can be an annoyance when working with Git on MacOS. <a href="https://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository/107921">Here is a link</a> to instructions for removing <code>.DS_Store</code> from your repository. Do it early and never worry about it again.</p>
 <p>In the terminal, run the following code from the root directory:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="my-package-notes.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove existing files from the repository:</span></span>
-<span id="cb16-2"><a href="my-package-notes.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.DS_Store&quot;</span> <span class="at">-type</span> f <span class="at">-exec</span> git-rm {} <span class="dt">\;</span></span></code></pre></div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="my-package-notes.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add .DS_Store to .gitignore</span></span>
-<span id="cb17-2"><a href="my-package-notes.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> .DS_Store <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="my-package-notes.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Commit the file to the repo</span></span>
-<span id="cb18-2"><a href="my-package-notes.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .gitignore</span>
-<span id="cb18-3"><a href="my-package-notes.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&#39;.DS_Store banished!&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="my-package-notes.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove existing files from the repository:</span></span>
+<span id="cb18-2"><a href="my-package-notes.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.DS_Store&quot;</span> <span class="at">-type</span> f <span class="at">-exec</span> git-rm {} <span class="dt">\;</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="my-package-notes.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add .DS_Store to .gitignore</span></span>
+<span id="cb19-2"><a href="my-package-notes.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> .DS_Store <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="my-package-notes.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Commit the file to the repo</span></span>
+<span id="cb20-2"><a href="my-package-notes.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .gitignore</span>
+<span id="cb20-3"><a href="my-package-notes.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&#39;.DS_Store banished!&#39;</span></span></code></pre></div>
 </div>
 </div>
 <div id="errors-warnings-notes" class="section level2" number="1.17">
@@ -1007,10 +1049,10 @@ The error most likely occurred in:</p>
 <p>Prevents R CMD check: “no visible binding for global variable ‘.’”</p>
 </blockquote>
 <p>Put the following (for example) directly inside the function definition in the R script where the function is defined:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="my-package-notes.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------</span></span>
-<span id="cb19-2"><a href="my-package-notes.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Prevents R CMD check: &quot;no visible binding for global variable ‘.’&quot;</span></span>
-<span id="cb19-3"><a href="my-package-notes.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------</span></span>
-<span id="cb19-4"><a href="my-package-notes.html#cb19-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> n_total <span class="ot">=</span> prop <span class="ot">=</span> t_crit <span class="ot">=</span> se <span class="ot">=</span> lcl_wald <span class="ot">=</span> ucl_wald <span class="ot">=</span> percent <span class="ot">=</span> <span class="cn">NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="my-package-notes.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------</span></span>
+<span id="cb21-2"><a href="my-package-notes.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Prevents R CMD check: &quot;no visible binding for global variable ‘.’&quot;</span></span>
+<span id="cb21-3"><a href="my-package-notes.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------</span></span>
+<span id="cb21-4"><a href="my-package-notes.html#cb21-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> n_total <span class="ot">=</span> prop <span class="ot">=</span> t_crit <span class="ot">=</span> se <span class="ot">=</span> lcl_wald <span class="ot">=</span> ucl_wald <span class="ot">=</span> percent <span class="ot">=</span> <span class="cn">NULL</span></span></code></pre></div>
 <blockquote>
 <p>N checking R code for possible problems (1.8s)
 get_group_n: no visible global function definition for ‘%&gt;%’

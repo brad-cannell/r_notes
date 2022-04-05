@@ -17,7 +17,8 @@ adding-help-pages-to-functions
 example-roxygen-header
 dont-run-the-examples
 keyboard-shortcut-for-inserting-roxygen-comment
-adding-and-documenting-data
+simulating-data
+documenting-data
 documenting-package
 testing
 vignettes

@@ -386,9 +386,59 @@ If you don't want the examples to actually run, You can surround the example cod
 
 There doesn't appear to be a keyboard shortcut, but this [StackOverflow post](https://stackoverflow.com/questions/33399203/keyboard-shortcut-for-inserting-roxygen-comment-start#:~:text=But%20you%20can%20add%20an,%2Balt%2Bshift%2BR%20.) shows a good method for using RStudio's find and replace.
 
-### Adding and documenting data
+### Simulating data
 
-The explanation in the [R Packages book](https://r-pkgs.org/data.html) is good, short, and easy to follow.
+The explanation in the [R Packages book](https://r-pkgs.org/data.html) is good, short, and easy to follow. As explained in there, the code to create and/or clean the data will go in the `data-raw` directory and the data will eventually go in the `data/` directory. 
+
+For the `codebook` package, I wanted to simulate some really simple data that could be used for package examples. Here's how I did it.
+
+I started by running `usethis::use_data_raw("study")`. Among other things, this creates the R script to be used to simulate the `study` data. Here is the header for the study data.
+
+```{r eval=FALSE}
+# =============================================================================
+# Study data
+# This is the code to create the study data - a simulated data set that can be
+# used to demonstrate how to use the codebook package.
+# Created: 2022-04-04
+# Brad Cannell
+# =============================================================================
+
+# Insert simulation code here...
+
+
+# Add the simulated data to the data directory.
+usethis::use_data(study, overwrite = TRUE)
+```
+
+### Documenting data
+
+> Objects in data/ are always effectively exported (they use a slightly different mechanism than NAMESPACE but the details are not important). This means that they must be documented. Documenting data is like documenting a function with a few minor differences. Instead of documenting the data directly, you document the name of the dataset and save it in R/. @Wickham2022-ff
+
+For example, the roxygen2 block used to document the `study` data in the `codebook` package is saved as R/data.R and looks something like this: 
+
+```{r eval=FALSE}
+#' Simulated study data.
+#'
+#' This is the code to create the study data - a simulated data set that can be
+#' used to demonstrate how to use the codebook package.
+#'
+#' @format A data frame with 20 rows and 4 variables:
+#' \describe{
+#'   \item{id}{participant id}
+#'   \item{gender}{participant gender, female/male}
+#'   \item{date}{date of enrollment}
+#'   \item{height}{participant height, in inches}
+#' }
+"study"
+```
+
+* "`@format` gives an overview of the dataset. For data frames, you should include a definition list that describes each variable. It’s usually a good idea to describe variables’ units here." @Wickham2022-ff
+
+* "Never @export a data set." @Wickham2022-ff
+
+* The file is save as `R/data.R`. 
+
+[Click here to view the documentation for ggplot's diamonds data](https://r-pkgs.org/data.html#documenting-data).
 
 ### Documenting Package
 

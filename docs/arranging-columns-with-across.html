@@ -193,8 +193,9 @@ div.csl-indent {
 <li class="chapter" data-level="1.12.3" data-path="my-package-notes.html"><a href="my-package-notes.html#example-roxygen-header"><i class="fa fa-check"></i><b>1.12.3</b> Example <code>roxygen</code> header</a></li>
 <li class="chapter" data-level="1.12.4" data-path="my-package-notes.html"><a href="my-package-notes.html#dont-run-the-examples"><i class="fa fa-check"></i><b>1.12.4</b> Don’t run the examples</a></li>
 <li class="chapter" data-level="1.12.5" data-path="my-package-notes.html"><a href="my-package-notes.html#keyboard-shortcut-for-inserting-roxygen-comment"><i class="fa fa-check"></i><b>1.12.5</b> Keyboard shortcut for inserting roxygen #’ comment</a></li>
-<li class="chapter" data-level="1.12.6" data-path="my-package-notes.html"><a href="my-package-notes.html#adding-and-documenting-data"><i class="fa fa-check"></i><b>1.12.6</b> Adding and documenting data</a></li>
-<li class="chapter" data-level="1.12.7" data-path="my-package-notes.html"><a href="my-package-notes.html#documenting-package"><i class="fa fa-check"></i><b>1.12.7</b> Documenting Package</a></li>
+<li class="chapter" data-level="1.12.6" data-path="my-package-notes.html"><a href="my-package-notes.html#simulating-data"><i class="fa fa-check"></i><b>1.12.6</b> Simulating data</a></li>
+<li class="chapter" data-level="1.12.7" data-path="my-package-notes.html"><a href="my-package-notes.html#documenting-data"><i class="fa fa-check"></i><b>1.12.7</b> Documenting data</a></li>
+<li class="chapter" data-level="1.12.8" data-path="my-package-notes.html"><a href="my-package-notes.html#documenting-package"><i class="fa fa-check"></i><b>1.12.8</b> Documenting Package</a></li>
 </ul></li>
 <li class="chapter" data-level="1.13" data-path="my-package-notes.html"><a href="my-package-notes.html#testing"><i class="fa fa-check"></i><b>1.13</b> Step 9: Creating unit tests</a></li>
 <li class="chapter" data-level="1.14" data-path="my-package-notes.html"><a href="my-package-notes.html#vignettes"><i class="fa fa-check"></i><b>1.14</b> Step 10: Vignettes</a>
@@ -553,17 +554,17 @@ div.csl-indent {
 <p>I’m trying to arrange calculated columns immediately after source columns when using dplyr column-wise operations.</p>
 <p><a href="https://stackoverflow.com/questions/67076974/arrange-calculated-columns-immediately-after-source-columns-when-using-dplyr-col/67077122#67077122" class="uri">https://stackoverflow.com/questions/67076974/arrange-calculated-columns-immediately-after-source-columns-when-using-dplyr-col/67077122#67077122</a></p>
 <p><a href="https://community.rstudio.com/t/arrange-calculated-columns-immediately-after-source-columns-when-using-dplyr-column-wise-operations/101726" class="uri">https://community.rstudio.com/t/arrange-calculated-columns-immediately-after-source-columns-when-using-dplyr-column-wise-operations/101726</a></p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="arranging-columns-with-across.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="arranging-columns-with-across.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <p>Example data</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="arranging-columns-with-across.html#cb124-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb124-2"><a href="arranging-columns-with-across.html#cb124-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id         =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>),</span>
-<span id="cb124-3"><a href="arranging-columns-with-across.html#cb124-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">id_row     =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>),</span>
-<span id="cb124-4"><a href="arranging-columns-with-across.html#cb124-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">name_first =</span> <span class="fu">c</span>(<span class="st">&quot;John&quot;</span>, <span class="st">&quot;Jane&quot;</span>, <span class="st">&quot;Jane&quot;</span>),</span>
-<span id="cb124-5"><a href="arranging-columns-with-across.html#cb124-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">city       =</span> <span class="fu">c</span>(<span class="st">&quot;NY&quot;</span>, <span class="st">&quot;DAL&quot;</span>, <span class="st">&quot;HOU&quot;</span>),</span>
-<span id="cb124-6"><a href="arranging-columns-with-across.html#cb124-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">x          =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb124-7"><a href="arranging-columns-with-across.html#cb124-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb124-8"><a href="arranging-columns-with-across.html#cb124-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb124-9"><a href="arranging-columns-with-across.html#cb124-9" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="arranging-columns-with-across.html#cb126-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb126-2"><a href="arranging-columns-with-across.html#cb126-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id         =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>),</span>
+<span id="cb126-3"><a href="arranging-columns-with-across.html#cb126-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">id_row     =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb126-4"><a href="arranging-columns-with-across.html#cb126-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">name_first =</span> <span class="fu">c</span>(<span class="st">&quot;John&quot;</span>, <span class="st">&quot;Jane&quot;</span>, <span class="st">&quot;Jane&quot;</span>),</span>
+<span id="cb126-5"><a href="arranging-columns-with-across.html#cb126-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">city       =</span> <span class="fu">c</span>(<span class="st">&quot;NY&quot;</span>, <span class="st">&quot;DAL&quot;</span>, <span class="st">&quot;HOU&quot;</span>),</span>
+<span id="cb126-6"><a href="arranging-columns-with-across.html#cb126-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">x          =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb126-7"><a href="arranging-columns-with-across.html#cb126-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb126-8"><a href="arranging-columns-with-across.html#cb126-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-9"><a href="arranging-columns-with-across.html#cb126-9" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 5
 ##      id id_row name_first city      x
 ##   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt; &lt;dbl&gt;
@@ -572,15 +573,15 @@ div.csl-indent {
 ## 3     2      2 Jane       HOU       0</code></pre>
 <p>Within ID, the values of name_first and city should be constant. The values for id_row and x need not be constant. I want to test for and inspect differing values of name_first and city within-id.</p>
 <p>One convenient way to do this is with <code>mutate()</code> and <code>across()</code>.</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="arranging-columns-with-across.html#cb126-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb126-2"><a href="arranging-columns-with-across.html#cb126-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(id) <span class="sc">%&gt;%</span> </span>
-<span id="cb126-3"><a href="arranging-columns-with-across.html#cb126-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb126-4"><a href="arranging-columns-with-across.html#cb126-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
-<span id="cb126-5"><a href="arranging-columns-with-across.html#cb126-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">.cols  =</span> <span class="fu">c</span>(name_first, city),</span>
-<span id="cb126-6"><a href="arranging-columns-with-across.html#cb126-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">.fns   =</span> <span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.x)) <span class="sc">==</span> <span class="dv">1</span>,</span>
-<span id="cb126-7"><a href="arranging-columns-with-across.html#cb126-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">.names =</span> <span class="st">&quot;{col}_all_match&quot;</span></span>
-<span id="cb126-8"><a href="arranging-columns-with-across.html#cb126-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb126-9"><a href="arranging-columns-with-across.html#cb126-9" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="arranging-columns-with-across.html#cb128-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb128-2"><a href="arranging-columns-with-across.html#cb128-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(id) <span class="sc">%&gt;%</span> </span>
+<span id="cb128-3"><a href="arranging-columns-with-across.html#cb128-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb128-4"><a href="arranging-columns-with-across.html#cb128-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
+<span id="cb128-5"><a href="arranging-columns-with-across.html#cb128-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">.cols  =</span> <span class="fu">c</span>(name_first, city),</span>
+<span id="cb128-6"><a href="arranging-columns-with-across.html#cb128-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">.fns   =</span> <span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.x)) <span class="sc">==</span> <span class="dv">1</span>,</span>
+<span id="cb128-7"><a href="arranging-columns-with-across.html#cb128-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">.names =</span> <span class="st">&quot;{col}_all_match&quot;</span></span>
+<span id="cb128-8"><a href="arranging-columns-with-across.html#cb128-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb128-9"><a href="arranging-columns-with-across.html#cb128-9" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 7
 ## # Groups:   id [2]
 ##      id id_row name_first city      x name_first_all_match city_all_match
@@ -590,24 +591,6 @@ div.csl-indent {
 ## 3     2      2 Jane       HOU       0 TRUE                 FALSE</code></pre>
 <p>The issue is that the “all_match” (calculated) columns are added to the far right of the data frame rather than immediately after their source column. This makes it difficult to visually inspect differing values for the columns of interest.</p>
 <p>Of course, in this small data frame, we could easily rearrange the columns using <code>select()</code>.</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="arranging-columns-with-across.html#cb128-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb128-2"><a href="arranging-columns-with-across.html#cb128-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(id) <span class="sc">%&gt;%</span> </span>
-<span id="cb128-3"><a href="arranging-columns-with-across.html#cb128-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb128-4"><a href="arranging-columns-with-across.html#cb128-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
-<span id="cb128-5"><a href="arranging-columns-with-across.html#cb128-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">.cols  =</span> <span class="fu">c</span>(name_first, city),</span>
-<span id="cb128-6"><a href="arranging-columns-with-across.html#cb128-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">.fns   =</span> <span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.x)) <span class="sc">==</span> <span class="dv">1</span>,</span>
-<span id="cb128-7"><a href="arranging-columns-with-across.html#cb128-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">.names =</span> <span class="st">&quot;{col}_all_match&quot;</span></span>
-<span id="cb128-8"><a href="arranging-columns-with-across.html#cb128-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb128-9"><a href="arranging-columns-with-across.html#cb128-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb128-10"><a href="arranging-columns-with-across.html#cb128-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, id_row, <span class="fu">starts_with</span>(<span class="st">&quot;name_first&quot;</span>), <span class="fu">starts_with</span>(<span class="st">&quot;city&quot;</span>), x)</span></code></pre></div>
-<pre><code>## # A tibble: 3 × 7
-## # Groups:   id [2]
-##      id id_row name_first name_first_all_match city  city_all_match     x
-##   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;lgl&gt;                &lt;chr&gt; &lt;lgl&gt;          &lt;dbl&gt;
-## 1     1      1 John       TRUE                 NY    TRUE               0
-## 2     2      1 Jane       TRUE                 DAL   FALSE              1
-## 3     2      2 Jane       TRUE                 HOU   FALSE              0</code></pre>
-<p>The issue with that approach is that it quickly becomes pretty cumbersome with more columns. A more tractable approach would be to sort the names alphabetically…</p>
 <div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="arranging-columns-with-across.html#cb130-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
 <span id="cb130-2"><a href="arranging-columns-with-across.html#cb130-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(id) <span class="sc">%&gt;%</span> </span>
 <span id="cb130-3"><a href="arranging-columns-with-across.html#cb130-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
@@ -617,7 +600,25 @@ div.csl-indent {
 <span id="cb130-7"><a href="arranging-columns-with-across.html#cb130-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">.names =</span> <span class="st">&quot;{col}_all_match&quot;</span></span>
 <span id="cb130-8"><a href="arranging-columns-with-across.html#cb130-8" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb130-9"><a href="arranging-columns-with-across.html#cb130-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb130-10"><a href="arranging-columns-with-across.html#cb130-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">sort</span>(<span class="fu">names</span>(.)))</span></code></pre></div>
+<span id="cb130-10"><a href="arranging-columns-with-across.html#cb130-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, id_row, <span class="fu">starts_with</span>(<span class="st">&quot;name_first&quot;</span>), <span class="fu">starts_with</span>(<span class="st">&quot;city&quot;</span>), x)</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 7
+## # Groups:   id [2]
+##      id id_row name_first name_first_all_match city  city_all_match     x
+##   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;lgl&gt;                &lt;chr&gt; &lt;lgl&gt;          &lt;dbl&gt;
+## 1     1      1 John       TRUE                 NY    TRUE               0
+## 2     2      1 Jane       TRUE                 DAL   FALSE              1
+## 3     2      2 Jane       TRUE                 HOU   FALSE              0</code></pre>
+<p>The issue with that approach is that it quickly becomes pretty cumbersome with more columns. A more tractable approach would be to sort the names alphabetically…</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="arranging-columns-with-across.html#cb132-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb132-2"><a href="arranging-columns-with-across.html#cb132-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(id) <span class="sc">%&gt;%</span> </span>
+<span id="cb132-3"><a href="arranging-columns-with-across.html#cb132-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb132-4"><a href="arranging-columns-with-across.html#cb132-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
+<span id="cb132-5"><a href="arranging-columns-with-across.html#cb132-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">.cols  =</span> <span class="fu">c</span>(name_first, city),</span>
+<span id="cb132-6"><a href="arranging-columns-with-across.html#cb132-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">.fns   =</span> <span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.x)) <span class="sc">==</span> <span class="dv">1</span>,</span>
+<span id="cb132-7"><a href="arranging-columns-with-across.html#cb132-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">.names =</span> <span class="st">&quot;{col}_all_match&quot;</span></span>
+<span id="cb132-8"><a href="arranging-columns-with-across.html#cb132-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb132-9"><a href="arranging-columns-with-across.html#cb132-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb132-10"><a href="arranging-columns-with-across.html#cb132-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">sort</span>(<span class="fu">names</span>(.)))</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 7
 ## # Groups:   id [2]
 ##   city  city_all_match    id id_row name_first name_first_all_match     x
@@ -629,32 +630,32 @@ div.csl-indent {
 <p>Any ideas are appreciated!</p>
 <div id="solution-by-lmc" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Solution by LMc:</h2>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="arranging-columns-with-across.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use select because it allows for more complex column selection when working </span></span>
-<span id="cb132-2"><a href="arranging-columns-with-across.html#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="co"># with more complex data frames.</span></span>
-<span id="cb132-3"><a href="arranging-columns-with-across.html#cb132-3" aria-hidden="true" tabindex="-1"></a>inspect_cols <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">select</span>(name_first, city) <span class="sc">%&gt;%</span> <span class="fu">names</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="arranging-columns-with-across.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set column order ahead of time. This assumes that you know the names of each </span></span>
-<span id="cb133-2"><a href="arranging-columns-with-across.html#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="co"># of the columns you want to inspect</span></span>
-<span id="cb133-3"><a href="arranging-columns-with-across.html#cb133-3" aria-hidden="true" tabindex="-1"></a>col_order <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(</span>
-<span id="cb133-4"><a href="arranging-columns-with-across.html#cb133-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(df), </span>
-<span id="cb133-5"><a href="arranging-columns-with-across.html#cb133-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(x) {</span>
-<span id="cb133-6"><a href="arranging-columns-with-across.html#cb133-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (x <span class="sc">%in%</span> inspect_cols) {</span>
-<span id="cb133-7"><a href="arranging-columns-with-across.html#cb133-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(x, <span class="fu">paste0</span>(x, <span class="st">&quot;_all_match&quot;</span>))</span>
-<span id="cb133-8"><a href="arranging-columns-with-across.html#cb133-8" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb133-9"><a href="arranging-columns-with-across.html#cb133-9" aria-hidden="true" tabindex="-1"></a>      x</span>
-<span id="cb133-10"><a href="arranging-columns-with-across.html#cb133-10" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb133-11"><a href="arranging-columns-with-across.html#cb133-11" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb133-12"><a href="arranging-columns-with-across.html#cb133-12" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb133-13"><a href="arranging-columns-with-across.html#cb133-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unlist</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="arranging-columns-with-across.html#cb134-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb134-2"><a href="arranging-columns-with-across.html#cb134-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(id) <span class="sc">%&gt;%</span> </span>
-<span id="cb134-3"><a href="arranging-columns-with-across.html#cb134-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb134-4"><a href="arranging-columns-with-across.html#cb134-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
-<span id="cb134-5"><a href="arranging-columns-with-across.html#cb134-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">.cols  =</span> <span class="fu">all_of</span>(inspect_cols),</span>
-<span id="cb134-6"><a href="arranging-columns-with-across.html#cb134-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">.fns   =</span> <span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.x)) <span class="sc">==</span> <span class="dv">1</span>,</span>
-<span id="cb134-7"><a href="arranging-columns-with-across.html#cb134-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">.names =</span> <span class="st">&quot;{col}_all_match&quot;</span></span>
-<span id="cb134-8"><a href="arranging-columns-with-across.html#cb134-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb134-9"><a href="arranging-columns-with-across.html#cb134-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb134-10"><a href="arranging-columns-with-across.html#cb134-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">all_of</span>(col_order))</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="arranging-columns-with-across.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use select because it allows for more complex column selection when working </span></span>
+<span id="cb134-2"><a href="arranging-columns-with-across.html#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="co"># with more complex data frames.</span></span>
+<span id="cb134-3"><a href="arranging-columns-with-across.html#cb134-3" aria-hidden="true" tabindex="-1"></a>inspect_cols <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">select</span>(name_first, city) <span class="sc">%&gt;%</span> <span class="fu">names</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="arranging-columns-with-across.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set column order ahead of time. This assumes that you know the names of each </span></span>
+<span id="cb135-2"><a href="arranging-columns-with-across.html#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="co"># of the columns you want to inspect</span></span>
+<span id="cb135-3"><a href="arranging-columns-with-across.html#cb135-3" aria-hidden="true" tabindex="-1"></a>col_order <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(</span>
+<span id="cb135-4"><a href="arranging-columns-with-across.html#cb135-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(df), </span>
+<span id="cb135-5"><a href="arranging-columns-with-across.html#cb135-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(x) {</span>
+<span id="cb135-6"><a href="arranging-columns-with-across.html#cb135-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (x <span class="sc">%in%</span> inspect_cols) {</span>
+<span id="cb135-7"><a href="arranging-columns-with-across.html#cb135-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(x, <span class="fu">paste0</span>(x, <span class="st">&quot;_all_match&quot;</span>))</span>
+<span id="cb135-8"><a href="arranging-columns-with-across.html#cb135-8" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb135-9"><a href="arranging-columns-with-across.html#cb135-9" aria-hidden="true" tabindex="-1"></a>      x</span>
+<span id="cb135-10"><a href="arranging-columns-with-across.html#cb135-10" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb135-11"><a href="arranging-columns-with-across.html#cb135-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb135-12"><a href="arranging-columns-with-across.html#cb135-12" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb135-13"><a href="arranging-columns-with-across.html#cb135-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unlist</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="arranging-columns-with-across.html#cb136-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb136-2"><a href="arranging-columns-with-across.html#cb136-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(id) <span class="sc">%&gt;%</span> </span>
+<span id="cb136-3"><a href="arranging-columns-with-across.html#cb136-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb136-4"><a href="arranging-columns-with-across.html#cb136-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
+<span id="cb136-5"><a href="arranging-columns-with-across.html#cb136-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">.cols  =</span> <span class="fu">all_of</span>(inspect_cols),</span>
+<span id="cb136-6"><a href="arranging-columns-with-across.html#cb136-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">.fns   =</span> <span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.x)) <span class="sc">==</span> <span class="dv">1</span>,</span>
+<span id="cb136-7"><a href="arranging-columns-with-across.html#cb136-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">.names =</span> <span class="st">&quot;{col}_all_match&quot;</span></span>
+<span id="cb136-8"><a href="arranging-columns-with-across.html#cb136-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb136-9"><a href="arranging-columns-with-across.html#cb136-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb136-10"><a href="arranging-columns-with-across.html#cb136-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">all_of</span>(col_order))</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 7
 ## # Groups:   id [2]
 ##      id id_row name_first name_first_all_match city  city_all_match     x

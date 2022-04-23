@@ -24,7 +24,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-04-04" />
+<meta name="date" content="2022-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -513,10 +513,12 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="18.1" data-path="git-and-github.html"><a href="git-and-github.html#overview-15"><i class="fa fa-check"></i><b>18.1</b> ⭐️Overview</a></li>
 <li class="chapter" data-level="18.2" data-path="git-and-github.html"><a href="git-and-github.html#useful-websites-15"><i class="fa fa-check"></i><b>18.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="18.3" data-path="git-and-github.html"><a href="git-and-github.html#get-rid-of-.ds_store-1"><i class="fa fa-check"></i><b>18.3</b> Get rid of .DS_Store</a></li>
-<li class="chapter" data-level="18.4" data-path="git-and-github.html"><a href="git-and-github.html#amend"><i class="fa fa-check"></i><b>18.4</b> Amend</a></li>
-<li class="chapter" data-level="18.5" data-path="git-and-github.html"><a href="git-and-github.html#pull-requests"><i class="fa fa-check"></i><b>18.5</b> Pull Requests</a></li>
-<li class="chapter" data-level="18.6" data-path="git-and-github.html"><a href="git-and-github.html#branches"><i class="fa fa-check"></i><b>18.6</b> Branches</a></li>
+<li class="chapter" data-level="18.3" data-path="git-and-github.html"><a href="git-and-github.html#commit-message"><i class="fa fa-check"></i><b>18.3</b> Commit message</a></li>
+<li class="chapter" data-level="18.4" data-path="git-and-github.html"><a href="git-and-github.html#get-rid-of-.ds_store-1"><i class="fa fa-check"></i><b>18.4</b> Get rid of .DS_Store</a></li>
+<li class="chapter" data-level="18.5" data-path="git-and-github.html"><a href="git-and-github.html#amend"><i class="fa fa-check"></i><b>18.5</b> Amend</a></li>
+<li class="chapter" data-level="18.6" data-path="git-and-github.html"><a href="git-and-github.html#pull-requests"><i class="fa fa-check"></i><b>18.6</b> Pull Requests</a></li>
+<li class="chapter" data-level="18.7" data-path="git-and-github.html"><a href="git-and-github.html#branches"><i class="fa fa-check"></i><b>18.7</b> Branches</a></li>
+<li class="chapter" data-level="18.8" data-path="git-and-github.html"><a href="git-and-github.html#squashing-commits"><i class="fa fa-check"></i><b>18.8</b> Squashing commits</a></li>
 </ul></li>
 <li class="part"><span><b>IX Appendix</b></span></li>
 <li class="chapter" data-level="19" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html"><i class="fa fa-check"></i><b>19</b> Appendix A: Terms and Definitions</a>
@@ -593,7 +595,7 @@ Hidden comments placeholder
 <h2><span class="header-section-number">12.4</span> Initiate a git repository</h2>
 <p>You need to do this in order to connect to GitHub, and you need to connect to GitHub before editing some of the books configuration files because you will need to add links to the repository.</p>
 <ol style="list-style-type: decimal">
-<li>Type “usethis::use_git(message =”Initial commit“)” in the R console.</li>
+<li>Type “usethis::use_git(message =”Initial commit”)” in the R console.</li>
 </ol>
 </div>
 <div id="create-a-github-repository-for-the-book" class="section level2" number="12.5">
@@ -727,7 +729,7 @@ rmd_subdir: [&quot;chapters&quot;]</code></pre>
 <pre eval="FALSE"><code>--- 
 title: &quot;R for Epidemiology&quot;
 author: &quot;Brad Cannell&quot;
-date: &quot;2022-04-04&quot;
+date: &quot;2022-04-23&quot;
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -760,7 +762,7 @@ description: &quot;This is the textbook for Brad Cannell&#39;s Introduction to R
 <div id="knitting-the-book" class="section level2" number="12.12">
 <h2><span class="header-section-number">12.12</span> Knitting the book</h2>
 <ol style="list-style-type: decimal">
-<li><p>Click on the build tab, then click “Build Book.”</p></li>
+<li><p>Click on the build tab, then click “Build Book”.</p></li>
 <li><p>Commit the changes and push to GitHub.</p></li>
 <li><p>After a few minutes, you should see the GitHub pages version working.</p></li>
 </ol>

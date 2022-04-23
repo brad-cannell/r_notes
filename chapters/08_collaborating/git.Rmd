@@ -10,9 +10,13 @@ knitr::include_graphics("https://picsum.photos/200/300")
 
 ## ⭐️Overview
 
-This chapter is about using [Git](https://git-scm.com/) and [GitHub](https://github.com/) to collaborate. 
+My notes on git and GitHub. There are alos chapters in R4Epi on git and GitHub. These notes should not reproduce those chapter. These notes should go beyond those chapters or be used for experimenting. 
 
-The goal is not to make you a git expert — I’m not a git expert myself. Instead, the goal is to teach you enough git to work with me and my team on research projects. I will also provide you with some additional resources in case you want to become an expert.
+* [Coding best practices](https://www.r4epi.com/coding-best-practices.html). I still need to add material to this section about writing commit messages.      
+* [Introduction to git and GitHub](https://www.r4epi.com/introduction-to-git-and-github.html)   
+* [Using git and GitHub](https://www.r4epi.com/using-git-and-gitHub.html)   
+
+This chapter of the notes still needs a ton of cleaning up!
 
 
 ## 🌎Useful websites
@@ -20,7 +24,19 @@ The goal is not to make you a git expert — I’m not a git expert myself. Inst
 * [How to Use Git/GitHub with R](https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/)   
 * [Git Book](https://git-scm.com/book/en/v2)   
 * [Happy Git and GitHub for the useR](https://happygitwithr.com/)   
-* [GitHub Hello World tutorial](https://docs.github.com/en/get-started/quickstart/hello-world) 
+* [GitHub Hello World tutorial](https://docs.github.com/en/get-started/quickstart/hello-world)   
+* [How to Write a Git Commit Message](https://cbea.ms/git-commit/)   
+* [How to Write Better Git Commit Messages – A Step-By-Step Guide](https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/)   
+* [How to Write Good Commit Messages: A Practical Git Guide](https://www.freecodecamp.org/news/writing-good-commit-messages-a-practical-guide/)
+
+
+## Commit message
+
+This section needs a ton of improvement -- and probably should be moved over to [Coding best practices](https://www.r4epi.com/coding-best-practices.html). However, I want to jot down some quick notes.
+
+From, [How to Write a Git Commit Message](https://cbea.ms/git-commit/), I like:
+
+> A properly formed Git commit subject line should always be able to complete the following sentence: If applied, this commit will {your subject line here}
 
 
 ## Get rid of .DS_Store
@@ -91,6 +107,13 @@ Also, if you haven’t committed the files you don’t want to move over yet:
 * Push    
 * Create a request to pull the changes you just committed into the master branch.     
 * Don’t delete the issue branch. Just continue working on the files you don’t commit and merge with the pull request.    
+
+
+## Squashing commits
+
+I've done more of this lately. These notes should be improved too. For now, I just want to jot down that **The first commit message will be the commit message for the squashed commits**. So, if you know you are doing some WIP commits, you may want to start with the end in mind?
+
+You can also [amend your commit message](https://www.gitkraken.com/learn/git/problems/git-commit-amend) in GitKraken, but this is complicated if you've already pushed to a remote repository. 
 
 
 

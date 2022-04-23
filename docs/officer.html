@@ -24,7 +24,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-04-04" />
+<meta name="date" content="2022-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -513,10 +513,12 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="18.1" data-path="git-and-github.html"><a href="git-and-github.html#overview-15"><i class="fa fa-check"></i><b>18.1</b> ⭐️Overview</a></li>
 <li class="chapter" data-level="18.2" data-path="git-and-github.html"><a href="git-and-github.html#useful-websites-15"><i class="fa fa-check"></i><b>18.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="18.3" data-path="git-and-github.html"><a href="git-and-github.html#get-rid-of-.ds_store-1"><i class="fa fa-check"></i><b>18.3</b> Get rid of .DS_Store</a></li>
-<li class="chapter" data-level="18.4" data-path="git-and-github.html"><a href="git-and-github.html#amend"><i class="fa fa-check"></i><b>18.4</b> Amend</a></li>
-<li class="chapter" data-level="18.5" data-path="git-and-github.html"><a href="git-and-github.html#pull-requests"><i class="fa fa-check"></i><b>18.5</b> Pull Requests</a></li>
-<li class="chapter" data-level="18.6" data-path="git-and-github.html"><a href="git-and-github.html#branches"><i class="fa fa-check"></i><b>18.6</b> Branches</a></li>
+<li class="chapter" data-level="18.3" data-path="git-and-github.html"><a href="git-and-github.html#commit-message"><i class="fa fa-check"></i><b>18.3</b> Commit message</a></li>
+<li class="chapter" data-level="18.4" data-path="git-and-github.html"><a href="git-and-github.html#get-rid-of-.ds_store-1"><i class="fa fa-check"></i><b>18.4</b> Get rid of .DS_Store</a></li>
+<li class="chapter" data-level="18.5" data-path="git-and-github.html"><a href="git-and-github.html#amend"><i class="fa fa-check"></i><b>18.5</b> Amend</a></li>
+<li class="chapter" data-level="18.6" data-path="git-and-github.html"><a href="git-and-github.html#pull-requests"><i class="fa fa-check"></i><b>18.6</b> Pull Requests</a></li>
+<li class="chapter" data-level="18.7" data-path="git-and-github.html"><a href="git-and-github.html#branches"><i class="fa fa-check"></i><b>18.7</b> Branches</a></li>
+<li class="chapter" data-level="18.8" data-path="git-and-github.html"><a href="git-and-github.html#squashing-commits"><i class="fa fa-check"></i><b>18.8</b> Squashing commits</a></li>
 </ul></li>
 <li class="part"><span><b>IX Appendix</b></span></li>
 <li class="chapter" data-level="19" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html"><i class="fa fa-check"></i><b>19</b> Appendix A: Terms and Definitions</a>
@@ -574,7 +576,7 @@ Hidden comments placeholder
 <p>Still trying to figure out if it’s better to write text in Word and then add in tables and charts with bookmarks, or is it better to write everything in R?</p>
 <p>In general, it seems helpful/expedient to do as much of the prose and formatting as possible directly in the Word template. Then, just add numbers, tables, and graphs from R with bookmarks.</p>
 <p class="warning">
-⚠️<strong>Warning:</strong> When editing the code chunks below, you will need to add “../../” in front of file paths that retrieve Word docs from or save word docs to the examples folder if you want them to work when you run them interactively. For example, “../../examples/Word Template for Officer.docx.” However, you have to delete the “../../” from the file paths in order for build book to work.
+⚠️<strong>Warning:</strong> When editing the code chunks below, you will need to add “../../” in front of file paths that retrieve Word docs from or save word docs to the examples folder if you want them to work when you run them interactively. For example, “../../examples/Word Template for Officer.docx”. However, you have to delete the “../../” from the file paths in order for build book to work.
 </p>
 </div>
 <div id="useful-websites-13" class="section level2" number="16.2">
@@ -701,7 +703,7 @@ Hidden comments placeholder
 <span id="cb397-4"><a href="officer.html#cb397-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;fig_phone_terminations&quot;</span>, </span>
 <span id="cb397-5"><a href="officer.html#cb397-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">external_img</span>(<span class="st">&quot;fig_1.jpeg&quot;</span>, <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">4</span>)</span>
 <span id="cb397-6"><a href="officer.html#cb397-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<p>For images, just add the bookmark to the end of the title without surrounding it with “bm.” For example, “Figure 1. Overall trend in sunscreen application outcomes by study p_overall” Where “p_overall is the bookmark. Otherwise, the”bm" will still be there.</p>
+<p>For images, just add the bookmark to the end of the title without surrounding it with “bm”. For example, “Figure 1. Overall trend in sunscreen application outcomes by study p_overall” Where “p_overall is the bookmark. Otherwise, the”bm” will still be there.</p>
 <p>For best results, the width and height used in ggsave() should match the width and height in external_img(). Deciding on the correct width and height might take some trial and error.</p>
 <p>To add an updated date, use this:</p>
 <div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="officer.html#cb398-1" aria-hidden="true" tabindex="-1"></a>doc_w_bookmarks <span class="ot">&lt;-</span> doc_w_bookmarks <span class="sc">%&gt;%</span> </span>

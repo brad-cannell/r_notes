@@ -24,7 +24,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-04-04" />
+<meta name="date" content="2022-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -513,10 +513,12 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="18.1" data-path="git-and-github.html"><a href="git-and-github.html#overview-15"><i class="fa fa-check"></i><b>18.1</b> ⭐️Overview</a></li>
 <li class="chapter" data-level="18.2" data-path="git-and-github.html"><a href="git-and-github.html#useful-websites-15"><i class="fa fa-check"></i><b>18.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="18.3" data-path="git-and-github.html"><a href="git-and-github.html#get-rid-of-.ds_store-1"><i class="fa fa-check"></i><b>18.3</b> Get rid of .DS_Store</a></li>
-<li class="chapter" data-level="18.4" data-path="git-and-github.html"><a href="git-and-github.html#amend"><i class="fa fa-check"></i><b>18.4</b> Amend</a></li>
-<li class="chapter" data-level="18.5" data-path="git-and-github.html"><a href="git-and-github.html#pull-requests"><i class="fa fa-check"></i><b>18.5</b> Pull Requests</a></li>
-<li class="chapter" data-level="18.6" data-path="git-and-github.html"><a href="git-and-github.html#branches"><i class="fa fa-check"></i><b>18.6</b> Branches</a></li>
+<li class="chapter" data-level="18.3" data-path="git-and-github.html"><a href="git-and-github.html#commit-message"><i class="fa fa-check"></i><b>18.3</b> Commit message</a></li>
+<li class="chapter" data-level="18.4" data-path="git-and-github.html"><a href="git-and-github.html#get-rid-of-.ds_store-1"><i class="fa fa-check"></i><b>18.4</b> Get rid of .DS_Store</a></li>
+<li class="chapter" data-level="18.5" data-path="git-and-github.html"><a href="git-and-github.html#amend"><i class="fa fa-check"></i><b>18.5</b> Amend</a></li>
+<li class="chapter" data-level="18.6" data-path="git-and-github.html"><a href="git-and-github.html#pull-requests"><i class="fa fa-check"></i><b>18.6</b> Pull Requests</a></li>
+<li class="chapter" data-level="18.7" data-path="git-and-github.html"><a href="git-and-github.html#branches"><i class="fa fa-check"></i><b>18.7</b> Branches</a></li>
+<li class="chapter" data-level="18.8" data-path="git-and-github.html"><a href="git-and-github.html#squashing-commits"><i class="fa fa-check"></i><b>18.8</b> Squashing commits</a></li>
 </ul></li>
 <li class="part"><span><b>IX Appendix</b></span></li>
 <li class="chapter" data-level="19" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html"><i class="fa fa-check"></i><b>19</b> Appendix A: Terms and Definitions</a>
@@ -557,8 +559,15 @@ Hidden comments placeholder
 <p><img src="https://picsum.photos/200/300" /><!-- --></p>
 <div id="overview-15" class="section level2" number="18.1">
 <h2><span class="header-section-number">18.1</span> ⭐️Overview</h2>
-<p>This chapter is about using <a href="https://git-scm.com/">Git</a> and <a href="https://github.com/">GitHub</a> to collaborate.</p>
-<p>The goal is not to make you a git expert — I’m not a git expert myself. Instead, the goal is to teach you enough git to work with me and my team on research projects. I will also provide you with some additional resources in case you want to become an expert.</p>
+<p>My notes on git and GitHub. There are alos chapters in R4Epi on git and GitHub. These notes should not reproduce those chapter. These notes should go beyond those chapters or be used for experimenting.</p>
+<ul>
+<li><a href="https://www.r4epi.com/coding-best-practices.html">Coding best practices</a>. I still need to add material to this section about writing commit messages.<br />
+</li>
+<li><a href="https://www.r4epi.com/introduction-to-git-and-github.html">Introduction to git and GitHub</a><br />
+</li>
+<li><a href="https://www.r4epi.com/using-git-and-gitHub.html">Using git and GitHub</a></li>
+</ul>
+<p>This chapter of the notes still needs a ton of cleaning up!</p>
 </div>
 <div id="useful-websites-15" class="section level2" number="18.2">
 <h2><span class="header-section-number">18.2</span> 🌎Useful websites</h2>
@@ -569,11 +578,25 @@ Hidden comments placeholder
 </li>
 <li><a href="https://happygitwithr.com/">Happy Git and GitHub for the useR</a><br />
 </li>
-<li><a href="https://docs.github.com/en/get-started/quickstart/hello-world">GitHub Hello World tutorial</a></li>
+<li><a href="https://docs.github.com/en/get-started/quickstart/hello-world">GitHub Hello World tutorial</a><br />
+</li>
+<li><a href="https://cbea.ms/git-commit/">How to Write a Git Commit Message</a><br />
+</li>
+<li><a href="https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/">How to Write Better Git Commit Messages – A Step-By-Step Guide</a><br />
+</li>
+<li><a href="https://www.freecodecamp.org/news/writing-good-commit-messages-a-practical-guide/">How to Write Good Commit Messages: A Practical Git Guide</a></li>
 </ul>
 </div>
-<div id="get-rid-of-.ds_store-1" class="section level2" number="18.3">
-<h2><span class="header-section-number">18.3</span> Get rid of .DS_Store</h2>
+<div id="commit-message" class="section level2" number="18.3">
+<h2><span class="header-section-number">18.3</span> Commit message</h2>
+<p>This section needs a ton of improvement – and probably should be moved over to <a href="https://www.r4epi.com/coding-best-practices.html">Coding best practices</a>. However, I want to jot down some quick notes.</p>
+<p>From, <a href="https://cbea.ms/git-commit/">How to Write a Git Commit Message</a>, I like:</p>
+<blockquote>
+<p>A properly formed Git commit subject line should always be able to complete the following sentence: If applied, this commit will {your subject line here}</p>
+</blockquote>
+</div>
+<div id="get-rid-of-.ds_store-1" class="section level2" number="18.4">
+<h2><span class="header-section-number">18.4</span> Get rid of .DS_Store</h2>
 <p>The <code>.DS_Store</code> file can be an annoyance when working with Git on MacOS. <a href="https://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository/107921">Here is a link</a> to instructions for removing <code>.DS_Store</code> from your repository. Do it early and never worry about it again.</p>
 <p>In the terminal, run the following code from the root directory:</p>
 <div class="sourceCode" id="cb455"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb455-1"><a href="git-and-github.html#cb455-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove existing files from the repository:</span></span>
@@ -584,8 +607,8 @@ Hidden comments placeholder
 <span id="cb457-2"><a href="git-and-github.html#cb457-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .gitignore</span>
 <span id="cb457-3"><a href="git-and-github.html#cb457-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&#39;.DS_Store banished!&#39;</span></span></code></pre></div>
 </div>
-<div id="amend" class="section level2" number="18.4">
-<h2><span class="header-section-number">18.4</span> Amend</h2>
+<div id="amend" class="section level2" number="18.5">
+<h2><span class="header-section-number">18.5</span> Amend</h2>
 <ul>
 <li>Edit -&gt; commit -&gt; edit -&gt; amend -&gt; commit = no problem!<br />
 </li>
@@ -596,8 +619,8 @@ Hidden comments placeholder
 <li><a href="https://medium.com/@igor_marques/git-basics-adding-more-changes-to-your-last-commit-1629344cb9a8">Adding more chages to your last commit</a></li>
 </ul>
 </div>
-<div id="pull-requests" class="section level2" number="18.5">
-<h2><span class="header-section-number">18.5</span> Pull Requests</h2>
+<div id="pull-requests" class="section level2" number="18.6">
+<h2><span class="header-section-number">18.6</span> Pull Requests</h2>
 <ul>
 <li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-proposed-changes-in-a-pull-request">Instructions for leaving comments</a><br />
 </li>
@@ -614,8 +637,8 @@ Hidden comments placeholder
 <li>Throw away local changes with git checkout -f, and then remove untracked files with git clean -fd</li>
 </ul>
 </div>
-<div id="branches" class="section level2" number="18.6">
-<h2><span class="header-section-number">18.6</span> Branches</h2>
+<div id="branches" class="section level2" number="18.7">
+<h2><span class="header-section-number">18.7</span> Branches</h2>
 <p>Naming convention:
 issue-#-short-description</p>
 <p>Basic workflow:</p>
@@ -643,6 +666,11 @@ issue-#-short-description</p>
 </li>
 <li>Don’t delete the issue branch. Just continue working on the files you don’t commit and merge with the pull request.</li>
 </ul>
+</div>
+<div id="squashing-commits" class="section level2" number="18.8">
+<h2><span class="header-section-number">18.8</span> Squashing commits</h2>
+<p>I’ve done more of this lately. These notes should be improved too. For now, I just want to jot down that <strong>The first commit message will be the commit message for the squashed commits</strong>. So, if you know you are doing some WIP commits, you may want to start with the end in mind?</p>
+<p>You can also <a href="https://www.gitkraken.com/learn/git/problems/git-commit-amend">amend your commit message</a> in GitKraken, but this is complicated if you’ve already pushed to a remote repository.</p>
 <!--
 Clean up and add session info
 -->

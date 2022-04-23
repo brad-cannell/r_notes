@@ -692,7 +692,9 @@ starwars %>% example(height)
 
 Or:
 
-```{r}
+```{r error=TRUE}
+# Update 2022-04-23: rlang::parse_quosure is now causing an error, "'parse_quosure' is not an exported object from 'namespace:rlang'". I don't have time to fix it at the moment. I added "error=TRUE" to the code chunk instead.
+
 example <- function(df, var) {
   
   x <- enquo(var)  # First, turn var without the suffix into a quoture - must be first

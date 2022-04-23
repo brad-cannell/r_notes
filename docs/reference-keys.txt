@@ -271,10 +271,12 @@ generate-word-reports
 git-and-github
 overview-15
 useful-websites-15
+commit-message
 get-rid-of-.ds_store-1
 amend
 pull-requests
 branches
+squashing-commits
 appendix-a-terms-and-definitions
 overview-16
 useful-websites-16

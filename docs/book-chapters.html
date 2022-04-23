@@ -24,7 +24,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-04-04" />
+<meta name="date" content="2022-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -513,10 +513,12 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="18.1" data-path="git-and-github.html"><a href="git-and-github.html#overview-15"><i class="fa fa-check"></i><b>18.1</b> ⭐️Overview</a></li>
 <li class="chapter" data-level="18.2" data-path="git-and-github.html"><a href="git-and-github.html#useful-websites-15"><i class="fa fa-check"></i><b>18.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="18.3" data-path="git-and-github.html"><a href="git-and-github.html#get-rid-of-.ds_store-1"><i class="fa fa-check"></i><b>18.3</b> Get rid of .DS_Store</a></li>
-<li class="chapter" data-level="18.4" data-path="git-and-github.html"><a href="git-and-github.html#amend"><i class="fa fa-check"></i><b>18.4</b> Amend</a></li>
-<li class="chapter" data-level="18.5" data-path="git-and-github.html"><a href="git-and-github.html#pull-requests"><i class="fa fa-check"></i><b>18.5</b> Pull Requests</a></li>
-<li class="chapter" data-level="18.6" data-path="git-and-github.html"><a href="git-and-github.html#branches"><i class="fa fa-check"></i><b>18.6</b> Branches</a></li>
+<li class="chapter" data-level="18.3" data-path="git-and-github.html"><a href="git-and-github.html#commit-message"><i class="fa fa-check"></i><b>18.3</b> Commit message</a></li>
+<li class="chapter" data-level="18.4" data-path="git-and-github.html"><a href="git-and-github.html#get-rid-of-.ds_store-1"><i class="fa fa-check"></i><b>18.4</b> Get rid of .DS_Store</a></li>
+<li class="chapter" data-level="18.5" data-path="git-and-github.html"><a href="git-and-github.html#amend"><i class="fa fa-check"></i><b>18.5</b> Amend</a></li>
+<li class="chapter" data-level="18.6" data-path="git-and-github.html"><a href="git-and-github.html#pull-requests"><i class="fa fa-check"></i><b>18.6</b> Pull Requests</a></li>
+<li class="chapter" data-level="18.7" data-path="git-and-github.html"><a href="git-and-github.html#branches"><i class="fa fa-check"></i><b>18.7</b> Branches</a></li>
+<li class="chapter" data-level="18.8" data-path="git-and-github.html"><a href="git-and-github.html#squashing-commits"><i class="fa fa-check"></i><b>18.8</b> Squashing commits</a></li>
 </ul></li>
 <li class="part"><span><b>IX Appendix</b></span></li>
 <li class="chapter" data-level="19" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html"><i class="fa fa-check"></i><b>19</b> Appendix A: Terms and Definitions</a>
@@ -675,9 +677,9 @@ div.csl-indent {
 <p>Method 1 is a good method when the section name is difficult or unwieldy to write out. It may also just be a good idea when you know ahead of time that you will want to cross-reference a section.</p>
 <p>Example:</p>
 <ul>
-<li>I added the CSS id <code>{#cr-figs}</code> to the section above called “Cross-referencing figures.”<br />
+<li>I added the CSS id <code>{#cr-figs}</code> to the section above called “Cross-referencing figures”.<br />
 </li>
-<li>The sentence below is written as “<code>See the section above on [cross-referencing figures](#cr-figs)</code>.”<br />
+<li>The sentence below is written as “<code>See the section above on [cross-referencing figures](#cr-figs)</code>”.<br />
 </li>
 <li>See the section above on <a href="book-chapters.html#cr-figs">cross-referencing figures</a>.</li>
 </ul>
@@ -688,9 +690,9 @@ div.csl-indent {
 <p>Method 1 &amp; 2 are good methods when the section name is difficult or unwieldy to write out. They may also just be a good idea when you know ahead of time that you will want to cross-reference a section. The difference is really just a matter of style.</p>
 <p>Example:</p>
 <ul>
-<li>I added the CSS id <code>{#cr-figs}</code> to the section above called “Cross-referencing figures.”<br />
+<li>I added the CSS id <code>{#cr-figs}</code> to the section above called “Cross-referencing figures”.<br />
 </li>
-<li>The sentence below is written as “<code>See the section \@ref(cr-figs) above about cross-referencing figures.</code>”<br />
+<li>The sentence below is written as “<code>See the section \@ref(cr-figs) above about cross-referencing figures.</code>”.<br />
 </li>
 <li>See the section <a href="book-chapters.html#cr-figs">11.4.1</a> above about cross-referencing figures.<br />
 </li>
@@ -702,9 +704,9 @@ div.csl-indent {
 <p>Simply write out the chapter/section header name inside square brackets (i.e., <code>[Section header name]</code> to create a text link to the chapter/section header.</p>
 <p>Example:</p>
 <ul>
-<li>This section is titled “Cross-references.”<br />
+<li>This section is titled “Cross-references”.<br />
 </li>
-<li>The sentence below is written as “<code>See the [cross-references] section above.</code>”<br />
+<li>The sentence below is written as “<code>See the [cross-references] section above.</code>”.<br />
 </li>
 <li>See the <a href="book-chapters.html#cross-references">cross-references</a> section above.</li>
 </ul>
@@ -717,9 +719,9 @@ div.csl-indent {
 <p>Write out some text that you want linked to the chapter/section header inside of square brackets, then immediately follow it with the chapter/section header name inside square brackets (i.e., <code>[linked text][Section header name]</code> to create a text link to the chapter/section header.</p>
 <p>Example:</p>
 <ul>
-<li>This section is titled “Cross-references.”<br />
+<li>This section is titled “Cross-references”.<br />
 </li>
-<li>The sentence below is written as “<code>See the [section above on cross-referencing][Cross-references]</code>.”<br />
+<li>The sentence below is written as “<code>See the [section above on cross-referencing][Cross-references]</code>”.<br />
 </li>
 <li>See the <a href="book-chapters.html#cross-references">section above on cross-referencing</a>.</li>
 </ul>
@@ -761,10 +763,10 @@ Figure 11.1: A screenshot of selecting BibTex in PaperPile.
 <div id="previewing-the-chapter" class="section level2" number="11.6">
 <h2><span class="header-section-number">11.6</span> Previewing the chapter</h2>
 <ul>
-<li>Supposed to use “bookdown::preview_chapter(”03_what_is_r.Rmd“)” to preview chapters.
+<li>Supposed to use “bookdown::preview_chapter(”03_what_is_r.Rmd”)” to preview chapters.
 <ul>
 <li>I can’t get this to work for some reason. I created a new project that I can use a test environment.</li>
-<li>It’s in “R4Epi chapters in progress/bookdown_test_environment.” You have to build the whole book, but it should go fast because I don’t have all the chapters.</li>
+<li>It’s in “R4Epi chapters in progress/bookdown_test_environment”. You have to build the whole book, but it should go fast because I don’t have all the chapters.</li>
 </ul></li>
 </ul>
 <div id="miscelaneous" class="section level3" number="11.6.1">

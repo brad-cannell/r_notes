@@ -4,6 +4,7 @@ Created: 2017-06-24 <br> Updated: `r Sys.Date()`
 
 <!--
 Hidden comments placeholder
+bookdown::preview_chapter("/Users/bradcannell/Dropbox/R/r_notes_bookdown/chapters/01_programming/tidy_evaluation.Rmd")
 -->
 
 ```{r echo=FALSE}
@@ -12,16 +13,23 @@ knitr::include_graphics("https://picsum.photos/200/300")
 
 ## ⭐️Overview
 
-This chapter is about tidy evaluation.
+This chapter is about tidy evaluation. Tidy evaluation has gone through several fairly significant changes since I first wrote these notes. 
+
+[Rlang 0.3.1](https://rlang.r-lib.org/news/index.html#rlang-031) replaced `quo_name()` with `as_label()` and `as_name()`. 
+
+[Rlang 0.4.0](https://www.tidyverse.org/blog/2019/06/rlang-0-4-0/) add the curly-curly syntax. 
 
 
 ## 🌎Useful websites
 
+* [Rlang packagedown site](https://rlang.r-lib.org/index.html)   
 * [Tidy evaluation book](https://tidyeval.tidyverse.org/)   
 * [Programming with dplyr](https://dplyr.tidyverse.org/articles/programming.html)   
 * [Using ggplot2 in packages](https://ggplot2.tidyverse.org/articles/ggplot2-in-packages.html)   
 * [Rlang adds curly-curly](https://www.tidyverse.org/blog/2019/06/rlang-0-4-0/)   
-* [Advanced R, metaprogramming](https://adv-r.hadley.nz/metaprogramming.html#)   
+* [Advanced R, metaprogramming](https://adv-r.hadley.nz/metaprogramming.html)   
+* [R4Epi - Tidy Evaluation](https://www.r4epi.com/introduction-to-repeated-operations.html#tidy-evaluation)   
+* [R4Epi - writing functions](https://www.r4epi.com/writing-functions.html#tidy-evaluation-1)   
 
 
 ## 📦Load packages
@@ -30,60 +38,138 @@ This chapter is about tidy evaluation.
 library(dplyr, warn.conflicts = FALSE)
 library(tidyr, warn.conflicts = FALSE)
 library(purrr, warn.conflicts = FALSE)
+library(glue)
 ```
 
 
 ## 🔢Simulate data 
 
+Here we simulate a small dataset that is intended to be representative of data from a research study.
+
 ```{r}
-# Do this later
-# set.seed(123)
-# df <- tibble(
-#   x = rnorm(26),
-#   y = letters
-# )
+set.seed(123)
+study <- tibble(
+  id     = as.character(seq(1001, 1020, 1)),
+  sex    = factor(sample(c("Female", "Male"), 20, TRUE)),
+  date   = sample(seq.Date(as.Date("2021-09-15"), as.Date("2021-10-26"), "day"), 20, TRUE),
+  days   = sample(1L:21L, 20L, TRUE),
+  height = rnorm(20, 71, 10)
+)
+
+# Add missing values for testing
+study$id[3] <- NA
+study$sex[4] <- NA
+study$date[5] <- NA
+study$days[6] <- NA
+study$height[7] <- NA
 ```
 
 ## Load Starwars data
 
+We will also load the `mtcars` data `starwars` data used in many of the Tidyverse examples. 
+
 ```{r}
 data(starwars)
+data(mtcars)
 ```
 
+## Why use tidy evaluation?
 
-
-**Tidy Eval** is as system for **programming**, as opposed to working interactively, with **dplyr**.
-
-Tidy Eval is all about **quoting**. Not in the `""` sense, which is to create a character string. Rather, Quoting is the action of capturing an expression instead of evaluating it. This is similar to the way formulas work in R. For example:
+The short answer is because of data masking, which is easier to see than describe.
 
 ```{r}
-# Computing the value of the expression:
-toupper(letters[1:5])
+# Unmasked programming
+mean(mtcars$cyl + mtcars$am)
+```
+
+```{r error=TRUE}
+# Referring to columns is an error - Where is the data?
+mean(cyl + am)
 ```
 
 ```{r}
-# Capturing the expression:
-quote(toupper(letters[1:5]))
+# Data-masking (using base R)
+with(mtcars, mean(cyl + am))
 ```
 
-**Don't forget:** When using quoted expressions, or **quotures** inside functions, you must **unquote** them where you want the expression evaluated. You can unquote with `!!` or unquote-splice with `!!!`.
+```{r}
+# Data-masking (using dplyr)
+summarise(mtcars, mean(cyl + am))
+```
+## What is tidy evaluation?
 
-You can also use the curly-curly syntax to unquote: `{{}}`. I'm still not clear on when to use one vs. the other. 
+**Tidy Eval** is as system for **programming** (i.e., writing new functions), as opposed to working interactively with **dplyr**.
 
+> While data-masking makes it easy to program interactively with data frames, it makes it harder to create functions. Passing data-masked arguments to functions requires injection with the embracing operator {{ or, in more complex cases, the injection operator !!. [rlang documentation](https://rlang.r-lib.org/reference/topic-data-mask.html)
+
+So, tidy evaluation, operationalized primarily through the [rlang package](https://rlang.r-lib.org/index.html), is shorthand for a set of tools that allows us to more easily use data masking in the functions that we write. It also allows us to use other functions that use data masking (e.g., `dplyr` functions) the functions that we write.   
+
+## Vocabulary
+
+The old vocabulary was heavily centered around **quasiquotation**. It appears as thought the rlang team is moving towards using the terms **defusing**, **embracing** and **injecting**. 
+
+> Injection (also known as quasiquotation) is a metaprogramming feature that allows you to modify parts of a program. This is needed because under the hood data-masking works by defusing R code to prevent its immediate evaluation. The [defused](https://rlang.r-lib.org/reference/topic-defuse.html) code is resumed later on in a context where data frame columns are defined. [rlang documentation](https://rlang.r-lib.org/reference/topic-data-mask.html)
+
+> One purpose for defusing evaluation of an expression is to interface with data-masking functions by injecting the expression back into another function with !!. This is the defuse-and-inject pattern. [rlang documentation](https://rlang.r-lib.org/reference/topic-data-mask.html)
+
+**The defuse-and-inject pattern**
+
+```{r eval=FALSE}
+my_summarise <- function(data, arg) {
+  # Defuse the user expression in `arg`
+  arg <- enquo(arg)
+
+  # Inject the expression contained in `arg`
+  # inside a `summarise()` argument
+  data |> dplyr::summarise(mean = mean(!!arg, na.rm = TRUE))
+}
+```
+
+Defuse-and-inject is usually performed in a single step with the embrace operator `{{`.
+
+```{r eval=FALSE}
+my_summarise <- function(data, arg) {
+  # Defuse and inject in a single step with the embracing operator
+  data |> dplyr::summarise(mean = mean({{ arg }}, na.rm = TRUE))
+}
+```
+
+> Using enquo() and !! separately is useful in more complex cases where you need access to the defused expression instead of just passing it on. [rlang documentation](https://rlang.r-lib.org/reference/topic-data-mask.html)
+
+**Defused arguments and quosures**
+
+> If you inspect the return values of `expr()` and `enquo()`, you'll notice that the latter doesn't return a raw expression like the former. Instead it returns a [quosure](https://rlang.r-lib.org/reference/quosure-tools.html), a wrapper containing an expression and an environment. [rlang documentation](https://rlang.r-lib.org/reference/topic-data-mask.html)
+
+```{r}
+expr(1 + 1)
+```
+
+```{r}
+my_function <- function(arg) enquo(arg)
+my_function(1 + 1)
+```
+
+> R needs information about the environment to properly evaluate argument expressions because they come from a different context than the current function. [rlang documentation](https://rlang.r-lib.org/reference/topic-data-mask.html)
 
 ## Key Functions {#key_functions}
 
-* `.data` pronoun 
+### The qq_show function
 
-    + Not officially part of Tidy Eval (part of rlang). 
+The `qq_show()` function helps examining injected expressions inside a function. This is useful for learning about injection and for debugging injection code.
+
+```{r}
+my_mean <- function(data, var) {
+  rlang::qq_show(data %>% dplyr::summarise(mean({{ var }})))
+}
+
+mtcars %>% my_mean(cyl)
+```
+
+### The quo function
+
+The `quo()` function creates a class **quoture** object, which is a special type of formula.
     
-    + However, useful to keep in mind in situations where you might be programming over multiple data frames. If you're in that situation, go check out the _Pragramming with dplyr_ link above for more details.
-
-* `quo()`
-
-    + This is sort of the foundational function in Tidy Eval. It creates a class **quoture** object, which is a special type of formula.
-    
-    + quo() captures expressions when outside of user-defined functions.
+Use `quo()` to capture expressions when programming outside of user-defined functions.
 
 ```{r}
 # What does quo() return?
@@ -93,37 +179,49 @@ quo(species) # Where species is a variable in the Starwars tibble
 ```{r}
 # Basic usage of quo() in function
 freq_table <- function(df, x, ...) {
-  df %>%                             # No quoting and unquoting necessary for the tibble
-    group_by(!!x) %>%                # Don't forget to unquote (!!) where you want the quoture evaluated
-    summarise(N = n()) %>%           # Calculate freq
-    top_n(3, N)                      # Return top 3 results
+  df %>%            # No quoting and unquoting necessary for the tibble
+    count(!!x) %>%  # Don't forget to unquote (!!) where you want the quoture evaluated
+    top_n(3, n)     # Return top 3 results
 }
 
 freq_table(df = starwars, x = quo(species))
 ```
 
-* `enquo()`
+### The enquo function
 
-    + If you don't want the user of your function to be able to pass the variable name as an argument without wrapping in `quo()`, that's where `enquo()` comes in.
+If you want the user of your function to be able to pass the variable name as an argument without wrapping in `quo()`, that's where `enquo()` comes in.
     
 ```{r}
 # Basic usage of enquo() in function
 freq_table <- function(df, x, ...) {
-  x <- enquo(x)                      # Capturing function argument and turning it into a quoture
+  x <- enquo(x)     # Capturing function argument and turning it into a quoture
   df %>%                             
-    group_by(!!x) %>%                
-    summarise(N = n()) %>%           
-    top_n(3, N)                      
+    count(!!x) %>%
+    top_n(3, n)                      
 }
 
-freq_table(df = starwars, x = species) # Notice we no longer need to wrop species with quo()
+freq_table(df = starwars, x = species) # Notice we no longer need to wrap species with quo()
 ```
 
-* `quos()`
+### The embrace operator
 
-    + Use `quos()` with `...` when you want to pass multiple variables / arguments / expressions into your function.
-    
-    + Must unquote-splice `!!!` in your function to evaluate.
+As mentioned above in the discussion of the defuse-and-inject pattern, the embrace operator `{{` can often be used to defuse-and-inject in a single step.
+
+```{r}
+freq_table <- function(df, x, ...) {
+  df %>%                             
+    count({{ x }}) %>%
+    top_n(3, n)                      
+}
+
+freq_table(df = starwars, x = species)
+```
+
+Where the embrace operator can get you in trouble is with nested functions ([see below](#nesting)) and unquote-splicing ([see below](#enquos)).
+
+### The quos function
+
+Use `quos()` with `...` when you want to pass multiple variables / arguments / expressions into your function. Must unquote-splice `!!!` in your function to evaluate.
     
 ```{r}
 # What does quos() return?
@@ -134,70 +232,107 @@ You can iterate over the list of quotures returned by `quos()`
     
 ```{r}
 my_quos <- quos(species, name)
+
 for(i in seq_along(my_quos)) {
   print(my_quos[[i]])
 }
 ```
 
-Don't forget to unquote-splice with `!!!`
+### The enquos function {#enquos}
+
+Typically you will use `enquos()` instead of `quos()`, and use it with the dot-dot-dot argument to a function. When you do, don't forget to unquote-splice with `!!!`.
 
 ```{r}
-# Basic use of quos() in a for loop
-my_quos <- quos(species, name)
-for(i in seq_along(my_quos)) {
-  summarise(starwars, n_miss = sum(is.na(!!my_quos[[i]]))) %>% print # Can use !! or !!! in this case
+grouped_mean <- function(df, x, ...) {
+  mean_var <- enquo(x)
+  group_vars <- enquos(...)
+  
+  df %>% 
+    group_by(!!!group_vars) %>% 
+    summarise(mean = mean(!!mean_var), .groups = "drop")
 }
+
+grouped_mean(mtcars, disp, cyl, am)
 ```
 
+Or
+
 ```{r}
-# Basic usage of quos() in function
-freq_table <- function(df, ...) {    # Notice we dropped the "x" argument
-  x <- quos(...)                     # Capturing function argument and turning it into a quoture list
+freq_table <- function(df, ...) { # Notice we dropped the "x" argument
+  x <- enquos(...)                # Capturing function argument and turning it into a quoture list
+  
   df %>%                             
-    group_by(!!!x) %>%               # Must use unquote-splice (!!!) in this case
-    summarise(N = n()) %>%
-    ungroup() %>% 
+    count(!!!x) %>%               # Must use unquote-splice (!!!) in this case
     slice(1:5)                      
 }
 
 freq_table(df = starwars, species, hair_color)
 ```
 
-* `quo_name()`
+**Note** that the embrace operator cannot be used to unquote-splice the `...` argument. 
 
-    + Sometimes we want to convert the argument to a string for use in our function output. For example, we may want to dynamically create variable names inside the function.
+```{r error=TRUE}
+freq_table <- function(df, ...) { 
+  df %>%                             
+    count({{ ... }}) %>%  # Must use unquote-splice (!!!) in this case
+    slice(1:5)                      
+}
 
-```{r}
-# What does quo_name return?
-quo_name("height") # Input must be a string or a quoture
+freq_table(df = starwars, species, hair_color)
 ```
 
-```{r}
-# What does quo_name return?
-height <- quo(height)
-quo_name(height) # Input must be a string or a quoture
-```
+### The as_label and as_name functions 
+
+[Rlang 0.3.1](https://rlang.r-lib.org/news/index.html#rlang-031) replaced `quo_name()` with `as_label()` and `as_name()`. 
+
+Sometimes we want to convert the argument to a string for use in our function output. For example, we may want to dynamically create variable names inside the function.
 
 ```{r}
-# Basic usage of quos() in function
+# What does as_label and as_name return?
+# Input must be a string or a quoture
+list(
+  as_label_quotes  = rlang::as_label("height"),
+  as_lable_quoture = rlang::as_label(quo(height)),
+  as_name_quotes   = rlang::as_name("height"),
+  as_name_quoture  = rlang::as_name(quo(height))
+)
+```
+
+I still don't fully understand when to use one versus the other, but so far, they have been most useful for converting symbols/quotures to character strings.
+
+```{r}
 continuous_table <- function(df, x) {
-  x2 <- enquo(x)                             # Must enquo first
-  mean_name <- paste0("mean_", quo_name(x2))
-  sum_name  <- paste0("sum_", quo_name(x2))
+  x <- enquo(x)                                 # Must enquo first
+  mean_name <- paste0("mean_", rlang::as_name(x))
+  sum_name  <- paste0("sum_", rlang::as_name(x))
   
   df %>% 
     summarise(
-      !!mean_name := mean(!!x2, na.rm = TRUE), # Must use !! and := to set the variable names
-      !!sum_name  := sum(!!x2, na.rm = TRUE)
+      !!mean_name := mean(!!x, na.rm = TRUE), # Must use !! and := to set the variable names
+      !!sum_name  := sum(!!x, na.rm = TRUE)
     )
 }
 
 continuous_table(starwars, height)
 ```
 
-* `rlang::sym()`
+Alternatively, with the embrace operator and `glue` to make the var names (supported as of [rlang 0.4.3](https://www.tidyverse.org/blog/2020/02/glue-strings-and-tidy-eval/)). 
 
-    + Takes a string as an input and turns it into a symbol
+```{r}
+continuous_table <- function(df, x) {
+  df %>% 
+    summarise(
+      "mean_{{ x }}" := mean({{ x }}, na.rm = TRUE), # Must use := to set the variable names
+      "sum_{{ x }}"  := sum({{ x }}, na.rm = TRUE)
+    )
+}
+
+continuous_table(starwars, height)
+```
+
+### The sym function
+
+The `sym()` takes a string as an input and turns it into a symbol. 
 
 ```{r}
 my_col <- "height"
@@ -243,11 +378,11 @@ starwars %>%
   )
 ```
 
-And it works as expeccted
+And it works as expected
 
-* `rlang::syms()`
+### The syms function
 
-    + Like sym, but can convert multiple strings into a list of symbols
+Like `sym()`, but can convert multiple strings into a list of symbols
     
 ```{r}
 my_cols <- rlang::syms(c("height", "mass"))
@@ -286,8 +421,55 @@ results <- purrr::map_df(my_cols, summarise_avg, data = starwars)
 results
 ```
 
+### The rlang prounouns
 
-## Example using Tidy Eval in For Loop {#for_loop}
+The `rlang` package includes two (as of this writing) pronouns: `.data` and `.env`. I'm still slightly confused about what these pronouns _are_ (see [SO post here](https://stackoverflow.com/questions/63399011/what-is-the-difference-between-and-data)), but I'm getting more comfortble with how they are used. 
+
+I found a nice example on [this blog post](https://tinyheero.github.io/2020/03/01/use-data-env-pronouns-tidyverse.html).
+
+Because of data masking, `filter` looks for `cyl` and `carb` in `mtcars` and it returns rows where the value of `cyl` matches the value of `carb`.
+
+```{r}
+mtcars %>% filter(cyl == carb)
+```
+
+In this example, because `num_cyl` doesn't exist in `mtcars`, `filter` will automatically look to the
+global environment and return rows where the value of `cyl` matches the value of `num_cyl` (a constant 6).
+
+```{r}
+num_cyl <- 6
+mtcars %>% filter(cyl == num_cyl)
+```
+
+Now, we create an object in the global environment that shares its name with a column in `mtcars` - `carb`. Because of data masking (and scoping rules), `filter` still looks for `cyl` and `carb` in `mtcars` first. Because `carb` exists in `mtcars`, `filter` returns rows where the value of `cyl` matches the value of `mtcars$carb` - not the `carb` object in the global environment.
+
+```{r}
+carb <- 6
+mtcars %>% filter(cyl == carb)
+```
+
+But, we can be more explicit (i.e., safer) about using `mtcars$carb` with the `.data` pronoun.
+
+```{r}
+carb <- 6
+mtcars %>% filter(.data$cyl == .data$carb)
+```
+
+OR
+
+```{r}
+carb <- 6
+mtcars %>% filter(.data[["cyl"]] == .data[["carb"]])
+```
+
+Similarly, we can use the `.env` pronoun to explicity instruct `filter` to compare `cyl` to the `carb` object in the global environment.
+
+```{r}
+carb <- 6
+mtcars %>% filter(.data[["cyl"]] == .env[["carb"]])
+```
+
+## Example: for Loop {#for_loop}
 
 In this example, I'm creating a table of summary statistics using the Starwars data. The table will compare some simple characteristics of the characters by species.
 
@@ -330,16 +512,19 @@ table
 Finally, I'll fill in the table using a for loop. In this case, I just want to compare the mean height, mass, and birth year of humans and non-humans.
 
 ```{r}
-vars <- c(quo(height), quo(mass), quo(birth_year)) # Create vector of quotures for variables of interest
+vars <- quos(height, mass, birth_year)                    # Create vector of quotures for variables of interest
 
 for(i in seq_along(vars)) {
-  table[i + 1, ] <- starwars %>%                             # Chunk of table to receive loop output
+  table[i + 1, ] <- starwars %>%                          # Row of table to receive loop output
     filter(!is.na(human)) %>% 
     group_by(human) %>% 
-    summarise(Mean = mean(!!vars[[i]], na.rm = TRUE)) %>%    # Use !! with vars[[i]]
+    summarise(Mean = mean(!!vars[[i]], na.rm = TRUE)) %>% # Use !! with vars[[i]]
     mutate(Mean = round(Mean, 1) %>% format(nsmall = 1)) %>% 
-    tidyr::spread(human, Mean) %>% 
-    mutate(Variable = quo_name(vars[[i]])) %>%               # Use quo_name to get variable name for first column
+    tidyr::pivot_wider(
+      names_from = human,
+      values_from = Mean
+    ) %>% 
+    mutate(Variable = rlang::as_name(vars[[i]])) %>%      # Use as_name to get variable name for first column
     select(Variable, Yes, No)
 }
 ```
@@ -348,29 +533,7 @@ for(i in seq_along(vars)) {
 table
 ```
 
-This works! How can I keep from having to type quo around every variable?
-
-```{r}
-vars <- quos(height, mass, birth_year)
-
-for(i in seq_along(vars)) {
-  table[i + 1, ] <- starwars %>%                             # Chunk of table to receive loop output
-    filter(!is.na(human)) %>% 
-    group_by(human) %>% 
-    summarise(Mean = mean(!!vars[[i]], na.rm = TRUE)) %>%    # Use !! with vars[[i]]
-    mutate(Mean = round(Mean, 1) %>% format(nsmall = 1)) %>% 
-    tidyr::spread(human, Mean) %>% 
-    mutate(Variable = quo_name(vars[[i]])) %>%               # Use quo_name to get variable name for first column
-    select(Variable, Yes, No)
-}
-```
-
-```{r}
-table
-```
-
-
-## Example using Tidy Eval in Functions {#functions}
+## Example: function {#functions}
 
 In this example, I'm creating a table of summary statistics using the Starwars data. The table will compare some simple characteristics of the characters by species.
 
@@ -413,38 +576,132 @@ table
 Finally, I'll fill in the table using a user-defined function. In this case, I just want to compare the mean height, mass, and birth year of humans and non-humans.
 
 ```{r}
-my_stats <- function(...) {
-  vars <- quos(...)                                           # Creates a list of quotures from variable names
-  temp <- get("table")                                        # Grabs a copy of the table shell from the environment
-  temp <- temp[0, ]                                           # Only keep the column headers
-  
-  for(i in seq_along(vars)) {                                 # Loop over all variables in ...
-    out <- quo(!!vars[[i]])                                   # Not necessary, but makes more readable.
-    name <- quo_name(out)                                     # Turns variable name into string for mutate below.
-    row <- starwars %>%                                       # Creates a single row of stats for the table.
-      filter(!is.na(human)) %>% 
-      group_by(human) %>% 
-      summarise(Mean = mean(!!out, na.rm = TRUE)) %>%         # Still need !!
-      mutate(Mean = round(Mean, 1) %>% format(nsmall = 1)) %>% 
-      tidyr::spread(human, Mean) %>% 
-      mutate(Variable = name) %>%
-      select(Variable, Yes, No)
-    temp <- rbind(temp, row)
-  }
-  temp
+my_stats <- function(df, vars) {
+  df %>% 
+    filter(!is.na(human)) %>% 
+    group_by(human) %>% 
+    # Calculate means
+    summarise(
+      across(
+        .cols  = {{ vars }},
+        .fns   = mean, na.rm = TRUE
+      )
+    ) %>% 
+    # Format the results
+    mutate(
+      across(
+        .cols = where(is.numeric),
+        .fns  = ~ round(.x, 1) %>% format(nsmall = 1)
+      )
+    ) %>% 
+    # Restructure results to match the summary table
+    tidyr::pivot_wider(
+      names_from = human,
+      values_from = {{ vars }},
+      names_sep = "-"
+    ) %>%
+    tidyr::pivot_longer(
+      cols = everything(),
+      names_to = c("Variable", ".value"),
+      names_sep = "-"
+    ) %>%
+    # Reorder and rename the columns to match the output table
+    select(Variable, Human = Yes, `Not Human` = No)
 }
+
+# For testing
+# my_stats(starwars, c(height, mass, birth_year))
+```
+
+```{r eval=FALSE}
+# Or if you prefer to use ...
+my_stats <- function(df, ...) {
+  
+  vars <- enquos(...)
+  
+  df %>% 
+    filter(!is.na(human)) %>% 
+    group_by(human) %>% 
+    # Calculate means
+    summarise(
+      across(
+        .cols  = c(!!!vars),
+        .fns   = mean, na.rm = TRUE
+      )
+    )
+}
+
+# For testing
+# my_stats(starwars, height, mass, birth_year)
 ```
 
 ```{r}
-table[2:4, ] <- my_stats(height, mass, birth_year)            # Notice that we no longer need to us quo
+table %>% 
+  bind_rows(
+    my_stats(starwars, c(height, mass, birth_year))
+  )
 ```
+
+## Nesting functions with data masking {#nesting}
+
+One place where the embrace operator can get you in trouble is with nested functions. I ran into this problem when writing the codebook package. In the example below, notice that the name of column we want to analyze (i.e., `height`) is passed to the `x` argument of the `cb_add_summary_stats()` function as a tring (i.e., "height"), and then to the `x` argument of the `cb_summary_stats_numeric()` function, and then to the `mean()` function inside of the `summarise()` function. Along the way, the association between `x` and `height` is lost. 
 
 ```{r}
-table
+codebook <- function(df) {
+  x <- "height"
+  cb_add_summary_stats(df, x)
+}
+
+cb_add_summary_stats <- function(df, x) {
+  cb_summary_stats_numeric(df, x)
+}
+
+cb_summary_stats_numeric <- function(df, x) {
+  summary <- df %>% 
+    summarise(mean = mean({{ x }}, na.rm = TRUE))
+  
+  summary
+}
+
+codebook(study)
 ```
 
+Let's take a look at what R sees in `cb_summary_stats_numeric()`.
 
-## Using tidyeval with purrr{#purrr} 
+```{r}
+cb_summary_stats_numeric <- function(df, x) {
+  rlang::qq_show(
+    summary <- df %>% 
+      summarise(mean = mean({{ x }}, na.rm = TRUE))
+  )
+}
+
+codebook(study)
+```
+
+But, what we want R to see is `height` instead of `x`. The simplest fix is to use the `.data` pronoun.
+
+```{r}
+codebook <- function(df) {
+  x <- "height"
+  cb_add_summary_stats(df, x)
+}
+
+cb_add_summary_stats <- function(df, x) {
+  cb_summary_stats_numeric(df, x)
+}
+
+cb_summary_stats_numeric <- function(df, x) {
+  summary <- df %>% 
+    summarise(mean = mean(.data[[x]], na.rm = TRUE))
+
+  summary
+}
+
+codebook(study)
+```
+
+## Using purrr {#purrr} 
 
 I have a situation that I'm a little confused about. I think if I could understand the contrived situation below, then I could figure out my issue.
 
@@ -531,24 +788,13 @@ starwars %>% example(hair_color)
 
 I’ve notice some weirdness when trying to unquote quotures inside functions that are inside dplyr functions. For example, if_else inside of mutate.
 
-```{r error=TRUE}
-example <- function(df, var) {
-  x <- enquo(var)
-  
-  df %>% 
-    mutate(hair_color = if_else(!!x == "yellow", "blond", !!x))
-}
-starwars %>% example(hair_color)
-```
-
-Fix:
-
 ```{r}
+# This didn't used to work, but it does now
 example <- function(df, var) {
   x <- enquo(var)
   
   df %>% 
-    mutate(hair_color = if_else(rlang::UQ(x) == "yellow", "blond", rlang::UQ(x)))
+    mutate(hair_color = if_else(!!x == "blond", "blonde", !!x))
 }
 starwars %>% example(hair_color)
 ```
@@ -562,33 +808,50 @@ example <- function(df, var) {
   x <- enquo(var)
   
   df %>% 
-    mutate(!!x = if_else(rlang::UQ(x) == "yellow", "blond", rlang::UQ(x)))
-}
-starwars %>% example(hair_color)
-```
-
-This doesn't help either:
-
-```{r error=TRUE}
-example <- function(df, var) {
-  x <- enquo(var)
-  
-  df %>% 
-    mutate(!!x := if_else(rlang::UQ(x) == "yellow", "blond", rlang::UQ(x)))
+    mutate(!!x = if_else(!!x == "blond", "blonde", !!x))
 }
 starwars %>% example(hair_color)
 ```
 
 Fix:
 
-Must have !! in front of quo_name(). Must use := instead of =.
+```{r error=TRUE}
+# This didn't used to work, but it does now
+example <- function(df, var) {
+  x <- enquo(var)
+  
+  df %>% 
+    mutate(!!x := if_else(!!x == "blond", "blonde", !!x))
+}
+starwars %>% example(hair_color)
+```
+
+Fix 2:
+
+Must have !! in front of as_name(). Must use := instead of =.
 
 ```{r}
 example <- function(df, var) {
   x <- enquo(var)
   
   df %>% 
-    mutate(!!quo_name(x) := if_else(rlang::UQ(x) == "yellow", "blond", rlang::UQ(x)))
+    mutate(!!rlang::as_name(x) := if_else(!!x == "blond", "blonde", !!x))
+}
+starwars %>% example(hair_color)
+```
+
+Fix 3:
+
+Alternatively, use the embrace operator and `glue` to make the var names (supported as of [rlang 0.4.3](https://www.tidyverse.org/blog/2020/02/glue-strings-and-tidy-eval/)). 
+
+```{r}
+example <- function(df, var) {
+  df %>% 
+    mutate(
+      "{{ var }}" := if_else({{ var }} == "blond", "blonde", {{ var }}),
+      # Even create a new variable
+      "new_{{ var }}" := if_else({{ var }} == "blond", "blonde", {{ var }})
+    )
 }
 starwars %>% example(hair_color)
 ```
@@ -605,7 +868,21 @@ example <- function(df, var) {
     summarise(
       Mean = mean(!!x, na.rm = TRUE)
     ) %>% 
-    mutate(Characteristic = !!quo_name(x)) %>% # Make sure to use !!quo_name()
+    mutate(Characteristic = !!rlang::as_name(x)) %>% # Make sure to use !!as_name()
+    select(Characteristic, Mean)
+}
+
+starwars %>% example(height)
+```
+Alternatively:
+
+```{r}
+example <- function(df, var) {
+  df %>% 
+    summarise(
+      Mean = mean({{ var }}, na.rm = TRUE)
+    ) %>% 
+    mutate(Characteristic = !!rlang::as_name(enquo(var))) %>%
     select(Characteristic, Mean)
 }
 
@@ -643,7 +920,7 @@ starwars$height_squared <- starwars$height**2
 example <- function(df, var) {
   
   x <- enquo(var)  # First, turn var without the suffix into a quoture - must be first
-  squared <- paste(quo_name(x), "squared", sep = "_") # Must use quo_name()
+  squared <- paste(rlang::as_name(x), "squared", sep = "_") # Must use quo_name()
   
   df %>% 
     summarise(
@@ -660,46 +937,8 @@ Fix (Method prefered by Hadley and Lionel):
 example <- function(df, var) {
   
   x <- enquo(var)  # First, turn var without the suffix into a quoture - must be first
-  squared <- paste(quo_name(x), "squared", sep = "_") # Must use quo_name()
+  squared <- paste(rlang::as_name(x), "squared", sep = "_") # Must use as_name()
   squared <- rlang::sym(squared) # Wrap with sym()
-
-  df %>%
-    summarise(
-      Mean = mean(!!squared, na.rm = TRUE)
-    )
-}
-
-starwars %>% example(height)
-```
-
-Or:
-
-```{r}
-example <- function(df, var) {
-  
-  x <- enquo(var)  # First, turn var without the suffix into a quoture - must be first
-  squared <- paste(quo_name(x), "squared", sep = "_") # Must use quo_name()
-  squared <- as.name(squared) # Wrap with as.name()
-
-  df %>%
-    summarise(
-      Mean = mean(!!squared, na.rm = TRUE)
-    )
-}
-
-starwars %>% example(height)
-```
-
-Or:
-
-```{r error=TRUE}
-# Update 2022-04-23: rlang::parse_quosure is now causing an error, "'parse_quosure' is not an exported object from 'namespace:rlang'". I don't have time to fix it at the moment. I added "error=TRUE" to the code chunk instead.
-
-example <- function(df, var) {
-  
-  x <- enquo(var)  # First, turn var without the suffix into a quoture - must be first
-  squared <- paste(quo_name(x), "squared", sep = "_") # Must use quo_name()
-  squared <- rlang::parse_quosure(squared) # Wrap with parse_quosure
 
   df %>%
     summarise(
@@ -764,6 +1003,7 @@ Need to clean this up, but I don't have time now.
 
 **Here is a worked example using some toy data**
 
+```{r eval=FALSE}
 aps_cleaned <- tibble(
   case_num = 1:3,
   valid_physical_neglect = c(0, 1, 0),
@@ -777,11 +1017,13 @@ discrepancies_valid_sexual_abuse <- tibble(
   case_num = 3,
   valid_sexual_abuse = 1
 )
+```
 
 **Create the function**
 
 Here is a refernce to help with the tidy evaluation stuff: https://dplyr.tidyverse.org/articles/programming.html
 
+```{r eval=FALSE}
 join_aps <- function(.data = aps_cleaned, join_df, valid_col) {
   # Create column names to use in the code below
   col_x <- sym(paste0(quo_name(enquo(valid_col)), ".x"))
@@ -795,18 +1037,19 @@ join_aps <- function(.data = aps_cleaned, join_df, valid_col) {
       )
     )
 }
+```
+
 
 **Test function**
 
+```{r eval=FALSE}
 aps_cleaned %>% 
   join_aps(discrepancies_valid_physical_neglect, valid_physical_neglect)
+```
 
 
-## Other questions / notes / reminders {#other}
 
-* Go back and add more basic information about rlang::sym() and some of the other rlang functions
 
-* There is also some function to see what is going on "under the hood". I don't recall what it is right now, but I should probably discuss it as well.
 
 
 <!--

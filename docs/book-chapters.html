@@ -24,7 +24,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-04-23" />
+<meta name="date" content="2022-05-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -225,20 +225,35 @@ div.csl-indent {
 <li class="chapter" data-level="3.3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#load-packages"><i class="fa fa-check"></i><b>3.3</b> 📦Load packages</a></li>
 <li class="chapter" data-level="3.4" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#simulate-data"><i class="fa fa-check"></i><b>3.4</b> 🔢Simulate data</a></li>
 <li class="chapter" data-level="3.5" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#load-starwars-data"><i class="fa fa-check"></i><b>3.5</b> Load Starwars data</a></li>
-<li class="chapter" data-level="3.6" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#key_functions"><i class="fa fa-check"></i><b>3.6</b> Key Functions</a></li>
-<li class="chapter" data-level="3.7" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#for_loop"><i class="fa fa-check"></i><b>3.7</b> Example using Tidy Eval in For Loop</a></li>
-<li class="chapter" data-level="3.8" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#functions"><i class="fa fa-check"></i><b>3.8</b> Example using Tidy Eval in Functions</a></li>
-<li class="chapter" data-level="3.9" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#purrr"><i class="fa fa-check"></i><b>3.9</b> Using tidyeval with purrr</a></li>
-<li class="chapter" data-level="3.10" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#quirks"><i class="fa fa-check"></i><b>3.10</b> Other Quirks and Lessons Learned</a>
+<li class="chapter" data-level="3.6" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#why-use-tidy-evaluation"><i class="fa fa-check"></i><b>3.6</b> Why use tidy evaluation?</a></li>
+<li class="chapter" data-level="3.7" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#what-is-tidy-evaluation"><i class="fa fa-check"></i><b>3.7</b> What is tidy evaluation?</a></li>
+<li class="chapter" data-level="3.8" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#vocabulary"><i class="fa fa-check"></i><b>3.8</b> Vocabulary</a></li>
+<li class="chapter" data-level="3.9" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#key_functions"><i class="fa fa-check"></i><b>3.9</b> Key Functions</a>
 <ul>
-<li class="chapter" data-level="3.10.1" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#when-doesnt-work"><i class="fa fa-check"></i><b>3.10.1</b> When !! doesn’t work</a></li>
-<li class="chapter" data-level="3.10.2" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#unquoting-inside-non-dplyr-functions"><i class="fa fa-check"></i><b>3.10.2</b> Unquoting inside non-dplyr functions</a></li>
-<li class="chapter" data-level="3.10.3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-create-variable-name-in-mutate"><i class="fa fa-check"></i><b>3.10.3</b> Using a quoture to create variable name in mutate</a></li>
-<li class="chapter" data-level="3.10.4" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-turn-a-variable-name-into-a-constant-value"><i class="fa fa-check"></i><b>3.10.4</b> Using a quoture to turn a variable name into a constant value</a></li>
-<li class="chapter" data-level="3.10.5" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#convert-a-string-to-a-quoture"><i class="fa fa-check"></i><b>3.10.5</b> Convert a string to a quoture</a></li>
+<li class="chapter" data-level="3.9.1" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#the-qq_show-function"><i class="fa fa-check"></i><b>3.9.1</b> The qq_show function</a></li>
+<li class="chapter" data-level="3.9.2" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#the-quo-function"><i class="fa fa-check"></i><b>3.9.2</b> The quo function</a></li>
+<li class="chapter" data-level="3.9.3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#the-enquo-function"><i class="fa fa-check"></i><b>3.9.3</b> The enquo function</a></li>
+<li class="chapter" data-level="3.9.4" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#the-embrace-operator"><i class="fa fa-check"></i><b>3.9.4</b> The embrace operator</a></li>
+<li class="chapter" data-level="3.9.5" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#the-quos-function"><i class="fa fa-check"></i><b>3.9.5</b> The quos function</a></li>
+<li class="chapter" data-level="3.9.6" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#enquos"><i class="fa fa-check"></i><b>3.9.6</b> The enquos function</a></li>
+<li class="chapter" data-level="3.9.7" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#the-as_label-and-as_name-functions"><i class="fa fa-check"></i><b>3.9.7</b> The as_label and as_name functions</a></li>
+<li class="chapter" data-level="3.9.8" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#the-sym-function"><i class="fa fa-check"></i><b>3.9.8</b> The sym function</a></li>
+<li class="chapter" data-level="3.9.9" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#the-syms-function"><i class="fa fa-check"></i><b>3.9.9</b> The syms function</a></li>
+<li class="chapter" data-level="3.9.10" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#the-rlang-prounouns"><i class="fa fa-check"></i><b>3.9.10</b> The rlang prounouns</a></li>
 </ul></li>
-<li class="chapter" data-level="3.11" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#example-i-created-for-steph-yap"><i class="fa fa-check"></i><b>3.11</b> Example I created for Steph Yap</a></li>
-<li class="chapter" data-level="3.12" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#other"><i class="fa fa-check"></i><b>3.12</b> Other questions / notes / reminders</a></li>
+<li class="chapter" data-level="3.10" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#for_loop"><i class="fa fa-check"></i><b>3.10</b> Example: for Loop</a></li>
+<li class="chapter" data-level="3.11" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#functions"><i class="fa fa-check"></i><b>3.11</b> Example: function</a></li>
+<li class="chapter" data-level="3.12" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#nesting"><i class="fa fa-check"></i><b>3.12</b> Nesting functions with data masking</a></li>
+<li class="chapter" data-level="3.13" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#purrr"><i class="fa fa-check"></i><b>3.13</b> Using purrr</a></li>
+<li class="chapter" data-level="3.14" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#quirks"><i class="fa fa-check"></i><b>3.14</b> Other Quirks and Lessons Learned</a>
+<ul>
+<li class="chapter" data-level="3.14.1" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#when-doesnt-work"><i class="fa fa-check"></i><b>3.14.1</b> When !! doesn’t work</a></li>
+<li class="chapter" data-level="3.14.2" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#unquoting-inside-non-dplyr-functions"><i class="fa fa-check"></i><b>3.14.2</b> Unquoting inside non-dplyr functions</a></li>
+<li class="chapter" data-level="3.14.3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-create-variable-name-in-mutate"><i class="fa fa-check"></i><b>3.14.3</b> Using a quoture to create variable name in mutate</a></li>
+<li class="chapter" data-level="3.14.4" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-turn-a-variable-name-into-a-constant-value"><i class="fa fa-check"></i><b>3.14.4</b> Using a quoture to turn a variable name into a constant value</a></li>
+<li class="chapter" data-level="3.14.5" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#convert-a-string-to-a-quoture"><i class="fa fa-check"></i><b>3.14.5</b> Convert a string to a quoture</a></li>
+</ul></li>
+<li class="chapter" data-level="3.15" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#example-i-created-for-steph-yap"><i class="fa fa-check"></i><b>3.15</b> Example I created for Steph Yap</a></li>
 </ul></li>
 <li class="part"><span><b>II Working with External Files</b></span></li>
 <li class="part"><span><b>III Data Management</b></span></li>
@@ -589,11 +604,11 @@ div.csl-indent {
 </div>
 <div id="special-sections" class="section level3" number="11.3.3">
 <h3><span class="header-section-number">11.3.3</span> Special sections</h3>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="book-chapters.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>p class<span class="ot">=</span><span class="st">&quot;note&quot;</span><span class="sc">&gt;</span> 🗒<span class="sc">**</span>Side Note<span class="sc">:</span><span class="er">**</span> This is an example note. <span class="sc">&lt;</span><span class="er">/</span>p<span class="sc">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="book-chapters.html#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>p class<span class="ot">=</span><span class="st">&quot;note&quot;</span><span class="sc">&gt;</span> 🗒<span class="sc">**</span>Side Note<span class="sc">:</span><span class="er">**</span> This is an example note. <span class="sc">&lt;</span><span class="er">/</span>p<span class="sc">&gt;</span></span></code></pre></div>
 <p class="note">
 🗒<strong>Side Note:</strong> This is an example note.
 </p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="book-chapters.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>p class<span class="ot">=</span><span class="st">&quot;warning&quot;</span><span class="sc">&gt;</span> ⚠️<span class="sc">**</span>Warning<span class="sc">:</span><span class="er">**</span> This is an example warning <span class="sc">&lt;</span><span class="er">/</span>p<span class="sc">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="book-chapters.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>p class<span class="ot">=</span><span class="st">&quot;warning&quot;</span><span class="sc">&gt;</span> ⚠️<span class="sc">**</span>Warning<span class="sc">:</span><span class="er">**</span> This is an example warning <span class="sc">&lt;</span><span class="er">/</span>p<span class="sc">&gt;</span></span></code></pre></div>
 <p class="warning">
 ⚠️<strong>Warning:</strong> This is an example warning
 </p>
@@ -608,20 +623,20 @@ div.csl-indent {
 <li><p>Because of the way the files are structured, You won’t be able to see pictures directly in the Rmd files without including “../../” on the front the file paths. However, having “../../” on the front of the file paths prevents the book from building appropriately.</p></li>
 </ul>
 <p>You can also directly use img tags. Here’s the one I used for my photo in R4Epi</p>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="book-chapters.html#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;!--</span> Cannell profile photo <span class="sc">-</span><span class="ot">-&gt;</span></span>
-<span id="cb335-2"><a href="book-chapters.html#cb335-2" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>img align<span class="ot">=</span><span class="st">&quot;right&quot;</span> src<span class="ot">=</span><span class="st">&quot;img/index/cannell-headshot copy.png&quot;</span> alt<span class="ot">=</span><span class="st">&quot;R4Epi hex logo&quot;</span> width<span class="ot">=</span><span class="st">&quot;250&quot;</span> style<span class="ot">=</span><span class="st">&quot;margin: 0 1em 0 1em; border-radius: 20px 0px 20px 0px;&quot;</span><span class="sc">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="book-chapters.html#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;!--</span> Cannell profile photo <span class="sc">-</span><span class="ot">-&gt;</span></span>
+<span id="cb365-2"><a href="book-chapters.html#cb365-2" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>img align<span class="ot">=</span><span class="st">&quot;right&quot;</span> src<span class="ot">=</span><span class="st">&quot;img/index/cannell-headshot copy.png&quot;</span> alt<span class="ot">=</span><span class="st">&quot;R4Epi hex logo&quot;</span> width<span class="ot">=</span><span class="st">&quot;250&quot;</span> style<span class="ot">=</span><span class="st">&quot;margin: 0 1em 0 1em; border-radius: 20px 0px 20px 0px;&quot;</span><span class="sc">&gt;</span></span></code></pre></div>
 <p>Yihui talks about some of the advantages of using <code>knitr::include_graphics()</code> here: <a href="https://bookdown.org/yihui/bookdown/figures.html" class="uri">https://bookdown.org/yihui/bookdown/figures.html</a>. Most of them have to do with creating PDF documents. For HTML only, the img tag seems to be a little more customizable.</p>
 </div>
 <div id="font-awesome" class="section level3" number="11.3.5">
 <h3><span class="header-section-number">11.3.5</span> Font Awesome</h3>
 <p>There are few different ways to incorporate font awesome icons into your output. The font awesome package (<a href="https://github.com/rstudio/fontawesome" class="uri">https://github.com/rstudio/fontawesome</a>) is my favorite so far. Here are the social media links I added to <a href="https://www.r4epi.com/about-the-authors.html">R4Epi</a>:</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="book-chapters.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>Contact<span class="sc">**</span>   </span>
-<span id="cb336-2"><a href="book-chapters.html#cb336-2" aria-hidden="true" tabindex="-1"></a>Connect with Dr. Cannell and follow his work.   </span>
-<span id="cb336-3"><a href="book-chapters.html#cb336-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.bradcannell.com&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;globe&quot;, fill = &quot;#003087&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
-<span id="cb336-4"><a href="book-chapters.html#cb336-4" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.facebook.com/Brad-Cannell-PhD-MPH-109345984850672&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;facebook-square&quot;, fill = &quot;#4267B2&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
-<span id="cb336-5"><a href="book-chapters.html#cb336-5" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.linkedin.com/in/bradcannell/&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;linkedin&quot;, fill = &quot;#2867B2&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
-<span id="cb336-6"><a href="book-chapters.html#cb336-6" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://twitter.com/brad_cannell&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;twitter-square&quot;, fill = &quot;#198CD8&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
-<span id="cb336-7"><a href="book-chapters.html#cb336-7" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.instagram.com/brad_cannell/&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;instagram-square&quot;, fill = &quot;#833AB4&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="book-chapters.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>Contact<span class="sc">**</span>   </span>
+<span id="cb366-2"><a href="book-chapters.html#cb366-2" aria-hidden="true" tabindex="-1"></a>Connect with Dr. Cannell and follow his work.   </span>
+<span id="cb366-3"><a href="book-chapters.html#cb366-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.bradcannell.com&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;globe&quot;, fill = &quot;#003087&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
+<span id="cb366-4"><a href="book-chapters.html#cb366-4" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.facebook.com/Brad-Cannell-PhD-MPH-109345984850672&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;facebook-square&quot;, fill = &quot;#4267B2&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
+<span id="cb366-5"><a href="book-chapters.html#cb366-5" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.linkedin.com/in/bradcannell/&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;linkedin&quot;, fill = &quot;#2867B2&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
+<span id="cb366-6"><a href="book-chapters.html#cb366-6" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://twitter.com/brad_cannell&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;twitter-square&quot;, fill = &quot;#198CD8&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
+<span id="cb366-7"><a href="book-chapters.html#cb366-7" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.instagram.com/brad_cannell/&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;instagram-square&quot;, fill = &quot;#833AB4&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span></code></pre></div>
 </div>
 <div id="links" class="section level3" number="11.3.6">
 <h3><span class="header-section-number">11.3.6</span> Links</h3>
@@ -632,13 +647,13 @@ div.csl-indent {
 <p>Add the following below code blocks…</p>
 <p>👆<strong>Here’s what we did above:</strong></p>
 <p>Use unordered lists for these sections. It allows for nested lists and code. Add line breaks in between the bullets.</p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="book-chapters.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>ul<span class="sc">&gt;</span></span>
-<span id="cb337-2"><a href="book-chapters.html#cb337-2" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>li<span class="sc">&gt;</span>You can type <span class="st">`</span><span class="at">?mutate</span><span class="st">`</span> into your R console to view the help documentation <span class="cf">for</span> this <span class="cf">function</span> and follow along with the explanation below.<span class="sc">/</span>li<span class="sc">&gt;</span></span>
-<span id="cb337-3"><a href="book-chapters.html#cb337-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb337-4"><a href="book-chapters.html#cb337-4" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>li<span class="sc">&gt;</span><span class="er">&lt;/</span>li<span class="sc">&gt;</span></span>
-<span id="cb337-5"><a href="book-chapters.html#cb337-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb337-6"><a href="book-chapters.html#cb337-6" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>li<span class="sc">&gt;</span><span class="er">&lt;/</span>li<span class="sc">&gt;</span></span>
-<span id="cb337-7"><a href="book-chapters.html#cb337-7" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;/</span>ul<span class="sc">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="book-chapters.html#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>ul<span class="sc">&gt;</span></span>
+<span id="cb367-2"><a href="book-chapters.html#cb367-2" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>li<span class="sc">&gt;</span>You can type <span class="st">`</span><span class="at">?mutate</span><span class="st">`</span> into your R console to view the help documentation <span class="cf">for</span> this <span class="cf">function</span> and follow along with the explanation below.<span class="sc">/</span>li<span class="sc">&gt;</span></span>
+<span id="cb367-3"><a href="book-chapters.html#cb367-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb367-4"><a href="book-chapters.html#cb367-4" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>li<span class="sc">&gt;</span><span class="er">&lt;/</span>li<span class="sc">&gt;</span></span>
+<span id="cb367-5"><a href="book-chapters.html#cb367-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb367-6"><a href="book-chapters.html#cb367-6" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>li<span class="sc">&gt;</span><span class="er">&lt;/</span>li<span class="sc">&gt;</span></span>
+<span id="cb367-7"><a href="book-chapters.html#cb367-7" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;/</span>ul<span class="sc">&gt;</span></span></code></pre></div>
 </div>
 </div>
 <div id="cross-references" class="section level2" number="11.4">

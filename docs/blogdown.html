@@ -24,7 +24,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-04-23" />
+<meta name="date" content="2022-05-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -225,20 +225,35 @@ div.csl-indent {
 <li class="chapter" data-level="3.3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#load-packages"><i class="fa fa-check"></i><b>3.3</b> 📦Load packages</a></li>
 <li class="chapter" data-level="3.4" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#simulate-data"><i class="fa fa-check"></i><b>3.4</b> 🔢Simulate data</a></li>
 <li class="chapter" data-level="3.5" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#load-starwars-data"><i class="fa fa-check"></i><b>3.5</b> Load Starwars data</a></li>
-<li class="chapter" data-level="3.6" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#key_functions"><i class="fa fa-check"></i><b>3.6</b> Key Functions</a></li>
-<li class="chapter" data-level="3.7" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#for_loop"><i class="fa fa-check"></i><b>3.7</b> Example using Tidy Eval in For Loop</a></li>
-<li class="chapter" data-level="3.8" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#functions"><i class="fa fa-check"></i><b>3.8</b> Example using Tidy Eval in Functions</a></li>
-<li class="chapter" data-level="3.9" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#purrr"><i class="fa fa-check"></i><b>3.9</b> Using tidyeval with purrr</a></li>
-<li class="chapter" data-level="3.10" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#quirks"><i class="fa fa-check"></i><b>3.10</b> Other Quirks and Lessons Learned</a>
+<li class="chapter" data-level="3.6" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#why-use-tidy-evaluation"><i class="fa fa-check"></i><b>3.6</b> Why use tidy evaluation?</a></li>
+<li class="chapter" data-level="3.7" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#what-is-tidy-evaluation"><i class="fa fa-check"></i><b>3.7</b> What is tidy evaluation?</a></li>
+<li class="chapter" data-level="3.8" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#vocabulary"><i class="fa fa-check"></i><b>3.8</b> Vocabulary</a></li>
+<li class="chapter" data-level="3.9" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#key_functions"><i class="fa fa-check"></i><b>3.9</b> Key Functions</a>
 <ul>
-<li class="chapter" data-level="3.10.1" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#when-doesnt-work"><i class="fa fa-check"></i><b>3.10.1</b> When !! doesn’t work</a></li>
-<li class="chapter" data-level="3.10.2" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#unquoting-inside-non-dplyr-functions"><i class="fa fa-check"></i><b>3.10.2</b> Unquoting inside non-dplyr functions</a></li>
-<li class="chapter" data-level="3.10.3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-create-variable-name-in-mutate"><i class="fa fa-check"></i><b>3.10.3</b> Using a quoture to create variable name in mutate</a></li>
-<li class="chapter" data-level="3.10.4" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-turn-a-variable-name-into-a-constant-value"><i class="fa fa-check"></i><b>3.10.4</b> Using a quoture to turn a variable name into a constant value</a></li>
-<li class="chapter" data-level="3.10.5" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#convert-a-string-to-a-quoture"><i class="fa fa-check"></i><b>3.10.5</b> Convert a string to a quoture</a></li>
+<li class="chapter" data-level="3.9.1" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#the-qq_show-function"><i class="fa fa-check"></i><b>3.9.1</b> The qq_show function</a></li>
+<li class="chapter" data-level="3.9.2" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#the-quo-function"><i class="fa fa-check"></i><b>3.9.2</b> The quo function</a></li>
+<li class="chapter" data-level="3.9.3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#the-enquo-function"><i class="fa fa-check"></i><b>3.9.3</b> The enquo function</a></li>
+<li class="chapter" data-level="3.9.4" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#the-embrace-operator"><i class="fa fa-check"></i><b>3.9.4</b> The embrace operator</a></li>
+<li class="chapter" data-level="3.9.5" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#the-quos-function"><i class="fa fa-check"></i><b>3.9.5</b> The quos function</a></li>
+<li class="chapter" data-level="3.9.6" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#enquos"><i class="fa fa-check"></i><b>3.9.6</b> The enquos function</a></li>
+<li class="chapter" data-level="3.9.7" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#the-as_label-and-as_name-functions"><i class="fa fa-check"></i><b>3.9.7</b> The as_label and as_name functions</a></li>
+<li class="chapter" data-level="3.9.8" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#the-sym-function"><i class="fa fa-check"></i><b>3.9.8</b> The sym function</a></li>
+<li class="chapter" data-level="3.9.9" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#the-syms-function"><i class="fa fa-check"></i><b>3.9.9</b> The syms function</a></li>
+<li class="chapter" data-level="3.9.10" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#the-rlang-prounouns"><i class="fa fa-check"></i><b>3.9.10</b> The rlang prounouns</a></li>
 </ul></li>
-<li class="chapter" data-level="3.11" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#example-i-created-for-steph-yap"><i class="fa fa-check"></i><b>3.11</b> Example I created for Steph Yap</a></li>
-<li class="chapter" data-level="3.12" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#other"><i class="fa fa-check"></i><b>3.12</b> Other questions / notes / reminders</a></li>
+<li class="chapter" data-level="3.10" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#for_loop"><i class="fa fa-check"></i><b>3.10</b> Example: for Loop</a></li>
+<li class="chapter" data-level="3.11" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#functions"><i class="fa fa-check"></i><b>3.11</b> Example: function</a></li>
+<li class="chapter" data-level="3.12" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#nesting"><i class="fa fa-check"></i><b>3.12</b> Nesting functions with data masking</a></li>
+<li class="chapter" data-level="3.13" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#purrr"><i class="fa fa-check"></i><b>3.13</b> Using purrr</a></li>
+<li class="chapter" data-level="3.14" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#quirks"><i class="fa fa-check"></i><b>3.14</b> Other Quirks and Lessons Learned</a>
+<ul>
+<li class="chapter" data-level="3.14.1" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#when-doesnt-work"><i class="fa fa-check"></i><b>3.14.1</b> When !! doesn’t work</a></li>
+<li class="chapter" data-level="3.14.2" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#unquoting-inside-non-dplyr-functions"><i class="fa fa-check"></i><b>3.14.2</b> Unquoting inside non-dplyr functions</a></li>
+<li class="chapter" data-level="3.14.3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-create-variable-name-in-mutate"><i class="fa fa-check"></i><b>3.14.3</b> Using a quoture to create variable name in mutate</a></li>
+<li class="chapter" data-level="3.14.4" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-turn-a-variable-name-into-a-constant-value"><i class="fa fa-check"></i><b>3.14.4</b> Using a quoture to turn a variable name into a constant value</a></li>
+<li class="chapter" data-level="3.14.5" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#convert-a-string-to-a-quoture"><i class="fa fa-check"></i><b>3.14.5</b> Convert a string to a quoture</a></li>
+</ul></li>
+<li class="chapter" data-level="3.15" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#example-i-created-for-steph-yap"><i class="fa fa-check"></i><b>3.15</b> Example I created for Steph Yap</a></li>
 </ul></li>
 <li class="part"><span><b>II Working with External Files</b></span></li>
 <li class="part"><span><b>III Data Management</b></span></li>
@@ -577,19 +592,19 @@ Hidden comments placeholder
 </div>
 <div id="load-packages-6" class="section level2" number="10.3">
 <h2><span class="header-section-number">10.3</span> 📦Load packages</h2>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="blogdown.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb325-2"><a href="blogdown.html#cb325-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(blogdown)</span></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="blogdown.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb355-2"><a href="blogdown.html#cb355-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(blogdown)</span></code></pre></div>
 <p>When creating my site, I closely followed the steps outlined in <a href="https://www.apreshill.com/blog/2020-12-new-year-new-blogdown/">Up &amp; running with blogdown in 2021</a>.</p>
 <p>Below there are some additional notes, and solutions I used for issues I came up against along the way.</p>
 </div>
 <div id="blogdown-commands-to-remember" class="section level2" number="10.4">
 <h2><span class="header-section-number">10.4</span> Blogdown commands to remember</h2>
 <p>When you start a new R session, it can be useful to view a preview of the site in the Viewer window. You do that with</p>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="blogdown.html#cb326-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">serve_site</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="blogdown.html#cb356-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">serve_site</span>()</span></code></pre></div>
 <p>To check content</p>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="blogdown.html#cb327-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">check_content</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="blogdown.html#cb357-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">check_content</span>()</span></code></pre></div>
 <p>To check the status of Netlify</p>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="blogdown.html#cb328-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">check_netlify</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="blogdown.html#cb358-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">check_netlify</span>()</span></code></pre></div>
 <p>In the past I got the following error:</p>
 <blockquote>
 <p>Checking netlify.toml…<br />
@@ -598,9 +613,9 @@ Cannot find the configuration file config.toml | config.yaml | config/_default/c
 </blockquote>
 <p>Ultimately, I just had to quit R and reopen – not just restart R session.</p>
 <p>To check the Hugo versions</p>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="blogdown.html#cb329-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">check_hugo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="blogdown.html#cb359-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">check_hugo</span>()</span></code></pre></div>
 <p>Let’s run one final check, which wraps all 5 checking functions we’ve used so far into a single final checklist:</p>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="blogdown.html#cb330-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">check_site</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="blogdown.html#cb360-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">check_site</span>()</span></code></pre></div>
 </div>
 <div id="creating-new-content" class="section level2" number="10.5">
 <h2><span class="header-section-number">10.5</span> Creating new content</h2>
@@ -660,21 +675,21 @@ Cannot find the configuration file config.toml | config.yaml | config/_default/c
 <p>You tell markdown document that creates the widget (i.e., <code>students/opportunities_portfolio.md</code>) to use the documents in the <code>content/opportunites</code> folder by setting the <code>content: page_type:</code> parameter to the folder name. In this case, <code>content: page_type: opportunites</code>.</p>
 <p>If you want an image on the content page, it needs to be stored in the same folder as the <code>index.md</code> file that contains the content. Additionally, the image file must be named <code>featured</code>.</p>
 <p>Here was the YAML header for the GRA content page I made</p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="blogdown.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb331-2"><a href="blogdown.html#cb331-2" aria-hidden="true" tabindex="-1"></a><span class="co"># GRA page accessed from the students page via a widget.</span></span>
-<span id="cb331-3"><a href="blogdown.html#cb331-3" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> Graduate research assistantships</span>
-<span id="cb331-4"><a href="blogdown.html#cb331-4" aria-hidden="true" tabindex="-1"></a>summary<span class="sc">:</span> Graduate research <span class="fu">assistantships</span> (GRAs) are paid positions. As a GRA, you are sort of a jack of all trades. You may be asked to help with completing human subjects protection documentation <span class="cf">for</span> the Institutional Review <span class="fu">Board</span> (IRB), data collection, data management and analysis, literature reviews <span class="cf">for</span> papers and grants, paper and grant writing, submitting reports to funding agencies, and administrative <span class="fu">tasks</span> (e.g., purchasing and arranging travel).</span>
-<span id="cb331-5"><a href="blogdown.html#cb331-5" aria-hidden="true" tabindex="-1"></a>date<span class="sc">:</span> <span class="st">&quot;2022-03-04&quot;</span></span>
-<span id="cb331-6"><a href="blogdown.html#cb331-6" aria-hidden="true" tabindex="-1"></a>authors<span class="sc">:</span></span>
-<span id="cb331-7"><a href="blogdown.html#cb331-7" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> admin</span>
-<span id="cb331-8"><a href="blogdown.html#cb331-8" aria-hidden="true" tabindex="-1"></a>featured<span class="sc">:</span> true</span>
-<span id="cb331-9"><a href="blogdown.html#cb331-9" aria-hidden="true" tabindex="-1"></a>image<span class="sc">:</span></span>
-<span id="cb331-10"><a href="blogdown.html#cb331-10" aria-hidden="true" tabindex="-1"></a>  caption<span class="sc">:</span> <span class="st">&#39;Photo by &lt;a href=&quot;https://unsplash.com/@esteejanssens?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;&gt;Estée Janssens&lt;/a&gt; on &lt;a href=&quot;https://unsplash.com/s/photos/schedule?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;&gt;Unsplash&lt;/a&gt;&#39;</span></span>
-<span id="cb331-11"><a href="blogdown.html#cb331-11" aria-hidden="true" tabindex="-1"></a>  focal_point<span class="sc">:</span> <span class="st">&quot;&quot;</span></span>
-<span id="cb331-12"><a href="blogdown.html#cb331-12" aria-hidden="true" tabindex="-1"></a>  preview_only<span class="sc">:</span> false</span>
-<span id="cb331-13"><a href="blogdown.html#cb331-13" aria-hidden="true" tabindex="-1"></a>tags<span class="sc">:</span></span>
-<span id="cb331-14"><a href="blogdown.html#cb331-14" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> GRAs</span>
-<span id="cb331-15"><a href="blogdown.html#cb331-15" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="blogdown.html#cb361-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb361-2"><a href="blogdown.html#cb361-2" aria-hidden="true" tabindex="-1"></a><span class="co"># GRA page accessed from the students page via a widget.</span></span>
+<span id="cb361-3"><a href="blogdown.html#cb361-3" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> Graduate research assistantships</span>
+<span id="cb361-4"><a href="blogdown.html#cb361-4" aria-hidden="true" tabindex="-1"></a>summary<span class="sc">:</span> Graduate research <span class="fu">assistantships</span> (GRAs) are paid positions. As a GRA, you are sort of a jack of all trades. You may be asked to help with completing human subjects protection documentation <span class="cf">for</span> the Institutional Review <span class="fu">Board</span> (IRB), data collection, data management and analysis, literature reviews <span class="cf">for</span> papers and grants, paper and grant writing, submitting reports to funding agencies, and administrative <span class="fu">tasks</span> (e.g., purchasing and arranging travel).</span>
+<span id="cb361-5"><a href="blogdown.html#cb361-5" aria-hidden="true" tabindex="-1"></a>date<span class="sc">:</span> <span class="st">&quot;2022-03-04&quot;</span></span>
+<span id="cb361-6"><a href="blogdown.html#cb361-6" aria-hidden="true" tabindex="-1"></a>authors<span class="sc">:</span></span>
+<span id="cb361-7"><a href="blogdown.html#cb361-7" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> admin</span>
+<span id="cb361-8"><a href="blogdown.html#cb361-8" aria-hidden="true" tabindex="-1"></a>featured<span class="sc">:</span> true</span>
+<span id="cb361-9"><a href="blogdown.html#cb361-9" aria-hidden="true" tabindex="-1"></a>image<span class="sc">:</span></span>
+<span id="cb361-10"><a href="blogdown.html#cb361-10" aria-hidden="true" tabindex="-1"></a>  caption<span class="sc">:</span> <span class="st">&#39;Photo by &lt;a href=&quot;https://unsplash.com/@esteejanssens?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;&gt;Estée Janssens&lt;/a&gt; on &lt;a href=&quot;https://unsplash.com/s/photos/schedule?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;&gt;Unsplash&lt;/a&gt;&#39;</span></span>
+<span id="cb361-11"><a href="blogdown.html#cb361-11" aria-hidden="true" tabindex="-1"></a>  focal_point<span class="sc">:</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb361-12"><a href="blogdown.html#cb361-12" aria-hidden="true" tabindex="-1"></a>  preview_only<span class="sc">:</span> false</span>
+<span id="cb361-13"><a href="blogdown.html#cb361-13" aria-hidden="true" tabindex="-1"></a>tags<span class="sc">:</span></span>
+<span id="cb361-14"><a href="blogdown.html#cb361-14" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> GRAs</span>
+<span id="cb361-15"><a href="blogdown.html#cb361-15" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
 <p>You can add markdown content below the YAML header.</p>
 </div>
 <div id="step-4.-add-a-banner-image-to-the-landing-page." class="section level3" number="10.5.4">
@@ -692,7 +707,7 @@ Cannot find the configuration file config.toml | config.yaml | config/_default/c
 </ul></li>
 </ol>
 <p>Don’t forget to give attribution to the photographer. For example:</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="blogdown.html#cb332-1" aria-hidden="true" tabindex="-1"></a>Photo by <span class="sc">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://unsplash.com/@homajob?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;</span><span class="sc">&gt;</span>Scott Graham<span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span> on <span class="sc">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://unsplash.com/@mbcann01/likes?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;</span><span class="sc">&gt;</span>Unsplash<span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="blogdown.html#cb362-1" aria-hidden="true" tabindex="-1"></a>Photo by <span class="sc">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://unsplash.com/@homajob?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;</span><span class="sc">&gt;</span>Scott Graham<span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span> on <span class="sc">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://unsplash.com/@mbcann01/likes?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;</span><span class="sc">&gt;</span>Unsplash<span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span></code></pre></div>
 <p>Produces: Photo by <a href="https://unsplash.com/@homajob?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Scott Graham</a> on <a href="https://unsplash.com/@mbcann01/likes?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
 </div>
 </div>

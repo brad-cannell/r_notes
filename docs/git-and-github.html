@@ -418,6 +418,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="11.4.1" data-path="book-chapters.html"><a href="book-chapters.html#cr-figs"><i class="fa fa-check"></i><b>11.4.1</b> Cross-referencing figures</a></li>
 <li class="chapter" data-level="11.4.2" data-path="book-chapters.html"><a href="book-chapters.html#cross-referencing-chapters"><i class="fa fa-check"></i><b>11.4.2</b> Cross-referencing chapters</a></li>
+<li class="chapter" data-level="11.4.3" data-path="book-chapters.html"><a href="book-chapters.html#cross-referencing-unnumbered-chapters"><i class="fa fa-check"></i><b>11.4.3</b> Cross-referencing unnumbered chapters</a></li>
 </ul></li>
 <li class="chapter" data-level="11.5" data-path="book-chapters.html"><a href="book-chapters.html#citations"><i class="fa fa-check"></i><b>11.5</b> Citations</a></li>
 <li class="chapter" data-level="11.6" data-path="book-chapters.html"><a href="book-chapters.html#previewing-the-chapter"><i class="fa fa-check"></i><b>11.6</b> Previewing the chapter</a>
@@ -615,13 +616,13 @@ Hidden comments placeholder
 <h2><span class="header-section-number">18.4</span> Get rid of .DS_Store</h2>
 <p>The <code>.DS_Store</code> file can be an annoyance when working with Git on MacOS. <a href="https://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository/107921">Here is a link</a> to instructions for removing <code>.DS_Store</code> from your repository. Do it early and never worry about it again.</p>
 <p>In the terminal, run the following code from the root directory:</p>
-<div class="sourceCode" id="cb486"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb486-1"><a href="git-and-github.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove existing files from the repository:</span></span>
-<span id="cb486-2"><a href="git-and-github.html#cb486-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.DS_Store&quot;</span> <span class="at">-type</span> f <span class="at">-exec</span> git-rm {} <span class="dt">\;</span></span></code></pre></div>
-<div class="sourceCode" id="cb487"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb487-1"><a href="git-and-github.html#cb487-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add .DS_Store to .gitignore</span></span>
-<span id="cb487-2"><a href="git-and-github.html#cb487-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> .DS_Store <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
-<div class="sourceCode" id="cb488"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb488-1"><a href="git-and-github.html#cb488-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Commit the file to the repo</span></span>
-<span id="cb488-2"><a href="git-and-github.html#cb488-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .gitignore</span>
-<span id="cb488-3"><a href="git-and-github.html#cb488-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&#39;.DS_Store banished!&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb487"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb487-1"><a href="git-and-github.html#cb487-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove existing files from the repository:</span></span>
+<span id="cb487-2"><a href="git-and-github.html#cb487-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.DS_Store&quot;</span> <span class="at">-type</span> f <span class="at">-exec</span> git-rm {} <span class="dt">\;</span></span></code></pre></div>
+<div class="sourceCode" id="cb488"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb488-1"><a href="git-and-github.html#cb488-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add .DS_Store to .gitignore</span></span>
+<span id="cb488-2"><a href="git-and-github.html#cb488-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> .DS_Store <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb489"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb489-1"><a href="git-and-github.html#cb489-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Commit the file to the repo</span></span>
+<span id="cb489-2"><a href="git-and-github.html#cb489-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .gitignore</span>
+<span id="cb489-3"><a href="git-and-github.html#cb489-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&#39;.DS_Store banished!&#39;</span></span></code></pre></div>
 </div>
 <div id="amend" class="section level2" number="18.5">
 <h2><span class="header-section-number">18.5</span> Amend</h2>

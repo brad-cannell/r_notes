@@ -196,6 +196,7 @@ method-1.
 method-2
 method-3
 method-4
+cross-referencing-unnumbered-chapters
 citations
 previewing-the-chapter
 miscelaneous

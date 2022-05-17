@@ -85,6 +85,20 @@ produces:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RiAeNSFjjLc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+However, it may be even better to use a code chunk and pass the embed url to `knitr::include_url()`. This allows you to add captions and [create static screenshots if you knit to a non-HTML format](https://bookdown.org/yihui/rmarkdown-cookbook/html-widgets.html). 
+
+````
+```{r out.width="100%"}`r ''`
+knitr::include_url("https://www.youtube.com/embed/RiAeNSFjjLc")
+```
+````
+
+Will produce:
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_url("https://www.youtube.com/embed/RiAeNSFjjLc")
+```
+
 ### Font Awesome
 
 There are few different ways to incorporate font awesome icons into your output. The font awesome package (https://github.com/rstudio/fontawesome) is my favorite so far. Here are the social media links I added to [R4Epi](https://www.r4epi.com/about-the-authors.html):
@@ -194,6 +208,10 @@ Example:
   * This section is titled "Cross-references".       
   * The sentence below is written as "`See the [section above on cross-referencing][Cross-references]`".   
   * See the [section above on cross-referencing][Cross-references].    
+  
+### Cross-referencing unnumbered chapters
+
+If you do not want a certain heading to be numbered, you can add `{-}` or `{.unnumbered}` after the heading. For example, `index.Rmd` for this book contains the heading `## Organization {-}`. However, typing `[Organization]` [Organization] won't work.
 
 ## Citations
 

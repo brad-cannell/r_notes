@@ -418,6 +418,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="11.4.1" data-path="book-chapters.html"><a href="book-chapters.html#cr-figs"><i class="fa fa-check"></i><b>11.4.1</b> Cross-referencing figures</a></li>
 <li class="chapter" data-level="11.4.2" data-path="book-chapters.html"><a href="book-chapters.html#cross-referencing-chapters"><i class="fa fa-check"></i><b>11.4.2</b> Cross-referencing chapters</a></li>
+<li class="chapter" data-level="11.4.3" data-path="book-chapters.html"><a href="book-chapters.html#cross-referencing-unnumbered-chapters"><i class="fa fa-check"></i><b>11.4.3</b> Cross-referencing unnumbered chapters</a></li>
 </ul></li>
 <li class="chapter" data-level="11.5" data-path="book-chapters.html"><a href="book-chapters.html#citations"><i class="fa fa-check"></i><b>11.5</b> Citations</a></li>
 <li class="chapter" data-level="11.6" data-path="book-chapters.html"><a href="book-chapters.html#previewing-the-chapter"><i class="fa fa-check"></i><b>11.6</b> Previewing the chapter</a>
@@ -587,9 +588,9 @@ Hidden comments placeholder
 </div>
 <div id="load-packages-9" class="section level2" number="15.3">
 <h2><span class="header-section-number">15.3</span> 📦Load packages</h2>
-<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="language-for-publications.html#cb405-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb405-2"><a href="language-for-publications.html#cb405-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(freqtables)</span>
-<span id="cb405-3"><a href="language-for-publications.html#cb405-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(meantables)</span></code></pre></div>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="language-for-publications.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb406-2"><a href="language-for-publications.html#cb406-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(freqtables)</span>
+<span id="cb406-3"><a href="language-for-publications.html#cb406-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(meantables)</span></code></pre></div>
 </div>
 <div id="statistical-software" class="section level2" number="15.4">
 <h2><span class="header-section-number">15.4</span> Statistical software</h2>
@@ -600,7 +601,7 @@ Hidden comments placeholder
 <p>Statistical analyses were conducted using R version 4.1.0 (R Core Team, 2021) in RStudio version 1.4.1717 (RStudio Team, 2021) with the following packages: tidyverse (Wickham et al., 2019), freqtables (Cannell, 2020), meantables (Cannell, 2020).</p>
 </blockquote>
 <p>The functions below can be used to get citations and version numbers.</p>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="language-for-publications.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="language-for-publications.html#cb407-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>()</span></code></pre></div>
 <pre><code>## 
 ## To cite R in publications use:
 ## 
@@ -622,12 +623,12 @@ Hidden comments placeholder
 ## We have invested a lot of time and effort in creating R, please cite it
 ## when using it for data analysis. See also &#39;citation(&quot;pkgname&quot;)&#39; for
 ## citing R packages.</code></pre>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="language-for-publications.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="fu">R.Version</span>()<span class="sc">$</span>version.string</span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="language-for-publications.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="fu">R.Version</span>()<span class="sc">$</span>version.string</span></code></pre></div>
 <pre><code>## [1] &quot;R version 4.1.3 (2022-03-10)&quot;</code></pre>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="language-for-publications.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Won&#39;t run when I build book, but this is how you get the RStudio version number</span></span>
-<span id="cb410-2"><a href="language-for-publications.html#cb410-2" aria-hidden="true" tabindex="-1"></a>rstudioapi<span class="sc">::</span><span class="fu">versionInfo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="language-for-publications.html#cb411-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Won&#39;t run when I build book, but this is how you get the RStudio version number</span></span>
+<span id="cb411-2"><a href="language-for-publications.html#cb411-2" aria-hidden="true" tabindex="-1"></a>rstudioapi<span class="sc">::</span><span class="fu">versionInfo</span>()</span></code></pre></div>
 <pre><code>## Error: RStudio not running</code></pre>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="language-for-publications.html#cb412-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="language-for-publications.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##   Wickham et al., (2019). Welcome to the tidyverse. Journal of Open
 ##   Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686
@@ -644,7 +645,7 @@ Hidden comments placeholder
 ##     pages = {1686},
 ##     doi = {10.21105/joss.01686},
 ##   }</code></pre>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="language-for-publications.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">&quot;freqtables&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="language-for-publications.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">&quot;freqtables&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## To cite package &#39;freqtables&#39; in publications use:
 ## 

@@ -24,7 +24,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-05-07" />
+<meta name="date" content="2022-05-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -409,9 +409,10 @@ div.csl-indent {
 <li class="chapter" data-level="11.3.2" data-path="book-chapters.html"><a href="book-chapters.html#text-conventions"><i class="fa fa-check"></i><b>11.3.2</b> Text conventions</a></li>
 <li class="chapter" data-level="11.3.3" data-path="book-chapters.html"><a href="book-chapters.html#special-sections"><i class="fa fa-check"></i><b>11.3.3</b> Special sections</a></li>
 <li class="chapter" data-level="11.3.4" data-path="book-chapters.html"><a href="book-chapters.html#images"><i class="fa fa-check"></i><b>11.3.4</b> Images</a></li>
-<li class="chapter" data-level="11.3.5" data-path="book-chapters.html"><a href="book-chapters.html#font-awesome"><i class="fa fa-check"></i><b>11.3.5</b> Font Awesome</a></li>
-<li class="chapter" data-level="11.3.6" data-path="book-chapters.html"><a href="book-chapters.html#links"><i class="fa fa-check"></i><b>11.3.6</b> Links</a></li>
-<li class="chapter" data-level="11.3.7" data-path="book-chapters.html"><a href="book-chapters.html#code-blocks"><i class="fa fa-check"></i><b>11.3.7</b> Code blocks</a></li>
+<li class="chapter" data-level="11.3.5" data-path="book-chapters.html"><a href="book-chapters.html#videos"><i class="fa fa-check"></i><b>11.3.5</b> Videos</a></li>
+<li class="chapter" data-level="11.3.6" data-path="book-chapters.html"><a href="book-chapters.html#font-awesome"><i class="fa fa-check"></i><b>11.3.6</b> Font Awesome</a></li>
+<li class="chapter" data-level="11.3.7" data-path="book-chapters.html"><a href="book-chapters.html#links"><i class="fa fa-check"></i><b>11.3.7</b> Links</a></li>
+<li class="chapter" data-level="11.3.8" data-path="book-chapters.html"><a href="book-chapters.html#code-blocks"><i class="fa fa-check"></i><b>11.3.8</b> Code blocks</a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="book-chapters.html"><a href="book-chapters.html#cross-references"><i class="fa fa-check"></i><b>11.4</b> Cross-references</a>
 <ul>
@@ -627,33 +628,42 @@ div.csl-indent {
 <span id="cb365-2"><a href="book-chapters.html#cb365-2" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>img align<span class="ot">=</span><span class="st">&quot;right&quot;</span> src<span class="ot">=</span><span class="st">&quot;img/index/cannell-headshot copy.png&quot;</span> alt<span class="ot">=</span><span class="st">&quot;R4Epi hex logo&quot;</span> width<span class="ot">=</span><span class="st">&quot;250&quot;</span> style<span class="ot">=</span><span class="st">&quot;margin: 0 1em 0 1em; border-radius: 20px 0px 20px 0px;&quot;</span><span class="sc">&gt;</span></span></code></pre></div>
 <p>Yihui talks about some of the advantages of using <code>knitr::include_graphics()</code> here: <a href="https://bookdown.org/yihui/bookdown/figures.html" class="uri">https://bookdown.org/yihui/bookdown/figures.html</a>. Most of them have to do with creating PDF documents. For HTML only, the img tag seems to be a little more customizable.</p>
 </div>
-<div id="font-awesome" class="section level3" number="11.3.5">
-<h3><span class="header-section-number">11.3.5</span> Font Awesome</h3>
-<p>There are few different ways to incorporate font awesome icons into your output. The font awesome package (<a href="https://github.com/rstudio/fontawesome" class="uri">https://github.com/rstudio/fontawesome</a>) is my favorite so far. Here are the social media links I added to <a href="https://www.r4epi.com/about-the-authors.html">R4Epi</a>:</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="book-chapters.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>Contact<span class="sc">**</span>   </span>
-<span id="cb366-2"><a href="book-chapters.html#cb366-2" aria-hidden="true" tabindex="-1"></a>Connect with Dr. Cannell and follow his work.   </span>
-<span id="cb366-3"><a href="book-chapters.html#cb366-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.bradcannell.com&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;globe&quot;, fill = &quot;#003087&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
-<span id="cb366-4"><a href="book-chapters.html#cb366-4" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.facebook.com/Brad-Cannell-PhD-MPH-109345984850672&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;facebook-square&quot;, fill = &quot;#4267B2&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
-<span id="cb366-5"><a href="book-chapters.html#cb366-5" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.linkedin.com/in/bradcannell/&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;linkedin&quot;, fill = &quot;#2867B2&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
-<span id="cb366-6"><a href="book-chapters.html#cb366-6" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://twitter.com/brad_cannell&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;twitter-square&quot;, fill = &quot;#198CD8&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
-<span id="cb366-7"><a href="book-chapters.html#cb366-7" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.instagram.com/brad_cannell/&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;instagram-square&quot;, fill = &quot;#833AB4&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span></code></pre></div>
+<div id="videos" class="section level3" number="11.3.5">
+<h3><span class="header-section-number">11.3.5</span> Videos</h3>
+<p>You can include videos published on either YouTube or Vimeo within a chapter using the standard Markdown image syntax. Note that any valid YouTube or Vimeo URL will work.</p>
+<p><strong>Note: You must use YouTube’s embed code for the video to work.</strong> Simply adding <code>![](https://youtu.be/RiAeNSFjjLc)</code> will not work as some websites claim. Instead, on YouTube, you need to click <code>share</code>, then click the <code>Embed</code> button, then copy the iframe code. For example, this code</p>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="book-chapters.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>iframe width<span class="ot">=</span><span class="st">&quot;560&quot;</span> height<span class="ot">=</span><span class="st">&quot;315&quot;</span> src<span class="ot">=</span><span class="st">&quot;https://www.youtube.com/embed/RiAeNSFjjLc&quot;</span> title<span class="ot">=</span><span class="st">&quot;YouTube video player&quot;</span> frameborder<span class="ot">=</span><span class="st">&quot;0&quot;</span> allow<span class="ot">=</span><span class="st">&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot;</span> allowfullscreen<span class="sc">&gt;</span><span class="er">&lt;/</span>iframe<span class="sc">&gt;</span></span></code></pre></div>
+<p>produces:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/RiAeNSFjjLc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
 </div>
-<div id="links" class="section level3" number="11.3.6">
-<h3><span class="header-section-number">11.3.6</span> Links</h3>
+<div id="font-awesome" class="section level3" number="11.3.6">
+<h3><span class="header-section-number">11.3.6</span> Font Awesome</h3>
+<p>There are few different ways to incorporate font awesome icons into your output. The font awesome package (<a href="https://github.com/rstudio/fontawesome" class="uri">https://github.com/rstudio/fontawesome</a>) is my favorite so far. Here are the social media links I added to <a href="https://www.r4epi.com/about-the-authors.html">R4Epi</a>:</p>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="book-chapters.html#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>Contact<span class="sc">**</span>   </span>
+<span id="cb367-2"><a href="book-chapters.html#cb367-2" aria-hidden="true" tabindex="-1"></a>Connect with Dr. Cannell and follow his work.   </span>
+<span id="cb367-3"><a href="book-chapters.html#cb367-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.bradcannell.com&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;globe&quot;, fill = &quot;#003087&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
+<span id="cb367-4"><a href="book-chapters.html#cb367-4" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.facebook.com/Brad-Cannell-PhD-MPH-109345984850672&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;facebook-square&quot;, fill = &quot;#4267B2&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
+<span id="cb367-5"><a href="book-chapters.html#cb367-5" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.linkedin.com/in/bradcannell/&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;linkedin&quot;, fill = &quot;#2867B2&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
+<span id="cb367-6"><a href="book-chapters.html#cb367-6" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://twitter.com/brad_cannell&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;twitter-square&quot;, fill = &quot;#198CD8&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
+<span id="cb367-7"><a href="book-chapters.html#cb367-7" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.instagram.com/brad_cannell/&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;instagram-square&quot;, fill = &quot;#833AB4&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span></code></pre></div>
+</div>
+<div id="links" class="section level3" number="11.3.7">
+<h3><span class="header-section-number">11.3.7</span> Links</h3>
 <p>You can use standard markdown syntax for links: <code>[Visible text](link_to_somewhere)</code>. Or you can use anchor tags. Anchor tags seem to be the only way to open links in a new tab (<a href="https://stackoverflow.com/questions/4425198/can-i-create-links-with-target-blank-in-markdown" class="uri">https://stackoverflow.com/questions/4425198/can-i-create-links-with-target-blank-in-markdown</a>). See the social media icons above for an example.</p>
 </div>
-<div id="code-blocks" class="section level3" number="11.3.7">
-<h3><span class="header-section-number">11.3.7</span> Code blocks</h3>
+<div id="code-blocks" class="section level3" number="11.3.8">
+<h3><span class="header-section-number">11.3.8</span> Code blocks</h3>
 <p>Add the following below code blocks…</p>
 <p>👆<strong>Here’s what we did above:</strong></p>
 <p>Use unordered lists for these sections. It allows for nested lists and code. Add line breaks in between the bullets.</p>
-<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="book-chapters.html#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>ul<span class="sc">&gt;</span></span>
-<span id="cb367-2"><a href="book-chapters.html#cb367-2" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>li<span class="sc">&gt;</span>You can type <span class="st">`</span><span class="at">?mutate</span><span class="st">`</span> into your R console to view the help documentation <span class="cf">for</span> this <span class="cf">function</span> and follow along with the explanation below.<span class="sc">/</span>li<span class="sc">&gt;</span></span>
-<span id="cb367-3"><a href="book-chapters.html#cb367-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb367-4"><a href="book-chapters.html#cb367-4" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>li<span class="sc">&gt;</span><span class="er">&lt;/</span>li<span class="sc">&gt;</span></span>
-<span id="cb367-5"><a href="book-chapters.html#cb367-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb367-6"><a href="book-chapters.html#cb367-6" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>li<span class="sc">&gt;</span><span class="er">&lt;/</span>li<span class="sc">&gt;</span></span>
-<span id="cb367-7"><a href="book-chapters.html#cb367-7" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;/</span>ul<span class="sc">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="book-chapters.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>ul<span class="sc">&gt;</span></span>
+<span id="cb368-2"><a href="book-chapters.html#cb368-2" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>li<span class="sc">&gt;</span>You can type <span class="st">`</span><span class="at">?mutate</span><span class="st">`</span> into your R console to view the help documentation <span class="cf">for</span> this <span class="cf">function</span> and follow along with the explanation below.<span class="sc">/</span>li<span class="sc">&gt;</span></span>
+<span id="cb368-3"><a href="book-chapters.html#cb368-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb368-4"><a href="book-chapters.html#cb368-4" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>li<span class="sc">&gt;</span><span class="er">&lt;/</span>li<span class="sc">&gt;</span></span>
+<span id="cb368-5"><a href="book-chapters.html#cb368-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb368-6"><a href="book-chapters.html#cb368-6" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>li<span class="sc">&gt;</span><span class="er">&lt;/</span>li<span class="sc">&gt;</span></span>
+<span id="cb368-7"><a href="book-chapters.html#cb368-7" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;/</span>ul<span class="sc">&gt;</span></span></code></pre></div>
 </div>
 </div>
 <div id="cross-references" class="section level2" number="11.4">

@@ -185,6 +185,7 @@ language
 text-conventions
 special-sections
 images
+videos
 font-awesome
 links
 code-blocks

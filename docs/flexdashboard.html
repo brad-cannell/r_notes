@@ -24,7 +24,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-05-07" />
+<meta name="date" content="2022-05-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -409,9 +409,10 @@ div.csl-indent {
 <li class="chapter" data-level="11.3.2" data-path="book-chapters.html"><a href="book-chapters.html#text-conventions"><i class="fa fa-check"></i><b>11.3.2</b> Text conventions</a></li>
 <li class="chapter" data-level="11.3.3" data-path="book-chapters.html"><a href="book-chapters.html#special-sections"><i class="fa fa-check"></i><b>11.3.3</b> Special sections</a></li>
 <li class="chapter" data-level="11.3.4" data-path="book-chapters.html"><a href="book-chapters.html#images"><i class="fa fa-check"></i><b>11.3.4</b> Images</a></li>
-<li class="chapter" data-level="11.3.5" data-path="book-chapters.html"><a href="book-chapters.html#font-awesome"><i class="fa fa-check"></i><b>11.3.5</b> Font Awesome</a></li>
-<li class="chapter" data-level="11.3.6" data-path="book-chapters.html"><a href="book-chapters.html#links"><i class="fa fa-check"></i><b>11.3.6</b> Links</a></li>
-<li class="chapter" data-level="11.3.7" data-path="book-chapters.html"><a href="book-chapters.html#code-blocks"><i class="fa fa-check"></i><b>11.3.7</b> Code blocks</a></li>
+<li class="chapter" data-level="11.3.5" data-path="book-chapters.html"><a href="book-chapters.html#videos"><i class="fa fa-check"></i><b>11.3.5</b> Videos</a></li>
+<li class="chapter" data-level="11.3.6" data-path="book-chapters.html"><a href="book-chapters.html#font-awesome"><i class="fa fa-check"></i><b>11.3.6</b> Font Awesome</a></li>
+<li class="chapter" data-level="11.3.7" data-path="book-chapters.html"><a href="book-chapters.html#links"><i class="fa fa-check"></i><b>11.3.7</b> Links</a></li>
+<li class="chapter" data-level="11.3.8" data-path="book-chapters.html"><a href="book-chapters.html#code-blocks"><i class="fa fa-check"></i><b>11.3.8</b> Code blocks</a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="book-chapters.html"><a href="book-chapters.html#cross-references"><i class="fa fa-check"></i><b>11.4</b> Cross-references</a>
 <ul>
@@ -584,8 +585,8 @@ Hidden comments placeholder
 </div>
 <div id="load-packages-7" class="section level2" number="13.3">
 <h2><span class="header-section-number">13.3</span> 📦Load packages</h2>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="flexdashboard.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb373-2"><a href="flexdashboard.html#cb373-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flexdashboard)</span></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="flexdashboard.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb374-2"><a href="flexdashboard.html#cb374-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flexdashboard)</span></code></pre></div>
 </div>
 <div id="tips" class="section level2" number="13.4">
 <h2><span class="header-section-number">13.4</span> Tips</h2>
@@ -597,11 +598,11 @@ Hidden comments placeholder
 </div>
 <div id="simulate-data-5" class="section level2" number="13.5">
 <h2><span class="header-section-number">13.5</span> 🔢Simulate data</h2>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="flexdashboard.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb374-2"><a href="flexdashboard.html#cb374-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb374-3"><a href="flexdashboard.html#cb374-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">26</span>),</span>
-<span id="cb374-4"><a href="flexdashboard.html#cb374-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> letters</span>
-<span id="cb374-5"><a href="flexdashboard.html#cb374-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="flexdashboard.html#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb375-2"><a href="flexdashboard.html#cb375-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb375-3"><a href="flexdashboard.html#cb375-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">26</span>),</span>
+<span id="cb375-4"><a href="flexdashboard.html#cb375-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> letters</span>
+<span id="cb375-5"><a href="flexdashboard.html#cb375-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <!--
 Clean up and add session info
 -->

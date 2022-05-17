@@ -71,6 +71,20 @@ You can also directly use img tags. Here's the one I used for my photo in R4Epi
 
 Yihui talks about some of the advantages of using `knitr::include_graphics()` here: https://bookdown.org/yihui/bookdown/figures.html. Most of them have to do with creating PDF documents. For HTML only, the img tag seems to be a little more customizable.
 
+### Videos
+
+You can include videos published on either YouTube or Vimeo within a chapter using the standard Markdown image syntax. Note that any valid YouTube or Vimeo URL will work. 
+
+**Note: You must use YouTube's embed code for the video to work.** Simply adding `![](https://youtu.be/RiAeNSFjjLc)` will not work as some websites claim. Instead, on YouTube, you need to click `share`, then click the `Embed` button, then copy the iframe code. For example, this code
+
+```{r eval=FALSE}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/RiAeNSFjjLc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+```
+
+produces:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/RiAeNSFjjLc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ### Font Awesome
 
 There are few different ways to incorporate font awesome icons into your output. The font awesome package (https://github.com/rstudio/fontawesome) is my favorite so far. Here are the social media links I added to [R4Epi](https://www.r4epi.com/about-the-authors.html):

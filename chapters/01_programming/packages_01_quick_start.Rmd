@@ -533,7 +533,7 @@ You can also do this stuff when you complete a "version" of the package even if 
 
 Useful website: http://r-pkgs.had.co.nz/release.html
 
-1. Make sure you using the most updated code before checks. devtools::load_all()
+1. Make sure you using the most updated code before checks. devtools::load_all() and devtools::install()
 
 2. Update README before submission. It should roughly match the examples in the roxygen documentation.
    - Update `README.Rmd`, not `README.md`.   
@@ -542,6 +542,24 @@ Useful website: http://r-pkgs.had.co.nz/release.html
 3. Update documentation/vignettes using `devtools::document()`
 
 4. Update news.md. Here's dplyr's: https://raw.githubusercontent.com/tidyverse/dplyr/master/NEWS.md
+
+  - Here's the news.md section from R Packages: https://r-pkgs.org/other-markdown.html#news
+  
+  - Remember to add news.md to buildignore. `usethis::use_build_ignore("news.md")`
+  
+  - Here's a basic news.md from freqtables:
+  
+```
+# freqtables (development version)
+
+# freqtables 0.1.1
+
+* Add an informative error for user if they forget to pass a data frame to freq_table() (#29)
+
+# freqtables 0.1.0
+
+* First release on CRAN
+```
 
 5. If you were on a development branch, merge with main branch.
 
@@ -556,7 +574,27 @@ Useful website: http://r-pkgs.had.co.nz/release.html
 10. If you don't plan to submit to CRAN, this is probably a good time to use `devtools::install()` to re-build and install the package locally.
 
 11. Update `cran-comments`.   
- - If this is a resubmission, add a bulleted list of changes made under ## Resubmission.
+
+  - Remember to add news.md to buildignore. `usethis::use_build_ignore("cran-comments.md")`
+ 
+  - If this is a resubmission, add a bulleted list of changes made under ## Resubmission.
+ 
+  - Here is a link to the cran-comments section of R Packages: https://r-pkgs.org/release.html#sec-release-process
+ 
+  - Here's a basic cran-comments.md from freqtables:
+ 
+```
+## Test environments
+* local OS X install, R 4.1.3
+* Ubuntu Linux 20.04.1 LTS, R-release, GCC
+* win-builder (devel and release)
+
+## R CMD check results
+There were no ERRORs, WARNINGs or NOTEs
+
+## Downstream dependencies
+There are currently no downstream dependencies for this package.
+```
 
 12. Submit with `devtools::release()`
 

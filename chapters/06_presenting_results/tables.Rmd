@@ -18,6 +18,8 @@ knitr::include_graphics("https://picsum.photos/200/300")
 
 ## ⭐️Overview
 
+In the process of moving a lot of this stuff over to the tabler package: https://github.com/brad-cannell/tabler
+
 This chapter is about **formatting and presenting statistical results in tables.**
 
 The immediate results of statistical analyses are rarely fit for general consumption. This chapter walks through strategies and functions we can use to make our results ready for presentation/dissemination.
@@ -262,7 +264,8 @@ table_1_ft <- flextable(table_1) %>%
     i = c(5, 15, 17), j = 1,
     value = as_paragraph(
       c("Age in years.", "Height in inches.", "Weight in pounds.")
-    )
+    ),
+    ref_symbols = c(1:3)
   ) %>% 
   # Remove vertical cell padding
   padding(padding.top = 0, padding.bottom = 0, part = "all") %>%
@@ -683,7 +686,8 @@ table_1_ft <- table_1_ft %>%
     i = c(5, 15, 17), j = 1,
     value = as_paragraph(
       c("Age in years.", "Height in inches.", "Weight in pounds.")
-    )
+    ),
+    ref_symbols = c(1:3)
   ) %>% 
   # Remove vertical cell padding
   padding(padding.top = 0, padding.bottom = 0, part = "all") %>%

@@ -233,6 +233,7 @@ flextable-wrappers
 addingmodifying-table-content
 add-table-title-with-bold-part
 adding-blank-rows
+using-padding-instead-of-adding-blank-rows
 change-column-header-text
 change-row-header-text
 add-footnote
@@ -241,6 +242,7 @@ change-font-to-tnr
 conditional-formatting
 layout
 autofit-to-contents
+all-categories-of-categorical-variables-are-collapsed-into-a-single-row
 examples
 lead-panel-summarize-votes
 language-for-publications

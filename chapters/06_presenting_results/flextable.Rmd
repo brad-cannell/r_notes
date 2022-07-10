@@ -164,7 +164,22 @@ print(
 
 Which results in the Word table that I want: [flextable_blank_rows.docx](https://www.dropbox.com/s/smq0x7qlf5muhvf/flextable_blank_rows.docx?dl=0)
 
-However, I would prefer to be able to add the blank rows directly to the flextable rather than the data frame the flextable is built from. To me, this is a formatting issue rather than a data issue, and I prefer to keep data issues (manipulation of data frames) and formatting issues (manipulation of Word tables) separate. Any advice is greatly appreciated!
+#### Using padding instead of adding blank rows
+
+I can also use **padding** to create space between rows. This method works especially well when [All categories of categorical variables are collapsed into a single row].
+
+```{r}
+padding_example <- tribble(
+  ~var, ~formatted_stats, ~Control,
+  "Sex\n  Female\n  Male", "\n10 (20%)\n40 (80%)", "\n5 (21%)\n19 (79%)",
+  "Married\n  No\n  Yes", "\n21 (42%)\n29 (58%)", "\n12 (50%)\n4 (50%)"
+)
+
+flextable(padding_example) %>% 
+  autofit() %>% 
+  padding(padding.bottom = 10, part = "body")
+```
+
 
 ### Change column header text 
 
@@ -298,6 +313,65 @@ flextable(head(mtcars)) %>%
 ```{r}
 flextable(head(mtcars)) %>% 
   autofit()
+```
+
+### All categories of categorical variables are collapsed into a single row
+
+Merge doesn't work. Merge collapses identical values down. It won't collapse cells with non-identical values.
+
+Instead, you have to use paste and `\n` to collapse the text from multiple rows into a single character string. 
+
+```{r}
+# All categories in one row
+# Space between categories
+collapse_example <- tribble(
+  ~Characteristic,         ~Overall,               ~Controls,
+  "Sex\n  Female\n  Male", "\n10 (20%)\n40 (80%)", "\n5 (21%)\n19 (79%)",
+  "Married\n  No\n  Yes",  "\n21 (42%)\n29 (58%)", "\n12 (50%)\n4 (50%)"
+)
+
+flextable(collapse_example) %>% 
+  autofit() %>% 
+  # Create vertical space between variables
+  padding(padding.bottom = 10, part = "body") %>% 
+  # Center column headings
+  align(align = "center", part = "header") %>% 
+  # Center body text
+  align(j = 2:3, align = "center", part = "body")
+```
+
+How do we collapse the categories into character strings? Let's say we are starting with a data frame of formatted results like this. 
+
+```{r}
+collapse_example <- tribble(
+  ~Characteristic, ~Overall,   ~Controls,
+  "Sex",           NA,         NA,
+  "  Female",      "10 (20%)", "5 (21%)",
+  "  Male",        "40 (80%)", "19 (79%)"
+)
+
+collapse_one_row <- function(x) {
+  # Use paste to collapse the values into a string
+  x <- paste(x, collapse = "\n")
+  # Remove leading NA
+  x <- stringr::str_remove(x, "^NA")
+  x
+}
+
+collapse_example <- collapse_example %>%
+  mutate(across(.fns = collapse_one_row)) %>%
+  # All rows identical now. Only keep the first one.
+  slice(1)
+
+# Format flextable
+flextable(collapse_example) %>% 
+  autofit() %>% 
+  # Create vertical space between variables
+  padding(padding.bottom = 10, part = "body") %>% 
+  # Center column headings
+  align(align = "center", part = "header") %>% 
+  # Center body text
+  align(j = 2:3, align = "center", part = "body")
 ```
 
 ## 🔵 Examples

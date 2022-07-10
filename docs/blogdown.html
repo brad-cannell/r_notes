@@ -479,6 +479,7 @@ div.csl-indent {
 <li class="chapter" data-level="14.9" data-path="flextable.html"><a href="flextable.html#layout"><i class="fa fa-check"></i><b>14.9</b> 🔵Layout<span></span></a>
 <ul>
 <li class="chapter" data-level="14.9.1" data-path="flextable.html"><a href="flextable.html#autofit-to-contents"><i class="fa fa-check"></i><b>14.9.1</b> Autofit to contents<span></span></a></li>
+<li class="chapter" data-level="14.9.2" data-path="flextable.html"><a href="flextable.html#all-categories-of-categorical-variables-are-collapsed-into-a-single-row"><i class="fa fa-check"></i><b>14.9.2</b> All categories of categorical variables are collapsed into a single row<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="14.10" data-path="flextable.html"><a href="flextable.html#examples"><i class="fa fa-check"></i><b>14.10</b> 🔵 Examples<span></span></a>
 <ul>
@@ -596,19 +597,19 @@ Hidden comments placeholder
 </div>
 <div id="load-packages-6" class="section level2 hasAnchor" number="10.3">
 <h2><span class="header-section-number">10.3</span> 📦Load packages<a href="blogdown.html#load-packages-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="blogdown.html#cb357-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb357-2"><a href="blogdown.html#cb357-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(blogdown)</span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="blogdown.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb358-2"><a href="blogdown.html#cb358-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(blogdown)</span></code></pre></div>
 <p>When creating my site, I closely followed the steps outlined in <a href="https://www.apreshill.com/blog/2020-12-new-year-new-blogdown/">Up &amp; running with blogdown in 2021</a>.</p>
 <p>Below there are some additional notes, and solutions I used for issues I came up against along the way.</p>
 </div>
 <div id="blogdown-commands-to-remember" class="section level2 hasAnchor" number="10.4">
 <h2><span class="header-section-number">10.4</span> Blogdown commands to remember<a href="blogdown.html#blogdown-commands-to-remember" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When you start a new R session, it can be useful to view a preview of the site in the Viewer window. You do that with</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="blogdown.html#cb358-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">serve_site</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="blogdown.html#cb359-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">serve_site</span>()</span></code></pre></div>
 <p>To check content</p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="blogdown.html#cb359-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">check_content</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="blogdown.html#cb360-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">check_content</span>()</span></code></pre></div>
 <p>To check the status of Netlify</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="blogdown.html#cb360-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">check_netlify</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="blogdown.html#cb361-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">check_netlify</span>()</span></code></pre></div>
 <p>In the past I got the following error:</p>
 <blockquote>
 <p>Checking netlify.toml…<br />
@@ -617,9 +618,9 @@ Cannot find the configuration file config.toml | config.yaml | config/_default/c
 </blockquote>
 <p>Ultimately, I just had to quit R and reopen – not just restart R session.</p>
 <p>To check the Hugo versions</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="blogdown.html#cb361-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">check_hugo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="blogdown.html#cb362-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">check_hugo</span>()</span></code></pre></div>
 <p>Let’s run one final check, which wraps all 5 checking functions we’ve used so far into a single final checklist:</p>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="blogdown.html#cb362-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">check_site</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="blogdown.html#cb363-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">check_site</span>()</span></code></pre></div>
 </div>
 <div id="creating-new-content" class="section level2 hasAnchor" number="10.5">
 <h2><span class="header-section-number">10.5</span> Creating new content<a href="blogdown.html#creating-new-content" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -679,21 +680,21 @@ Cannot find the configuration file config.toml | config.yaml | config/_default/c
 <p>You tell markdown document that creates the widget (i.e., <code>students/opportunities_portfolio.md</code>) to use the documents in the <code>content/opportunites</code> folder by setting the <code>content: page_type:</code> parameter to the folder name. In this case, <code>content: page_type: opportunites</code>.</p>
 <p>If you want an image on the content page, it needs to be stored in the same folder as the <code>index.md</code> file that contains the content. Additionally, the image file must be named <code>featured</code>.</p>
 <p>Here was the YAML header for the GRA content page I made</p>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="blogdown.html#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb363-2"><a href="blogdown.html#cb363-2" aria-hidden="true" tabindex="-1"></a><span class="co"># GRA page accessed from the students page via a widget.</span></span>
-<span id="cb363-3"><a href="blogdown.html#cb363-3" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> Graduate research assistantships</span>
-<span id="cb363-4"><a href="blogdown.html#cb363-4" aria-hidden="true" tabindex="-1"></a>summary<span class="sc">:</span> Graduate research <span class="fu">assistantships</span> (GRAs) are paid positions. As a GRA, you are sort of a jack of all trades. You may be asked to help with completing human subjects protection documentation <span class="cf">for</span> the Institutional Review <span class="fu">Board</span> (IRB), data collection, data management and analysis, literature reviews <span class="cf">for</span> papers and grants, paper and grant writing, submitting reports to funding agencies, and administrative <span class="fu">tasks</span> (e.g., purchasing and arranging travel).</span>
-<span id="cb363-5"><a href="blogdown.html#cb363-5" aria-hidden="true" tabindex="-1"></a>date<span class="sc">:</span> <span class="st">&quot;2022-03-04&quot;</span></span>
-<span id="cb363-6"><a href="blogdown.html#cb363-6" aria-hidden="true" tabindex="-1"></a>authors<span class="sc">:</span></span>
-<span id="cb363-7"><a href="blogdown.html#cb363-7" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> admin</span>
-<span id="cb363-8"><a href="blogdown.html#cb363-8" aria-hidden="true" tabindex="-1"></a>featured<span class="sc">:</span> true</span>
-<span id="cb363-9"><a href="blogdown.html#cb363-9" aria-hidden="true" tabindex="-1"></a>image<span class="sc">:</span></span>
-<span id="cb363-10"><a href="blogdown.html#cb363-10" aria-hidden="true" tabindex="-1"></a>  caption<span class="sc">:</span> <span class="st">&#39;Photo by &lt;a href=&quot;https://unsplash.com/@esteejanssens?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;&gt;Estée Janssens&lt;/a&gt; on &lt;a href=&quot;https://unsplash.com/s/photos/schedule?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;&gt;Unsplash&lt;/a&gt;&#39;</span></span>
-<span id="cb363-11"><a href="blogdown.html#cb363-11" aria-hidden="true" tabindex="-1"></a>  focal_point<span class="sc">:</span> <span class="st">&quot;&quot;</span></span>
-<span id="cb363-12"><a href="blogdown.html#cb363-12" aria-hidden="true" tabindex="-1"></a>  preview_only<span class="sc">:</span> false</span>
-<span id="cb363-13"><a href="blogdown.html#cb363-13" aria-hidden="true" tabindex="-1"></a>tags<span class="sc">:</span></span>
-<span id="cb363-14"><a href="blogdown.html#cb363-14" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> GRAs</span>
-<span id="cb363-15"><a href="blogdown.html#cb363-15" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="blogdown.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb364-2"><a href="blogdown.html#cb364-2" aria-hidden="true" tabindex="-1"></a><span class="co"># GRA page accessed from the students page via a widget.</span></span>
+<span id="cb364-3"><a href="blogdown.html#cb364-3" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> Graduate research assistantships</span>
+<span id="cb364-4"><a href="blogdown.html#cb364-4" aria-hidden="true" tabindex="-1"></a>summary<span class="sc">:</span> Graduate research <span class="fu">assistantships</span> (GRAs) are paid positions. As a GRA, you are sort of a jack of all trades. You may be asked to help with completing human subjects protection documentation <span class="cf">for</span> the Institutional Review <span class="fu">Board</span> (IRB), data collection, data management and analysis, literature reviews <span class="cf">for</span> papers and grants, paper and grant writing, submitting reports to funding agencies, and administrative <span class="fu">tasks</span> (e.g., purchasing and arranging travel).</span>
+<span id="cb364-5"><a href="blogdown.html#cb364-5" aria-hidden="true" tabindex="-1"></a>date<span class="sc">:</span> <span class="st">&quot;2022-03-04&quot;</span></span>
+<span id="cb364-6"><a href="blogdown.html#cb364-6" aria-hidden="true" tabindex="-1"></a>authors<span class="sc">:</span></span>
+<span id="cb364-7"><a href="blogdown.html#cb364-7" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> admin</span>
+<span id="cb364-8"><a href="blogdown.html#cb364-8" aria-hidden="true" tabindex="-1"></a>featured<span class="sc">:</span> true</span>
+<span id="cb364-9"><a href="blogdown.html#cb364-9" aria-hidden="true" tabindex="-1"></a>image<span class="sc">:</span></span>
+<span id="cb364-10"><a href="blogdown.html#cb364-10" aria-hidden="true" tabindex="-1"></a>  caption<span class="sc">:</span> <span class="st">&#39;Photo by &lt;a href=&quot;https://unsplash.com/@esteejanssens?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;&gt;Estée Janssens&lt;/a&gt; on &lt;a href=&quot;https://unsplash.com/s/photos/schedule?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;&gt;Unsplash&lt;/a&gt;&#39;</span></span>
+<span id="cb364-11"><a href="blogdown.html#cb364-11" aria-hidden="true" tabindex="-1"></a>  focal_point<span class="sc">:</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb364-12"><a href="blogdown.html#cb364-12" aria-hidden="true" tabindex="-1"></a>  preview_only<span class="sc">:</span> false</span>
+<span id="cb364-13"><a href="blogdown.html#cb364-13" aria-hidden="true" tabindex="-1"></a>tags<span class="sc">:</span></span>
+<span id="cb364-14"><a href="blogdown.html#cb364-14" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> GRAs</span>
+<span id="cb364-15"><a href="blogdown.html#cb364-15" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
 <p>You can add markdown content below the YAML header.</p>
 </div>
 <div id="step-4.-add-a-banner-image-to-the-landing-page." class="section level3 hasAnchor" number="10.5.4">
@@ -711,7 +712,7 @@ Cannot find the configuration file config.toml | config.yaml | config/_default/c
 </ul></li>
 </ol>
 <p>Don’t forget to give attribution to the photographer. For example:</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="blogdown.html#cb364-1" aria-hidden="true" tabindex="-1"></a>Photo by <span class="sc">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://unsplash.com/@homajob?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;</span><span class="sc">&gt;</span>Scott Graham<span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span> on <span class="sc">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://unsplash.com/@mbcann01/likes?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;</span><span class="sc">&gt;</span>Unsplash<span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="blogdown.html#cb365-1" aria-hidden="true" tabindex="-1"></a>Photo by <span class="sc">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://unsplash.com/@homajob?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;</span><span class="sc">&gt;</span>Scott Graham<span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span> on <span class="sc">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://unsplash.com/@mbcann01/likes?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;</span><span class="sc">&gt;</span>Unsplash<span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span></code></pre></div>
 <p>Produces: Photo by <a href="https://unsplash.com/@homajob?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Scott Graham</a> on <a href="https://unsplash.com/@mbcann01/likes?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
 </div>
 </div>

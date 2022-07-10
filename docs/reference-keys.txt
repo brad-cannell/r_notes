@@ -26,6 +26,7 @@ to-create-a-vignette
 vignette-notes
 pkgdown
 cran
+package-evolution
 other-random-notes
 get-rid-of-.ds_store
 errors-warnings-notes

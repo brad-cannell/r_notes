@@ -604,6 +604,13 @@ After the package is accepted, do this stuff: http://r-pkgs.had.co.nz/release.ht
 
 * Add the .9000 suffix to the Version field in the DESCRIPTION to indicate that this is a development version. Create a new heading in NEWS.md and commit the changes.
 
+## Package evolution
+
+Here are some good pages on maintaining and evolving packages over time.
+
+* [rOpenSci Packages: Development, Maintenance, and Peer Review. Chapter 15: Package evolution - changing stuff in your package](https://devguide.ropensci.org/evolution.html#evolution)
+
+* [The lifecycle package](https://lifecycle.r-lib.org/)
 
 ## Other random notes
 

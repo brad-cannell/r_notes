@@ -207,11 +207,12 @@ div.csl-indent {
 <li class="chapter" data-level="1.14.3" data-path="my-package-notes.html"><a href="my-package-notes.html#pkgdown"><i class="fa fa-check"></i><b>1.14.3</b> Pkgdown<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="1.15" data-path="my-package-notes.html"><a href="my-package-notes.html#cran"><i class="fa fa-check"></i><b>1.15</b> Submitting to CRAN<span></span></a></li>
-<li class="chapter" data-level="1.16" data-path="my-package-notes.html"><a href="my-package-notes.html#other-random-notes"><i class="fa fa-check"></i><b>1.16</b> Other random notes<span></span></a>
+<li class="chapter" data-level="1.16" data-path="my-package-notes.html"><a href="my-package-notes.html#package-evolution"><i class="fa fa-check"></i><b>1.16</b> Package evolution<span></span></a></li>
+<li class="chapter" data-level="1.17" data-path="my-package-notes.html"><a href="my-package-notes.html#other-random-notes"><i class="fa fa-check"></i><b>1.17</b> Other random notes<span></span></a>
 <ul>
-<li class="chapter" data-level="1.16.1" data-path="my-package-notes.html"><a href="my-package-notes.html#get-rid-of-.ds_store"><i class="fa fa-check"></i><b>1.16.1</b> Get rid of .DS_Store<span></span></a></li>
+<li class="chapter" data-level="1.17.1" data-path="my-package-notes.html"><a href="my-package-notes.html#get-rid-of-.ds_store"><i class="fa fa-check"></i><b>1.17.1</b> Get rid of .DS_Store<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="1.17" data-path="my-package-notes.html"><a href="my-package-notes.html#errors-warnings-notes"><i class="fa fa-check"></i><b>1.17</b> Errors, warnings, notes<span></span></a></li>
+<li class="chapter" data-level="1.18" data-path="my-package-notes.html"><a href="my-package-notes.html#errors-warnings-notes"><i class="fa fa-check"></i><b>1.18</b> Errors, warnings, notes<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html"><i class="fa fa-check"></i><b>2</b> Creating Rmd Templates<span></span></a>
 <ul>
@@ -1058,10 +1059,18 @@ There are currently no downstream dependencies for this package.</code></pre>
 <li><p>Add the .9000 suffix to the Version field in the DESCRIPTION to indicate that this is a development version. Create a new heading in NEWS.md and commit the changes.</p></li>
 </ul>
 </div>
-<div id="other-random-notes" class="section level2 hasAnchor" number="1.16">
-<h2><span class="header-section-number">1.16</span> Other random notes<a href="my-package-notes.html#other-random-notes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="get-rid-of-.ds_store" class="section level3 hasAnchor" number="1.16.1">
-<h3><span class="header-section-number">1.16.1</span> Get rid of .DS_Store<a href="my-package-notes.html#get-rid-of-.ds_store" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="package-evolution" class="section level2 hasAnchor" number="1.16">
+<h2><span class="header-section-number">1.16</span> Package evolution<a href="my-package-notes.html#package-evolution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Here are some good pages on maintaining and evolving packages over time.</p>
+<ul>
+<li><p><a href="https://devguide.ropensci.org/evolution.html#evolution">rOpenSci Packages: Development, Maintenance, and Peer Review. Chapter 15: Package evolution - changing stuff in your package</a></p></li>
+<li><p><a href="https://lifecycle.r-lib.org/">The lifecycle package</a></p></li>
+</ul>
+</div>
+<div id="other-random-notes" class="section level2 hasAnchor" number="1.17">
+<h2><span class="header-section-number">1.17</span> Other random notes<a href="my-package-notes.html#other-random-notes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="get-rid-of-.ds_store" class="section level3 hasAnchor" number="1.17.1">
+<h3><span class="header-section-number">1.17.1</span> Get rid of .DS_Store<a href="my-package-notes.html#get-rid-of-.ds_store" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>.DS_Store</code> file can be an annoyance when working with Git on MacOS. <a href="https://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository/107921">Here is a link</a> to instructions for removing <code>.DS_Store</code> from your repository. Do it early and never worry about it again.</p>
 <p>In the terminal, run the following code from the root directory:</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="my-package-notes.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove existing files from the repository:</span></span>
@@ -1073,8 +1082,8 @@ There are currently no downstream dependencies for this package.</code></pre>
 <span id="cb22-3"><a href="my-package-notes.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&#39;.DS_Store banished!&#39;</span></span></code></pre></div>
 </div>
 </div>
-<div id="errors-warnings-notes" class="section level2 hasAnchor" number="1.17">
-<h2><span class="header-section-number">1.17</span> Errors, warnings, notes<a href="my-package-notes.html#errors-warnings-notes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="errors-warnings-notes" class="section level2 hasAnchor" number="1.18">
+<h2><span class="header-section-number">1.18</span> Errors, warnings, notes<a href="my-package-notes.html#errors-warnings-notes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Below are some common errors, warnings and notes I’ve encountered during build tests.</p>
 <blockquote>
 <p>W checking for unstated dependencies in examples …

@@ -207,11 +207,12 @@ div.csl-indent {
 <li class="chapter" data-level="1.14.3" data-path="my-package-notes.html"><a href="my-package-notes.html#pkgdown"><i class="fa fa-check"></i><b>1.14.3</b> Pkgdown<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="1.15" data-path="my-package-notes.html"><a href="my-package-notes.html#cran"><i class="fa fa-check"></i><b>1.15</b> Submitting to CRAN<span></span></a></li>
-<li class="chapter" data-level="1.16" data-path="my-package-notes.html"><a href="my-package-notes.html#other-random-notes"><i class="fa fa-check"></i><b>1.16</b> Other random notes<span></span></a>
+<li class="chapter" data-level="1.16" data-path="my-package-notes.html"><a href="my-package-notes.html#package-evolution"><i class="fa fa-check"></i><b>1.16</b> Package evolution<span></span></a></li>
+<li class="chapter" data-level="1.17" data-path="my-package-notes.html"><a href="my-package-notes.html#other-random-notes"><i class="fa fa-check"></i><b>1.17</b> Other random notes<span></span></a>
 <ul>
-<li class="chapter" data-level="1.16.1" data-path="my-package-notes.html"><a href="my-package-notes.html#get-rid-of-.ds_store"><i class="fa fa-check"></i><b>1.16.1</b> Get rid of .DS_Store<span></span></a></li>
+<li class="chapter" data-level="1.17.1" data-path="my-package-notes.html"><a href="my-package-notes.html#get-rid-of-.ds_store"><i class="fa fa-check"></i><b>1.17.1</b> Get rid of .DS_Store<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="1.17" data-path="my-package-notes.html"><a href="my-package-notes.html#errors-warnings-notes"><i class="fa fa-check"></i><b>1.17</b> Errors, warnings, notes<span></span></a></li>
+<li class="chapter" data-level="1.18" data-path="my-package-notes.html"><a href="my-package-notes.html#errors-warnings-notes"><i class="fa fa-check"></i><b>1.18</b> Errors, warnings, notes<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="creating-rmd-templates.html"><a href="creating-rmd-templates.html"><i class="fa fa-check"></i><b>2</b> Creating Rmd Templates<span></span></a>
 <ul>
@@ -1126,12 +1127,12 @@ global environment and return rows where the value of <code>cyl</code> matches t
 ## [[1]]
 ## &lt;quosure&gt;
 ## expr: ^cyl
-## env:  0x7f9313d03850
+## env:  0x7fd4e237a168
 ## 
 ## [[2]]
 ## &lt;quosure&gt;
 ## expr: ^am
-## env:  0x7f9313d03850</code></pre>
+## env:  0x7fd4e237a168</code></pre>
 <p>Now you can inject them into tidyverse functions with the splice operator:</p>
 <div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="tidy-evaluation.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Must diffuse first</span></span>
 <span id="cb107-2"><a href="tidy-evaluation.html#cb107-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(.data, ...) {</span>

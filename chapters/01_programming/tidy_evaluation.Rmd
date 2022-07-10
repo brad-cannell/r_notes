@@ -469,6 +469,177 @@ carb <- 6
 mtcars %>% filter(.data[["cyl"]] == .env[["carb"]])
 ```
 
+## Ellipsis
+
+In technical language, the three dots argument in R is called an ellipsis. And it means that the function is designed to take any number of named or unnamed arguments. The interesting question is: How do you write functions that make use of ellipsis? The answer is very simple: you simply convert the … to a list, like so:
+
+```{r}
+f <- function(...) {
+  arguments <- list(...)
+  paste(arguments)
+}
+
+f("Hello", "World", "!")
+```
+
+So, when should I use the ellipsis argument? That, again, is very simple: there are essentially **two** situations when you can use the three dots:
+
+1. When it makes sense to call the function with a variable number of arguments. See the `f` function immediately above. Another very prominent example is the `paste()` function. 
+
+2. When, within your function, you call other functions, and these functions can have a variable number of arguments, either because (a) the called function is generic like `print()` or (b) the called function can be passed into the function as an argument, as for example with the `FUN` argument in `apply()`. (`apply <- function (X, MARGIN, FUN, ...)`).
+
+## Dynamic dots
+
+In addition to the base ellipsis syntax, rlang supports something it calls [dynamic dots](https://search.r-project.org/CRAN/refmans/rlang/html/dyn-dots.html). Programming with dynamic dots (...) presents some opportunities and also some challenges. 
+
+1. You can splice arguments saved in a list with the splice operator `!!!`.
+
+2. You can inject names with `glue` syntax on the left-hand side of `⁠:`=⁠.
+
+3. Trailing commas are ignored, making it easier to copy and paste lines of arguments.
+
+If your function takes dots, adding support for dynamic features is as easy as collecting the dots with `list2()` instead of `list()`. See also `dots_list()`, which offers more control over the collection.
+
+In general, passing `...` to a function that supports dynamic dots causes your function to inherit the dynamic behavior.
+
+In packages, document dynamic dots with this standard tag:
+
+ `@param ... <[`dynamic-dots`][rlang::dyn-dots]> What these dots do.`
+
+```{r}
+f <- function(...) {
+  out <- rlang::list2(...)
+  rev(out)
+}
+
+# Trailing commas are ignored
+f(this = "that", )
+```
+
+```{r}
+# Splice lists of arguments with `!!!`
+x <- list(alpha = "first", omega = "last")
+f(!!!x)
+```
+
+```{r}
+# Inject a name using glue syntax
+if (rlang::is_installed("glue")) {
+  nm <- "key"
+  f("{nm}" := "value")
+  f("prefix_{nm}" := "value")
+}
+```
+
+Diffuse and inject unquoted column names
+
+```{r error=TRUE}
+# Doesn't work
+f <- function(.data, ...) {
+  list(...)
+}
+
+mtcars %>% f(cyl, am)
+```
+
+```{r error=TRUE}
+# Doesn't work
+f <- function(.data, ...) {
+  rlang::list2(...)
+}
+
+mtcars %>% f(cyl, am)
+```
+
+```{r}
+# Must diffuse first
+f <- function(.data, ...) {
+  enquos(...)
+}
+
+mtcars %>% f(cyl, am)
+```
+
+Now you can inject them into tidyverse functions with the splice operator:
+
+```{r}
+# Must diffuse first
+f <- function(.data, ...) {
+  dot_vars <- enquos(...)
+  .data %>% count(!!!dot_vars)
+}
+
+mtcars %>% f(cyl, am)
+```
+
+### Convert quotures to strings
+
+It took me awhile to figure this out. The answer eventually came from: https://adv-r.hadley.nz/quasiquotation.html#quasi-motivation. 
+
+Start by using `ensyms()` instead of `enquos()` to return naked expressions instead of quosures (https://rlang.r-lib.org/reference/defusing-advanced.html).
+
+```{r}
+f <- function(.data, ...) {
+  rlang::ensyms(...)
+}
+
+mtcars %>% f(cyl, am)
+```
+
+Then use `purrr::map()` and `rlang::as_sting()` or `rlang::as_name()` to convert symbols to character strings.
+
+```{r}
+f <- function(.data, ...) {
+  dot_syms <- rlang::ensyms(...)
+  purrr::map(dot_syms, rlang::as_name)
+}
+
+mtcars %>% f(cyl, am)
+```
+
+### Example: Multiple n-way tables
+
+This example comes from when I was working on the `freqtables` package. I was trying to create a wrapper to around a simple `purrr` iteration and wanted to use the dot arguments at names to the output list. In other words, take unquoted variable names, diffuse and inject them for analysis, then turn them into character strings. 
+
+```{r}
+# Multiple n-way tables
+freq_table2 <- function(.data, .freq_var, drop = FALSE) {
+  .data <- dplyr::count(.data, {{ .freq_var }}, .drop = drop)
+  .data
+}
+
+# For testing
+# mtcars %>% 
+#   group_by(am) %>% 
+#   freq_table2(cyl)
+
+# And if you want more than one table
+# purrr::map(
+#   .x = quos(cyl, vs),
+#   .f = ~ mtcars %>% group_by(am) %>% freq_table2({{ .x }})
+# )
+```
+
+```{r}
+# Make a wrapper
+freq_tables <- function(.data, ...) {
+  # Defuse the user expression in `...` for calculations
+  dot_vars <- enquos(...)
+  # Make syms and then strings for naming the list
+  dot_syms <- rlang::ensyms(...)
+  dot_names <- purrr::map(dot_syms, rlang::as_name)
+  # Perform the calculations
+  purrr::map(
+    .x = dot_vars, # Could also use enquos(...) directly here
+    .f = ~ .data %>% freq_table2({{ .x }}) # Must use !! or {{
+  ) %>% 
+    rlang::set_names(dot_names)
+}
+
+mtcars %>% 
+  freq_tables(cyl, vs)
+```
+
 ## Example: for Loop {#for_loop}
 
 In this example, I'm creating a table of summary statistics using the Starwars data. The table will compare some simple characteristics of the characters by species.

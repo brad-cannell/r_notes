@@ -54,6 +54,10 @@ the-as_label-and-as_name-functions
 the-sym-function
 the-syms-function
 the-rlang-prounouns
+ellipsis
+dynamic-dots
+convert-quotures-to-strings
+example-multiple-n-way-tables
 for_loop
 functions
 nesting

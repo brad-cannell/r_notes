@@ -293,6 +293,7 @@ generate-word-reports
 git-and-github
 overview-15
 useful-websites-15
+documenting-practices
 commit-message
 get-rid-of-.ds_store-1
 amend

@@ -10,7 +10,7 @@ knitr::include_graphics("https://picsum.photos/200/300")
 
 ## ⭐️Overview
 
-My notes on git and GitHub. There are alos chapters in R4Epi on git and GitHub. These notes should not reproduce those chapter. These notes should go beyond those chapters or be used for experimenting. 
+My notes on git and GitHub. There are also chapters in R4Epi on git and GitHub. These notes should not reproduce those chapter. These notes should go beyond those chapters or be used for experimenting. 
 
 * [Coding best practices](https://www.r4epi.com/coding-best-practices.html). I still need to add material to this section about writing commit messages.      
 * [Introduction to git and GitHub](https://www.r4epi.com/introduction-to-git-and-github.html)   
@@ -28,6 +28,27 @@ This chapter of the notes still needs a ton of cleaning up!
 * [How to Write a Git Commit Message](https://cbea.ms/git-commit/)   
 * [How to Write Better Git Commit Messages – A Step-By-Step Guide](https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/)   
 * [How to Write Good Commit Messages: A Practical Git Guide](https://www.freecodecamp.org/news/writing-good-commit-messages-a-practical-guide/)
+
+
+## Documenting practices
+
+With GitHub, there are so many options for where and how we can document things. This is my current set of best practices.
+
+* README: Getting started and _how_ to use for users.
+
+* Vignettes: More depth than README and possibly talks about the theory behind the package/project. Possibly answers the _why_ questions. 
+
+* Pgkdown: Not different from README and vignettes. Just makes them easier to find and look a little nicer.
+
+* NOTES: My private notes just for me. Not for tasks. Answers _why_ or _how_, but not _what_. When possible, use Wiki instead.
+
+* GitHub Wiki: Public notes for contributors/developers. 
+
+* GitHub Discussion: Public questions and answers. I'm trying to decide if I should just use Stack Overflow somehow instead. Maybe use both.
+
+* GitHub issues: Tasks that need to be completed.
+
+* GitHub projects: Organize issues/tasks.
 
 
 ## Commit message

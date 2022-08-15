@@ -1,15 +1,19 @@
 # Programming with functions
 
-Created: 2022-08-02 <br> Updated: `r Sys.Date()`
-
 <!--
 Hidden comments placeholder
 bookdown::preview_chapter("/Users/bradcannell/Dropbox/R/r_notes_bookdown/chapters/01_programming/function_to_function.qmd")
 -->
 
+```{r echo=FALSE}
+knitr::include_graphics("https://picsum.photos/200/300")
+```
+
 ## ⭐️Overview
 
 The basic question I asked while developing `tabler` was how do you pass a function as an argument to another function. 
+
+This chapter still needs a lot of work.
 
 ## 🌎Useful websites
 
@@ -78,8 +82,18 @@ lapply2(select(study, days, height), mean)
 lapply2(select(study, days, height), mean, na.rm = TRUE)
 ```
 
-```{r}
-# eval: false
+```{r error=TRUE}
 # How do I make this work like purrr, dplyr, etc.
 lapply2(select(study, days, height), ~ mean(.x, na.rm = TRUE))
 ```
+
+
+<!--
+Clean up and add session info
+-->
+
+```{r echo=FALSE}
+rm(list = ls())
+```
+
+

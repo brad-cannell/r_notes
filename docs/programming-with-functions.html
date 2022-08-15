@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>10 Plot populations and samples | R Notes</title>
+  <title>1 Programming with functions | R Notes</title>
   <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="10 Plot populations and samples | R Notes" />
+  <meta property="og:title" content="1 Programming with functions | R Notes" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   <meta name="github-repo" content="brad-cannell/r_notes" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="10 Plot populations and samples | R Notes" />
+  <meta name="twitter:title" content="1 Programming with functions | R Notes" />
   
   <meta name="twitter:description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="risk-difference.html"/>
-<link rel="next" href="blogdown.html"/>
+<link rel="prev" href="index.html"/>
+<link rel="next" href="my-package-notes.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -585,61 +585,99 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="plot-populations-and-samples" class="section level1 hasAnchor" number="10">
-<h1><span class="header-section-number">10</span> Plot populations and samples<a href="plot-populations-and-samples.html#plot-populations-and-samples" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="programming-with-functions" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> Programming with functions<a href="programming-with-functions.html#programming-with-functions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <!--
 Hidden comments placeholder
+bookdown::preview_chapter("/Users/bradcannell/Dropbox/R/r_notes_bookdown/chapters/01_programming/function_to_function.qmd")
 -->
 <p><img src="https://picsum.photos/200/300" /><!-- --></p>
-<div id="overview-8" class="section level2 hasAnchor" number="10.1">
-<h2><span class="header-section-number">10.1</span> ⭐️Overview<a href="plot-populations-and-samples.html#overview-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This chapter is about plotting out populations (usually of people) and samples (usually of people). This are mostly useful for teaching and training purposes</p>
+<div id="overview" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> ⭐️Overview<a href="programming-with-functions.html#overview" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The basic question I asked while developing <code>tabler</code> was how do you pass a function as an argument to another function.</p>
+<p>This chapter still needs a lot of work.</p>
 </div>
-<div id="useful-websites-8" class="section level2 hasAnchor" number="10.2">
-<h2><span class="header-section-number">10.2</span> 🌎Useful websites<a href="plot-populations-and-samples.html#useful-websites-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="useful-websites" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> 🌎Useful websites<a href="programming-with-functions.html#useful-websites" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><p>The note on <a href="contingency-tables.html#contingency-tables-1">Contingency Tables</a></p></li>
-<li><p><a href="https://stackoverflow.com/questions/62882457/how-to-evenly-plot-geom-text-in-r">Stack Overflow: How to evenly plot geom_text in R?</a></p></li>
-<li><p><a href="https://stackoverflow.com/questions/68619095/how-to-randomly-scatter-points-inside-a-circle-with-ggplot-without-clustering-a">Stack Overflow: How to randomly scatter points inside a circle with ggplot, without clustering around the center?</a> (In case you want to distribute them randomly)</p></li>
+<li><a href="http://adv-r.had.co.nz/Functionals.html">Advanced R: Functionals</a></li>
 </ul>
 </div>
-<div id="load-packages-6" class="section level2 hasAnchor" number="10.3">
-<h2><span class="header-section-number">10.3</span> 📦Load packages<a href="plot-populations-and-samples.html#load-packages-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="plot-populations-and-samples.html#cb388-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb388-2"><a href="plot-populations-and-samples.html#cb388-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb388-3"><a href="plot-populations-and-samples.html#cb388-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(freqtables)</span></code></pre></div>
+<div id="load-packages" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> 📦Load packages<a href="programming-with-functions.html#load-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="programming-with-functions.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 </div>
-<div id="simulate-data-5" class="section level2 hasAnchor" number="10.4">
-<h2><span class="header-section-number">10.4</span> 🔢Simulate data<a href="plot-populations-and-samples.html#simulate-data-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="plot-populations-and-samples.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb389-2"><a href="plot-populations-and-samples.html#cb389-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb389-3"><a href="plot-populations-and-samples.html#cb389-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">medication =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">10</span>)),</span>
-<span id="cb389-4"><a href="plot-populations-and-samples.html#cb389-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">fall =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">8</span>), <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">6</span>), <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">4</span>))</span>
-<span id="cb389-5"><a href="plot-populations-and-samples.html#cb389-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="plot-populations-and-samples.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df)</span></code></pre></div>
-<pre><code>##           fall
-## medication 0 1
-##          0 8 2
-##          1 6 4</code></pre>
-<p>Need to reorder this 1,0 instead of 0,1. Work on this in the contingency tables file.</p>
+<div id="simulate-data" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> 🔢Simulate data<a href="programming-with-functions.html#simulate-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Here we simulate a small dataset that is intended to be representative of data from a research study.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="programming-with-functions.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb2-2"><a href="programming-with-functions.html#cb2-2" aria-hidden="true" tabindex="-1"></a>study <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb2-3"><a href="programming-with-functions.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">id     =</span> <span class="fu">as.character</span>(<span class="fu">seq</span>(<span class="dv">1001</span>, <span class="dv">1020</span>, <span class="dv">1</span>)),</span>
+<span id="cb2-4"><a href="programming-with-functions.html#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sex    =</span> <span class="fu">factor</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>), <span class="dv">20</span>, <span class="cn">TRUE</span>)),</span>
+<span id="cb2-5"><a href="programming-with-functions.html#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">date   =</span> <span class="fu">sample</span>(<span class="fu">seq.Date</span>(<span class="fu">as.Date</span>(<span class="st">&quot;2021-09-15&quot;</span>), <span class="fu">as.Date</span>(<span class="st">&quot;2021-10-26&quot;</span>), <span class="st">&quot;day&quot;</span>), <span class="dv">20</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb2-6"><a href="programming-with-functions.html#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">days   =</span> <span class="fu">sample</span>(1L<span class="sc">:</span>21L, 20L, <span class="cn">TRUE</span>),</span>
+<span id="cb2-7"><a href="programming-with-functions.html#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">71</span>, <span class="dv">10</span>)</span>
+<span id="cb2-8"><a href="programming-with-functions.html#cb2-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-9"><a href="programming-with-functions.html#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="programming-with-functions.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Add missing values for testing</span></span>
+<span id="cb2-11"><a href="programming-with-functions.html#cb2-11" aria-hidden="true" tabindex="-1"></a>study<span class="sc">$</span>id[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb2-12"><a href="programming-with-functions.html#cb2-12" aria-hidden="true" tabindex="-1"></a>study<span class="sc">$</span>sex[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb2-13"><a href="programming-with-functions.html#cb2-13" aria-hidden="true" tabindex="-1"></a>study<span class="sc">$</span>date[<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb2-14"><a href="programming-with-functions.html#cb2-14" aria-hidden="true" tabindex="-1"></a>study<span class="sc">$</span>days[<span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb2-15"><a href="programming-with-functions.html#cb2-15" aria-hidden="true" tabindex="-1"></a>study<span class="sc">$</span>height[<span class="dv">7</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span></code></pre></div>
+</div>
+<div id="examples" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Examples<a href="programming-with-functions.html#examples" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This needs to be cleaned up. I’m just in a rush.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="programming-with-functions.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function passed to a function?</span></span>
+<span id="cb3-2"><a href="programming-with-functions.html#cb3-2" aria-hidden="true" tabindex="-1"></a>fn_number <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb3-3"><a href="programming-with-functions.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  x</span>
+<span id="cb3-4"><a href="programming-with-functions.html#cb3-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-5"><a href="programming-with-functions.html#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="programming-with-functions.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">fn_number</span>(<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="programming-with-functions.html#cb5-1" aria-hidden="true" tabindex="-1"></a>fn_sum <span class="ot">&lt;-</span> <span class="cf">function</span>(n, fn) {</span>
+<span id="cb5-2"><a href="programming-with-functions.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="sc">+</span> <span class="fu">fn</span>(n)</span>
+<span id="cb5-3"><a href="programming-with-functions.html#cb5-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-4"><a href="programming-with-functions.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="programming-with-functions.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">fn_sum</span>(<span class="dv">3</span>, fn_number)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="programming-with-functions.html#cb7-1" aria-hidden="true" tabindex="-1"></a>lapply2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, f, ...) {</span>
+<span id="cb7-2"><a href="programming-with-functions.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="fu">length</span>(x))</span>
+<span id="cb7-3"><a href="programming-with-functions.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(x)) {</span>
+<span id="cb7-4"><a href="programming-with-functions.html#cb7-4" aria-hidden="true" tabindex="-1"></a>    out[[i]] <span class="ot">&lt;-</span> <span class="fu">f</span>(x[[i]], ...)</span>
+<span id="cb7-5"><a href="programming-with-functions.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-6"><a href="programming-with-functions.html#cb7-6" aria-hidden="true" tabindex="-1"></a>  out</span>
+<span id="cb7-7"><a href="programming-with-functions.html#cb7-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-8"><a href="programming-with-functions.html#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="programming-with-functions.html#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply2</span>(<span class="fu">select</span>(study, days, height), mean)</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] NA
+## 
+## [[2]]
+## [1] NA</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="programming-with-functions.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply2</span>(<span class="fu">select</span>(study, days, height), mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 12.05263
+## 
+## [[2]]
+## [1] 72.33294</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="programming-with-functions.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># How do I make this work like purrr, dplyr, etc.</span></span>
+<span id="cb11-2"><a href="programming-with-functions.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply2</span>(<span class="fu">select</span>(study, days, height), <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<pre><code>## Error in f(x[[i]], ...): could not find function &quot;f&quot;</code></pre>
 <!--
 Clean up and add session info
 -->
 
 </div>
 </div>
-
-
-
-
-</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="risk-difference.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="blogdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="my-package-notes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

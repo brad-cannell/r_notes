@@ -23,7 +23,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-08-02" />
+<meta name="date" content="2022-08-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -579,7 +579,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="tidy-evaluation" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">3</span> Tidy Evaluation<a href="tidy-evaluation.html#tidy-evaluation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Created: 2017-06-24 <br> Updated: 2022-08-02</p>
+<p>Created: 2017-06-24 <br> Updated: 2022-08-15</p>
 <!--
 Hidden comments placeholder
 bookdown::preview_chapter("/Users/bradcannell/Dropbox/R/r_notes_bookdown/chapters/01_programming/tidy_evaluation.Rmd")
@@ -1126,12 +1126,12 @@ global environment and return rows where the value of <code>cyl</code> matches t
 ## [[1]]
 ## &lt;quosure&gt;
 ## expr: ^cyl
-## env:  0x7f939913b358
+## env:  0x7f77c6c10a40
 ## 
 ## [[2]]
 ## &lt;quosure&gt;
 ## expr: ^am
-## env:  0x7f939913b358</code></pre>
+## env:  0x7f77c6c10a40</code></pre>
 <p>Now you can inject them into tidyverse functions with the splice operator:</p>
 <div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="tidy-evaluation.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Must diffuse first</span></span>
 <span id="cb107-2"><a href="tidy-evaluation.html#cb107-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(.data, ...) {</span>

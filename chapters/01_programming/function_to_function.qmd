@@ -79,6 +79,7 @@ lapply2(select(study, days, height), mean, na.rm = TRUE)
 ```
 
 ```{r}
+# eval: false
 # How do I make this work like purrr, dplyr, etc.
 lapply2(select(study, days, height), ~ mean(.x, na.rm = TRUE))
 ```

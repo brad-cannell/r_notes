@@ -30,7 +30,7 @@ Neither of these options seems very robust or future-proof. While it might be a 
 * [RStudio Community: Rename with a named vector/list and contribution to the tidyverse](https://community.rstudio.com/t/rename-with-a-named-vector-list-and-contribution-to-the-tidyverse/2383)   
 
 
-## 📦Load packages
+y## 📦Load packages
 
 ```{r message=FALSE}
 library(dplyr)

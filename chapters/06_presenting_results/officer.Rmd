@@ -268,7 +268,7 @@ knitr::include_graphics("img/06_presenting_results/embedding_flextables_in_exist
 
 Start by reading in the Word template document.
 
-```{r include=FALSE}
+```{r eval=FALSE, include=FALSE}
 # This chunk is for interactive testing. It won't show up in the book.
 doc <- read_docx("../../examples/embedding_flextables_in_existing_word_tables.docx")
 ```
@@ -296,7 +296,7 @@ So, I can't add a vector of values to the bookmark.
 
 To do this, I need to first coerce first_table into a single-column flextable object.
 
-```{r}
+```{r eval=FALSE}
 first_table_ft <- first_table %>% 
   select(n) %>% 
   flextable() %>% 
@@ -306,12 +306,12 @@ first_table_ft <- first_table %>%
 
 Then, add the single-column flextable to the bookmark in the second table.
 
-```{r}
+```{r eval=FALSE}
 doc <- doc %>% 
   body_replace_flextable_at_bkm("bm_add_rows_01", first_table_ft)
 ```
 
-```{r}
+```{r eval=FALSE}
 print(
   doc, 
   "embedding_flextables.docx"
@@ -334,12 +334,12 @@ knitr::include_graphics("img/06_presenting_results/embedding_flextables_in_exist
 
 Then, adding the single-column flextable to the bookmark in the second table as before.
 
-```{r}
+```{r eval=FALSE}
 doc <- doc %>% 
   body_replace_flextable_at_bkm("bm_add_rows_02", first_table_ft)
 ```
 
-```{r}
+```{r eval=FALSE}
 print(
   doc, 
   "embedding_flextables.docx"

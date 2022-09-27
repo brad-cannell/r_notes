@@ -23,7 +23,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-09-12" />
+<meta name="date" content="2022-09-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -566,6 +566,7 @@ div.csl-indent {
 <li class="chapter" data-level="19.7" data-path="git-and-github.html"><a href="git-and-github.html#pull-requests"><i class="fa fa-check"></i><b>19.7</b> Pull Requests</a></li>
 <li class="chapter" data-level="19.8" data-path="git-and-github.html"><a href="git-and-github.html#branches"><i class="fa fa-check"></i><b>19.8</b> Branches</a></li>
 <li class="chapter" data-level="19.9" data-path="git-and-github.html"><a href="git-and-github.html#squashing-commits"><i class="fa fa-check"></i><b>19.9</b> Squashing commits</a></li>
+<li class="chapter" data-level="19.10" data-path="git-and-github.html"><a href="git-and-github.html#other-littl-quirks-and-errors"><i class="fa fa-check"></i><b>19.10</b> Other littl quirks and errors</a></li>
 </ul></li>
 <li class="part"><span><b>IX Appendix</b></span></li>
 <li class="chapter" data-level="20" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html"><i class="fa fa-check"></i><b>20</b> Appendix A: Terms and Definitions</a>
@@ -660,13 +661,13 @@ Hidden comments placeholder
 <h2><span class="header-section-number">19.5</span> Get rid of .DS_Store<a href="git-and-github.html#get-rid-of-.ds_store-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>.DS_Store</code> file can be an annoyance when working with Git on MacOS. <a href="https://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository/107921">Here is a link</a> to instructions for removing <code>.DS_Store</code> from your repository. Do it early and never worry about it again.</p>
 <p>In the terminal, run the following code from the root directory:</p>
-<div class="sourceCode" id="cb553"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb553-1"><a href="git-and-github.html#cb553-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove existing files from the repository:</span></span>
-<span id="cb553-2"><a href="git-and-github.html#cb553-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.DS_Store&quot;</span> <span class="at">-type</span> f <span class="at">-exec</span> git-rm {} <span class="dt">\;</span></span></code></pre></div>
-<div class="sourceCode" id="cb554"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb554-1"><a href="git-and-github.html#cb554-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add .DS_Store to .gitignore</span></span>
-<span id="cb554-2"><a href="git-and-github.html#cb554-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> .DS_Store <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
-<div class="sourceCode" id="cb555"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb555-1"><a href="git-and-github.html#cb555-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Commit the file to the repo</span></span>
-<span id="cb555-2"><a href="git-and-github.html#cb555-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .gitignore</span>
-<span id="cb555-3"><a href="git-and-github.html#cb555-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&#39;.DS_Store banished!&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb554"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb554-1"><a href="git-and-github.html#cb554-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove existing files from the repository:</span></span>
+<span id="cb554-2"><a href="git-and-github.html#cb554-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.DS_Store&quot;</span> <span class="at">-type</span> f <span class="at">-exec</span> git-rm {} <span class="dt">\;</span></span></code></pre></div>
+<div class="sourceCode" id="cb555"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb555-1"><a href="git-and-github.html#cb555-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add .DS_Store to .gitignore</span></span>
+<span id="cb555-2"><a href="git-and-github.html#cb555-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> .DS_Store <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb556"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb556-1"><a href="git-and-github.html#cb556-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Commit the file to the repo</span></span>
+<span id="cb556-2"><a href="git-and-github.html#cb556-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .gitignore</span>
+<span id="cb556-3"><a href="git-and-github.html#cb556-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&#39;.DS_Store banished!&#39;</span></span></code></pre></div>
 </div>
 <div id="amend" class="section level2 hasAnchor" number="19.6">
 <h2><span class="header-section-number">19.6</span> Amend<a href="git-and-github.html#amend" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -732,6 +733,15 @@ issue-#-short-description</p>
 <h2><span class="header-section-number">19.9</span> Squashing commits<a href="git-and-github.html#squashing-commits" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>I’ve done more of this lately. These notes should be improved too. For now, I just want to jot down that <strong>The first commit message will be the commit message for the squashed commits</strong>. So, if you know you are doing some WIP commits, you may want to start with the end in mind?</p>
 <p>You can also <a href="https://www.gitkraken.com/learn/git/problems/git-commit-amend">amend your commit message</a> in GitKraken, but this is complicated if you’ve already pushed to a remote repository.</p>
+</div>
+<div id="other-littl-quirks-and-errors" class="section level2 hasAnchor" number="19.10">
+<h2><span class="header-section-number">19.10</span> Other littl quirks and errors<a href="git-and-github.html#other-littl-quirks-and-errors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When working on Epi III – and I think this could be an issue with using git on OneDrive more generally – I would have to recommit files when I changed computers. Not because the <strong>content</strong> of the file had changed, but because something called the <strong>file mode</strong> had changed. I searched SO and seemed to fix it with this post: <a href="https://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-file-mode-chmod-changes" class="uri">https://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-file-mode-chmod-changes</a></p>
+<p>Open terminal and type:</p>
+<div class="sourceCode" id="cb557"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb557-1"><a href="git-and-github.html#cb557-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config core.fileMode false</span></code></pre></div>
+<p>Another issue I encountered when working on Epi III – and I think this could be an issue with using git on OneDrive more generally – was the existence of these “Icon” files every time I switched computers. However, they didn’t seem to actually exist (or at least they weren’t visible), and ignoring them in the usual way did not seem to <em>actually</em> ignore them. I searched SO and seemed to fix it with this post: <a href="https://stackoverflow.com/questions/17556250/how-to-ignore-icon-in-git" class="uri">https://stackoverflow.com/questions/17556250/how-to-ignore-icon-in-git</a></p>
+<p>Open terminal and type:</p>
+<div class="sourceCode" id="cb558"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb558-1"><a href="git-and-github.html#cb558-1" aria-hidden="true" tabindex="-1"></a><span class="bu">printf</span> <span class="st">&quot;Icon\r\r&quot;</span> <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
 <!--
 Clean up and add session info
 -->

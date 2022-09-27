@@ -23,7 +23,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-09-12" />
+<meta name="date" content="2022-09-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -566,6 +566,7 @@ div.csl-indent {
 <li class="chapter" data-level="19.7" data-path="git-and-github.html"><a href="git-and-github.html#pull-requests"><i class="fa fa-check"></i><b>19.7</b> Pull Requests</a></li>
 <li class="chapter" data-level="19.8" data-path="git-and-github.html"><a href="git-and-github.html#branches"><i class="fa fa-check"></i><b>19.8</b> Branches</a></li>
 <li class="chapter" data-level="19.9" data-path="git-and-github.html"><a href="git-and-github.html#squashing-commits"><i class="fa fa-check"></i><b>19.9</b> Squashing commits</a></li>
+<li class="chapter" data-level="19.10" data-path="git-and-github.html"><a href="git-and-github.html#other-littl-quirks-and-errors"><i class="fa fa-check"></i><b>19.10</b> Other littl quirks and errors</a></li>
 </ul></li>
 <li class="part"><span><b>IX Appendix</b></span></li>
 <li class="chapter" data-level="20" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html"><i class="fa fa-check"></i><b>20</b> Appendix A: Terms and Definitions</a>
@@ -600,7 +601,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="tidy-evaluation" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">4</span> Tidy Evaluation<a href="tidy-evaluation.html#tidy-evaluation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Created: 2017-06-24 <br> Updated: 2022-09-12</p>
+<p>Created: 2017-06-24 <br> Updated: 2022-09-27</p>
 <!--
 Hidden comments placeholder
 bookdown::preview_chapter("/Users/bradcannell/Dropbox/R/r_notes_bookdown/chapters/01_programming/tidy_evaluation.Rmd")
@@ -1147,12 +1148,12 @@ global environment and return rows where the value of <code>cyl</code> matches t
 ## [[1]]
 ## &lt;quosure&gt;
 ## expr: ^cyl
-## env:  0x7fd0855a2d40
+## env:  0x7f96d70f5bf0
 ## 
 ## [[2]]
 ## &lt;quosure&gt;
 ## expr: ^am
-## env:  0x7fd0855a2d40</code></pre>
+## env:  0x7f96d70f5bf0</code></pre>
 <p>Now you can inject them into tidyverse functions with the splice operator:</p>
 <div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="tidy-evaluation.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Must diffuse first</span></span>
 <span id="cb119-2"><a href="tidy-evaluation.html#cb119-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(.data, ...) {</span>

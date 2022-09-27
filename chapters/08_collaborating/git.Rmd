@@ -137,6 +137,23 @@ I've done more of this lately. These notes should be improved too. For now, I ju
 You can also [amend your commit message](https://www.gitkraken.com/learn/git/problems/git-commit-amend) in GitKraken, but this is complicated if you've already pushed to a remote repository. 
 
 
+## Other littl quirks and errors
+
+When working on Epi III -- and I think this could be an issue with using git on OneDrive more generally -- I would have to recommit files when I changed computers. Not because the **content** of the file had changed, but because something called the **file mode** had changed. I searched SO and seemed to fix it with this post: https://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-file-mode-chmod-changes
+
+Open terminal and type:
+
+```{bash eval=FALSE}
+git config core.fileMode false
+```
+
+Another issue I encountered when working on Epi III -- and I think this could be an issue with using git on OneDrive more generally -- was the existence of these "Icon" files every time I switched computers. However, they didn't seem to actually exist (or at least they weren't visible), and ignoring them in the usual way did not seem to _actually_ ignore them. I searched SO and seemed to fix it with this post: https://stackoverflow.com/questions/17556250/how-to-ignore-icon-in-git
+
+Open terminal and type:
+
+```{bash eval=FALSE}
+printf "Icon\r\r" >> .gitignore
+```
 
 
 <!--

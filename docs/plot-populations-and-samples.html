@@ -23,7 +23,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-09-12" />
+<meta name="date" content="2022-09-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -566,6 +566,7 @@ div.csl-indent {
 <li class="chapter" data-level="19.7" data-path="git-and-github.html"><a href="git-and-github.html#pull-requests"><i class="fa fa-check"></i><b>19.7</b> Pull Requests</a></li>
 <li class="chapter" data-level="19.8" data-path="git-and-github.html"><a href="git-and-github.html#branches"><i class="fa fa-check"></i><b>19.8</b> Branches</a></li>
 <li class="chapter" data-level="19.9" data-path="git-and-github.html"><a href="git-and-github.html#squashing-commits"><i class="fa fa-check"></i><b>19.9</b> Squashing commits</a></li>
+<li class="chapter" data-level="19.10" data-path="git-and-github.html"><a href="git-and-github.html#other-littl-quirks-and-errors"><i class="fa fa-check"></i><b>19.10</b> Other littl quirks and errors</a></li>
 </ul></li>
 <li class="part"><span><b>IX Appendix</b></span></li>
 <li class="chapter" data-level="20" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html"><i class="fa fa-check"></i><b>20</b> Appendix A: Terms and Definitions</a>
@@ -618,43 +619,43 @@ Hidden comments placeholder
 </div>
 <div id="load-packages-5" class="section level2 hasAnchor" number="10.3">
 <h2><span class="header-section-number">10.3</span> 📦Load packages<a href="plot-populations-and-samples.html#load-packages-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="plot-populations-and-samples.html#cb388-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb388-2"><a href="plot-populations-and-samples.html#cb388-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb388-3"><a href="plot-populations-and-samples.html#cb388-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb388-4"><a href="plot-populations-and-samples.html#cb388-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(templates)</span></code></pre></div>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="plot-populations-and-samples.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;my_colors&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="plot-populations-and-samples.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb389-2"><a href="plot-populations-and-samples.html#cb389-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb389-3"><a href="plot-populations-and-samples.html#cb389-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb389-4"><a href="plot-populations-and-samples.html#cb389-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(templates)</span></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="plot-populations-and-samples.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;my_colors&quot;</span>)</span></code></pre></div>
 </div>
 <div id="simulate-population-data" class="section level2 hasAnchor" number="10.4">
 <h2><span class="header-section-number">10.4</span> 🔢Simulate population data<a href="plot-populations-and-samples.html#simulate-population-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>I think you have to make it on a grid.</p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="plot-populations-and-samples.html#cb390-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="plot-populations-and-samples.html#cb391-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
 <p>Add exposed vs. unexposed</p>
 <p>Half exposed and half unexposed.
 If exposed, half have outcome.
 If unexposed, 10% have outcome.</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="plot-populations-and-samples.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Helper function for sampling No and Yes</span></span>
-<span id="cb391-2"><a href="plot-populations-and-samples.html#cb391-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sample_ny &lt;- function(n = 100, prob_y = 0.5) {</span></span>
-<span id="cb391-3"><a href="plot-populations-and-samples.html#cb391-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   set.seed(123)</span></span>
-<span id="cb391-4"><a href="plot-populations-and-samples.html#cb391-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   s &lt;- sample(c(&quot;No&quot;, &quot;Yes&quot;), n, TRUE, c(1 - prob_y, prob_y))</span></span>
-<span id="cb391-5"><a href="plot-populations-and-samples.html#cb391-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   s &lt;- factor(s)</span></span>
-<span id="cb391-6"><a href="plot-populations-and-samples.html#cb391-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   s</span></span>
-<span id="cb391-7"><a href="plot-populations-and-samples.html#cb391-7" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
-<span id="cb391-8"><a href="plot-populations-and-samples.html#cb391-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb391-9"><a href="plot-populations-and-samples.html#cb391-9" aria-hidden="true" tabindex="-1"></a><span class="co"># For testing</span></span>
-<span id="cb391-10"><a href="plot-populations-and-samples.html#cb391-10" aria-hidden="true" tabindex="-1"></a><span class="co"># sample_ny(prob_y = 0.1)</span></span></code></pre></div>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="plot-populations-and-samples.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Helper function for sampling No and Yes - Simplified</span></span>
-<span id="cb392-2"><a href="plot-populations-and-samples.html#cb392-2" aria-hidden="true" tabindex="-1"></a>sample_ny <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">prob_y =</span> <span class="fl">0.5</span>) {</span>
-<span id="cb392-3"><a href="plot-populations-and-samples.html#cb392-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>), n, <span class="cn">TRUE</span>, <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">-</span> prob_y, prob_y))</span>
-<span id="cb392-4"><a href="plot-populations-and-samples.html#cb392-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb392-5"><a href="plot-populations-and-samples.html#cb392-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb392-6"><a href="plot-populations-and-samples.html#cb392-6" aria-hidden="true" tabindex="-1"></a><span class="co"># For testing</span></span>
-<span id="cb392-7"><a href="plot-populations-and-samples.html#cb392-7" aria-hidden="true" tabindex="-1"></a><span class="co"># sample_ny(prob_y = 0.1)</span></span></code></pre></div>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="plot-populations-and-samples.html#cb393-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb393-2"><a href="plot-populations-and-samples.html#cb393-2" aria-hidden="true" tabindex="-1"></a>pop<span class="sc">$</span>exposed <span class="ot">&lt;-</span> <span class="fu">sample_ny</span>()</span>
-<span id="cb393-3"><a href="plot-populations-and-samples.html#cb393-3" aria-hidden="true" tabindex="-1"></a>pop<span class="sc">$</span>outcome <span class="ot">&lt;-</span> <span class="cn">NA_character_</span></span>
-<span id="cb393-4"><a href="plot-populations-and-samples.html#cb393-4" aria-hidden="true" tabindex="-1"></a>pop<span class="sc">$</span>outcome[pop<span class="sc">$</span>exposed <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span>] <span class="ot">&lt;-</span> <span class="fu">sample_ny</span>(<span class="at">n =</span> <span class="fu">sum</span>(pop<span class="sc">$</span>exposed <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span>), <span class="at">prob_y =</span> <span class="fl">0.5</span>)</span>
-<span id="cb393-5"><a href="plot-populations-and-samples.html#cb393-5" aria-hidden="true" tabindex="-1"></a>pop<span class="sc">$</span>outcome[pop<span class="sc">$</span>exposed <span class="sc">==</span> <span class="st">&quot;No&quot;</span>] <span class="ot">&lt;-</span> <span class="fu">sample_ny</span>(<span class="at">n =</span> <span class="fu">sum</span>(pop<span class="sc">$</span>exposed <span class="sc">==</span> <span class="st">&quot;No&quot;</span>), <span class="at">prob_y =</span> <span class="fl">0.1</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="plot-populations-and-samples.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(pop, exposed, outcome)</span></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="plot-populations-and-samples.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Helper function for sampling No and Yes</span></span>
+<span id="cb392-2"><a href="plot-populations-and-samples.html#cb392-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sample_ny &lt;- function(n = 100, prob_y = 0.5) {</span></span>
+<span id="cb392-3"><a href="plot-populations-and-samples.html#cb392-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   set.seed(123)</span></span>
+<span id="cb392-4"><a href="plot-populations-and-samples.html#cb392-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   s &lt;- sample(c(&quot;No&quot;, &quot;Yes&quot;), n, TRUE, c(1 - prob_y, prob_y))</span></span>
+<span id="cb392-5"><a href="plot-populations-and-samples.html#cb392-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   s &lt;- factor(s)</span></span>
+<span id="cb392-6"><a href="plot-populations-and-samples.html#cb392-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   s</span></span>
+<span id="cb392-7"><a href="plot-populations-and-samples.html#cb392-7" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
+<span id="cb392-8"><a href="plot-populations-and-samples.html#cb392-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb392-9"><a href="plot-populations-and-samples.html#cb392-9" aria-hidden="true" tabindex="-1"></a><span class="co"># For testing</span></span>
+<span id="cb392-10"><a href="plot-populations-and-samples.html#cb392-10" aria-hidden="true" tabindex="-1"></a><span class="co"># sample_ny(prob_y = 0.1)</span></span></code></pre></div>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="plot-populations-and-samples.html#cb393-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Helper function for sampling No and Yes - Simplified</span></span>
+<span id="cb393-2"><a href="plot-populations-and-samples.html#cb393-2" aria-hidden="true" tabindex="-1"></a>sample_ny <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">prob_y =</span> <span class="fl">0.5</span>) {</span>
+<span id="cb393-3"><a href="plot-populations-and-samples.html#cb393-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>), n, <span class="cn">TRUE</span>, <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">-</span> prob_y, prob_y))</span>
+<span id="cb393-4"><a href="plot-populations-and-samples.html#cb393-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb393-5"><a href="plot-populations-and-samples.html#cb393-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb393-6"><a href="plot-populations-and-samples.html#cb393-6" aria-hidden="true" tabindex="-1"></a><span class="co"># For testing</span></span>
+<span id="cb393-7"><a href="plot-populations-and-samples.html#cb393-7" aria-hidden="true" tabindex="-1"></a><span class="co"># sample_ny(prob_y = 0.1)</span></span></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="plot-populations-and-samples.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb394-2"><a href="plot-populations-and-samples.html#cb394-2" aria-hidden="true" tabindex="-1"></a>pop<span class="sc">$</span>exposed <span class="ot">&lt;-</span> <span class="fu">sample_ny</span>()</span>
+<span id="cb394-3"><a href="plot-populations-and-samples.html#cb394-3" aria-hidden="true" tabindex="-1"></a>pop<span class="sc">$</span>outcome <span class="ot">&lt;-</span> <span class="cn">NA_character_</span></span>
+<span id="cb394-4"><a href="plot-populations-and-samples.html#cb394-4" aria-hidden="true" tabindex="-1"></a>pop<span class="sc">$</span>outcome[pop<span class="sc">$</span>exposed <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span>] <span class="ot">&lt;-</span> <span class="fu">sample_ny</span>(<span class="at">n =</span> <span class="fu">sum</span>(pop<span class="sc">$</span>exposed <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span>), <span class="at">prob_y =</span> <span class="fl">0.5</span>)</span>
+<span id="cb394-5"><a href="plot-populations-and-samples.html#cb394-5" aria-hidden="true" tabindex="-1"></a>pop<span class="sc">$</span>outcome[pop<span class="sc">$</span>exposed <span class="sc">==</span> <span class="st">&quot;No&quot;</span>] <span class="ot">&lt;-</span> <span class="fu">sample_ny</span>(<span class="at">n =</span> <span class="fu">sum</span>(pop<span class="sc">$</span>exposed <span class="sc">==</span> <span class="st">&quot;No&quot;</span>), <span class="at">prob_y =</span> <span class="fl">0.1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="plot-populations-and-samples.html#cb395-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(pop, exposed, outcome)</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 3
 ##   exposed outcome     n
 ##   &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt;
@@ -665,106 +666,106 @@ If unexposed, 10% have outcome.</p>
 </div>
 <div id="plot" class="section level2 hasAnchor" number="10.5">
 <h2><span class="header-section-number">10.5</span> Plot<a href="plot-populations-and-samples.html#plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="plot-populations-and-samples.html#cb396-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pull orange and blue colors from templates package</span></span>
-<span id="cb396-2"><a href="plot-populations-and-samples.html#cb396-2" aria-hidden="true" tabindex="-1"></a>u_orange <span class="ot">&lt;-</span> <span class="fu">filter</span>(my_colors, description <span class="sc">==</span> <span class="st">&quot;University Orange&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(hex)</span>
-<span id="cb396-3"><a href="plot-populations-and-samples.html#cb396-3" aria-hidden="true" tabindex="-1"></a>u_blue <span class="ot">&lt;-</span> <span class="fu">filter</span>(my_colors, description <span class="sc">==</span> <span class="st">&quot;University Blue&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(hex)</span></code></pre></div>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="plot-populations-and-samples.html#cb397-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pop, <span class="fu">aes</span>(x, y)) <span class="sc">+</span> </span>
-<span id="cb397-2"><a href="plot-populations-and-samples.html#cb397-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> exposed, <span class="at">shape =</span> outcome)) <span class="sc">+</span></span>
-<span id="cb397-3"><a href="plot-populations-and-samples.html#cb397-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="st">&quot;Exposed&quot;</span>, <span class="at">values =</span> <span class="fu">c</span>(u_blue, u_orange)) <span class="sc">+</span></span>
-<span id="cb397-4"><a href="plot-populations-and-samples.html#cb397-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb397-5"><a href="plot-populations-and-samples.html#cb397-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb397-6"><a href="plot-populations-and-samples.html#cb397-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb397-7"><a href="plot-populations-and-samples.html#cb397-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb397-8"><a href="plot-populations-and-samples.html#cb397-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb397-9"><a href="plot-populations-and-samples.html#cb397-9" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="plot-populations-and-samples.html#cb397-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pull orange and blue colors from templates package</span></span>
+<span id="cb397-2"><a href="plot-populations-and-samples.html#cb397-2" aria-hidden="true" tabindex="-1"></a>u_orange <span class="ot">&lt;-</span> <span class="fu">filter</span>(my_colors, description <span class="sc">==</span> <span class="st">&quot;University Orange&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(hex)</span>
+<span id="cb397-3"><a href="plot-populations-and-samples.html#cb397-3" aria-hidden="true" tabindex="-1"></a>u_blue <span class="ot">&lt;-</span> <span class="fu">filter</span>(my_colors, description <span class="sc">==</span> <span class="st">&quot;University Blue&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(hex)</span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="plot-populations-and-samples.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pop, <span class="fu">aes</span>(x, y)) <span class="sc">+</span> </span>
+<span id="cb398-2"><a href="plot-populations-and-samples.html#cb398-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> exposed, <span class="at">shape =</span> outcome)) <span class="sc">+</span></span>
+<span id="cb398-3"><a href="plot-populations-and-samples.html#cb398-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="st">&quot;Exposed&quot;</span>, <span class="at">values =</span> <span class="fu">c</span>(u_blue, u_orange)) <span class="sc">+</span></span>
+<span id="cb398-4"><a href="plot-populations-and-samples.html#cb398-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb398-5"><a href="plot-populations-and-samples.html#cb398-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb398-6"><a href="plot-populations-and-samples.html#cb398-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb398-7"><a href="plot-populations-and-samples.html#cb398-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb398-8"><a href="plot-populations-and-samples.html#cb398-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb398-9"><a href="plot-populations-and-samples.html#cb398-9" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <p><img src="R-Notes_files/figure-html/unnamed-chunk-260-1.png" width="672" /></p>
 <div id="combine-legends" class="section level3 hasAnchor" number="10.5.1">
 <h3><span class="header-section-number">10.5.1</span> Combine legends<a href="plot-populations-and-samples.html#combine-legends" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To combine the legend, we need to have a single variable with exposure and outcome information.</p>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="plot-populations-and-samples.html#cb398-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> pop <span class="sc">%&gt;%</span> </span>
-<span id="cb398-2"><a href="plot-populations-and-samples.html#cb398-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb398-3"><a href="plot-populations-and-samples.html#cb398-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">e_o =</span> <span class="fu">case_when</span>(</span>
-<span id="cb398-4"><a href="plot-populations-and-samples.html#cb398-4" aria-hidden="true" tabindex="-1"></a>      exposed <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">&amp;</span> outcome <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">~</span> <span class="st">&quot;a&quot;</span>,</span>
-<span id="cb398-5"><a href="plot-populations-and-samples.html#cb398-5" aria-hidden="true" tabindex="-1"></a>      exposed <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">&amp;</span> outcome <span class="sc">==</span> <span class="st">&quot;No&quot;</span> <span class="sc">~</span> <span class="st">&quot;b&quot;</span>,</span>
-<span id="cb398-6"><a href="plot-populations-and-samples.html#cb398-6" aria-hidden="true" tabindex="-1"></a>      exposed <span class="sc">==</span> <span class="st">&quot;No&quot;</span> <span class="sc">&amp;</span> outcome <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">~</span> <span class="st">&quot;c&quot;</span>,</span>
-<span id="cb398-7"><a href="plot-populations-and-samples.html#cb398-7" aria-hidden="true" tabindex="-1"></a>      exposed <span class="sc">==</span> <span class="st">&quot;No&quot;</span> <span class="sc">&amp;</span> outcome <span class="sc">==</span> <span class="st">&quot;No&quot;</span> <span class="sc">~</span> <span class="st">&quot;d&quot;</span></span>
-<span id="cb398-8"><a href="plot-populations-and-samples.html#cb398-8" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb398-9"><a href="plot-populations-and-samples.html#cb398-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">e_o_f =</span> <span class="fu">factor</span>(</span>
-<span id="cb398-10"><a href="plot-populations-and-samples.html#cb398-10" aria-hidden="true" tabindex="-1"></a>      e_o, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>),</span>
-<span id="cb398-11"><a href="plot-populations-and-samples.html#cb398-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(</span>
-<span id="cb398-12"><a href="plot-populations-and-samples.html#cb398-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Exposed - Outcome&quot;</span>, <span class="st">&quot;Exposed - No Outcome&quot;</span>, </span>
-<span id="cb398-13"><a href="plot-populations-and-samples.html#cb398-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Not exposed - Outcome&quot;</span>, <span class="st">&quot;Not exposed - No outcome&quot;</span></span>
-<span id="cb398-14"><a href="plot-populations-and-samples.html#cb398-14" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb398-15"><a href="plot-populations-and-samples.html#cb398-15" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb398-16"><a href="plot-populations-and-samples.html#cb398-16" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="plot-populations-and-samples.html#cb399-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Helper function for shapes</span></span>
-<span id="cb399-2"><a href="plot-populations-and-samples.html#cb399-2" aria-hidden="true" tabindex="-1"></a>cir <span class="ot">&lt;-</span> <span class="dv">16</span></span>
-<span id="cb399-3"><a href="plot-populations-and-samples.html#cb399-3" aria-hidden="true" tabindex="-1"></a>tri <span class="ot">&lt;-</span> <span class="dv">17</span></span></code></pre></div>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="plot-populations-and-samples.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pop, <span class="fu">aes</span>(x, y, <span class="at">color =</span> e_o_f, <span class="at">shape =</span> e_o_f)) <span class="sc">+</span> </span>
-<span id="cb400-2"><a href="plot-populations-and-samples.html#cb400-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb400-3"><a href="plot-populations-and-samples.html#cb400-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="st">&quot;Exposure-Outcome&quot;</span>, <span class="at">values =</span> <span class="fu">c</span>(u_orange, u_orange, u_blue, u_blue)) <span class="sc">+</span></span>
-<span id="cb400-4"><a href="plot-populations-and-samples.html#cb400-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="st">&quot;Exposure-Outcome&quot;</span>, <span class="at">values =</span> <span class="fu">c</span>(tri, cir, tri, cir)) <span class="sc">+</span></span>
-<span id="cb400-5"><a href="plot-populations-and-samples.html#cb400-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb400-6"><a href="plot-populations-and-samples.html#cb400-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb400-7"><a href="plot-populations-and-samples.html#cb400-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb400-8"><a href="plot-populations-and-samples.html#cb400-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb400-9"><a href="plot-populations-and-samples.html#cb400-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb400-10"><a href="plot-populations-and-samples.html#cb400-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="plot-populations-and-samples.html#cb399-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> pop <span class="sc">%&gt;%</span> </span>
+<span id="cb399-2"><a href="plot-populations-and-samples.html#cb399-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb399-3"><a href="plot-populations-and-samples.html#cb399-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">e_o =</span> <span class="fu">case_when</span>(</span>
+<span id="cb399-4"><a href="plot-populations-and-samples.html#cb399-4" aria-hidden="true" tabindex="-1"></a>      exposed <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">&amp;</span> outcome <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">~</span> <span class="st">&quot;a&quot;</span>,</span>
+<span id="cb399-5"><a href="plot-populations-and-samples.html#cb399-5" aria-hidden="true" tabindex="-1"></a>      exposed <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">&amp;</span> outcome <span class="sc">==</span> <span class="st">&quot;No&quot;</span> <span class="sc">~</span> <span class="st">&quot;b&quot;</span>,</span>
+<span id="cb399-6"><a href="plot-populations-and-samples.html#cb399-6" aria-hidden="true" tabindex="-1"></a>      exposed <span class="sc">==</span> <span class="st">&quot;No&quot;</span> <span class="sc">&amp;</span> outcome <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">~</span> <span class="st">&quot;c&quot;</span>,</span>
+<span id="cb399-7"><a href="plot-populations-and-samples.html#cb399-7" aria-hidden="true" tabindex="-1"></a>      exposed <span class="sc">==</span> <span class="st">&quot;No&quot;</span> <span class="sc">&amp;</span> outcome <span class="sc">==</span> <span class="st">&quot;No&quot;</span> <span class="sc">~</span> <span class="st">&quot;d&quot;</span></span>
+<span id="cb399-8"><a href="plot-populations-and-samples.html#cb399-8" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb399-9"><a href="plot-populations-and-samples.html#cb399-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">e_o_f =</span> <span class="fu">factor</span>(</span>
+<span id="cb399-10"><a href="plot-populations-and-samples.html#cb399-10" aria-hidden="true" tabindex="-1"></a>      e_o, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>),</span>
+<span id="cb399-11"><a href="plot-populations-and-samples.html#cb399-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(</span>
+<span id="cb399-12"><a href="plot-populations-and-samples.html#cb399-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Exposed - Outcome&quot;</span>, <span class="st">&quot;Exposed - No Outcome&quot;</span>, </span>
+<span id="cb399-13"><a href="plot-populations-and-samples.html#cb399-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Not exposed - Outcome&quot;</span>, <span class="st">&quot;Not exposed - No outcome&quot;</span></span>
+<span id="cb399-14"><a href="plot-populations-and-samples.html#cb399-14" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb399-15"><a href="plot-populations-and-samples.html#cb399-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb399-16"><a href="plot-populations-and-samples.html#cb399-16" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="plot-populations-and-samples.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Helper function for shapes</span></span>
+<span id="cb400-2"><a href="plot-populations-and-samples.html#cb400-2" aria-hidden="true" tabindex="-1"></a>cir <span class="ot">&lt;-</span> <span class="dv">16</span></span>
+<span id="cb400-3"><a href="plot-populations-and-samples.html#cb400-3" aria-hidden="true" tabindex="-1"></a>tri <span class="ot">&lt;-</span> <span class="dv">17</span></span></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="plot-populations-and-samples.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pop, <span class="fu">aes</span>(x, y, <span class="at">color =</span> e_o_f, <span class="at">shape =</span> e_o_f)) <span class="sc">+</span> </span>
+<span id="cb401-2"><a href="plot-populations-and-samples.html#cb401-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb401-3"><a href="plot-populations-and-samples.html#cb401-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="st">&quot;Exposure-Outcome&quot;</span>, <span class="at">values =</span> <span class="fu">c</span>(u_orange, u_orange, u_blue, u_blue)) <span class="sc">+</span></span>
+<span id="cb401-4"><a href="plot-populations-and-samples.html#cb401-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="st">&quot;Exposure-Outcome&quot;</span>, <span class="at">values =</span> <span class="fu">c</span>(tri, cir, tri, cir)) <span class="sc">+</span></span>
+<span id="cb401-5"><a href="plot-populations-and-samples.html#cb401-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb401-6"><a href="plot-populations-and-samples.html#cb401-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb401-7"><a href="plot-populations-and-samples.html#cb401-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb401-8"><a href="plot-populations-and-samples.html#cb401-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb401-9"><a href="plot-populations-and-samples.html#cb401-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb401-10"><a href="plot-populations-and-samples.html#cb401-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <p><img src="R-Notes_files/figure-html/unnamed-chunk-263-1.png" width="672" /></p>
 </div>
 <div id="sample-box" class="section level3 hasAnchor" number="10.5.2">
 <h3><span class="header-section-number">10.5.2</span> Sample box<a href="plot-populations-and-samples.html#sample-box" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sometimes I want to draw a box around a sample. For example, let’s draw a box around a 5x5 sample in the top right corner.</p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="plot-populations-and-samples.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pop, <span class="fu">aes</span>(x, y)) <span class="sc">+</span> </span>
-<span id="cb401-2"><a href="plot-populations-and-samples.html#cb401-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> e_o_f, <span class="at">shape =</span> e_o_f)) <span class="sc">+</span></span>
-<span id="cb401-3"><a href="plot-populations-and-samples.html#cb401-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Draw sample box</span></span>
-<span id="cb401-4"><a href="plot-populations-and-samples.html#cb401-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(</span>
-<span id="cb401-5"><a href="plot-populations-and-samples.html#cb401-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmin =</span> <span class="fl">0.7</span>, <span class="at">xmax =</span> <span class="fl">5.3</span>, <span class="at">ymin =</span> <span class="fl">5.7</span>, <span class="at">ymax =</span> <span class="fl">10.3</span>,</span>
-<span id="cb401-6"><a href="plot-populations-and-samples.html#cb401-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span></span>
-<span id="cb401-7"><a href="plot-populations-and-samples.html#cb401-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb401-8"><a href="plot-populations-and-samples.html#cb401-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="st">&quot;Exposure-Outcome&quot;</span>, <span class="at">values =</span> <span class="fu">c</span>(u_orange, u_orange, u_blue, u_blue)) <span class="sc">+</span></span>
-<span id="cb401-9"><a href="plot-populations-and-samples.html#cb401-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="st">&quot;Exposure-Outcome&quot;</span>, <span class="at">values =</span> <span class="fu">c</span>(tri, cir, tri, cir)) <span class="sc">+</span></span>
-<span id="cb401-10"><a href="plot-populations-and-samples.html#cb401-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb401-11"><a href="plot-populations-and-samples.html#cb401-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb401-12"><a href="plot-populations-and-samples.html#cb401-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb401-13"><a href="plot-populations-and-samples.html#cb401-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb401-14"><a href="plot-populations-and-samples.html#cb401-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb401-15"><a href="plot-populations-and-samples.html#cb401-15" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="plot-populations-and-samples.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pop, <span class="fu">aes</span>(x, y)) <span class="sc">+</span> </span>
+<span id="cb402-2"><a href="plot-populations-and-samples.html#cb402-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> e_o_f, <span class="at">shape =</span> e_o_f)) <span class="sc">+</span></span>
+<span id="cb402-3"><a href="plot-populations-and-samples.html#cb402-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Draw sample box</span></span>
+<span id="cb402-4"><a href="plot-populations-and-samples.html#cb402-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(</span>
+<span id="cb402-5"><a href="plot-populations-and-samples.html#cb402-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmin =</span> <span class="fl">0.7</span>, <span class="at">xmax =</span> <span class="fl">5.3</span>, <span class="at">ymin =</span> <span class="fl">5.7</span>, <span class="at">ymax =</span> <span class="fl">10.3</span>,</span>
+<span id="cb402-6"><a href="plot-populations-and-samples.html#cb402-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span></span>
+<span id="cb402-7"><a href="plot-populations-and-samples.html#cb402-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb402-8"><a href="plot-populations-and-samples.html#cb402-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="st">&quot;Exposure-Outcome&quot;</span>, <span class="at">values =</span> <span class="fu">c</span>(u_orange, u_orange, u_blue, u_blue)) <span class="sc">+</span></span>
+<span id="cb402-9"><a href="plot-populations-and-samples.html#cb402-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="st">&quot;Exposure-Outcome&quot;</span>, <span class="at">values =</span> <span class="fu">c</span>(tri, cir, tri, cir)) <span class="sc">+</span></span>
+<span id="cb402-10"><a href="plot-populations-and-samples.html#cb402-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb402-11"><a href="plot-populations-and-samples.html#cb402-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb402-12"><a href="plot-populations-and-samples.html#cb402-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb402-13"><a href="plot-populations-and-samples.html#cb402-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb402-14"><a href="plot-populations-and-samples.html#cb402-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb402-15"><a href="plot-populations-and-samples.html#cb402-15" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <p><img src="R-Notes_files/figure-html/unnamed-chunk-264-1.png" width="672" /></p>
 </div>
 <div id="align-colors-and-shapes" class="section level3 hasAnchor" number="10.5.3">
 <h3><span class="header-section-number">10.5.3</span> Align colors and shapes<a href="plot-populations-and-samples.html#align-colors-and-shapes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sometimes I want the exposed-unexposed to be haphazardly spread around the plot like they are above. Sometimes, I want the exposed next to the exposed and the unexposed next to the unexposed.</p>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="plot-populations-and-samples.html#cb402-1" aria-hidden="true" tabindex="-1"></a>pop_arrange <span class="ot">&lt;-</span> pop <span class="sc">%&gt;%</span> </span>
-<span id="cb402-2"><a href="plot-populations-and-samples.html#cb402-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(exposed), <span class="fu">desc</span>(outcome)) <span class="sc">%&gt;%</span> </span>
-<span id="cb402-3"><a href="plot-populations-and-samples.html#cb402-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Renumber the grid</span></span>
-<span id="cb402-4"><a href="plot-populations-and-samples.html#cb402-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb402-5"><a href="plot-populations-and-samples.html#cb402-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">each =</span> <span class="dv">10</span>),</span>
-<span id="cb402-6"><a href="plot-populations-and-samples.html#cb402-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">10</span>)</span>
-<span id="cb402-7"><a href="plot-populations-and-samples.html#cb402-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="plot-populations-and-samples.html#cb403-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pop_arrange, <span class="fu">aes</span>(x, y)) <span class="sc">+</span> </span>
-<span id="cb403-2"><a href="plot-populations-and-samples.html#cb403-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> e_o_f, <span class="at">shape =</span> e_o_f)) <span class="sc">+</span></span>
-<span id="cb403-3"><a href="plot-populations-and-samples.html#cb403-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="st">&quot;Exposure-Outcome&quot;</span>, <span class="at">values =</span> <span class="fu">c</span>(u_orange, u_orange, u_blue, u_blue)) <span class="sc">+</span></span>
-<span id="cb403-4"><a href="plot-populations-and-samples.html#cb403-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="st">&quot;Exposure-Outcome&quot;</span>, <span class="at">values =</span> <span class="fu">c</span>(tri, cir, tri, cir)) <span class="sc">+</span></span>
-<span id="cb403-5"><a href="plot-populations-and-samples.html#cb403-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb403-6"><a href="plot-populations-and-samples.html#cb403-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb403-7"><a href="plot-populations-and-samples.html#cb403-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb403-8"><a href="plot-populations-and-samples.html#cb403-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb403-9"><a href="plot-populations-and-samples.html#cb403-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb403-10"><a href="plot-populations-and-samples.html#cb403-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<p><img src="R-Notes_files/figure-html/unnamed-chunk-266-1.png" width="672" /></p>
-<p>Use facet to make them stand out even more clearly.</p>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="plot-populations-and-samples.html#cb403-1" aria-hidden="true" tabindex="-1"></a>pop_arrange <span class="ot">&lt;-</span> pop <span class="sc">%&gt;%</span> </span>
+<span id="cb403-2"><a href="plot-populations-and-samples.html#cb403-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(exposed), <span class="fu">desc</span>(outcome)) <span class="sc">%&gt;%</span> </span>
+<span id="cb403-3"><a href="plot-populations-and-samples.html#cb403-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Renumber the grid</span></span>
+<span id="cb403-4"><a href="plot-populations-and-samples.html#cb403-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb403-5"><a href="plot-populations-and-samples.html#cb403-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">each =</span> <span class="dv">10</span>),</span>
+<span id="cb403-6"><a href="plot-populations-and-samples.html#cb403-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">10</span>)</span>
+<span id="cb403-7"><a href="plot-populations-and-samples.html#cb403-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="plot-populations-and-samples.html#cb404-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pop_arrange, <span class="fu">aes</span>(x, y)) <span class="sc">+</span> </span>
 <span id="cb404-2"><a href="plot-populations-and-samples.html#cb404-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> e_o_f, <span class="at">shape =</span> e_o_f)) <span class="sc">+</span></span>
 <span id="cb404-3"><a href="plot-populations-and-samples.html#cb404-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="st">&quot;Exposure-Outcome&quot;</span>, <span class="at">values =</span> <span class="fu">c</span>(u_orange, u_orange, u_blue, u_blue)) <span class="sc">+</span></span>
 <span id="cb404-4"><a href="plot-populations-and-samples.html#cb404-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="st">&quot;Exposure-Outcome&quot;</span>, <span class="at">values =</span> <span class="fu">c</span>(tri, cir, tri, cir)) <span class="sc">+</span></span>
-<span id="cb404-5"><a href="plot-populations-and-samples.html#cb404-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(e_o_f))<span class="sc">+</span></span>
-<span id="cb404-6"><a href="plot-populations-and-samples.html#cb404-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb404-7"><a href="plot-populations-and-samples.html#cb404-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb404-8"><a href="plot-populations-and-samples.html#cb404-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb404-9"><a href="plot-populations-and-samples.html#cb404-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb404-10"><a href="plot-populations-and-samples.html#cb404-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb404-11"><a href="plot-populations-and-samples.html#cb404-11" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<span id="cb404-5"><a href="plot-populations-and-samples.html#cb404-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb404-6"><a href="plot-populations-and-samples.html#cb404-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb404-7"><a href="plot-populations-and-samples.html#cb404-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb404-8"><a href="plot-populations-and-samples.html#cb404-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb404-9"><a href="plot-populations-and-samples.html#cb404-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb404-10"><a href="plot-populations-and-samples.html#cb404-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="R-Notes_files/figure-html/unnamed-chunk-266-1.png" width="672" /></p>
+<p>Use facet to make them stand out even more clearly.</p>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="plot-populations-and-samples.html#cb405-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pop_arrange, <span class="fu">aes</span>(x, y)) <span class="sc">+</span> </span>
+<span id="cb405-2"><a href="plot-populations-and-samples.html#cb405-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> e_o_f, <span class="at">shape =</span> e_o_f)) <span class="sc">+</span></span>
+<span id="cb405-3"><a href="plot-populations-and-samples.html#cb405-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="st">&quot;Exposure-Outcome&quot;</span>, <span class="at">values =</span> <span class="fu">c</span>(u_orange, u_orange, u_blue, u_blue)) <span class="sc">+</span></span>
+<span id="cb405-4"><a href="plot-populations-and-samples.html#cb405-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="st">&quot;Exposure-Outcome&quot;</span>, <span class="at">values =</span> <span class="fu">c</span>(tri, cir, tri, cir)) <span class="sc">+</span></span>
+<span id="cb405-5"><a href="plot-populations-and-samples.html#cb405-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(e_o_f))<span class="sc">+</span></span>
+<span id="cb405-6"><a href="plot-populations-and-samples.html#cb405-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb405-7"><a href="plot-populations-and-samples.html#cb405-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb405-8"><a href="plot-populations-and-samples.html#cb405-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb405-9"><a href="plot-populations-and-samples.html#cb405-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb405-10"><a href="plot-populations-and-samples.html#cb405-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb405-11"><a href="plot-populations-and-samples.html#cb405-11" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <p><img src="R-Notes_files/figure-html/unnamed-chunk-267-1.png" width="672" /></p>
 </div>
 </div>
@@ -772,139 +773,139 @@ If unexposed, 10% have outcome.</p>
 <h2><span class="header-section-number">10.6</span> More helper functions<a href="plot-populations-and-samples.html#more-helper-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="create-a-pop-of-size-x-with-e-prop-exposed-and-o-prop-with-outcome" class="section level3 hasAnchor" number="10.6.1">
 <h3><span class="header-section-number">10.6.1</span> Create a pop of size x with e prop exposed and o prop with outcome<a href="plot-populations-and-samples.html#create-a-pop-of-size-x-with-e-prop-exposed-and-o-prop-with-outcome" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="plot-populations-and-samples.html#cb405-1" aria-hidden="true" tabindex="-1"></a>make_pop <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n_total =</span> <span class="dv">100</span>, </span>
-<span id="cb405-2"><a href="plot-populations-and-samples.html#cb405-2" aria-hidden="true" tabindex="-1"></a>                     prob_exposed, </span>
-<span id="cb405-3"><a href="plot-populations-and-samples.html#cb405-3" aria-hidden="true" tabindex="-1"></a>                     prob_outcome_exposed,</span>
-<span id="cb405-4"><a href="plot-populations-and-samples.html#cb405-4" aria-hidden="true" tabindex="-1"></a>                     prob_outcome_unexposed,</span>
-<span id="cb405-5"><a href="plot-populations-and-samples.html#cb405-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">arrange =</span> <span class="cn">FALSE</span>) {</span>
-<span id="cb405-6"><a href="plot-populations-and-samples.html#cb405-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Figure out the smallest integer that will be at least size</span></span>
-<span id="cb405-7"><a href="plot-populations-and-samples.html#cb405-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># n_total when multiplied by 2. The idea is to figure out the dimensions</span></span>
-<span id="cb405-8"><a href="plot-populations-and-samples.html#cb405-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># for the closest thing I can get to a square given n_total</span></span>
-<span id="cb405-9"><a href="plot-populations-and-samples.html#cb405-9" aria-hidden="true" tabindex="-1"></a>  n_sqrt <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n_total)</span>
-<span id="cb405-10"><a href="plot-populations-and-samples.html#cb405-10" aria-hidden="true" tabindex="-1"></a>  n_sqrt_ceiling <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(n_sqrt)</span>
-<span id="cb405-11"><a href="plot-populations-and-samples.html#cb405-11" aria-hidden="true" tabindex="-1"></a>  drop <span class="ot">&lt;-</span> n_sqrt_ceiling<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> n_total</span>
-<span id="cb405-12"><a href="plot-populations-and-samples.html#cb405-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb405-13"><a href="plot-populations-and-samples.html#cb405-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Make coordinates for grid of points</span></span>
-<span id="cb405-14"><a href="plot-populations-and-samples.html#cb405-14" aria-hidden="true" tabindex="-1"></a>  pop <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
-<span id="cb405-15"><a href="plot-populations-and-samples.html#cb405-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">seq</span>(n_sqrt_ceiling),</span>
-<span id="cb405-16"><a href="plot-populations-and-samples.html#cb405-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">seq</span>(n_sqrt_ceiling)</span>
-<span id="cb405-17"><a href="plot-populations-and-samples.html#cb405-17" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb405-18"><a href="plot-populations-and-samples.html#cb405-18" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb405-19"><a href="plot-populations-and-samples.html#cb405-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Drop of n_sqrt is uneven. Drop from bottom right corner.</span></span>
-<span id="cb405-20"><a href="plot-populations-and-samples.html#cb405-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># High x, low y.</span></span>
-<span id="cb405-21"><a href="plot-populations-and-samples.html#cb405-21" aria-hidden="true" tabindex="-1"></a>  pop <span class="ot">&lt;-</span> pop <span class="sc">%&gt;%</span> </span>
-<span id="cb405-22"><a href="plot-populations-and-samples.html#cb405-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(y)) <span class="sc">%&gt;%</span> </span>
-<span id="cb405-23"><a href="plot-populations-and-samples.html#cb405-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span>(<span class="fu">n</span>() <span class="sc">-</span> drop)) <span class="sc">%&gt;%</span> </span>
-<span id="cb405-24"><a href="plot-populations-and-samples.html#cb405-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(x, y)</span>
-<span id="cb405-25"><a href="plot-populations-and-samples.html#cb405-25" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb405-26"><a href="plot-populations-and-samples.html#cb405-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># I still want y to be base 1</span></span>
-<span id="cb405-27"><a href="plot-populations-and-samples.html#cb405-27" aria-hidden="true" tabindex="-1"></a>  pop<span class="sc">$</span>y <span class="ot">&lt;-</span> pop<span class="sc">$</span>y <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">min</span>(pop<span class="sc">$</span>y))</span>
-<span id="cb405-28"><a href="plot-populations-and-samples.html#cb405-28" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb405-29"><a href="plot-populations-and-samples.html#cb405-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add exposed and unexposed</span></span>
-<span id="cb405-30"><a href="plot-populations-and-samples.html#cb405-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Helper function for sampling No and Yes - Simplified</span></span>
-<span id="cb405-31"><a href="plot-populations-and-samples.html#cb405-31" aria-hidden="true" tabindex="-1"></a>  sample_ny <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">prob_y =</span> <span class="fl">0.5</span>) {</span>
-<span id="cb405-32"><a href="plot-populations-and-samples.html#cb405-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>), n, <span class="cn">TRUE</span>, <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">-</span> prob_y, prob_y))</span>
-<span id="cb405-33"><a href="plot-populations-and-samples.html#cb405-33" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb405-34"><a href="plot-populations-and-samples.html#cb405-34" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb405-35"><a href="plot-populations-and-samples.html#cb405-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add exposed</span></span>
-<span id="cb405-36"><a href="plot-populations-and-samples.html#cb405-36" aria-hidden="true" tabindex="-1"></a>  pop<span class="sc">$</span>exposed <span class="ot">&lt;-</span> <span class="fu">sample_ny</span>(<span class="at">n =</span> n_total, <span class="at">prob_y =</span> prob_exposed)</span>
-<span id="cb405-37"><a href="plot-populations-and-samples.html#cb405-37" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb405-38"><a href="plot-populations-and-samples.html#cb405-38" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add outcome</span></span>
-<span id="cb405-39"><a href="plot-populations-and-samples.html#cb405-39" aria-hidden="true" tabindex="-1"></a>  pop<span class="sc">$</span>outcome <span class="ot">&lt;-</span> <span class="cn">NA_character_</span></span>
-<span id="cb405-40"><a href="plot-populations-and-samples.html#cb405-40" aria-hidden="true" tabindex="-1"></a>  n_exp_y <span class="ot">&lt;-</span> <span class="fu">sum</span>(pop<span class="sc">$</span>exposed <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span>)</span>
-<span id="cb405-41"><a href="plot-populations-and-samples.html#cb405-41" aria-hidden="true" tabindex="-1"></a>  n_exp_n <span class="ot">&lt;-</span> <span class="fu">sum</span>(pop<span class="sc">$</span>exposed <span class="sc">==</span> <span class="st">&quot;No&quot;</span>)</span>
-<span id="cb405-42"><a href="plot-populations-and-samples.html#cb405-42" aria-hidden="true" tabindex="-1"></a>  pop<span class="sc">$</span>outcome[pop<span class="sc">$</span>exposed <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span>] <span class="ot">&lt;-</span> <span class="fu">sample_ny</span>(n_exp_y, <span class="at">prob_y =</span> prob_outcome_exposed)</span>
-<span id="cb405-43"><a href="plot-populations-and-samples.html#cb405-43" aria-hidden="true" tabindex="-1"></a>  pop<span class="sc">$</span>outcome[pop<span class="sc">$</span>exposed <span class="sc">==</span> <span class="st">&quot;No&quot;</span>] <span class="ot">&lt;-</span> <span class="fu">sample_ny</span>(n_exp_n, <span class="at">prob_y =</span> prob_outcome_unexposed)</span>
-<span id="cb405-44"><a href="plot-populations-and-samples.html#cb405-44" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb405-45"><a href="plot-populations-and-samples.html#cb405-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add exposure-outcome group columns</span></span>
-<span id="cb405-46"><a href="plot-populations-and-samples.html#cb405-46" aria-hidden="true" tabindex="-1"></a>  <span class="co"># To combine the legend, we need to have a single variable with exposure </span></span>
-<span id="cb405-47"><a href="plot-populations-and-samples.html#cb405-47" aria-hidden="true" tabindex="-1"></a>  <span class="co"># and outcome information.</span></span>
-<span id="cb405-48"><a href="plot-populations-and-samples.html#cb405-48" aria-hidden="true" tabindex="-1"></a>  pop <span class="ot">&lt;-</span> pop <span class="sc">%&gt;%</span> </span>
-<span id="cb405-49"><a href="plot-populations-and-samples.html#cb405-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb405-50"><a href="plot-populations-and-samples.html#cb405-50" aria-hidden="true" tabindex="-1"></a>      <span class="at">e_o =</span> <span class="fu">case_when</span>(</span>
-<span id="cb405-51"><a href="plot-populations-and-samples.html#cb405-51" aria-hidden="true" tabindex="-1"></a>        exposed <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">&amp;</span> outcome <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">~</span> <span class="st">&quot;a&quot;</span>,</span>
-<span id="cb405-52"><a href="plot-populations-and-samples.html#cb405-52" aria-hidden="true" tabindex="-1"></a>        exposed <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">&amp;</span> outcome <span class="sc">==</span> <span class="st">&quot;No&quot;</span> <span class="sc">~</span> <span class="st">&quot;b&quot;</span>,</span>
-<span id="cb405-53"><a href="plot-populations-and-samples.html#cb405-53" aria-hidden="true" tabindex="-1"></a>        exposed <span class="sc">==</span> <span class="st">&quot;No&quot;</span> <span class="sc">&amp;</span> outcome <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">~</span> <span class="st">&quot;c&quot;</span>,</span>
-<span id="cb405-54"><a href="plot-populations-and-samples.html#cb405-54" aria-hidden="true" tabindex="-1"></a>        exposed <span class="sc">==</span> <span class="st">&quot;No&quot;</span> <span class="sc">&amp;</span> outcome <span class="sc">==</span> <span class="st">&quot;No&quot;</span> <span class="sc">~</span> <span class="st">&quot;d&quot;</span></span>
-<span id="cb405-55"><a href="plot-populations-and-samples.html#cb405-55" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb405-56"><a href="plot-populations-and-samples.html#cb405-56" aria-hidden="true" tabindex="-1"></a>      <span class="at">e_o_f =</span> <span class="fu">factor</span>(</span>
-<span id="cb405-57"><a href="plot-populations-and-samples.html#cb405-57" aria-hidden="true" tabindex="-1"></a>        e_o, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>),</span>
-<span id="cb405-58"><a href="plot-populations-and-samples.html#cb405-58" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(</span>
-<span id="cb405-59"><a href="plot-populations-and-samples.html#cb405-59" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;Exposed - Outcome&quot;</span>, <span class="st">&quot;Exposed - No Outcome&quot;</span>, </span>
-<span id="cb405-60"><a href="plot-populations-and-samples.html#cb405-60" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;Not exposed - Outcome&quot;</span>, <span class="st">&quot;Not exposed - No outcome&quot;</span></span>
-<span id="cb405-61"><a href="plot-populations-and-samples.html#cb405-61" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb405-62"><a href="plot-populations-and-samples.html#cb405-62" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb405-63"><a href="plot-populations-and-samples.html#cb405-63" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb405-64"><a href="plot-populations-and-samples.html#cb405-64" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb405-65"><a href="plot-populations-and-samples.html#cb405-65" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Arrange </span></span>
-<span id="cb405-66"><a href="plot-populations-and-samples.html#cb405-66" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Sometimes I want the exposed-unexposed to be haphazardly spread around the </span></span>
-<span id="cb405-67"><a href="plot-populations-and-samples.html#cb405-67" aria-hidden="true" tabindex="-1"></a>  <span class="co"># plot. Sometimes, I want the exposed next to the exposed and the unexposed </span></span>
-<span id="cb405-68"><a href="plot-populations-and-samples.html#cb405-68" aria-hidden="true" tabindex="-1"></a>  <span class="co"># next to the unexposed.</span></span>
-<span id="cb405-69"><a href="plot-populations-and-samples.html#cb405-69" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (arrange) {</span>
-<span id="cb405-70"><a href="plot-populations-and-samples.html#cb405-70" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Separate x and y from the rest of the data before arranging</span></span>
-<span id="cb405-71"><a href="plot-populations-and-samples.html#cb405-71" aria-hidden="true" tabindex="-1"></a>    x_y <span class="ot">&lt;-</span> <span class="fu">select</span>(pop, x, y)</span>
-<span id="cb405-72"><a href="plot-populations-and-samples.html#cb405-72" aria-hidden="true" tabindex="-1"></a>    pop <span class="ot">&lt;-</span> pop <span class="sc">%&gt;%</span> </span>
-<span id="cb405-73"><a href="plot-populations-and-samples.html#cb405-73" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(<span class="sc">-</span>x, <span class="sc">-</span>y) <span class="sc">%&gt;%</span> </span>
-<span id="cb405-74"><a href="plot-populations-and-samples.html#cb405-74" aria-hidden="true" tabindex="-1"></a>      <span class="fu">arrange</span>(<span class="fu">desc</span>(exposed), <span class="fu">desc</span>(outcome))</span>
-<span id="cb405-75"><a href="plot-populations-and-samples.html#cb405-75" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add x and y back</span></span>
-<span id="cb405-76"><a href="plot-populations-and-samples.html#cb405-76" aria-hidden="true" tabindex="-1"></a>    pop <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(x_y, pop)</span>
-<span id="cb405-77"><a href="plot-populations-and-samples.html#cb405-77" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb405-78"><a href="plot-populations-and-samples.html#cb405-78" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb405-79"><a href="plot-populations-and-samples.html#cb405-79" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return tibble</span></span>
-<span id="cb405-80"><a href="plot-populations-and-samples.html#cb405-80" aria-hidden="true" tabindex="-1"></a>  pop</span>
-<span id="cb405-81"><a href="plot-populations-and-samples.html#cb405-81" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb405-82"><a href="plot-populations-and-samples.html#cb405-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb405-83"><a href="plot-populations-and-samples.html#cb405-83" aria-hidden="true" tabindex="-1"></a><span class="co"># For testing</span></span>
-<span id="cb405-84"><a href="plot-populations-and-samples.html#cb405-84" aria-hidden="true" tabindex="-1"></a><span class="co"># set.seed(123)</span></span>
-<span id="cb405-85"><a href="plot-populations-and-samples.html#cb405-85" aria-hidden="true" tabindex="-1"></a><span class="co"># make_pop(</span></span>
-<span id="cb405-86"><a href="plot-populations-and-samples.html#cb405-86" aria-hidden="true" tabindex="-1"></a><span class="co">#   n_total = 100,</span></span>
-<span id="cb405-87"><a href="plot-populations-and-samples.html#cb405-87" aria-hidden="true" tabindex="-1"></a><span class="co">#   prob_exposed = 0.5,</span></span>
-<span id="cb405-88"><a href="plot-populations-and-samples.html#cb405-88" aria-hidden="true" tabindex="-1"></a><span class="co">#   prob_outcome_exposed = 0.5,</span></span>
-<span id="cb405-89"><a href="plot-populations-and-samples.html#cb405-89" aria-hidden="true" tabindex="-1"></a><span class="co">#   prob_outcome_unexposed = 0.1,</span></span>
-<span id="cb405-90"><a href="plot-populations-and-samples.html#cb405-90" aria-hidden="true" tabindex="-1"></a><span class="co">#   arrange = FALSE</span></span>
-<span id="cb405-91"><a href="plot-populations-and-samples.html#cb405-91" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span></code></pre></div>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="plot-populations-and-samples.html#cb406-1" aria-hidden="true" tabindex="-1"></a>make_pop <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n_total =</span> <span class="dv">100</span>, </span>
+<span id="cb406-2"><a href="plot-populations-and-samples.html#cb406-2" aria-hidden="true" tabindex="-1"></a>                     prob_exposed, </span>
+<span id="cb406-3"><a href="plot-populations-and-samples.html#cb406-3" aria-hidden="true" tabindex="-1"></a>                     prob_outcome_exposed,</span>
+<span id="cb406-4"><a href="plot-populations-and-samples.html#cb406-4" aria-hidden="true" tabindex="-1"></a>                     prob_outcome_unexposed,</span>
+<span id="cb406-5"><a href="plot-populations-and-samples.html#cb406-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">arrange =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb406-6"><a href="plot-populations-and-samples.html#cb406-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Figure out the smallest integer that will be at least size</span></span>
+<span id="cb406-7"><a href="plot-populations-and-samples.html#cb406-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># n_total when multiplied by 2. The idea is to figure out the dimensions</span></span>
+<span id="cb406-8"><a href="plot-populations-and-samples.html#cb406-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># for the closest thing I can get to a square given n_total</span></span>
+<span id="cb406-9"><a href="plot-populations-and-samples.html#cb406-9" aria-hidden="true" tabindex="-1"></a>  n_sqrt <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n_total)</span>
+<span id="cb406-10"><a href="plot-populations-and-samples.html#cb406-10" aria-hidden="true" tabindex="-1"></a>  n_sqrt_ceiling <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(n_sqrt)</span>
+<span id="cb406-11"><a href="plot-populations-and-samples.html#cb406-11" aria-hidden="true" tabindex="-1"></a>  drop <span class="ot">&lt;-</span> n_sqrt_ceiling<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> n_total</span>
+<span id="cb406-12"><a href="plot-populations-and-samples.html#cb406-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb406-13"><a href="plot-populations-and-samples.html#cb406-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Make coordinates for grid of points</span></span>
+<span id="cb406-14"><a href="plot-populations-and-samples.html#cb406-14" aria-hidden="true" tabindex="-1"></a>  pop <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
+<span id="cb406-15"><a href="plot-populations-and-samples.html#cb406-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">seq</span>(n_sqrt_ceiling),</span>
+<span id="cb406-16"><a href="plot-populations-and-samples.html#cb406-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">seq</span>(n_sqrt_ceiling)</span>
+<span id="cb406-17"><a href="plot-populations-and-samples.html#cb406-17" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb406-18"><a href="plot-populations-and-samples.html#cb406-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb406-19"><a href="plot-populations-and-samples.html#cb406-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Drop of n_sqrt is uneven. Drop from bottom right corner.</span></span>
+<span id="cb406-20"><a href="plot-populations-and-samples.html#cb406-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># High x, low y.</span></span>
+<span id="cb406-21"><a href="plot-populations-and-samples.html#cb406-21" aria-hidden="true" tabindex="-1"></a>  pop <span class="ot">&lt;-</span> pop <span class="sc">%&gt;%</span> </span>
+<span id="cb406-22"><a href="plot-populations-and-samples.html#cb406-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(y)) <span class="sc">%&gt;%</span> </span>
+<span id="cb406-23"><a href="plot-populations-and-samples.html#cb406-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span>(<span class="fu">n</span>() <span class="sc">-</span> drop)) <span class="sc">%&gt;%</span> </span>
+<span id="cb406-24"><a href="plot-populations-and-samples.html#cb406-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(x, y)</span>
+<span id="cb406-25"><a href="plot-populations-and-samples.html#cb406-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb406-26"><a href="plot-populations-and-samples.html#cb406-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># I still want y to be base 1</span></span>
+<span id="cb406-27"><a href="plot-populations-and-samples.html#cb406-27" aria-hidden="true" tabindex="-1"></a>  pop<span class="sc">$</span>y <span class="ot">&lt;-</span> pop<span class="sc">$</span>y <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">min</span>(pop<span class="sc">$</span>y))</span>
+<span id="cb406-28"><a href="plot-populations-and-samples.html#cb406-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb406-29"><a href="plot-populations-and-samples.html#cb406-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add exposed and unexposed</span></span>
+<span id="cb406-30"><a href="plot-populations-and-samples.html#cb406-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Helper function for sampling No and Yes - Simplified</span></span>
+<span id="cb406-31"><a href="plot-populations-and-samples.html#cb406-31" aria-hidden="true" tabindex="-1"></a>  sample_ny <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">prob_y =</span> <span class="fl">0.5</span>) {</span>
+<span id="cb406-32"><a href="plot-populations-and-samples.html#cb406-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>), n, <span class="cn">TRUE</span>, <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">-</span> prob_y, prob_y))</span>
+<span id="cb406-33"><a href="plot-populations-and-samples.html#cb406-33" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb406-34"><a href="plot-populations-and-samples.html#cb406-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb406-35"><a href="plot-populations-and-samples.html#cb406-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add exposed</span></span>
+<span id="cb406-36"><a href="plot-populations-and-samples.html#cb406-36" aria-hidden="true" tabindex="-1"></a>  pop<span class="sc">$</span>exposed <span class="ot">&lt;-</span> <span class="fu">sample_ny</span>(<span class="at">n =</span> n_total, <span class="at">prob_y =</span> prob_exposed)</span>
+<span id="cb406-37"><a href="plot-populations-and-samples.html#cb406-37" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb406-38"><a href="plot-populations-and-samples.html#cb406-38" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add outcome</span></span>
+<span id="cb406-39"><a href="plot-populations-and-samples.html#cb406-39" aria-hidden="true" tabindex="-1"></a>  pop<span class="sc">$</span>outcome <span class="ot">&lt;-</span> <span class="cn">NA_character_</span></span>
+<span id="cb406-40"><a href="plot-populations-and-samples.html#cb406-40" aria-hidden="true" tabindex="-1"></a>  n_exp_y <span class="ot">&lt;-</span> <span class="fu">sum</span>(pop<span class="sc">$</span>exposed <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span>)</span>
+<span id="cb406-41"><a href="plot-populations-and-samples.html#cb406-41" aria-hidden="true" tabindex="-1"></a>  n_exp_n <span class="ot">&lt;-</span> <span class="fu">sum</span>(pop<span class="sc">$</span>exposed <span class="sc">==</span> <span class="st">&quot;No&quot;</span>)</span>
+<span id="cb406-42"><a href="plot-populations-and-samples.html#cb406-42" aria-hidden="true" tabindex="-1"></a>  pop<span class="sc">$</span>outcome[pop<span class="sc">$</span>exposed <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span>] <span class="ot">&lt;-</span> <span class="fu">sample_ny</span>(n_exp_y, <span class="at">prob_y =</span> prob_outcome_exposed)</span>
+<span id="cb406-43"><a href="plot-populations-and-samples.html#cb406-43" aria-hidden="true" tabindex="-1"></a>  pop<span class="sc">$</span>outcome[pop<span class="sc">$</span>exposed <span class="sc">==</span> <span class="st">&quot;No&quot;</span>] <span class="ot">&lt;-</span> <span class="fu">sample_ny</span>(n_exp_n, <span class="at">prob_y =</span> prob_outcome_unexposed)</span>
+<span id="cb406-44"><a href="plot-populations-and-samples.html#cb406-44" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb406-45"><a href="plot-populations-and-samples.html#cb406-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add exposure-outcome group columns</span></span>
+<span id="cb406-46"><a href="plot-populations-and-samples.html#cb406-46" aria-hidden="true" tabindex="-1"></a>  <span class="co"># To combine the legend, we need to have a single variable with exposure </span></span>
+<span id="cb406-47"><a href="plot-populations-and-samples.html#cb406-47" aria-hidden="true" tabindex="-1"></a>  <span class="co"># and outcome information.</span></span>
+<span id="cb406-48"><a href="plot-populations-and-samples.html#cb406-48" aria-hidden="true" tabindex="-1"></a>  pop <span class="ot">&lt;-</span> pop <span class="sc">%&gt;%</span> </span>
+<span id="cb406-49"><a href="plot-populations-and-samples.html#cb406-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb406-50"><a href="plot-populations-and-samples.html#cb406-50" aria-hidden="true" tabindex="-1"></a>      <span class="at">e_o =</span> <span class="fu">case_when</span>(</span>
+<span id="cb406-51"><a href="plot-populations-and-samples.html#cb406-51" aria-hidden="true" tabindex="-1"></a>        exposed <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">&amp;</span> outcome <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">~</span> <span class="st">&quot;a&quot;</span>,</span>
+<span id="cb406-52"><a href="plot-populations-and-samples.html#cb406-52" aria-hidden="true" tabindex="-1"></a>        exposed <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">&amp;</span> outcome <span class="sc">==</span> <span class="st">&quot;No&quot;</span> <span class="sc">~</span> <span class="st">&quot;b&quot;</span>,</span>
+<span id="cb406-53"><a href="plot-populations-and-samples.html#cb406-53" aria-hidden="true" tabindex="-1"></a>        exposed <span class="sc">==</span> <span class="st">&quot;No&quot;</span> <span class="sc">&amp;</span> outcome <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">~</span> <span class="st">&quot;c&quot;</span>,</span>
+<span id="cb406-54"><a href="plot-populations-and-samples.html#cb406-54" aria-hidden="true" tabindex="-1"></a>        exposed <span class="sc">==</span> <span class="st">&quot;No&quot;</span> <span class="sc">&amp;</span> outcome <span class="sc">==</span> <span class="st">&quot;No&quot;</span> <span class="sc">~</span> <span class="st">&quot;d&quot;</span></span>
+<span id="cb406-55"><a href="plot-populations-and-samples.html#cb406-55" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb406-56"><a href="plot-populations-and-samples.html#cb406-56" aria-hidden="true" tabindex="-1"></a>      <span class="at">e_o_f =</span> <span class="fu">factor</span>(</span>
+<span id="cb406-57"><a href="plot-populations-and-samples.html#cb406-57" aria-hidden="true" tabindex="-1"></a>        e_o, <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>),</span>
+<span id="cb406-58"><a href="plot-populations-and-samples.html#cb406-58" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(</span>
+<span id="cb406-59"><a href="plot-populations-and-samples.html#cb406-59" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;Exposed - Outcome&quot;</span>, <span class="st">&quot;Exposed - No Outcome&quot;</span>, </span>
+<span id="cb406-60"><a href="plot-populations-and-samples.html#cb406-60" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;Not exposed - Outcome&quot;</span>, <span class="st">&quot;Not exposed - No outcome&quot;</span></span>
+<span id="cb406-61"><a href="plot-populations-and-samples.html#cb406-61" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb406-62"><a href="plot-populations-and-samples.html#cb406-62" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb406-63"><a href="plot-populations-and-samples.html#cb406-63" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb406-64"><a href="plot-populations-and-samples.html#cb406-64" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb406-65"><a href="plot-populations-and-samples.html#cb406-65" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Arrange </span></span>
+<span id="cb406-66"><a href="plot-populations-and-samples.html#cb406-66" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Sometimes I want the exposed-unexposed to be haphazardly spread around the </span></span>
+<span id="cb406-67"><a href="plot-populations-and-samples.html#cb406-67" aria-hidden="true" tabindex="-1"></a>  <span class="co"># plot. Sometimes, I want the exposed next to the exposed and the unexposed </span></span>
+<span id="cb406-68"><a href="plot-populations-and-samples.html#cb406-68" aria-hidden="true" tabindex="-1"></a>  <span class="co"># next to the unexposed.</span></span>
+<span id="cb406-69"><a href="plot-populations-and-samples.html#cb406-69" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (arrange) {</span>
+<span id="cb406-70"><a href="plot-populations-and-samples.html#cb406-70" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Separate x and y from the rest of the data before arranging</span></span>
+<span id="cb406-71"><a href="plot-populations-and-samples.html#cb406-71" aria-hidden="true" tabindex="-1"></a>    x_y <span class="ot">&lt;-</span> <span class="fu">select</span>(pop, x, y)</span>
+<span id="cb406-72"><a href="plot-populations-and-samples.html#cb406-72" aria-hidden="true" tabindex="-1"></a>    pop <span class="ot">&lt;-</span> pop <span class="sc">%&gt;%</span> </span>
+<span id="cb406-73"><a href="plot-populations-and-samples.html#cb406-73" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(<span class="sc">-</span>x, <span class="sc">-</span>y) <span class="sc">%&gt;%</span> </span>
+<span id="cb406-74"><a href="plot-populations-and-samples.html#cb406-74" aria-hidden="true" tabindex="-1"></a>      <span class="fu">arrange</span>(<span class="fu">desc</span>(exposed), <span class="fu">desc</span>(outcome))</span>
+<span id="cb406-75"><a href="plot-populations-and-samples.html#cb406-75" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add x and y back</span></span>
+<span id="cb406-76"><a href="plot-populations-and-samples.html#cb406-76" aria-hidden="true" tabindex="-1"></a>    pop <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(x_y, pop)</span>
+<span id="cb406-77"><a href="plot-populations-and-samples.html#cb406-77" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb406-78"><a href="plot-populations-and-samples.html#cb406-78" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb406-79"><a href="plot-populations-and-samples.html#cb406-79" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return tibble</span></span>
+<span id="cb406-80"><a href="plot-populations-and-samples.html#cb406-80" aria-hidden="true" tabindex="-1"></a>  pop</span>
+<span id="cb406-81"><a href="plot-populations-and-samples.html#cb406-81" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb406-82"><a href="plot-populations-and-samples.html#cb406-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb406-83"><a href="plot-populations-and-samples.html#cb406-83" aria-hidden="true" tabindex="-1"></a><span class="co"># For testing</span></span>
+<span id="cb406-84"><a href="plot-populations-and-samples.html#cb406-84" aria-hidden="true" tabindex="-1"></a><span class="co"># set.seed(123)</span></span>
+<span id="cb406-85"><a href="plot-populations-and-samples.html#cb406-85" aria-hidden="true" tabindex="-1"></a><span class="co"># make_pop(</span></span>
+<span id="cb406-86"><a href="plot-populations-and-samples.html#cb406-86" aria-hidden="true" tabindex="-1"></a><span class="co">#   n_total = 100,</span></span>
+<span id="cb406-87"><a href="plot-populations-and-samples.html#cb406-87" aria-hidden="true" tabindex="-1"></a><span class="co">#   prob_exposed = 0.5,</span></span>
+<span id="cb406-88"><a href="plot-populations-and-samples.html#cb406-88" aria-hidden="true" tabindex="-1"></a><span class="co">#   prob_outcome_exposed = 0.5,</span></span>
+<span id="cb406-89"><a href="plot-populations-and-samples.html#cb406-89" aria-hidden="true" tabindex="-1"></a><span class="co">#   prob_outcome_unexposed = 0.1,</span></span>
+<span id="cb406-90"><a href="plot-populations-and-samples.html#cb406-90" aria-hidden="true" tabindex="-1"></a><span class="co">#   arrange = FALSE</span></span>
+<span id="cb406-91"><a href="plot-populations-and-samples.html#cb406-91" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span></code></pre></div>
 </div>
 <div id="create-a-helper-plot-function" class="section level3 hasAnchor" number="10.6.2">
 <h3><span class="header-section-number">10.6.2</span> Create a helper plot function<a href="plot-populations-and-samples.html#create-a-helper-plot-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="plot-populations-and-samples.html#cb406-1" aria-hidden="true" tabindex="-1"></a>plot_pop <span class="ot">&lt;-</span> <span class="cf">function</span>(.data, <span class="at">p_size =</span> <span class="dv">5</span>) {</span>
-<span id="cb406-2"><a href="plot-populations-and-samples.html#cb406-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb406-3"><a href="plot-populations-and-samples.html#cb406-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store shape codes</span></span>
-<span id="cb406-4"><a href="plot-populations-and-samples.html#cb406-4" aria-hidden="true" tabindex="-1"></a>  cir <span class="ot">&lt;-</span> <span class="dv">16</span></span>
-<span id="cb406-5"><a href="plot-populations-and-samples.html#cb406-5" aria-hidden="true" tabindex="-1"></a>  tri <span class="ot">&lt;-</span> <span class="dv">17</span></span>
-<span id="cb406-6"><a href="plot-populations-and-samples.html#cb406-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb406-7"><a href="plot-populations-and-samples.html#cb406-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create plot</span></span>
-<span id="cb406-8"><a href="plot-populations-and-samples.html#cb406-8" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(.data, <span class="fu">aes</span>(x, y, <span class="at">color =</span> e_o_f, <span class="at">shape =</span> e_o_f)) <span class="sc">+</span> </span>
-<span id="cb406-9"><a href="plot-populations-and-samples.html#cb406-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> p_size) <span class="sc">+</span></span>
-<span id="cb406-10"><a href="plot-populations-and-samples.html#cb406-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="st">&quot;Exposure-Outcome&quot;</span>, <span class="at">values =</span> <span class="fu">c</span>(u_orange, u_orange, u_blue, u_blue)) <span class="sc">+</span></span>
-<span id="cb406-11"><a href="plot-populations-and-samples.html#cb406-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_shape_manual</span>(<span class="st">&quot;Exposure-Outcome&quot;</span>, <span class="at">values =</span> <span class="fu">c</span>(tri, cir, tri, cir)) <span class="sc">+</span></span>
-<span id="cb406-12"><a href="plot-populations-and-samples.html#cb406-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
-<span id="cb406-13"><a href="plot-populations-and-samples.html#cb406-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb406-14"><a href="plot-populations-and-samples.html#cb406-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb406-15"><a href="plot-populations-and-samples.html#cb406-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb406-16"><a href="plot-populations-and-samples.html#cb406-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb406-17"><a href="plot-populations-and-samples.html#cb406-17" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb406-18"><a href="plot-populations-and-samples.html#cb406-18" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb406-19"><a href="plot-populations-and-samples.html#cb406-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return plot object</span></span>
-<span id="cb406-20"><a href="plot-populations-and-samples.html#cb406-20" aria-hidden="true" tabindex="-1"></a>  p</span>
-<span id="cb406-21"><a href="plot-populations-and-samples.html#cb406-21" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb406-22"><a href="plot-populations-and-samples.html#cb406-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb406-23"><a href="plot-populations-and-samples.html#cb406-23" aria-hidden="true" tabindex="-1"></a><span class="co"># For testing</span></span>
-<span id="cb406-24"><a href="plot-populations-and-samples.html#cb406-24" aria-hidden="true" tabindex="-1"></a><span class="co"># pop_plot(pop, 5)</span></span></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="plot-populations-and-samples.html#cb407-1" aria-hidden="true" tabindex="-1"></a>plot_pop <span class="ot">&lt;-</span> <span class="cf">function</span>(.data, <span class="at">p_size =</span> <span class="dv">5</span>) {</span>
+<span id="cb407-2"><a href="plot-populations-and-samples.html#cb407-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb407-3"><a href="plot-populations-and-samples.html#cb407-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store shape codes</span></span>
+<span id="cb407-4"><a href="plot-populations-and-samples.html#cb407-4" aria-hidden="true" tabindex="-1"></a>  cir <span class="ot">&lt;-</span> <span class="dv">16</span></span>
+<span id="cb407-5"><a href="plot-populations-and-samples.html#cb407-5" aria-hidden="true" tabindex="-1"></a>  tri <span class="ot">&lt;-</span> <span class="dv">17</span></span>
+<span id="cb407-6"><a href="plot-populations-and-samples.html#cb407-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb407-7"><a href="plot-populations-and-samples.html#cb407-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create plot</span></span>
+<span id="cb407-8"><a href="plot-populations-and-samples.html#cb407-8" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(.data, <span class="fu">aes</span>(x, y, <span class="at">color =</span> e_o_f, <span class="at">shape =</span> e_o_f)) <span class="sc">+</span> </span>
+<span id="cb407-9"><a href="plot-populations-and-samples.html#cb407-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> p_size) <span class="sc">+</span></span>
+<span id="cb407-10"><a href="plot-populations-and-samples.html#cb407-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="st">&quot;Exposure-Outcome&quot;</span>, <span class="at">values =</span> <span class="fu">c</span>(u_orange, u_orange, u_blue, u_blue)) <span class="sc">+</span></span>
+<span id="cb407-11"><a href="plot-populations-and-samples.html#cb407-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_shape_manual</span>(<span class="st">&quot;Exposure-Outcome&quot;</span>, <span class="at">values =</span> <span class="fu">c</span>(tri, cir, tri, cir)) <span class="sc">+</span></span>
+<span id="cb407-12"><a href="plot-populations-and-samples.html#cb407-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb407-13"><a href="plot-populations-and-samples.html#cb407-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb407-14"><a href="plot-populations-and-samples.html#cb407-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb407-15"><a href="plot-populations-and-samples.html#cb407-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb407-16"><a href="plot-populations-and-samples.html#cb407-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb407-17"><a href="plot-populations-and-samples.html#cb407-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb407-18"><a href="plot-populations-and-samples.html#cb407-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb407-19"><a href="plot-populations-and-samples.html#cb407-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return plot object</span></span>
+<span id="cb407-20"><a href="plot-populations-and-samples.html#cb407-20" aria-hidden="true" tabindex="-1"></a>  p</span>
+<span id="cb407-21"><a href="plot-populations-and-samples.html#cb407-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb407-22"><a href="plot-populations-and-samples.html#cb407-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb407-23"><a href="plot-populations-and-samples.html#cb407-23" aria-hidden="true" tabindex="-1"></a><span class="co"># For testing</span></span>
+<span id="cb407-24"><a href="plot-populations-and-samples.html#cb407-24" aria-hidden="true" tabindex="-1"></a><span class="co"># pop_plot(pop, 5)</span></span></code></pre></div>
 <p>Test</p>
-<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="plot-populations-and-samples.html#cb407-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb407-2"><a href="plot-populations-and-samples.html#cb407-2" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">make_pop</span>(</span>
-<span id="cb407-3"><a href="plot-populations-and-samples.html#cb407-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_total =</span> <span class="dv">1000</span>,</span>
-<span id="cb407-4"><a href="plot-populations-and-samples.html#cb407-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">prob_exposed =</span> <span class="fl">0.5</span>,</span>
-<span id="cb407-5"><a href="plot-populations-and-samples.html#cb407-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">prob_outcome_exposed =</span> <span class="fl">0.5</span>,</span>
-<span id="cb407-6"><a href="plot-populations-and-samples.html#cb407-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">prob_outcome_unexposed =</span> <span class="fl">0.1</span>,</span>
-<span id="cb407-7"><a href="plot-populations-and-samples.html#cb407-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">arrange =</span> <span class="cn">TRUE</span></span>
-<span id="cb407-8"><a href="plot-populations-and-samples.html#cb407-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb407-9"><a href="plot-populations-and-samples.html#cb407-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb407-10"><a href="plot-populations-and-samples.html#cb407-10" aria-hidden="true" tabindex="-1"></a>pop <span class="sc">%&gt;%</span> </span>
-<span id="cb407-11"><a href="plot-populations-and-samples.html#cb407-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_pop</span>(<span class="at">p_size =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="plot-populations-and-samples.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb408-2"><a href="plot-populations-and-samples.html#cb408-2" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">make_pop</span>(</span>
+<span id="cb408-3"><a href="plot-populations-and-samples.html#cb408-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_total =</span> <span class="dv">1000</span>,</span>
+<span id="cb408-4"><a href="plot-populations-and-samples.html#cb408-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">prob_exposed =</span> <span class="fl">0.5</span>,</span>
+<span id="cb408-5"><a href="plot-populations-and-samples.html#cb408-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">prob_outcome_exposed =</span> <span class="fl">0.5</span>,</span>
+<span id="cb408-6"><a href="plot-populations-and-samples.html#cb408-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">prob_outcome_unexposed =</span> <span class="fl">0.1</span>,</span>
+<span id="cb408-7"><a href="plot-populations-and-samples.html#cb408-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">arrange =</span> <span class="cn">TRUE</span></span>
+<span id="cb408-8"><a href="plot-populations-and-samples.html#cb408-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb408-9"><a href="plot-populations-and-samples.html#cb408-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb408-10"><a href="plot-populations-and-samples.html#cb408-10" aria-hidden="true" tabindex="-1"></a>pop <span class="sc">%&gt;%</span> </span>
+<span id="cb408-11"><a href="plot-populations-and-samples.html#cb408-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_pop</span>(<span class="at">p_size =</span> <span class="dv">3</span>)</span></code></pre></div>
 <p><img src="R-Notes_files/figure-html/unnamed-chunk-270-1.png" width="672" /></p>
 <p>I might actually want to add this to freqtables.</p>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="plot-populations-and-samples.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="plot-populations-and-samples.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
 
 </div>
 </div>

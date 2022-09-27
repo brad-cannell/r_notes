@@ -313,6 +313,7 @@ amend
 pull-requests
 branches
 squashing-commits
+other-littl-quirks-and-errors
 appendix-a-terms-and-definitions
 overview-17
 useful-websites-17

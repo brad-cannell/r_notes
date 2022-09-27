@@ -23,7 +23,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-09-12" />
+<meta name="date" content="2022-09-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -566,6 +566,7 @@ div.csl-indent {
 <li class="chapter" data-level="19.7" data-path="git-and-github.html"><a href="git-and-github.html#pull-requests"><i class="fa fa-check"></i><b>19.7</b> Pull Requests</a></li>
 <li class="chapter" data-level="19.8" data-path="git-and-github.html"><a href="git-and-github.html#branches"><i class="fa fa-check"></i><b>19.8</b> Branches</a></li>
 <li class="chapter" data-level="19.9" data-path="git-and-github.html"><a href="git-and-github.html#squashing-commits"><i class="fa fa-check"></i><b>19.9</b> Squashing commits</a></li>
+<li class="chapter" data-level="19.10" data-path="git-and-github.html"><a href="git-and-github.html#other-littl-quirks-and-errors"><i class="fa fa-check"></i><b>19.10</b> Other littl quirks and errors</a></li>
 </ul></li>
 <li class="part"><span><b>IX Appendix</b></span></li>
 <li class="chapter" data-level="20" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html"><i class="fa fa-check"></i><b>20</b> Appendix A: Terms and Definitions</a>
@@ -1273,20 +1274,21 @@ Hidden comments placeholder
 <pre><code>##   &lt;https://gargle.r-lib.org/articles/non-interactive-auth.html&gt;</code></pre>
 <pre><code>## ℹ The googlesheets4 package is using a cached token for
 ##   &#39;brad.cannell@gmail.com&#39;.</code></pre>
+<pre><code>## Auto-refreshing stale OAuth token.</code></pre>
 <pre><code>## ✔ Reading from &quot;Google Sheet for column_names_prepping_many_for_merge.Rmd&quot;.</code></pre>
 <pre><code>## ✔ Range &#39;&#39;visit1&#39;&#39;.</code></pre>
 </div>
 <div id="reorder-and-rename-the-current-data-frame" class="section level3 hasAnchor" number="6.15.3">
 <h3><span class="header-section-number">6.15.3</span> Reorder and rename the current data frame<a href="column-names-prepping-many-for-merge.html#reorder-and-rename-the-current-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You might be tempted to just rename the columns by doing something like this:</p>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="column-names-prepping-many-for-merge.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(v1) <span class="ot">&lt;-</span> gs_col_name_key<span class="sc">$</span>new_name</span></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="column-names-prepping-many-for-merge.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(v1) <span class="ot">&lt;-</span> gs_col_name_key<span class="sc">$</span>new_name</span></code></pre></div>
 <p>That will work as long as there are the exact same number of columns in <code>v1</code> as there are in are in <code>gs_col_name_key$new_name</code>, and the order of the columns in <code>v1</code> perfectly matches the order of <code>gs_col_name_key$new_name</code>. A slightly more complex, but safer, way to do this is with <code>rename()</code>. Using <code>new_name = old_name</code> inside the rename function make it less likely to accidentally assign the wrong <code>new_name</code> to a column.</p>
 <div id="create-a-named-vector" class="section level4 hasAnchor" number="6.15.3.1">
 <h4><span class="header-section-number">6.15.3.1</span> Create a named vector<a href="column-names-prepping-many-for-merge.html#create-a-named-vector" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Create a named vector of old names and new names that you can pass to <code>select()</code> or <code>rename()</code>.</p>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="column-names-prepping-many-for-merge.html#cb262-1" aria-hidden="true" tabindex="-1"></a>rename_vector <span class="ot">&lt;-</span> gs_col_name_key<span class="sc">$</span>old_name</span>
-<span id="cb262-2"><a href="column-names-prepping-many-for-merge.html#cb262-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(rename_vector) <span class="ot">&lt;-</span> gs_col_name_key<span class="sc">$</span>new_name</span>
-<span id="cb262-3"><a href="column-names-prepping-many-for-merge.html#cb262-3" aria-hidden="true" tabindex="-1"></a>rename_vector</span></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="column-names-prepping-many-for-merge.html#cb263-1" aria-hidden="true" tabindex="-1"></a>rename_vector <span class="ot">&lt;-</span> gs_col_name_key<span class="sc">$</span>old_name</span>
+<span id="cb263-2"><a href="column-names-prepping-many-for-merge.html#cb263-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(rename_vector) <span class="ot">&lt;-</span> gs_col_name_key<span class="sc">$</span>new_name</span>
+<span id="cb263-3"><a href="column-names-prepping-many-for-merge.html#cb263-3" aria-hidden="true" tabindex="-1"></a>rename_vector</span></code></pre></div>
 <pre><code>##          id  date_visit       visit sq_hispanic      weight     dem_14g 
 ##   &quot;SUBJECT&quot;  &quot;TODAY_V1&quot;  &quot;VISIT_V1&quot;      &quot;SQ_2&quot;    &quot;WEIGHT&quot;   &quot;DEMO16G&quot; 
 ## dem_veteran        t_26       t_26a       t_26b       t_31b        t_33 
@@ -1297,21 +1299,21 @@ Hidden comments placeholder
 <div id="reorder-and-rename-the-current-data-frame-1" class="section level4 hasAnchor" number="6.15.3.2">
 <h4><span class="header-section-number">6.15.3.2</span> Reorder and rename the current data frame<a href="column-names-prepping-many-for-merge.html#reorder-and-rename-the-current-data-frame-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Reorder and rename the current data frame using <code>rename_vector</code>.</p>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="column-names-prepping-many-for-merge.html#cb264-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="sc">%&gt;%</span> </span>
-<span id="cb264-2"><a href="column-names-prepping-many-for-merge.html#cb264-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!!!</span> rename_vector) <span class="sc">%&gt;%</span> </span>
-<span id="cb264-3"><a href="column-names-prepping-many-for-merge.html#cb264-3" aria-hidden="true" tabindex="-1"></a>  DT<span class="sc">::</span><span class="fu">datatable</span>(<span class="at">options =</span> <span class="fu">list</span>(<span class="at">scrollX =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="column-names-prepping-many-for-merge.html#cb265-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="sc">%&gt;%</span> </span>
+<span id="cb265-2"><a href="column-names-prepping-many-for-merge.html#cb265-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!!!</span> rename_vector) <span class="sc">%&gt;%</span> </span>
+<span id="cb265-3"><a href="column-names-prepping-many-for-merge.html#cb265-3" aria-hidden="true" tabindex="-1"></a>  DT<span class="sc">::</span><span class="fu">datatable</span>(<span class="at">options =</span> <span class="fu">list</span>(<span class="at">scrollX =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <div id="htmlwidget-9965edfe9f869aa90445" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-9965edfe9f869aa90445">{"x":{"filter":"none","vertical":false,"data":[["1","2"],[2001,2002],["2018-04-07","2018-05-03"],[1,1],[1,0],[179,194],[0,1],[1,0],[2,4],[0,0],[1,0],[0,0],[0,0],[1,1],[1,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>date_visit<\/th>\n      <th>visit<\/th>\n      <th>sq_hispanic<\/th>\n      <th>weight<\/th>\n      <th>dem_14g<\/th>\n      <th>dem_veteran<\/th>\n      <th>t_26<\/th>\n      <th>t_26a<\/th>\n      <th>t_26b<\/th>\n      <th>t_31b<\/th>\n      <th>t_33<\/th>\n      <th>t_32b<\/th>\n      <th>t_34<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,3,4,5,6,7,8,9,10,11,12,13,14]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="more-columns-in-df-than-sheet" class="section level4 hasAnchor" number="6.15.3.3">
 <h4><span class="header-section-number">6.15.3.3</span> More columns in df than Sheet<a href="column-names-prepping-many-for-merge.html#more-columns-in-df-than-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>What if there are columns in the data frame that haven’t yet been added to the Google Sheet?</p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="column-names-prepping-many-for-merge.html#cb265-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="sc">%&gt;%</span> </span>
-<span id="cb265-2"><a href="column-names-prepping-many-for-merge.html#cb265-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb265-3"><a href="column-names-prepping-many-for-merge.html#cb265-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">T_Total =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(T26A_V1<span class="sc">:</span>T32B_V1))) <span class="sc">%&gt;%</span> </span>
-<span id="cb265-4"><a href="column-names-prepping-many-for-merge.html#cb265-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb265-5"><a href="column-names-prepping-many-for-merge.html#cb265-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="sc">!!!</span> rename_vector) <span class="sc">%&gt;%</span> </span>
-<span id="cb265-6"><a href="column-names-prepping-many-for-merge.html#cb265-6" aria-hidden="true" tabindex="-1"></a>  DT<span class="sc">::</span><span class="fu">datatable</span>(<span class="at">options =</span> <span class="fu">list</span>(<span class="at">scrollX =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="column-names-prepping-many-for-merge.html#cb266-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="sc">%&gt;%</span> </span>
+<span id="cb266-2"><a href="column-names-prepping-many-for-merge.html#cb266-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb266-3"><a href="column-names-prepping-many-for-merge.html#cb266-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">T_Total =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(T26A_V1<span class="sc">:</span>T32B_V1))) <span class="sc">%&gt;%</span> </span>
+<span id="cb266-4"><a href="column-names-prepping-many-for-merge.html#cb266-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb266-5"><a href="column-names-prepping-many-for-merge.html#cb266-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="sc">!!!</span> rename_vector) <span class="sc">%&gt;%</span> </span>
+<span id="cb266-6"><a href="column-names-prepping-many-for-merge.html#cb266-6" aria-hidden="true" tabindex="-1"></a>  DT<span class="sc">::</span><span class="fu">datatable</span>(<span class="at">options =</span> <span class="fu">list</span>(<span class="at">scrollX =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <div id="htmlwidget-0f171f14364aa3ebedfb" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-0f171f14364aa3ebedfb">{"x":{"filter":"none","vertical":false,"data":[["1","2"],[2001,2002],["2018-04-07","2018-05-03"],[1,1],[1,0],[179,194],[0,1],[1,0],[2,4],[0,0],[1,0],[0,0],[0,0],[1,1],[1,1],[5,6]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>date_visit<\/th>\n      <th>visit<\/th>\n      <th>sq_hispanic<\/th>\n      <th>weight<\/th>\n      <th>dem_14g<\/th>\n      <th>dem_veteran<\/th>\n      <th>t_26<\/th>\n      <th>t_26a<\/th>\n      <th>t_26b<\/th>\n      <th>t_31b<\/th>\n      <th>t_33<\/th>\n      <th>t_32b<\/th>\n      <th>t_34<\/th>\n      <th>T_Total<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,3,4,5,6,7,8,9,10,11,12,13,14,15]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <p>It just leaves the extra column’s name unchanged, which is exactly what we want.</p>
@@ -1319,10 +1321,10 @@ Hidden comments placeholder
 <div id="more-columns-in-sheet-and-df" class="section level4 hasAnchor" number="6.15.3.4">
 <h4><span class="header-section-number">6.15.3.4</span> More columns in Sheet and df<a href="column-names-prepping-many-for-merge.html#more-columns-in-sheet-and-df" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>What if there are columns in the Google Sheet that aren’t in the data frame?</p>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="column-names-prepping-many-for-merge.html#cb266-1" aria-hidden="true" tabindex="-1"></a>rename_vector_2 <span class="ot">&lt;-</span> <span class="fu">c</span>(rename_vector, <span class="st">&quot;mms_1&quot;</span> <span class="ot">=</span> <span class="st">&quot;MMS1&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="column-names-prepping-many-for-merge.html#cb267-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="sc">%&gt;%</span> </span>
-<span id="cb267-2"><a href="column-names-prepping-many-for-merge.html#cb267-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="sc">!!!</span> rename_vector_2) <span class="sc">%&gt;%</span> </span>
-<span id="cb267-3"><a href="column-names-prepping-many-for-merge.html#cb267-3" aria-hidden="true" tabindex="-1"></a>  DT<span class="sc">::</span><span class="fu">datatable</span>(<span class="at">options =</span> <span class="fu">list</span>(<span class="at">scrollX =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="column-names-prepping-many-for-merge.html#cb267-1" aria-hidden="true" tabindex="-1"></a>rename_vector_2 <span class="ot">&lt;-</span> <span class="fu">c</span>(rename_vector, <span class="st">&quot;mms_1&quot;</span> <span class="ot">=</span> <span class="st">&quot;MMS1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="column-names-prepping-many-for-merge.html#cb268-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="sc">%&gt;%</span> </span>
+<span id="cb268-2"><a href="column-names-prepping-many-for-merge.html#cb268-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="sc">!!!</span> rename_vector_2) <span class="sc">%&gt;%</span> </span>
+<span id="cb268-3"><a href="column-names-prepping-many-for-merge.html#cb268-3" aria-hidden="true" tabindex="-1"></a>  DT<span class="sc">::</span><span class="fu">datatable</span>(<span class="at">options =</span> <span class="fu">list</span>(<span class="at">scrollX =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>## Error in `chr_as_locations()`:
 ## ! Can&#39;t rename columns that don&#39;t exist.
 ## ✖ Column `MMS1` doesn&#39;t exist.</code></pre>

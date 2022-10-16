@@ -642,7 +642,7 @@ names(v1) %>%
 
 The first time you attempt to read-in a Google Sheet you will need to authenticate your Google user name and password. Make sure to click the check box next to "Grant Tidyverse API Packages permission to See, edit, create, delete, spreadsheets in Google Drive". 
 
-```{r}
+```{r eval=FALSE}
 gs_col_name_key <- read_sheet(
   "https://docs.google.com/spreadsheets/d/1cnoOvVdblnKarVf_WQIyWtJDIOumI9VSP1WK2gTy0gU/edit?usp=sharing",
   sheet = "visit1"
@@ -664,7 +664,7 @@ That will work as long as there are the exact same number of columns in `v1` as 
 
 Create a named vector of old names and new names that you can pass to `select()` or `rename()`.
 
-```{r}
+```{r eval=FALSE}
 rename_vector <- gs_col_name_key$old_name
 names(rename_vector) <- gs_col_name_key$new_name
 rename_vector
@@ -674,7 +674,7 @@ rename_vector
 
 Reorder and rename the current data frame using `rename_vector`.
 
-```{r}
+```{r eval=FALSE}
 v1 %>% 
   select(!!! rename_vector) %>% 
   DT::datatable(options = list(scrollX = TRUE))
@@ -684,7 +684,7 @@ v1 %>%
 
 What if there are columns in the data frame that haven't yet been added to the Google Sheet?
 
-```{r}
+```{r eval=FALSE}
 v1 %>% 
   rowwise() %>% 
   mutate(T_Total = sum(c_across(T26A_V1:T32B_V1))) %>% 
@@ -699,7 +699,7 @@ It just leaves the extra column's name unchanged, which is exactly what we want.
 
 What if there are columns in the Google Sheet that aren't in the data frame?
 
-```{r}
+```{r eval=FALSE}
 rename_vector_2 <- c(rename_vector, "mms_1" = "MMS1")
 ```
 

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>18 Officer | R Notes</title>
+  <title>5 Confidence intervals | R Notes</title>
   <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="18 Officer | R Notes" />
+  <meta property="og:title" content="5 Confidence intervals | R Notes" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   <meta name="github-repo" content="brad-cannell/r_notes" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="18 Officer | R Notes" />
+  <meta name="twitter:title" content="5 Confidence intervals | R Notes" />
   
   <meta name="twitter:description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="language-for-publications.html"/>
-<link rel="next" href="tables.html"/>
+<link rel="prev" href="tidy-evaluation.html"/>
+<link rel="next" href="arranging-columns-with-across.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -608,238 +608,233 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="officer" class="section level1 hasAnchor" number="18">
-<h1><span class="header-section-number">18</span> Officer<a href="officer.html#officer" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="confidence-intervals" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Confidence intervals<a href="confidence-intervals.html#confidence-intervals" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <!--
 Hidden comments placeholder
+
+To preview:
+bookdown::preview_chapter("chapters/.../name.Rmd")
 -->
 <p><img src="https://picsum.photos/200/300" /><!-- --></p>
-<div id="overview-15" class="section level2 hasAnchor" number="18.1">
-<h2><span class="header-section-number">18.1</span> ⭐️Overview<a href="officer.html#overview-15" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>I don’t have time to do this right today, but I do make some good notes on using officer.</p>
-<p>Good examples to check out:</p>
-<ul>
-<li>LEAD panel monthly report.<br />
-</li>
-<li>Sun Study report.<br />
-</li>
-<li>stroke study -&gt; table_characteristics_by_network.Rmd.<br />
-</li>
-<li>L2C quarterly reports.<br />
-</li>
-<li>L2C Distress Tolerance Scale Paper</li>
-</ul>
-<p>At least until you figure out make files, I think the best thing to do is save tables and figures as files in the docs folder. Create a single R script to compile them all together and create the report. Use comments to specify what file the table/figure is created in.</p>
-<p>Still trying to figure out if it’s better to write text in Word and then add in tables and charts with bookmarks, or is it better to write everything in R?</p>
-<p>In general, it seems helpful/expedient to do as much of the prose and formatting as possible directly in the Word template. Then, just add numbers, tables, and graphs from R with bookmarks.</p>
-<p class="warning">
-⚠️<strong>Warning:</strong> When editing the code chunks below, you will need to add “../../” in front of file paths that retrieve Word docs from or save word docs to the examples folder if you want them to work when you run them interactively. For example, “../../examples/Word Template for Officer.docx”. However, you have to delete the “../../” from the file paths in order for build book to work.
-</p>
+<div id="overview-4" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> ⭐️Overview<a href="confidence-intervals.html#overview-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This R Notebook contains a demonstration that is intended to help you develop an intuition for frequentist interpretations of 95% confidence intervals.</p>
 </div>
-<div id="useful-websites-15" class="section level2 hasAnchor" number="18.2">
-<h2><span class="header-section-number">18.2</span> 🌎Useful websites<a href="officer.html#useful-websites-15" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="useful-websites-4" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> 🌎Useful websites<a href="confidence-intervals.html#useful-websites-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><a href="https://stackoverflow.com/" class="uri">https://stackoverflow.com/</a></li>
+<li><a href="https://r4ds.had.co.nz/many-models.html">R for Data Science, Chapter 25: Many models</a></li>
 </ul>
 </div>
-<div id="load-packages-11" class="section level2 hasAnchor" number="18.3">
-<h2><span class="header-section-number">18.3</span> 📦Load packages<a href="officer.html#load-packages-11" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="officer.html#cb495-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb495-2"><a href="officer.html#cb495-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(officer, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb495-3"><a href="officer.html#cb495-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div id="load-packages-2" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> 📦Load packages<a href="confidence-intervals.html#load-packages-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="confidence-intervals.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb192-2"><a href="confidence-intervals.html#cb192-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(meantables)</span>
+<span id="cb192-3"><a href="confidence-intervals.html#cb192-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(freqtables)</span>
+<span id="cb192-4"><a href="confidence-intervals.html#cb192-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb192-5"><a href="confidence-intervals.html#cb192-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb192-6"><a href="confidence-intervals.html#cb192-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code></pre></div>
 </div>
-<div id="formatted-text" class="section level2 hasAnchor" number="18.4">
-<h2><span class="header-section-number">18.4</span> Formatted text<a href="officer.html#formatted-text" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Can start with a template</p>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="officer.html#cb496-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_docx</span>(<span class="st">&quot;officer_word_template.docx&quot;</span>)</span></code></pre></div>
-<p>Or not</p>
-<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="officer.html#cb497-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_docx</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb497-2"><a href="officer.html#cb497-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;DETECT LEAD Panel Initial Review Report&quot;</span>, <span class="at">style =</span> <span class="st">&quot;heading 1&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb497-3"><a href="officer.html#cb497-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="fu">paste</span>(<span class="st">&quot;Updated: &quot;</span>, <span class="fu">Sys.Date</span>())) <span class="sc">%&gt;%</span></span>
-<span id="cb497-4"><a href="officer.html#cb497-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb497-5"><a href="officer.html#cb497-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_add_fpar</span>(</span>
-<span id="cb497-6"><a href="officer.html#cb497-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fpar</span>(</span>
-<span id="cb497-7"><a href="officer.html#cb497-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ftext</span>(</span>
-<span id="cb497-8"><a href="officer.html#cb497-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Total Initial Assessments:&quot;</span>,</span>
-<span id="cb497-9"><a href="officer.html#cb497-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">prop =</span> <span class="fu">fp_text</span>(</span>
-<span id="cb497-10"><a href="officer.html#cb497-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">font.family =</span> <span class="st">&quot;Times New Roman&quot;</span>, <span class="at">font.size =</span> <span class="dv">11</span></span>
-<span id="cb497-11"><a href="officer.html#cb497-11" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb497-12"><a href="officer.html#cb497-12" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb497-13"><a href="officer.html#cb497-13" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb497-14"><a href="officer.html#cb497-14" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="officer.html#cb498-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(</span>
-<span id="cb498-2"><a href="officer.html#cb498-2" aria-hidden="true" tabindex="-1"></a>  doc, </span>
-<span id="cb498-3"><a href="officer.html#cb498-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;examples/officer_formatted_text.docx&quot;</span></span>
-<span id="cb498-4"><a href="officer.html#cb498-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><a href="https://www.dropbox.com/s/3f8c0omkfahdc8l/officer_formatted_text.docx?dl=0">Link to Word Document on Dropbox</a></p>
-<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="officer.html#cb499-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output Word document</span></span>
-<span id="cb499-2"><a href="officer.html#cb499-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Update the year and month in the file name dynamically</span></span>
-<span id="cb499-3"><a href="officer.html#cb499-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(</span>
-<span id="cb499-4"><a href="officer.html#cb499-4" aria-hidden="true" tabindex="-1"></a>  doc, </span>
-<span id="cb499-5"><a href="officer.html#cb499-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="fu">Sys.Date</span>() <span class="sc">%&gt;%</span> <span class="fu">format</span>(<span class="st">&quot;%Y-%m&quot;</span>), <span class="st">&quot; Initial Review Report.docx&quot;</span>)</span>
-<span id="cb499-6"><a href="officer.html#cb499-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div id="simulate-data-2" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> 🔢Simulate data<a href="confidence-intervals.html#simulate-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Generating 10,000 random participants. About half male and half female.</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="confidence-intervals.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb193-2"><a href="confidence-intervals.html#cb193-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb193-3"><a href="confidence-intervals.html#cb193-3" aria-hidden="true" tabindex="-1"></a>random_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb193-4"><a href="confidence-intervals.html#cb193-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sex =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>), n, T)</span>
+<span id="cb193-5"><a href="confidence-intervals.html#cb193-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="confidence-intervals.html#cb194-1" aria-hidden="true" tabindex="-1"></a>random_data <span class="sc">%&gt;%</span> </span>
+<span id="cb194-2"><a href="confidence-intervals.html#cb194-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">freq_table</span>(sex)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 9
+##   var   cat        n n_total percent    se t_crit   lcl   ucl
+##   &lt;chr&gt; &lt;chr&gt;  &lt;int&gt;   &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 sex   Female  5017   10000    50.2 0.500   1.96  49.2  51.1
+## 2 sex   Male    4983   10000    49.8 0.500   1.96  48.9  50.8</code></pre>
+<p>Assigning heights to the generated participants at random (within certain parameters).</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="confidence-intervals.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb196-2"><a href="confidence-intervals.html#cb196-2" aria-hidden="true" tabindex="-1"></a>random_data <span class="ot">&lt;-</span> random_data <span class="sc">%&gt;%</span> </span>
+<span id="cb196-3"><a href="confidence-intervals.html#cb196-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb196-4"><a href="confidence-intervals.html#cb196-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">height =</span> <span class="fu">if_else</span>(</span>
+<span id="cb196-5"><a href="confidence-intervals.html#cb196-5" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">==</span> <span class="st">&quot;Female&quot;</span>,</span>
+<span id="cb196-6"><a href="confidence-intervals.html#cb196-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rnorm</span>(n, <span class="fl">71.00</span>, <span class="fl">4.32</span>),</span>
+<span id="cb196-7"><a href="confidence-intervals.html#cb196-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rnorm</span>(n, <span class="fl">64.30</span>, <span class="fl">2.11</span>)</span>
+<span id="cb196-8"><a href="confidence-intervals.html#cb196-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb196-9"><a href="confidence-intervals.html#cb196-9" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="confidence-intervals.html#cb197-1" aria-hidden="true" tabindex="-1"></a>random_data <span class="sc">%&gt;%</span> </span>
+<span id="cb197-2"><a href="confidence-intervals.html#cb197-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> </span>
+<span id="cb197-3"><a href="confidence-intervals.html#cb197-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean_table</span>(height) <span class="sc">%&gt;%</span> </span>
+<span id="cb197-4"><a href="confidence-intervals.html#cb197-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(group_cat, mean, sd, lcl, ucl)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 5
+##   group_cat  mean    sd   lcl   ucl
+##   &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 Female     71.0  4.33  70.9  71.1
+## 2 Male       64.3  2.1   64.2  64.4</code></pre>
 </div>
-<div id="bulleted-list" class="section level2 hasAnchor" number="18.5">
-<h2><span class="header-section-number">18.5</span> Bulleted list<a href="officer.html#bulleted-list" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>It’s possible to do. You need to make sure you create a bullet style in the template Word doc.</p>
-<p>See here: <a href="https://github.com/davidgohel/officer/issues/262" class="uri">https://github.com/davidgohel/officer/issues/262</a></p>
-<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="officer.html#cb500-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  Create Word doc</span></span>
-<span id="cb500-2"><a href="officer.html#cb500-2" aria-hidden="true" tabindex="-1"></a>ss_report <span class="ot">&lt;-</span> <span class="fu">read_docx</span>(<span class="st">&quot;examples/Word Template for Officer.docx&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb500-3"><a href="officer.html#cb500-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;Sun Study Outcomes Report&quot;</span>, <span class="at">style =</span> <span class="st">&quot;heading 1&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb500-4"><a href="officer.html#cb500-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb500-5"><a href="officer.html#cb500-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="fu">paste</span>(<span class="st">&quot;Updated: &quot;</span>, <span class="fu">Sys.Date</span>())) <span class="sc">%&gt;%</span> </span>
-<span id="cb500-6"><a href="officer.html#cb500-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb500-7"><a href="officer.html#cb500-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb500-8"><a href="officer.html#cb500-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add bulleted list</span></span>
-<span id="cb500-9"><a href="officer.html#cb500-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;item 1&quot;</span>, <span class="at">style =</span> <span class="st">&quot;bullet&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb500-10"><a href="officer.html#cb500-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;item 2&quot;</span>, <span class="at">style =</span> <span class="st">&quot;bullet&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb500-11"><a href="officer.html#cb500-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;item 3&quot;</span>, <span class="at">style =</span> <span class="st">&quot;bullet&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="officer.html#cb501-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output Word document</span></span>
-<span id="cb501-2"><a href="officer.html#cb501-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(</span>
-<span id="cb501-3"><a href="officer.html#cb501-3" aria-hidden="true" tabindex="-1"></a>  ss_report, </span>
-<span id="cb501-4"><a href="officer.html#cb501-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;examples/officer_bullets.docx&quot;</span></span>
-<span id="cb501-5"><a href="officer.html#cb501-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><a href="https://www.dropbox.com/s/qc57o5oa54hqnev/officer_bullets.docx?dl=0">Link to Word Document on Dropbox</a></p>
-</div>
-<div id="adding-on-to-the-end-of-a-file." class="section level2 hasAnchor" number="18.6">
-<h2><span class="header-section-number">18.6</span> Adding on to the end of a file.<a href="officer.html#adding-on-to-the-end-of-a-file." class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>From the Sun Study. Need to clean up when I get time.</p>
-<p>Start with the same document we just made above.</p>
-<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="officer.html#cb502-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  Create Word doc</span></span>
-<span id="cb502-2"><a href="officer.html#cb502-2" aria-hidden="true" tabindex="-1"></a>ss_report <span class="ot">&lt;-</span> <span class="fu">read_docx</span>(<span class="st">&quot;examples/Word Template for Officer.docx&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb502-3"><a href="officer.html#cb502-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;Sun Study Outcomes Report&quot;</span>, <span class="at">style =</span> <span class="st">&quot;heading 1&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb502-4"><a href="officer.html#cb502-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb502-5"><a href="officer.html#cb502-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="fu">paste</span>(<span class="st">&quot;Updated: &quot;</span>, <span class="fu">Sys.Date</span>())) <span class="sc">%&gt;%</span> </span>
-<span id="cb502-6"><a href="officer.html#cb502-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="officer.html#cb503-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output Word document</span></span>
-<span id="cb503-2"><a href="officer.html#cb503-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(</span>
-<span id="cb503-3"><a href="officer.html#cb503-3" aria-hidden="true" tabindex="-1"></a>  ss_report, </span>
-<span id="cb503-4"><a href="officer.html#cb503-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;examples/officer_bullets.docx&quot;</span></span>
-<span id="cb503-5"><a href="officer.html#cb503-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><a href="https://www.dropbox.com/s/qc57o5oa54hqnev/officer_bullets.docx?dl=0">Link to Word Document on Dropbox</a></p>
-<p>Now add a new section to the document.</p>
-<p>Section 1. Report on missing data</p>
-<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="officer.html#cb504-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load report and add to the end?</span></span>
-<span id="cb504-2"><a href="officer.html#cb504-2" aria-hidden="true" tabindex="-1"></a>ss_report <span class="ot">&lt;-</span> <span class="fu">read_docx</span>(<span class="st">&quot;examples/officer_bullets.docx&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb504-3"><a href="officer.html#cb504-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;Test Text&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="officer.html#cb505-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output Word document</span></span>
-<span id="cb505-2"><a href="officer.html#cb505-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(</span>
-<span id="cb505-3"><a href="officer.html#cb505-3" aria-hidden="true" tabindex="-1"></a>  ss_report, </span>
-<span id="cb505-4"><a href="officer.html#cb505-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;examples/officer_add_to_end.docx&quot;</span></span>
-<span id="cb505-5"><a href="officer.html#cb505-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><a href="https://www.dropbox.com/s/ucnt8pm3r28qj42/officer_add_to_end.docx?dl=0">Link to Word Document on Dropbox</a></p>
-<p>This works. However, there was no advantage to doing it this way in the Sun Study example. In fact, what I’ve found in general is that it typically works best to do as much adding text and formatting things as possible directly in the Word template. Then, just pretty much add flextables and plots to the Word template.</p>
-</div>
-<div id="using-bookmarks" class="section level2 hasAnchor" number="18.7">
-<h2><span class="header-section-number">18.7</span> Using bookmarks<a href="officer.html#using-bookmarks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Writing everything in an R script and then compiling to a Word document works alright, but wrapping everything in officer functions makes it hard to read. In this section, I’m seeing if I can type all the narrative in the Word template, then just add tables and figures into the Word template at bookmarks.</p>
-<p>Website about bookmarks: <a href="https://davidgohel.github.io/officer/reference/body_replace_text_at_bkm.html" class="uri">https://davidgohel.github.io/officer/reference/body_replace_text_at_bkm.html</a></p>
-<p>Have to create this with point and click in Word: <a href="http://howtomicrosoftofficetutorials.blogspot.com/2017/03/use-bookmarks-in-word-2016-for-mac.html" class="uri">http://howtomicrosoftofficetutorials.blogspot.com/2017/03/use-bookmarks-in-word-2016-for-mac.html</a></p>
-<p>Use Insert &gt; Links &gt; Bookmark</p>
-<p>If you don’t add other text around the bookmark, you will get this error: Error: bookmark ‘example_table’ does not end in the same paragraph (or is on the whole paragraph)</p>
-<p>A hacky fix is to enclose bookmark text with bm text <bm>. Make sure only the “text” part is the bookmark.</p>
-<p>I also found that you can’t continue piping the document after you’ve added a flextable at a bookmark. You have to start overwriting the Word document object. See LEAD Panel Summary Report as an example.</p>
-<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="officer.html#cb506-1" aria-hidden="true" tabindex="-1"></a>doc_w_bookmarks <span class="ot">&lt;-</span> <span class="fu">read_docx</span>(<span class="st">&quot;examples/Word Template for Officer Bookmarks.docx&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb506-2"><a href="officer.html#cb506-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_replace_flextable_at_bkm</span>(</span>
-<span id="cb506-3"><a href="officer.html#cb506-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">bookmark =</span> <span class="st">&quot;example_table&quot;</span>,</span>
-<span id="cb506-4"><a href="officer.html#cb506-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">value =</span> <span class="fu">flextable</span>(<span class="fu">head</span>(mtcars))</span>
-<span id="cb506-5"><a href="officer.html#cb506-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb506-6"><a href="officer.html#cb506-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb506-7"><a href="officer.html#cb506-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(</span>
-<span id="cb506-8"><a href="officer.html#cb506-8" aria-hidden="true" tabindex="-1"></a>  doc_w_bookmarks,</span>
-<span id="cb506-9"><a href="officer.html#cb506-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;examples/officer_bookmarks.docx&quot;</span></span>
-<span id="cb506-10"><a href="officer.html#cb506-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><a href="https://www.dropbox.com/s/drgw3okcqwp9eqy/officer_bookmarks.docx?dl=0">Link to Word Document on Dropbox</a></p>
-<p>After figuring this out, I think it makes more sense to write in Word and replace tables and figures with bookmarks.</p>
-<p>For ggplot graphs, it looks like you need to use ggsave to save the plot as an image file. Then, use the image file as the value to body_replace_img_at_bkm()</p>
-<p><strong>Don’t forget to use external_img()</strong></p>
-<p>Example from L2C quarterly report:</p>
-<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="officer.html#cb507-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> doc <span class="sc">%&gt;%</span> </span>
-<span id="cb507-2"><a href="officer.html#cb507-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_replace_text_at_bkm</span>(<span class="st">&quot;n_phone_terminations&quot;</span>, <span class="fu">as.character</span>(n_phone_terminations)) <span class="sc">%&gt;%</span> </span>
-<span id="cb507-3"><a href="officer.html#cb507-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_replace_img_at_bkm</span>(</span>
-<span id="cb507-4"><a href="officer.html#cb507-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;fig_phone_terminations&quot;</span>, </span>
-<span id="cb507-5"><a href="officer.html#cb507-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">external_img</span>(<span class="st">&quot;fig_1.jpeg&quot;</span>, <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">4</span>)</span>
-<span id="cb507-6"><a href="officer.html#cb507-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<p>For images, just add the bookmark to the end of the title without surrounding it with “bm”. For example, “Figure 1. Overall trend in sunscreen application outcomes by study p_overall” Where “p_overall is the bookmark. Otherwise, the”bm” will still be there.</p>
-<p>For best results, the width and height used in ggsave() should match the width and height in external_img(). Deciding on the correct width and height might take some trial and error.</p>
-<p>To add an updated date, use this:</p>
-<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="officer.html#cb508-1" aria-hidden="true" tabindex="-1"></a>doc_w_bookmarks <span class="ot">&lt;-</span> doc_w_bookmarks <span class="sc">%&gt;%</span> </span>
-<span id="cb508-2"><a href="officer.html#cb508-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_replace_text_at_bkm</span>(<span class="st">&quot;date&quot;</span>, <span class="fu">as.character</span>(<span class="fu">Sys.Date</span>()))</span></code></pre></div>
-<div id="embedding-cells-form-one-table-into-cells-of-an-existing-word-tables-at-a-bookmark-with-flextable-and-officer" class="section level3 hasAnchor" number="18.7.1">
-<h3><span class="header-section-number">18.7.1</span> Embedding cells form one table into cells of an existing Word tables at a bookmark with flextable and officer<a href="officer.html#embedding-cells-form-one-table-into-cells-of-an-existing-word-tables-at-a-bookmark-with-flextable-and-officer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><strong>Posting on Stack Overflow – Update when you have a solution</strong></p>
-<p>In Word, it is possible to copy and paste a subsection of one table into another table. For example, if I have the two Word tables below, I can copy column 2, rows 2-5 from the first table and paste them into column 2, rows 4-7 in the second table.</p>
-<p><img src="img/06_presenting_results/embedding_flextables_in_existing_word_tables_01.png" /><!-- --></p>
-<p>I can highlight the cells that I want to copy in the first table and and paste them into the cells of the second table.</p>
-<p><img src="img/06_presenting_results/embedding_flextables_in_existing_word_tables_01.gif" /><!-- --></p>
-<p>I’m wondering if there is a programmatic way to do the same operation with <code>flextable</code> and <code>officer</code>. It’s probably worth mentioning the following to parameters:</p>
-<ol style="list-style-type: decimal">
-<li><p>Creating the second table from scratch with the values from the first table included won’t work for my problem – or at least it’s a solution that I’m trying to avoid.</p></li>
-<li><p>Add the values from the first table to the cells of the second table one at a time with bookmarks won’t work for my problme – or at least it’s a solution that I’m trying to avoid.</p></li>
-</ol>
-<p>I’ve tried the following potential solutions so far. They all begin with the following <a href="https://www.dropbox.com/s/ac06bgempt2kpzz/embedding_flextables_in_existing_word_tables.docx?dl=0">template Word document</a> with bookmarks embedded in the table.</p>
-<p>Additionally, here is the code I’m using to create the “First table” example data.</p>
-<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="officer.html#cb509-1" aria-hidden="true" tabindex="-1"></a>first_table <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb509-2"><a href="officer.html#cb509-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_items =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
-<span id="cb509-3"><a href="officer.html#cb509-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">40</span>, <span class="dv">20</span>, <span class="dv">5</span>)</span>
-<span id="cb509-4"><a href="officer.html#cb509-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><strong>Method 1: Add values to a bookmark in the second table</strong></p>
-<p><img src="img/06_presenting_results/embedding_flextables_in_existing_word_tables_02.png" /><!-- --></p>
-<p>Start by reading in the Word template document.</p>
-<p>Then, I tried adding the <em>values</em> from first_table to the bookmark in the second table.</p>
-<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="officer.html#cb510-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> doc <span class="sc">%&gt;%</span> </span>
-<span id="cb510-2"><a href="officer.html#cb510-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_replace_text_at_bkm</span>(</span>
-<span id="cb510-3"><a href="officer.html#cb510-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;bm_add_rows_01&quot;</span>, </span>
-<span id="cb510-4"><a href="officer.html#cb510-4" aria-hidden="true" tabindex="-1"></a>    first_table <span class="sc">%&gt;%</span> <span class="fu">pull</span>(n) <span class="sc">%&gt;%</span> <span class="fu">as.character</span>()</span>
-<span id="cb510-5"><a href="officer.html#cb510-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<pre><code>## Error in body_replace_text_at_bkm(., &quot;bm_add_rows_01&quot;, first_table %&gt;% : is_scalar_character(value) is not TRUE</code></pre>
-<p>That code results in the following error:</p>
-<pre><code>Error in body_replace_text_at_bkm(., &quot;bm_add_rows_01&quot;, first_table %&gt;% : 
-is_scalar_character(value) is not TRUE</code></pre>
-<p>So, I can’t add a vector of values to the bookmark.</p>
-<p><strong>Method 2: Add a single-column flextable to a bookmark in the second table</strong></p>
-<p>To do this, I need to first coerce first_table into a single-column flextable object.</p>
-<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="officer.html#cb513-1" aria-hidden="true" tabindex="-1"></a>first_table_ft <span class="ot">&lt;-</span> first_table <span class="sc">%&gt;%</span> </span>
-<span id="cb513-2"><a href="officer.html#cb513-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(n) <span class="sc">%&gt;%</span> </span>
-<span id="cb513-3"><a href="officer.html#cb513-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">flextable</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb513-4"><a href="officer.html#cb513-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">delete_part</span>(<span class="st">&quot;header&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb513-5"><a href="officer.html#cb513-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">border_remove</span>()</span></code></pre></div>
-<p>Then, add the single-column flextable to the bookmark in the second table.</p>
-<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="officer.html#cb514-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> doc <span class="sc">%&gt;%</span> </span>
-<span id="cb514-2"><a href="officer.html#cb514-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_replace_flextable_at_bkm</span>(<span class="st">&quot;bm_add_rows_01&quot;</span>, first_table_ft)</span></code></pre></div>
-<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="officer.html#cb515-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(</span>
-<span id="cb515-2"><a href="officer.html#cb515-2" aria-hidden="true" tabindex="-1"></a>  doc, </span>
-<span id="cb515-3"><a href="officer.html#cb515-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;embedding_flextables.docx&quot;</span></span>
-<span id="cb515-4"><a href="officer.html#cb515-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p>That returns the following result – a four-row table embedded into a single cell of the second table. This result makes sense, but it isn’t the result I’m attempting to achieve.</p>
-<p><img src="img/06_presenting_results/embedding_flextables_in_existing_word_tables_03.png" /><!-- --></p>
-<p><strong>Method 3: Add a single-column flextable to a bookmark in the second table with cells merged vertically</strong></p>
-<p>For my third attempt, I tried adding the bookmark to the second table with rows 4-7 merged in column 2.</p>
-<p><img src="img/06_presenting_results/embedding_flextables_in_existing_word_tables_04.png" /><!-- --></p>
-<p>Then, adding the single-column flextable to the bookmark in the second table as before.</p>
-<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="officer.html#cb516-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> doc <span class="sc">%&gt;%</span> </span>
-<span id="cb516-2"><a href="officer.html#cb516-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">body_replace_flextable_at_bkm</span>(<span class="st">&quot;bm_add_rows_02&quot;</span>, first_table_ft)</span></code></pre></div>
-<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="officer.html#cb517-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(</span>
-<span id="cb517-2"><a href="officer.html#cb517-2" aria-hidden="true" tabindex="-1"></a>  doc, </span>
-<span id="cb517-3"><a href="officer.html#cb517-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;embedding_flextables.docx&quot;</span></span>
-<span id="cb517-4"><a href="officer.html#cb517-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p>Which again returns a result that isn’t quite what I’m looking for.</p>
-<p><img src="img/06_presenting_results/embedding_flextables_in_existing_word_tables_05.png" /><!-- --></p>
-<p>Any solutions and/or constructive feedback is appreciated!</p>
+<div id="draw-samples-from-population" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Draw samples from population<a href="confidence-intervals.html#draw-samples-from-population" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Randomly select samples of 100 participants</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="confidence-intervals.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrate sample of data</span></span>
+<span id="cb199-2"><a href="confidence-intervals.html#cb199-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb199-3"><a href="confidence-intervals.html#cb199-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sample_n</span>(random_data, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 10 × 2
+##    sex   height
+##    &lt;chr&gt;  &lt;dbl&gt;
+##  1 Male    65.8
+##  2 Male    65.1
+##  3 Male    68.4
+##  4 Male    61.9
+##  5 Male    64.0
+##  6 Male    64.3
+##  7 Male    64.3
+##  8 Male    62.7
+##  9 Male    61.2
+## 10 Male    63.1</code></pre>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="confidence-intervals.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrate multiple samples of data</span></span>
+<span id="cb201-2"><a href="confidence-intervals.html#cb201-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb201-3"><a href="confidence-intervals.html#cb201-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="sc">~</span> <span class="fu">sample_n</span>(random_data, <span class="dv">10</span>))</span></code></pre></div>
+<pre><code>## [[1]]
+## # A tibble: 10 × 2
+##    sex   height
+##    &lt;chr&gt;  &lt;dbl&gt;
+##  1 Male    65.8
+##  2 Male    65.1
+##  3 Male    68.4
+##  4 Male    61.9
+##  5 Male    64.0
+##  6 Male    64.3
+##  7 Male    64.3
+##  8 Male    62.7
+##  9 Male    61.2
+## 10 Male    63.1
+## 
+## [[2]]
+## # A tibble: 10 × 2
+##    sex    height
+##    &lt;chr&gt;   &lt;dbl&gt;
+##  1 Female   66.9
+##  2 Male     68.9
+##  3 Female   74.1
+##  4 Male     66.8
+##  5 Female   71.2
+##  6 Male     71.2
+##  7 Male     64.8
+##  8 Male     61.1
+##  9 Male     62.8
+## 10 Male     64.7</code></pre>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="confidence-intervals.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">137</span>)</span>
+<span id="cb203-2"><a href="confidence-intervals.html#cb203-2" aria-hidden="true" tabindex="-1"></a>n_samples <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb203-3"><a href="confidence-intervals.html#cb203-3" aria-hidden="true" tabindex="-1"></a>random_samples <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb203-4"><a href="confidence-intervals.html#cb203-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample =</span> <span class="dv">1</span><span class="sc">:</span>n_samples,</span>
+<span id="cb203-5"><a href="confidence-intervals.html#cb203-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span>n_samples, <span class="sc">~</span> <span class="fu">sample_n</span>(random_data, <span class="dv">10</span>))</span>
+<span id="cb203-6"><a href="confidence-intervals.html#cb203-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="confidence-intervals.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrate extracting a df from a list column</span></span>
+<span id="cb204-2"><a href="confidence-intervals.html#cb204-2" aria-hidden="true" tabindex="-1"></a>random_samples<span class="sc">$</span>data[[<span class="dv">1</span>]]</span></code></pre></div>
+<pre><code>## # A tibble: 10 × 2
+##    sex    height
+##    &lt;chr&gt;   &lt;dbl&gt;
+##  1 Male     61.5
+##  2 Male     64.2
+##  3 Female   74.3
+##  4 Female   63.5
+##  5 Male     60.0
+##  6 Male     69.6
+##  7 Male     63.1
+##  8 Female   69.2
+##  9 Female   62.6
+## 10 Female   76.1</code></pre>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="confidence-intervals.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrate passing an extracted df to the mean_table() function</span></span>
+<span id="cb206-2"><a href="confidence-intervals.html#cb206-2" aria-hidden="true" tabindex="-1"></a>random_samples<span class="sc">$</span>data[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> </span>
+<span id="cb206-3"><a href="confidence-intervals.html#cb206-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean_table</span>(height) <span class="sc">%&gt;%</span> </span>
+<span id="cb206-4"><a href="confidence-intervals.html#cb206-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(mean, lcl, ucl)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 3
+##    mean   lcl   ucl
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  66.4  62.4  70.4</code></pre>
+<p>Calculate the stats of interest for each of the samples</p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="confidence-intervals.html#cb208-1" aria-hidden="true" tabindex="-1"></a>random_samples <span class="ot">&lt;-</span> random_samples <span class="sc">%&gt;%</span> </span>
+<span id="cb208-2"><a href="confidence-intervals.html#cb208-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb208-3"><a href="confidence-intervals.html#cb208-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_table =</span> <span class="fu">map</span>(data, <span class="sc">~</span> <span class="fu">mean_table</span>(.x, height))</span>
+<span id="cb208-4"><a href="confidence-intervals.html#cb208-4" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="confidence-intervals.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrate extracting a df of results from a list column</span></span>
+<span id="cb209-2"><a href="confidence-intervals.html#cb209-2" aria-hidden="true" tabindex="-1"></a>random_samples<span class="sc">$</span>mean_table[[<span class="dv">1</span>]]</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 9
+##   response_var     n  mean    sd   sem   lcl   ucl   min   max
+##   &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 height          10  66.4  5.55  1.75  62.4  70.4  60.0  76.1</code></pre>
+<p>Unnest the results</p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="confidence-intervals.html#cb211-1" aria-hidden="true" tabindex="-1"></a>random_samples <span class="sc">%&gt;%</span> </span>
+<span id="cb211-2"><a href="confidence-intervals.html#cb211-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(mean_table)</span></code></pre></div>
+<pre><code>## # A tibble: 100 × 11
+##    sample data     response_var     n  mean    sd   sem   lcl   ucl   min   max
+##     &lt;int&gt; &lt;list&gt;   &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1      1 &lt;tibble&gt; height          10  66.4  5.55 1.75   62.4  70.4  60.0  76.1
+##  2      2 &lt;tibble&gt; height          10  67.2  4.79 1.52   63.8  70.7  60.9  73.9
+##  3      3 &lt;tibble&gt; height          10  69.0  5.18 1.64   65.3  72.8  59.6  77.0
+##  4      4 &lt;tibble&gt; height          10  70.6  5.46 1.73   66.7  74.5  62.4  77.9
+##  5      5 &lt;tibble&gt; height          10  65.3  3.14 0.992  63.1  67.6  61.6  73.0
+##  6      6 &lt;tibble&gt; height          10  66.2  5.91 1.87   61.9  70.4  60.1  76.7
+##  7      7 &lt;tibble&gt; height          10  67    4.6  1.46   63.7  70.3  59.4  73.6
+##  8      8 &lt;tibble&gt; height          10  68.5  4.87 1.54   65.0  72.0  60.1  76.8
+##  9      9 &lt;tibble&gt; height          10  69.1  5.03 1.59   65.5  72.7  62.0  79.0
+## 10     10 &lt;tibble&gt; height          10  68.2  5.69 1.80   64.2  72.3  59.5  76.5
+## # … with 90 more rows</code></pre>
+<p>Count the number of CI’s that do not include the true population mean</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="confidence-intervals.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean_table</span>(random_data, height)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 9
+##   response_var     n  mean    sd    sem   lcl   ucl   min   max
+##   &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 height       10000  67.7  4.78 0.0478  67.6  67.8  56.0  87.6</code></pre>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="confidence-intervals.html#cb215-1" aria-hidden="true" tabindex="-1"></a>summary <span class="ot">&lt;-</span> random_samples <span class="sc">%&gt;%</span> </span>
+<span id="cb215-2"><a href="confidence-intervals.html#cb215-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(mean_table) <span class="sc">%&gt;%</span> </span>
+<span id="cb215-3"><a href="confidence-intervals.html#cb215-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sample, mean, lcl, ucl)</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="confidence-intervals.html#cb216-1" aria-hidden="true" tabindex="-1"></a>summary <span class="ot">&lt;-</span> summary <span class="sc">%&gt;%</span> </span>
+<span id="cb216-2"><a href="confidence-intervals.html#cb216-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">contain_pop_mean =</span> lcl <span class="sc">&lt;=</span> <span class="fl">67.67</span> <span class="sc">&amp;</span> <span class="fl">67.67</span> <span class="sc">&lt;=</span> ucl)</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="confidence-intervals.html#cb217-1" aria-hidden="true" tabindex="-1"></a>summary</span></code></pre></div>
+<pre><code>## # A tibble: 100 × 5
+##    sample  mean   lcl   ucl contain_pop_mean
+##     &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;           
+##  1      1  66.4  62.4  70.4 TRUE            
+##  2      2  67.2  63.8  70.7 TRUE            
+##  3      3  69.0  65.3  72.8 TRUE            
+##  4      4  70.6  66.7  74.5 TRUE            
+##  5      5  65.3  63.1  67.6 FALSE           
+##  6      6  66.2  61.9  70.4 TRUE            
+##  7      7  67    63.7  70.3 TRUE            
+##  8      8  68.5  65.0  72.0 TRUE            
+##  9      9  69.1  65.5  72.7 TRUE            
+## 10     10  68.2  64.2  72.3 TRUE            
+## # … with 90 more rows</code></pre>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="confidence-intervals.html#cb219-1" aria-hidden="true" tabindex="-1"></a>summary <span class="sc">%&gt;%</span> </span>
+<span id="cb219-2"><a href="confidence-intervals.html#cb219-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">freq_table</span>(contain_pop_mean)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 9
+##   var              cat       n n_total percent    se t_crit   lcl   ucl
+##   &lt;chr&gt;            &lt;chr&gt; &lt;int&gt;   &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 contain_pop_mean FALSE     5     100       5  2.19   1.98  2.06  11.6
+## 2 contain_pop_mean TRUE     95     100      95  2.19   1.98 88.4   97.9</code></pre>
 <!--
 Clean up and add session info
 -->
 
 </div>
 </div>
+
+
+
+
+</div>
+
+
+
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="language-for-publications.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tidy-evaluation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="arranging-columns-with-across.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

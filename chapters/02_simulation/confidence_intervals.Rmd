@@ -1,0 +1,168 @@
+# Confidence intervals
+
+<!--
+Hidden comments placeholder
+
+To preview:
+bookdown::preview_chapter("chapters/.../name.Rmd")
+-->
+
+```{r echo=FALSE}
+knitr::include_graphics("https://picsum.photos/200/300")
+```
+
+## ⭐️Overview
+
+This R Notebook contains a demonstration that is intended to help you develop an intuition for frequentist interpretations of 95% confidence intervals.
+
+
+## 🌎Useful websites
+
+* [R for Data Science, Chapter 25: Many models](https://r4ds.had.co.nz/many-models.html)
+
+
+## 📦Load packages
+
+```{r message=FALSE}
+library(dplyr, warn.conflicts = FALSE)
+library(meantables)
+library(freqtables)
+library(ggplot2)
+library(purrr)
+library(tidyr)
+```
+
+
+## 🔢Simulate data 
+
+Generating 10,000 random participants. About half male and half female.
+
+```{r}
+set.seed(123)
+n <- 10000
+random_data <- tibble(
+  sex = sample(c("Female", "Male"), n, T)
+)
+```
+
+```{r}
+random_data %>% 
+  freq_table(sex)
+```
+
+Assigning heights to the generated participants at random (within certain parameters).
+
+```{r}
+set.seed(123)
+random_data <- random_data %>% 
+  mutate(
+    height = if_else(
+      sex == "Female",
+      rnorm(n, 71.00, 4.32),
+      rnorm(n, 64.30, 2.11)
+    )
+  )
+```
+
+```{r}
+random_data %>% 
+  group_by(sex) %>% 
+  mean_table(height) %>% 
+  select(group_cat, mean, sd, lcl, ucl)
+```
+
+
+## Draw samples from population
+
+Randomly select samples of 100 participants
+
+```{r}
+# Demonstrate sample of data
+set.seed(123)
+sample_n(random_data, 10)
+```
+
+```{r}
+# Demonstrate multiple samples of data
+set.seed(123)
+map(1:2, ~ sample_n(random_data, 10))
+```
+
+```{r}
+set.seed(137)
+n_samples <- 100
+random_samples <- tibble(
+  sample = 1:n_samples,
+  data = map(1:n_samples, ~ sample_n(random_data, 10))
+)
+```
+
+```{r}
+# Demonstrate extracting a df from a list column
+random_samples$data[[1]]
+```
+
+```{r}
+# Demonstrate passing an extracted df to the mean_table() function
+random_samples$data[[1]] %>% 
+  mean_table(height) %>% 
+  select(mean, lcl, ucl)
+```
+
+Calculate the stats of interest for each of the samples
+
+```{r}
+random_samples <- random_samples %>% 
+  mutate(
+    mean_table = map(data, ~ mean_table(.x, height))
+  )
+```
+
+```{r}
+# Demonstrate extracting a df of results from a list column
+random_samples$mean_table[[1]]
+```
+
+Unnest the results
+
+```{r}
+random_samples %>% 
+  unnest(mean_table)
+```
+
+Count the number of CI's that do not include the true population mean
+
+```{r}
+mean_table(random_data, height)
+```
+
+```{r}
+summary <- random_samples %>% 
+  unnest(mean_table) %>% 
+  select(sample, mean, lcl, ucl)
+```
+
+```{r}
+summary <- summary %>% 
+  mutate(contain_pop_mean = lcl <= 67.67 & 67.67 <= ucl)
+```
+
+```{r}
+summary
+```
+
+```{r}
+summary %>% 
+  freq_table(contain_pop_mean)
+```
+
+
+<!--
+Clean up and add session info
+-->
+
+```{r echo=FALSE}
+rm(list = ls())
+```
+
+

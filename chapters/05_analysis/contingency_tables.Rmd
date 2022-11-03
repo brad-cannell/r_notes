@@ -1,7 +1,7 @@
 # Contingency Tables
 
 <!--
-Don't forget to add code for converting from a contingency table back into raw data. See the useful websites below. 
+bookdown::preview_chapter("chapters/05_analysis/contingency_tables.Rmd")
 -->
 
 ```{r echo=FALSE}
@@ -12,6 +12,9 @@ knitr::include_graphics("https://picsum.photos/200/300")
 ## ⭐️Overview
 
 In Epi III (and epidemiology in general) we use a lot of contingency tables - especially 2x2 contingency tables. In this note, we play around with several different ways of creating, and working with, contingency tables. This can include converting them to a data frame format for some analyses. We explore some of the pros and cons of each of each method.
+
+**Need to add**
+I think `ftable()` could be usefule. I need to work it in somehow. https://stat.ethz.ch/R-manual/R-devel/library/stats/html/ftable.html
 
 
 ## 🌎Useful websites

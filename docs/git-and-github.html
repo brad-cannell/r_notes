@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>20 Git and GitHub | R Notes</title>
+  <title>21 Git and GitHub | R Notes</title>
   <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="20 Git and GitHub | R Notes" />
+  <meta property="og:title" content="21 Git and GitHub | R Notes" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   <meta name="github-repo" content="brad-cannell/r_notes" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="20 Git and GitHub | R Notes" />
+  <meta name="twitter:title" content="21 Git and GitHub | R Notes" />
   
   <meta name="twitter:description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-10-16" />
+<meta name="date" content="2022-12-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -60,8 +60,7 @@
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.2/tabwid.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -389,204 +388,220 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VI Data Visualization</b></span></li>
-<li class="chapter" data-level="11" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html"><i class="fa fa-check"></i><b>11</b> Plot populations and samples</a>
+<li class="chapter" data-level="11" data-path="dags.html"><a href="dags.html"><i class="fa fa-check"></i><b>11</b> Dags</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#overview-9"><i class="fa fa-check"></i><b>11.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="11.2" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#useful-websites-9"><i class="fa fa-check"></i><b>11.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="11.3" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#load-packages-6"><i class="fa fa-check"></i><b>11.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="11.4" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#simulate-population-data"><i class="fa fa-check"></i><b>11.4</b> 🔢Simulate population data</a></li>
-<li class="chapter" data-level="11.5" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#plot"><i class="fa fa-check"></i><b>11.5</b> Plot</a>
-<ul>
-<li class="chapter" data-level="11.5.1" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#combine-legends"><i class="fa fa-check"></i><b>11.5.1</b> Combine legends</a></li>
-<li class="chapter" data-level="11.5.2" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#sample-box"><i class="fa fa-check"></i><b>11.5.2</b> Sample box</a></li>
-<li class="chapter" data-level="11.5.3" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#align-colors-and-shapes"><i class="fa fa-check"></i><b>11.5.3</b> Align colors and shapes</a></li>
+<li class="chapter" data-level="11.1" data-path="dags.html"><a href="dags.html#overview-9"><i class="fa fa-check"></i><b>11.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="11.2" data-path="dags.html"><a href="dags.html#useful-websites-9"><i class="fa fa-check"></i><b>11.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="11.3" data-path="dags.html"><a href="dags.html#load-packages-6"><i class="fa fa-check"></i><b>11.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="11.4" data-path="dags.html"><a href="dags.html#using-dagitty-to-create-other-graphics"><i class="fa fa-check"></i><b>11.4</b> Using Dagitty to create other graphics</a></li>
 </ul></li>
-<li class="chapter" data-level="11.6" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#more-helper-functions"><i class="fa fa-check"></i><b>11.6</b> More helper functions</a>
+<li class="chapter" data-level="12" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html"><i class="fa fa-check"></i><b>12</b> Plot populations and samples</a>
 <ul>
-<li class="chapter" data-level="11.6.1" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#create-a-pop-of-size-x-with-e-prop-exposed-and-o-prop-with-outcome"><i class="fa fa-check"></i><b>11.6.1</b> Create a pop of size x with e prop exposed and o prop with outcome</a></li>
-<li class="chapter" data-level="11.6.2" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#create-a-helper-plot-function"><i class="fa fa-check"></i><b>11.6.2</b> Create a helper plot function</a></li>
+<li class="chapter" data-level="12.1" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#overview-10"><i class="fa fa-check"></i><b>12.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="12.2" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#useful-websites-10"><i class="fa fa-check"></i><b>12.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="12.3" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#load-packages-7"><i class="fa fa-check"></i><b>12.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="12.4" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#simulate-population-data"><i class="fa fa-check"></i><b>12.4</b> 🔢Simulate population data</a></li>
+<li class="chapter" data-level="12.5" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#plot"><i class="fa fa-check"></i><b>12.5</b> Plot</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#combine-legends"><i class="fa fa-check"></i><b>12.5.1</b> Combine legends</a></li>
+<li class="chapter" data-level="12.5.2" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#sample-box"><i class="fa fa-check"></i><b>12.5.2</b> Sample box</a></li>
+<li class="chapter" data-level="12.5.3" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#align-colors-and-shapes"><i class="fa fa-check"></i><b>12.5.3</b> Align colors and shapes</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#more-helper-functions"><i class="fa fa-check"></i><b>12.6</b> More helper functions</a>
+<ul>
+<li class="chapter" data-level="12.6.1" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#create-a-pop-of-size-x-with-e-prop-exposed-and-o-prop-with-outcome"><i class="fa fa-check"></i><b>12.6.1</b> Create a pop of size x with e prop exposed and o prop with outcome</a></li>
+<li class="chapter" data-level="12.6.2" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#create-a-helper-plot-function"><i class="fa fa-check"></i><b>12.6.2</b> Create a helper plot function</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Presenting Results</b></span></li>
-<li class="chapter" data-level="12" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>12</b> Blogdown</a>
+<li class="chapter" data-level="13" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>13</b> Blogdown</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="blogdown.html"><a href="blogdown.html#overview-10"><i class="fa fa-check"></i><b>12.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="12.2" data-path="blogdown.html"><a href="blogdown.html#useful-websites-10"><i class="fa fa-check"></i><b>12.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="12.3" data-path="blogdown.html"><a href="blogdown.html#load-packages-7"><i class="fa fa-check"></i><b>12.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="12.4" data-path="blogdown.html"><a href="blogdown.html#blogdown-commands-to-remember"><i class="fa fa-check"></i><b>12.4</b> Blogdown commands to remember</a></li>
-<li class="chapter" data-level="12.5" data-path="blogdown.html"><a href="blogdown.html#creating-new-content"><i class="fa fa-check"></i><b>12.5</b> Creating new content</a>
+<li class="chapter" data-level="13.1" data-path="blogdown.html"><a href="blogdown.html#overview-11"><i class="fa fa-check"></i><b>13.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="13.2" data-path="blogdown.html"><a href="blogdown.html#useful-websites-11"><i class="fa fa-check"></i><b>13.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="13.3" data-path="blogdown.html"><a href="blogdown.html#load-packages-8"><i class="fa fa-check"></i><b>13.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="13.4" data-path="blogdown.html"><a href="blogdown.html#blogdown-commands-to-remember"><i class="fa fa-check"></i><b>13.4</b> Blogdown commands to remember</a></li>
+<li class="chapter" data-level="13.5" data-path="blogdown.html"><a href="blogdown.html#creating-new-content"><i class="fa fa-check"></i><b>13.5</b> Creating new content</a>
 <ul>
-<li class="chapter" data-level="12.5.1" data-path="blogdown.html"><a href="blogdown.html#step-1.-create-a-landing-page"><i class="fa fa-check"></i><b>12.5.1</b> Step 1. Create a landing page</a></li>
-<li class="chapter" data-level="12.5.2" data-path="blogdown.html"><a href="blogdown.html#step-2.-add-widgets-to-the-landing-page"><i class="fa fa-check"></i><b>12.5.2</b> Step 2. Add widgets to the landing page</a></li>
-<li class="chapter" data-level="12.5.3" data-path="blogdown.html"><a href="blogdown.html#step-3.-add-content-to-the-widgets"><i class="fa fa-check"></i><b>12.5.3</b> Step 3. Add content to the widgets</a></li>
-<li class="chapter" data-level="12.5.4" data-path="blogdown.html"><a href="blogdown.html#step-4.-add-a-banner-image-to-the-landing-page."><i class="fa fa-check"></i><b>12.5.4</b> Step 4. Add a banner image to the landing page.</a></li>
+<li class="chapter" data-level="13.5.1" data-path="blogdown.html"><a href="blogdown.html#step-1.-create-a-landing-page"><i class="fa fa-check"></i><b>13.5.1</b> Step 1. Create a landing page</a></li>
+<li class="chapter" data-level="13.5.2" data-path="blogdown.html"><a href="blogdown.html#step-2.-add-widgets-to-the-landing-page"><i class="fa fa-check"></i><b>13.5.2</b> Step 2. Add widgets to the landing page</a></li>
+<li class="chapter" data-level="13.5.3" data-path="blogdown.html"><a href="blogdown.html#step-3.-add-content-to-the-widgets"><i class="fa fa-check"></i><b>13.5.3</b> Step 3. Add content to the widgets</a></li>
+<li class="chapter" data-level="13.5.4" data-path="blogdown.html"><a href="blogdown.html#step-4.-add-a-banner-image-to-the-landing-page."><i class="fa fa-check"></i><b>13.5.4</b> Step 4. Add a banner image to the landing page.</a></li>
 </ul></li>
-<li class="chapter" data-level="12.6" data-path="blogdown.html"><a href="blogdown.html#editing-widget-metadata"><i class="fa fa-check"></i><b>12.6</b> Editing widget metadata</a></li>
-<li class="chapter" data-level="12.7" data-path="blogdown.html"><a href="blogdown.html#editing-about-widget-content"><i class="fa fa-check"></i><b>12.7</b> Editing about widget content</a></li>
-<li class="chapter" data-level="12.8" data-path="blogdown.html"><a href="blogdown.html#adjusting-site-configuration-files"><i class="fa fa-check"></i><b>12.8</b> Adjusting site configuration files</a></li>
-<li class="chapter" data-level="12.9" data-path="blogdown.html"><a href="blogdown.html#other-little-adjustments"><i class="fa fa-check"></i><b>12.9</b> Other little adjustments</a></li>
-<li class="chapter" data-level="12.10" data-path="blogdown.html"><a href="blogdown.html#custom-css"><i class="fa fa-check"></i><b>12.10</b> Custom CSS</a></li>
-<li class="chapter" data-level="12.11" data-path="blogdown.html"><a href="blogdown.html#changing-the-domain"><i class="fa fa-check"></i><b>12.11</b> Changing the domain</a></li>
-<li class="chapter" data-level="12.12" data-path="blogdown.html"><a href="blogdown.html#error-fixes"><i class="fa fa-check"></i><b>12.12</b> Error fixes</a>
+<li class="chapter" data-level="13.6" data-path="blogdown.html"><a href="blogdown.html#editing-widget-metadata"><i class="fa fa-check"></i><b>13.6</b> Editing widget metadata</a></li>
+<li class="chapter" data-level="13.7" data-path="blogdown.html"><a href="blogdown.html#editing-about-widget-content"><i class="fa fa-check"></i><b>13.7</b> Editing about widget content</a></li>
+<li class="chapter" data-level="13.8" data-path="blogdown.html"><a href="blogdown.html#adjusting-site-configuration-files"><i class="fa fa-check"></i><b>13.8</b> Adjusting site configuration files</a></li>
+<li class="chapter" data-level="13.9" data-path="blogdown.html"><a href="blogdown.html#other-little-adjustments"><i class="fa fa-check"></i><b>13.9</b> Other little adjustments</a></li>
+<li class="chapter" data-level="13.10" data-path="blogdown.html"><a href="blogdown.html#custom-css"><i class="fa fa-check"></i><b>13.10</b> Custom CSS</a></li>
+<li class="chapter" data-level="13.11" data-path="blogdown.html"><a href="blogdown.html#changing-the-domain"><i class="fa fa-check"></i><b>13.11</b> Changing the domain</a></li>
+<li class="chapter" data-level="13.12" data-path="blogdown.html"><a href="blogdown.html#error-fixes"><i class="fa fa-check"></i><b>13.12</b> Error fixes</a>
 <ul>
-<li class="chapter" data-level="12.12.1" data-path="blogdown.html"><a href="blogdown.html#blogdowncheck_netlify"><i class="fa fa-check"></i><b>12.12.1</b> blogdown::check_netlify()</a></li>
+<li class="chapter" data-level="13.12.1" data-path="blogdown.html"><a href="blogdown.html#blogdowncheck_netlify"><i class="fa fa-check"></i><b>13.12.1</b> blogdown::check_netlify()</a></li>
 </ul></li>
-<li class="chapter" data-level="12.13" data-path="blogdown.html"><a href="blogdown.html#adding-google-analytics"><i class="fa fa-check"></i><b>12.13</b> Adding Google Analytics</a></li>
+<li class="chapter" data-level="13.13" data-path="blogdown.html"><a href="blogdown.html#adding-google-analytics"><i class="fa fa-check"></i><b>13.13</b> Adding Google Analytics</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="book-chapters.html"><a href="book-chapters.html"><i class="fa fa-check"></i><b>13</b> Bookdown: Creating Book Chapters</a>
+<li class="chapter" data-level="14" data-path="book-chapters.html"><a href="book-chapters.html"><i class="fa fa-check"></i><b>14</b> Bookdown: Creating Book Chapters</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="book-chapters.html"><a href="book-chapters.html#chapter-overview"><i class="fa fa-check"></i><b>13.1</b> Chapter overview</a></li>
-<li class="chapter" data-level="13.2" data-path="book-chapters.html"><a href="book-chapters.html#motivating-example"><i class="fa fa-check"></i><b>13.2</b> Motivating example</a></li>
-<li class="chapter" data-level="13.3" data-path="book-chapters.html"><a href="book-chapters.html#body"><i class="fa fa-check"></i><b>13.3</b> Body</a>
+<li class="chapter" data-level="14.1" data-path="book-chapters.html"><a href="book-chapters.html#chapter-overview"><i class="fa fa-check"></i><b>14.1</b> Chapter overview</a></li>
+<li class="chapter" data-level="14.2" data-path="book-chapters.html"><a href="book-chapters.html#motivating-example"><i class="fa fa-check"></i><b>14.2</b> Motivating example</a></li>
+<li class="chapter" data-level="14.3" data-path="book-chapters.html"><a href="book-chapters.html#body"><i class="fa fa-check"></i><b>14.3</b> Body</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="book-chapters.html"><a href="book-chapters.html#language"><i class="fa fa-check"></i><b>13.3.1</b> Language</a></li>
-<li class="chapter" data-level="13.3.2" data-path="book-chapters.html"><a href="book-chapters.html#text-conventions"><i class="fa fa-check"></i><b>13.3.2</b> Text conventions</a></li>
-<li class="chapter" data-level="13.3.3" data-path="book-chapters.html"><a href="book-chapters.html#special-sections"><i class="fa fa-check"></i><b>13.3.3</b> Special sections</a></li>
-<li class="chapter" data-level="13.3.4" data-path="book-chapters.html"><a href="book-chapters.html#images"><i class="fa fa-check"></i><b>13.3.4</b> Images</a></li>
-<li class="chapter" data-level="13.3.5" data-path="book-chapters.html"><a href="book-chapters.html#videos"><i class="fa fa-check"></i><b>13.3.5</b> Videos</a></li>
-<li class="chapter" data-level="13.3.6" data-path="book-chapters.html"><a href="book-chapters.html#font-awesome"><i class="fa fa-check"></i><b>13.3.6</b> Font Awesome</a></li>
-<li class="chapter" data-level="13.3.7" data-path="book-chapters.html"><a href="book-chapters.html#links"><i class="fa fa-check"></i><b>13.3.7</b> Links</a></li>
-<li class="chapter" data-level="13.3.8" data-path="book-chapters.html"><a href="book-chapters.html#code-blocks"><i class="fa fa-check"></i><b>13.3.8</b> Code blocks</a></li>
+<li class="chapter" data-level="14.3.1" data-path="book-chapters.html"><a href="book-chapters.html#language"><i class="fa fa-check"></i><b>14.3.1</b> Language</a></li>
+<li class="chapter" data-level="14.3.2" data-path="book-chapters.html"><a href="book-chapters.html#text-conventions"><i class="fa fa-check"></i><b>14.3.2</b> Text conventions</a></li>
+<li class="chapter" data-level="14.3.3" data-path="book-chapters.html"><a href="book-chapters.html#special-sections"><i class="fa fa-check"></i><b>14.3.3</b> Special sections</a></li>
+<li class="chapter" data-level="14.3.4" data-path="book-chapters.html"><a href="book-chapters.html#images"><i class="fa fa-check"></i><b>14.3.4</b> Images</a></li>
+<li class="chapter" data-level="14.3.5" data-path="book-chapters.html"><a href="book-chapters.html#videos"><i class="fa fa-check"></i><b>14.3.5</b> Videos</a></li>
+<li class="chapter" data-level="14.3.6" data-path="book-chapters.html"><a href="book-chapters.html#font-awesome"><i class="fa fa-check"></i><b>14.3.6</b> Font Awesome</a></li>
+<li class="chapter" data-level="14.3.7" data-path="book-chapters.html"><a href="book-chapters.html#links"><i class="fa fa-check"></i><b>14.3.7</b> Links</a></li>
+<li class="chapter" data-level="14.3.8" data-path="book-chapters.html"><a href="book-chapters.html#code-blocks"><i class="fa fa-check"></i><b>14.3.8</b> Code blocks</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="book-chapters.html"><a href="book-chapters.html#cross-references"><i class="fa fa-check"></i><b>13.4</b> Cross-references</a>
+<li class="chapter" data-level="14.4" data-path="book-chapters.html"><a href="book-chapters.html#cross-references"><i class="fa fa-check"></i><b>14.4</b> Cross-references</a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="book-chapters.html"><a href="book-chapters.html#cr-figs"><i class="fa fa-check"></i><b>13.4.1</b> Cross-referencing figures</a></li>
-<li class="chapter" data-level="13.4.2" data-path="book-chapters.html"><a href="book-chapters.html#cross-referencing-chapters"><i class="fa fa-check"></i><b>13.4.2</b> Cross-referencing chapters</a></li>
-<li class="chapter" data-level="13.4.3" data-path="book-chapters.html"><a href="book-chapters.html#cross-referencing-unnumbered-chapters"><i class="fa fa-check"></i><b>13.4.3</b> Cross-referencing unnumbered chapters</a></li>
+<li class="chapter" data-level="14.4.1" data-path="book-chapters.html"><a href="book-chapters.html#cr-figs"><i class="fa fa-check"></i><b>14.4.1</b> Cross-referencing figures</a></li>
+<li class="chapter" data-level="14.4.2" data-path="book-chapters.html"><a href="book-chapters.html#cross-referencing-chapters"><i class="fa fa-check"></i><b>14.4.2</b> Cross-referencing chapters</a></li>
+<li class="chapter" data-level="14.4.3" data-path="book-chapters.html"><a href="book-chapters.html#cross-referencing-unnumbered-chapters"><i class="fa fa-check"></i><b>14.4.3</b> Cross-referencing unnumbered chapters</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="book-chapters.html"><a href="book-chapters.html#citations"><i class="fa fa-check"></i><b>13.5</b> Citations</a></li>
-<li class="chapter" data-level="13.6" data-path="book-chapters.html"><a href="book-chapters.html#previewing-the-chapter"><i class="fa fa-check"></i><b>13.6</b> Previewing the chapter</a>
+<li class="chapter" data-level="14.5" data-path="book-chapters.html"><a href="book-chapters.html#citations"><i class="fa fa-check"></i><b>14.5</b> Citations</a></li>
+<li class="chapter" data-level="14.6" data-path="book-chapters.html"><a href="book-chapters.html#previewing-the-chapter"><i class="fa fa-check"></i><b>14.6</b> Previewing the chapter</a>
 <ul>
-<li class="chapter" data-level="13.6.1" data-path="book-chapters.html"><a href="book-chapters.html#miscelaneous"><i class="fa fa-check"></i><b>13.6.1</b> Miscelaneous</a></li>
+<li class="chapter" data-level="14.6.1" data-path="book-chapters.html"><a href="book-chapters.html#miscelaneous"><i class="fa fa-check"></i><b>14.6.1</b> Miscelaneous</a></li>
 </ul></li>
-<li class="chapter" data-level="13.7" data-path="book-chapters.html"><a href="book-chapters.html#additional-resources-function-to-check"><i class="fa fa-check"></i><b>13.7</b> Additional resources: function to check</a></li>
-<li class="chapter" data-level="13.8" data-path="book-chapters.html"><a href="book-chapters.html#key-terms-function-to-add-to-appendix"><i class="fa fa-check"></i><b>13.8</b> Key terms : function to add to appendix</a></li>
-<li class="chapter" data-level="13.9" data-path="book-chapters.html"><a href="book-chapters.html#final-example-code-function-to-add-to-appendix"><i class="fa fa-check"></i><b>13.9</b> Final example code : function to add to appendix</a></li>
+<li class="chapter" data-level="14.7" data-path="book-chapters.html"><a href="book-chapters.html#additional-resources-function-to-check"><i class="fa fa-check"></i><b>14.7</b> Additional resources: function to check</a></li>
+<li class="chapter" data-level="14.8" data-path="book-chapters.html"><a href="book-chapters.html#key-terms-function-to-add-to-appendix"><i class="fa fa-check"></i><b>14.8</b> Key terms : function to add to appendix</a></li>
+<li class="chapter" data-level="14.9" data-path="book-chapters.html"><a href="book-chapters.html#final-example-code-function-to-add-to-appendix"><i class="fa fa-check"></i><b>14.9</b> Final example code : function to add to appendix</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html"><i class="fa fa-check"></i><b>14</b> Bookdown: Quick Start</a>
+<li class="chapter" data-level="15" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html"><i class="fa fa-check"></i><b>15</b> Bookdown: Quick Start</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#overview-11"><i class="fa fa-check"></i><b>14.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="14.2" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#useful-websites-11"><i class="fa fa-check"></i><b>14.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="14.3" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#creating-the-bookdown-project-locally"><i class="fa fa-check"></i><b>14.3</b> Creating the bookdown project locally</a></li>
-<li class="chapter" data-level="14.4" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#initiate-a-git-repository"><i class="fa fa-check"></i><b>14.4</b> Initiate a git repository</a></li>
-<li class="chapter" data-level="14.5" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#create-a-github-repository-for-the-book"><i class="fa fa-check"></i><b>14.5</b> Create a github repository for the book</a></li>
-<li class="chapter" data-level="14.6" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#configuring-a-publishing-source-for-the-github-pages-site"><i class="fa fa-check"></i><b>14.6</b> Configuring a publishing source for the GitHub Pages site</a></li>
-<li class="chapter" data-level="14.7" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-_bookdown.yml"><i class="fa fa-check"></i><b>14.7</b> Modify _bookdown.yml</a></li>
-<li class="chapter" data-level="14.8" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-_output.yml"><i class="fa fa-check"></i><b>14.8</b> Modify _output.yml</a></li>
-<li class="chapter" data-level="14.9" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-style.css"><i class="fa fa-check"></i><b>14.9</b> Modify style.css</a></li>
-<li class="chapter" data-level="14.10" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-index.rmd"><i class="fa fa-check"></i><b>14.10</b> Modify index.Rmd</a></li>
-<li class="chapter" data-level="14.11" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#creating-bookdown-chapters"><i class="fa fa-check"></i><b>14.11</b> Creating bookdown chapters</a></li>
-<li class="chapter" data-level="14.12" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#knitting-the-book"><i class="fa fa-check"></i><b>14.12</b> Knitting the book</a></li>
-<li class="chapter" data-level="14.13" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#errors-and-warnings"><i class="fa fa-check"></i><b>14.13</b> Errors and warnings</a></li>
+<li class="chapter" data-level="15.1" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#overview-12"><i class="fa fa-check"></i><b>15.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="15.2" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#useful-websites-12"><i class="fa fa-check"></i><b>15.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="15.3" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#creating-the-bookdown-project-locally"><i class="fa fa-check"></i><b>15.3</b> Creating the bookdown project locally</a></li>
+<li class="chapter" data-level="15.4" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#initiate-a-git-repository"><i class="fa fa-check"></i><b>15.4</b> Initiate a git repository</a></li>
+<li class="chapter" data-level="15.5" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#create-a-github-repository-for-the-book"><i class="fa fa-check"></i><b>15.5</b> Create a github repository for the book</a></li>
+<li class="chapter" data-level="15.6" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#configuring-a-publishing-source-for-the-github-pages-site"><i class="fa fa-check"></i><b>15.6</b> Configuring a publishing source for the GitHub Pages site</a></li>
+<li class="chapter" data-level="15.7" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-_bookdown.yml"><i class="fa fa-check"></i><b>15.7</b> Modify _bookdown.yml</a></li>
+<li class="chapter" data-level="15.8" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-_output.yml"><i class="fa fa-check"></i><b>15.8</b> Modify _output.yml</a></li>
+<li class="chapter" data-level="15.9" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-style.css"><i class="fa fa-check"></i><b>15.9</b> Modify style.css</a></li>
+<li class="chapter" data-level="15.10" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-index.rmd"><i class="fa fa-check"></i><b>15.10</b> Modify index.Rmd</a></li>
+<li class="chapter" data-level="15.11" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#creating-bookdown-chapters"><i class="fa fa-check"></i><b>15.11</b> Creating bookdown chapters</a></li>
+<li class="chapter" data-level="15.12" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#knitting-the-book"><i class="fa fa-check"></i><b>15.12</b> Knitting the book</a></li>
+<li class="chapter" data-level="15.13" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#errors-and-warnings"><i class="fa fa-check"></i><b>15.13</b> Errors and warnings</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="flexdashboard.html"><a href="flexdashboard.html"><i class="fa fa-check"></i><b>15</b> Flexdashboard</a>
+<li class="chapter" data-level="16" data-path="flexdashboard.html"><a href="flexdashboard.html"><i class="fa fa-check"></i><b>16</b> Flexdashboard</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="flexdashboard.html"><a href="flexdashboard.html#overview-12"><i class="fa fa-check"></i><b>15.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="15.2" data-path="flexdashboard.html"><a href="flexdashboard.html#useful-websites-12"><i class="fa fa-check"></i><b>15.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="15.3" data-path="flexdashboard.html"><a href="flexdashboard.html#load-packages-8"><i class="fa fa-check"></i><b>15.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="15.4" data-path="flexdashboard.html"><a href="flexdashboard.html#tips"><i class="fa fa-check"></i><b>15.4</b> Tips</a></li>
-<li class="chapter" data-level="15.5" data-path="flexdashboard.html"><a href="flexdashboard.html#simulate-data-6"><i class="fa fa-check"></i><b>15.5</b> 🔢Simulate data</a></li>
+<li class="chapter" data-level="16.1" data-path="flexdashboard.html"><a href="flexdashboard.html#overview-13"><i class="fa fa-check"></i><b>16.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="16.2" data-path="flexdashboard.html"><a href="flexdashboard.html#useful-websites-13"><i class="fa fa-check"></i><b>16.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="16.3" data-path="flexdashboard.html"><a href="flexdashboard.html#load-packages-9"><i class="fa fa-check"></i><b>16.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="16.4" data-path="flexdashboard.html"><a href="flexdashboard.html#tips"><i class="fa fa-check"></i><b>16.4</b> Tips</a></li>
+<li class="chapter" data-level="16.5" data-path="flexdashboard.html"><a href="flexdashboard.html#simulate-data-6"><i class="fa fa-check"></i><b>16.5</b> 🔢Simulate data</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="flextable.html"><a href="flextable.html"><i class="fa fa-check"></i><b>16</b> Flextable</a>
+<li class="chapter" data-level="17" data-path="flextable.html"><a href="flextable.html"><i class="fa fa-check"></i><b>17</b> Flextable</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="flextable.html"><a href="flextable.html#overview-13"><i class="fa fa-check"></i><b>16.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="16.2" data-path="flextable.html"><a href="flextable.html#useful-websites-13"><i class="fa fa-check"></i><b>16.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="16.3" data-path="flextable.html"><a href="flextable.html#load-packages-9"><i class="fa fa-check"></i><b>16.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="16.4" data-path="flextable.html"><a href="flextable.html#load-data"><i class="fa fa-check"></i><b>16.4</b> Load data</a></li>
-<li class="chapter" data-level="16.5" data-path="flextable.html"><a href="flextable.html#i-and-j"><i class="fa fa-check"></i><b>16.5</b> 🔵 i and j</a></li>
-<li class="chapter" data-level="16.6" data-path="flextable.html"><a href="flextable.html#flextable-wrappers"><i class="fa fa-check"></i><b>16.6</b> 🔵 Flextable wrappers</a></li>
-<li class="chapter" data-level="16.7" data-path="flextable.html"><a href="flextable.html#addingmodifying-table-content"><i class="fa fa-check"></i><b>16.7</b> 🔵 Adding/modifying table content</a>
+<li class="chapter" data-level="17.1" data-path="flextable.html"><a href="flextable.html#overview-14"><i class="fa fa-check"></i><b>17.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="17.2" data-path="flextable.html"><a href="flextable.html#useful-websites-14"><i class="fa fa-check"></i><b>17.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="17.3" data-path="flextable.html"><a href="flextable.html#load-packages-10"><i class="fa fa-check"></i><b>17.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="17.4" data-path="flextable.html"><a href="flextable.html#load-data"><i class="fa fa-check"></i><b>17.4</b> Load data</a></li>
+<li class="chapter" data-level="17.5" data-path="flextable.html"><a href="flextable.html#i-and-j"><i class="fa fa-check"></i><b>17.5</b> 🔵 i and j</a></li>
+<li class="chapter" data-level="17.6" data-path="flextable.html"><a href="flextable.html#flextable-wrappers"><i class="fa fa-check"></i><b>17.6</b> 🔵 Flextable wrappers</a></li>
+<li class="chapter" data-level="17.7" data-path="flextable.html"><a href="flextable.html#addingmodifying-table-content"><i class="fa fa-check"></i><b>17.7</b> 🔵 Adding/modifying table content</a>
 <ul>
-<li class="chapter" data-level="16.7.1" data-path="flextable.html"><a href="flextable.html#add-table-title-with-bold-part"><i class="fa fa-check"></i><b>16.7.1</b> Add table title with bold part</a></li>
-<li class="chapter" data-level="16.7.2" data-path="flextable.html"><a href="flextable.html#adding-blank-rows"><i class="fa fa-check"></i><b>16.7.2</b> Adding blank rows</a></li>
-<li class="chapter" data-level="16.7.3" data-path="flextable.html"><a href="flextable.html#change-column-header-text"><i class="fa fa-check"></i><b>16.7.3</b> Change column header text</a></li>
-<li class="chapter" data-level="16.7.4" data-path="flextable.html"><a href="flextable.html#change-row-header-text"><i class="fa fa-check"></i><b>16.7.4</b> Change row header text</a></li>
-<li class="chapter" data-level="16.7.5" data-path="flextable.html"><a href="flextable.html#add-footnote"><i class="fa fa-check"></i><b>16.7.5</b> Add footnote</a></li>
+<li class="chapter" data-level="17.7.1" data-path="flextable.html"><a href="flextable.html#add-table-title-with-bold-part"><i class="fa fa-check"></i><b>17.7.1</b> Add table title with bold part</a></li>
+<li class="chapter" data-level="17.7.2" data-path="flextable.html"><a href="flextable.html#adding-blank-rows"><i class="fa fa-check"></i><b>17.7.2</b> Adding blank rows</a></li>
+<li class="chapter" data-level="17.7.3" data-path="flextable.html"><a href="flextable.html#change-column-header-text"><i class="fa fa-check"></i><b>17.7.3</b> Change column header text</a></li>
+<li class="chapter" data-level="17.7.4" data-path="flextable.html"><a href="flextable.html#change-row-header-text"><i class="fa fa-check"></i><b>17.7.4</b> Change row header text</a></li>
+<li class="chapter" data-level="17.7.5" data-path="flextable.html"><a href="flextable.html#add-footnote"><i class="fa fa-check"></i><b>17.7.5</b> Add footnote</a></li>
 </ul></li>
-<li class="chapter" data-level="16.8" data-path="flextable.html"><a href="flextable.html#formatting"><i class="fa fa-check"></i><b>16.8</b> 🔵 Formatting</a>
+<li class="chapter" data-level="17.8" data-path="flextable.html"><a href="flextable.html#formatting"><i class="fa fa-check"></i><b>17.8</b> 🔵 Formatting</a>
 <ul>
-<li class="chapter" data-level="16.8.1" data-path="flextable.html"><a href="flextable.html#change-font-to-tnr"><i class="fa fa-check"></i><b>16.8.1</b> Change font to TNR</a></li>
-<li class="chapter" data-level="16.8.2" data-path="flextable.html"><a href="flextable.html#conditional-formatting"><i class="fa fa-check"></i><b>16.8.2</b> Conditional formatting</a></li>
+<li class="chapter" data-level="17.8.1" data-path="flextable.html"><a href="flextable.html#change-font-to-tnr"><i class="fa fa-check"></i><b>17.8.1</b> Change font to TNR</a></li>
+<li class="chapter" data-level="17.8.2" data-path="flextable.html"><a href="flextable.html#conditional-formatting"><i class="fa fa-check"></i><b>17.8.2</b> Conditional formatting</a></li>
 </ul></li>
-<li class="chapter" data-level="16.9" data-path="flextable.html"><a href="flextable.html#layout"><i class="fa fa-check"></i><b>16.9</b> 🔵Layout</a>
+<li class="chapter" data-level="17.9" data-path="flextable.html"><a href="flextable.html#layout"><i class="fa fa-check"></i><b>17.9</b> 🔵Layout</a>
 <ul>
-<li class="chapter" data-level="16.9.1" data-path="flextable.html"><a href="flextable.html#autofit-to-contents"><i class="fa fa-check"></i><b>16.9.1</b> Autofit to contents</a></li>
-<li class="chapter" data-level="16.9.2" data-path="flextable.html"><a href="flextable.html#all-categories-of-categorical-variables-are-collapsed-into-a-single-row"><i class="fa fa-check"></i><b>16.9.2</b> All categories of categorical variables are collapsed into a single row</a></li>
+<li class="chapter" data-level="17.9.1" data-path="flextable.html"><a href="flextable.html#autofit-to-contents"><i class="fa fa-check"></i><b>17.9.1</b> Autofit to contents</a></li>
+<li class="chapter" data-level="17.9.2" data-path="flextable.html"><a href="flextable.html#all-categories-of-categorical-variables-are-collapsed-into-a-single-row"><i class="fa fa-check"></i><b>17.9.2</b> All categories of categorical variables are collapsed into a single row</a></li>
 </ul></li>
-<li class="chapter" data-level="16.10" data-path="flextable.html"><a href="flextable.html#examples-1"><i class="fa fa-check"></i><b>16.10</b> 🔵 Examples</a>
+<li class="chapter" data-level="17.10" data-path="flextable.html"><a href="flextable.html#examples-1"><i class="fa fa-check"></i><b>17.10</b> 🔵 Examples</a>
 <ul>
-<li class="chapter" data-level="16.10.1" data-path="flextable.html"><a href="flextable.html#lead-panel-summarize-votes"><i class="fa fa-check"></i><b>16.10.1</b> LEAD panel summarize votes</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="17" data-path="language-for-publications.html"><a href="language-for-publications.html"><i class="fa fa-check"></i><b>17</b> Language for publications</a>
-<ul>
-<li class="chapter" data-level="17.1" data-path="language-for-publications.html"><a href="language-for-publications.html#overview-14"><i class="fa fa-check"></i><b>17.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="17.2" data-path="language-for-publications.html"><a href="language-for-publications.html#useful-websites-14"><i class="fa fa-check"></i><b>17.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="17.3" data-path="language-for-publications.html"><a href="language-for-publications.html#load-packages-10"><i class="fa fa-check"></i><b>17.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="17.4" data-path="language-for-publications.html"><a href="language-for-publications.html#statistical-software"><i class="fa fa-check"></i><b>17.4</b> Statistical software</a>
-<ul>
-<li class="chapter" data-level="17.4.1" data-path="language-for-publications.html"><a href="language-for-publications.html#r"><i class="fa fa-check"></i><b>17.4.1</b> R</a></li>
-<li class="chapter" data-level="17.4.2" data-path="language-for-publications.html"><a href="language-for-publications.html#stata"><i class="fa fa-check"></i><b>17.4.2</b> Stata</a></li>
-<li class="chapter" data-level="17.4.3" data-path="language-for-publications.html"><a href="language-for-publications.html#sas"><i class="fa fa-check"></i><b>17.4.3</b> SAS</a></li>
-</ul></li>
-<li class="chapter" data-level="17.5" data-path="language-for-publications.html"><a href="language-for-publications.html#irb"><i class="fa fa-check"></i><b>17.5</b> IRB</a></li>
-</ul></li>
-<li class="chapter" data-level="18" data-path="officer.html"><a href="officer.html"><i class="fa fa-check"></i><b>18</b> Officer</a>
-<ul>
-<li class="chapter" data-level="18.1" data-path="officer.html"><a href="officer.html#overview-15"><i class="fa fa-check"></i><b>18.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="18.2" data-path="officer.html"><a href="officer.html#useful-websites-15"><i class="fa fa-check"></i><b>18.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="18.3" data-path="officer.html"><a href="officer.html#load-packages-11"><i class="fa fa-check"></i><b>18.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="18.4" data-path="officer.html"><a href="officer.html#formatted-text"><i class="fa fa-check"></i><b>18.4</b> Formatted text</a></li>
-<li class="chapter" data-level="18.5" data-path="officer.html"><a href="officer.html#bulleted-list"><i class="fa fa-check"></i><b>18.5</b> Bulleted list</a></li>
-<li class="chapter" data-level="18.6" data-path="officer.html"><a href="officer.html#adding-on-to-the-end-of-a-file."><i class="fa fa-check"></i><b>18.6</b> Adding on to the end of a file.</a></li>
-<li class="chapter" data-level="18.7" data-path="officer.html"><a href="officer.html#using-bookmarks"><i class="fa fa-check"></i><b>18.7</b> Using bookmarks</a>
-<ul>
-<li class="chapter" data-level="18.7.1" data-path="officer.html"><a href="officer.html#embedding-cells-form-one-table-into-cells-of-an-existing-word-tables-at-a-bookmark-with-flextable-and-officer"><i class="fa fa-check"></i><b>18.7.1</b> Embedding cells form one table into cells of an existing Word tables at a bookmark with flextable and officer</a></li>
+<li class="chapter" data-level="17.10.1" data-path="flextable.html"><a href="flextable.html#lead-panel-summarize-votes"><i class="fa fa-check"></i><b>17.10.1</b> LEAD panel summarize votes</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>19</b> Tables</a>
+<li class="chapter" data-level="18" data-path="language-for-publications.html"><a href="language-for-publications.html"><i class="fa fa-check"></i><b>18</b> Language for publications</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="tables.html"><a href="tables.html#overview-16"><i class="fa fa-check"></i><b>19.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="19.2" data-path="tables.html"><a href="tables.html#projects-to-review-and-incorporate"><i class="fa fa-check"></i><b>19.2</b> Projects to review and incorporate</a></li>
-<li class="chapter" data-level="19.3" data-path="tables.html"><a href="tables.html#useful-websites-16"><i class="fa fa-check"></i><b>19.3</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="19.4" data-path="tables.html"><a href="tables.html#load-packages-12"><i class="fa fa-check"></i><b>19.4</b> 📦Load packages</a></li>
-<li class="chapter" data-level="19.5" data-path="tables.html"><a href="tables.html#simulate-data-7"><i class="fa fa-check"></i><b>19.5</b> 🔢Simulate data</a></li>
-<li class="chapter" data-level="19.6" data-path="tables.html"><a href="tables.html#example-table-1"><i class="fa fa-check"></i><b>19.6</b> 🔵 Example: Table 1</a>
+<li class="chapter" data-level="18.1" data-path="language-for-publications.html"><a href="language-for-publications.html#overview-15"><i class="fa fa-check"></i><b>18.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="18.2" data-path="language-for-publications.html"><a href="language-for-publications.html#useful-websites-15"><i class="fa fa-check"></i><b>18.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="18.3" data-path="language-for-publications.html"><a href="language-for-publications.html#load-packages-11"><i class="fa fa-check"></i><b>18.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="18.4" data-path="language-for-publications.html"><a href="language-for-publications.html#statistical-software"><i class="fa fa-check"></i><b>18.4</b> Statistical software</a>
 <ul>
-<li class="chapter" data-level="19.6.1" data-path="tables.html"><a href="tables.html#step-1.-calculate-the-outcome-distribution"><i class="fa fa-check"></i><b>19.6.1</b> Step 1. Calculate the outcome distribution</a></li>
-<li class="chapter" data-level="19.6.2" data-path="tables.html"><a href="tables.html#step-2.-prepare-to-calculate-summary-statistics"><i class="fa fa-check"></i><b>19.6.2</b> Step 2. Prepare to calculate summary statistics</a></li>
-<li class="chapter" data-level="19.6.3" data-path="tables.html"><a href="tables.html#step-3.-create-a-data-frame-that-contains-our-summary-statistics"><i class="fa fa-check"></i><b>19.6.3</b> Step 3. Create a data frame that contains our summary statistics</a></li>
-<li class="chapter" data-level="19.6.4" data-path="tables.html"><a href="tables.html#step-5.-create-flextable"><i class="fa fa-check"></i><b>19.6.4</b> Step 5. Create flextable</a></li>
-<li class="chapter" data-level="19.6.5" data-path="tables.html"><a href="tables.html#step-6.-formatting-flextable"><i class="fa fa-check"></i><b>19.6.5</b> Step 6. Formatting flextable</a></li>
-<li class="chapter" data-level="19.6.6" data-path="tables.html"><a href="tables.html#load-word-template-for-officer"><i class="fa fa-check"></i><b>19.6.6</b> 📝 Load Word template for officer</a></li>
-<li class="chapter" data-level="19.6.7" data-path="tables.html"><a href="tables.html#generate-word-reports"><i class="fa fa-check"></i><b>19.6.7</b> 📝 Generate Word reports</a></li>
+<li class="chapter" data-level="18.4.1" data-path="language-for-publications.html"><a href="language-for-publications.html#r"><i class="fa fa-check"></i><b>18.4.1</b> R</a></li>
+<li class="chapter" data-level="18.4.2" data-path="language-for-publications.html"><a href="language-for-publications.html#stata"><i class="fa fa-check"></i><b>18.4.2</b> Stata</a></li>
+<li class="chapter" data-level="18.4.3" data-path="language-for-publications.html"><a href="language-for-publications.html#sas"><i class="fa fa-check"></i><b>18.4.3</b> SAS</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="language-for-publications.html"><a href="language-for-publications.html#irb"><i class="fa fa-check"></i><b>18.5</b> IRB</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="officer.html"><a href="officer.html"><i class="fa fa-check"></i><b>19</b> Officer</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="officer.html"><a href="officer.html#overview-16"><i class="fa fa-check"></i><b>19.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="19.2" data-path="officer.html"><a href="officer.html#useful-websites-16"><i class="fa fa-check"></i><b>19.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="19.3" data-path="officer.html"><a href="officer.html#load-packages-12"><i class="fa fa-check"></i><b>19.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="19.4" data-path="officer.html"><a href="officer.html#formatted-text"><i class="fa fa-check"></i><b>19.4</b> Formatted text</a></li>
+<li class="chapter" data-level="19.5" data-path="officer.html"><a href="officer.html#bulleted-list"><i class="fa fa-check"></i><b>19.5</b> Bulleted list</a></li>
+<li class="chapter" data-level="19.6" data-path="officer.html"><a href="officer.html#adding-on-to-the-end-of-a-file."><i class="fa fa-check"></i><b>19.6</b> Adding on to the end of a file.</a></li>
+<li class="chapter" data-level="19.7" data-path="officer.html"><a href="officer.html#using-bookmarks"><i class="fa fa-check"></i><b>19.7</b> Using bookmarks</a>
+<ul>
+<li class="chapter" data-level="19.7.1" data-path="officer.html"><a href="officer.html#embedding-cells-form-one-table-into-cells-of-an-existing-word-tables-at-a-bookmark-with-flextable-and-officer"><i class="fa fa-check"></i><b>19.7.1</b> Embedding cells form one table into cells of an existing Word tables at a bookmark with flextable and officer</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>20</b> Tables</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="tables.html"><a href="tables.html#overview-17"><i class="fa fa-check"></i><b>20.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="20.2" data-path="tables.html"><a href="tables.html#projects-to-review-and-incorporate"><i class="fa fa-check"></i><b>20.2</b> Projects to review and incorporate</a></li>
+<li class="chapter" data-level="20.3" data-path="tables.html"><a href="tables.html#useful-websites-17"><i class="fa fa-check"></i><b>20.3</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="20.4" data-path="tables.html"><a href="tables.html#load-packages-13"><i class="fa fa-check"></i><b>20.4</b> 📦Load packages</a></li>
+<li class="chapter" data-level="20.5" data-path="tables.html"><a href="tables.html#simulate-data-7"><i class="fa fa-check"></i><b>20.5</b> 🔢Simulate data</a></li>
+<li class="chapter" data-level="20.6" data-path="tables.html"><a href="tables.html#example-table-1"><i class="fa fa-check"></i><b>20.6</b> 🔵 Example: Table 1</a>
+<ul>
+<li class="chapter" data-level="20.6.1" data-path="tables.html"><a href="tables.html#step-1.-calculate-the-outcome-distribution"><i class="fa fa-check"></i><b>20.6.1</b> Step 1. Calculate the outcome distribution</a></li>
+<li class="chapter" data-level="20.6.2" data-path="tables.html"><a href="tables.html#step-2.-prepare-to-calculate-summary-statistics"><i class="fa fa-check"></i><b>20.6.2</b> Step 2. Prepare to calculate summary statistics</a></li>
+<li class="chapter" data-level="20.6.3" data-path="tables.html"><a href="tables.html#step-3.-create-a-data-frame-that-contains-our-summary-statistics"><i class="fa fa-check"></i><b>20.6.3</b> Step 3. Create a data frame that contains our summary statistics</a></li>
+<li class="chapter" data-level="20.6.4" data-path="tables.html"><a href="tables.html#step-5.-create-flextable"><i class="fa fa-check"></i><b>20.6.4</b> Step 5. Create flextable</a></li>
+<li class="chapter" data-level="20.6.5" data-path="tables.html"><a href="tables.html#step-6.-formatting-flextable"><i class="fa fa-check"></i><b>20.6.5</b> Step 6. Formatting flextable</a></li>
+<li class="chapter" data-level="20.6.6" data-path="tables.html"><a href="tables.html#load-word-template-for-officer"><i class="fa fa-check"></i><b>20.6.6</b> 📝 Load Word template for officer</a></li>
+<li class="chapter" data-level="20.6.7" data-path="tables.html"><a href="tables.html#generate-word-reports"><i class="fa fa-check"></i><b>20.6.7</b> 📝 Generate Word reports</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VIII Shiny</b></span></li>
 <li class="part"><span><b>IX Collaborating</b></span></li>
-<li class="chapter" data-level="20" data-path="git-and-github.html"><a href="git-and-github.html"><i class="fa fa-check"></i><b>20</b> Git and GitHub</a>
+<li class="chapter" data-level="21" data-path="git-and-github.html"><a href="git-and-github.html"><i class="fa fa-check"></i><b>21</b> Git and GitHub</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="git-and-github.html"><a href="git-and-github.html#overview-17"><i class="fa fa-check"></i><b>20.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="20.2" data-path="git-and-github.html"><a href="git-and-github.html#useful-websites-17"><i class="fa fa-check"></i><b>20.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="20.3" data-path="git-and-github.html"><a href="git-and-github.html#documenting-practices"><i class="fa fa-check"></i><b>20.3</b> Documenting practices</a></li>
-<li class="chapter" data-level="20.4" data-path="git-and-github.html"><a href="git-and-github.html#commit-message"><i class="fa fa-check"></i><b>20.4</b> Commit message</a></li>
-<li class="chapter" data-level="20.5" data-path="git-and-github.html"><a href="git-and-github.html#get-rid-of-.ds_store-1"><i class="fa fa-check"></i><b>20.5</b> Get rid of .DS_Store</a></li>
-<li class="chapter" data-level="20.6" data-path="git-and-github.html"><a href="git-and-github.html#amend"><i class="fa fa-check"></i><b>20.6</b> Amend</a></li>
-<li class="chapter" data-level="20.7" data-path="git-and-github.html"><a href="git-and-github.html#pull-requests"><i class="fa fa-check"></i><b>20.7</b> Pull Requests</a></li>
-<li class="chapter" data-level="20.8" data-path="git-and-github.html"><a href="git-and-github.html#branches"><i class="fa fa-check"></i><b>20.8</b> Branches</a></li>
-<li class="chapter" data-level="20.9" data-path="git-and-github.html"><a href="git-and-github.html#squashing-commits"><i class="fa fa-check"></i><b>20.9</b> Squashing commits</a></li>
-<li class="chapter" data-level="20.10" data-path="git-and-github.html"><a href="git-and-github.html#other-littl-quirks-and-errors"><i class="fa fa-check"></i><b>20.10</b> Other littl quirks and errors</a></li>
+<li class="chapter" data-level="21.1" data-path="git-and-github.html"><a href="git-and-github.html#overview-18"><i class="fa fa-check"></i><b>21.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="21.2" data-path="git-and-github.html"><a href="git-and-github.html#useful-websites-18"><i class="fa fa-check"></i><b>21.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="21.3" data-path="git-and-github.html"><a href="git-and-github.html#documenting-practices"><i class="fa fa-check"></i><b>21.3</b> Documenting practices</a></li>
+<li class="chapter" data-level="21.4" data-path="git-and-github.html"><a href="git-and-github.html#commit-message"><i class="fa fa-check"></i><b>21.4</b> Commit message</a></li>
+<li class="chapter" data-level="21.5" data-path="git-and-github.html"><a href="git-and-github.html#pushing-commits-to-remote"><i class="fa fa-check"></i><b>21.5</b> Pushing commits to remote</a></li>
+<li class="chapter" data-level="21.6" data-path="git-and-github.html"><a href="git-and-github.html#get-rid-of-.ds_store-1"><i class="fa fa-check"></i><b>21.6</b> Get rid of .DS_Store</a></li>
+<li class="chapter" data-level="21.7" data-path="git-and-github.html"><a href="git-and-github.html#amend"><i class="fa fa-check"></i><b>21.7</b> Amend</a></li>
+<li class="chapter" data-level="21.8" data-path="git-and-github.html"><a href="git-and-github.html#pull-requests"><i class="fa fa-check"></i><b>21.8</b> Pull Requests</a></li>
+<li class="chapter" data-level="21.9" data-path="git-and-github.html"><a href="git-and-github.html#branches"><i class="fa fa-check"></i><b>21.9</b> Branches</a></li>
+<li class="chapter" data-level="21.10" data-path="git-and-github.html"><a href="git-and-github.html#squashing-commits"><i class="fa fa-check"></i><b>21.10</b> Squashing commits</a></li>
+<li class="chapter" data-level="21.11" data-path="git-and-github.html"><a href="git-and-github.html#rebase"><i class="fa fa-check"></i><b>21.11</b> Rebase</a></li>
+<li class="chapter" data-level="21.12" data-path="git-and-github.html"><a href="git-and-github.html#cherry-pick"><i class="fa fa-check"></i><b>21.12</b> Cherry pick</a></li>
+<li class="chapter" data-level="21.13" data-path="git-and-github.html"><a href="git-and-github.html#removing-a-file"><i class="fa fa-check"></i><b>21.13</b> Removing a file</a>
+<ul>
+<li class="chapter" data-level="21.13.1" data-path="git-and-github.html"><a href="git-and-github.html#undo-commits-no-push"><i class="fa fa-check"></i><b>21.13.1</b> Undo commits, no push</a></li>
+<li class="chapter" data-level="21.13.2" data-path="git-and-github.html"><a href="git-and-github.html#one-commit-pushed-to-github"><i class="fa fa-check"></i><b>21.13.2</b> One commit, pushed to Github</a></li>
+<li class="chapter" data-level="21.13.3" data-path="git-and-github.html"><a href="git-and-github.html#multiple-commits-pushed-to-github"><i class="fa fa-check"></i><b>21.13.3</b> Multiple commits, pushed to GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="21.14" data-path="git-and-github.html"><a href="git-and-github.html#other-little-quirks-and-errors"><i class="fa fa-check"></i><b>21.14</b> Other little quirks and errors</a></li>
 </ul></li>
 <li class="part"><span><b>X Appendix</b></span></li>
-<li class="chapter" data-level="21" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html"><i class="fa fa-check"></i><b>21</b> Appendix A: Terms and Definitions</a>
+<li class="chapter" data-level="22" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html"><i class="fa fa-check"></i><b>22</b> Appendix A: Terms and Definitions</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#overview-18"><i class="fa fa-check"></i><b>21.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="21.2" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#useful-websites-18"><i class="fa fa-check"></i><b>21.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="21.3" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#terms"><i class="fa fa-check"></i><b>21.3</b> 📖Terms</a>
+<li class="chapter" data-level="22.1" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#overview-19"><i class="fa fa-check"></i><b>22.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="22.2" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#useful-websites-19"><i class="fa fa-check"></i><b>22.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="22.3" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#terms"><i class="fa fa-check"></i><b>22.3</b> 📖Terms</a>
 <ul>
-<li class="chapter" data-level="21.3.1" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#general-terms"><i class="fa fa-check"></i><b>21.3.1</b> General Terms</a></li>
-<li class="chapter" data-level="21.3.2" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#general-statistics-terms"><i class="fa fa-check"></i><b>21.3.2</b> General statistics terms</a></li>
-<li class="chapter" data-level="21.3.3" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#measures-of-occurence"><i class="fa fa-check"></i><b>21.3.3</b> Measures of occurence</a></li>
+<li class="chapter" data-level="22.3.1" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#general-terms"><i class="fa fa-check"></i><b>22.3.1</b> General Terms</a></li>
+<li class="chapter" data-level="22.3.2" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#general-statistics-terms"><i class="fa fa-check"></i><b>22.3.2</b> General statistics terms</a></li>
+<li class="chapter" data-level="22.3.3" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#measures-of-occurence"><i class="fa fa-check"></i><b>22.3.3</b> Measures of occurence</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -608,14 +623,17 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="git-and-github" class="section level1 hasAnchor" number="20">
-<h1><span class="header-section-number">20</span> Git and GitHub<a href="git-and-github.html#git-and-github" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="git-and-github" class="section level1 hasAnchor" number="21">
+<h1><span class="header-section-number">21</span> Git and GitHub<a href="git-and-github.html#git-and-github" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <!--
-Hidden comments placeholder
+bookdown::preview_chapter("chapters/09_collaborating/git.Rmd")
 -->
 <p><img src="https://picsum.photos/200/300" /><!-- --></p>
-<div id="overview-17" class="section level2 hasAnchor" number="20.1">
-<h2><span class="header-section-number">20.1</span> ⭐️Overview<a href="git-and-github.html#overview-17" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="git-and-github.html#cb576-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb576-2"><a href="git-and-github.html#cb576-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdag, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb576-3"><a href="git-and-github.html#cb576-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<div id="overview-18" class="section level2 hasAnchor" number="21.1">
+<h2><span class="header-section-number">21.1</span> ⭐️Overview<a href="git-and-github.html#overview-18" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>My notes on git and GitHub. There are also chapters in R4Epi on git and GitHub. These notes should not reproduce those chapter. These notes should go beyond those chapters or be used for experimenting.</p>
 <ul>
 <li><a href="https://www.r4epi.com/coding-best-practices.html">Coding best practices</a>. I still need to add material to this section about writing commit messages.<br />
@@ -626,8 +644,8 @@ Hidden comments placeholder
 </ul>
 <p>This chapter of the notes still needs a ton of cleaning up!</p>
 </div>
-<div id="useful-websites-17" class="section level2 hasAnchor" number="20.2">
-<h2><span class="header-section-number">20.2</span> 🌎Useful websites<a href="git-and-github.html#useful-websites-17" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="useful-websites-18" class="section level2 hasAnchor" number="21.2">
+<h2><span class="header-section-number">21.2</span> 🌎Useful websites<a href="git-and-github.html#useful-websites-18" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><a href="https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/">How to Use Git/GitHub with R</a><br />
 </li>
@@ -644,8 +662,8 @@ Hidden comments placeholder
 <li><a href="https://www.freecodecamp.org/news/writing-good-commit-messages-a-practical-guide/">How to Write Good Commit Messages: A Practical Git Guide</a></li>
 </ul>
 </div>
-<div id="documenting-practices" class="section level2 hasAnchor" number="20.3">
-<h2><span class="header-section-number">20.3</span> Documenting practices<a href="git-and-github.html#documenting-practices" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="documenting-practices" class="section level2 hasAnchor" number="21.3">
+<h2><span class="header-section-number">21.3</span> Documenting practices<a href="git-and-github.html#documenting-practices" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>With GitHub, there are so many options for where and how we can document things. This is my current set of best practices.</p>
 <ul>
 <li><p>README: Getting started and <em>how</em> to use for users.</p></li>
@@ -658,28 +676,38 @@ Hidden comments placeholder
 <li><p>GitHub projects: Organize issues/tasks.</p></li>
 </ul>
 </div>
-<div id="commit-message" class="section level2 hasAnchor" number="20.4">
-<h2><span class="header-section-number">20.4</span> Commit message<a href="git-and-github.html#commit-message" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="commit-message" class="section level2 hasAnchor" number="21.4">
+<h2><span class="header-section-number">21.4</span> Commit message<a href="git-and-github.html#commit-message" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This section needs a ton of improvement – and probably should be moved over to <a href="https://www.r4epi.com/coding-best-practices.html">Coding best practices</a>. However, I want to jot down some quick notes.</p>
 <p>From, <a href="https://cbea.ms/git-commit/">How to Write a Git Commit Message</a>, I like:</p>
 <blockquote>
 <p>A properly formed Git commit subject line should always be able to complete the following sentence: If applied, this commit will {your subject line here}</p>
 </blockquote>
 </div>
-<div id="get-rid-of-.ds_store-1" class="section level2 hasAnchor" number="20.5">
-<h2><span class="header-section-number">20.5</span> Get rid of .DS_Store<a href="git-and-github.html#get-rid-of-.ds_store-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="pushing-commits-to-remote" class="section level2 hasAnchor" number="21.5">
+<h2><span class="header-section-number">21.5</span> Pushing commits to remote<a href="git-and-github.html#pushing-commits-to-remote" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p><strong>Don’t push your work until you’re happy with it.</strong> One of the cardinal rules of Git is that, since so much work is local within your clone, you have a great deal of freedom to rewrite your history locally. However, once you push your work, it is a different story entirely, and you should consider pushed work as final unless you have good reason to change it. In short, you should avoid pushing your work until you’re happy with it and ready to share it with the rest of the world. <a href="https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History" class="uri">https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History</a></p>
+</blockquote>
+</div>
+<div id="get-rid-of-.ds_store-1" class="section level2 hasAnchor" number="21.6">
+<h2><span class="header-section-number">21.6</span> Get rid of .DS_Store<a href="git-and-github.html#get-rid-of-.ds_store-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>.DS_Store</code> file can be an annoyance when working with Git on MacOS. <a href="https://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository/107921">Here is a link</a> to instructions for removing <code>.DS_Store</code> from your repository. Do it early and never worry about it again.</p>
 <p>In the terminal, run the following code from the root directory:</p>
-<div class="sourceCode" id="cb574"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb574-1"><a href="git-and-github.html#cb574-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove existing files from the repository:</span></span>
-<span id="cb574-2"><a href="git-and-github.html#cb574-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.DS_Store&quot;</span> <span class="at">-type</span> f <span class="at">-exec</span> git-rm {} <span class="dt">\;</span></span></code></pre></div>
-<div class="sourceCode" id="cb575"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb575-1"><a href="git-and-github.html#cb575-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add .DS_Store to .gitignore</span></span>
-<span id="cb575-2"><a href="git-and-github.html#cb575-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> .DS_Store <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
-<div class="sourceCode" id="cb576"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb576-1"><a href="git-and-github.html#cb576-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Commit the file to the repo</span></span>
-<span id="cb576-2"><a href="git-and-github.html#cb576-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .gitignore</span>
-<span id="cb576-3"><a href="git-and-github.html#cb576-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&#39;.DS_Store banished!&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb577"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb577-1"><a href="git-and-github.html#cb577-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove existing files from the repository:</span></span>
+<span id="cb577-2"><a href="git-and-github.html#cb577-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.DS_Store&quot;</span> <span class="at">-type</span> f <span class="at">-exec</span> git-rm {} <span class="dt">\;</span></span></code></pre></div>
+<div class="sourceCode" id="cb578"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb578-1"><a href="git-and-github.html#cb578-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add .DS_Store to .gitignore</span></span>
+<span id="cb578-2"><a href="git-and-github.html#cb578-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> .DS_Store <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb579"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb579-1"><a href="git-and-github.html#cb579-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Commit the file to the repo</span></span>
+<span id="cb579-2"><a href="git-and-github.html#cb579-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .gitignore</span>
+<span id="cb579-3"><a href="git-and-github.html#cb579-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&#39;.DS_Store banished!&#39;</span></span></code></pre></div>
 </div>
-<div id="amend" class="section level2 hasAnchor" number="20.6">
-<h2><span class="header-section-number">20.6</span> Amend<a href="git-and-github.html#amend" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="amend" class="section level2 hasAnchor" number="21.7">
+<h2><span class="header-section-number">21.7</span> Amend<a href="git-and-github.html#amend" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Changing the last commit:</strong> <code>git commit --amend</code>. This is for <em>adding</em> files to the previous commit, not for <em>removing</em> files from the previous commit.</p>
+<blockquote>
+<p>The <code>git commit --amend</code> command is a convenient way to modify the most recent commit. It lets you combine staged changes with the previous commit instead of creating an entirely new commit. It can also be used to simply edit the previous commit message without changing its snapshot. But, amending does not just alter the most recent commit, it replaces it entirely, meaning the amended commit will be a new entity with its own ref. To Git, it will look like a brand new commit. <a href="https://www.atlassian.com/git/tutorials/rewriting-history" class="uri">https://www.atlassian.com/git/tutorials/rewriting-history</a></p>
+</blockquote>
 <ul>
 <li>Edit -&gt; commit -&gt; edit -&gt; amend -&gt; commit = no problem!<br />
 </li>
@@ -690,8 +718,8 @@ Hidden comments placeholder
 <li><a href="https://medium.com/@igor_marques/git-basics-adding-more-changes-to-your-last-commit-1629344cb9a8">Adding more chages to your last commit</a></li>
 </ul>
 </div>
-<div id="pull-requests" class="section level2 hasAnchor" number="20.7">
-<h2><span class="header-section-number">20.7</span> Pull Requests<a href="git-and-github.html#pull-requests" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="pull-requests" class="section level2 hasAnchor" number="21.8">
+<h2><span class="header-section-number">21.8</span> Pull Requests<a href="git-and-github.html#pull-requests" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-proposed-changes-in-a-pull-request">Instructions for leaving comments</a><br />
 </li>
@@ -700,7 +728,7 @@ Hidden comments placeholder
 <li>Use command line instructions to try out the code to resolve more complex merge conflicts.</li>
 </ul>
 <p>Example command line pull request merge conflict
-<img src="img/08_collaborating/git_merge_conflict.png" /><!-- --></p>
+<img src="img/08_collaborating/git_merge_conflict.png" width="800" /></p>
 <p>If there are already changes on the branch (so you can’t pull), you need to either:</p>
 <ul>
 <li>Commit the changes on the branch (if you want to keep them)<br />
@@ -708,8 +736,8 @@ Hidden comments placeholder
 <li>Throw away local changes with git checkout -f, and then remove untracked files with git clean -fd</li>
 </ul>
 </div>
-<div id="branches" class="section level2 hasAnchor" number="20.8">
-<h2><span class="header-section-number">20.8</span> Branches<a href="git-and-github.html#branches" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="branches" class="section level2 hasAnchor" number="21.9">
+<h2><span class="header-section-number">21.9</span> Branches<a href="git-and-github.html#branches" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Naming convention:
 issue-#-short-description</p>
 <p>Basic workflow:</p>
@@ -738,19 +766,134 @@ issue-#-short-description</p>
 <li>Don’t delete the issue branch. Just continue working on the files you don’t commit and merge with the pull request.</li>
 </ul>
 </div>
-<div id="squashing-commits" class="section level2 hasAnchor" number="20.9">
-<h2><span class="header-section-number">20.9</span> Squashing commits<a href="git-and-github.html#squashing-commits" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="squashing-commits" class="section level2 hasAnchor" number="21.10">
+<h2><span class="header-section-number">21.10</span> Squashing commits<a href="git-and-github.html#squashing-commits" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>I’ve done more of this lately. These notes should be improved too. For now, I just want to jot down that <strong>The first commit message will be the commit message for the squashed commits</strong>. So, if you know you are doing some WIP commits, you may want to start with the end in mind?</p>
 <p>You can also <a href="https://www.gitkraken.com/learn/git/problems/git-commit-amend">amend your commit message</a> in GitKraken, but this is complicated if you’ve already pushed to a remote repository.</p>
 </div>
-<div id="other-littl-quirks-and-errors" class="section level2 hasAnchor" number="20.10">
-<h2><span class="header-section-number">20.10</span> Other littl quirks and errors<a href="git-and-github.html#other-littl-quirks-and-errors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="rebase" class="section level2 hasAnchor" number="21.11">
+<h2><span class="header-section-number">21.11</span> Rebase<a href="git-and-github.html#rebase" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>What is rebase? Like a merge, but leaves a linear commit history.</p>
+<p><a href="https://www.youtube.com/watch?v=_UZEXUrj-Ds" class="uri">https://www.youtube.com/watch?v=_UZEXUrj-Ds</a></p>
+</div>
+<div id="cherry-pick" class="section level2 hasAnchor" number="21.12">
+<h2><span class="header-section-number">21.12</span> Cherry pick<a href="git-and-github.html#cherry-pick" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>What is cherry pick? Pull one commit from branch A to branch B, without having to bring <em>all</em> commits from branch A to branch B.</p>
+<p><a href="https://www.youtube.com/watch?v=wIY824wWpu4" class="uri">https://www.youtube.com/watch?v=wIY824wWpu4</a></p>
+</div>
+<div id="removing-a-file" class="section level2 hasAnchor" number="21.13">
+<h2><span class="header-section-number">21.13</span> Removing a file<a href="git-and-github.html#removing-a-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Despite our best efforts, there may be times when we commit a file and push it to GitHub by accident. In that case, it isn’t enough to simply gitignore the file. That will prevent future changes to the file from being pushed to GitHub, but it won’t do anything about the file that’s already there. In fact, you can even delete the file (which you may not actually want to do) and push the deletion to GitHub. But, even in that case, the file will still be in your commit history. So how do you totally banish the file from GitHub as though it was never there in the first place?</p>
+<ol style="list-style-type: decimal">
+<li><p>We have a sandbox repository here: <a href="https://github.com/brad-cannell/sandbox" class="uri">https://github.com/brad-cannell/sandbox</a>. We cloned it to Dropbox/R.</p></li>
+<li><p>We created a plain text file named <code>test_git</code> in the master branch, we added a little bit of text, we committed it to the master branch, and we pushed it to GitHub.</p></li>
+</ol>
+<p><img src="img/08_collaborating/git_remove_initial_commit.png" width="528" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li>We created a csv file with some fake “data”. We saved it as <code>data/test_data.csv</code>. We need the data for our project, but we don’t want the data to be pushed to GitHub where it will be available to the public. What we should do is add this file – or perhaps the entire data folder – to <code>.gitignore</code>. But, we are going to pretend that we forgot to do that. Instead, we committed <code>data/test_data.csv</code> to our <strong>local</strong> repo after saving.</li>
+</ol>
+<p><img src="img/08_collaborating/git_remove_add_test_data_1.png" width="575" /></p>
+<p>In the screenshot above, we can see that we have accidentally committed <code>data/test_data.csv</code> to the <code>master</code> branch of our local repository. However, we have <strong>not</strong> pushed that commit to our remote repository on GitHub.</p>
+<div id="undo-commits-no-push" class="section level3 hasAnchor" number="21.13.1">
+<h3><span class="header-section-number">21.13.1</span> Undo commits, no push<a href="git-and-github.html#undo-commits-no-push" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Because we haven’t pushed the commit to GitHub, we have lots of options. In fact, we haven’t even technically done anything “wrong” yet. Committing the data to our local repository isn’t a problem in and of itself. It only becomes a problem when we push it to the public remote repository on GitHub. The easiest solution is to simply click the <code>Undo</code> button in GitKraken (<a href="https://www.gitkraken.com/learn/git/problems/undo-git-commit" class="uri">https://www.gitkraken.com/learn/git/problems/undo-git-commit</a>).</p>
+<p><img src="img/08_collaborating/git_remove_undo_1.png" width="1561" /></p>
+<p>As we can see in the screenshot above, clicking <code>Undo</code> rolled back the commit, and leaves <code>data/test_data.csv</code> in the staging area. Now, we can easily unstage the file <code>data/test_data.csv</code>, add it to <code>.gitignore</code>, and move on with our project. From this point on, <code>data/test_data.csv</code> will still exist on our computer, but git will be totally oblivious to it, and more importantly, won’t ever upload a copy of it up to our public remote repository on GitHub.</p>
+<p>This is sort of the best case scenario. Now, let’s add one level of complication to the scenario.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Just like 3 above, we committed <code>data/test_data.csv</code> to our local repo after saving. However, we don’t catch it immediately this time. Instead, we keep working on our project. Specifically, we add a little text to <code>test_git</code>, save <code>test_git</code>, and commit those changes. Importantly, we still haven’t pushed any commits that include <code>data/test_data.csv</code> to our public remote repository on GitHub.</li>
+</ol>
+<p><img src="img/08_collaborating/git_remove_add_test_data_2.png" width="676" /></p>
+<p>It turns out that we can still use the <code>Undo</code> button in this scenario as well.</p>
+<p><img src="img/08_collaborating/git_remove_undo_2.png" width="640" /></p>
+<p>As we can see in the screenshot above, clicking <code>Undo</code> twice rolled back two commits, and left <code>data/test_data.csv</code> and the edited version of <code>test_git</code> in the staging area. Then, we unstaged <code>data/test_data.csv</code>, added it to <code>.gitignore</code>, staged the modified <code>.gitignore</code>, and committed. From this point on, <code>data/test_data.csv</code> will still exist on our computer, but git will be totally oblivious to it, and more importantly, won’t ever upload a copy of it up to our public remote repository on GitHub.</p>
+<p>So, when won’t the <code>Undo</code> button work?</p>
+<ul>
+<li><p>For starters, it won’t work if we’ve pushed our commit to a remote repository.</p></li>
+<li><p>Additionally, like with undo in Word, once you start clicking undo and then working and then clicking undo again, there is a limit to how far back you can go. I don’t fully understand what that limit is at the moment. I think it has something to do with when commit hashes change, or at least when parent hashes changes. Figure this out later.</p></li>
+</ul>
+<p>I tried all kinds of weird things to make undo <em>not</em> work – including udoing multiple branches – and couldn’t come up with a case. I know cases exist, but the point is that Undo will work a lot of the time as long as you don’t push to a remote repository.</p>
+</div>
+<div id="one-commit-pushed-to-github" class="section level3 hasAnchor" number="21.13.2">
+<h3><span class="header-section-number">21.13.2</span> One commit, pushed to Github<a href="git-and-github.html#one-commit-pushed-to-github" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This scenario starts like the one above did.</p>
+<ol style="list-style-type: decimal">
+<li><p>We have a sandbox repository here: <a href="https://github.com/brad-cannell/sandbox" class="uri">https://github.com/brad-cannell/sandbox</a>. We cloned it to Dropbox/R.</p></li>
+<li><p>We created a plain text file named <code>test_git</code> in the master branch, we added a little bit of text, we committed it to the master branch, and we pushed it to GitHub.</p></li>
+</ol>
+<p><img src="img/08_collaborating/git_remove_initial_commit.png" width="528" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li>We created a csv file with some fake “data”. We saved it as <code>data/test_data.csv</code>. We need the data for our project, but we don’t want the data to be pushed to GitHub where it will be available to the public. What we should do is add this file – or perhaps the entire data folder – to <code>.gitignore</code>. But, we are going to pretend that we forgot to do that. Instead, we committed <code>data/test_data.csv</code> to our <strong>local</strong> repo after saving.</li>
+</ol>
+<p><img src="img/08_collaborating/git_remove_add_test_data_1.png" width="575" /></p>
+<p>In the screenshot above, we can see that we have accidentally committed <code>data/test_data.csv</code> to the <code>master</code> branch of our local repository. However, we have <strong>not</strong> pushed that commit to our remote repository on GitHub.</p>
+<p>This time, we do go ahead and push the commit to GitHub.</p>
+<p><img src="img/08_collaborating/git_remove_push_1.png" width="1164" /></p>
+<p>Next, we will click the <code>Undo</code> button as we did above. Here’s what happens.</p>
+<ul>
+<li><p>GitKraken gives us a message saying that the undo was successful.</p></li>
+<li><p>The local repository is rolled back to its previous state.</p></li>
+<li><p><code>data/test_data.csv</code> is locally once again in the staging area.</p></li>
+</ul>
+<p><img src="img/08_collaborating/git_remove_push_2.png" width="1561" /></p>
+<p>However, when we take a look at the repository in GitHub, we can see that the file is still there.</p>
+<p><img src="img/08_collaborating/git_remove_push_3.png" width="1241" /></p>
+<p>Our first instinct might be to unstage <code>data/test_data.csv</code> locally, add it to <code>.gitignore</code>, and then create a new commit with <code>data/test_data.csv</code> ignored. Let’s do that.</p>
+<p><img src="img/08_collaborating/git_remove_push_4.png" width="1162" /></p>
+<p>However, this hasn’t changed anything on GitHub. The data is still available there. So, try to push our commit with <code>data/test_data.csv</code> ignored to GitHub.</p>
+<p><img src="img/08_collaborating/git_remove_push_5.png" width="1170" /></p>
+<p>When we do, GitKraken asks us that <code>refs/heads/master</code> is behind <code>refs/remotes/origin/master</code>. This makes sense, we rolled our local repo back one commit, so it is behind the latest commit on GitHub (i.e., <code>refs/remotes/origin/master</code>). However, we are trying to send up a commit that differs from the commit on GitHub. This could create a conflict. So, GitKraken asks us if we want to try to pull down the commit from GitHub first. In this case, we don’t. That commit is exactly what we are trying to get rid of. Let’s click the <code>Force Push</code> button. GitKraken will warn us that this is destructive and double-check that it is what we want to do. It is.</p>
+<p><img src="img/08_collaborating/git_remove_push_6.png" width="1161" /></p>
+<p>Now, when we go on GitHub, we can see that <code>data/test_data.csv</code> is not longer showing up in our repository.</p>
+<p><img src="img/08_collaborating/git_remove_push_7.png" width="916" /></p>
+<p>When we search for <code>test_data</code> in our repository, the only place it appears is in the <code>.gitignore</code> file. It looks like we successfully removed the data file from our repository!</p>
+</div>
+<div id="multiple-commits-pushed-to-github" class="section level3 hasAnchor" number="21.13.3">
+<h3><span class="header-section-number">21.13.3</span> Multiple commits, pushed to GitHub<a href="git-and-github.html#multiple-commits-pushed-to-github" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Finally, let’s add one more wrinkle to this scenario. Let’s send multiple commits to GitHub and see if we can remove any trace of the test data by simply adding it to <code>.gitignore</code> and pushing it up to GitHub.</p>
+<p>We are going to add some text to <code>test_git</code>, commit it to the master branch, and push it to GitHub.</p>
+<p><img src="img/08_collaborating/git_remove_mult_push_1.png" width="1161" /></p>
+<p>Let’s once again “accidentally” commit and push a data set – <code>data/test_data_2.csv</code> – to GitHub.</p>
+<p><img src="img/08_collaborating/git_remove_mult_push_2.png" width="1168" /></p>
+<p>When we look at GitHub, we can see that the file is there.</p>
+<p><img src="img/08_collaborating/git_remove_mult_push_3.png" width="917" /></p>
+<p>And when we search for test_data_2, it comes up as a commit.</p>
+<p><img src="img/08_collaborating/git_remove_mult_push_4.png" width="1070" /></p>
+<p>If we click on the commit, we can see the data.</p>
+<p><img src="img/08_collaborating/git_remove_mult_push_5.png" width="1746" /></p>
+<p>Now, we will make another change to <code>test_git</code>, commit it to the master branch, and push it to GitHub.</p>
+<p>We will make a change to <code>data/test_data_2.csv</code>, commit it to the master branch, and push it to GitHub.</p>
+<p>And, we will make yet another change to <code>test_git</code>, commit it to the master branch, and push it to GitHub.</p>
+<p>This is what our commit history looks like at this point.</p>
+<p><img src="img/08_collaborating/git_remove_mult_push_6.png" width="1167" /></p>
+<p>Let’s once again try to do what we did before. Click the <code>Undo</code> button all the way back to our first commit of <code>data/test_data_2.csv</code>.</p>
+<p><img src="img/08_collaborating/git_remove_mult_push_7.png" width="1559" /></p>
+<p>Add <code>data/test_data_2.csv</code> to <code>.gitignore</code>, commit, and force push.</p>
+<p><img src="img/08_collaborating/git_remove_mult_push_8.png" width="1561" /></p>
+<p>Here’s the situation:</p>
+<ul>
+<li><p>The edited <code>data/test_data_2.csv</code> file is still on our local machine.</p></li>
+<li><p>The edited <code>test_git</code> file is still on our local machine, ready to be committed and pushed again.</p></li>
+</ul>
+<p>When we look on GitHub, the data directory is gone.</p>
+<p><img src="img/08_collaborating/git_remove_mult_push_9.png" width="912" /></p>
+<p>When we search for <code>test_data</code> in our repository, the only place it appears is in the <code>.gitignore</code> file.</p>
+<p><img src="img/08_collaborating/git_remove_mult_push_10.png" width="1089" /></p>
+<p><img src="img/08_collaborating/git_remove_mult_push_11.png" width="1750" /></p>
+<p>It looks like we successfully removed the data file from our repository!</p>
+<p><a href="https://github.com/newren/git-filter-repo" class="uri">https://github.com/newren/git-filter-repo</a></p>
+<p><a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository" class="uri">https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository</a></p>
+<p><a href="https://stackoverflow.com/questions/43762338/how-to-remove-file-from-git-history" class="uri">https://stackoverflow.com/questions/43762338/how-to-remove-file-from-git-history</a></p>
+</div>
+</div>
+<div id="other-little-quirks-and-errors" class="section level2 hasAnchor" number="21.14">
+<h2><span class="header-section-number">21.14</span> Other little quirks and errors<a href="git-and-github.html#other-little-quirks-and-errors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When working on Epi III – and I think this could be an issue with using git on OneDrive more generally – I would have to recommit files when I changed computers. Not because the <strong>content</strong> of the file had changed, but because something called the <strong>file mode</strong> had changed. I searched SO and seemed to fix it with this post: <a href="https://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-file-mode-chmod-changes" class="uri">https://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-file-mode-chmod-changes</a></p>
 <p>Open terminal and type:</p>
-<div class="sourceCode" id="cb577"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb577-1"><a href="git-and-github.html#cb577-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config core.fileMode false</span></code></pre></div>
+<div class="sourceCode" id="cb580"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb580-1"><a href="git-and-github.html#cb580-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config core.fileMode false</span></code></pre></div>
 <p>Another issue I encountered when working on Epi III – and I think this could be an issue with using git on OneDrive more generally – was the existence of these “Icon” files every time I switched computers. However, they didn’t seem to actually exist (or at least they weren’t visible), and ignoring them in the usual way did not seem to <em>actually</em> ignore them. I searched SO and seemed to fix it with this post: <a href="https://stackoverflow.com/questions/17556250/how-to-ignore-icon-in-git" class="uri">https://stackoverflow.com/questions/17556250/how-to-ignore-icon-in-git</a></p>
 <p>Open terminal and type:</p>
-<div class="sourceCode" id="cb578"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb578-1"><a href="git-and-github.html#cb578-1" aria-hidden="true" tabindex="-1"></a><span class="bu">printf</span> <span class="st">&quot;Icon\r\r&quot;</span> <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb581"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb581-1"><a href="git-and-github.html#cb581-1" aria-hidden="true" tabindex="-1"></a><span class="bu">printf</span> <span class="st">&quot;Icon\r\r&quot;</span> <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
 <!--
 Clean up and add session info
 -->

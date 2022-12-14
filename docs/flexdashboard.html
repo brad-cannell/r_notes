@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>15 Flexdashboard | R Notes</title>
+  <title>16 Flexdashboard | R Notes</title>
   <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="15 Flexdashboard | R Notes" />
+  <meta property="og:title" content="16 Flexdashboard | R Notes" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   <meta name="github-repo" content="brad-cannell/r_notes" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="15 Flexdashboard | R Notes" />
+  <meta name="twitter:title" content="16 Flexdashboard | R Notes" />
   
   <meta name="twitter:description" content="This is the Bookdown for Brad Cannell’s R Notes." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-10-16" />
+<meta name="date" content="2022-12-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -60,8 +60,7 @@
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.2/tabwid.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -389,204 +388,220 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VI Data Visualization</b></span></li>
-<li class="chapter" data-level="11" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html"><i class="fa fa-check"></i><b>11</b> Plot populations and samples</a>
+<li class="chapter" data-level="11" data-path="dags.html"><a href="dags.html"><i class="fa fa-check"></i><b>11</b> Dags</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#overview-9"><i class="fa fa-check"></i><b>11.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="11.2" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#useful-websites-9"><i class="fa fa-check"></i><b>11.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="11.3" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#load-packages-6"><i class="fa fa-check"></i><b>11.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="11.4" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#simulate-population-data"><i class="fa fa-check"></i><b>11.4</b> 🔢Simulate population data</a></li>
-<li class="chapter" data-level="11.5" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#plot"><i class="fa fa-check"></i><b>11.5</b> Plot</a>
-<ul>
-<li class="chapter" data-level="11.5.1" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#combine-legends"><i class="fa fa-check"></i><b>11.5.1</b> Combine legends</a></li>
-<li class="chapter" data-level="11.5.2" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#sample-box"><i class="fa fa-check"></i><b>11.5.2</b> Sample box</a></li>
-<li class="chapter" data-level="11.5.3" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#align-colors-and-shapes"><i class="fa fa-check"></i><b>11.5.3</b> Align colors and shapes</a></li>
+<li class="chapter" data-level="11.1" data-path="dags.html"><a href="dags.html#overview-9"><i class="fa fa-check"></i><b>11.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="11.2" data-path="dags.html"><a href="dags.html#useful-websites-9"><i class="fa fa-check"></i><b>11.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="11.3" data-path="dags.html"><a href="dags.html#load-packages-6"><i class="fa fa-check"></i><b>11.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="11.4" data-path="dags.html"><a href="dags.html#using-dagitty-to-create-other-graphics"><i class="fa fa-check"></i><b>11.4</b> Using Dagitty to create other graphics</a></li>
 </ul></li>
-<li class="chapter" data-level="11.6" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#more-helper-functions"><i class="fa fa-check"></i><b>11.6</b> More helper functions</a>
+<li class="chapter" data-level="12" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html"><i class="fa fa-check"></i><b>12</b> Plot populations and samples</a>
 <ul>
-<li class="chapter" data-level="11.6.1" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#create-a-pop-of-size-x-with-e-prop-exposed-and-o-prop-with-outcome"><i class="fa fa-check"></i><b>11.6.1</b> Create a pop of size x with e prop exposed and o prop with outcome</a></li>
-<li class="chapter" data-level="11.6.2" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#create-a-helper-plot-function"><i class="fa fa-check"></i><b>11.6.2</b> Create a helper plot function</a></li>
+<li class="chapter" data-level="12.1" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#overview-10"><i class="fa fa-check"></i><b>12.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="12.2" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#useful-websites-10"><i class="fa fa-check"></i><b>12.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="12.3" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#load-packages-7"><i class="fa fa-check"></i><b>12.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="12.4" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#simulate-population-data"><i class="fa fa-check"></i><b>12.4</b> 🔢Simulate population data</a></li>
+<li class="chapter" data-level="12.5" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#plot"><i class="fa fa-check"></i><b>12.5</b> Plot</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#combine-legends"><i class="fa fa-check"></i><b>12.5.1</b> Combine legends</a></li>
+<li class="chapter" data-level="12.5.2" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#sample-box"><i class="fa fa-check"></i><b>12.5.2</b> Sample box</a></li>
+<li class="chapter" data-level="12.5.3" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#align-colors-and-shapes"><i class="fa fa-check"></i><b>12.5.3</b> Align colors and shapes</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#more-helper-functions"><i class="fa fa-check"></i><b>12.6</b> More helper functions</a>
+<ul>
+<li class="chapter" data-level="12.6.1" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#create-a-pop-of-size-x-with-e-prop-exposed-and-o-prop-with-outcome"><i class="fa fa-check"></i><b>12.6.1</b> Create a pop of size x with e prop exposed and o prop with outcome</a></li>
+<li class="chapter" data-level="12.6.2" data-path="plot-populations-and-samples.html"><a href="plot-populations-and-samples.html#create-a-helper-plot-function"><i class="fa fa-check"></i><b>12.6.2</b> Create a helper plot function</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Presenting Results</b></span></li>
-<li class="chapter" data-level="12" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>12</b> Blogdown</a>
+<li class="chapter" data-level="13" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>13</b> Blogdown</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="blogdown.html"><a href="blogdown.html#overview-10"><i class="fa fa-check"></i><b>12.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="12.2" data-path="blogdown.html"><a href="blogdown.html#useful-websites-10"><i class="fa fa-check"></i><b>12.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="12.3" data-path="blogdown.html"><a href="blogdown.html#load-packages-7"><i class="fa fa-check"></i><b>12.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="12.4" data-path="blogdown.html"><a href="blogdown.html#blogdown-commands-to-remember"><i class="fa fa-check"></i><b>12.4</b> Blogdown commands to remember</a></li>
-<li class="chapter" data-level="12.5" data-path="blogdown.html"><a href="blogdown.html#creating-new-content"><i class="fa fa-check"></i><b>12.5</b> Creating new content</a>
+<li class="chapter" data-level="13.1" data-path="blogdown.html"><a href="blogdown.html#overview-11"><i class="fa fa-check"></i><b>13.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="13.2" data-path="blogdown.html"><a href="blogdown.html#useful-websites-11"><i class="fa fa-check"></i><b>13.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="13.3" data-path="blogdown.html"><a href="blogdown.html#load-packages-8"><i class="fa fa-check"></i><b>13.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="13.4" data-path="blogdown.html"><a href="blogdown.html#blogdown-commands-to-remember"><i class="fa fa-check"></i><b>13.4</b> Blogdown commands to remember</a></li>
+<li class="chapter" data-level="13.5" data-path="blogdown.html"><a href="blogdown.html#creating-new-content"><i class="fa fa-check"></i><b>13.5</b> Creating new content</a>
 <ul>
-<li class="chapter" data-level="12.5.1" data-path="blogdown.html"><a href="blogdown.html#step-1.-create-a-landing-page"><i class="fa fa-check"></i><b>12.5.1</b> Step 1. Create a landing page</a></li>
-<li class="chapter" data-level="12.5.2" data-path="blogdown.html"><a href="blogdown.html#step-2.-add-widgets-to-the-landing-page"><i class="fa fa-check"></i><b>12.5.2</b> Step 2. Add widgets to the landing page</a></li>
-<li class="chapter" data-level="12.5.3" data-path="blogdown.html"><a href="blogdown.html#step-3.-add-content-to-the-widgets"><i class="fa fa-check"></i><b>12.5.3</b> Step 3. Add content to the widgets</a></li>
-<li class="chapter" data-level="12.5.4" data-path="blogdown.html"><a href="blogdown.html#step-4.-add-a-banner-image-to-the-landing-page."><i class="fa fa-check"></i><b>12.5.4</b> Step 4. Add a banner image to the landing page.</a></li>
+<li class="chapter" data-level="13.5.1" data-path="blogdown.html"><a href="blogdown.html#step-1.-create-a-landing-page"><i class="fa fa-check"></i><b>13.5.1</b> Step 1. Create a landing page</a></li>
+<li class="chapter" data-level="13.5.2" data-path="blogdown.html"><a href="blogdown.html#step-2.-add-widgets-to-the-landing-page"><i class="fa fa-check"></i><b>13.5.2</b> Step 2. Add widgets to the landing page</a></li>
+<li class="chapter" data-level="13.5.3" data-path="blogdown.html"><a href="blogdown.html#step-3.-add-content-to-the-widgets"><i class="fa fa-check"></i><b>13.5.3</b> Step 3. Add content to the widgets</a></li>
+<li class="chapter" data-level="13.5.4" data-path="blogdown.html"><a href="blogdown.html#step-4.-add-a-banner-image-to-the-landing-page."><i class="fa fa-check"></i><b>13.5.4</b> Step 4. Add a banner image to the landing page.</a></li>
 </ul></li>
-<li class="chapter" data-level="12.6" data-path="blogdown.html"><a href="blogdown.html#editing-widget-metadata"><i class="fa fa-check"></i><b>12.6</b> Editing widget metadata</a></li>
-<li class="chapter" data-level="12.7" data-path="blogdown.html"><a href="blogdown.html#editing-about-widget-content"><i class="fa fa-check"></i><b>12.7</b> Editing about widget content</a></li>
-<li class="chapter" data-level="12.8" data-path="blogdown.html"><a href="blogdown.html#adjusting-site-configuration-files"><i class="fa fa-check"></i><b>12.8</b> Adjusting site configuration files</a></li>
-<li class="chapter" data-level="12.9" data-path="blogdown.html"><a href="blogdown.html#other-little-adjustments"><i class="fa fa-check"></i><b>12.9</b> Other little adjustments</a></li>
-<li class="chapter" data-level="12.10" data-path="blogdown.html"><a href="blogdown.html#custom-css"><i class="fa fa-check"></i><b>12.10</b> Custom CSS</a></li>
-<li class="chapter" data-level="12.11" data-path="blogdown.html"><a href="blogdown.html#changing-the-domain"><i class="fa fa-check"></i><b>12.11</b> Changing the domain</a></li>
-<li class="chapter" data-level="12.12" data-path="blogdown.html"><a href="blogdown.html#error-fixes"><i class="fa fa-check"></i><b>12.12</b> Error fixes</a>
+<li class="chapter" data-level="13.6" data-path="blogdown.html"><a href="blogdown.html#editing-widget-metadata"><i class="fa fa-check"></i><b>13.6</b> Editing widget metadata</a></li>
+<li class="chapter" data-level="13.7" data-path="blogdown.html"><a href="blogdown.html#editing-about-widget-content"><i class="fa fa-check"></i><b>13.7</b> Editing about widget content</a></li>
+<li class="chapter" data-level="13.8" data-path="blogdown.html"><a href="blogdown.html#adjusting-site-configuration-files"><i class="fa fa-check"></i><b>13.8</b> Adjusting site configuration files</a></li>
+<li class="chapter" data-level="13.9" data-path="blogdown.html"><a href="blogdown.html#other-little-adjustments"><i class="fa fa-check"></i><b>13.9</b> Other little adjustments</a></li>
+<li class="chapter" data-level="13.10" data-path="blogdown.html"><a href="blogdown.html#custom-css"><i class="fa fa-check"></i><b>13.10</b> Custom CSS</a></li>
+<li class="chapter" data-level="13.11" data-path="blogdown.html"><a href="blogdown.html#changing-the-domain"><i class="fa fa-check"></i><b>13.11</b> Changing the domain</a></li>
+<li class="chapter" data-level="13.12" data-path="blogdown.html"><a href="blogdown.html#error-fixes"><i class="fa fa-check"></i><b>13.12</b> Error fixes</a>
 <ul>
-<li class="chapter" data-level="12.12.1" data-path="blogdown.html"><a href="blogdown.html#blogdowncheck_netlify"><i class="fa fa-check"></i><b>12.12.1</b> blogdown::check_netlify()</a></li>
+<li class="chapter" data-level="13.12.1" data-path="blogdown.html"><a href="blogdown.html#blogdowncheck_netlify"><i class="fa fa-check"></i><b>13.12.1</b> blogdown::check_netlify()</a></li>
 </ul></li>
-<li class="chapter" data-level="12.13" data-path="blogdown.html"><a href="blogdown.html#adding-google-analytics"><i class="fa fa-check"></i><b>12.13</b> Adding Google Analytics</a></li>
+<li class="chapter" data-level="13.13" data-path="blogdown.html"><a href="blogdown.html#adding-google-analytics"><i class="fa fa-check"></i><b>13.13</b> Adding Google Analytics</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="book-chapters.html"><a href="book-chapters.html"><i class="fa fa-check"></i><b>13</b> Bookdown: Creating Book Chapters</a>
+<li class="chapter" data-level="14" data-path="book-chapters.html"><a href="book-chapters.html"><i class="fa fa-check"></i><b>14</b> Bookdown: Creating Book Chapters</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="book-chapters.html"><a href="book-chapters.html#chapter-overview"><i class="fa fa-check"></i><b>13.1</b> Chapter overview</a></li>
-<li class="chapter" data-level="13.2" data-path="book-chapters.html"><a href="book-chapters.html#motivating-example"><i class="fa fa-check"></i><b>13.2</b> Motivating example</a></li>
-<li class="chapter" data-level="13.3" data-path="book-chapters.html"><a href="book-chapters.html#body"><i class="fa fa-check"></i><b>13.3</b> Body</a>
+<li class="chapter" data-level="14.1" data-path="book-chapters.html"><a href="book-chapters.html#chapter-overview"><i class="fa fa-check"></i><b>14.1</b> Chapter overview</a></li>
+<li class="chapter" data-level="14.2" data-path="book-chapters.html"><a href="book-chapters.html#motivating-example"><i class="fa fa-check"></i><b>14.2</b> Motivating example</a></li>
+<li class="chapter" data-level="14.3" data-path="book-chapters.html"><a href="book-chapters.html#body"><i class="fa fa-check"></i><b>14.3</b> Body</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="book-chapters.html"><a href="book-chapters.html#language"><i class="fa fa-check"></i><b>13.3.1</b> Language</a></li>
-<li class="chapter" data-level="13.3.2" data-path="book-chapters.html"><a href="book-chapters.html#text-conventions"><i class="fa fa-check"></i><b>13.3.2</b> Text conventions</a></li>
-<li class="chapter" data-level="13.3.3" data-path="book-chapters.html"><a href="book-chapters.html#special-sections"><i class="fa fa-check"></i><b>13.3.3</b> Special sections</a></li>
-<li class="chapter" data-level="13.3.4" data-path="book-chapters.html"><a href="book-chapters.html#images"><i class="fa fa-check"></i><b>13.3.4</b> Images</a></li>
-<li class="chapter" data-level="13.3.5" data-path="book-chapters.html"><a href="book-chapters.html#videos"><i class="fa fa-check"></i><b>13.3.5</b> Videos</a></li>
-<li class="chapter" data-level="13.3.6" data-path="book-chapters.html"><a href="book-chapters.html#font-awesome"><i class="fa fa-check"></i><b>13.3.6</b> Font Awesome</a></li>
-<li class="chapter" data-level="13.3.7" data-path="book-chapters.html"><a href="book-chapters.html#links"><i class="fa fa-check"></i><b>13.3.7</b> Links</a></li>
-<li class="chapter" data-level="13.3.8" data-path="book-chapters.html"><a href="book-chapters.html#code-blocks"><i class="fa fa-check"></i><b>13.3.8</b> Code blocks</a></li>
+<li class="chapter" data-level="14.3.1" data-path="book-chapters.html"><a href="book-chapters.html#language"><i class="fa fa-check"></i><b>14.3.1</b> Language</a></li>
+<li class="chapter" data-level="14.3.2" data-path="book-chapters.html"><a href="book-chapters.html#text-conventions"><i class="fa fa-check"></i><b>14.3.2</b> Text conventions</a></li>
+<li class="chapter" data-level="14.3.3" data-path="book-chapters.html"><a href="book-chapters.html#special-sections"><i class="fa fa-check"></i><b>14.3.3</b> Special sections</a></li>
+<li class="chapter" data-level="14.3.4" data-path="book-chapters.html"><a href="book-chapters.html#images"><i class="fa fa-check"></i><b>14.3.4</b> Images</a></li>
+<li class="chapter" data-level="14.3.5" data-path="book-chapters.html"><a href="book-chapters.html#videos"><i class="fa fa-check"></i><b>14.3.5</b> Videos</a></li>
+<li class="chapter" data-level="14.3.6" data-path="book-chapters.html"><a href="book-chapters.html#font-awesome"><i class="fa fa-check"></i><b>14.3.6</b> Font Awesome</a></li>
+<li class="chapter" data-level="14.3.7" data-path="book-chapters.html"><a href="book-chapters.html#links"><i class="fa fa-check"></i><b>14.3.7</b> Links</a></li>
+<li class="chapter" data-level="14.3.8" data-path="book-chapters.html"><a href="book-chapters.html#code-blocks"><i class="fa fa-check"></i><b>14.3.8</b> Code blocks</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="book-chapters.html"><a href="book-chapters.html#cross-references"><i class="fa fa-check"></i><b>13.4</b> Cross-references</a>
+<li class="chapter" data-level="14.4" data-path="book-chapters.html"><a href="book-chapters.html#cross-references"><i class="fa fa-check"></i><b>14.4</b> Cross-references</a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="book-chapters.html"><a href="book-chapters.html#cr-figs"><i class="fa fa-check"></i><b>13.4.1</b> Cross-referencing figures</a></li>
-<li class="chapter" data-level="13.4.2" data-path="book-chapters.html"><a href="book-chapters.html#cross-referencing-chapters"><i class="fa fa-check"></i><b>13.4.2</b> Cross-referencing chapters</a></li>
-<li class="chapter" data-level="13.4.3" data-path="book-chapters.html"><a href="book-chapters.html#cross-referencing-unnumbered-chapters"><i class="fa fa-check"></i><b>13.4.3</b> Cross-referencing unnumbered chapters</a></li>
+<li class="chapter" data-level="14.4.1" data-path="book-chapters.html"><a href="book-chapters.html#cr-figs"><i class="fa fa-check"></i><b>14.4.1</b> Cross-referencing figures</a></li>
+<li class="chapter" data-level="14.4.2" data-path="book-chapters.html"><a href="book-chapters.html#cross-referencing-chapters"><i class="fa fa-check"></i><b>14.4.2</b> Cross-referencing chapters</a></li>
+<li class="chapter" data-level="14.4.3" data-path="book-chapters.html"><a href="book-chapters.html#cross-referencing-unnumbered-chapters"><i class="fa fa-check"></i><b>14.4.3</b> Cross-referencing unnumbered chapters</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="book-chapters.html"><a href="book-chapters.html#citations"><i class="fa fa-check"></i><b>13.5</b> Citations</a></li>
-<li class="chapter" data-level="13.6" data-path="book-chapters.html"><a href="book-chapters.html#previewing-the-chapter"><i class="fa fa-check"></i><b>13.6</b> Previewing the chapter</a>
+<li class="chapter" data-level="14.5" data-path="book-chapters.html"><a href="book-chapters.html#citations"><i class="fa fa-check"></i><b>14.5</b> Citations</a></li>
+<li class="chapter" data-level="14.6" data-path="book-chapters.html"><a href="book-chapters.html#previewing-the-chapter"><i class="fa fa-check"></i><b>14.6</b> Previewing the chapter</a>
 <ul>
-<li class="chapter" data-level="13.6.1" data-path="book-chapters.html"><a href="book-chapters.html#miscelaneous"><i class="fa fa-check"></i><b>13.6.1</b> Miscelaneous</a></li>
+<li class="chapter" data-level="14.6.1" data-path="book-chapters.html"><a href="book-chapters.html#miscelaneous"><i class="fa fa-check"></i><b>14.6.1</b> Miscelaneous</a></li>
 </ul></li>
-<li class="chapter" data-level="13.7" data-path="book-chapters.html"><a href="book-chapters.html#additional-resources-function-to-check"><i class="fa fa-check"></i><b>13.7</b> Additional resources: function to check</a></li>
-<li class="chapter" data-level="13.8" data-path="book-chapters.html"><a href="book-chapters.html#key-terms-function-to-add-to-appendix"><i class="fa fa-check"></i><b>13.8</b> Key terms : function to add to appendix</a></li>
-<li class="chapter" data-level="13.9" data-path="book-chapters.html"><a href="book-chapters.html#final-example-code-function-to-add-to-appendix"><i class="fa fa-check"></i><b>13.9</b> Final example code : function to add to appendix</a></li>
+<li class="chapter" data-level="14.7" data-path="book-chapters.html"><a href="book-chapters.html#additional-resources-function-to-check"><i class="fa fa-check"></i><b>14.7</b> Additional resources: function to check</a></li>
+<li class="chapter" data-level="14.8" data-path="book-chapters.html"><a href="book-chapters.html#key-terms-function-to-add-to-appendix"><i class="fa fa-check"></i><b>14.8</b> Key terms : function to add to appendix</a></li>
+<li class="chapter" data-level="14.9" data-path="book-chapters.html"><a href="book-chapters.html#final-example-code-function-to-add-to-appendix"><i class="fa fa-check"></i><b>14.9</b> Final example code : function to add to appendix</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html"><i class="fa fa-check"></i><b>14</b> Bookdown: Quick Start</a>
+<li class="chapter" data-level="15" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html"><i class="fa fa-check"></i><b>15</b> Bookdown: Quick Start</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#overview-11"><i class="fa fa-check"></i><b>14.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="14.2" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#useful-websites-11"><i class="fa fa-check"></i><b>14.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="14.3" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#creating-the-bookdown-project-locally"><i class="fa fa-check"></i><b>14.3</b> Creating the bookdown project locally</a></li>
-<li class="chapter" data-level="14.4" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#initiate-a-git-repository"><i class="fa fa-check"></i><b>14.4</b> Initiate a git repository</a></li>
-<li class="chapter" data-level="14.5" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#create-a-github-repository-for-the-book"><i class="fa fa-check"></i><b>14.5</b> Create a github repository for the book</a></li>
-<li class="chapter" data-level="14.6" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#configuring-a-publishing-source-for-the-github-pages-site"><i class="fa fa-check"></i><b>14.6</b> Configuring a publishing source for the GitHub Pages site</a></li>
-<li class="chapter" data-level="14.7" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-_bookdown.yml"><i class="fa fa-check"></i><b>14.7</b> Modify _bookdown.yml</a></li>
-<li class="chapter" data-level="14.8" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-_output.yml"><i class="fa fa-check"></i><b>14.8</b> Modify _output.yml</a></li>
-<li class="chapter" data-level="14.9" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-style.css"><i class="fa fa-check"></i><b>14.9</b> Modify style.css</a></li>
-<li class="chapter" data-level="14.10" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-index.rmd"><i class="fa fa-check"></i><b>14.10</b> Modify index.Rmd</a></li>
-<li class="chapter" data-level="14.11" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#creating-bookdown-chapters"><i class="fa fa-check"></i><b>14.11</b> Creating bookdown chapters</a></li>
-<li class="chapter" data-level="14.12" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#knitting-the-book"><i class="fa fa-check"></i><b>14.12</b> Knitting the book</a></li>
-<li class="chapter" data-level="14.13" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#errors-and-warnings"><i class="fa fa-check"></i><b>14.13</b> Errors and warnings</a></li>
+<li class="chapter" data-level="15.1" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#overview-12"><i class="fa fa-check"></i><b>15.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="15.2" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#useful-websites-12"><i class="fa fa-check"></i><b>15.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="15.3" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#creating-the-bookdown-project-locally"><i class="fa fa-check"></i><b>15.3</b> Creating the bookdown project locally</a></li>
+<li class="chapter" data-level="15.4" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#initiate-a-git-repository"><i class="fa fa-check"></i><b>15.4</b> Initiate a git repository</a></li>
+<li class="chapter" data-level="15.5" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#create-a-github-repository-for-the-book"><i class="fa fa-check"></i><b>15.5</b> Create a github repository for the book</a></li>
+<li class="chapter" data-level="15.6" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#configuring-a-publishing-source-for-the-github-pages-site"><i class="fa fa-check"></i><b>15.6</b> Configuring a publishing source for the GitHub Pages site</a></li>
+<li class="chapter" data-level="15.7" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-_bookdown.yml"><i class="fa fa-check"></i><b>15.7</b> Modify _bookdown.yml</a></li>
+<li class="chapter" data-level="15.8" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-_output.yml"><i class="fa fa-check"></i><b>15.8</b> Modify _output.yml</a></li>
+<li class="chapter" data-level="15.9" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-style.css"><i class="fa fa-check"></i><b>15.9</b> Modify style.css</a></li>
+<li class="chapter" data-level="15.10" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#modify-index.rmd"><i class="fa fa-check"></i><b>15.10</b> Modify index.Rmd</a></li>
+<li class="chapter" data-level="15.11" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#creating-bookdown-chapters"><i class="fa fa-check"></i><b>15.11</b> Creating bookdown chapters</a></li>
+<li class="chapter" data-level="15.12" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#knitting-the-book"><i class="fa fa-check"></i><b>15.12</b> Knitting the book</a></li>
+<li class="chapter" data-level="15.13" data-path="bookdown-quick-start.html"><a href="bookdown-quick-start.html#errors-and-warnings"><i class="fa fa-check"></i><b>15.13</b> Errors and warnings</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="flexdashboard.html"><a href="flexdashboard.html"><i class="fa fa-check"></i><b>15</b> Flexdashboard</a>
+<li class="chapter" data-level="16" data-path="flexdashboard.html"><a href="flexdashboard.html"><i class="fa fa-check"></i><b>16</b> Flexdashboard</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="flexdashboard.html"><a href="flexdashboard.html#overview-12"><i class="fa fa-check"></i><b>15.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="15.2" data-path="flexdashboard.html"><a href="flexdashboard.html#useful-websites-12"><i class="fa fa-check"></i><b>15.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="15.3" data-path="flexdashboard.html"><a href="flexdashboard.html#load-packages-8"><i class="fa fa-check"></i><b>15.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="15.4" data-path="flexdashboard.html"><a href="flexdashboard.html#tips"><i class="fa fa-check"></i><b>15.4</b> Tips</a></li>
-<li class="chapter" data-level="15.5" data-path="flexdashboard.html"><a href="flexdashboard.html#simulate-data-6"><i class="fa fa-check"></i><b>15.5</b> 🔢Simulate data</a></li>
+<li class="chapter" data-level="16.1" data-path="flexdashboard.html"><a href="flexdashboard.html#overview-13"><i class="fa fa-check"></i><b>16.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="16.2" data-path="flexdashboard.html"><a href="flexdashboard.html#useful-websites-13"><i class="fa fa-check"></i><b>16.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="16.3" data-path="flexdashboard.html"><a href="flexdashboard.html#load-packages-9"><i class="fa fa-check"></i><b>16.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="16.4" data-path="flexdashboard.html"><a href="flexdashboard.html#tips"><i class="fa fa-check"></i><b>16.4</b> Tips</a></li>
+<li class="chapter" data-level="16.5" data-path="flexdashboard.html"><a href="flexdashboard.html#simulate-data-6"><i class="fa fa-check"></i><b>16.5</b> 🔢Simulate data</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="flextable.html"><a href="flextable.html"><i class="fa fa-check"></i><b>16</b> Flextable</a>
+<li class="chapter" data-level="17" data-path="flextable.html"><a href="flextable.html"><i class="fa fa-check"></i><b>17</b> Flextable</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="flextable.html"><a href="flextable.html#overview-13"><i class="fa fa-check"></i><b>16.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="16.2" data-path="flextable.html"><a href="flextable.html#useful-websites-13"><i class="fa fa-check"></i><b>16.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="16.3" data-path="flextable.html"><a href="flextable.html#load-packages-9"><i class="fa fa-check"></i><b>16.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="16.4" data-path="flextable.html"><a href="flextable.html#load-data"><i class="fa fa-check"></i><b>16.4</b> Load data</a></li>
-<li class="chapter" data-level="16.5" data-path="flextable.html"><a href="flextable.html#i-and-j"><i class="fa fa-check"></i><b>16.5</b> 🔵 i and j</a></li>
-<li class="chapter" data-level="16.6" data-path="flextable.html"><a href="flextable.html#flextable-wrappers"><i class="fa fa-check"></i><b>16.6</b> 🔵 Flextable wrappers</a></li>
-<li class="chapter" data-level="16.7" data-path="flextable.html"><a href="flextable.html#addingmodifying-table-content"><i class="fa fa-check"></i><b>16.7</b> 🔵 Adding/modifying table content</a>
+<li class="chapter" data-level="17.1" data-path="flextable.html"><a href="flextable.html#overview-14"><i class="fa fa-check"></i><b>17.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="17.2" data-path="flextable.html"><a href="flextable.html#useful-websites-14"><i class="fa fa-check"></i><b>17.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="17.3" data-path="flextable.html"><a href="flextable.html#load-packages-10"><i class="fa fa-check"></i><b>17.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="17.4" data-path="flextable.html"><a href="flextable.html#load-data"><i class="fa fa-check"></i><b>17.4</b> Load data</a></li>
+<li class="chapter" data-level="17.5" data-path="flextable.html"><a href="flextable.html#i-and-j"><i class="fa fa-check"></i><b>17.5</b> 🔵 i and j</a></li>
+<li class="chapter" data-level="17.6" data-path="flextable.html"><a href="flextable.html#flextable-wrappers"><i class="fa fa-check"></i><b>17.6</b> 🔵 Flextable wrappers</a></li>
+<li class="chapter" data-level="17.7" data-path="flextable.html"><a href="flextable.html#addingmodifying-table-content"><i class="fa fa-check"></i><b>17.7</b> 🔵 Adding/modifying table content</a>
 <ul>
-<li class="chapter" data-level="16.7.1" data-path="flextable.html"><a href="flextable.html#add-table-title-with-bold-part"><i class="fa fa-check"></i><b>16.7.1</b> Add table title with bold part</a></li>
-<li class="chapter" data-level="16.7.2" data-path="flextable.html"><a href="flextable.html#adding-blank-rows"><i class="fa fa-check"></i><b>16.7.2</b> Adding blank rows</a></li>
-<li class="chapter" data-level="16.7.3" data-path="flextable.html"><a href="flextable.html#change-column-header-text"><i class="fa fa-check"></i><b>16.7.3</b> Change column header text</a></li>
-<li class="chapter" data-level="16.7.4" data-path="flextable.html"><a href="flextable.html#change-row-header-text"><i class="fa fa-check"></i><b>16.7.4</b> Change row header text</a></li>
-<li class="chapter" data-level="16.7.5" data-path="flextable.html"><a href="flextable.html#add-footnote"><i class="fa fa-check"></i><b>16.7.5</b> Add footnote</a></li>
+<li class="chapter" data-level="17.7.1" data-path="flextable.html"><a href="flextable.html#add-table-title-with-bold-part"><i class="fa fa-check"></i><b>17.7.1</b> Add table title with bold part</a></li>
+<li class="chapter" data-level="17.7.2" data-path="flextable.html"><a href="flextable.html#adding-blank-rows"><i class="fa fa-check"></i><b>17.7.2</b> Adding blank rows</a></li>
+<li class="chapter" data-level="17.7.3" data-path="flextable.html"><a href="flextable.html#change-column-header-text"><i class="fa fa-check"></i><b>17.7.3</b> Change column header text</a></li>
+<li class="chapter" data-level="17.7.4" data-path="flextable.html"><a href="flextable.html#change-row-header-text"><i class="fa fa-check"></i><b>17.7.4</b> Change row header text</a></li>
+<li class="chapter" data-level="17.7.5" data-path="flextable.html"><a href="flextable.html#add-footnote"><i class="fa fa-check"></i><b>17.7.5</b> Add footnote</a></li>
 </ul></li>
-<li class="chapter" data-level="16.8" data-path="flextable.html"><a href="flextable.html#formatting"><i class="fa fa-check"></i><b>16.8</b> 🔵 Formatting</a>
+<li class="chapter" data-level="17.8" data-path="flextable.html"><a href="flextable.html#formatting"><i class="fa fa-check"></i><b>17.8</b> 🔵 Formatting</a>
 <ul>
-<li class="chapter" data-level="16.8.1" data-path="flextable.html"><a href="flextable.html#change-font-to-tnr"><i class="fa fa-check"></i><b>16.8.1</b> Change font to TNR</a></li>
-<li class="chapter" data-level="16.8.2" data-path="flextable.html"><a href="flextable.html#conditional-formatting"><i class="fa fa-check"></i><b>16.8.2</b> Conditional formatting</a></li>
+<li class="chapter" data-level="17.8.1" data-path="flextable.html"><a href="flextable.html#change-font-to-tnr"><i class="fa fa-check"></i><b>17.8.1</b> Change font to TNR</a></li>
+<li class="chapter" data-level="17.8.2" data-path="flextable.html"><a href="flextable.html#conditional-formatting"><i class="fa fa-check"></i><b>17.8.2</b> Conditional formatting</a></li>
 </ul></li>
-<li class="chapter" data-level="16.9" data-path="flextable.html"><a href="flextable.html#layout"><i class="fa fa-check"></i><b>16.9</b> 🔵Layout</a>
+<li class="chapter" data-level="17.9" data-path="flextable.html"><a href="flextable.html#layout"><i class="fa fa-check"></i><b>17.9</b> 🔵Layout</a>
 <ul>
-<li class="chapter" data-level="16.9.1" data-path="flextable.html"><a href="flextable.html#autofit-to-contents"><i class="fa fa-check"></i><b>16.9.1</b> Autofit to contents</a></li>
-<li class="chapter" data-level="16.9.2" data-path="flextable.html"><a href="flextable.html#all-categories-of-categorical-variables-are-collapsed-into-a-single-row"><i class="fa fa-check"></i><b>16.9.2</b> All categories of categorical variables are collapsed into a single row</a></li>
+<li class="chapter" data-level="17.9.1" data-path="flextable.html"><a href="flextable.html#autofit-to-contents"><i class="fa fa-check"></i><b>17.9.1</b> Autofit to contents</a></li>
+<li class="chapter" data-level="17.9.2" data-path="flextable.html"><a href="flextable.html#all-categories-of-categorical-variables-are-collapsed-into-a-single-row"><i class="fa fa-check"></i><b>17.9.2</b> All categories of categorical variables are collapsed into a single row</a></li>
 </ul></li>
-<li class="chapter" data-level="16.10" data-path="flextable.html"><a href="flextable.html#examples-1"><i class="fa fa-check"></i><b>16.10</b> 🔵 Examples</a>
+<li class="chapter" data-level="17.10" data-path="flextable.html"><a href="flextable.html#examples-1"><i class="fa fa-check"></i><b>17.10</b> 🔵 Examples</a>
 <ul>
-<li class="chapter" data-level="16.10.1" data-path="flextable.html"><a href="flextable.html#lead-panel-summarize-votes"><i class="fa fa-check"></i><b>16.10.1</b> LEAD panel summarize votes</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="17" data-path="language-for-publications.html"><a href="language-for-publications.html"><i class="fa fa-check"></i><b>17</b> Language for publications</a>
-<ul>
-<li class="chapter" data-level="17.1" data-path="language-for-publications.html"><a href="language-for-publications.html#overview-14"><i class="fa fa-check"></i><b>17.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="17.2" data-path="language-for-publications.html"><a href="language-for-publications.html#useful-websites-14"><i class="fa fa-check"></i><b>17.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="17.3" data-path="language-for-publications.html"><a href="language-for-publications.html#load-packages-10"><i class="fa fa-check"></i><b>17.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="17.4" data-path="language-for-publications.html"><a href="language-for-publications.html#statistical-software"><i class="fa fa-check"></i><b>17.4</b> Statistical software</a>
-<ul>
-<li class="chapter" data-level="17.4.1" data-path="language-for-publications.html"><a href="language-for-publications.html#r"><i class="fa fa-check"></i><b>17.4.1</b> R</a></li>
-<li class="chapter" data-level="17.4.2" data-path="language-for-publications.html"><a href="language-for-publications.html#stata"><i class="fa fa-check"></i><b>17.4.2</b> Stata</a></li>
-<li class="chapter" data-level="17.4.3" data-path="language-for-publications.html"><a href="language-for-publications.html#sas"><i class="fa fa-check"></i><b>17.4.3</b> SAS</a></li>
-</ul></li>
-<li class="chapter" data-level="17.5" data-path="language-for-publications.html"><a href="language-for-publications.html#irb"><i class="fa fa-check"></i><b>17.5</b> IRB</a></li>
-</ul></li>
-<li class="chapter" data-level="18" data-path="officer.html"><a href="officer.html"><i class="fa fa-check"></i><b>18</b> Officer</a>
-<ul>
-<li class="chapter" data-level="18.1" data-path="officer.html"><a href="officer.html#overview-15"><i class="fa fa-check"></i><b>18.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="18.2" data-path="officer.html"><a href="officer.html#useful-websites-15"><i class="fa fa-check"></i><b>18.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="18.3" data-path="officer.html"><a href="officer.html#load-packages-11"><i class="fa fa-check"></i><b>18.3</b> 📦Load packages</a></li>
-<li class="chapter" data-level="18.4" data-path="officer.html"><a href="officer.html#formatted-text"><i class="fa fa-check"></i><b>18.4</b> Formatted text</a></li>
-<li class="chapter" data-level="18.5" data-path="officer.html"><a href="officer.html#bulleted-list"><i class="fa fa-check"></i><b>18.5</b> Bulleted list</a></li>
-<li class="chapter" data-level="18.6" data-path="officer.html"><a href="officer.html#adding-on-to-the-end-of-a-file."><i class="fa fa-check"></i><b>18.6</b> Adding on to the end of a file.</a></li>
-<li class="chapter" data-level="18.7" data-path="officer.html"><a href="officer.html#using-bookmarks"><i class="fa fa-check"></i><b>18.7</b> Using bookmarks</a>
-<ul>
-<li class="chapter" data-level="18.7.1" data-path="officer.html"><a href="officer.html#embedding-cells-form-one-table-into-cells-of-an-existing-word-tables-at-a-bookmark-with-flextable-and-officer"><i class="fa fa-check"></i><b>18.7.1</b> Embedding cells form one table into cells of an existing Word tables at a bookmark with flextable and officer</a></li>
+<li class="chapter" data-level="17.10.1" data-path="flextable.html"><a href="flextable.html#lead-panel-summarize-votes"><i class="fa fa-check"></i><b>17.10.1</b> LEAD panel summarize votes</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>19</b> Tables</a>
+<li class="chapter" data-level="18" data-path="language-for-publications.html"><a href="language-for-publications.html"><i class="fa fa-check"></i><b>18</b> Language for publications</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="tables.html"><a href="tables.html#overview-16"><i class="fa fa-check"></i><b>19.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="19.2" data-path="tables.html"><a href="tables.html#projects-to-review-and-incorporate"><i class="fa fa-check"></i><b>19.2</b> Projects to review and incorporate</a></li>
-<li class="chapter" data-level="19.3" data-path="tables.html"><a href="tables.html#useful-websites-16"><i class="fa fa-check"></i><b>19.3</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="19.4" data-path="tables.html"><a href="tables.html#load-packages-12"><i class="fa fa-check"></i><b>19.4</b> 📦Load packages</a></li>
-<li class="chapter" data-level="19.5" data-path="tables.html"><a href="tables.html#simulate-data-7"><i class="fa fa-check"></i><b>19.5</b> 🔢Simulate data</a></li>
-<li class="chapter" data-level="19.6" data-path="tables.html"><a href="tables.html#example-table-1"><i class="fa fa-check"></i><b>19.6</b> 🔵 Example: Table 1</a>
+<li class="chapter" data-level="18.1" data-path="language-for-publications.html"><a href="language-for-publications.html#overview-15"><i class="fa fa-check"></i><b>18.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="18.2" data-path="language-for-publications.html"><a href="language-for-publications.html#useful-websites-15"><i class="fa fa-check"></i><b>18.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="18.3" data-path="language-for-publications.html"><a href="language-for-publications.html#load-packages-11"><i class="fa fa-check"></i><b>18.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="18.4" data-path="language-for-publications.html"><a href="language-for-publications.html#statistical-software"><i class="fa fa-check"></i><b>18.4</b> Statistical software</a>
 <ul>
-<li class="chapter" data-level="19.6.1" data-path="tables.html"><a href="tables.html#step-1.-calculate-the-outcome-distribution"><i class="fa fa-check"></i><b>19.6.1</b> Step 1. Calculate the outcome distribution</a></li>
-<li class="chapter" data-level="19.6.2" data-path="tables.html"><a href="tables.html#step-2.-prepare-to-calculate-summary-statistics"><i class="fa fa-check"></i><b>19.6.2</b> Step 2. Prepare to calculate summary statistics</a></li>
-<li class="chapter" data-level="19.6.3" data-path="tables.html"><a href="tables.html#step-3.-create-a-data-frame-that-contains-our-summary-statistics"><i class="fa fa-check"></i><b>19.6.3</b> Step 3. Create a data frame that contains our summary statistics</a></li>
-<li class="chapter" data-level="19.6.4" data-path="tables.html"><a href="tables.html#step-5.-create-flextable"><i class="fa fa-check"></i><b>19.6.4</b> Step 5. Create flextable</a></li>
-<li class="chapter" data-level="19.6.5" data-path="tables.html"><a href="tables.html#step-6.-formatting-flextable"><i class="fa fa-check"></i><b>19.6.5</b> Step 6. Formatting flextable</a></li>
-<li class="chapter" data-level="19.6.6" data-path="tables.html"><a href="tables.html#load-word-template-for-officer"><i class="fa fa-check"></i><b>19.6.6</b> 📝 Load Word template for officer</a></li>
-<li class="chapter" data-level="19.6.7" data-path="tables.html"><a href="tables.html#generate-word-reports"><i class="fa fa-check"></i><b>19.6.7</b> 📝 Generate Word reports</a></li>
+<li class="chapter" data-level="18.4.1" data-path="language-for-publications.html"><a href="language-for-publications.html#r"><i class="fa fa-check"></i><b>18.4.1</b> R</a></li>
+<li class="chapter" data-level="18.4.2" data-path="language-for-publications.html"><a href="language-for-publications.html#stata"><i class="fa fa-check"></i><b>18.4.2</b> Stata</a></li>
+<li class="chapter" data-level="18.4.3" data-path="language-for-publications.html"><a href="language-for-publications.html#sas"><i class="fa fa-check"></i><b>18.4.3</b> SAS</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="language-for-publications.html"><a href="language-for-publications.html#irb"><i class="fa fa-check"></i><b>18.5</b> IRB</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="officer.html"><a href="officer.html"><i class="fa fa-check"></i><b>19</b> Officer</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="officer.html"><a href="officer.html#overview-16"><i class="fa fa-check"></i><b>19.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="19.2" data-path="officer.html"><a href="officer.html#useful-websites-16"><i class="fa fa-check"></i><b>19.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="19.3" data-path="officer.html"><a href="officer.html#load-packages-12"><i class="fa fa-check"></i><b>19.3</b> 📦Load packages</a></li>
+<li class="chapter" data-level="19.4" data-path="officer.html"><a href="officer.html#formatted-text"><i class="fa fa-check"></i><b>19.4</b> Formatted text</a></li>
+<li class="chapter" data-level="19.5" data-path="officer.html"><a href="officer.html#bulleted-list"><i class="fa fa-check"></i><b>19.5</b> Bulleted list</a></li>
+<li class="chapter" data-level="19.6" data-path="officer.html"><a href="officer.html#adding-on-to-the-end-of-a-file."><i class="fa fa-check"></i><b>19.6</b> Adding on to the end of a file.</a></li>
+<li class="chapter" data-level="19.7" data-path="officer.html"><a href="officer.html#using-bookmarks"><i class="fa fa-check"></i><b>19.7</b> Using bookmarks</a>
+<ul>
+<li class="chapter" data-level="19.7.1" data-path="officer.html"><a href="officer.html#embedding-cells-form-one-table-into-cells-of-an-existing-word-tables-at-a-bookmark-with-flextable-and-officer"><i class="fa fa-check"></i><b>19.7.1</b> Embedding cells form one table into cells of an existing Word tables at a bookmark with flextable and officer</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>20</b> Tables</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="tables.html"><a href="tables.html#overview-17"><i class="fa fa-check"></i><b>20.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="20.2" data-path="tables.html"><a href="tables.html#projects-to-review-and-incorporate"><i class="fa fa-check"></i><b>20.2</b> Projects to review and incorporate</a></li>
+<li class="chapter" data-level="20.3" data-path="tables.html"><a href="tables.html#useful-websites-17"><i class="fa fa-check"></i><b>20.3</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="20.4" data-path="tables.html"><a href="tables.html#load-packages-13"><i class="fa fa-check"></i><b>20.4</b> 📦Load packages</a></li>
+<li class="chapter" data-level="20.5" data-path="tables.html"><a href="tables.html#simulate-data-7"><i class="fa fa-check"></i><b>20.5</b> 🔢Simulate data</a></li>
+<li class="chapter" data-level="20.6" data-path="tables.html"><a href="tables.html#example-table-1"><i class="fa fa-check"></i><b>20.6</b> 🔵 Example: Table 1</a>
+<ul>
+<li class="chapter" data-level="20.6.1" data-path="tables.html"><a href="tables.html#step-1.-calculate-the-outcome-distribution"><i class="fa fa-check"></i><b>20.6.1</b> Step 1. Calculate the outcome distribution</a></li>
+<li class="chapter" data-level="20.6.2" data-path="tables.html"><a href="tables.html#step-2.-prepare-to-calculate-summary-statistics"><i class="fa fa-check"></i><b>20.6.2</b> Step 2. Prepare to calculate summary statistics</a></li>
+<li class="chapter" data-level="20.6.3" data-path="tables.html"><a href="tables.html#step-3.-create-a-data-frame-that-contains-our-summary-statistics"><i class="fa fa-check"></i><b>20.6.3</b> Step 3. Create a data frame that contains our summary statistics</a></li>
+<li class="chapter" data-level="20.6.4" data-path="tables.html"><a href="tables.html#step-5.-create-flextable"><i class="fa fa-check"></i><b>20.6.4</b> Step 5. Create flextable</a></li>
+<li class="chapter" data-level="20.6.5" data-path="tables.html"><a href="tables.html#step-6.-formatting-flextable"><i class="fa fa-check"></i><b>20.6.5</b> Step 6. Formatting flextable</a></li>
+<li class="chapter" data-level="20.6.6" data-path="tables.html"><a href="tables.html#load-word-template-for-officer"><i class="fa fa-check"></i><b>20.6.6</b> 📝 Load Word template for officer</a></li>
+<li class="chapter" data-level="20.6.7" data-path="tables.html"><a href="tables.html#generate-word-reports"><i class="fa fa-check"></i><b>20.6.7</b> 📝 Generate Word reports</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VIII Shiny</b></span></li>
 <li class="part"><span><b>IX Collaborating</b></span></li>
-<li class="chapter" data-level="20" data-path="git-and-github.html"><a href="git-and-github.html"><i class="fa fa-check"></i><b>20</b> Git and GitHub</a>
+<li class="chapter" data-level="21" data-path="git-and-github.html"><a href="git-and-github.html"><i class="fa fa-check"></i><b>21</b> Git and GitHub</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="git-and-github.html"><a href="git-and-github.html#overview-17"><i class="fa fa-check"></i><b>20.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="20.2" data-path="git-and-github.html"><a href="git-and-github.html#useful-websites-17"><i class="fa fa-check"></i><b>20.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="20.3" data-path="git-and-github.html"><a href="git-and-github.html#documenting-practices"><i class="fa fa-check"></i><b>20.3</b> Documenting practices</a></li>
-<li class="chapter" data-level="20.4" data-path="git-and-github.html"><a href="git-and-github.html#commit-message"><i class="fa fa-check"></i><b>20.4</b> Commit message</a></li>
-<li class="chapter" data-level="20.5" data-path="git-and-github.html"><a href="git-and-github.html#get-rid-of-.ds_store-1"><i class="fa fa-check"></i><b>20.5</b> Get rid of .DS_Store</a></li>
-<li class="chapter" data-level="20.6" data-path="git-and-github.html"><a href="git-and-github.html#amend"><i class="fa fa-check"></i><b>20.6</b> Amend</a></li>
-<li class="chapter" data-level="20.7" data-path="git-and-github.html"><a href="git-and-github.html#pull-requests"><i class="fa fa-check"></i><b>20.7</b> Pull Requests</a></li>
-<li class="chapter" data-level="20.8" data-path="git-and-github.html"><a href="git-and-github.html#branches"><i class="fa fa-check"></i><b>20.8</b> Branches</a></li>
-<li class="chapter" data-level="20.9" data-path="git-and-github.html"><a href="git-and-github.html#squashing-commits"><i class="fa fa-check"></i><b>20.9</b> Squashing commits</a></li>
-<li class="chapter" data-level="20.10" data-path="git-and-github.html"><a href="git-and-github.html#other-littl-quirks-and-errors"><i class="fa fa-check"></i><b>20.10</b> Other littl quirks and errors</a></li>
+<li class="chapter" data-level="21.1" data-path="git-and-github.html"><a href="git-and-github.html#overview-18"><i class="fa fa-check"></i><b>21.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="21.2" data-path="git-and-github.html"><a href="git-and-github.html#useful-websites-18"><i class="fa fa-check"></i><b>21.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="21.3" data-path="git-and-github.html"><a href="git-and-github.html#documenting-practices"><i class="fa fa-check"></i><b>21.3</b> Documenting practices</a></li>
+<li class="chapter" data-level="21.4" data-path="git-and-github.html"><a href="git-and-github.html#commit-message"><i class="fa fa-check"></i><b>21.4</b> Commit message</a></li>
+<li class="chapter" data-level="21.5" data-path="git-and-github.html"><a href="git-and-github.html#pushing-commits-to-remote"><i class="fa fa-check"></i><b>21.5</b> Pushing commits to remote</a></li>
+<li class="chapter" data-level="21.6" data-path="git-and-github.html"><a href="git-and-github.html#get-rid-of-.ds_store-1"><i class="fa fa-check"></i><b>21.6</b> Get rid of .DS_Store</a></li>
+<li class="chapter" data-level="21.7" data-path="git-and-github.html"><a href="git-and-github.html#amend"><i class="fa fa-check"></i><b>21.7</b> Amend</a></li>
+<li class="chapter" data-level="21.8" data-path="git-and-github.html"><a href="git-and-github.html#pull-requests"><i class="fa fa-check"></i><b>21.8</b> Pull Requests</a></li>
+<li class="chapter" data-level="21.9" data-path="git-and-github.html"><a href="git-and-github.html#branches"><i class="fa fa-check"></i><b>21.9</b> Branches</a></li>
+<li class="chapter" data-level="21.10" data-path="git-and-github.html"><a href="git-and-github.html#squashing-commits"><i class="fa fa-check"></i><b>21.10</b> Squashing commits</a></li>
+<li class="chapter" data-level="21.11" data-path="git-and-github.html"><a href="git-and-github.html#rebase"><i class="fa fa-check"></i><b>21.11</b> Rebase</a></li>
+<li class="chapter" data-level="21.12" data-path="git-and-github.html"><a href="git-and-github.html#cherry-pick"><i class="fa fa-check"></i><b>21.12</b> Cherry pick</a></li>
+<li class="chapter" data-level="21.13" data-path="git-and-github.html"><a href="git-and-github.html#removing-a-file"><i class="fa fa-check"></i><b>21.13</b> Removing a file</a>
+<ul>
+<li class="chapter" data-level="21.13.1" data-path="git-and-github.html"><a href="git-and-github.html#undo-commits-no-push"><i class="fa fa-check"></i><b>21.13.1</b> Undo commits, no push</a></li>
+<li class="chapter" data-level="21.13.2" data-path="git-and-github.html"><a href="git-and-github.html#one-commit-pushed-to-github"><i class="fa fa-check"></i><b>21.13.2</b> One commit, pushed to Github</a></li>
+<li class="chapter" data-level="21.13.3" data-path="git-and-github.html"><a href="git-and-github.html#multiple-commits-pushed-to-github"><i class="fa fa-check"></i><b>21.13.3</b> Multiple commits, pushed to GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="21.14" data-path="git-and-github.html"><a href="git-and-github.html#other-little-quirks-and-errors"><i class="fa fa-check"></i><b>21.14</b> Other little quirks and errors</a></li>
 </ul></li>
 <li class="part"><span><b>X Appendix</b></span></li>
-<li class="chapter" data-level="21" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html"><i class="fa fa-check"></i><b>21</b> Appendix A: Terms and Definitions</a>
+<li class="chapter" data-level="22" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html"><i class="fa fa-check"></i><b>22</b> Appendix A: Terms and Definitions</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#overview-18"><i class="fa fa-check"></i><b>21.1</b> ⭐️Overview</a></li>
-<li class="chapter" data-level="21.2" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#useful-websites-18"><i class="fa fa-check"></i><b>21.2</b> 🌎Useful websites</a></li>
-<li class="chapter" data-level="21.3" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#terms"><i class="fa fa-check"></i><b>21.3</b> 📖Terms</a>
+<li class="chapter" data-level="22.1" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#overview-19"><i class="fa fa-check"></i><b>22.1</b> ⭐️Overview</a></li>
+<li class="chapter" data-level="22.2" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#useful-websites-19"><i class="fa fa-check"></i><b>22.2</b> 🌎Useful websites</a></li>
+<li class="chapter" data-level="22.3" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#terms"><i class="fa fa-check"></i><b>22.3</b> 📖Terms</a>
 <ul>
-<li class="chapter" data-level="21.3.1" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#general-terms"><i class="fa fa-check"></i><b>21.3.1</b> General Terms</a></li>
-<li class="chapter" data-level="21.3.2" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#general-statistics-terms"><i class="fa fa-check"></i><b>21.3.2</b> General statistics terms</a></li>
-<li class="chapter" data-level="21.3.3" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#measures-of-occurence"><i class="fa fa-check"></i><b>21.3.3</b> Measures of occurence</a></li>
+<li class="chapter" data-level="22.3.1" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#general-terms"><i class="fa fa-check"></i><b>22.3.1</b> General Terms</a></li>
+<li class="chapter" data-level="22.3.2" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#general-statistics-terms"><i class="fa fa-check"></i><b>22.3.2</b> General statistics terms</a></li>
+<li class="chapter" data-level="22.3.3" data-path="appendix-a-terms-and-definitions.html"><a href="appendix-a-terms-and-definitions.html#measures-of-occurence"><i class="fa fa-check"></i><b>22.3.3</b> Measures of occurence</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -608,42 +623,42 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="flexdashboard" class="section level1 hasAnchor" number="15">
-<h1><span class="header-section-number">15</span> Flexdashboard<a href="flexdashboard.html#flexdashboard" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="flexdashboard" class="section level1 hasAnchor" number="16">
+<h1><span class="header-section-number">16</span> Flexdashboard<a href="flexdashboard.html#flexdashboard" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <!--
 Hidden comments placeholder
 -->
 <p><img src="https://picsum.photos/200/300" /><!-- --></p>
-<div id="overview-12" class="section level2 hasAnchor" number="15.1">
-<h2><span class="header-section-number">15.1</span> ⭐️Overview<a href="flexdashboard.html#overview-12" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="overview-13" class="section level2 hasAnchor" number="16.1">
+<h2><span class="header-section-number">16.1</span> ⭐️Overview<a href="flexdashboard.html#overview-13" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This chapter is about using the <code>flexdashboard</code> package to create static dashboards with R.</p>
 </div>
-<div id="useful-websites-12" class="section level2 hasAnchor" number="15.2">
-<h2><span class="header-section-number">15.2</span> 🌎Useful websites<a href="flexdashboard.html#useful-websites-12" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="useful-websites-13" class="section level2 hasAnchor" number="16.2">
+<h2><span class="header-section-number">16.2</span> 🌎Useful websites<a href="flexdashboard.html#useful-websites-13" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><a href="https://pkgs.rstudio.com/flexdashboard/" class="uri">https://pkgs.rstudio.com/flexdashboard/</a></li>
 </ul>
 </div>
-<div id="load-packages-8" class="section level2 hasAnchor" number="15.3">
-<h2><span class="header-section-number">15.3</span> 📦Load packages<a href="flexdashboard.html#load-packages-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="flexdashboard.html#cb450-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb450-2"><a href="flexdashboard.html#cb450-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flexdashboard)</span></code></pre></div>
+<div id="load-packages-9" class="section level2 hasAnchor" number="16.3">
+<h2><span class="header-section-number">16.3</span> 📦Load packages<a href="flexdashboard.html#load-packages-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="flexdashboard.html#cb452-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb452-2"><a href="flexdashboard.html#cb452-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flexdashboard)</span></code></pre></div>
 </div>
-<div id="tips" class="section level2 hasAnchor" number="15.4">
-<h2><span class="header-section-number">15.4</span> Tips<a href="flexdashboard.html#tips" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tips" class="section level2 hasAnchor" number="16.4">
+<h2><span class="header-section-number">16.4</span> Tips<a href="flexdashboard.html#tips" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Think about coaching Steph with with DETECT dashboard:</p>
 <ul>
 <li><p>Don’t start with a dashboard. Start by creating the tables/graphs you want.</p></li>
 <li><p>Don’t clean the data in the dashboard Rmd file.</p></li>
 </ul>
 </div>
-<div id="simulate-data-6" class="section level2 hasAnchor" number="15.5">
-<h2><span class="header-section-number">15.5</span> 🔢Simulate data<a href="flexdashboard.html#simulate-data-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="flexdashboard.html#cb451-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb451-2"><a href="flexdashboard.html#cb451-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb451-3"><a href="flexdashboard.html#cb451-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">26</span>),</span>
-<span id="cb451-4"><a href="flexdashboard.html#cb451-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> letters</span>
-<span id="cb451-5"><a href="flexdashboard.html#cb451-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div id="simulate-data-6" class="section level2 hasAnchor" number="16.5">
+<h2><span class="header-section-number">16.5</span> 🔢Simulate data<a href="flexdashboard.html#simulate-data-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="flexdashboard.html#cb453-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb453-2"><a href="flexdashboard.html#cb453-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb453-3"><a href="flexdashboard.html#cb453-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">26</span>),</span>
+<span id="cb453-4"><a href="flexdashboard.html#cb453-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> letters</span>
+<span id="cb453-5"><a href="flexdashboard.html#cb453-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <!--
 Clean up and add session info
 -->

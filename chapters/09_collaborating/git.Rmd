@@ -1,12 +1,19 @@
 # Git and GitHub
 
 <!--
-Hidden comments placeholder
+bookdown::preview_chapter("chapters/09_collaborating/git.Rmd")
 -->
 
 ```{r echo=FALSE}
 knitr::include_graphics("https://picsum.photos/200/300")
 ```
+
+```{r}
+library(dplyr, warn.conflicts = FALSE)
+library(ggdag, warn.conflicts = FALSE)
+library(ggplot2)
+```
+
 
 ## ⭐️Overview
 
@@ -60,6 +67,11 @@ From, [How to Write a Git Commit Message](https://cbea.ms/git-commit/), I like:
 > A properly formed Git commit subject line should always be able to complete the following sentence: If applied, this commit will {your subject line here}
 
 
+## Pushing commits to remote
+
+> **Don’t push your work until you’re happy with it.** One of the cardinal rules of Git is that, since so much work is local within your clone, you have a great deal of freedom to rewrite your history locally. However, once you push your work, it is a different story entirely, and you should consider pushed work as final unless you have good reason to change it. In short, you should avoid pushing your work until you’re happy with it and ready to share it with the rest of the world. https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History
+
+
 ## Get rid of .DS_Store
 
 The `.DS_Store` file can be an annoyance when working with Git on MacOS. [Here is a link](https://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository/107921) to instructions for removing `.DS_Store` from your repository. Do it early and never worry about it again. 
@@ -84,6 +96,10 @@ git commit -m '.DS_Store banished!'
 
 
 ## Amend
+
+**Changing the last commit:** `git commit --amend`. This is for _adding_ files to the previous commit, not for _removing_ files from the previous commit. 
+
+> The `git commit --amend` command is a convenient way to modify the most recent commit. It lets you combine staged changes with the previous commit instead of creating an entirely new commit. It can also be used to simply edit the previous commit message without changing its snapshot. But, amending does not just alter the most recent commit, it replaces it entirely, meaning the amended commit will be a new entity with its own ref. To Git, it will look like a brand new commit. https://www.atlassian.com/git/tutorials/rewriting-history
 
 * Edit -> commit -> edit -> amend -> commit = no problem!   
 * Edit -> commit -> push -> edit -> amend -> commit -> push  = problem!   
@@ -137,7 +153,233 @@ I've done more of this lately. These notes should be improved too. For now, I ju
 You can also [amend your commit message](https://www.gitkraken.com/learn/git/problems/git-commit-amend) in GitKraken, but this is complicated if you've already pushed to a remote repository. 
 
 
-## Other littl quirks and errors
+## Rebase
+
+What is rebase? Like a merge, but leaves a linear commit history.
+
+https://www.youtube.com/watch?v=_UZEXUrj-Ds
+
+
+## Cherry pick
+
+What is cherry pick? Pull one commit from branch A to branch B, without having to bring _all_ commits from branch A to branch B.
+
+https://www.youtube.com/watch?v=wIY824wWpu4
+
+
+## Removing a file
+
+Despite our best efforts, there may be times when we commit a file and push it to GitHub by accident. In that case, it isn't enough to simply gitignore the file. That will prevent future changes to the file from being pushed to GitHub, but it won't do anything about the file that's already there. In fact, you can even delete the file (which you may not actually want to do) and push the deletion to GitHub. But, even in that case, the file will still be in your commit history. So how do you totally banish the file from GitHub as though it was never there in the first place?
+
+1. We have a sandbox repository here: https://github.com/brad-cannell/sandbox. We cloned it to Dropbox/R. 
+
+2. We created a plain text file named `test_git` in the master branch, we added a little bit of text, we committed it to the master branch, and we pushed it to GitHub. 
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_initial_commit.png")
+```
+
+3. We created a csv file with some fake "data". We saved it as `data/test_data.csv`. We need the data for our project, but we don't want the data to be pushed to GitHub where it will be available to the public. What we should do is add this file -- or perhaps the entire data folder -- to `.gitignore`. But, we are going to pretend that we forgot to do that. Instead, we committed `data/test_data.csv` to our **local** repo after saving.
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_add_test_data_1.png")
+```
+
+In the screenshot above, we can see that we have accidentally committed `data/test_data.csv` to the `master` branch of our local repository. However, we have **not** pushed that commit to our remote repository on GitHub.
+
+### Undo commits, no push
+
+Because we haven't pushed the commit to GitHub, we have lots of options. In fact, we haven't even technically done anything "wrong" yet. Committing the data to our local repository isn't a problem in and of itself. It only becomes a problem when we push it to the public remote repository on GitHub. The easiest solution is to simply click the `Undo` button in GitKraken (https://www.gitkraken.com/learn/git/problems/undo-git-commit). 
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_undo_1.png")
+```
+
+As we can see in the screenshot above, clicking `Undo` rolled back the commit, and leaves `data/test_data.csv` in the staging area. Now, we can easily unstage the file `data/test_data.csv`, add it to `.gitignore`, and move on with our project. From this point on, `data/test_data.csv` will still exist on our computer, but git will be totally oblivious to it, and more importantly, won't ever upload a copy of it up to our public remote repository on GitHub. 
+
+This is sort of the best case scenario. Now, let's add one level of complication to the scenario. 
+
+4. Just like 3 above, we committed `data/test_data.csv` to our local repo after saving. However, we don't catch it immediately this time. Instead, we keep working on our project. Specifically, we add a little text to `test_git`, save `test_git`, and commit those changes. Importantly, we still haven't pushed any commits that include `data/test_data.csv` to our public remote repository on GitHub.
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_add_test_data_2.png")
+```
+
+It turns out that we can still use the `Undo` button in this scenario as well. 
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_undo_2.png")
+```
+
+As we can see in the screenshot above, clicking `Undo` twice rolled back two commits, and left `data/test_data.csv` and the edited version of `test_git` in the staging area. Then, we unstaged `data/test_data.csv`, added it to `.gitignore`, staged the modified `.gitignore`, and committed. From this point on, `data/test_data.csv` will still exist on our computer, but git will be totally oblivious to it, and more importantly, won't ever upload a copy of it up to our public remote repository on GitHub. 
+
+So, when won't the `Undo` button work?
+
+* For starters, it won't work if we've pushed our commit to a remote repository. 
+
+* Additionally, like with undo in Word, once you start clicking undo and then working and then clicking undo again, there is a limit to how far back you can go. I don't fully understand what that limit is at the moment. I think it has something to do with when commit hashes change, or at least when parent hashes changes. Figure this out later. 
+
+I tried all kinds of weird things to make undo _not_ work -- including udoing multiple branches -- and couldn't come up with a case. I know cases exist, but the point is that Undo will work a lot of the time as long as you don't push to a remote repository.
+
+### One commit, pushed to Github
+
+This scenario starts like the one above did.
+
+1. We have a sandbox repository here: https://github.com/brad-cannell/sandbox. We cloned it to Dropbox/R. 
+
+2. We created a plain text file named `test_git` in the master branch, we added a little bit of text, we committed it to the master branch, and we pushed it to GitHub. 
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_initial_commit.png")
+```
+
+3. We created a csv file with some fake "data". We saved it as `data/test_data.csv`. We need the data for our project, but we don't want the data to be pushed to GitHub where it will be available to the public. What we should do is add this file -- or perhaps the entire data folder -- to `.gitignore`. But, we are going to pretend that we forgot to do that. Instead, we committed `data/test_data.csv` to our **local** repo after saving.
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_add_test_data_1.png")
+```
+
+In the screenshot above, we can see that we have accidentally committed `data/test_data.csv` to the `master` branch of our local repository. However, we have **not** pushed that commit to our remote repository on GitHub.
+
+This time, we do go ahead and push the commit to GitHub.
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_push_1.png")
+```
+
+Next, we will click the `Undo` button as we did above. Here's what happens.
+
+* GitKraken gives us a message saying that the undo was successful. 
+
+* The local repository is rolled back to its previous state. 
+
+* `data/test_data.csv` is locally once again in the staging area. 
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_push_2.png")
+```
+
+However, when we take a look at the repository in GitHub, we can see that the file is still there. 
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_push_3.png")
+```
+
+Our first instinct might be to unstage `data/test_data.csv` locally, add it to `.gitignore`, and then create a new commit with `data/test_data.csv` ignored. Let's do that.
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_push_4.png")
+```
+
+However, this hasn't changed anything on GitHub. The data is still available there. So, try to push our commit with `data/test_data.csv` ignored to GitHub.
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_push_5.png")
+```
+
+When we do, GitKraken asks us that `refs/heads/master` is behind `refs/remotes/origin/master`. This makes sense, we rolled our local repo back one commit, so it is behind the latest commit on GitHub (i.e., `refs/remotes/origin/master`). However, we are trying to send up a commit that differs from the commit on GitHub. This could create a conflict. So, GitKraken asks us if we want to try to pull down the commit from GitHub first. In this case, we don't. That commit is exactly what we are trying to get rid of. Let's click the `Force Push` button. GitKraken will warn us that this is destructive and double-check that it is what we want to do. It is.
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_push_6.png")
+```
+
+Now, when we go on GitHub, we can see that `data/test_data.csv` is not longer showing up in our repository.
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_push_7.png")
+```
+
+When we search for `test_data` in our repository, the only place it appears is in the `.gitignore` file. It looks like we successfully removed the data file from our repository!
+
+### Multiple commits, pushed to GitHub
+
+Finally, let's add one more wrinkle to this scenario. Let's send multiple commits to GitHub and see if we can remove any trace of the test data by simply adding it to `.gitignore` and pushing it up to GitHub.
+
+We are going to add some text to `test_git`, commit it to the master branch, and push it to GitHub.
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_mult_push_1.png")
+```
+
+Let's once again "accidentally" commit and push a data set -- `data/test_data_2.csv` -- to GitHub.
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_mult_push_2.png")
+```
+
+When we look at GitHub, we can see that the file is there.
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_mult_push_3.png")
+```
+
+And when we search for test_data_2, it comes up as a commit.
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_mult_push_4.png")
+```
+
+If we click on the commit, we can see the data.
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_mult_push_5.png")
+```
+
+Now, we will make another change to `test_git`, commit it to the master branch, and push it to GitHub.
+
+We will make a change to `data/test_data_2.csv`, commit it to the master branch, and push it to GitHub.
+
+And, we will make yet another change to `test_git`, commit it to the master branch, and push it to GitHub.
+
+This is what our commit history looks like at this point.
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_mult_push_6.png")
+```
+
+Let's once again try to do what we did before. Click the `Undo` button all the way back to our first commit of `data/test_data_2.csv`.
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_mult_push_7.png")
+```
+
+Add `data/test_data_2.csv` to `.gitignore`, commit, and force push.
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_mult_push_8.png")
+```
+
+Here's the situation:
+
+* The edited `data/test_data_2.csv` file is still on our local machine.
+
+* The edited `test_git` file is still on our local machine, ready to be committed and pushed again.
+
+When we look on GitHub, the data directory is gone.
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_mult_push_9.png")
+```
+
+When we search for `test_data` in our repository, the only place it appears is in the `.gitignore` file. 
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_mult_push_10.png")
+```
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_remove_mult_push_11.png")
+```
+
+It looks like we successfully removed the data file from our repository!
+
+https://github.com/newren/git-filter-repo
+
+https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository
+
+https://stackoverflow.com/questions/43762338/how-to-remove-file-from-git-history
+
+## Other little quirks and errors
 
 When working on Epi III -- and I think this could be an issue with using git on OneDrive more generally -- I would have to recommit files when I changed computers. Not because the **content** of the file had changed, but because something called the **file mode** had changed. I searched SO and seemed to fix it with this post: https://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-file-mode-chmod-changes
 

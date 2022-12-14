@@ -23,7 +23,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-12-13" />
+<meta name="date" content="2022-12-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -589,6 +589,7 @@ div.csl-indent {
 <li class="chapter" data-level="21.13.1" data-path="git-and-github.html"><a href="git-and-github.html#undo-commits-no-push"><i class="fa fa-check"></i><b>21.13.1</b> Undo commits, no push</a></li>
 <li class="chapter" data-level="21.13.2" data-path="git-and-github.html"><a href="git-and-github.html#one-commit-pushed-to-github"><i class="fa fa-check"></i><b>21.13.2</b> One commit, pushed to Github</a></li>
 <li class="chapter" data-level="21.13.3" data-path="git-and-github.html"><a href="git-and-github.html#multiple-commits-pushed-to-github"><i class="fa fa-check"></i><b>21.13.3</b> Multiple commits, pushed to GitHub</a></li>
+<li class="chapter" data-level="21.13.4" data-path="git-and-github.html"><a href="git-and-github.html#when-these-methods-wont-work"><i class="fa fa-check"></i><b>21.13.4</b> When these methods won’t work</a></li>
 </ul></li>
 <li class="chapter" data-level="21.14" data-path="git-and-github.html"><a href="git-and-github.html#other-little-quirks-and-errors"><i class="fa fa-check"></i><b>21.14</b> Other little quirks and errors</a></li>
 </ul></li>
@@ -625,7 +626,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="tidy-evaluation" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">4</span> Tidy Evaluation<a href="tidy-evaluation.html#tidy-evaluation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Created: 2017-06-24 <br> Updated: 2022-12-13</p>
+<p>Created: 2017-06-24 <br> Updated: 2022-12-14</p>
 <!--
 Hidden comments placeholder
 bookdown::preview_chapter("/Users/bradcannell/Dropbox/R/r_notes_bookdown/chapters/01_programming/tidy_evaluation.Rmd")
@@ -1172,12 +1173,12 @@ global environment and return rows where the value of <code>cyl</code> matches t
 ## [[1]]
 ## &lt;quosure&gt;
 ## expr: ^cyl
-## env:  0x7f9bc69a1020
+## env:  0x7fa34c33c828
 ## 
 ## [[2]]
 ## &lt;quosure&gt;
 ## expr: ^am
-## env:  0x7f9bc69a1020</code></pre>
+## env:  0x7fa34c33c828</code></pre>
 <p>Now you can inject them into tidyverse functions with the splice operator:</p>
 <div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="tidy-evaluation.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Must diffuse first</span></span>
 <span id="cb119-2"><a href="tidy-evaluation.html#cb119-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(.data, ...) {</span>

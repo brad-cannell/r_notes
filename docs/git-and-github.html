@@ -23,7 +23,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-12-13" />
+<meta name="date" content="2022-12-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -589,6 +589,7 @@ div.csl-indent {
 <li class="chapter" data-level="21.13.1" data-path="git-and-github.html"><a href="git-and-github.html#undo-commits-no-push"><i class="fa fa-check"></i><b>21.13.1</b> Undo commits, no push</a></li>
 <li class="chapter" data-level="21.13.2" data-path="git-and-github.html"><a href="git-and-github.html#one-commit-pushed-to-github"><i class="fa fa-check"></i><b>21.13.2</b> One commit, pushed to Github</a></li>
 <li class="chapter" data-level="21.13.3" data-path="git-and-github.html"><a href="git-and-github.html#multiple-commits-pushed-to-github"><i class="fa fa-check"></i><b>21.13.3</b> Multiple commits, pushed to GitHub</a></li>
+<li class="chapter" data-level="21.13.4" data-path="git-and-github.html"><a href="git-and-github.html#when-these-methods-wont-work"><i class="fa fa-check"></i><b>21.13.4</b> When these methods won’t work</a></li>
 </ul></li>
 <li class="chapter" data-level="21.14" data-path="git-and-github.html"><a href="git-and-github.html#other-little-quirks-and-errors"><i class="fa fa-check"></i><b>21.14</b> Other little quirks and errors</a></li>
 </ul></li>
@@ -881,9 +882,33 @@ issue-#-short-description</p>
 <p><img src="img/08_collaborating/git_remove_mult_push_10.png" width="1089" /></p>
 <p><img src="img/08_collaborating/git_remove_mult_push_11.png" width="1750" /></p>
 <p>It looks like we successfully removed the data file from our repository!</p>
-<p><a href="https://github.com/newren/git-filter-repo" class="uri">https://github.com/newren/git-filter-repo</a></p>
-<p><a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository" class="uri">https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository</a></p>
-<p><a href="https://stackoverflow.com/questions/43762338/how-to-remove-file-from-git-history" class="uri">https://stackoverflow.com/questions/43762338/how-to-remove-file-from-git-history</a></p>
+</div>
+<div id="when-these-methods-wont-work" class="section level3 hasAnchor" number="21.13.4">
+<h3><span class="header-section-number">21.13.4</span> When these methods won’t work<a href="git-and-github.html#when-these-methods-wont-work" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>I don’t know how, but I managed to mess up detect_public so bad that the methods above won’t work. I can’t <code>Undo</code> back to a point before the data file existed.</p>
+<p>Here’s the current state of my (fake) repository.</p>
+<p><img src="img/08_collaborating/git_filter_repo_1.png" width="1165" /></p>
+<p>It looks like the best thing to use is <a href="https://github.com/newren/git-filter-repo" class="uri">https://github.com/newren/git-filter-repo</a>.</p>
+<p>Use the installation instructions here: <a href="https://github.com/newren/git-filter-repo/blob/main/INSTALL.md" class="uri">https://github.com/newren/git-filter-repo/blob/main/INSTALL.md</a></p>
+<p>Click on the link to the raw data file, select all the text in the file, copy and paste the text into a blank plain text file, and save the file anywhere as <code>git-filter-repo</code> with no file extension.</p>
+<p>Move <code>git-filter-repo</code> to the top-level directory of the local repository you want to edit. In this case, it was Dropbox/R/sandbox.</p>
+<p>Then, check the user manual to see what <code>git-filter-repo</code> commands to run. Here is a link to the user manual: <a href="https://htmlpreview.github.io/?https://github.com/newren/git-filter-repo/blob/docs/html/git-filter-repo.html" class="uri">https://htmlpreview.github.io/?https://github.com/newren/git-filter-repo/blob/docs/html/git-filter-repo.html</a></p>
+<p>To see if it’s working, type in the GitKraken terminal <code>git_filter_repo_1</code>. This should create a file named <code>.git/filter-repo/analysis</code>. I actually couldn’t find this file.</p>
+<p>Using this example, <a href="https://improveandrepeat.com/2021/06/how-to-use-git-filter-repo-to-remove-files-from-your-git-repository/" class="uri">https://improveandrepeat.com/2021/06/how-to-use-git-filter-repo-to-remove-files-from-your-git-repository/</a>, I’m going to try to remove <code>data/test_data_3.csv</code> from the commit history by typing <code>python3 git-filter-repo --path data/test_data_3.csv --invert-path --force</code> into the Terminal in GitKraken.</p>
+<p>At this point, we have cleared <code>data/test_data_3.csv</code> from the commit history of the local repository, but the actual file is still on our local machine. Curiously, this procedure also broke the connection to our remote repository on GitHub. However, the GitHub repository, with the <code>test_data_3.csv</code> still remain online.</p>
+<p>It looks like we have to <strong>delete</strong> the orignial repository on GitHub and then push our cleaned local repository to a <strong>new</strong> GitHub repository. In this case, I deleted brad-cannell/sandbox on GitHub. Then, I created a new brad-cannell/sandbox repository on GitHub. Then, I pushed the cleaned local repository to the new brad-cannell/sandbox on GitHub.</p>
+<p>The data was nowhere to be found in the new repository brad-cannell/sandbox on GitHub. Next, I moved my local folder containing the “old” <code>sandbox</code> repository (and the test_data files) to my desktop. Then, I cloned the new brad-cannell/sandbox on GitHub to the location where my old <code>sandbox</code> repository that I just moved to my desktop used to be.</p>
+<p>Finally, I moved the <code>data/</code> folder from the “old” <code>sandbox</code> repository to the new <code>sandbox</code> repository that I just cloned from GitHub. In this case, the data files that I wanted to ignore were already listed in <code>.gitignore</code> file, so I didn’t need to add them.</p>
+<p>With <code>detect_public</code>, I created a fresh clone of <a href="https://github.com/brad-cannell/detect_public" class="uri">https://github.com/brad-cannell/detect_public</a> on my desktop.</p>
+<p>Then, I typed <code>python3 git-filter-repo --path qaqc/clusca_factor.csv --invert-path</code> and <code>python3 git-filter-repo --path qaqc/clusca_factor.csv --invert-path</code> into the terminal in GitKraken (in the fresh clone). It didn’t work. I got a message that said, <code>[Errno 2] No such file or directory</code>. This was because I had deleted the data files previously to try to get rid of them.</p>
+<p>Next, I did a <em>soft</em> reset of the main branch to the commit where the two data files where added. Then, I once again ran, <code>python3 git-filter-repo --path qaqc/clusca_factor.csv --invert-path</code> and <code>python3 git-filter-repo --path qaqc/clusca_factor.csv --invert-path</code> into the terminal in GitKraken. Same problem.</p>
+<p>Next, I did a <em>hard</em> reset of the main branch to the commit where the two data files where added. Then, I once again ran, <code>python3 git-filter-repo --path qaqc/clusca_factor.csv --invert-path</code> and <code>python3 git-filter-repo --path qaqc/clusca_factor.csv --invert-path</code> into the terminal in GitKraken. This time, I could see the files in Finder. However, I still got the same error. So, I copied the full file path and ran <code>python3 git-filter-repo --path /Users/bradcannell/Desktop/detect_public/qaqc/clusca_factor.csv --invert-path</code> I still got the same error.</p>
+<p>I had to add the <code>git-filter-repo</code> file into the new cloned repo folder on my desktop. Then, I ran <code>python3 git-filter-repo --invert-paths --path qaqc/clusca_factor.csv --force</code>.</p>
+<p>Then, I moved the <code>data/</code> folder out of the old local repository and into the new local repository on my desktop.</p>
+<p>I deleted the old local repository.</p>
+<p>I re-linked my local repository with the remote repository on GitHub using <code>git remote add origin https://github.com/brad-cannell/detect_public</code>. Unfortunately, that brought the data files back into the history</p>
+<p>But, I ran <code>git push origin --force --all</code> anyway.</p>
+<p>It fixed the problem. All forked repositories also needed to be deleted.</p>
 </div>
 </div>
 <div id="other-little-quirks-and-errors" class="section level2 hasAnchor" number="21.14">

@@ -331,6 +331,7 @@ removing-a-file
 undo-commits-no-push
 one-commit-pushed-to-github
 multiple-commits-pushed-to-github
+when-these-methods-wont-work
 other-little-quirks-and-errors
 appendix-a-terms-and-definitions
 overview-19

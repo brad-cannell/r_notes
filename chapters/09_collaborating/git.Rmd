@@ -373,11 +373,57 @@ knitr::include_graphics("img/08_collaborating/git_remove_mult_push_11.png")
 
 It looks like we successfully removed the data file from our repository!
 
-https://github.com/newren/git-filter-repo
+### When these methods won't work
 
-https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository
+I don't know how, but I managed to mess up detect_public so bad that the methods above won't work. I can't `Undo` back to a point before the data file existed.
 
-https://stackoverflow.com/questions/43762338/how-to-remove-file-from-git-history
+Here's the current state of my (fake) repository.
+
+```{r echo=FALSE}
+knitr::include_graphics("img/08_collaborating/git_filter_repo_1.png")
+```
+
+It looks like the best thing to use is https://github.com/newren/git-filter-repo.
+
+Use the installation instructions here: https://github.com/newren/git-filter-repo/blob/main/INSTALL.md
+
+Click on the link to the raw data file, select all the text in the file, copy and paste the text into a blank plain text file, and save the file anywhere as `git-filter-repo` with no file extension. 
+
+Move `git-filter-repo` to the top-level directory of the local repository you want to edit. In this case, it was Dropbox/R/sandbox.
+
+Then, check the user manual to see what `git-filter-repo` commands to run. Here is a link to the user manual: https://htmlpreview.github.io/?https://github.com/newren/git-filter-repo/blob/docs/html/git-filter-repo.html
+
+To see if it's working, type in the GitKraken terminal `git_filter_repo_1`. This should create a file named `.git/filter-repo/analysis`. I actually couldn't find this file.
+
+Using this example, https://improveandrepeat.com/2021/06/how-to-use-git-filter-repo-to-remove-files-from-your-git-repository/, I'm going to try to remove `data/test_data_3.csv` from the commit history by typing `python3 git-filter-repo --path data/test_data_3.csv --invert-path --force` into the Terminal in GitKraken.
+
+At this point, we have cleared `data/test_data_3.csv` from the commit history of the local repository, but the actual file is still on our local machine. Curiously, this procedure also broke the connection to our remote repository on GitHub. However, the GitHub repository, with the `test_data_3.csv` still remain online. 
+
+It looks like we have to **delete** the orignial repository on GitHub and then push our cleaned local repository to a **new** GitHub repository. In this case, I deleted brad-cannell/sandbox on GitHub. Then, I created a new brad-cannell/sandbox repository on GitHub. Then, I pushed the cleaned local repository to the new brad-cannell/sandbox on GitHub.
+
+The data was nowhere to be found in the new repository brad-cannell/sandbox on GitHub. Next, I moved my local folder containing the "old" `sandbox` repository (and the test_data files) to my desktop. Then, I cloned the new brad-cannell/sandbox on GitHub to the location where my old `sandbox` repository that I just moved to my desktop used to be.
+
+Finally, I moved the `data/` folder from the "old" `sandbox` repository to the new `sandbox` repository that I just cloned from GitHub. In this case, the data files that I wanted to ignore were already listed in `.gitignore` file, so I didn't need to add them. 
+
+With `detect_public`, I created a fresh clone of https://github.com/brad-cannell/detect_public on my desktop. 
+
+Then, I typed `python3 git-filter-repo --path qaqc/clusca_factor.csv --invert-path` and `python3 git-filter-repo --path qaqc/clusca_factor.csv --invert-path` into the terminal in GitKraken (in the fresh clone). It didn't work. I got a message that said, `[Errno 2] No such file or directory`. This was because I had deleted the data files previously to try to get rid of them.
+
+Next, I did a _soft_ reset of the main branch to the commit where the two data files where added. Then, I once again ran, `python3 git-filter-repo --path qaqc/clusca_factor.csv --invert-path` and `python3 git-filter-repo --path qaqc/clusca_factor.csv --invert-path` into the terminal in GitKraken. Same problem.
+
+Next, I did a _hard_ reset of the main branch to the commit where the two data files where added. Then, I once again ran, `python3 git-filter-repo --path qaqc/clusca_factor.csv --invert-path` and `python3 git-filter-repo --path qaqc/clusca_factor.csv --invert-path` into the terminal in GitKraken. This time, I could see the files in Finder. However, I still got the same error. So, I copied the full file path and ran `python3 git-filter-repo --path /Users/bradcannell/Desktop/detect_public/qaqc/clusca_factor.csv --invert-path` I still got the same error. 
+
+I had to add the `git-filter-repo` file into the new cloned repo folder on my desktop. Then, I ran `python3 git-filter-repo --invert-paths --path qaqc/clusca_factor.csv --force`.
+
+Then, I moved the `data/` folder out of the old local repository and into the new local repository on my desktop.
+
+I deleted the old local repository.
+
+I re-linked my local repository with the remote repository on GitHub using `git remote add origin https://github.com/brad-cannell/detect_public`. Unfortunately, that brought the data files back into the history
+
+But, I ran `git push origin --force --all` anyway.
+
+It fixed the problem. All forked repositories also needed to be deleted.
 
 ## Other little quirks and errors
 

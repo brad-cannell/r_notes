@@ -35,6 +35,8 @@ cran
 package-evolution
 other-random-notes
 get-rid-of-.ds_store
+file-mode-changes
+icon-files
 errors-warnings-notes
 creating-rmd-templates
 overview-2

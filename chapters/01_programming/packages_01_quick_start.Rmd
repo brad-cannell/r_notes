@@ -533,21 +533,24 @@ You can also do this stuff when you complete a "version" of the package even if 
 
 Useful website: http://r-pkgs.had.co.nz/release.html
 
-1. Make sure you using the most updated code before checks. devtools::load_all() and devtools::install()
+1. If the version number is set to a development version (e.g., .9000), change it to a number that meets the CRAN requirements (i.e., x.x.x)
+   - Make this change in `Description` and in `News.md`.
 
-2. Update README before submission. It should roughly match the examples in the roxygen documentation.
+2. Make sure you using the most updated code before checks. devtools::load_all() and devtools::install()
+
+3. Update README before submission. It should roughly match the examples in the [R Packages book](https://r-pkgs.org/other-markdown.html#sec-readme).
    - Update `README.Rmd`, not `README.md`.   
    - Knit `README.Rmd` after making changes. This will automatically update `README.md`   
   
-3. Update documentation/vignettes using `devtools::document()`
+4. Update documentation/vignettes using `devtools::document()`
 
-4. Update news.md. Here's dplyr's: https://raw.githubusercontent.com/tidyverse/dplyr/master/NEWS.md
+5. Update news.md. Here's dplyr's: https://raw.githubusercontent.com/tidyverse/dplyr/master/NEWS.md
 
-  - Here's the news.md section from R Packages: https://r-pkgs.org/other-markdown.html#news
+   - Here's the news.md section from R Packages: https://r-pkgs.org/other-markdown.html#news
   
-  - Remember to add news.md to buildignore. `usethis::use_build_ignore("news.md")`
+   - Remember to add news.md to buildignore. `usethis::use_build_ignore("news.md")`
   
-  - Here's a basic news.md from freqtables:
+   - Here's a basic news.md from freqtables:
   
 ```
 # freqtables (development version)
@@ -561,27 +564,25 @@ Useful website: http://r-pkgs.had.co.nz/release.html
 * First release on CRAN
 ```
 
-5. If you were on a development branch, merge with main branch.
+6. If you were on a development branch, merge with main branch.
 
-6. Use `devtools::check()`
+7. Use `devtools::check()`
 
-7. Use `devtools::check_win_devel()` to test the package on Windows
+8. Use `devtools::check_win_devel()` to test the package on Windows
 
-8. Use `devtools::check_rhub()`
-
-9. If you are using a development part from the version number in the DESCRIPTION file. 
+9. Use `devtools::check_rhub()`
 
 10. If you don't plan to submit to CRAN, this is probably a good time to use `devtools::install()` to re-build and install the package locally.
 
 11. Update `cran-comments`.   
 
-  - Remember to add news.md to buildignore. `usethis::use_build_ignore("cran-comments.md")`
+   - Remember to add news.md to buildignore `usethis::use_build_ignore("cran-comments.md")` if you haven't already.
  
-  - If this is a resubmission, add a bulleted list of changes made under ## Resubmission.
+   - If this is a resubmission, add a bulleted list of changes made under ## Resubmission.
  
-  - Here is a link to the cran-comments section of R Packages: https://r-pkgs.org/release.html#sec-release-process
+   - Here is a link to the cran-comments section of R Packages: https://r-pkgs.org/release.html#sec-release-process
  
-  - Here's a basic cran-comments.md from freqtables:
+   - Here's a basic cran-comments.md from freqtables:
  
 ```
 ## Test environments
@@ -596,7 +597,7 @@ There were no ERRORs, WARNINGs or NOTEs
 There are currently no downstream dependencies for this package.
 ```
 
-12. Submit with `devtools::release()`
+13. Submit with `devtools::release()`
 
 After the package is accepted, do this stuff: http://r-pkgs.had.co.nz/release.html#post-release
 

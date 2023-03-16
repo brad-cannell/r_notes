@@ -23,7 +23,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-12-23" />
+<meta name="date" content="2023-03-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -60,7 +60,6 @@
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/tabwid-1.1.2/tabwid.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -647,42 +646,42 @@ bookdown::preview_chapter("chapters/.../name.Rmd")
 </div>
 <div id="load-packages-2" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> 📦Load packages<a href="confidence-intervals.html#load-packages-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="confidence-intervals.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb194-2"><a href="confidence-intervals.html#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(meantables)</span>
-<span id="cb194-3"><a href="confidence-intervals.html#cb194-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(freqtables)</span>
-<span id="cb194-4"><a href="confidence-intervals.html#cb194-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb194-5"><a href="confidence-intervals.html#cb194-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb194-6"><a href="confidence-intervals.html#cb194-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="confidence-intervals.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb195-2"><a href="confidence-intervals.html#cb195-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(meantables)</span>
+<span id="cb195-3"><a href="confidence-intervals.html#cb195-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(freqtables)</span>
+<span id="cb195-4"><a href="confidence-intervals.html#cb195-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb195-5"><a href="confidence-intervals.html#cb195-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb195-6"><a href="confidence-intervals.html#cb195-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code></pre></div>
 </div>
 <div id="simulate-data-2" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> 🔢Simulate data<a href="confidence-intervals.html#simulate-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Generating 10,000 random participants. About half male and half female.</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="confidence-intervals.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb195-2"><a href="confidence-intervals.html#cb195-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb195-3"><a href="confidence-intervals.html#cb195-3" aria-hidden="true" tabindex="-1"></a>random_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb195-4"><a href="confidence-intervals.html#cb195-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sex =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>), n, T)</span>
-<span id="cb195-5"><a href="confidence-intervals.html#cb195-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="confidence-intervals.html#cb196-1" aria-hidden="true" tabindex="-1"></a>random_data <span class="sc">%&gt;%</span> </span>
-<span id="cb196-2"><a href="confidence-intervals.html#cb196-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">freq_table</span>(sex)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="confidence-intervals.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb196-2"><a href="confidence-intervals.html#cb196-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb196-3"><a href="confidence-intervals.html#cb196-3" aria-hidden="true" tabindex="-1"></a>random_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb196-4"><a href="confidence-intervals.html#cb196-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sex =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>), n, T)</span>
+<span id="cb196-5"><a href="confidence-intervals.html#cb196-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="confidence-intervals.html#cb197-1" aria-hidden="true" tabindex="-1"></a>random_data <span class="sc">%&gt;%</span> </span>
+<span id="cb197-2"><a href="confidence-intervals.html#cb197-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">freq_table</span>(sex)</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 9
 ##   var   cat        n n_total percent    se t_crit   lcl   ucl
 ##   &lt;chr&gt; &lt;chr&gt;  &lt;int&gt;   &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 ## 1 sex   Female  5017   10000    50.2 0.500   1.96  49.2  51.1
 ## 2 sex   Male    4983   10000    49.8 0.500   1.96  48.9  50.8</code></pre>
 <p>Assigning heights to the generated participants at random (within certain parameters).</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="confidence-intervals.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb198-2"><a href="confidence-intervals.html#cb198-2" aria-hidden="true" tabindex="-1"></a>random_data <span class="ot">&lt;-</span> random_data <span class="sc">%&gt;%</span> </span>
-<span id="cb198-3"><a href="confidence-intervals.html#cb198-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb198-4"><a href="confidence-intervals.html#cb198-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">height =</span> <span class="fu">if_else</span>(</span>
-<span id="cb198-5"><a href="confidence-intervals.html#cb198-5" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">==</span> <span class="st">&quot;Female&quot;</span>,</span>
-<span id="cb198-6"><a href="confidence-intervals.html#cb198-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rnorm</span>(n, <span class="fl">71.00</span>, <span class="fl">4.32</span>),</span>
-<span id="cb198-7"><a href="confidence-intervals.html#cb198-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rnorm</span>(n, <span class="fl">64.30</span>, <span class="fl">2.11</span>)</span>
-<span id="cb198-8"><a href="confidence-intervals.html#cb198-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb198-9"><a href="confidence-intervals.html#cb198-9" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="confidence-intervals.html#cb199-1" aria-hidden="true" tabindex="-1"></a>random_data <span class="sc">%&gt;%</span> </span>
-<span id="cb199-2"><a href="confidence-intervals.html#cb199-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> </span>
-<span id="cb199-3"><a href="confidence-intervals.html#cb199-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean_table</span>(height) <span class="sc">%&gt;%</span> </span>
-<span id="cb199-4"><a href="confidence-intervals.html#cb199-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(group_cat, mean, sd, lcl, ucl)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="confidence-intervals.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb199-2"><a href="confidence-intervals.html#cb199-2" aria-hidden="true" tabindex="-1"></a>random_data <span class="ot">&lt;-</span> random_data <span class="sc">%&gt;%</span> </span>
+<span id="cb199-3"><a href="confidence-intervals.html#cb199-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb199-4"><a href="confidence-intervals.html#cb199-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">height =</span> <span class="fu">if_else</span>(</span>
+<span id="cb199-5"><a href="confidence-intervals.html#cb199-5" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">==</span> <span class="st">&quot;Female&quot;</span>,</span>
+<span id="cb199-6"><a href="confidence-intervals.html#cb199-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rnorm</span>(n, <span class="fl">71.00</span>, <span class="fl">4.32</span>),</span>
+<span id="cb199-7"><a href="confidence-intervals.html#cb199-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rnorm</span>(n, <span class="fl">64.30</span>, <span class="fl">2.11</span>)</span>
+<span id="cb199-8"><a href="confidence-intervals.html#cb199-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb199-9"><a href="confidence-intervals.html#cb199-9" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="confidence-intervals.html#cb200-1" aria-hidden="true" tabindex="-1"></a>random_data <span class="sc">%&gt;%</span> </span>
+<span id="cb200-2"><a href="confidence-intervals.html#cb200-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> </span>
+<span id="cb200-3"><a href="confidence-intervals.html#cb200-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean_table</span>(height) <span class="sc">%&gt;%</span> </span>
+<span id="cb200-4"><a href="confidence-intervals.html#cb200-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(group_cat, mean, sd, lcl, ucl)</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 5
 ##   group_cat  mean    sd   lcl   ucl
 ##   &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -692,9 +691,9 @@ bookdown::preview_chapter("chapters/.../name.Rmd")
 <div id="draw-samples-from-population" class="section level2 hasAnchor" number="5.5">
 <h2><span class="header-section-number">5.5</span> Draw samples from population<a href="confidence-intervals.html#draw-samples-from-population" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Randomly select samples of 100 participants</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="confidence-intervals.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrate sample of data</span></span>
-<span id="cb201-2"><a href="confidence-intervals.html#cb201-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb201-3"><a href="confidence-intervals.html#cb201-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sample_n</span>(random_data, <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="confidence-intervals.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrate sample of data</span></span>
+<span id="cb202-2"><a href="confidence-intervals.html#cb202-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb202-3"><a href="confidence-intervals.html#cb202-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sample_n</span>(random_data, <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 10 × 2
 ##    sex   height
 ##    &lt;chr&gt;  &lt;dbl&gt;
@@ -708,9 +707,9 @@ bookdown::preview_chapter("chapters/.../name.Rmd")
 ##  8 Male    62.7
 ##  9 Male    61.2
 ## 10 Male    63.1</code></pre>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="confidence-intervals.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrate multiple samples of data</span></span>
-<span id="cb203-2"><a href="confidence-intervals.html#cb203-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb203-3"><a href="confidence-intervals.html#cb203-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="sc">~</span> <span class="fu">sample_n</span>(random_data, <span class="dv">10</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="confidence-intervals.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrate multiple samples of data</span></span>
+<span id="cb204-2"><a href="confidence-intervals.html#cb204-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb204-3"><a href="confidence-intervals.html#cb204-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="sc">~</span> <span class="fu">sample_n</span>(random_data, <span class="dv">10</span>))</span></code></pre></div>
 <pre><code>## [[1]]
 ## # A tibble: 10 × 2
 ##    sex   height
@@ -740,14 +739,14 @@ bookdown::preview_chapter("chapters/.../name.Rmd")
 ##  8 Male     61.1
 ##  9 Male     62.8
 ## 10 Male     64.7</code></pre>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="confidence-intervals.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">137</span>)</span>
-<span id="cb205-2"><a href="confidence-intervals.html#cb205-2" aria-hidden="true" tabindex="-1"></a>n_samples <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb205-3"><a href="confidence-intervals.html#cb205-3" aria-hidden="true" tabindex="-1"></a>random_samples <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb205-4"><a href="confidence-intervals.html#cb205-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample =</span> <span class="dv">1</span><span class="sc">:</span>n_samples,</span>
-<span id="cb205-5"><a href="confidence-intervals.html#cb205-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span>n_samples, <span class="sc">~</span> <span class="fu">sample_n</span>(random_data, <span class="dv">10</span>))</span>
-<span id="cb205-6"><a href="confidence-intervals.html#cb205-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="confidence-intervals.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrate extracting a df from a list column</span></span>
-<span id="cb206-2"><a href="confidence-intervals.html#cb206-2" aria-hidden="true" tabindex="-1"></a>random_samples<span class="sc">$</span>data[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="confidence-intervals.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">137</span>)</span>
+<span id="cb206-2"><a href="confidence-intervals.html#cb206-2" aria-hidden="true" tabindex="-1"></a>n_samples <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb206-3"><a href="confidence-intervals.html#cb206-3" aria-hidden="true" tabindex="-1"></a>random_samples <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb206-4"><a href="confidence-intervals.html#cb206-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample =</span> <span class="dv">1</span><span class="sc">:</span>n_samples,</span>
+<span id="cb206-5"><a href="confidence-intervals.html#cb206-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span>n_samples, <span class="sc">~</span> <span class="fu">sample_n</span>(random_data, <span class="dv">10</span>))</span>
+<span id="cb206-6"><a href="confidence-intervals.html#cb206-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="confidence-intervals.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrate extracting a df from a list column</span></span>
+<span id="cb207-2"><a href="confidence-intervals.html#cb207-2" aria-hidden="true" tabindex="-1"></a>random_samples<span class="sc">$</span>data[[<span class="dv">1</span>]]</span></code></pre></div>
 <pre><code>## # A tibble: 10 × 2
 ##    sex    height
 ##    &lt;chr&gt;   &lt;dbl&gt;
@@ -761,28 +760,28 @@ bookdown::preview_chapter("chapters/.../name.Rmd")
 ##  8 Female   69.2
 ##  9 Female   62.6
 ## 10 Female   76.1</code></pre>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="confidence-intervals.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrate passing an extracted df to the mean_table() function</span></span>
-<span id="cb208-2"><a href="confidence-intervals.html#cb208-2" aria-hidden="true" tabindex="-1"></a>random_samples<span class="sc">$</span>data[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> </span>
-<span id="cb208-3"><a href="confidence-intervals.html#cb208-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean_table</span>(height) <span class="sc">%&gt;%</span> </span>
-<span id="cb208-4"><a href="confidence-intervals.html#cb208-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(mean, lcl, ucl)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="confidence-intervals.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrate passing an extracted df to the mean_table() function</span></span>
+<span id="cb209-2"><a href="confidence-intervals.html#cb209-2" aria-hidden="true" tabindex="-1"></a>random_samples<span class="sc">$</span>data[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> </span>
+<span id="cb209-3"><a href="confidence-intervals.html#cb209-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean_table</span>(height) <span class="sc">%&gt;%</span> </span>
+<span id="cb209-4"><a href="confidence-intervals.html#cb209-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(mean, lcl, ucl)</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 3
 ##    mean   lcl   ucl
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 ## 1  66.4  62.4  70.4</code></pre>
 <p>Calculate the stats of interest for each of the samples</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="confidence-intervals.html#cb210-1" aria-hidden="true" tabindex="-1"></a>random_samples <span class="ot">&lt;-</span> random_samples <span class="sc">%&gt;%</span> </span>
-<span id="cb210-2"><a href="confidence-intervals.html#cb210-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb210-3"><a href="confidence-intervals.html#cb210-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_table =</span> <span class="fu">map</span>(data, <span class="sc">~</span> <span class="fu">mean_table</span>(.x, height))</span>
-<span id="cb210-4"><a href="confidence-intervals.html#cb210-4" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="confidence-intervals.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrate extracting a df of results from a list column</span></span>
-<span id="cb211-2"><a href="confidence-intervals.html#cb211-2" aria-hidden="true" tabindex="-1"></a>random_samples<span class="sc">$</span>mean_table[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="confidence-intervals.html#cb211-1" aria-hidden="true" tabindex="-1"></a>random_samples <span class="ot">&lt;-</span> random_samples <span class="sc">%&gt;%</span> </span>
+<span id="cb211-2"><a href="confidence-intervals.html#cb211-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb211-3"><a href="confidence-intervals.html#cb211-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_table =</span> <span class="fu">map</span>(data, <span class="sc">~</span> <span class="fu">mean_table</span>(.x, height))</span>
+<span id="cb211-4"><a href="confidence-intervals.html#cb211-4" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="confidence-intervals.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrate extracting a df of results from a list column</span></span>
+<span id="cb212-2"><a href="confidence-intervals.html#cb212-2" aria-hidden="true" tabindex="-1"></a>random_samples<span class="sc">$</span>mean_table[[<span class="dv">1</span>]]</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 9
 ##   response_var     n  mean    sd   sem   lcl   ucl   min   max
 ##   &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 ## 1 height          10  66.4  5.55  1.75  62.4  70.4  60.0  76.1</code></pre>
 <p>Unnest the results</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="confidence-intervals.html#cb213-1" aria-hidden="true" tabindex="-1"></a>random_samples <span class="sc">%&gt;%</span> </span>
-<span id="cb213-2"><a href="confidence-intervals.html#cb213-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(mean_table)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="confidence-intervals.html#cb214-1" aria-hidden="true" tabindex="-1"></a>random_samples <span class="sc">%&gt;%</span> </span>
+<span id="cb214-2"><a href="confidence-intervals.html#cb214-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(mean_table)</span></code></pre></div>
 <pre><code>## # A tibble: 100 × 11
 ##    sample data     response_var     n  mean    sd   sem   lcl   ucl   min   max
 ##     &lt;int&gt; &lt;list&gt;   &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -798,17 +797,17 @@ bookdown::preview_chapter("chapters/.../name.Rmd")
 ## 10     10 &lt;tibble&gt; height          10  68.2  5.69 1.80   64.2  72.3  59.5  76.5
 ## # … with 90 more rows</code></pre>
 <p>Count the number of CI’s that do not include the true population mean</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="confidence-intervals.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean_table</span>(random_data, height)</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="confidence-intervals.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean_table</span>(random_data, height)</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 9
 ##   response_var     n  mean    sd    sem   lcl   ucl   min   max
 ##   &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 ## 1 height       10000  67.7  4.78 0.0478  67.6  67.8  56.0  87.6</code></pre>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="confidence-intervals.html#cb217-1" aria-hidden="true" tabindex="-1"></a>summary <span class="ot">&lt;-</span> random_samples <span class="sc">%&gt;%</span> </span>
-<span id="cb217-2"><a href="confidence-intervals.html#cb217-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(mean_table) <span class="sc">%&gt;%</span> </span>
-<span id="cb217-3"><a href="confidence-intervals.html#cb217-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sample, mean, lcl, ucl)</span></code></pre></div>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="confidence-intervals.html#cb218-1" aria-hidden="true" tabindex="-1"></a>summary <span class="ot">&lt;-</span> summary <span class="sc">%&gt;%</span> </span>
-<span id="cb218-2"><a href="confidence-intervals.html#cb218-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">contain_pop_mean =</span> lcl <span class="sc">&lt;=</span> <span class="fl">67.67</span> <span class="sc">&amp;</span> <span class="fl">67.67</span> <span class="sc">&lt;=</span> ucl)</span></code></pre></div>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="confidence-intervals.html#cb219-1" aria-hidden="true" tabindex="-1"></a>summary</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="confidence-intervals.html#cb218-1" aria-hidden="true" tabindex="-1"></a>summary <span class="ot">&lt;-</span> random_samples <span class="sc">%&gt;%</span> </span>
+<span id="cb218-2"><a href="confidence-intervals.html#cb218-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(mean_table) <span class="sc">%&gt;%</span> </span>
+<span id="cb218-3"><a href="confidence-intervals.html#cb218-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sample, mean, lcl, ucl)</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="confidence-intervals.html#cb219-1" aria-hidden="true" tabindex="-1"></a>summary <span class="ot">&lt;-</span> summary <span class="sc">%&gt;%</span> </span>
+<span id="cb219-2"><a href="confidence-intervals.html#cb219-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">contain_pop_mean =</span> lcl <span class="sc">&lt;=</span> <span class="fl">67.67</span> <span class="sc">&amp;</span> <span class="fl">67.67</span> <span class="sc">&lt;=</span> ucl)</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="confidence-intervals.html#cb220-1" aria-hidden="true" tabindex="-1"></a>summary</span></code></pre></div>
 <pre><code>## # A tibble: 100 × 5
 ##    sample  mean   lcl   ucl contain_pop_mean
 ##     &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;           
@@ -823,8 +822,8 @@ bookdown::preview_chapter("chapters/.../name.Rmd")
 ##  9      9  69.1  65.5  72.7 TRUE            
 ## 10     10  68.2  64.2  72.3 TRUE            
 ## # … with 90 more rows</code></pre>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="confidence-intervals.html#cb221-1" aria-hidden="true" tabindex="-1"></a>summary <span class="sc">%&gt;%</span> </span>
-<span id="cb221-2"><a href="confidence-intervals.html#cb221-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">freq_table</span>(contain_pop_mean)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="confidence-intervals.html#cb222-1" aria-hidden="true" tabindex="-1"></a>summary <span class="sc">%&gt;%</span> </span>
+<span id="cb222-2"><a href="confidence-intervals.html#cb222-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">freq_table</span>(contain_pop_mean)</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 9
 ##   var              cat       n n_total percent    se t_crit   lcl   ucl
 ##   &lt;chr&gt;            &lt;chr&gt; &lt;int&gt;   &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;

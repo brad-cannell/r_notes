@@ -23,7 +23,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2022-12-23" />
+<meta name="date" content="2023-03-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -60,7 +60,6 @@
 <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/tabwid-1.1.2/tabwid.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -650,34 +649,34 @@ bookdown::preview_chapter("chapters/06_visualization/dags.Rmd")
 </div>
 <div id="load-packages-6" class="section level2 hasAnchor" number="11.3">
 <h2><span class="header-section-number">11.3</span> 📦Load packages<a href="dags.html#load-packages-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="dags.html#cb411-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb411-2"><a href="dags.html#cb411-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdag, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb411-3"><a href="dags.html#cb411-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="dags.html#cb412-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb412-2"><a href="dags.html#cb412-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdag, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb412-3"><a href="dags.html#cb412-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 </div>
 <div id="using-dagitty-to-create-other-graphics" class="section level2 hasAnchor" number="11.4">
 <h2><span class="header-section-number">11.4</span> Using Dagitty to create other graphics<a href="dags.html#using-dagitty-to-create-other-graphics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Dagitty was obviously developed to create DAGs, but it can also be used to create other node and edge graphics. For example, I used Dagitty to create graphics about git commits.</p>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="dags.html#cb412-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the weight and width with the fig.height=1.5 and fig.width=6 code chunk options.</span></span>
-<span id="cb412-2"><a href="dags.html#cb412-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb412-3"><a href="dags.html#cb412-3" aria-hidden="true" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="fu">dagify</span>( <span class="co"># Use dagify() instead of dagitty()</span></span>
-<span id="cb412-4"><a href="dags.html#cb412-4" aria-hidden="true" tabindex="-1"></a>  B <span class="sc">~</span> A, <span class="co"># The form is effect ~ cause</span></span>
-<span id="cb412-5"><a href="dags.html#cb412-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>( <span class="co"># Optionally create labels</span></span>
-<span id="cb412-6"><a href="dags.html#cb412-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">A =</span> <span class="st">&quot;c32176&quot;</span>,</span>
-<span id="cb412-7"><a href="dags.html#cb412-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">B =</span> <span class="st">&quot;1d5cde&quot;</span></span>
-<span id="cb412-8"><a href="dags.html#cb412-8" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb412-9"><a href="dags.html#cb412-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">coords =</span> <span class="fu">list</span>( <span class="co"># Adjust the layout by setting coordinates</span></span>
-<span id="cb412-10"><a href="dags.html#cb412-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">c</span>(<span class="at">A =</span> <span class="dv">1</span>, <span class="at">B =</span> <span class="dv">2</span>),</span>
-<span id="cb412-11"><a href="dags.html#cb412-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">c</span>(<span class="at">A =</span> <span class="dv">0</span>, <span class="at">B =</span> <span class="dv">0</span>)</span>
-<span id="cb412-12"><a href="dags.html#cb412-12" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb412-13"><a href="dags.html#cb412-13" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb412-14"><a href="dags.html#cb412-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy_dagitty</span>() <span class="co"># Turns it into a tibble</span></span>
-<span id="cb412-15"><a href="dags.html#cb412-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb412-16"><a href="dags.html#cb412-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Start with ggdag</span></span>
-<span id="cb412-17"><a href="dags.html#cb412-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggdag</span>(d1) <span class="sc">+</span> </span>
-<span id="cb412-18"><a href="dags.html#cb412-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add labels and move them off the center of the node.</span></span>
-<span id="cb412-19"><a href="dags.html#cb412-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># This took me a long to time to get right.</span></span>
-<span id="cb412-20"><a href="dags.html#cb412-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(x, y, <span class="at">label =</span> label), <span class="at">vjust =</span> <span class="fl">2.3</span>) <span class="sc">+</span> </span>
-<span id="cb412-21"><a href="dags.html#cb412-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dag_blank</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="dags.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the weight and width with the fig.height=1.5 and fig.width=6 code chunk options.</span></span>
+<span id="cb413-2"><a href="dags.html#cb413-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb413-3"><a href="dags.html#cb413-3" aria-hidden="true" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="fu">dagify</span>( <span class="co"># Use dagify() instead of dagitty()</span></span>
+<span id="cb413-4"><a href="dags.html#cb413-4" aria-hidden="true" tabindex="-1"></a>  B <span class="sc">~</span> A, <span class="co"># The form is effect ~ cause</span></span>
+<span id="cb413-5"><a href="dags.html#cb413-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>( <span class="co"># Optionally create labels</span></span>
+<span id="cb413-6"><a href="dags.html#cb413-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">A =</span> <span class="st">&quot;c32176&quot;</span>,</span>
+<span id="cb413-7"><a href="dags.html#cb413-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">B =</span> <span class="st">&quot;1d5cde&quot;</span></span>
+<span id="cb413-8"><a href="dags.html#cb413-8" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb413-9"><a href="dags.html#cb413-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">coords =</span> <span class="fu">list</span>( <span class="co"># Adjust the layout by setting coordinates</span></span>
+<span id="cb413-10"><a href="dags.html#cb413-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">c</span>(<span class="at">A =</span> <span class="dv">1</span>, <span class="at">B =</span> <span class="dv">2</span>),</span>
+<span id="cb413-11"><a href="dags.html#cb413-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">c</span>(<span class="at">A =</span> <span class="dv">0</span>, <span class="at">B =</span> <span class="dv">0</span>)</span>
+<span id="cb413-12"><a href="dags.html#cb413-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb413-13"><a href="dags.html#cb413-13" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb413-14"><a href="dags.html#cb413-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy_dagitty</span>() <span class="co"># Turns it into a tibble</span></span>
+<span id="cb413-15"><a href="dags.html#cb413-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb413-16"><a href="dags.html#cb413-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Start with ggdag</span></span>
+<span id="cb413-17"><a href="dags.html#cb413-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggdag</span>(d1) <span class="sc">+</span> </span>
+<span id="cb413-18"><a href="dags.html#cb413-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add labels and move them off the center of the node.</span></span>
+<span id="cb413-19"><a href="dags.html#cb413-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># This took me a long to time to get right.</span></span>
+<span id="cb413-20"><a href="dags.html#cb413-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(x, y, <span class="at">label =</span> label), <span class="at">vjust =</span> <span class="fl">2.3</span>) <span class="sc">+</span> </span>
+<span id="cb413-21"><a href="dags.html#cb413-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dag_blank</span>()</span></code></pre></div>
 <p><img src="R-Notes_files/figure-html/unnamed-chunk-275-1.png" width="576" /></p>
 <!--
 Clean up and add session info

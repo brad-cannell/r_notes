@@ -23,7 +23,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2023-03-16" />
+<meta name="date" content="2023-07-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -191,7 +191,10 @@ div.csl-indent {
 <li class="chapter" data-level="2.8" data-path="my-package-notes.html"><a href="my-package-notes.html#modify"><i class="fa fa-check"></i><b>2.8</b> Step 4: Modify the description file</a></li>
 <li class="chapter" data-level="2.9" data-path="my-package-notes.html"><a href="my-package-notes.html#readme"><i class="fa fa-check"></i><b>2.9</b> Step 5: Add README</a></li>
 <li class="chapter" data-level="2.10" data-path="my-package-notes.html"><a href="my-package-notes.html#git"><i class="fa fa-check"></i><b>2.10</b> Step 6: Add Git</a></li>
-<li class="chapter" data-level="2.11" data-path="my-package-notes.html"><a href="my-package-notes.html#github"><i class="fa fa-check"></i><b>2.11</b> Step 7: Connect to GitHub</a></li>
+<li class="chapter" data-level="2.11" data-path="my-package-notes.html"><a href="my-package-notes.html#github"><i class="fa fa-check"></i><b>2.11</b> Step 7: Connect to GitHub</a>
+<ul>
+<li class="chapter" data-level="2.11.1" data-path="my-package-notes.html"><a href="my-package-notes.html#setting-up-github"><i class="fa fa-check"></i><b>2.11.1</b> Setting up GitHub</a></li>
+</ul></li>
 <li class="chapter" data-level="2.12" data-path="my-package-notes.html"><a href="my-package-notes.html#package-functions"><i class="fa fa-check"></i><b>2.12</b> Step 8: Adding content to the package</a>
 <ul>
 <li class="chapter" data-level="2.12.1" data-path="my-package-notes.html"><a href="my-package-notes.html#working-with-r-scripts"><i class="fa fa-check"></i><b>2.12.1</b> Working with R scripts</a></li>
@@ -644,7 +647,7 @@ Hidden comments placeholder
 </div>
 <div id="load-packages-4" class="section level2 hasAnchor" number="9.3">
 <h2><span class="header-section-number">9.3</span> 📦Load packages<a href="effect-measure-modification.html#load-packages-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="effect-measure-modification.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="effect-measure-modification.html#cb398-1" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>Modern Epidemiology, 4th edition, page 91-92:
 Suppose we divide our population into two or more categories or strata, defined by categories of a covariate that is a potential modifier. In each stratum, we can compare the exposed with the unexposed by calculating an effect measure of our choosing.20, 48 Often we would have no reason to suppose that these stratum-specific effect measures would equal one another. If they are not equal, we say that the effect measure is heterogeneous or modified or varies across strata of the modifier. If they are equal, we say that the measure is homogeneous, constant, or uniform across strata of the modifier. Note that what is in view here is how the effect of the exposure varies across strata of the modifier; these variations in the exposure effect may not reflect the effect of the modifier itself but possibly only that of some other variables related to the modifier.49, 50 See Chapter 26 for more complete descriptions of effect modification and effect-measure modification.</p>
 <p><em>A major point about effect-measure modification is that, if effects are present, it will usually be the case that no more than one of the effect measures discussed above will be uniform across strata of the modifier.20 In fact, if both the exposure and the modifier have an effect on the outcome, then at most one of the risk ratio or risk difference measures of the effect of the exposure can be uniform across strata of the modifier; in such cases, there will thus always be effect-measure modification for either the difference or the ratio scale.</em> As an example, suppose that, among men, the average risk would be 0.50 if exposed but 0.20 if unexposed, whereas among women the average risk would be 0.10 if exposed but 0.04 if unexposed. Then the causal risk difference for men is 0.50 − 0.20 = 0.30, five times the difference for women of 0.10 − 0.04 = 0.06. In contrast, for both men and women, the causal risk ratio is 0.50 / 0.20 = 0.10 / 0.04 = 2.5. Now suppose we change this example to make the risk differences uniform, say, by making the exposed male risk 0.26 instead of 0.50. Then, both risk differences would be 0.06, but the male risk ratio would be 0.26 / 0.20 = 1.3, much less than the female risk ratio of 2.5. Finally, if we change the example by making the exposed male risk 0.32 instead of 0.50, the male risk difference would be 0.12, double the female risk difference of 0.06, but the male ratio would be 1.6 with relative excess ratio of 0.6, which is less than half the relative excess ratio of 1.5 computed from the female ratio of 2.5. Thus, the presence, direction, and size of effect-measure modification can be dependent on the choice of measure.</p>
@@ -652,11 +655,11 @@ Suppose we divide our population into two or more categories or strata, defined 
 </div>
 <div id="simulate-data-4" class="section level2 hasAnchor" number="9.4">
 <h2><span class="header-section-number">9.4</span> 🔢Simulate data<a href="effect-measure-modification.html#simulate-data-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="effect-measure-modification.html#cb399-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb399-2"><a href="effect-measure-modification.html#cb399-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb399-3"><a href="effect-measure-modification.html#cb399-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">26</span>),</span>
-<span id="cb399-4"><a href="effect-measure-modification.html#cb399-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> letters</span>
-<span id="cb399-5"><a href="effect-measure-modification.html#cb399-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="effect-measure-modification.html#cb399-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb399-2"><a href="effect-measure-modification.html#cb399-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb399-3"><a href="effect-measure-modification.html#cb399-3" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">26</span>),</span>
+<span id="cb399-4"><a href="effect-measure-modification.html#cb399-4" tabindex="-1"></a>  <span class="at">y =</span> letters</span>
+<span id="cb399-5"><a href="effect-measure-modification.html#cb399-5" tabindex="-1"></a>)</span></code></pre></div>
 <!--
 Clean up and add session info
 -->

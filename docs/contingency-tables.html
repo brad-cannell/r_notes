@@ -23,7 +23,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2023-03-16" />
+<meta name="date" content="2023-07-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -191,7 +191,10 @@ div.csl-indent {
 <li class="chapter" data-level="2.8" data-path="my-package-notes.html"><a href="my-package-notes.html#modify"><i class="fa fa-check"></i><b>2.8</b> Step 4: Modify the description file</a></li>
 <li class="chapter" data-level="2.9" data-path="my-package-notes.html"><a href="my-package-notes.html#readme"><i class="fa fa-check"></i><b>2.9</b> Step 5: Add README</a></li>
 <li class="chapter" data-level="2.10" data-path="my-package-notes.html"><a href="my-package-notes.html#git"><i class="fa fa-check"></i><b>2.10</b> Step 6: Add Git</a></li>
-<li class="chapter" data-level="2.11" data-path="my-package-notes.html"><a href="my-package-notes.html#github"><i class="fa fa-check"></i><b>2.11</b> Step 7: Connect to GitHub</a></li>
+<li class="chapter" data-level="2.11" data-path="my-package-notes.html"><a href="my-package-notes.html#github"><i class="fa fa-check"></i><b>2.11</b> Step 7: Connect to GitHub</a>
+<ul>
+<li class="chapter" data-level="2.11.1" data-path="my-package-notes.html"><a href="my-package-notes.html#setting-up-github"><i class="fa fa-check"></i><b>2.11.1</b> Setting up GitHub</a></li>
+</ul></li>
 <li class="chapter" data-level="2.12" data-path="my-package-notes.html"><a href="my-package-notes.html#package-functions"><i class="fa fa-check"></i><b>2.12</b> Step 8: Adding content to the package</a>
 <ul>
 <li class="chapter" data-level="2.12.1" data-path="my-package-notes.html"><a href="my-package-notes.html#working-with-r-scripts"><i class="fa fa-check"></i><b>2.12.1</b> Working with R scripts</a></li>
@@ -649,7 +652,7 @@ I think <code>ftable()</code> could be usefule. I need to work it in somehow. <a
 </div>
 <div id="load-packages-3" class="section level2 hasAnchor" number="8.3">
 <h2><span class="header-section-number">8.3</span> 📦Load packages<a href="contingency-tables.html#load-packages-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="contingency-tables.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="contingency-tables.html#cb293-1" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 </div>
 <div id="terminology" class="section level2 hasAnchor" number="8.4">
 <h2><span class="header-section-number">8.4</span> Terminology<a href="contingency-tables.html#terminology" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -657,12 +660,12 @@ I think <code>ftable()</code> could be usefule. I need to work it in somehow. <a
 <ul>
 <li><code>Data frame of observations</code>: A data frame where each row represents one observation (typically an individual person).</li>
 </ul>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="contingency-tables.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic example</span></span>
-<span id="cb294-2"><a href="contingency-tables.html#cb294-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb294-3"><a href="contingency-tables.html#cb294-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">medication =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;No&quot;</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">&quot;Yes&quot;</span>, <span class="dv">10</span>)),</span>
-<span id="cb294-4"><a href="contingency-tables.html#cb294-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">fall =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;No&quot;</span>, <span class="dv">8</span>), <span class="fu">rep</span>(<span class="st">&quot;Yes&quot;</span>, <span class="dv">2</span>), <span class="fu">rep</span>(<span class="st">&quot;No&quot;</span>, <span class="dv">6</span>), <span class="fu">rep</span>(<span class="st">&quot;Yes&quot;</span>, <span class="dv">4</span>))</span>
-<span id="cb294-5"><a href="contingency-tables.html#cb294-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb294-6"><a href="contingency-tables.html#cb294-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="contingency-tables.html#cb294-1" tabindex="-1"></a><span class="co"># Basic example</span></span>
+<span id="cb294-2"><a href="contingency-tables.html#cb294-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb294-3"><a href="contingency-tables.html#cb294-3" tabindex="-1"></a>  <span class="at">medication =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;No&quot;</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">&quot;Yes&quot;</span>, <span class="dv">10</span>)),</span>
+<span id="cb294-4"><a href="contingency-tables.html#cb294-4" tabindex="-1"></a>  <span class="at">fall =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;No&quot;</span>, <span class="dv">8</span>), <span class="fu">rep</span>(<span class="st">&quot;Yes&quot;</span>, <span class="dv">2</span>), <span class="fu">rep</span>(<span class="st">&quot;No&quot;</span>, <span class="dv">6</span>), <span class="fu">rep</span>(<span class="st">&quot;Yes&quot;</span>, <span class="dv">4</span>))</span>
+<span id="cb294-5"><a href="contingency-tables.html#cb294-5" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb294-6"><a href="contingency-tables.html#cb294-6" tabindex="-1"></a><span class="fu">print</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 20 × 2
 ##    medication fall 
 ##    &lt;chr&gt;      &lt;chr&gt;
@@ -689,8 +692,8 @@ I think <code>ftable()</code> could be usefule. I need to work it in somehow. <a
 <ul>
 <li><code>Contingency table</code>: A grid-like table with the categories of one variable (typically the exposure of interest) making up the rows and the categories of a second variable (typically the outcome of interest) making up the columns of the table. The table contains the number of observations with the particular combination of row and column values that intersect at each cell.</li>
 </ul>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="contingency-tables.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic example</span></span>
-<span id="cb296-2"><a href="contingency-tables.html#cb296-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="contingency-tables.html#cb296-1" tabindex="-1"></a><span class="co"># Basic example</span></span>
+<span id="cb296-2"><a href="contingency-tables.html#cb296-2" tabindex="-1"></a><span class="fu">table</span>(df)</span></code></pre></div>
 <pre><code>##           fall
 ## medication No Yes
 ##        No   8   2
@@ -698,9 +701,9 @@ I think <code>ftable()</code> could be usefule. I need to work it in somehow. <a
 <ul>
 <li><code>Frequency table</code>: A data frame of counts (and optionally, other relevant statistics), where each row represents a particular combination of values from two or more categorical variables.</li>
 </ul>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="contingency-tables.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic example</span></span>
-<span id="cb298-2"><a href="contingency-tables.html#cb298-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb298-3"><a href="contingency-tables.html#cb298-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(medication, fall)</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="contingency-tables.html#cb298-1" tabindex="-1"></a><span class="co"># Basic example</span></span>
+<span id="cb298-2"><a href="contingency-tables.html#cb298-2" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb298-3"><a href="contingency-tables.html#cb298-3" tabindex="-1"></a>  <span class="fu">count</span>(medication, fall)</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 3
 ##   medication fall      n
 ##   &lt;chr&gt;      &lt;chr&gt; &lt;int&gt;
@@ -767,11 +770,11 @@ I think <code>ftable()</code> could be usefule. I need to work it in somehow. <a
 <div id="data-frame-of-observations" class="section level3 hasAnchor" number="8.6.1">
 <h3><span class="header-section-number">8.6.1</span> Data frame of observations<a href="contingency-tables.html#data-frame-of-observations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>First, we can manually create tibble with one row for each person represented in the data above. Ordinarily, this is how the data would come to us. Then, we can use various different techniques – some of which are demonstrated below – to summarize the data as a 2x2 contingency table. In this case, we are working backwards from the data summary to the raw data just to show one way that it can be done. This isn’t necessarily a good way to do it, however. Later, we will demonstrate more efficient and less error-prone ways to create raw data from summary tables.</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="contingency-tables.html#cb300-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb300-2"><a href="contingency-tables.html#cb300-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">appendectomy =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;Yes&quot;</span>, <span class="dv">7</span>), <span class="fu">rep</span>(<span class="st">&quot;Yes&quot;</span>, <span class="dv">124</span>), <span class="st">&quot;No&quot;</span>, <span class="fu">rep</span>(<span class="st">&quot;No&quot;</span>, <span class="dv">78</span>))),</span>
-<span id="cb300-3"><a href="contingency-tables.html#cb300-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">infection    =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;Yes&quot;</span>, <span class="dv">7</span>), <span class="fu">rep</span>(<span class="st">&quot;No&quot;</span>, <span class="dv">124</span>), <span class="st">&quot;Yes&quot;</span>, <span class="fu">rep</span>(<span class="st">&quot;No&quot;</span>, <span class="dv">78</span>)))</span>
-<span id="cb300-4"><a href="contingency-tables.html#cb300-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb300-5"><a href="contingency-tables.html#cb300-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="contingency-tables.html#cb300-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb300-2"><a href="contingency-tables.html#cb300-2" tabindex="-1"></a>  <span class="at">appendectomy =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;Yes&quot;</span>, <span class="dv">7</span>), <span class="fu">rep</span>(<span class="st">&quot;Yes&quot;</span>, <span class="dv">124</span>), <span class="st">&quot;No&quot;</span>, <span class="fu">rep</span>(<span class="st">&quot;No&quot;</span>, <span class="dv">78</span>))),</span>
+<span id="cb300-3"><a href="contingency-tables.html#cb300-3" tabindex="-1"></a>  <span class="at">infection    =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;Yes&quot;</span>, <span class="dv">7</span>), <span class="fu">rep</span>(<span class="st">&quot;No&quot;</span>, <span class="dv">124</span>), <span class="st">&quot;Yes&quot;</span>, <span class="fu">rep</span>(<span class="st">&quot;No&quot;</span>, <span class="dv">78</span>)))</span>
+<span id="cb300-4"><a href="contingency-tables.html#cb300-4" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb300-5"><a href="contingency-tables.html#cb300-5" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 210 × 2
 ##    appendectomy infection
 ##    &lt;fct&gt;        &lt;fct&gt;    
@@ -791,12 +794,12 @@ I think <code>ftable()</code> could be usefule. I need to work it in somehow. <a
 <h3><span class="header-section-number">8.6.2</span> Frequency table<a href="contingency-tables.html#man-freq-tbl" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Next, we will manually create a frequency table. In our experience, it isn’t common for analysts or investigators to manually create a frequency table representation of data. However, creating frequency tables this way is pretty straightforward and easy to do.</p>
 <p>We can do using the <code>tibble()</code> (or <code>data.frame()</code>) function.</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="contingency-tables.html#cb302-1" aria-hidden="true" tabindex="-1"></a>freq_tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb302-2"><a href="contingency-tables.html#cb302-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">appendectomy =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
-<span id="cb302-3"><a href="contingency-tables.html#cb302-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">infection    =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
-<span id="cb302-4"><a href="contingency-tables.html#cb302-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">count        =</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">124</span>, <span class="dv">1</span>, <span class="dv">78</span>)</span>
-<span id="cb302-5"><a href="contingency-tables.html#cb302-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb302-6"><a href="contingency-tables.html#cb302-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="contingency-tables.html#cb302-1" tabindex="-1"></a>freq_tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb302-2"><a href="contingency-tables.html#cb302-2" tabindex="-1"></a>  <span class="at">appendectomy =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
+<span id="cb302-3"><a href="contingency-tables.html#cb302-3" tabindex="-1"></a>  <span class="at">infection    =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
+<span id="cb302-4"><a href="contingency-tables.html#cb302-4" tabindex="-1"></a>  <span class="at">count        =</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">124</span>, <span class="dv">1</span>, <span class="dv">78</span>)</span>
+<span id="cb302-5"><a href="contingency-tables.html#cb302-5" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb302-6"><a href="contingency-tables.html#cb302-6" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 3
 ##   appendectomy infection count
 ##   &lt;chr&gt;        &lt;chr&gt;     &lt;dbl&gt;
@@ -805,14 +808,14 @@ I think <code>ftable()</code> could be usefule. I need to work it in somehow. <a
 ## 3 No           Yes           1
 ## 4 No           No           78</code></pre>
 <p>Or by using the <code>tribble()</code> function.</p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="contingency-tables.html#cb304-1" aria-hidden="true" tabindex="-1"></a>freq_tbl <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb304-2"><a href="contingency-tables.html#cb304-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>appendectomy, <span class="sc">~</span>infection, <span class="sc">~</span>count,</span>
-<span id="cb304-3"><a href="contingency-tables.html#cb304-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="dv">7</span>,</span>
-<span id="cb304-4"><a href="contingency-tables.html#cb304-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>,  <span class="dv">124</span>,</span>
-<span id="cb304-5"><a href="contingency-tables.html#cb304-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;No&quot;</span>,  <span class="st">&quot;Yes&quot;</span>, <span class="dv">1</span>,</span>
-<span id="cb304-6"><a href="contingency-tables.html#cb304-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;No&quot;</span>,  <span class="st">&quot;No&quot;</span>,  <span class="dv">78</span></span>
-<span id="cb304-7"><a href="contingency-tables.html#cb304-7" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb304-8"><a href="contingency-tables.html#cb304-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="contingency-tables.html#cb304-1" tabindex="-1"></a>freq_tbl <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb304-2"><a href="contingency-tables.html#cb304-2" tabindex="-1"></a>  <span class="sc">~</span>appendectomy, <span class="sc">~</span>infection, <span class="sc">~</span>count,</span>
+<span id="cb304-3"><a href="contingency-tables.html#cb304-3" tabindex="-1"></a>  <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="dv">7</span>,</span>
+<span id="cb304-4"><a href="contingency-tables.html#cb304-4" tabindex="-1"></a>  <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>,  <span class="dv">124</span>,</span>
+<span id="cb304-5"><a href="contingency-tables.html#cb304-5" tabindex="-1"></a>  <span class="st">&quot;No&quot;</span>,  <span class="st">&quot;Yes&quot;</span>, <span class="dv">1</span>,</span>
+<span id="cb304-6"><a href="contingency-tables.html#cb304-6" tabindex="-1"></a>  <span class="st">&quot;No&quot;</span>,  <span class="st">&quot;No&quot;</span>,  <span class="dv">78</span></span>
+<span id="cb304-7"><a href="contingency-tables.html#cb304-7" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb304-8"><a href="contingency-tables.html#cb304-8" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 3
 ##   appendectomy infection count
 ##   &lt;chr&gt;        &lt;chr&gt;     &lt;dbl&gt;
@@ -822,14 +825,14 @@ I think <code>ftable()</code> could be usefule. I need to work it in somehow. <a
 ## 4 No           No           78</code></pre>
 <p>Either way, the end result is exactly the same. Which method of data entry you use is largely a matter of preference.</p>
 <p>As you can see below, we can also add marginal totals to our frequency table, which can be useful for other analyses we may want to do.</p>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="contingency-tables.html#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add margins</span></span>
-<span id="cb306-2"><a href="contingency-tables.html#cb306-2" aria-hidden="true" tabindex="-1"></a>freq_tbl <span class="sc">%&gt;%</span> </span>
-<span id="cb306-3"><a href="contingency-tables.html#cb306-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(appendectomy) <span class="sc">%&gt;%</span> </span>
-<span id="cb306-4"><a href="contingency-tables.html#cb306-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">appendectomy_totals =</span> <span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span> </span>
-<span id="cb306-5"><a href="contingency-tables.html#cb306-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(infection) <span class="sc">%&gt;%</span> </span>
-<span id="cb306-6"><a href="contingency-tables.html#cb306-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">infection_totals =</span> <span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span> </span>
-<span id="cb306-7"><a href="contingency-tables.html#cb306-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb306-8"><a href="contingency-tables.html#cb306-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">margin_total =</span> <span class="fu">sum</span>(count))</span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="contingency-tables.html#cb306-1" tabindex="-1"></a><span class="co"># Add margins</span></span>
+<span id="cb306-2"><a href="contingency-tables.html#cb306-2" tabindex="-1"></a>freq_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb306-3"><a href="contingency-tables.html#cb306-3" tabindex="-1"></a>  <span class="fu">group_by</span>(appendectomy) <span class="sc">%&gt;%</span> </span>
+<span id="cb306-4"><a href="contingency-tables.html#cb306-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">appendectomy_totals =</span> <span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span> </span>
+<span id="cb306-5"><a href="contingency-tables.html#cb306-5" tabindex="-1"></a>  <span class="fu">group_by</span>(infection) <span class="sc">%&gt;%</span> </span>
+<span id="cb306-6"><a href="contingency-tables.html#cb306-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">infection_totals =</span> <span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span> </span>
+<span id="cb306-7"><a href="contingency-tables.html#cb306-7" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb306-8"><a href="contingency-tables.html#cb306-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">margin_total =</span> <span class="fu">sum</span>(count))</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 6
 ##   appendectomy infection count appendectomy_totals infection_totals margin_total
 ##   &lt;chr&gt;        &lt;chr&gt;     &lt;dbl&gt;               &lt;dbl&gt;            &lt;dbl&gt;        &lt;dbl&gt;
@@ -844,88 +847,88 @@ I think <code>ftable()</code> could be usefule. I need to work it in somehow. <a
 <div id="manual-matrix-ct" class="section level4 hasAnchor" number="8.6.3.1">
 <h4><span class="header-section-number">8.6.3.1</span> Matrix object<a href="contingency-tables.html#manual-matrix-ct" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>First, we can manually create a contingency table as a matrix object.</p>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="contingency-tables.html#cb308-1" aria-hidden="true" tabindex="-1"></a>matrix_ct <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb308-2"><a href="contingency-tables.html#cb308-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">7</span>, <span class="at">b =</span> <span class="dv">124</span>, <span class="at">c =</span> <span class="dv">1</span>, <span class="at">d =</span> <span class="dv">78</span>),</span>
-<span id="cb308-3"><a href="contingency-tables.html#cb308-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>,</span>
-<span id="cb308-4"><a href="contingency-tables.html#cb308-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb308-5"><a href="contingency-tables.html#cb308-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb308-6"><a href="contingency-tables.html#cb308-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="contingency-tables.html#cb308-1" tabindex="-1"></a>matrix_ct <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb308-2"><a href="contingency-tables.html#cb308-2" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">7</span>, <span class="at">b =</span> <span class="dv">124</span>, <span class="at">c =</span> <span class="dv">1</span>, <span class="at">d =</span> <span class="dv">78</span>),</span>
+<span id="cb308-3"><a href="contingency-tables.html#cb308-3" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>,</span>
+<span id="cb308-4"><a href="contingency-tables.html#cb308-4" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb308-5"><a href="contingency-tables.html#cb308-5" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb308-6"><a href="contingency-tables.html#cb308-6" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    7  124
 ## [2,]    1   78</code></pre>
 <p>Then, we can add row and column names to make the matrix more readable.</p>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="contingency-tables.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add names to make the matrix more readable</span></span>
-<span id="cb310-2"><a href="contingency-tables.html#cb310-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(matrix_ct) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Appendectomy&quot;</span>, <span class="st">&quot;No Appendectomy&quot;</span>)</span>
-<span id="cb310-3"><a href="contingency-tables.html#cb310-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(matrix_ct) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Infection&quot;</span>, <span class="st">&quot;No Infection&quot;</span>)</span>
-<span id="cb310-4"><a href="contingency-tables.html#cb310-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb310-5"><a href="contingency-tables.html#cb310-5" aria-hidden="true" tabindex="-1"></a>matrix_ct</span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="contingency-tables.html#cb310-1" tabindex="-1"></a><span class="co"># Add names to make the matrix more readable</span></span>
+<span id="cb310-2"><a href="contingency-tables.html#cb310-2" tabindex="-1"></a><span class="fu">rownames</span>(matrix_ct) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Appendectomy&quot;</span>, <span class="st">&quot;No Appendectomy&quot;</span>)</span>
+<span id="cb310-3"><a href="contingency-tables.html#cb310-3" tabindex="-1"></a><span class="fu">colnames</span>(matrix_ct) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Infection&quot;</span>, <span class="st">&quot;No Infection&quot;</span>)</span>
+<span id="cb310-4"><a href="contingency-tables.html#cb310-4" tabindex="-1"></a></span>
+<span id="cb310-5"><a href="contingency-tables.html#cb310-5" tabindex="-1"></a>matrix_ct</span></code></pre></div>
 <pre><code>##                 Infection No Infection
 ## Appendectomy            7          124
 ## No Appendectomy         1           78</code></pre>
 <p>Or alternatively like this.</p>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="contingency-tables.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(matrix_ct) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb312-2"><a href="contingency-tables.html#cb312-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;Appendectomy&quot;</span>, <span class="st">&quot;No Appendectomy&quot;</span>),</span>
-<span id="cb312-3"><a href="contingency-tables.html#cb312-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;Infection&quot;</span>, <span class="st">&quot;No Infection&quot;</span>)</span>
-<span id="cb312-4"><a href="contingency-tables.html#cb312-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb312-5"><a href="contingency-tables.html#cb312-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb312-6"><a href="contingency-tables.html#cb312-6" aria-hidden="true" tabindex="-1"></a>matrix_ct</span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="contingency-tables.html#cb312-1" tabindex="-1"></a><span class="fu">dimnames</span>(matrix_ct) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb312-2"><a href="contingency-tables.html#cb312-2" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;Appendectomy&quot;</span>, <span class="st">&quot;No Appendectomy&quot;</span>),</span>
+<span id="cb312-3"><a href="contingency-tables.html#cb312-3" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;Infection&quot;</span>, <span class="st">&quot;No Infection&quot;</span>)</span>
+<span id="cb312-4"><a href="contingency-tables.html#cb312-4" tabindex="-1"></a>)</span>
+<span id="cb312-5"><a href="contingency-tables.html#cb312-5" tabindex="-1"></a></span>
+<span id="cb312-6"><a href="contingency-tables.html#cb312-6" tabindex="-1"></a>matrix_ct</span></code></pre></div>
 <pre><code>##                 Infection No Infection
 ## Appendectomy            7          124
 ## No Appendectomy         1           78</code></pre>
 <p>Or alternatively like this.</p>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="contingency-tables.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(matrix_ct) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb314-2"><a href="contingency-tables.html#cb314-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Appendectomy =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
-<span id="cb314-3"><a href="contingency-tables.html#cb314-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Infection =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
-<span id="cb314-4"><a href="contingency-tables.html#cb314-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb314-5"><a href="contingency-tables.html#cb314-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb314-6"><a href="contingency-tables.html#cb314-6" aria-hidden="true" tabindex="-1"></a>matrix_ct</span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="contingency-tables.html#cb314-1" tabindex="-1"></a><span class="fu">dimnames</span>(matrix_ct) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb314-2"><a href="contingency-tables.html#cb314-2" tabindex="-1"></a>  <span class="at">Appendectomy =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
+<span id="cb314-3"><a href="contingency-tables.html#cb314-3" tabindex="-1"></a>  <span class="at">Infection =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
+<span id="cb314-4"><a href="contingency-tables.html#cb314-4" tabindex="-1"></a>)</span>
+<span id="cb314-5"><a href="contingency-tables.html#cb314-5" tabindex="-1"></a></span>
+<span id="cb314-6"><a href="contingency-tables.html#cb314-6" tabindex="-1"></a>matrix_ct</span></code></pre></div>
 <pre><code>##             Infection
 ## Appendectomy Yes  No
 ##          Yes   7 124
 ##          No    1  78</code></pre>
 <p>Notice that the third method of adding row and column names produces slightly different results.</p>
 <p>And we can add marginal totals to the matrix.</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="contingency-tables.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(matrix_ct)</span></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="contingency-tables.html#cb316-1" tabindex="-1"></a><span class="fu">addmargins</span>(matrix_ct)</span></code></pre></div>
 <pre><code>##             Infection
 ## Appendectomy Yes  No Sum
 ##          Yes   7 124 131
 ##          No    1  78  79
 ##          Sum   8 202 210</code></pre>
 <p>So, putting it all together, there are at least two processes to create a matrix with marginal totals.</p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="contingency-tables.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 1. Calculate the marginal totals before using dimnames()</span></span>
-<span id="cb318-2"><a href="contingency-tables.html#cb318-2" aria-hidden="true" tabindex="-1"></a>matrix_ct <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb318-3"><a href="contingency-tables.html#cb318-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">7</span>, <span class="at">b =</span> <span class="dv">124</span>, <span class="at">c =</span> <span class="dv">1</span>, <span class="at">d =</span> <span class="dv">78</span>),</span>
-<span id="cb318-4"><a href="contingency-tables.html#cb318-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>,</span>
-<span id="cb318-5"><a href="contingency-tables.html#cb318-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb318-6"><a href="contingency-tables.html#cb318-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb318-7"><a href="contingency-tables.html#cb318-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb318-8"><a href="contingency-tables.html#cb318-8" aria-hidden="true" tabindex="-1"></a>matrix_ct_margins <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(matrix_ct)</span>
-<span id="cb318-9"><a href="contingency-tables.html#cb318-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb318-10"><a href="contingency-tables.html#cb318-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(matrix_ct_margins) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb318-11"><a href="contingency-tables.html#cb318-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">Appendectomy =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;colsum&quot;</span>),</span>
-<span id="cb318-12"><a href="contingency-tables.html#cb318-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">Infection =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;rowsum&quot;</span>)</span>
-<span id="cb318-13"><a href="contingency-tables.html#cb318-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb318-14"><a href="contingency-tables.html#cb318-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb318-15"><a href="contingency-tables.html#cb318-15" aria-hidden="true" tabindex="-1"></a>matrix_ct_margins</span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="contingency-tables.html#cb318-1" tabindex="-1"></a><span class="co"># Method 1. Calculate the marginal totals before using dimnames()</span></span>
+<span id="cb318-2"><a href="contingency-tables.html#cb318-2" tabindex="-1"></a>matrix_ct <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb318-3"><a href="contingency-tables.html#cb318-3" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">7</span>, <span class="at">b =</span> <span class="dv">124</span>, <span class="at">c =</span> <span class="dv">1</span>, <span class="at">d =</span> <span class="dv">78</span>),</span>
+<span id="cb318-4"><a href="contingency-tables.html#cb318-4" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>,</span>
+<span id="cb318-5"><a href="contingency-tables.html#cb318-5" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb318-6"><a href="contingency-tables.html#cb318-6" tabindex="-1"></a>)</span>
+<span id="cb318-7"><a href="contingency-tables.html#cb318-7" tabindex="-1"></a></span>
+<span id="cb318-8"><a href="contingency-tables.html#cb318-8" tabindex="-1"></a>matrix_ct_margins <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(matrix_ct)</span>
+<span id="cb318-9"><a href="contingency-tables.html#cb318-9" tabindex="-1"></a></span>
+<span id="cb318-10"><a href="contingency-tables.html#cb318-10" tabindex="-1"></a><span class="fu">dimnames</span>(matrix_ct_margins) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb318-11"><a href="contingency-tables.html#cb318-11" tabindex="-1"></a>  <span class="at">Appendectomy =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;colsum&quot;</span>),</span>
+<span id="cb318-12"><a href="contingency-tables.html#cb318-12" tabindex="-1"></a>  <span class="at">Infection =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;rowsum&quot;</span>)</span>
+<span id="cb318-13"><a href="contingency-tables.html#cb318-13" tabindex="-1"></a>)</span>
+<span id="cb318-14"><a href="contingency-tables.html#cb318-14" tabindex="-1"></a></span>
+<span id="cb318-15"><a href="contingency-tables.html#cb318-15" tabindex="-1"></a>matrix_ct_margins</span></code></pre></div>
 <pre><code>##             Infection
 ## Appendectomy Yes  No rowsum
 ##       Yes      7 124    131
 ##       No       1  78     79
 ##       colsum   8 202    210</code></pre>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="contingency-tables.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 2. Use rownames() and colnames() instead of dimnames()</span></span>
-<span id="cb320-2"><a href="contingency-tables.html#cb320-2" aria-hidden="true" tabindex="-1"></a>matrix_ct <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb320-3"><a href="contingency-tables.html#cb320-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">7</span>, <span class="at">b =</span> <span class="dv">124</span>, <span class="at">c =</span> <span class="dv">1</span>, <span class="at">d =</span> <span class="dv">78</span>),</span>
-<span id="cb320-4"><a href="contingency-tables.html#cb320-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>,</span>
-<span id="cb320-5"><a href="contingency-tables.html#cb320-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb320-6"><a href="contingency-tables.html#cb320-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb320-7"><a href="contingency-tables.html#cb320-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb320-8"><a href="contingency-tables.html#cb320-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(matrix_ct) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb320-9"><a href="contingency-tables.html#cb320-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Appendectomy =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
-<span id="cb320-10"><a href="contingency-tables.html#cb320-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">Infection =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
-<span id="cb320-11"><a href="contingency-tables.html#cb320-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb320-12"><a href="contingency-tables.html#cb320-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb320-13"><a href="contingency-tables.html#cb320-13" aria-hidden="true" tabindex="-1"></a>matrix_ct_margins <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(matrix_ct)</span>
-<span id="cb320-14"><a href="contingency-tables.html#cb320-14" aria-hidden="true" tabindex="-1"></a>matrix_ct_margins</span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="contingency-tables.html#cb320-1" tabindex="-1"></a><span class="co"># Method 2. Use rownames() and colnames() instead of dimnames()</span></span>
+<span id="cb320-2"><a href="contingency-tables.html#cb320-2" tabindex="-1"></a>matrix_ct <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb320-3"><a href="contingency-tables.html#cb320-3" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">7</span>, <span class="at">b =</span> <span class="dv">124</span>, <span class="at">c =</span> <span class="dv">1</span>, <span class="at">d =</span> <span class="dv">78</span>),</span>
+<span id="cb320-4"><a href="contingency-tables.html#cb320-4" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>,</span>
+<span id="cb320-5"><a href="contingency-tables.html#cb320-5" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb320-6"><a href="contingency-tables.html#cb320-6" tabindex="-1"></a>)</span>
+<span id="cb320-7"><a href="contingency-tables.html#cb320-7" tabindex="-1"></a></span>
+<span id="cb320-8"><a href="contingency-tables.html#cb320-8" tabindex="-1"></a><span class="fu">dimnames</span>(matrix_ct) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb320-9"><a href="contingency-tables.html#cb320-9" tabindex="-1"></a>  <span class="at">Appendectomy =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
+<span id="cb320-10"><a href="contingency-tables.html#cb320-10" tabindex="-1"></a>  <span class="at">Infection =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
+<span id="cb320-11"><a href="contingency-tables.html#cb320-11" tabindex="-1"></a>)</span>
+<span id="cb320-12"><a href="contingency-tables.html#cb320-12" tabindex="-1"></a></span>
+<span id="cb320-13"><a href="contingency-tables.html#cb320-13" tabindex="-1"></a>matrix_ct_margins <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(matrix_ct)</span>
+<span id="cb320-14"><a href="contingency-tables.html#cb320-14" tabindex="-1"></a>matrix_ct_margins</span></code></pre></div>
 <pre><code>##             Infection
 ## Appendectomy Yes  No Sum
 ##          Yes   7 124 131
@@ -936,26 +939,26 @@ I think <code>ftable()</code> could be usefule. I need to work it in somehow. <a
 <div id="base-r-data-frame-with-rownames" class="section level4 hasAnchor" number="8.6.3.2">
 <h4><span class="header-section-number">8.6.3.2</span> Base R data frame with rownames<a href="contingency-tables.html#base-r-data-frame-with-rownames" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Another option for manually creating a contingency table is to start with a base R data frame with row names (tibbles drop row names by default, which is usually a good thing).</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="contingency-tables.html#cb322-1" aria-hidden="true" tabindex="-1"></a>df_ct <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb322-2"><a href="contingency-tables.html#cb322-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Infection =</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">1</span>),</span>
-<span id="cb322-3"><a href="contingency-tables.html#cb322-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">No Infection</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">124</span>, <span class="dv">78</span>)</span>
-<span id="cb322-4"><a href="contingency-tables.html#cb322-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb322-5"><a href="contingency-tables.html#cb322-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb322-6"><a href="contingency-tables.html#cb322-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Add row names</span></span>
-<span id="cb322-7"><a href="contingency-tables.html#cb322-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(df_ct) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Appendectomy&quot;</span>, <span class="st">&quot;No Appendectomy&quot;</span>)</span>
-<span id="cb322-8"><a href="contingency-tables.html#cb322-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb322-9"><a href="contingency-tables.html#cb322-9" aria-hidden="true" tabindex="-1"></a>df_ct</span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="contingency-tables.html#cb322-1" tabindex="-1"></a>df_ct <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb322-2"><a href="contingency-tables.html#cb322-2" tabindex="-1"></a>  <span class="at">Infection =</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">1</span>),</span>
+<span id="cb322-3"><a href="contingency-tables.html#cb322-3" tabindex="-1"></a>  <span class="st">`</span><span class="at">No Infection</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">124</span>, <span class="dv">78</span>)</span>
+<span id="cb322-4"><a href="contingency-tables.html#cb322-4" tabindex="-1"></a>)</span>
+<span id="cb322-5"><a href="contingency-tables.html#cb322-5" tabindex="-1"></a></span>
+<span id="cb322-6"><a href="contingency-tables.html#cb322-6" tabindex="-1"></a><span class="co"># Add row names</span></span>
+<span id="cb322-7"><a href="contingency-tables.html#cb322-7" tabindex="-1"></a><span class="fu">rownames</span>(df_ct) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Appendectomy&quot;</span>, <span class="st">&quot;No Appendectomy&quot;</span>)</span>
+<span id="cb322-8"><a href="contingency-tables.html#cb322-8" tabindex="-1"></a></span>
+<span id="cb322-9"><a href="contingency-tables.html#cb322-9" tabindex="-1"></a>df_ct</span></code></pre></div>
 <pre><code>##                 Infection No.Infection
 ## Appendectomy            7          124
 ## No Appendectomy         1           78</code></pre>
 <p>And we can add marginal totals to the data frame. However, we cannot do so with the <code>addmargins()</code> function.</p>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="contingency-tables.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(df_ct)</span></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="contingency-tables.html#cb324-1" tabindex="-1"></a><span class="fu">addmargins</span>(df_ct)</span></code></pre></div>
 <pre><code>## Error in FUN(newX[, i], ...): invalid &#39;type&#39; (list) of argument</code></pre>
 <p>Therefore, it takes a little bit more code to add margins a contingency table created as a base R data frame.</p>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="contingency-tables.html#cb326-1" aria-hidden="true" tabindex="-1"></a>df_ct_margins <span class="ot">&lt;-</span> df_ct</span>
-<span id="cb326-2"><a href="contingency-tables.html#cb326-2" aria-hidden="true" tabindex="-1"></a>df_ct_margins <span class="ot">&lt;-</span> <span class="fu">cbind</span>(df_ct_margins, <span class="at">rowsum =</span> <span class="fu">rowSums</span>(df_ct_margins))</span>
-<span id="cb326-3"><a href="contingency-tables.html#cb326-3" aria-hidden="true" tabindex="-1"></a>df_ct_margins <span class="ot">&lt;-</span> <span class="fu">rbind</span>(df_ct_margins, <span class="at">colsum =</span> <span class="fu">colSums</span>(df_ct_margins))</span>
-<span id="cb326-4"><a href="contingency-tables.html#cb326-4" aria-hidden="true" tabindex="-1"></a>df_ct_margins</span></code></pre></div>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="contingency-tables.html#cb326-1" tabindex="-1"></a>df_ct_margins <span class="ot">&lt;-</span> df_ct</span>
+<span id="cb326-2"><a href="contingency-tables.html#cb326-2" tabindex="-1"></a>df_ct_margins <span class="ot">&lt;-</span> <span class="fu">cbind</span>(df_ct_margins, <span class="at">rowsum =</span> <span class="fu">rowSums</span>(df_ct_margins))</span>
+<span id="cb326-3"><a href="contingency-tables.html#cb326-3" tabindex="-1"></a>df_ct_margins <span class="ot">&lt;-</span> <span class="fu">rbind</span>(df_ct_margins, <span class="at">colsum =</span> <span class="fu">colSums</span>(df_ct_margins))</span>
+<span id="cb326-4"><a href="contingency-tables.html#cb326-4" tabindex="-1"></a>df_ct_margins</span></code></pre></div>
 <pre><code>##                 Infection No.Infection rowsum
 ## Appendectomy            7          124    131
 ## No Appendectomy         1           78     79
@@ -971,65 +974,65 @@ I think <code>ftable()</code> could be usefule. I need to work it in somehow. <a
 <div id="table-object-from-matrix" class="section level3 hasAnchor" number="8.7.1">
 <h3><span class="header-section-number">8.7.1</span> Table object from matrix<a href="contingency-tables.html#table-object-from-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>First, we will create a table from a matrix object. The code used here to first create the matrix is identical to <a href="contingency-tables.html#manual-matrix-ct">the code above</a>.</p>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="contingency-tables.html#cb328-1" aria-hidden="true" tabindex="-1"></a>matrix_ct <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb328-2"><a href="contingency-tables.html#cb328-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">7</span>, <span class="at">b =</span> <span class="dv">124</span>, <span class="at">c =</span> <span class="dv">1</span>, <span class="at">d =</span> <span class="dv">78</span>),</span>
-<span id="cb328-3"><a href="contingency-tables.html#cb328-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>,</span>
-<span id="cb328-4"><a href="contingency-tables.html#cb328-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb328-5"><a href="contingency-tables.html#cb328-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb328-6"><a href="contingency-tables.html#cb328-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb328-7"><a href="contingency-tables.html#cb328-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(matrix_ct) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb328-8"><a href="contingency-tables.html#cb328-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Appendectomy =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
-<span id="cb328-9"><a href="contingency-tables.html#cb328-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Infection =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
-<span id="cb328-10"><a href="contingency-tables.html#cb328-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb328-11"><a href="contingency-tables.html#cb328-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb328-12"><a href="contingency-tables.html#cb328-12" aria-hidden="true" tabindex="-1"></a>matrix_ct</span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="contingency-tables.html#cb328-1" tabindex="-1"></a>matrix_ct <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb328-2"><a href="contingency-tables.html#cb328-2" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">7</span>, <span class="at">b =</span> <span class="dv">124</span>, <span class="at">c =</span> <span class="dv">1</span>, <span class="at">d =</span> <span class="dv">78</span>),</span>
+<span id="cb328-3"><a href="contingency-tables.html#cb328-3" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>,</span>
+<span id="cb328-4"><a href="contingency-tables.html#cb328-4" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb328-5"><a href="contingency-tables.html#cb328-5" tabindex="-1"></a>)</span>
+<span id="cb328-6"><a href="contingency-tables.html#cb328-6" tabindex="-1"></a></span>
+<span id="cb328-7"><a href="contingency-tables.html#cb328-7" tabindex="-1"></a><span class="fu">dimnames</span>(matrix_ct) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb328-8"><a href="contingency-tables.html#cb328-8" tabindex="-1"></a>  <span class="at">Appendectomy =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
+<span id="cb328-9"><a href="contingency-tables.html#cb328-9" tabindex="-1"></a>  <span class="at">Infection =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
+<span id="cb328-10"><a href="contingency-tables.html#cb328-10" tabindex="-1"></a>)</span>
+<span id="cb328-11"><a href="contingency-tables.html#cb328-11" tabindex="-1"></a></span>
+<span id="cb328-12"><a href="contingency-tables.html#cb328-12" tabindex="-1"></a>matrix_ct</span></code></pre></div>
 <pre><code>##             Infection
 ## Appendectomy Yes  No
 ##          Yes   7 124
 ##          No    1  78</code></pre>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="contingency-tables.html#cb330-1" aria-hidden="true" tabindex="-1"></a>table_from_matrix <span class="ot">&lt;-</span> <span class="fu">as.table</span>(matrix_ct)</span>
-<span id="cb330-2"><a href="contingency-tables.html#cb330-2" aria-hidden="true" tabindex="-1"></a>table_from_matrix</span></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="contingency-tables.html#cb330-1" tabindex="-1"></a>table_from_matrix <span class="ot">&lt;-</span> <span class="fu">as.table</span>(matrix_ct)</span>
+<span id="cb330-2"><a href="contingency-tables.html#cb330-2" tabindex="-1"></a>table_from_matrix</span></code></pre></div>
 <pre><code>##             Infection
 ## Appendectomy Yes  No
 ##          Yes   7 124
 ##          No    1  78</code></pre>
 <p>The results look the same, but they are different under the hood.</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="contingency-tables.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(</span>
-<span id="cb332-2"><a href="contingency-tables.html#cb332-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">matrix_ct =</span> <span class="fu">class</span>(matrix_ct),</span>
-<span id="cb332-3"><a href="contingency-tables.html#cb332-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">table_from_matrix =</span> <span class="fu">class</span>(table_from_matrix)</span>
-<span id="cb332-4"><a href="contingency-tables.html#cb332-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="contingency-tables.html#cb332-1" tabindex="-1"></a><span class="fu">list</span>(</span>
+<span id="cb332-2"><a href="contingency-tables.html#cb332-2" tabindex="-1"></a>  <span class="at">matrix_ct =</span> <span class="fu">class</span>(matrix_ct),</span>
+<span id="cb332-3"><a href="contingency-tables.html#cb332-3" tabindex="-1"></a>  <span class="at">table_from_matrix =</span> <span class="fu">class</span>(table_from_matrix)</span>
+<span id="cb332-4"><a href="contingency-tables.html#cb332-4" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## $matrix_ct
 ## [1] &quot;matrix&quot; &quot;array&quot; 
 ## 
 ## $table_from_matrix
 ## [1] &quot;table&quot;</code></pre>
 <p>And again, we can add margins to the table object with the <code>addmargins()</code> function.</p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="contingency-tables.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(table_from_matrix)</span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="contingency-tables.html#cb334-1" tabindex="-1"></a><span class="fu">addmargins</span>(table_from_matrix)</span></code></pre></div>
 <pre><code>##             Infection
 ## Appendectomy Yes  No Sum
 ##          Yes   7 124 131
 ##          No    1  78  79
 ##          Sum   8 202 210</code></pre>
 <p><a href="https://cran.r-project.org/web/packages/DescTools/vignettes/TablesInR.pdf">Tables in R – A quick practical overview</a> shows an alternative way to create a table object using a matrix as an intermediate step – the <code>rbind()</code> function.</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="contingency-tables.html#cb336-1" aria-hidden="true" tabindex="-1"></a>table_from_matrix <span class="ot">&lt;-</span> <span class="fu">as.table</span>(</span>
-<span id="cb336-2"><a href="contingency-tables.html#cb336-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(</span>
-<span id="cb336-3"><a href="contingency-tables.html#cb336-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">124</span>), </span>
-<span id="cb336-4"><a href="contingency-tables.html#cb336-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">78</span>)</span>
-<span id="cb336-5"><a href="contingency-tables.html#cb336-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb336-6"><a href="contingency-tables.html#cb336-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb336-7"><a href="contingency-tables.html#cb336-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb336-8"><a href="contingency-tables.html#cb336-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(table_from_matrix) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb336-9"><a href="contingency-tables.html#cb336-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Appendectomy =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
-<span id="cb336-10"><a href="contingency-tables.html#cb336-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">Infection =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
-<span id="cb336-11"><a href="contingency-tables.html#cb336-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb336-12"><a href="contingency-tables.html#cb336-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb336-13"><a href="contingency-tables.html#cb336-13" aria-hidden="true" tabindex="-1"></a>table_from_matrix</span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="contingency-tables.html#cb336-1" tabindex="-1"></a>table_from_matrix <span class="ot">&lt;-</span> <span class="fu">as.table</span>(</span>
+<span id="cb336-2"><a href="contingency-tables.html#cb336-2" tabindex="-1"></a>  <span class="fu">rbind</span>(</span>
+<span id="cb336-3"><a href="contingency-tables.html#cb336-3" tabindex="-1"></a>    <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">124</span>), </span>
+<span id="cb336-4"><a href="contingency-tables.html#cb336-4" tabindex="-1"></a>    <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">78</span>)</span>
+<span id="cb336-5"><a href="contingency-tables.html#cb336-5" tabindex="-1"></a>  )</span>
+<span id="cb336-6"><a href="contingency-tables.html#cb336-6" tabindex="-1"></a>)</span>
+<span id="cb336-7"><a href="contingency-tables.html#cb336-7" tabindex="-1"></a></span>
+<span id="cb336-8"><a href="contingency-tables.html#cb336-8" tabindex="-1"></a><span class="fu">dimnames</span>(table_from_matrix) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb336-9"><a href="contingency-tables.html#cb336-9" tabindex="-1"></a>  <span class="at">Appendectomy =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
+<span id="cb336-10"><a href="contingency-tables.html#cb336-10" tabindex="-1"></a>  <span class="at">Infection =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
+<span id="cb336-11"><a href="contingency-tables.html#cb336-11" tabindex="-1"></a>)</span>
+<span id="cb336-12"><a href="contingency-tables.html#cb336-12" tabindex="-1"></a></span>
+<span id="cb336-13"><a href="contingency-tables.html#cb336-13" tabindex="-1"></a>table_from_matrix</span></code></pre></div>
 <pre><code>##             Infection
 ## Appendectomy Yes  No
 ##          Yes   7 124
 ##          No    1  78</code></pre>
 <p>And again, we can add margins to the table object with the <code>addmargins()</code> function.</p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="contingency-tables.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(table_from_matrix)</span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="contingency-tables.html#cb338-1" tabindex="-1"></a><span class="fu">addmargins</span>(table_from_matrix)</span></code></pre></div>
 <pre><code>##             Infection
 ## Appendectomy Yes  No Sum
 ##          Yes   7 124 131
@@ -1039,8 +1042,8 @@ I think <code>ftable()</code> could be usefule. I need to work it in somehow. <a
 <div id="table-object-from-df" class="section level3 hasAnchor" number="8.7.2">
 <h3><span class="header-section-number">8.7.2</span> Table object from df<a href="contingency-tables.html#table-object-from-df" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Next, we will create a table from a data frame of observations. This is where the <code>table()</code> function comes in really handy!</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="contingency-tables.html#cb340-1" aria-hidden="true" tabindex="-1"></a>table_from_df <span class="ot">&lt;-</span> <span class="fu">table</span>(df)</span>
-<span id="cb340-2"><a href="contingency-tables.html#cb340-2" aria-hidden="true" tabindex="-1"></a>table_from_df</span></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="contingency-tables.html#cb340-1" tabindex="-1"></a>table_from_df <span class="ot">&lt;-</span> <span class="fu">table</span>(df)</span>
+<span id="cb340-2"><a href="contingency-tables.html#cb340-2" tabindex="-1"></a>table_from_df</span></code></pre></div>
 <pre><code>##             infection
 ## appendectomy  No Yes
 ##          No   78   1
@@ -1048,22 +1051,22 @@ I think <code>ftable()</code> could be usefule. I need to work it in somehow. <a
 <p class="warning">
 ⚠️<strong>Warning:</strong> Notice that the “No” category comes before the “Yes” category by default when passing a data frame of observations to the <code>table()</code> function. This typically not the order we would put them in for analysis. To prevent this from happening, change the ordering of the factor levels in the data frame of observations (demonstrated below).
 </p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="contingency-tables.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make &quot;Yes&quot; the first factor level. Then, create the table.</span></span>
-<span id="cb342-2"><a href="contingency-tables.html#cb342-2" aria-hidden="true" tabindex="-1"></a>df_yn <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
-<span id="cb342-3"><a href="contingency-tables.html#cb342-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb342-4"><a href="contingency-tables.html#cb342-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">appendectomy =</span> <span class="fu">factor</span>(appendectomy, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)),</span>
-<span id="cb342-5"><a href="contingency-tables.html#cb342-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">infection =</span> <span class="fu">factor</span>(infection, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>))</span>
-<span id="cb342-6"><a href="contingency-tables.html#cb342-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="contingency-tables.html#cb343-1" aria-hidden="true" tabindex="-1"></a>table_from_df <span class="ot">&lt;-</span> <span class="fu">table</span>(df_yn)</span>
-<span id="cb343-2"><a href="contingency-tables.html#cb343-2" aria-hidden="true" tabindex="-1"></a>table_from_df</span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="contingency-tables.html#cb342-1" tabindex="-1"></a><span class="co"># Make &quot;Yes&quot; the first factor level. Then, create the table.</span></span>
+<span id="cb342-2"><a href="contingency-tables.html#cb342-2" tabindex="-1"></a>df_yn <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb342-3"><a href="contingency-tables.html#cb342-3" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb342-4"><a href="contingency-tables.html#cb342-4" tabindex="-1"></a>    <span class="at">appendectomy =</span> <span class="fu">factor</span>(appendectomy, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)),</span>
+<span id="cb342-5"><a href="contingency-tables.html#cb342-5" tabindex="-1"></a>    <span class="at">infection =</span> <span class="fu">factor</span>(infection, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>))</span>
+<span id="cb342-6"><a href="contingency-tables.html#cb342-6" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="contingency-tables.html#cb343-1" tabindex="-1"></a>table_from_df <span class="ot">&lt;-</span> <span class="fu">table</span>(df_yn)</span>
+<span id="cb343-2"><a href="contingency-tables.html#cb343-2" tabindex="-1"></a>table_from_df</span></code></pre></div>
 <pre><code>##             infection
 ## appendectomy Yes  No
 ##          Yes   7 124
 ##          No    1  78</code></pre>
 <p>And again, we can add margins to the table object with the <code>addmargins()</code> function.</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="contingency-tables.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add margins</span></span>
-<span id="cb345-2"><a href="contingency-tables.html#cb345-2" aria-hidden="true" tabindex="-1"></a>table_from_df_margins <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(table_from_df)</span>
-<span id="cb345-3"><a href="contingency-tables.html#cb345-3" aria-hidden="true" tabindex="-1"></a>table_from_df_margins</span></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="contingency-tables.html#cb345-1" tabindex="-1"></a><span class="co"># Add margins</span></span>
+<span id="cb345-2"><a href="contingency-tables.html#cb345-2" tabindex="-1"></a>table_from_df_margins <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(table_from_df)</span>
+<span id="cb345-3"><a href="contingency-tables.html#cb345-3" tabindex="-1"></a>table_from_df_margins</span></code></pre></div>
 <pre><code>##             infection
 ## appendectomy Yes  No Sum
 ##          Yes   7 124 131
@@ -1073,21 +1076,21 @@ I think <code>ftable()</code> could be usefule. I need to work it in somehow. <a
 <div id="why" class="section level3 hasAnchor" number="8.7.3">
 <h3><span class="header-section-number">8.7.3</span> Why use table objects?<a href="contingency-tables.html#why" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>I used to think the table class allowed us to more easily manipulate and perform calculations on contingency tables than the matrix class does, but now I’m not sure it does. For example, <code>addmargins()</code> and <code>prop.table()</code> both work on the matrix object. Calculations (like incidence proportions below) work on both too.</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="contingency-tables.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(matrix_ct)</span></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="contingency-tables.html#cb347-1" tabindex="-1"></a><span class="fu">prop.table</span>(matrix_ct)</span></code></pre></div>
 <pre><code>##             Infection
 ## Appendectomy         Yes        No
 ##          Yes 0.033333333 0.5904762
 ##          No  0.004761905 0.3714286</code></pre>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="contingency-tables.html#cb349-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(matrix_ct)</span></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="contingency-tables.html#cb349-1" tabindex="-1"></a><span class="fu">addmargins</span>(matrix_ct)</span></code></pre></div>
 <pre><code>##             Infection
 ## Appendectomy Yes  No Sum
 ##          Yes   7 124 131
 ##          No    1  78  79
 ##          Sum   8 202 210</code></pre>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="contingency-tables.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add incidence proportion to a matrix contingency table</span></span>
-<span id="cb351-2"><a href="contingency-tables.html#cb351-2" aria-hidden="true" tabindex="-1"></a>ip <span class="ot">&lt;-</span> matrix_ct_margins[, <span class="st">&quot;Yes&quot;</span>] <span class="sc">/</span> matrix_ct_margins[, <span class="st">&quot;Sum&quot;</span>]</span>
-<span id="cb351-3"><a href="contingency-tables.html#cb351-3" aria-hidden="true" tabindex="-1"></a>matrix_ct_margins_ip <span class="ot">&lt;-</span> <span class="fu">cbind</span>(matrix_ct_margins, ip)</span>
-<span id="cb351-4"><a href="contingency-tables.html#cb351-4" aria-hidden="true" tabindex="-1"></a>matrix_ct_margins_ip</span></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="contingency-tables.html#cb351-1" tabindex="-1"></a><span class="co"># Add incidence proportion to a matrix contingency table</span></span>
+<span id="cb351-2"><a href="contingency-tables.html#cb351-2" tabindex="-1"></a>ip <span class="ot">&lt;-</span> matrix_ct_margins[, <span class="st">&quot;Yes&quot;</span>] <span class="sc">/</span> matrix_ct_margins[, <span class="st">&quot;Sum&quot;</span>]</span>
+<span id="cb351-3"><a href="contingency-tables.html#cb351-3" tabindex="-1"></a>matrix_ct_margins_ip <span class="ot">&lt;-</span> <span class="fu">cbind</span>(matrix_ct_margins, ip)</span>
+<span id="cb351-4"><a href="contingency-tables.html#cb351-4" tabindex="-1"></a>matrix_ct_margins_ip</span></code></pre></div>
 <pre><code>##     Yes  No Sum         ip
 ## Yes   7 124 131 0.05343511
 ## No    1  78  79 0.01265823
@@ -1101,9 +1104,9 @@ I think <code>ftable()</code> could be usefule. I need to work it in somehow. <a
 <div id="matrix-object" class="section level3 hasAnchor" number="8.8.1">
 <h3><span class="header-section-number">8.8.1</span> Matrix object<a href="contingency-tables.html#matrix-object" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When starting with a matrix contingency table, the easiest way to convert it to a frequency table is to first convert it to a [table object][Table-objects] using <code>as.table()</code>. Then, we pass that result to <code>as.data.frame()</code> to create a frequency table. This solution comes from <a href="https://stackoverflow.com/questions/48330888/r-convert-contingency-table-to-long-data-frame">Stack Overflow</a>.</p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="contingency-tables.html#cb353-1" aria-hidden="true" tabindex="-1"></a>matrix_ct <span class="sc">%&gt;%</span> </span>
-<span id="cb353-2"><a href="contingency-tables.html#cb353-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.table</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb353-3"><a href="contingency-tables.html#cb353-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="contingency-tables.html#cb353-1" tabindex="-1"></a>matrix_ct <span class="sc">%&gt;%</span> </span>
+<span id="cb353-2"><a href="contingency-tables.html#cb353-2" tabindex="-1"></a>  <span class="fu">as.table</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb353-3"><a href="contingency-tables.html#cb353-3" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span></code></pre></div>
 <pre><code>##   Appendectomy Infection Freq
 ## 1          Yes       Yes    7
 ## 2           No       Yes    1
@@ -1113,9 +1116,9 @@ I think <code>ftable()</code> could be usefule. I need to work it in somehow. <a
 <div id="table-object-from-df-1" class="section level3 hasAnchor" number="8.8.2">
 <h3><span class="header-section-number">8.8.2</span> Table object from df<a href="contingency-tables.html#table-object-from-df-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When starting with a [table object made from a df][Table-object-from-df], we only need to pass it to the <code>as.data.frame()</code> function. Notice that the result is slightly different than above – the order of</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="contingency-tables.html#cb355-1" aria-hidden="true" tabindex="-1"></a>df_yn <span class="sc">%&gt;%</span> </span>
-<span id="cb355-2"><a href="contingency-tables.html#cb355-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb355-3"><a href="contingency-tables.html#cb355-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="contingency-tables.html#cb355-1" tabindex="-1"></a>df_yn <span class="sc">%&gt;%</span> </span>
+<span id="cb355-2"><a href="contingency-tables.html#cb355-2" tabindex="-1"></a>  <span class="fu">table</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb355-3"><a href="contingency-tables.html#cb355-3" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span></code></pre></div>
 <pre><code>##   appendectomy infection Freq
 ## 1          Yes       Yes    7
 ## 2           No       Yes    1
@@ -1126,19 +1129,19 @@ I think <code>ftable()</code> could be usefule. I need to work it in somehow. <a
 <h3><span class="header-section-number">8.8.3</span> Data frame contingency table<a href="contingency-tables.html#data-frame-contingency-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When starting from a [base R data frame contingency table][base-r-data-frame-with-rownames] (again, we don’t recommend doing this), there are a couple of options. <a href="https://stackoverflow.com/questions/48330888/r-convert-contingency-table-to-long-data-frame">These two come from Stack Overflow</a>.</p>
 <p>The first method is a bit convoluted, but uses only base R functions.</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="contingency-tables.html#cb357-1" aria-hidden="true" tabindex="-1"></a>df_ct <span class="sc">%&gt;%</span> </span>
-<span id="cb357-2"><a href="contingency-tables.html#cb357-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb357-3"><a href="contingency-tables.html#cb357-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.table</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb357-4"><a href="contingency-tables.html#cb357-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="contingency-tables.html#cb357-1" tabindex="-1"></a>df_ct <span class="sc">%&gt;%</span> </span>
+<span id="cb357-2"><a href="contingency-tables.html#cb357-2" tabindex="-1"></a>  <span class="fu">as.matrix</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb357-3"><a href="contingency-tables.html#cb357-3" tabindex="-1"></a>  <span class="fu">as.table</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb357-4"><a href="contingency-tables.html#cb357-4" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span></code></pre></div>
 <pre><code>##              Var1         Var2 Freq
 ## 1    Appendectomy    Infection    7
 ## 2 No Appendectomy    Infection    1
 ## 3    Appendectomy No.Infection  124
 ## 4 No Appendectomy No.Infection   78</code></pre>
 <p>The second method is a <code>Tidyverse</code> solution.</p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="contingency-tables.html#cb359-1" aria-hidden="true" tabindex="-1"></a>df_ct <span class="sc">%&gt;%</span> </span>
-<span id="cb359-2"><a href="contingency-tables.html#cb359-2" aria-hidden="true" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">rownames_to_column</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb359-3"><a href="contingency-tables.html#cb359-3" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="fu">c</span>(Infection, No.Infection))</span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="contingency-tables.html#cb359-1" tabindex="-1"></a>df_ct <span class="sc">%&gt;%</span> </span>
+<span id="cb359-2"><a href="contingency-tables.html#cb359-2" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">rownames_to_column</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb359-3"><a href="contingency-tables.html#cb359-3" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="fu">c</span>(Infection, No.Infection))</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 3
 ##   rowname         name         value
 ##   &lt;chr&gt;           &lt;chr&gt;        &lt;dbl&gt;
@@ -1154,24 +1157,24 @@ I think <code>ftable()</code> could be usefule. I need to work it in somehow. <a
 <p>All of the methods I’ve found so far require creating a frequency table as an intermediate step.</p>
 <div id="matrix-object-1" class="section level3 hasAnchor" number="8.9.1">
 <h3><span class="header-section-number">8.9.1</span> Matrix object<a href="contingency-tables.html#matrix-object-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="contingency-tables.html#cb361-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert from data frame of counts to data frame of cases.</span></span>
-<span id="cb361-2"><a href="contingency-tables.html#cb361-2" aria-hidden="true" tabindex="-1"></a><span class="co"># `countcol` is the name of the column containing the counts</span></span>
-<span id="cb361-3"><a href="contingency-tables.html#cb361-3" aria-hidden="true" tabindex="-1"></a><span class="co"># From: https://cran.r-project.org/web/packages/DescTools/vignettes/TablesInR.pdf</span></span>
-<span id="cb361-4"><a href="contingency-tables.html#cb361-4" aria-hidden="true" tabindex="-1"></a>countsToCases <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">countcol =</span> <span class="st">&quot;Freq&quot;</span>) {</span>
-<span id="cb361-5"><a href="contingency-tables.html#cb361-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the row indices to pull from x</span></span>
-<span id="cb361-6"><a href="contingency-tables.html#cb361-6" aria-hidden="true" tabindex="-1"></a>    idx <span class="ot">&lt;-</span> <span class="fu">rep.int</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(x)), x[[countcol]])</span>
-<span id="cb361-7"><a href="contingency-tables.html#cb361-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb361-8"><a href="contingency-tables.html#cb361-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Drop count column</span></span>
-<span id="cb361-9"><a href="contingency-tables.html#cb361-9" aria-hidden="true" tabindex="-1"></a>    x[[countcol]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb361-10"><a href="contingency-tables.html#cb361-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb361-11"><a href="contingency-tables.html#cb361-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the rows from x</span></span>
-<span id="cb361-12"><a href="contingency-tables.html#cb361-12" aria-hidden="true" tabindex="-1"></a>    x[idx, ]</span>
-<span id="cb361-13"><a href="contingency-tables.html#cb361-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="contingency-tables.html#cb362-1" aria-hidden="true" tabindex="-1"></a>matrix_ct <span class="sc">%&gt;%</span> </span>
-<span id="cb362-2"><a href="contingency-tables.html#cb362-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.table</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb362-3"><a href="contingency-tables.html#cb362-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb362-4"><a href="contingency-tables.html#cb362-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">countsToCases</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb362-5"><a href="contingency-tables.html#cb362-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="contingency-tables.html#cb361-1" tabindex="-1"></a><span class="co"># Convert from data frame of counts to data frame of cases.</span></span>
+<span id="cb361-2"><a href="contingency-tables.html#cb361-2" tabindex="-1"></a><span class="co"># `countcol` is the name of the column containing the counts</span></span>
+<span id="cb361-3"><a href="contingency-tables.html#cb361-3" tabindex="-1"></a><span class="co"># From: https://cran.r-project.org/web/packages/DescTools/vignettes/TablesInR.pdf</span></span>
+<span id="cb361-4"><a href="contingency-tables.html#cb361-4" tabindex="-1"></a>countsToCases <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">countcol =</span> <span class="st">&quot;Freq&quot;</span>) {</span>
+<span id="cb361-5"><a href="contingency-tables.html#cb361-5" tabindex="-1"></a>    <span class="co"># Get the row indices to pull from x</span></span>
+<span id="cb361-6"><a href="contingency-tables.html#cb361-6" tabindex="-1"></a>    idx <span class="ot">&lt;-</span> <span class="fu">rep.int</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(x)), x[[countcol]])</span>
+<span id="cb361-7"><a href="contingency-tables.html#cb361-7" tabindex="-1"></a></span>
+<span id="cb361-8"><a href="contingency-tables.html#cb361-8" tabindex="-1"></a>    <span class="co"># Drop count column</span></span>
+<span id="cb361-9"><a href="contingency-tables.html#cb361-9" tabindex="-1"></a>    x[[countcol]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb361-10"><a href="contingency-tables.html#cb361-10" tabindex="-1"></a></span>
+<span id="cb361-11"><a href="contingency-tables.html#cb361-11" tabindex="-1"></a>    <span class="co"># Get the rows from x</span></span>
+<span id="cb361-12"><a href="contingency-tables.html#cb361-12" tabindex="-1"></a>    x[idx, ]</span>
+<span id="cb361-13"><a href="contingency-tables.html#cb361-13" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="contingency-tables.html#cb362-1" tabindex="-1"></a>matrix_ct <span class="sc">%&gt;%</span> </span>
+<span id="cb362-2"><a href="contingency-tables.html#cb362-2" tabindex="-1"></a>  <span class="fu">as.table</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb362-3"><a href="contingency-tables.html#cb362-3" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb362-4"><a href="contingency-tables.html#cb362-4" tabindex="-1"></a>  <span class="fu">countsToCases</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb362-5"><a href="contingency-tables.html#cb362-5" tabindex="-1"></a>  <span class="fu">tibble</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 210 × 2
 ##    Appendectomy Infection
 ##    &lt;fct&gt;        &lt;fct&gt;    
@@ -1189,50 +1192,50 @@ I think <code>ftable()</code> could be usefule. I need to work it in somehow. <a
 <p>(Delete)
 Works, but I don’t like it. I’m trying to figure out why. Maybe because it uses a table object and a frequency table object as an intermediate step? Why do I care about that, though? Also, perhaps I don’t like the final result? Do I want Yes/No values or variable name values in the final result (compare this result to the result below for “Convert a frequency table into a data frame of observations”).</p>
 <p>Let’s pull this function apart and really understand how it works.</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="contingency-tables.html#cb364-1" aria-hidden="true" tabindex="-1"></a>test_mat_ct_to_df <span class="ot">&lt;-</span> matrix_ct <span class="sc">%&gt;%</span> </span>
-<span id="cb364-2"><a href="contingency-tables.html#cb364-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.table</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb364-3"><a href="contingency-tables.html#cb364-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
-<span id="cb364-4"><a href="contingency-tables.html#cb364-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb364-5"><a href="contingency-tables.html#cb364-5" aria-hidden="true" tabindex="-1"></a>test_mat_ct_to_df </span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="contingency-tables.html#cb364-1" tabindex="-1"></a>test_mat_ct_to_df <span class="ot">&lt;-</span> matrix_ct <span class="sc">%&gt;%</span> </span>
+<span id="cb364-2"><a href="contingency-tables.html#cb364-2" tabindex="-1"></a>  <span class="fu">as.table</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb364-3"><a href="contingency-tables.html#cb364-3" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
+<span id="cb364-4"><a href="contingency-tables.html#cb364-4" tabindex="-1"></a></span>
+<span id="cb364-5"><a href="contingency-tables.html#cb364-5" tabindex="-1"></a>test_mat_ct_to_df </span></code></pre></div>
 <pre><code>##   Appendectomy Infection Freq
 ## 1          Yes       Yes    7
 ## 2           No       Yes    1
 ## 3          Yes        No  124
 ## 4           No        No   78</code></pre>
 <p>At this point, we have a frequency table of class data frame.</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="contingency-tables.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a vector if the number of times each combination (each row) from the </span></span>
-<span id="cb366-2"><a href="contingency-tables.html#cb366-2" aria-hidden="true" tabindex="-1"></a><span class="co"># frequency table is to appear in the new data frame of observations</span></span>
-<span id="cb366-3"><a href="contingency-tables.html#cb366-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb366-4"><a href="contingency-tables.html#cb366-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of rows in the df</span></span>
-<span id="cb366-5"><a href="contingency-tables.html#cb366-5" aria-hidden="true" tabindex="-1"></a>rows <span class="ot">&lt;-</span> <span class="fu">nrow</span>(test_mat_ct_to_df)</span>
-<span id="cb366-6"><a href="contingency-tables.html#cb366-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a sequence of integers from 1 to rows</span></span>
-<span id="cb366-7"><a href="contingency-tables.html#cb366-7" aria-hidden="true" tabindex="-1"></a>one_to_n_rows <span class="ot">&lt;-</span> <span class="fu">seq_len</span>(rows)</span>
-<span id="cb366-8"><a href="contingency-tables.html#cb366-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Pull vector of frequencies</span></span>
-<span id="cb366-9"><a href="contingency-tables.html#cb366-9" aria-hidden="true" tabindex="-1"></a>freqs <span class="ot">&lt;-</span> test_mat_ct_to_df[[<span class="st">&quot;Freq&quot;</span>]]</span>
-<span id="cb366-10"><a href="contingency-tables.html#cb366-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Rep.int is just a faster, simplified version of rep</span></span>
-<span id="cb366-11"><a href="contingency-tables.html#cb366-11" aria-hidden="true" tabindex="-1"></a>combo_reps <span class="ot">&lt;-</span> <span class="fu">rep.int</span>(one_to_n_rows, freqs)</span>
-<span id="cb366-12"><a href="contingency-tables.html#cb366-12" aria-hidden="true" tabindex="-1"></a>combo_reps</span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="contingency-tables.html#cb366-1" tabindex="-1"></a><span class="co"># Create a vector if the number of times each combination (each row) from the </span></span>
+<span id="cb366-2"><a href="contingency-tables.html#cb366-2" tabindex="-1"></a><span class="co"># frequency table is to appear in the new data frame of observations</span></span>
+<span id="cb366-3"><a href="contingency-tables.html#cb366-3" tabindex="-1"></a></span>
+<span id="cb366-4"><a href="contingency-tables.html#cb366-4" tabindex="-1"></a><span class="co"># Count the number of rows in the df</span></span>
+<span id="cb366-5"><a href="contingency-tables.html#cb366-5" tabindex="-1"></a>rows <span class="ot">&lt;-</span> <span class="fu">nrow</span>(test_mat_ct_to_df)</span>
+<span id="cb366-6"><a href="contingency-tables.html#cb366-6" tabindex="-1"></a><span class="co"># Create a sequence of integers from 1 to rows</span></span>
+<span id="cb366-7"><a href="contingency-tables.html#cb366-7" tabindex="-1"></a>one_to_n_rows <span class="ot">&lt;-</span> <span class="fu">seq_len</span>(rows)</span>
+<span id="cb366-8"><a href="contingency-tables.html#cb366-8" tabindex="-1"></a><span class="co"># Pull vector of frequencies</span></span>
+<span id="cb366-9"><a href="contingency-tables.html#cb366-9" tabindex="-1"></a>freqs <span class="ot">&lt;-</span> test_mat_ct_to_df[[<span class="st">&quot;Freq&quot;</span>]]</span>
+<span id="cb366-10"><a href="contingency-tables.html#cb366-10" tabindex="-1"></a><span class="co"># Rep.int is just a faster, simplified version of rep</span></span>
+<span id="cb366-11"><a href="contingency-tables.html#cb366-11" tabindex="-1"></a>combo_reps <span class="ot">&lt;-</span> <span class="fu">rep.int</span>(one_to_n_rows, freqs)</span>
+<span id="cb366-12"><a href="contingency-tables.html#cb366-12" tabindex="-1"></a>combo_reps</span></code></pre></div>
 <pre><code>##   [1] 1 1 1 1 1 1 1 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
 ##  [38] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
 ##  [75] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
 ## [112] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
 ## [149] 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
 ## [186] 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4</code></pre>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="contingency-tables.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop the count (Freq) column from the frequency table</span></span>
-<span id="cb368-2"><a href="contingency-tables.html#cb368-2" aria-hidden="true" tabindex="-1"></a>test_mat_ct_to_df[[<span class="st">&quot;Freq&quot;</span>]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb368-3"><a href="contingency-tables.html#cb368-3" aria-hidden="true" tabindex="-1"></a>test_mat_ct_to_df</span></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="contingency-tables.html#cb368-1" tabindex="-1"></a><span class="co"># Drop the count (Freq) column from the frequency table</span></span>
+<span id="cb368-2"><a href="contingency-tables.html#cb368-2" tabindex="-1"></a>test_mat_ct_to_df[[<span class="st">&quot;Freq&quot;</span>]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb368-3"><a href="contingency-tables.html#cb368-3" tabindex="-1"></a>test_mat_ct_to_df</span></code></pre></div>
 <pre><code>##   Appendectomy Infection
 ## 1          Yes       Yes
 ## 2           No       Yes
 ## 3          Yes        No
 ## 4           No        No</code></pre>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="contingency-tables.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeat each row of test_mat_ct_to_df according to combo_reps</span></span>
-<span id="cb370-2"><a href="contingency-tables.html#cb370-2" aria-hidden="true" tabindex="-1"></a>df_obs_from_matrix_ct <span class="ot">&lt;-</span> test_mat_ct_to_df[combo_reps, ]</span>
-<span id="cb370-3"><a href="contingency-tables.html#cb370-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb370-4"><a href="contingency-tables.html#cb370-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop weird numbered rownames</span></span>
-<span id="cb370-5"><a href="contingency-tables.html#cb370-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(df_obs_from_matrix_ct) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb370-6"><a href="contingency-tables.html#cb370-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb370-7"><a href="contingency-tables.html#cb370-7" aria-hidden="true" tabindex="-1"></a>df_obs_from_matrix_ct</span></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="contingency-tables.html#cb370-1" tabindex="-1"></a><span class="co"># Repeat each row of test_mat_ct_to_df according to combo_reps</span></span>
+<span id="cb370-2"><a href="contingency-tables.html#cb370-2" tabindex="-1"></a>df_obs_from_matrix_ct <span class="ot">&lt;-</span> test_mat_ct_to_df[combo_reps, ]</span>
+<span id="cb370-3"><a href="contingency-tables.html#cb370-3" tabindex="-1"></a></span>
+<span id="cb370-4"><a href="contingency-tables.html#cb370-4" tabindex="-1"></a><span class="co"># Drop weird numbered rownames</span></span>
+<span id="cb370-5"><a href="contingency-tables.html#cb370-5" tabindex="-1"></a><span class="fu">rownames</span>(df_obs_from_matrix_ct) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb370-6"><a href="contingency-tables.html#cb370-6" tabindex="-1"></a></span>
+<span id="cb370-7"><a href="contingency-tables.html#cb370-7" tabindex="-1"></a>df_obs_from_matrix_ct</span></code></pre></div>
 <pre><code>##     Appendectomy Infection
 ## 1            Yes       Yes
 ## 2            Yes       Yes
@@ -1448,10 +1451,10 @@ Works, but I don’t like it. I’m trying to figure out why. Maybe because it u
 <div id="table-from-matrix-to-df-obs" class="section level3 hasAnchor" number="8.9.2">
 <h3><span class="header-section-number">8.9.2</span> Table object<a href="contingency-tables.html#table-from-matrix-to-df-obs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Same as the matrix example above, there is just one less step because you’ve already converted the matrix to a table object.</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="contingency-tables.html#cb372-1" aria-hidden="true" tabindex="-1"></a>table_from_matrix <span class="sc">%&gt;%</span> </span>
-<span id="cb372-2"><a href="contingency-tables.html#cb372-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb372-3"><a href="contingency-tables.html#cb372-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">countsToCases</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb372-4"><a href="contingency-tables.html#cb372-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="contingency-tables.html#cb372-1" tabindex="-1"></a>table_from_matrix <span class="sc">%&gt;%</span> </span>
+<span id="cb372-2"><a href="contingency-tables.html#cb372-2" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb372-3"><a href="contingency-tables.html#cb372-3" tabindex="-1"></a>  <span class="fu">countsToCases</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb372-4"><a href="contingency-tables.html#cb372-4" tabindex="-1"></a>  <span class="fu">tibble</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 210 × 2
 ##    Appendectomy Infection
 ##    &lt;fct&gt;        &lt;fct&gt;    
@@ -1467,10 +1470,10 @@ Works, but I don’t like it. I’m trying to figure out why. Maybe because it u
 ## 10 Yes          No       
 ## # … with 200 more rows</code></pre>
 <p>And for completeness, here is the table object we previously created from a data frame of observations.</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="contingency-tables.html#cb374-1" aria-hidden="true" tabindex="-1"></a>table_from_df <span class="sc">%&gt;%</span> </span>
-<span id="cb374-2"><a href="contingency-tables.html#cb374-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb374-3"><a href="contingency-tables.html#cb374-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">countsToCases</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb374-4"><a href="contingency-tables.html#cb374-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="contingency-tables.html#cb374-1" tabindex="-1"></a>table_from_df <span class="sc">%&gt;%</span> </span>
+<span id="cb374-2"><a href="contingency-tables.html#cb374-2" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb374-3"><a href="contingency-tables.html#cb374-3" tabindex="-1"></a>  <span class="fu">countsToCases</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb374-4"><a href="contingency-tables.html#cb374-4" tabindex="-1"></a>  <span class="fu">tibble</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 210 × 2
 ##    appendectomy infection
 ##    &lt;fct&gt;        &lt;fct&gt;    
@@ -1491,7 +1494,7 @@ Works, but I don’t like it. I’m trying to figure out why. Maybe because it u
 <h2><span class="header-section-number">8.10</span> Convert a frequency table into a contingency table.<a href="contingency-tables.html#convert-a-frequency-table-into-a-contingency-table." class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <a href="http://www.cookbook-r.com/Manipulating_data/Converting_between_data_frames_and_contingency_tables/">Cookbook for R</a> also shows how you can convert a frequency table into a contingency table using the base R <code>xtabs()</code> function.</p>
 <p>As a reminder, <code>freq_tbl</code> was created above in the section on <a href="contingency-tables.html#man-freq-tbl">manually creating a frequency table.</a></p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="contingency-tables.html#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="fu">xtabs</span>(count <span class="sc">~</span> appendectomy <span class="sc">+</span> infection, <span class="at">data =</span> freq_tbl)</span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="contingency-tables.html#cb376-1" tabindex="-1"></a><span class="fu">xtabs</span>(count <span class="sc">~</span> appendectomy <span class="sc">+</span> infection, <span class="at">data =</span> freq_tbl)</span></code></pre></div>
 <pre><code>##             infection
 ## appendectomy  No Yes
 ##          No   78   1
@@ -1499,12 +1502,12 @@ Works, but I don’t like it. I’m trying to figure out why. Maybe because it u
 <p class="warning">
 ⚠️<strong>Warning:</strong> Notice that the “No” category comes before the “Yes” category by default when passing a frequency table to the <code>xtabs()</code> function. This typically not the order we would put them in for analysis. To prevent this from happening, change the ordering of the factor levels in the frequency table (demonstrated below).
 </p>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="contingency-tables.html#cb378-1" aria-hidden="true" tabindex="-1"></a>freq_tbl_yn <span class="ot">&lt;-</span> freq_tbl <span class="sc">%&gt;%</span> </span>
-<span id="cb378-2"><a href="contingency-tables.html#cb378-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb378-3"><a href="contingency-tables.html#cb378-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">appendectomy =</span> <span class="fu">factor</span>(appendectomy, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)),</span>
-<span id="cb378-4"><a href="contingency-tables.html#cb378-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">infection =</span> <span class="fu">factor</span>(infection, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>))</span>
-<span id="cb378-5"><a href="contingency-tables.html#cb378-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="contingency-tables.html#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="fu">xtabs</span>(count <span class="sc">~</span> appendectomy <span class="sc">+</span> infection, <span class="at">data =</span> freq_tbl_yn)</span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="contingency-tables.html#cb378-1" tabindex="-1"></a>freq_tbl_yn <span class="ot">&lt;-</span> freq_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb378-2"><a href="contingency-tables.html#cb378-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb378-3"><a href="contingency-tables.html#cb378-3" tabindex="-1"></a>    <span class="at">appendectomy =</span> <span class="fu">factor</span>(appendectomy, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)),</span>
+<span id="cb378-4"><a href="contingency-tables.html#cb378-4" tabindex="-1"></a>    <span class="at">infection =</span> <span class="fu">factor</span>(infection, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>))</span>
+<span id="cb378-5"><a href="contingency-tables.html#cb378-5" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="contingency-tables.html#cb379-1" tabindex="-1"></a><span class="fu">xtabs</span>(count <span class="sc">~</span> appendectomy <span class="sc">+</span> infection, <span class="at">data =</span> freq_tbl_yn)</span></code></pre></div>
 <pre><code>##             infection
 ## appendectomy Yes  No
 ##          Yes   7 124
@@ -1513,8 +1516,8 @@ Works, but I don’t like it. I’m trying to figure out why. Maybe because it u
 <div id="convert-a-frequency-table-into-a-data-frame-of-observations." class="section level2 hasAnchor" number="8.11">
 <h2><span class="header-section-number">8.11</span> Convert a frequency table into a data frame of observations.<a href="contingency-tables.html#convert-a-frequency-table-into-a-data-frame-of-observations." class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We already saw how to do this <a href="contingency-tables.html#table-from-matrix-to-df-obs">above</a> as an intermediate step between a contingency table and a data frame of observations.</p>
-<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="contingency-tables.html#cb381-1" aria-hidden="true" tabindex="-1"></a>freq_tbl <span class="sc">%&gt;%</span> </span>
-<span id="cb381-2"><a href="contingency-tables.html#cb381-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">countsToCases</span>(<span class="st">&quot;count&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="contingency-tables.html#cb381-1" tabindex="-1"></a>freq_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb381-2"><a href="contingency-tables.html#cb381-2" tabindex="-1"></a>   <span class="fu">countsToCases</span>(<span class="st">&quot;count&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 210 × 2
 ##    appendectomy infection
 ##    &lt;chr&gt;        &lt;chr&gt;    
@@ -1534,19 +1537,19 @@ Works, but I don’t like it. I’m trying to figure out why. Maybe because it u
 <h2><span class="header-section-number">8.12</span> Bottom line<a href="contingency-tables.html#bottom-line" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This section briefly distill down everything from above into the most common scenario we are actually working on – Manually create a contingency table and then convert it to a data frame of observations.</p>
 <p>When we open a open a book or journal article and see a 2x2 table, or when we just decide to create a 2x2 table from scratch to do some experimenting, it looks like it’s best to start with a matrix and convert it to a table object.</p>
-<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="contingency-tables.html#cb383-1" aria-hidden="true" tabindex="-1"></a>matrix_ct <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb383-2"><a href="contingency-tables.html#cb383-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">7</span>, <span class="at">b =</span> <span class="dv">124</span>, <span class="at">c =</span> <span class="dv">1</span>, <span class="at">d =</span> <span class="dv">78</span>),</span>
-<span id="cb383-3"><a href="contingency-tables.html#cb383-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>,</span>
-<span id="cb383-4"><a href="contingency-tables.html#cb383-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb383-5"><a href="contingency-tables.html#cb383-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb383-6"><a href="contingency-tables.html#cb383-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb383-7"><a href="contingency-tables.html#cb383-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(matrix_ct) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb383-8"><a href="contingency-tables.html#cb383-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Appendectomy =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
-<span id="cb383-9"><a href="contingency-tables.html#cb383-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Infection =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
-<span id="cb383-10"><a href="contingency-tables.html#cb383-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb383-11"><a href="contingency-tables.html#cb383-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb383-12"><a href="contingency-tables.html#cb383-12" aria-hidden="true" tabindex="-1"></a>matrix_ct_margins <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(matrix_ct)</span>
-<span id="cb383-13"><a href="contingency-tables.html#cb383-13" aria-hidden="true" tabindex="-1"></a>matrix_ct_margins</span></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="contingency-tables.html#cb383-1" tabindex="-1"></a>matrix_ct <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb383-2"><a href="contingency-tables.html#cb383-2" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">7</span>, <span class="at">b =</span> <span class="dv">124</span>, <span class="at">c =</span> <span class="dv">1</span>, <span class="at">d =</span> <span class="dv">78</span>),</span>
+<span id="cb383-3"><a href="contingency-tables.html#cb383-3" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>,</span>
+<span id="cb383-4"><a href="contingency-tables.html#cb383-4" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb383-5"><a href="contingency-tables.html#cb383-5" tabindex="-1"></a>)</span>
+<span id="cb383-6"><a href="contingency-tables.html#cb383-6" tabindex="-1"></a></span>
+<span id="cb383-7"><a href="contingency-tables.html#cb383-7" tabindex="-1"></a><span class="fu">dimnames</span>(matrix_ct) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb383-8"><a href="contingency-tables.html#cb383-8" tabindex="-1"></a>  <span class="at">Appendectomy =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
+<span id="cb383-9"><a href="contingency-tables.html#cb383-9" tabindex="-1"></a>  <span class="at">Infection =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
+<span id="cb383-10"><a href="contingency-tables.html#cb383-10" tabindex="-1"></a>)</span>
+<span id="cb383-11"><a href="contingency-tables.html#cb383-11" tabindex="-1"></a></span>
+<span id="cb383-12"><a href="contingency-tables.html#cb383-12" tabindex="-1"></a>matrix_ct_margins <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(matrix_ct)</span>
+<span id="cb383-13"><a href="contingency-tables.html#cb383-13" tabindex="-1"></a>matrix_ct_margins</span></code></pre></div>
 <pre><code>##             Infection
 ## Appendectomy Yes  No Sum
 ##          Yes   7 124 131
@@ -1554,11 +1557,11 @@ Works, but I don’t like it. I’m trying to figure out why. Maybe because it u
 ##          Sum   8 202 210</code></pre>
 <p>You can go ahead and convert to a table at this point, but you don’t have to. Look back at the <a href="contingency-tables.html#why">section on why to consider using a table object</a>, but for now, I can’t come up with a good reason to do this off the top of my head.</p>
 <p>To then convert that contingency table to a data frame of observations, we use can simply use the following code.</p>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="contingency-tables.html#cb385-1" aria-hidden="true" tabindex="-1"></a>matrix_ct <span class="sc">%&gt;%</span> </span>
-<span id="cb385-2"><a href="contingency-tables.html#cb385-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.table</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb385-3"><a href="contingency-tables.html#cb385-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb385-4"><a href="contingency-tables.html#cb385-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">countsToCases</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb385-5"><a href="contingency-tables.html#cb385-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="contingency-tables.html#cb385-1" tabindex="-1"></a>matrix_ct <span class="sc">%&gt;%</span> </span>
+<span id="cb385-2"><a href="contingency-tables.html#cb385-2" tabindex="-1"></a>  <span class="fu">as.table</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb385-3"><a href="contingency-tables.html#cb385-3" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb385-4"><a href="contingency-tables.html#cb385-4" tabindex="-1"></a>  <span class="fu">countsToCases</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb385-5"><a href="contingency-tables.html#cb385-5" tabindex="-1"></a>  <span class="fu">tibble</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 210 × 2
 ##    Appendectomy Infection
 ##    &lt;fct&gt;        &lt;fct&gt;    
@@ -1580,78 +1583,78 @@ Works, but I don’t like it. I’m trying to figure out why. Maybe because it u
 <div id="create-a-contingency-table" class="section level3 hasAnchor" number="8.13.1">
 <h3><span class="header-section-number">8.13.1</span> Create a contingency table<a href="contingency-tables.html#create-a-contingency-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>After playing around with this a little bit, I couldn’t come up with a function that was really any better (i.e., less lines of code or easier to understand) than just creating the matrix using the standard base R functions. This is especially true when contingency tables However, I’m leaving the code here just in case.</p>
-<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="contingency-tables.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code for manually creating a matrix contingency table.</span></span>
-<span id="cb387-2"><a href="contingency-tables.html#cb387-2" aria-hidden="true" tabindex="-1"></a>matrix_ct <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb387-3"><a href="contingency-tables.html#cb387-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">7</span>, <span class="at">b =</span> <span class="dv">124</span>, <span class="at">c =</span> <span class="dv">1</span>, <span class="at">d =</span> <span class="dv">78</span>),</span>
-<span id="cb387-4"><a href="contingency-tables.html#cb387-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>,</span>
-<span id="cb387-5"><a href="contingency-tables.html#cb387-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb387-6"><a href="contingency-tables.html#cb387-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb387-7"><a href="contingency-tables.html#cb387-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb387-8"><a href="contingency-tables.html#cb387-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(matrix_ct) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb387-9"><a href="contingency-tables.html#cb387-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Appendectomy =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
-<span id="cb387-10"><a href="contingency-tables.html#cb387-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">Infection =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
-<span id="cb387-11"><a href="contingency-tables.html#cb387-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb387-12"><a href="contingency-tables.html#cb387-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb387-13"><a href="contingency-tables.html#cb387-13" aria-hidden="true" tabindex="-1"></a>matrix_ct_margins <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(matrix_ct)</span>
-<span id="cb387-14"><a href="contingency-tables.html#cb387-14" aria-hidden="true" tabindex="-1"></a>matrix_ct_margins</span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="contingency-tables.html#cb387-1" tabindex="-1"></a><span class="co"># Code for manually creating a matrix contingency table.</span></span>
+<span id="cb387-2"><a href="contingency-tables.html#cb387-2" tabindex="-1"></a>matrix_ct <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb387-3"><a href="contingency-tables.html#cb387-3" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">7</span>, <span class="at">b =</span> <span class="dv">124</span>, <span class="at">c =</span> <span class="dv">1</span>, <span class="at">d =</span> <span class="dv">78</span>),</span>
+<span id="cb387-4"><a href="contingency-tables.html#cb387-4" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>,</span>
+<span id="cb387-5"><a href="contingency-tables.html#cb387-5" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb387-6"><a href="contingency-tables.html#cb387-6" tabindex="-1"></a>)</span>
+<span id="cb387-7"><a href="contingency-tables.html#cb387-7" tabindex="-1"></a></span>
+<span id="cb387-8"><a href="contingency-tables.html#cb387-8" tabindex="-1"></a><span class="fu">dimnames</span>(matrix_ct) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb387-9"><a href="contingency-tables.html#cb387-9" tabindex="-1"></a>  <span class="at">Appendectomy =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
+<span id="cb387-10"><a href="contingency-tables.html#cb387-10" tabindex="-1"></a>  <span class="at">Infection =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
+<span id="cb387-11"><a href="contingency-tables.html#cb387-11" tabindex="-1"></a>)</span>
+<span id="cb387-12"><a href="contingency-tables.html#cb387-12" tabindex="-1"></a></span>
+<span id="cb387-13"><a href="contingency-tables.html#cb387-13" tabindex="-1"></a>matrix_ct_margins <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(matrix_ct)</span>
+<span id="cb387-14"><a href="contingency-tables.html#cb387-14" tabindex="-1"></a>matrix_ct_margins</span></code></pre></div>
 <pre><code>##             Infection
 ## Appendectomy Yes  No Sum
 ##          Yes   7 124 131
 ##          No    1  78  79
 ##          Sum   8 202 210</code></pre>
 <p>Here is the function code</p>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="contingency-tables.html#cb389-1" aria-hidden="true" tabindex="-1"></a>contingency_table <span class="ot">&lt;-</span> <span class="cf">function</span>(.values, ncol, dim_names, <span class="at">margins =</span> <span class="cn">FALSE</span>) {</span>
-<span id="cb389-2"><a href="contingency-tables.html#cb389-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create the matrix</span></span>
-<span id="cb389-3"><a href="contingency-tables.html#cb389-3" aria-hidden="true" tabindex="-1"></a>  matrix_ct <span class="ot">&lt;-</span> <span class="fu">matrix</span>(.values, <span class="at">ncol =</span> ncol, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb389-4"><a href="contingency-tables.html#cb389-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb389-5"><a href="contingency-tables.html#cb389-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Optionally add dimnames</span></span>
-<span id="cb389-6"><a href="contingency-tables.html#cb389-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">missing</span>(dim_names)) {</span>
-<span id="cb389-7"><a href="contingency-tables.html#cb389-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dimnames</span>(matrix_ct) <span class="ot">&lt;-</span> dim_names</span>
-<span id="cb389-8"><a href="contingency-tables.html#cb389-8" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb389-9"><a href="contingency-tables.html#cb389-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb389-10"><a href="contingency-tables.html#cb389-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Optionally add margins</span></span>
-<span id="cb389-11"><a href="contingency-tables.html#cb389-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (margins) {</span>
-<span id="cb389-12"><a href="contingency-tables.html#cb389-12" aria-hidden="true" tabindex="-1"></a>    matrix_ct <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(matrix_ct)</span>
-<span id="cb389-13"><a href="contingency-tables.html#cb389-13" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb389-14"><a href="contingency-tables.html#cb389-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb389-15"><a href="contingency-tables.html#cb389-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return contingency table</span></span>
-<span id="cb389-16"><a href="contingency-tables.html#cb389-16" aria-hidden="true" tabindex="-1"></a>  matrix_ct</span>
-<span id="cb389-17"><a href="contingency-tables.html#cb389-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="contingency-tables.html#cb389-1" tabindex="-1"></a>contingency_table <span class="ot">&lt;-</span> <span class="cf">function</span>(.values, ncol, dim_names, <span class="at">margins =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb389-2"><a href="contingency-tables.html#cb389-2" tabindex="-1"></a>  <span class="co"># Create the matrix</span></span>
+<span id="cb389-3"><a href="contingency-tables.html#cb389-3" tabindex="-1"></a>  matrix_ct <span class="ot">&lt;-</span> <span class="fu">matrix</span>(.values, <span class="at">ncol =</span> ncol, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb389-4"><a href="contingency-tables.html#cb389-4" tabindex="-1"></a>  </span>
+<span id="cb389-5"><a href="contingency-tables.html#cb389-5" tabindex="-1"></a>  <span class="co"># Optionally add dimnames</span></span>
+<span id="cb389-6"><a href="contingency-tables.html#cb389-6" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">missing</span>(dim_names)) {</span>
+<span id="cb389-7"><a href="contingency-tables.html#cb389-7" tabindex="-1"></a>    <span class="fu">dimnames</span>(matrix_ct) <span class="ot">&lt;-</span> dim_names</span>
+<span id="cb389-8"><a href="contingency-tables.html#cb389-8" tabindex="-1"></a>  }</span>
+<span id="cb389-9"><a href="contingency-tables.html#cb389-9" tabindex="-1"></a>  </span>
+<span id="cb389-10"><a href="contingency-tables.html#cb389-10" tabindex="-1"></a>  <span class="co"># Optionally add margins</span></span>
+<span id="cb389-11"><a href="contingency-tables.html#cb389-11" tabindex="-1"></a>  <span class="cf">if</span> (margins) {</span>
+<span id="cb389-12"><a href="contingency-tables.html#cb389-12" tabindex="-1"></a>    matrix_ct <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(matrix_ct)</span>
+<span id="cb389-13"><a href="contingency-tables.html#cb389-13" tabindex="-1"></a>  }</span>
+<span id="cb389-14"><a href="contingency-tables.html#cb389-14" tabindex="-1"></a>  </span>
+<span id="cb389-15"><a href="contingency-tables.html#cb389-15" tabindex="-1"></a>  <span class="co"># Return contingency table</span></span>
+<span id="cb389-16"><a href="contingency-tables.html#cb389-16" tabindex="-1"></a>  matrix_ct</span>
+<span id="cb389-17"><a href="contingency-tables.html#cb389-17" tabindex="-1"></a>}</span></code></pre></div>
 <p>Testing with a 2x2 table</p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="contingency-tables.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contingency_table</span>(</span>
-<span id="cb390-2"><a href="contingency-tables.html#cb390-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">.values =</span> <span class="fu">c</span>(</span>
-<span id="cb390-3"><a href="contingency-tables.html#cb390-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">7</span>, <span class="dv">224</span>,</span>
-<span id="cb390-4"><a href="contingency-tables.html#cb390-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>, <span class="dv">78</span></span>
-<span id="cb390-5"><a href="contingency-tables.html#cb390-5" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb390-6"><a href="contingency-tables.html#cb390-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>,</span>
-<span id="cb390-7"><a href="contingency-tables.html#cb390-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">dim_names =</span> <span class="fu">list</span>(</span>
-<span id="cb390-8"><a href="contingency-tables.html#cb390-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Appendectomy =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
-<span id="cb390-9"><a href="contingency-tables.html#cb390-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Infection    =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
-<span id="cb390-10"><a href="contingency-tables.html#cb390-10" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb390-11"><a href="contingency-tables.html#cb390-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">margins =</span> <span class="cn">TRUE</span></span>
-<span id="cb390-12"><a href="contingency-tables.html#cb390-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="contingency-tables.html#cb390-1" tabindex="-1"></a><span class="fu">contingency_table</span>(</span>
+<span id="cb390-2"><a href="contingency-tables.html#cb390-2" tabindex="-1"></a>  <span class="at">.values =</span> <span class="fu">c</span>(</span>
+<span id="cb390-3"><a href="contingency-tables.html#cb390-3" tabindex="-1"></a>    <span class="dv">7</span>, <span class="dv">224</span>,</span>
+<span id="cb390-4"><a href="contingency-tables.html#cb390-4" tabindex="-1"></a>    <span class="dv">1</span>, <span class="dv">78</span></span>
+<span id="cb390-5"><a href="contingency-tables.html#cb390-5" tabindex="-1"></a>  ),</span>
+<span id="cb390-6"><a href="contingency-tables.html#cb390-6" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>,</span>
+<span id="cb390-7"><a href="contingency-tables.html#cb390-7" tabindex="-1"></a>  <span class="at">dim_names =</span> <span class="fu">list</span>(</span>
+<span id="cb390-8"><a href="contingency-tables.html#cb390-8" tabindex="-1"></a>    <span class="at">Appendectomy =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
+<span id="cb390-9"><a href="contingency-tables.html#cb390-9" tabindex="-1"></a>    <span class="at">Infection    =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
+<span id="cb390-10"><a href="contingency-tables.html#cb390-10" tabindex="-1"></a>  ),</span>
+<span id="cb390-11"><a href="contingency-tables.html#cb390-11" tabindex="-1"></a>  <span class="at">margins =</span> <span class="cn">TRUE</span></span>
+<span id="cb390-12"><a href="contingency-tables.html#cb390-12" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##             Infection
 ## Appendectomy Yes  No Sum
 ##          Yes   7 224 231
 ##          No    1  78  79
 ##          Sum   8 302 310</code></pre>
 <p>What if we need to make a contingency table for variables with more than two levels? For example:</p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="contingency-tables.html#cb392-1" aria-hidden="true" tabindex="-1"></a>matrix_3_ct <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb392-2"><a href="contingency-tables.html#cb392-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(</span>
-<span id="cb392-3"><a href="contingency-tables.html#cb392-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>,</span>
-<span id="cb392-4"><a href="contingency-tables.html#cb392-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>,</span>
-<span id="cb392-5"><a href="contingency-tables.html#cb392-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span></span>
-<span id="cb392-6"><a href="contingency-tables.html#cb392-6" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb392-7"><a href="contingency-tables.html#cb392-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">3</span>,</span>
-<span id="cb392-8"><a href="contingency-tables.html#cb392-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb392-9"><a href="contingency-tables.html#cb392-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb392-10"><a href="contingency-tables.html#cb392-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb392-11"><a href="contingency-tables.html#cb392-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(matrix_3_ct) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb392-12"><a href="contingency-tables.html#cb392-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">age      =</span> <span class="fu">c</span>(<span class="st">&quot;Young&quot;</span>, <span class="st">&quot;Middle&quot;</span>, <span class="st">&quot;Old&quot;</span>),</span>
-<span id="cb392-13"><a href="contingency-tables.html#cb392-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">severity =</span> <span class="fu">c</span>(<span class="st">&quot;Mild&quot;</span>, <span class="st">&quot;Moderate&quot;</span>, <span class="st">&quot;Severe&quot;</span>)</span>
-<span id="cb392-14"><a href="contingency-tables.html#cb392-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb392-15"><a href="contingency-tables.html#cb392-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb392-16"><a href="contingency-tables.html#cb392-16" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(matrix_3_ct)</span></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="contingency-tables.html#cb392-1" tabindex="-1"></a>matrix_3_ct <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb392-2"><a href="contingency-tables.html#cb392-2" tabindex="-1"></a>  <span class="fu">c</span>(</span>
+<span id="cb392-3"><a href="contingency-tables.html#cb392-3" tabindex="-1"></a>    <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>,</span>
+<span id="cb392-4"><a href="contingency-tables.html#cb392-4" tabindex="-1"></a>    <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>,</span>
+<span id="cb392-5"><a href="contingency-tables.html#cb392-5" tabindex="-1"></a>    <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span></span>
+<span id="cb392-6"><a href="contingency-tables.html#cb392-6" tabindex="-1"></a>  ),</span>
+<span id="cb392-7"><a href="contingency-tables.html#cb392-7" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">3</span>,</span>
+<span id="cb392-8"><a href="contingency-tables.html#cb392-8" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb392-9"><a href="contingency-tables.html#cb392-9" tabindex="-1"></a>)</span>
+<span id="cb392-10"><a href="contingency-tables.html#cb392-10" tabindex="-1"></a></span>
+<span id="cb392-11"><a href="contingency-tables.html#cb392-11" tabindex="-1"></a><span class="fu">dimnames</span>(matrix_3_ct) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb392-12"><a href="contingency-tables.html#cb392-12" tabindex="-1"></a>  <span class="at">age      =</span> <span class="fu">c</span>(<span class="st">&quot;Young&quot;</span>, <span class="st">&quot;Middle&quot;</span>, <span class="st">&quot;Old&quot;</span>),</span>
+<span id="cb392-13"><a href="contingency-tables.html#cb392-13" tabindex="-1"></a>  <span class="at">severity =</span> <span class="fu">c</span>(<span class="st">&quot;Mild&quot;</span>, <span class="st">&quot;Moderate&quot;</span>, <span class="st">&quot;Severe&quot;</span>)</span>
+<span id="cb392-14"><a href="contingency-tables.html#cb392-14" tabindex="-1"></a>)</span>
+<span id="cb392-15"><a href="contingency-tables.html#cb392-15" tabindex="-1"></a></span>
+<span id="cb392-16"><a href="contingency-tables.html#cb392-16" tabindex="-1"></a><span class="fu">addmargins</span>(matrix_3_ct)</span></code></pre></div>
 <pre><code>##         severity
 ## age      Mild Moderate Severe Sum
 ##   Young     1        2      1   4
@@ -1659,19 +1662,19 @@ Works, but I don’t like it. I’m trying to figure out why. Maybe because it u
 ##   Old       0        1      2   3
 ##   Sum       1        4      4   9</code></pre>
 <p>Testing with a 3x3 table</p>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="contingency-tables.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contingency_table</span>(</span>
-<span id="cb394-2"><a href="contingency-tables.html#cb394-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">.values =</span> <span class="fu">c</span>(</span>
-<span id="cb394-3"><a href="contingency-tables.html#cb394-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>,</span>
-<span id="cb394-4"><a href="contingency-tables.html#cb394-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>,</span>
-<span id="cb394-5"><a href="contingency-tables.html#cb394-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span></span>
-<span id="cb394-6"><a href="contingency-tables.html#cb394-6" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb394-7"><a href="contingency-tables.html#cb394-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">3</span>,</span>
-<span id="cb394-8"><a href="contingency-tables.html#cb394-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">dim_names =</span> <span class="fu">list</span>(</span>
-<span id="cb394-9"><a href="contingency-tables.html#cb394-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">age      =</span> <span class="fu">c</span>(<span class="st">&quot;Young&quot;</span>, <span class="st">&quot;Middle&quot;</span>, <span class="st">&quot;Old&quot;</span>),</span>
-<span id="cb394-10"><a href="contingency-tables.html#cb394-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">severity =</span> <span class="fu">c</span>(<span class="st">&quot;Mild&quot;</span>, <span class="st">&quot;Moderate&quot;</span>, <span class="st">&quot;Severe&quot;</span>)</span>
-<span id="cb394-11"><a href="contingency-tables.html#cb394-11" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb394-12"><a href="contingency-tables.html#cb394-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">margins =</span> <span class="cn">TRUE</span></span>
-<span id="cb394-13"><a href="contingency-tables.html#cb394-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="contingency-tables.html#cb394-1" tabindex="-1"></a><span class="fu">contingency_table</span>(</span>
+<span id="cb394-2"><a href="contingency-tables.html#cb394-2" tabindex="-1"></a>  <span class="at">.values =</span> <span class="fu">c</span>(</span>
+<span id="cb394-3"><a href="contingency-tables.html#cb394-3" tabindex="-1"></a>    <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>,</span>
+<span id="cb394-4"><a href="contingency-tables.html#cb394-4" tabindex="-1"></a>    <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>,</span>
+<span id="cb394-5"><a href="contingency-tables.html#cb394-5" tabindex="-1"></a>    <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span></span>
+<span id="cb394-6"><a href="contingency-tables.html#cb394-6" tabindex="-1"></a>  ),</span>
+<span id="cb394-7"><a href="contingency-tables.html#cb394-7" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">3</span>,</span>
+<span id="cb394-8"><a href="contingency-tables.html#cb394-8" tabindex="-1"></a>  <span class="at">dim_names =</span> <span class="fu">list</span>(</span>
+<span id="cb394-9"><a href="contingency-tables.html#cb394-9" tabindex="-1"></a>    <span class="at">age      =</span> <span class="fu">c</span>(<span class="st">&quot;Young&quot;</span>, <span class="st">&quot;Middle&quot;</span>, <span class="st">&quot;Old&quot;</span>),</span>
+<span id="cb394-10"><a href="contingency-tables.html#cb394-10" tabindex="-1"></a>    <span class="at">severity =</span> <span class="fu">c</span>(<span class="st">&quot;Mild&quot;</span>, <span class="st">&quot;Moderate&quot;</span>, <span class="st">&quot;Severe&quot;</span>)</span>
+<span id="cb394-11"><a href="contingency-tables.html#cb394-11" tabindex="-1"></a>  ),</span>
+<span id="cb394-12"><a href="contingency-tables.html#cb394-12" tabindex="-1"></a>  <span class="at">margins =</span> <span class="cn">TRUE</span></span>
+<span id="cb394-13"><a href="contingency-tables.html#cb394-13" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##         severity
 ## age      Mild Moderate Severe Sum
 ##   Young     1        2      1   4
@@ -1680,14 +1683,14 @@ Works, but I don’t like it. I’m trying to figure out why. Maybe because it u
 ##   Sum       1        4      4   9</code></pre>
 <p>This works, but I’m not sure what advantage it has over the manual code. It’s roughly the same number of lines and it’s necessarily any easier to read or understand.</p>
 <p>What would the ideal solution even look like? Maybe something like this?</p>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="contingency-tables.html#cb396-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Doesn&#39;t run</span></span>
-<span id="cb396-2"><a href="contingency-tables.html#cb396-2" aria-hidden="true" tabindex="-1"></a><span class="fu">contingency_table</span>(</span>
-<span id="cb396-3"><a href="contingency-tables.html#cb396-3" aria-hidden="true" tabindex="-1"></a>                          <span class="sc">|</span> Wound infection <span class="sc">|</span></span>
-<span id="cb396-4"><a href="contingency-tables.html#cb396-4" aria-hidden="true" tabindex="-1"></a><span class="er">|</span><span class="sc">-------------------------</span><span class="er">|</span><span class="sc">-----------------</span><span class="er">|</span><span class="sc">-----</span><span class="er">|</span></span>
-<span id="cb396-5"><a href="contingency-tables.html#cb396-5" aria-hidden="true" tabindex="-1"></a><span class="er">|</span> Incidental appendectomy <span class="sc">|</span> Yes             <span class="sc">|</span> No  <span class="sc">|</span> </span>
-<span id="cb396-6"><a href="contingency-tables.html#cb396-6" aria-hidden="true" tabindex="-1"></a><span class="er">|</span> Yes                     <span class="sc">|</span> <span class="dv">7</span>               <span class="sc">|</span> <span class="dv">124</span> <span class="sc">|</span></span>
-<span id="cb396-7"><a href="contingency-tables.html#cb396-7" aria-hidden="true" tabindex="-1"></a><span class="er">|</span> No                      <span class="sc">|</span> <span class="dv">1</span>               <span class="sc">|</span> <span class="dv">78</span>  <span class="sc">|</span></span>
-<span id="cb396-8"><a href="contingency-tables.html#cb396-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="contingency-tables.html#cb396-1" tabindex="-1"></a><span class="co"># Doesn&#39;t run</span></span>
+<span id="cb396-2"><a href="contingency-tables.html#cb396-2" tabindex="-1"></a><span class="fu">contingency_table</span>(</span>
+<span id="cb396-3"><a href="contingency-tables.html#cb396-3" tabindex="-1"></a>                          <span class="sc">|</span> Wound infection <span class="sc">|</span></span>
+<span id="cb396-4"><a href="contingency-tables.html#cb396-4" tabindex="-1"></a><span class="er">|</span><span class="sc">-------------------------</span><span class="er">|</span><span class="sc">-----------------</span><span class="er">|</span><span class="sc">-----</span><span class="er">|</span></span>
+<span id="cb396-5"><a href="contingency-tables.html#cb396-5" tabindex="-1"></a><span class="er">|</span> Incidental appendectomy <span class="sc">|</span> Yes             <span class="sc">|</span> No  <span class="sc">|</span> </span>
+<span id="cb396-6"><a href="contingency-tables.html#cb396-6" tabindex="-1"></a><span class="er">|</span> Yes                     <span class="sc">|</span> <span class="dv">7</span>               <span class="sc">|</span> <span class="dv">124</span> <span class="sc">|</span></span>
+<span id="cb396-7"><a href="contingency-tables.html#cb396-7" tabindex="-1"></a><span class="er">|</span> No                      <span class="sc">|</span> <span class="dv">1</span>               <span class="sc">|</span> <span class="dv">78</span>  <span class="sc">|</span></span>
+<span id="cb396-8"><a href="contingency-tables.html#cb396-8" tabindex="-1"></a>)</span></code></pre></div>
 <p>Or perhaps a Shiny app that would allow to enter data into a spreadsheet-like interface?</p>
 </div>
 <div id="here-down-needs-refinement" class="section level3 hasAnchor" number="8.13.2">
@@ -1696,19 +1699,19 @@ Works, but I don’t like it. I’m trying to figure out why. Maybe because it u
 <div id="counts-to-cases" class="section level3 hasAnchor" number="8.13.3">
 <h3><span class="header-section-number">8.13.3</span> Counts to cases<a href="contingency-tables.html#counts-to-cases" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Rewrite this function</p>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="contingency-tables.html#cb397-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert from data frame of counts to data frame of cases.</span></span>
-<span id="cb397-2"><a href="contingency-tables.html#cb397-2" aria-hidden="true" tabindex="-1"></a><span class="co"># `countcol` is the name of the column containing the counts</span></span>
-<span id="cb397-3"><a href="contingency-tables.html#cb397-3" aria-hidden="true" tabindex="-1"></a><span class="co"># From: https://cran.r-project.org/web/packages/DescTools/vignettes/TablesInR.pdf</span></span>
-<span id="cb397-4"><a href="contingency-tables.html#cb397-4" aria-hidden="true" tabindex="-1"></a>countsToCases <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">countcol =</span> <span class="st">&quot;Freq&quot;</span>) {</span>
-<span id="cb397-5"><a href="contingency-tables.html#cb397-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the row indices to pull from x</span></span>
-<span id="cb397-6"><a href="contingency-tables.html#cb397-6" aria-hidden="true" tabindex="-1"></a>    idx <span class="ot">&lt;-</span> <span class="fu">rep.int</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(x)), x[[countcol]])</span>
-<span id="cb397-7"><a href="contingency-tables.html#cb397-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb397-8"><a href="contingency-tables.html#cb397-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Drop count column</span></span>
-<span id="cb397-9"><a href="contingency-tables.html#cb397-9" aria-hidden="true" tabindex="-1"></a>    x[[countcol]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb397-10"><a href="contingency-tables.html#cb397-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb397-11"><a href="contingency-tables.html#cb397-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the rows from x</span></span>
-<span id="cb397-12"><a href="contingency-tables.html#cb397-12" aria-hidden="true" tabindex="-1"></a>    x[idx, ]</span>
-<span id="cb397-13"><a href="contingency-tables.html#cb397-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="contingency-tables.html#cb397-1" tabindex="-1"></a><span class="co"># Convert from data frame of counts to data frame of cases.</span></span>
+<span id="cb397-2"><a href="contingency-tables.html#cb397-2" tabindex="-1"></a><span class="co"># `countcol` is the name of the column containing the counts</span></span>
+<span id="cb397-3"><a href="contingency-tables.html#cb397-3" tabindex="-1"></a><span class="co"># From: https://cran.r-project.org/web/packages/DescTools/vignettes/TablesInR.pdf</span></span>
+<span id="cb397-4"><a href="contingency-tables.html#cb397-4" tabindex="-1"></a>countsToCases <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">countcol =</span> <span class="st">&quot;Freq&quot;</span>) {</span>
+<span id="cb397-5"><a href="contingency-tables.html#cb397-5" tabindex="-1"></a>    <span class="co"># Get the row indices to pull from x</span></span>
+<span id="cb397-6"><a href="contingency-tables.html#cb397-6" tabindex="-1"></a>    idx <span class="ot">&lt;-</span> <span class="fu">rep.int</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(x)), x[[countcol]])</span>
+<span id="cb397-7"><a href="contingency-tables.html#cb397-7" tabindex="-1"></a></span>
+<span id="cb397-8"><a href="contingency-tables.html#cb397-8" tabindex="-1"></a>    <span class="co"># Drop count column</span></span>
+<span id="cb397-9"><a href="contingency-tables.html#cb397-9" tabindex="-1"></a>    x[[countcol]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb397-10"><a href="contingency-tables.html#cb397-10" tabindex="-1"></a></span>
+<span id="cb397-11"><a href="contingency-tables.html#cb397-11" tabindex="-1"></a>    <span class="co"># Get the rows from x</span></span>
+<span id="cb397-12"><a href="contingency-tables.html#cb397-12" tabindex="-1"></a>    x[idx, ]</span>
+<span id="cb397-13"><a href="contingency-tables.html#cb397-13" tabindex="-1"></a>}</span></code></pre></div>
 <p>[Insert function code here]</p>
 </div>
 <div id="freqtable-to-contingency-table" class="section level3 hasAnchor" number="8.13.4">

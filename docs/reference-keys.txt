@@ -17,6 +17,7 @@ modify
 readme
 git
 github
+setting-up-github
 package-functions
 working-with-r-scripts
 adding-help-pages-to-functions

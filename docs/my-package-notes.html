@@ -23,7 +23,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2023-03-16" />
+<meta name="date" content="2023-07-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -191,7 +191,10 @@ div.csl-indent {
 <li class="chapter" data-level="2.8" data-path="my-package-notes.html"><a href="my-package-notes.html#modify"><i class="fa fa-check"></i><b>2.8</b> Step 4: Modify the description file</a></li>
 <li class="chapter" data-level="2.9" data-path="my-package-notes.html"><a href="my-package-notes.html#readme"><i class="fa fa-check"></i><b>2.9</b> Step 5: Add README</a></li>
 <li class="chapter" data-level="2.10" data-path="my-package-notes.html"><a href="my-package-notes.html#git"><i class="fa fa-check"></i><b>2.10</b> Step 6: Add Git</a></li>
-<li class="chapter" data-level="2.11" data-path="my-package-notes.html"><a href="my-package-notes.html#github"><i class="fa fa-check"></i><b>2.11</b> Step 7: Connect to GitHub</a></li>
+<li class="chapter" data-level="2.11" data-path="my-package-notes.html"><a href="my-package-notes.html#github"><i class="fa fa-check"></i><b>2.11</b> Step 7: Connect to GitHub</a>
+<ul>
+<li class="chapter" data-level="2.11.1" data-path="my-package-notes.html"><a href="my-package-notes.html#setting-up-github"><i class="fa fa-check"></i><b>2.11.1</b> Setting up GitHub</a></li>
+</ul></li>
 <li class="chapter" data-level="2.12" data-path="my-package-notes.html"><a href="my-package-notes.html#package-functions"><i class="fa fa-check"></i><b>2.12</b> Step 8: Adding content to the package</a>
 <ul>
 <li class="chapter" data-level="2.12.1" data-path="my-package-notes.html"><a href="my-package-notes.html#working-with-r-scripts"><i class="fa fa-check"></i><b>2.12.1</b> Working with R scripts</a></li>
@@ -668,7 +671,7 @@ Hidden comments placeholder
 <div id="create" class="section level2 hasAnchor" number="2.5">
 <h2><span class="header-section-number">2.5</span> Step 1: Create the package project<a href="my-package-notes.html#create" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Call <code>create_package()</code> to initialize a new package in a directory on your computer (and create the directory, if necessary).</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="my-package-notes.html#cb13-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_package</span>(<span class="st">&quot;/Users/bradcannell/Dropbox/R/Packages/codebook&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="my-package-notes.html#cb13-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_package</span>(<span class="st">&quot;/Users/bradcannell/Dropbox/R/Packages/codebook&quot;</span>)</span></code></pre></div>
 <p>The function will do all of this:</p>
 <p><img src="img/01_programming/create_package.png" width="663" /></p>
 </div>
@@ -678,43 +681,43 @@ Hidden comments placeholder
 <ol style="list-style-type: decimal">
 <li>Create a new text file, add the following template to the top of the file, and fill it out appropriately.</li>
 </ol>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="my-package-notes.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># =============================================================================</span></span>
-<span id="cb14-2"><a href="my-package-notes.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># codebook notes</span></span>
-<span id="cb14-3"><a href="my-package-notes.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># =============================================================================</span></span>
-<span id="cb14-4"><a href="my-package-notes.html#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="my-package-notes.html#cb14-5" aria-hidden="true" tabindex="-1"></a>Use NOTES <span class="cf">for</span> notes, but not tasks. Why or how, but not what.</span>
-<span id="cb14-6"><a href="my-package-notes.html#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="my-package-notes.html#cb14-7" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="cb14-8"><a href="my-package-notes.html#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-9"><a href="my-package-notes.html#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="my-package-notes.html#cb14-10" aria-hidden="true" tabindex="-1"></a>Submission Notes<span class="sc">:</span></span>
-<span id="cb14-11"><a href="my-package-notes.html#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="sc">-----------------</span></span>
-<span id="cb14-12"><a href="my-package-notes.html#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="er">*</span> Useful website<span class="sc">:</span> http<span class="sc">:</span><span class="er">//</span>r<span class="sc">-</span>pkgs.had.co.nz<span class="sc">/</span>release.html</span>
-<span id="cb14-13"><a href="my-package-notes.html#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Update README before submission. It should roughly match the examples <span class="cf">in</span> the roxygen documentation.</span>
-<span id="cb14-14"><a href="my-package-notes.html#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span> Update README.Rmd, not README.md.</span>
-<span id="cb14-15"><a href="my-package-notes.html#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span> Knit README.Rmd after making changes. This will automatically update README.md</span>
-<span id="cb14-16"><a href="my-package-notes.html#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Update vignettes using devtools<span class="sc">::</span><span class="fu">document</span>()</span>
-<span id="cb14-17"><a href="my-package-notes.html#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Update news.md. Here<span class="st">&#39;s dplyr&#39;</span><span class="fu">s</span> (https<span class="sc">:</span><span class="er">//</span>raw.githubusercontent.com<span class="sc">/</span>tidyverse<span class="sc">/</span>dplyr<span class="sc">/</span>master<span class="sc">/</span>NEWS.md)</span>
-<span id="cb14-18"><a href="my-package-notes.html#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> If you were on a development branch, merge with main branch.</span>
-<span id="cb14-19"><a href="my-package-notes.html#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Use devtools<span class="sc">::</span><span class="fu">check</span>()</span>
-<span id="cb14-20"><a href="my-package-notes.html#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Use devtools<span class="sc">::</span><span class="fu">check_win_devel</span>() to test the package on Windows</span>
-<span id="cb14-21"><a href="my-package-notes.html#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Update cran<span class="sc">-</span>comments.</span>
-<span id="cb14-22"><a href="my-package-notes.html#cb14-22" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span> If this is a resubmission, add a bulleted list of changes made under <span class="do">## Resubmission.</span></span>
-<span id="cb14-23"><a href="my-package-notes.html#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Submit with devtools<span class="sc">::</span><span class="fu">release</span>()</span>
-<span id="cb14-24"><a href="my-package-notes.html#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> After the package is accepted, do this stuff<span class="sc">:</span> http<span class="sc">:</span><span class="er">//</span>r<span class="sc">-</span>pkgs.had.co.nz<span class="sc">/</span>release.html<span class="co">#post-release</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="my-package-notes.html#cb14-1" tabindex="-1"></a><span class="co"># =============================================================================</span></span>
+<span id="cb14-2"><a href="my-package-notes.html#cb14-2" tabindex="-1"></a><span class="co"># codebook notes</span></span>
+<span id="cb14-3"><a href="my-package-notes.html#cb14-3" tabindex="-1"></a><span class="co"># =============================================================================</span></span>
+<span id="cb14-4"><a href="my-package-notes.html#cb14-4" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="my-package-notes.html#cb14-5" tabindex="-1"></a>Use NOTES <span class="cf">for</span> notes, but not tasks. Why or how, but not what.</span>
+<span id="cb14-6"><a href="my-package-notes.html#cb14-6" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="my-package-notes.html#cb14-7" tabindex="-1"></a>...</span>
+<span id="cb14-8"><a href="my-package-notes.html#cb14-8" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="my-package-notes.html#cb14-9" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="my-package-notes.html#cb14-10" tabindex="-1"></a>Submission Notes<span class="sc">:</span></span>
+<span id="cb14-11"><a href="my-package-notes.html#cb14-11" tabindex="-1"></a><span class="sc">-----------------</span></span>
+<span id="cb14-12"><a href="my-package-notes.html#cb14-12" tabindex="-1"></a><span class="er">*</span> Useful website<span class="sc">:</span> http<span class="sc">:</span><span class="er">//</span>r<span class="sc">-</span>pkgs.had.co.nz<span class="sc">/</span>release.html</span>
+<span id="cb14-13"><a href="my-package-notes.html#cb14-13" tabindex="-1"></a><span class="sc">*</span> Update README before submission. It should roughly match the examples <span class="cf">in</span> the roxygen documentation.</span>
+<span id="cb14-14"><a href="my-package-notes.html#cb14-14" tabindex="-1"></a>  <span class="sc">-</span> Update README.Rmd, not README.md.</span>
+<span id="cb14-15"><a href="my-package-notes.html#cb14-15" tabindex="-1"></a>  <span class="sc">-</span> Knit README.Rmd after making changes. This will automatically update README.md</span>
+<span id="cb14-16"><a href="my-package-notes.html#cb14-16" tabindex="-1"></a><span class="sc">*</span> Update vignettes using devtools<span class="sc">::</span><span class="fu">document</span>()</span>
+<span id="cb14-17"><a href="my-package-notes.html#cb14-17" tabindex="-1"></a><span class="sc">*</span> Update news.md. Here<span class="st">&#39;s dplyr&#39;</span><span class="fu">s</span> (https<span class="sc">:</span><span class="er">//</span>raw.githubusercontent.com<span class="sc">/</span>tidyverse<span class="sc">/</span>dplyr<span class="sc">/</span>master<span class="sc">/</span>NEWS.md)</span>
+<span id="cb14-18"><a href="my-package-notes.html#cb14-18" tabindex="-1"></a><span class="sc">*</span> If you were on a development branch, merge with main branch.</span>
+<span id="cb14-19"><a href="my-package-notes.html#cb14-19" tabindex="-1"></a><span class="sc">*</span> Use devtools<span class="sc">::</span><span class="fu">check</span>()</span>
+<span id="cb14-20"><a href="my-package-notes.html#cb14-20" tabindex="-1"></a><span class="sc">*</span> Use devtools<span class="sc">::</span><span class="fu">check_win_devel</span>() to test the package on Windows</span>
+<span id="cb14-21"><a href="my-package-notes.html#cb14-21" tabindex="-1"></a><span class="sc">*</span> Update cran<span class="sc">-</span>comments.</span>
+<span id="cb14-22"><a href="my-package-notes.html#cb14-22" tabindex="-1"></a>  <span class="sc">-</span> If this is a resubmission, add a bulleted list of changes made under <span class="do">## Resubmission.</span></span>
+<span id="cb14-23"><a href="my-package-notes.html#cb14-23" tabindex="-1"></a><span class="sc">*</span> Submit with devtools<span class="sc">::</span><span class="fu">release</span>()</span>
+<span id="cb14-24"><a href="my-package-notes.html#cb14-24" tabindex="-1"></a><span class="sc">*</span> After the package is accepted, do this stuff<span class="sc">:</span> http<span class="sc">:</span><span class="er">//</span>r<span class="sc">-</span>pkgs.had.co.nz<span class="sc">/</span>release.html<span class="co">#post-release</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Save as <code>NOTES</code></p></li>
 <li><p>Add to gitignore.</p></li>
 </ol>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="my-package-notes.html#cb15-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git_ignore</span>(<span class="st">&quot;NOTES&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="my-package-notes.html#cb15-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git_ignore</span>(<span class="st">&quot;NOTES&quot;</span>)</span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>Add to buildignore.</li>
 </ol>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="my-package-notes.html#cb16-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_build_ignore</span>(<span class="st">&quot;NOTES&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="my-package-notes.html#cb16-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_build_ignore</span>(<span class="st">&quot;NOTES&quot;</span>)</span></code></pre></div>
 </div>
 <div id="license" class="section level2 hasAnchor" number="2.7">
 <h2><span class="header-section-number">2.7</span> Step 3: Add license<a href="my-package-notes.html#license" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="my-package-notes.html#cb17-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_mit_license</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="my-package-notes.html#cb17-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_mit_license</span>()</span></code></pre></div>
 <p>The function will do all of this:</p>
 <p><img src="img/01_programming/use_mit_license.png" width="629" /></p>
 <p>You will still need to open the new <code>LICENSE</code> file and change <code>COPYRIGHT HOLDER:</code> to “Brad Cannell”. You can also look in the templates folder for more elaborate licenses.</p>
@@ -723,43 +726,43 @@ Hidden comments placeholder
 <h2><span class="header-section-number">2.8</span> Step 4: Modify the description file<a href="my-package-notes.html#modify" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Open the description file and make some changes.</p>
 <p>Here is a minimal example from <code>codebook</code>:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="my-package-notes.html#cb18-1" aria-hidden="true" tabindex="-1"></a>Package<span class="sc">:</span> codebook</span>
-<span id="cb18-2"><a href="my-package-notes.html#cb18-2" aria-hidden="true" tabindex="-1"></a>Title<span class="sc">:</span> Create Codebooks From Data Frames</span>
-<span id="cb18-3"><a href="my-package-notes.html#cb18-3" aria-hidden="true" tabindex="-1"></a>Version<span class="sc">:</span> <span class="dv">0</span>.<span class="dv">0</span>.<span class="fl">0.9000</span></span>
-<span id="cb18-4"><a href="my-package-notes.html#cb18-4" aria-hidden="true" tabindex="-1"></a>Authors<span class="sc">@</span>R<span class="sc">:</span> <span class="fu">person</span>(<span class="st">&quot;Brad&quot;</span>, <span class="st">&quot;Cannell&quot;</span>, <span class="at">email =</span> <span class="st">&quot;brad.cannell@gmail.com&quot;</span>,</span>
-<span id="cb18-5"><a href="my-package-notes.html#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">role =</span> <span class="fu">c</span>(<span class="st">&quot;aut&quot;</span>, <span class="st">&quot;cre&quot;</span>, <span class="st">&quot;cph&quot;</span>))</span>
-<span id="cb18-6"><a href="my-package-notes.html#cb18-6" aria-hidden="true" tabindex="-1"></a>Maintainer<span class="sc">:</span> Brad Cannell <span class="sc">&lt;</span>brad.cannell<span class="sc">@</span>gmail.com<span class="sc">&gt;</span></span>
-<span id="cb18-7"><a href="my-package-notes.html#cb18-7" aria-hidden="true" tabindex="-1"></a>Description<span class="sc">:</span> The codebook package is intended to make it easy <span class="cf">for</span> users to </span>
-<span id="cb18-8"><a href="my-package-notes.html#cb18-8" aria-hidden="true" tabindex="-1"></a>  create <span class="fu">codebooks</span> (i.e. data dictionaries) directly from data frame.</span>
-<span id="cb18-9"><a href="my-package-notes.html#cb18-9" aria-hidden="true" tabindex="-1"></a>License<span class="sc">:</span> MIT <span class="sc">+</span> file LICENSE</span>
-<span id="cb18-10"><a href="my-package-notes.html#cb18-10" aria-hidden="true" tabindex="-1"></a>Encoding<span class="sc">:</span> UTF<span class="dv">-8</span></span>
-<span id="cb18-11"><a href="my-package-notes.html#cb18-11" aria-hidden="true" tabindex="-1"></a>Roxygen<span class="sc">:</span> <span class="fu">list</span>(<span class="at">markdown =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb18-12"><a href="my-package-notes.html#cb18-12" aria-hidden="true" tabindex="-1"></a>RoxygenNote<span class="sc">:</span> <span class="dv">7</span>.<span class="fl">1.2</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="my-package-notes.html#cb18-1" tabindex="-1"></a>Package<span class="sc">:</span> codebook</span>
+<span id="cb18-2"><a href="my-package-notes.html#cb18-2" tabindex="-1"></a>Title<span class="sc">:</span> Create Codebooks From Data Frames</span>
+<span id="cb18-3"><a href="my-package-notes.html#cb18-3" tabindex="-1"></a>Version<span class="sc">:</span> <span class="dv">0</span>.<span class="dv">0</span>.<span class="fl">0.9000</span></span>
+<span id="cb18-4"><a href="my-package-notes.html#cb18-4" tabindex="-1"></a>Authors<span class="sc">@</span>R<span class="sc">:</span> <span class="fu">person</span>(<span class="st">&quot;Brad&quot;</span>, <span class="st">&quot;Cannell&quot;</span>, <span class="at">email =</span> <span class="st">&quot;brad.cannell@gmail.com&quot;</span>,</span>
+<span id="cb18-5"><a href="my-package-notes.html#cb18-5" tabindex="-1"></a>  <span class="at">role =</span> <span class="fu">c</span>(<span class="st">&quot;aut&quot;</span>, <span class="st">&quot;cre&quot;</span>, <span class="st">&quot;cph&quot;</span>))</span>
+<span id="cb18-6"><a href="my-package-notes.html#cb18-6" tabindex="-1"></a>Maintainer<span class="sc">:</span> Brad Cannell <span class="sc">&lt;</span>brad.cannell<span class="sc">@</span>gmail.com<span class="sc">&gt;</span></span>
+<span id="cb18-7"><a href="my-package-notes.html#cb18-7" tabindex="-1"></a>Description<span class="sc">:</span> The codebook package is intended to make it easy <span class="cf">for</span> users to </span>
+<span id="cb18-8"><a href="my-package-notes.html#cb18-8" tabindex="-1"></a>  create <span class="fu">codebooks</span> (i.e. data dictionaries) directly from data frame.</span>
+<span id="cb18-9"><a href="my-package-notes.html#cb18-9" tabindex="-1"></a>License<span class="sc">:</span> MIT <span class="sc">+</span> file LICENSE</span>
+<span id="cb18-10"><a href="my-package-notes.html#cb18-10" tabindex="-1"></a>Encoding<span class="sc">:</span> UTF<span class="dv">-8</span></span>
+<span id="cb18-11"><a href="my-package-notes.html#cb18-11" tabindex="-1"></a>Roxygen<span class="sc">:</span> <span class="fu">list</span>(<span class="at">markdown =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-12"><a href="my-package-notes.html#cb18-12" tabindex="-1"></a>RoxygenNote<span class="sc">:</span> <span class="dv">7</span>.<span class="fl">1.2</span></span></code></pre></div>
 <p>Here is a slightly more elaborate example from <code>meantables</code>:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="my-package-notes.html#cb19-1" aria-hidden="true" tabindex="-1"></a>Package<span class="sc">:</span> meantables</span>
-<span id="cb19-2"><a href="my-package-notes.html#cb19-2" aria-hidden="true" tabindex="-1"></a>Type<span class="sc">:</span> Package</span>
-<span id="cb19-3"><a href="my-package-notes.html#cb19-3" aria-hidden="true" tabindex="-1"></a>Title<span class="sc">:</span> Make Quick Descriptive Tables <span class="cf">for</span> Continuous Variables</span>
-<span id="cb19-4"><a href="my-package-notes.html#cb19-4" aria-hidden="true" tabindex="-1"></a>Description<span class="sc">:</span> Quickly make tables of descriptive <span class="fu">statistics</span> (i.e., counts, </span>
-<span id="cb19-5"><a href="my-package-notes.html#cb19-5" aria-hidden="true" tabindex="-1"></a>    means, confidence intervals) <span class="cf">for</span> continuous variables. This </span>
-<span id="cb19-6"><a href="my-package-notes.html#cb19-6" aria-hidden="true" tabindex="-1"></a>    package is designed to work <span class="cf">in</span> a Tidyverse pipeline, and consideration</span>
-<span id="cb19-7"><a href="my-package-notes.html#cb19-7" aria-hidden="true" tabindex="-1"></a>    has been given to get results from R to <span class="st">&#39;Microsoft Word&#39;</span> ® with minimal pain.</span>
-<span id="cb19-8"><a href="my-package-notes.html#cb19-8" aria-hidden="true" tabindex="-1"></a>Version<span class="sc">:</span> <span class="dv">0</span>.<span class="fl">1.2</span></span>
-<span id="cb19-9"><a href="my-package-notes.html#cb19-9" aria-hidden="true" tabindex="-1"></a>Authors<span class="sc">@</span>R<span class="sc">:</span> <span class="fu">person</span>(<span class="st">&quot;Brad&quot;</span>, <span class="st">&quot;Cannell&quot;</span>, <span class="at">email =</span> <span class="st">&quot;brad.cannell@gmail.com&quot;</span>,</span>
-<span id="cb19-10"><a href="my-package-notes.html#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">role =</span> <span class="fu">c</span>(<span class="st">&quot;aut&quot;</span>, <span class="st">&quot;cre&quot;</span>, <span class="st">&quot;cph&quot;</span>))</span>
-<span id="cb19-11"><a href="my-package-notes.html#cb19-11" aria-hidden="true" tabindex="-1"></a>Maintainer<span class="sc">:</span> Brad Cannell <span class="sc">&lt;</span>brad.cannell<span class="sc">@</span>gmail.com<span class="sc">&gt;</span></span>
-<span id="cb19-12"><a href="my-package-notes.html#cb19-12" aria-hidden="true" tabindex="-1"></a>License<span class="sc">:</span> MIT <span class="sc">+</span> file LICENSE</span>
-<span id="cb19-13"><a href="my-package-notes.html#cb19-13" aria-hidden="true" tabindex="-1"></a>Encoding<span class="sc">:</span> UTF<span class="dv">-8</span></span>
-<span id="cb19-14"><a href="my-package-notes.html#cb19-14" aria-hidden="true" tabindex="-1"></a>Suggests<span class="sc">:</span> </span>
-<span id="cb19-15"><a href="my-package-notes.html#cb19-15" aria-hidden="true" tabindex="-1"></a>    knitr,</span>
-<span id="cb19-16"><a href="my-package-notes.html#cb19-16" aria-hidden="true" tabindex="-1"></a>    rmarkdown,</span>
-<span id="cb19-17"><a href="my-package-notes.html#cb19-17" aria-hidden="true" tabindex="-1"></a>    testthat</span>
-<span id="cb19-18"><a href="my-package-notes.html#cb19-18" aria-hidden="true" tabindex="-1"></a>VignetteBuilder<span class="sc">:</span> knitr</span>
-<span id="cb19-19"><a href="my-package-notes.html#cb19-19" aria-hidden="true" tabindex="-1"></a>RoxygenNote<span class="sc">:</span> <span class="dv">7</span>.<span class="fl">1.2</span></span>
-<span id="cb19-20"><a href="my-package-notes.html#cb19-20" aria-hidden="true" tabindex="-1"></a>Imports<span class="sc">:</span> </span>
-<span id="cb19-21"><a href="my-package-notes.html#cb19-21" aria-hidden="true" tabindex="-1"></a>    dplyr,</span>
-<span id="cb19-22"><a href="my-package-notes.html#cb19-22" aria-hidden="true" tabindex="-1"></a>    tibble,</span>
-<span id="cb19-23"><a href="my-package-notes.html#cb19-23" aria-hidden="true" tabindex="-1"></a>    rlang,</span>
-<span id="cb19-24"><a href="my-package-notes.html#cb19-24" aria-hidden="true" tabindex="-1"></a>    stringr</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="my-package-notes.html#cb19-1" tabindex="-1"></a>Package<span class="sc">:</span> meantables</span>
+<span id="cb19-2"><a href="my-package-notes.html#cb19-2" tabindex="-1"></a>Type<span class="sc">:</span> Package</span>
+<span id="cb19-3"><a href="my-package-notes.html#cb19-3" tabindex="-1"></a>Title<span class="sc">:</span> Make Quick Descriptive Tables <span class="cf">for</span> Continuous Variables</span>
+<span id="cb19-4"><a href="my-package-notes.html#cb19-4" tabindex="-1"></a>Description<span class="sc">:</span> Quickly make tables of descriptive <span class="fu">statistics</span> (i.e., counts, </span>
+<span id="cb19-5"><a href="my-package-notes.html#cb19-5" tabindex="-1"></a>    means, confidence intervals) <span class="cf">for</span> continuous variables. This </span>
+<span id="cb19-6"><a href="my-package-notes.html#cb19-6" tabindex="-1"></a>    package is designed to work <span class="cf">in</span> a Tidyverse pipeline, and consideration</span>
+<span id="cb19-7"><a href="my-package-notes.html#cb19-7" tabindex="-1"></a>    has been given to get results from R to <span class="st">&#39;Microsoft Word&#39;</span> ® with minimal pain.</span>
+<span id="cb19-8"><a href="my-package-notes.html#cb19-8" tabindex="-1"></a>Version<span class="sc">:</span> <span class="dv">0</span>.<span class="fl">1.2</span></span>
+<span id="cb19-9"><a href="my-package-notes.html#cb19-9" tabindex="-1"></a>Authors<span class="sc">@</span>R<span class="sc">:</span> <span class="fu">person</span>(<span class="st">&quot;Brad&quot;</span>, <span class="st">&quot;Cannell&quot;</span>, <span class="at">email =</span> <span class="st">&quot;brad.cannell@gmail.com&quot;</span>,</span>
+<span id="cb19-10"><a href="my-package-notes.html#cb19-10" tabindex="-1"></a>  <span class="at">role =</span> <span class="fu">c</span>(<span class="st">&quot;aut&quot;</span>, <span class="st">&quot;cre&quot;</span>, <span class="st">&quot;cph&quot;</span>))</span>
+<span id="cb19-11"><a href="my-package-notes.html#cb19-11" tabindex="-1"></a>Maintainer<span class="sc">:</span> Brad Cannell <span class="sc">&lt;</span>brad.cannell<span class="sc">@</span>gmail.com<span class="sc">&gt;</span></span>
+<span id="cb19-12"><a href="my-package-notes.html#cb19-12" tabindex="-1"></a>License<span class="sc">:</span> MIT <span class="sc">+</span> file LICENSE</span>
+<span id="cb19-13"><a href="my-package-notes.html#cb19-13" tabindex="-1"></a>Encoding<span class="sc">:</span> UTF<span class="dv">-8</span></span>
+<span id="cb19-14"><a href="my-package-notes.html#cb19-14" tabindex="-1"></a>Suggests<span class="sc">:</span> </span>
+<span id="cb19-15"><a href="my-package-notes.html#cb19-15" tabindex="-1"></a>    knitr,</span>
+<span id="cb19-16"><a href="my-package-notes.html#cb19-16" tabindex="-1"></a>    rmarkdown,</span>
+<span id="cb19-17"><a href="my-package-notes.html#cb19-17" tabindex="-1"></a>    testthat</span>
+<span id="cb19-18"><a href="my-package-notes.html#cb19-18" tabindex="-1"></a>VignetteBuilder<span class="sc">:</span> knitr</span>
+<span id="cb19-19"><a href="my-package-notes.html#cb19-19" tabindex="-1"></a>RoxygenNote<span class="sc">:</span> <span class="dv">7</span>.<span class="fl">1.2</span></span>
+<span id="cb19-20"><a href="my-package-notes.html#cb19-20" tabindex="-1"></a>Imports<span class="sc">:</span> </span>
+<span id="cb19-21"><a href="my-package-notes.html#cb19-21" tabindex="-1"></a>    dplyr,</span>
+<span id="cb19-22"><a href="my-package-notes.html#cb19-22" tabindex="-1"></a>    tibble,</span>
+<span id="cb19-23"><a href="my-package-notes.html#cb19-23" tabindex="-1"></a>    rlang,</span>
+<span id="cb19-24"><a href="my-package-notes.html#cb19-24" tabindex="-1"></a>    stringr</span></code></pre></div>
 <ul>
 <li><p>Remember that Title Case is required for the Title</p></li>
 <li><p><strong>Do Not</strong> use <code>library(package)</code> in R scripts - instead add package dependencies to the <code>Imports</code> or <code>Remotes</code> field in the DESCRIPTION. <strong>Do</strong> use <code>library(package)</code> in vignette .Rmd files, and <strong>DO NOT</strong> add these package dependencies to the DESCRIPTION</p></li>
@@ -772,7 +775,7 @@ Hidden comments placeholder
 <h2><span class="header-section-number">2.9</span> Step 5: Add README<a href="my-package-notes.html#readme" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In <a href="https://r-pkgs.org/whole-game.html">R Packages, Chapter 2: The Whole Game</a>, Hadley and Jenny basically create all the package code before connecting their project to their remote repository on GitHub. I actually like to connect my project to GitHub before I write any code. I do this for several reasons, one of which is that I can start using GitHub’s issues and project boards right away to take notes and plan package development.</p>
 <p>And, I like to create the README file before I initialize Git or connect with GitHub. That’s what we will do in this step.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="my-package-notes.html#cb20-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_readme_rmd</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="my-package-notes.html#cb20-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_readme_rmd</span>()</span></code></pre></div>
 <ul>
 <li><p>I generally just copy the Description section from the <code>DESCRIPTION</code> file and use it replace the “The goal of codebook is to …” sentence that that <code>use_readme_rmd()</code> creates by default.</p></li>
 <li><p>Comment out all of the code chunks that <code>use_readme_rmd()</code> creates by default.</p></li>
@@ -782,8 +785,8 @@ Hidden comments placeholder
 <p><img src="img/01_programming/install_placeholder.png" width="627" /></p>
 <p>We just need to replace it with:</p>
 <p><strong>Make sure to set the <code>eval=FALSE</code> code chunk option.</strong></p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="my-package-notes.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
-<span id="cb21-2"><a href="my-package-notes.html#cb21-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;brad-cannell/codebook&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="my-package-notes.html#cb21-1" tabindex="-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
+<span id="cb21-2"><a href="my-package-notes.html#cb21-2" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;brad-cannell/codebook&quot;</span>)</span></code></pre></div>
 <ul>
 <li><p>Just replace “codebook” in the path above with the name of the repository for the package project you are currently working on.</p></li>
 <li><p>You can leave everything else as-is for now.</p></li>
@@ -791,11 +794,11 @@ Hidden comments placeholder
 <p><strong>Render README</strong></p>
 <p>Don’t forget to render it to make README.md! The pre-commit hook should remind you if you try to commit README.Rmd, but not README.md, and also when README.md appears to be out-of-date.</p>
 <p>The very best way to render README.Rmd is with build_readme(), because it takes care to render with the most current version of your package, i.e. it installs a temporary copy from the current source.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="my-package-notes.html#cb22-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">build_readme</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="my-package-notes.html#cb22-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">build_readme</span>()</span></code></pre></div>
 </div>
 <div id="git" class="section level2 hasAnchor" number="2.10">
 <h2><span class="header-section-number">2.10</span> Step 6: Add Git<a href="my-package-notes.html#git" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="my-package-notes.html#cb23-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="my-package-notes.html#cb23-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git</span>()</span></code></pre></div>
 <ul>
 <li>Go ahead and commit all the files in the directory so far, and agree to restart R.</li>
 </ul>
@@ -808,12 +811,16 @@ Hidden comments placeholder
 <li><p>Create the repo manually on GitHub first, then follow GitHub’s instructions for syncing.</p></li>
 <li><p>After you create the repo on mbcann01, transfer ownership to brad-cannell in the Settings menu.</p></li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="my-package-notes.html#cb24-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="my-package-notes.html#cb24-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>()</span></code></pre></div>
 <p>The function will do all of this:</p>
 <p><img src="img/01_programming/use_github.png" width="749" /></p>
 <ul>
 <li>Go ahead and agree to commit.</li>
 </ul>
+<div id="setting-up-github" class="section level3 hasAnchor" number="2.11.1">
+<h3><span class="header-section-number">2.11.1</span> Setting up GitHub<a href="my-package-notes.html#setting-up-github" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>I added a page on the <a href="https://github.com/brad-cannell/templates/wiki/R-Package-Templates">templates package wiki</a> about setting up the issue tags, planner project boards, etc. That seems more durable writing them here.</p>
+</div>
 </div>
 <div id="package-functions" class="section level2 hasAnchor" number="2.12">
 <h2><span class="header-section-number">2.12</span> Step 8: Adding content to the package<a href="my-package-notes.html#package-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -841,85 +848,85 @@ Hidden comments placeholder
 </div>
 <div id="example-roxygen-header" class="section level3 hasAnchor" number="2.12.3">
 <h3><span class="header-section-number">2.12.3</span> Example <code>roxygen</code> header<a href="my-package-notes.html#example-roxygen-header" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="my-package-notes.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @title Compact Table of Summary Statistics</span></span>
-<span id="cb25-2"><a href="my-package-notes.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb25-3"><a href="my-package-notes.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @description  Based on Stata&#39;s &quot;tabstat&quot; command. &quot;tabstat displays summary</span></span>
-<span id="cb25-4"><a href="my-package-notes.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  statistics for a series of numeric variables in one table.  It allows you</span></span>
-<span id="cb25-5"><a href="my-package-notes.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  to specify the list of statistics to be displayed.  Statistics can be</span></span>
-<span id="cb25-6"><a href="my-package-notes.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  calculated (conditioned on) another variable.  tabstat allows substantial</span></span>
-<span id="cb25-7"><a href="my-package-notes.html#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  flexibility in terms of the statistics presented and the format of the</span></span>
-<span id="cb25-8"><a href="my-package-notes.html#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  table&quot; (Stata, 2016).</span></span>
-<span id="cb25-9"><a href="my-package-notes.html#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb25-10"><a href="my-package-notes.html#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param x A continuous variable.</span></span>
-<span id="cb25-11"><a href="my-package-notes.html#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param digits Rounds the values returned to the specified number of decimal</span></span>
-<span id="cb25-12"><a href="my-package-notes.html#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  places (default 3).</span></span>
-<span id="cb25-13"><a href="my-package-notes.html#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param stats Return specified statistics. Options include:</span></span>
-<span id="cb25-14"><a href="my-package-notes.html#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  \describe{</span></span>
-<span id="cb25-15"><a href="my-package-notes.html#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{n}{Count of nonmissing values of x}</span></span>
-<span id="cb25-16"><a href="my-package-notes.html#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{nmiss}{Count of missing values of x}</span></span>
-<span id="cb25-17"><a href="my-package-notes.html#cb25-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{ci}{95 percent confidence interval for the mean of x}</span></span>
-<span id="cb25-18"><a href="my-package-notes.html#cb25-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{sum}{Sum of x}</span></span>
-<span id="cb25-19"><a href="my-package-notes.html#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{max}{Maximum value of x}</span></span>
-<span id="cb25-20"><a href="my-package-notes.html#cb25-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{min}{Minimum value of x}</span></span>
-<span id="cb25-21"><a href="my-package-notes.html#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{range}{(Maximum value of x) - (minimum value of x)}</span></span>
-<span id="cb25-22"><a href="my-package-notes.html#cb25-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{sd}{Standard deviation of x}</span></span>
-<span id="cb25-23"><a href="my-package-notes.html#cb25-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{var}{Variance of x}</span></span>
-<span id="cb25-24"><a href="my-package-notes.html#cb25-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{cv}{Coefficient of variation (sd / mean) of x}</span></span>
-<span id="cb25-25"><a href="my-package-notes.html#cb25-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{sem}{Standard error of the mean of x}</span></span>
-<span id="cb25-26"><a href="my-package-notes.html#cb25-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{skew}{Skewness of x}</span></span>
-<span id="cb25-27"><a href="my-package-notes.html#cb25-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{kurt}{Kurtosis of x}</span></span>
-<span id="cb25-28"><a href="my-package-notes.html#cb25-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p1}{1st percentile of x}</span></span>
-<span id="cb25-29"><a href="my-package-notes.html#cb25-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p5}{5th percentile of x}</span></span>
-<span id="cb25-30"><a href="my-package-notes.html#cb25-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p10}{10th percentile of x}</span></span>
-<span id="cb25-31"><a href="my-package-notes.html#cb25-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p25}{25th percentile of x}</span></span>
-<span id="cb25-32"><a href="my-package-notes.html#cb25-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p50}{Median value of x}</span></span>
-<span id="cb25-33"><a href="my-package-notes.html#cb25-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{median}{Median value of x}</span></span>
-<span id="cb25-34"><a href="my-package-notes.html#cb25-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p75}{75th percentile of x}</span></span>
-<span id="cb25-35"><a href="my-package-notes.html#cb25-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p90}{90th percentile of x}</span></span>
-<span id="cb25-36"><a href="my-package-notes.html#cb25-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p95}{95th percentile of x}</span></span>
-<span id="cb25-37"><a href="my-package-notes.html#cb25-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{p99}{99th percentile of x}</span></span>
-<span id="cb25-38"><a href="my-package-notes.html#cb25-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{iqr}{Interquartile range (p75 - p25)}</span></span>
-<span id="cb25-39"><a href="my-package-notes.html#cb25-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;    \item{q}{Equivalent to specifying p25 p50 p75}</span></span>
-<span id="cb25-40"><a href="my-package-notes.html#cb25-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  }</span></span>
-<span id="cb25-41"><a href="my-package-notes.html#cb25-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb25-42"><a href="my-package-notes.html#cb25-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return A data frame. By default, the data frame contains the variable name</span></span>
-<span id="cb25-43"><a href="my-package-notes.html#cb25-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  and mean.</span></span>
-<span id="cb25-44"><a href="my-package-notes.html#cb25-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
-<span id="cb25-45"><a href="my-package-notes.html#cb25-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb25-46"><a href="my-package-notes.html#cb25-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @references Stata 14 help for tabstat</span></span>
-<span id="cb25-47"><a href="my-package-notes.html#cb25-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  \url{http://www.stata.com/help.cgi?tabstat}</span></span>
-<span id="cb25-48"><a href="my-package-notes.html#cb25-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb25-49"><a href="my-package-notes.html#cb25-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
-<span id="cb25-50"><a href="my-package-notes.html#cb25-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; data(mtcars)</span></span>
-<span id="cb25-51"><a href="my-package-notes.html#cb25-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb25-52"><a href="my-package-notes.html#cb25-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; # Single univariate analysis with Defaults</span></span>
-<span id="cb25-53"><a href="my-package-notes.html#cb25-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; tabstat(mtcars$mpg)</span></span>
-<span id="cb25-54"><a href="my-package-notes.html#cb25-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb25-55"><a href="my-package-notes.html#cb25-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; # Single univariate analysis with all stats</span></span>
-<span id="cb25-56"><a href="my-package-notes.html#cb25-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; tabstat(mtcars$mpg, stats = c(&quot;n&quot;, &quot;nmiss&quot;, &quot;ci&quot;, &quot;sum&quot;, &quot;max&quot;, &quot;min&quot;,</span></span>
-<span id="cb25-57"><a href="my-package-notes.html#cb25-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; &quot;range&quot;, &quot;sd&quot;, &quot;var&quot;, &quot;cv&quot;, &quot;sem&quot;, &quot;skew&quot;, &quot;kurt&quot;, &quot;p1&quot;, &quot;p5&quot;, &quot;p10&quot;,</span></span>
-<span id="cb25-58"><a href="my-package-notes.html#cb25-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; &quot;p25&quot;, &quot;p50&quot;, &quot;median&quot;, &quot;p75&quot;, &quot;p90&quot;, &quot;p95&quot;, &quot;p99&quot;, &quot;iqr&quot;, &quot;q&quot;))</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="my-package-notes.html#cb25-1" tabindex="-1"></a><span class="co">#&#39; @title Compact Table of Summary Statistics</span></span>
+<span id="cb25-2"><a href="my-package-notes.html#cb25-2" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb25-3"><a href="my-package-notes.html#cb25-3" tabindex="-1"></a><span class="co">#&#39; @description  Based on Stata&#39;s &quot;tabstat&quot; command. &quot;tabstat displays summary</span></span>
+<span id="cb25-4"><a href="my-package-notes.html#cb25-4" tabindex="-1"></a><span class="co">#&#39;  statistics for a series of numeric variables in one table.  It allows you</span></span>
+<span id="cb25-5"><a href="my-package-notes.html#cb25-5" tabindex="-1"></a><span class="co">#&#39;  to specify the list of statistics to be displayed.  Statistics can be</span></span>
+<span id="cb25-6"><a href="my-package-notes.html#cb25-6" tabindex="-1"></a><span class="co">#&#39;  calculated (conditioned on) another variable.  tabstat allows substantial</span></span>
+<span id="cb25-7"><a href="my-package-notes.html#cb25-7" tabindex="-1"></a><span class="co">#&#39;  flexibility in terms of the statistics presented and the format of the</span></span>
+<span id="cb25-8"><a href="my-package-notes.html#cb25-8" tabindex="-1"></a><span class="co">#&#39;  table&quot; (Stata, 2016).</span></span>
+<span id="cb25-9"><a href="my-package-notes.html#cb25-9" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb25-10"><a href="my-package-notes.html#cb25-10" tabindex="-1"></a><span class="co">#&#39; @param x A continuous variable.</span></span>
+<span id="cb25-11"><a href="my-package-notes.html#cb25-11" tabindex="-1"></a><span class="co">#&#39; @param digits Rounds the values returned to the specified number of decimal</span></span>
+<span id="cb25-12"><a href="my-package-notes.html#cb25-12" tabindex="-1"></a><span class="co">#&#39;  places (default 3).</span></span>
+<span id="cb25-13"><a href="my-package-notes.html#cb25-13" tabindex="-1"></a><span class="co">#&#39; @param stats Return specified statistics. Options include:</span></span>
+<span id="cb25-14"><a href="my-package-notes.html#cb25-14" tabindex="-1"></a><span class="co">#&#39;  \describe{</span></span>
+<span id="cb25-15"><a href="my-package-notes.html#cb25-15" tabindex="-1"></a><span class="co">#&#39;    \item{n}{Count of nonmissing values of x}</span></span>
+<span id="cb25-16"><a href="my-package-notes.html#cb25-16" tabindex="-1"></a><span class="co">#&#39;    \item{nmiss}{Count of missing values of x}</span></span>
+<span id="cb25-17"><a href="my-package-notes.html#cb25-17" tabindex="-1"></a><span class="co">#&#39;    \item{ci}{95 percent confidence interval for the mean of x}</span></span>
+<span id="cb25-18"><a href="my-package-notes.html#cb25-18" tabindex="-1"></a><span class="co">#&#39;    \item{sum}{Sum of x}</span></span>
+<span id="cb25-19"><a href="my-package-notes.html#cb25-19" tabindex="-1"></a><span class="co">#&#39;    \item{max}{Maximum value of x}</span></span>
+<span id="cb25-20"><a href="my-package-notes.html#cb25-20" tabindex="-1"></a><span class="co">#&#39;    \item{min}{Minimum value of x}</span></span>
+<span id="cb25-21"><a href="my-package-notes.html#cb25-21" tabindex="-1"></a><span class="co">#&#39;    \item{range}{(Maximum value of x) - (minimum value of x)}</span></span>
+<span id="cb25-22"><a href="my-package-notes.html#cb25-22" tabindex="-1"></a><span class="co">#&#39;    \item{sd}{Standard deviation of x}</span></span>
+<span id="cb25-23"><a href="my-package-notes.html#cb25-23" tabindex="-1"></a><span class="co">#&#39;    \item{var}{Variance of x}</span></span>
+<span id="cb25-24"><a href="my-package-notes.html#cb25-24" tabindex="-1"></a><span class="co">#&#39;    \item{cv}{Coefficient of variation (sd / mean) of x}</span></span>
+<span id="cb25-25"><a href="my-package-notes.html#cb25-25" tabindex="-1"></a><span class="co">#&#39;    \item{sem}{Standard error of the mean of x}</span></span>
+<span id="cb25-26"><a href="my-package-notes.html#cb25-26" tabindex="-1"></a><span class="co">#&#39;    \item{skew}{Skewness of x}</span></span>
+<span id="cb25-27"><a href="my-package-notes.html#cb25-27" tabindex="-1"></a><span class="co">#&#39;    \item{kurt}{Kurtosis of x}</span></span>
+<span id="cb25-28"><a href="my-package-notes.html#cb25-28" tabindex="-1"></a><span class="co">#&#39;    \item{p1}{1st percentile of x}</span></span>
+<span id="cb25-29"><a href="my-package-notes.html#cb25-29" tabindex="-1"></a><span class="co">#&#39;    \item{p5}{5th percentile of x}</span></span>
+<span id="cb25-30"><a href="my-package-notes.html#cb25-30" tabindex="-1"></a><span class="co">#&#39;    \item{p10}{10th percentile of x}</span></span>
+<span id="cb25-31"><a href="my-package-notes.html#cb25-31" tabindex="-1"></a><span class="co">#&#39;    \item{p25}{25th percentile of x}</span></span>
+<span id="cb25-32"><a href="my-package-notes.html#cb25-32" tabindex="-1"></a><span class="co">#&#39;    \item{p50}{Median value of x}</span></span>
+<span id="cb25-33"><a href="my-package-notes.html#cb25-33" tabindex="-1"></a><span class="co">#&#39;    \item{median}{Median value of x}</span></span>
+<span id="cb25-34"><a href="my-package-notes.html#cb25-34" tabindex="-1"></a><span class="co">#&#39;    \item{p75}{75th percentile of x}</span></span>
+<span id="cb25-35"><a href="my-package-notes.html#cb25-35" tabindex="-1"></a><span class="co">#&#39;    \item{p90}{90th percentile of x}</span></span>
+<span id="cb25-36"><a href="my-package-notes.html#cb25-36" tabindex="-1"></a><span class="co">#&#39;    \item{p95}{95th percentile of x}</span></span>
+<span id="cb25-37"><a href="my-package-notes.html#cb25-37" tabindex="-1"></a><span class="co">#&#39;    \item{p99}{99th percentile of x}</span></span>
+<span id="cb25-38"><a href="my-package-notes.html#cb25-38" tabindex="-1"></a><span class="co">#&#39;    \item{iqr}{Interquartile range (p75 - p25)}</span></span>
+<span id="cb25-39"><a href="my-package-notes.html#cb25-39" tabindex="-1"></a><span class="co">#&#39;    \item{q}{Equivalent to specifying p25 p50 p75}</span></span>
+<span id="cb25-40"><a href="my-package-notes.html#cb25-40" tabindex="-1"></a><span class="co">#&#39;  }</span></span>
+<span id="cb25-41"><a href="my-package-notes.html#cb25-41" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb25-42"><a href="my-package-notes.html#cb25-42" tabindex="-1"></a><span class="co">#&#39; @return A data frame. By default, the data frame contains the variable name</span></span>
+<span id="cb25-43"><a href="my-package-notes.html#cb25-43" tabindex="-1"></a><span class="co">#&#39;  and mean.</span></span>
+<span id="cb25-44"><a href="my-package-notes.html#cb25-44" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb25-45"><a href="my-package-notes.html#cb25-45" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb25-46"><a href="my-package-notes.html#cb25-46" tabindex="-1"></a><span class="co">#&#39; @references Stata 14 help for tabstat</span></span>
+<span id="cb25-47"><a href="my-package-notes.html#cb25-47" tabindex="-1"></a><span class="co">#&#39;  \url{http://www.stata.com/help.cgi?tabstat}</span></span>
+<span id="cb25-48"><a href="my-package-notes.html#cb25-48" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb25-49"><a href="my-package-notes.html#cb25-49" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb25-50"><a href="my-package-notes.html#cb25-50" tabindex="-1"></a><span class="co">#&#39; data(mtcars)</span></span>
+<span id="cb25-51"><a href="my-package-notes.html#cb25-51" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb25-52"><a href="my-package-notes.html#cb25-52" tabindex="-1"></a><span class="co">#&#39; # Single univariate analysis with Defaults</span></span>
+<span id="cb25-53"><a href="my-package-notes.html#cb25-53" tabindex="-1"></a><span class="co">#&#39; tabstat(mtcars$mpg)</span></span>
+<span id="cb25-54"><a href="my-package-notes.html#cb25-54" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb25-55"><a href="my-package-notes.html#cb25-55" tabindex="-1"></a><span class="co">#&#39; # Single univariate analysis with all stats</span></span>
+<span id="cb25-56"><a href="my-package-notes.html#cb25-56" tabindex="-1"></a><span class="co">#&#39; tabstat(mtcars$mpg, stats = c(&quot;n&quot;, &quot;nmiss&quot;, &quot;ci&quot;, &quot;sum&quot;, &quot;max&quot;, &quot;min&quot;,</span></span>
+<span id="cb25-57"><a href="my-package-notes.html#cb25-57" tabindex="-1"></a><span class="co">#&#39; &quot;range&quot;, &quot;sd&quot;, &quot;var&quot;, &quot;cv&quot;, &quot;sem&quot;, &quot;skew&quot;, &quot;kurt&quot;, &quot;p1&quot;, &quot;p5&quot;, &quot;p10&quot;,</span></span>
+<span id="cb25-58"><a href="my-package-notes.html#cb25-58" tabindex="-1"></a><span class="co">#&#39; &quot;p25&quot;, &quot;p50&quot;, &quot;median&quot;, &quot;p75&quot;, &quot;p90&quot;, &quot;p95&quot;, &quot;p99&quot;, &quot;iqr&quot;, &quot;q&quot;))</span></span></code></pre></div>
 </div>
 <div id="dont-run-the-examples" class="section level3 hasAnchor" number="2.12.4">
 <h3><span class="header-section-number">2.12.4</span> Don’t run the examples<a href="my-package-notes.html#dont-run-the-examples" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you don’t want the examples to actually run, You can surround the example code with like this:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="my-package-notes.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
-<span id="cb26-2"><a href="my-package-notes.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; \dontrun{</span></span>
-<span id="cb26-3"><a href="my-package-notes.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; library(dplyr)</span></span>
-<span id="cb26-4"><a href="my-package-notes.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; library(meantables)</span></span>
-<span id="cb26-5"><a href="my-package-notes.html#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb26-6"><a href="my-package-notes.html#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; data(mtcars)</span></span>
-<span id="cb26-7"><a href="my-package-notes.html#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb26-8"><a href="my-package-notes.html#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; # Overall mean table with defaults</span></span>
-<span id="cb26-9"><a href="my-package-notes.html#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb26-10"><a href="my-package-notes.html#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; mtcars %&gt;%</span></span>
-<span id="cb26-11"><a href="my-package-notes.html#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;   mean_table(mpg)</span></span>
-<span id="cb26-12"><a href="my-package-notes.html#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb26-13"><a href="my-package-notes.html#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; # A tibble: 1 x 9</span></span>
-<span id="cb26-14"><a href="my-package-notes.html#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;   response_var     n  mean    sd   sem   lcl   ucl   min   max</span></span>
-<span id="cb26-15"><a href="my-package-notes.html#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;   &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb26-16"><a href="my-package-notes.html#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; 1 mpg             32  20.1  6.03  1.07  17.9  22.3  10.4  33.9</span></span>
-<span id="cb26-17"><a href="my-package-notes.html#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; }</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="my-package-notes.html#cb26-1" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb26-2"><a href="my-package-notes.html#cb26-2" tabindex="-1"></a><span class="co">#&#39; \dontrun{</span></span>
+<span id="cb26-3"><a href="my-package-notes.html#cb26-3" tabindex="-1"></a><span class="co">#&#39; library(dplyr)</span></span>
+<span id="cb26-4"><a href="my-package-notes.html#cb26-4" tabindex="-1"></a><span class="co">#&#39; library(meantables)</span></span>
+<span id="cb26-5"><a href="my-package-notes.html#cb26-5" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb26-6"><a href="my-package-notes.html#cb26-6" tabindex="-1"></a><span class="co">#&#39; data(mtcars)</span></span>
+<span id="cb26-7"><a href="my-package-notes.html#cb26-7" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb26-8"><a href="my-package-notes.html#cb26-8" tabindex="-1"></a><span class="co">#&#39; # Overall mean table with defaults</span></span>
+<span id="cb26-9"><a href="my-package-notes.html#cb26-9" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb26-10"><a href="my-package-notes.html#cb26-10" tabindex="-1"></a><span class="co">#&#39; mtcars %&gt;%</span></span>
+<span id="cb26-11"><a href="my-package-notes.html#cb26-11" tabindex="-1"></a><span class="co">#&#39;   mean_table(mpg)</span></span>
+<span id="cb26-12"><a href="my-package-notes.html#cb26-12" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb26-13"><a href="my-package-notes.html#cb26-13" tabindex="-1"></a><span class="co">#&#39; # A tibble: 1 x 9</span></span>
+<span id="cb26-14"><a href="my-package-notes.html#cb26-14" tabindex="-1"></a><span class="co">#&#39;   response_var     n  mean    sd   sem   lcl   ucl   min   max</span></span>
+<span id="cb26-15"><a href="my-package-notes.html#cb26-15" tabindex="-1"></a><span class="co">#&#39;   &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb26-16"><a href="my-package-notes.html#cb26-16" tabindex="-1"></a><span class="co">#&#39; 1 mpg             32  20.1  6.03  1.07  17.9  22.3  10.4  33.9</span></span>
+<span id="cb26-17"><a href="my-package-notes.html#cb26-17" tabindex="-1"></a><span class="co">#&#39; }</span></span></code></pre></div>
 </div>
 <div id="keyboard-shortcut-for-inserting-roxygen-comment" class="section level3 hasAnchor" number="2.12.5">
 <h3><span class="header-section-number">2.12.5</span> Keyboard shortcut for inserting roxygen #’ comment<a href="my-package-notes.html#keyboard-shortcut-for-inserting-roxygen-comment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -930,49 +937,49 @@ Hidden comments placeholder
 <p>The explanation in the <a href="https://r-pkgs.org/data.html">R Packages book</a> is good, short, and easy to follow. As explained in there, the code to create and/or clean the data will go in the <code>data-raw</code> directory and the data will eventually go in the <code>data/</code> directory.</p>
 <p>For the <code>codebook</code> package, I wanted to simulate some really simple data that could be used for package examples. Here’s how I did it.</p>
 <p>I started by running <code>usethis::use_data_raw("study")</code>. Among other things, this creates the R script to be used to simulate the <code>study</code> data. Here is the header for the study data.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="my-package-notes.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># =============================================================================</span></span>
-<span id="cb27-2"><a href="my-package-notes.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Study data</span></span>
-<span id="cb27-3"><a href="my-package-notes.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the code to create the study data - a simulated data set that can be</span></span>
-<span id="cb27-4"><a href="my-package-notes.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># used to demonstrate how to use the codebook package.</span></span>
-<span id="cb27-5"><a href="my-package-notes.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Created: 2022-04-04</span></span>
-<span id="cb27-6"><a href="my-package-notes.html#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Brad Cannell</span></span>
-<span id="cb27-7"><a href="my-package-notes.html#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># =============================================================================</span></span>
-<span id="cb27-8"><a href="my-package-notes.html#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-9"><a href="my-package-notes.html#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Insert simulation code here...</span></span>
-<span id="cb27-10"><a href="my-package-notes.html#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-11"><a href="my-package-notes.html#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-12"><a href="my-package-notes.html#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the simulated data to the data directory.</span></span>
-<span id="cb27-13"><a href="my-package-notes.html#cb27-13" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_data</span>(study, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="my-package-notes.html#cb27-1" tabindex="-1"></a><span class="co"># =============================================================================</span></span>
+<span id="cb27-2"><a href="my-package-notes.html#cb27-2" tabindex="-1"></a><span class="co"># Study data</span></span>
+<span id="cb27-3"><a href="my-package-notes.html#cb27-3" tabindex="-1"></a><span class="co"># This is the code to create the study data - a simulated data set that can be</span></span>
+<span id="cb27-4"><a href="my-package-notes.html#cb27-4" tabindex="-1"></a><span class="co"># used to demonstrate how to use the codebook package.</span></span>
+<span id="cb27-5"><a href="my-package-notes.html#cb27-5" tabindex="-1"></a><span class="co"># Created: 2022-04-04</span></span>
+<span id="cb27-6"><a href="my-package-notes.html#cb27-6" tabindex="-1"></a><span class="co"># Brad Cannell</span></span>
+<span id="cb27-7"><a href="my-package-notes.html#cb27-7" tabindex="-1"></a><span class="co"># =============================================================================</span></span>
+<span id="cb27-8"><a href="my-package-notes.html#cb27-8" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="my-package-notes.html#cb27-9" tabindex="-1"></a><span class="co"># Insert simulation code here...</span></span>
+<span id="cb27-10"><a href="my-package-notes.html#cb27-10" tabindex="-1"></a></span>
+<span id="cb27-11"><a href="my-package-notes.html#cb27-11" tabindex="-1"></a></span>
+<span id="cb27-12"><a href="my-package-notes.html#cb27-12" tabindex="-1"></a><span class="co"># Add the simulated data to the data directory.</span></span>
+<span id="cb27-13"><a href="my-package-notes.html#cb27-13" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_data</span>(study, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
 <div id="documenting-data" class="section level3 hasAnchor" number="2.12.7">
 <h3><span class="header-section-number">2.12.7</span> Documenting data<a href="my-package-notes.html#documenting-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <blockquote>
-<p>Objects in data/ are always effectively exported (they use a slightly different mechanism than NAMESPACE but the details are not important). This means that they must be documented. Documenting data is like documenting a function with a few minor differences. Instead of documenting the data directly, you document the name of the dataset and save it in R/.<span class="citation"><sup><a href="#ref-Wickham2022-ff" role="doc-biblioref">1</a></sup></span></p>
+<p>Objects in data/ are always effectively exported (they use a slightly different mechanism than NAMESPACE but the details are not important). This means that they must be documented. Documenting data is like documenting a function with a few minor differences. Instead of documenting the data directly, you document the name of the dataset and save it in R/.<span class="citation"><sup><a href="#ref-Wickham2022-ff">1</a></sup></span></p>
 </blockquote>
 <p>For example, the roxygen2 block used to document the <code>study</code> data in the <code>codebook</code> package is saved as R/data.R and looks something like this:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="my-package-notes.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Simulated study data.</span></span>
-<span id="cb28-2"><a href="my-package-notes.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb28-3"><a href="my-package-notes.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; This is the code to create the study data - a simulated data set that can be</span></span>
-<span id="cb28-4"><a href="my-package-notes.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; used to demonstrate how to use the codebook package.</span></span>
-<span id="cb28-5"><a href="my-package-notes.html#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb28-6"><a href="my-package-notes.html#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @format A data frame with 20 rows and 4 variables:</span></span>
-<span id="cb28-7"><a href="my-package-notes.html#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; \describe{</span></span>
-<span id="cb28-8"><a href="my-package-notes.html#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;   \item{id}{participant id}</span></span>
-<span id="cb28-9"><a href="my-package-notes.html#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;   \item{gender}{participant gender, female/male}</span></span>
-<span id="cb28-10"><a href="my-package-notes.html#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;   \item{date}{date of enrollment}</span></span>
-<span id="cb28-11"><a href="my-package-notes.html#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;   \item{height}{participant height, in inches}</span></span>
-<span id="cb28-12"><a href="my-package-notes.html#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; }</span></span>
-<span id="cb28-13"><a href="my-package-notes.html#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;study&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="my-package-notes.html#cb28-1" tabindex="-1"></a><span class="co">#&#39; Simulated study data.</span></span>
+<span id="cb28-2"><a href="my-package-notes.html#cb28-2" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb28-3"><a href="my-package-notes.html#cb28-3" tabindex="-1"></a><span class="co">#&#39; This is the code to create the study data - a simulated data set that can be</span></span>
+<span id="cb28-4"><a href="my-package-notes.html#cb28-4" tabindex="-1"></a><span class="co">#&#39; used to demonstrate how to use the codebook package.</span></span>
+<span id="cb28-5"><a href="my-package-notes.html#cb28-5" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb28-6"><a href="my-package-notes.html#cb28-6" tabindex="-1"></a><span class="co">#&#39; @format A data frame with 20 rows and 4 variables:</span></span>
+<span id="cb28-7"><a href="my-package-notes.html#cb28-7" tabindex="-1"></a><span class="co">#&#39; \describe{</span></span>
+<span id="cb28-8"><a href="my-package-notes.html#cb28-8" tabindex="-1"></a><span class="co">#&#39;   \item{id}{participant id}</span></span>
+<span id="cb28-9"><a href="my-package-notes.html#cb28-9" tabindex="-1"></a><span class="co">#&#39;   \item{gender}{participant gender, female/male}</span></span>
+<span id="cb28-10"><a href="my-package-notes.html#cb28-10" tabindex="-1"></a><span class="co">#&#39;   \item{date}{date of enrollment}</span></span>
+<span id="cb28-11"><a href="my-package-notes.html#cb28-11" tabindex="-1"></a><span class="co">#&#39;   \item{height}{participant height, in inches}</span></span>
+<span id="cb28-12"><a href="my-package-notes.html#cb28-12" tabindex="-1"></a><span class="co">#&#39; }</span></span>
+<span id="cb28-13"><a href="my-package-notes.html#cb28-13" tabindex="-1"></a><span class="st">&quot;study&quot;</span></span></code></pre></div>
 <ul>
-<li><p>“<code>@format</code> gives an overview of the dataset. For data frames, you should include a definition list that describes each variable. It’s usually a good idea to describe variables’ units here.”<span class="citation"><sup><a href="#ref-Wickham2022-ff" role="doc-biblioref">1</a></sup></span></p></li>
-<li><p>“Never<span class="citation"><sup><a href="#ref-export" role="doc-biblioref"><strong>export?</strong></a></sup></span> a data set.”<span class="citation"><sup><a href="#ref-Wickham2022-ff" role="doc-biblioref">1</a></sup></span></p></li>
+<li><p>“<code>@format</code> gives an overview of the dataset. For data frames, you should include a definition list that describes each variable. It’s usually a good idea to describe variables’ units here.”<span class="citation"><sup><a href="#ref-Wickham2022-ff">1</a></sup></span></p></li>
+<li><p>“Never<span class="citation"><sup><a href="#ref-export"><strong>export?</strong></a></sup></span> a data set.”<span class="citation"><sup><a href="#ref-Wickham2022-ff">1</a></sup></span></p></li>
 <li><p>The file is save as <code>R/data.R</code>.</p></li>
 </ul>
 <p><a href="https://r-pkgs.org/data.html#documenting-data">Click here to view the documentation for ggplot’s diamonds data</a>.</p>
 </div>
 <div id="documenting-package" class="section level3 hasAnchor" number="2.12.8">
 <h3><span class="header-section-number">2.12.8</span> Documenting Package<a href="my-package-notes.html#documenting-package" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>You can use roxygen to provide a help page for your package as a whole. As described in <a href="https://r-pkgs.org/man.html#man-packages">section 10.6 of R Packages</a>,<span class="citation"><sup><a href="#ref-Wickham2022-ff" role="doc-biblioref">1</a></sup></span></p>
+<p>You can use roxygen to provide a help page for your package as a whole. As described in <a href="https://r-pkgs.org/man.html#man-packages">section 10.6 of R Packages</a>,<span class="citation"><sup><a href="#ref-Wickham2022-ff">1</a></sup></span></p>
 <blockquote>
 <p>You can use roxygen to provide a help page for your package as a whole. This is accessed with <code>package?foo</code>, and can be used to describe the most important components of your package. It’s a useful supplement to vignettes, as described in the next chapter.</p>
 </blockquote>
@@ -982,22 +989,22 @@ Hidden comments placeholder
 <blockquote>
 <p>I usually put this documentation in a file called <code>&lt;package-name&gt;.R</code>. It’s also a good place to put the package level import statements that you’ll learn about in imports.</p>
 </blockquote>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="my-package-notes.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; foo: A package for computating the notorious bar statistic</span></span>
-<span id="cb29-2"><a href="my-package-notes.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb29-3"><a href="my-package-notes.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; The foo package provides three categories of important functions:</span></span>
-<span id="cb29-4"><a href="my-package-notes.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; foo, bar and baz.</span></span>
-<span id="cb29-5"><a href="my-package-notes.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
-<span id="cb29-6"><a href="my-package-notes.html#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @section Foo functions:</span></span>
-<span id="cb29-7"><a href="my-package-notes.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; The foo functions ...</span></span>
-<span id="cb29-8"><a href="my-package-notes.html#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb29-9"><a href="my-package-notes.html#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @docType package</span></span>
-<span id="cb29-10"><a href="my-package-notes.html#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @name foo</span></span>
-<span id="cb29-11"><a href="my-package-notes.html#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="cn">NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="my-package-notes.html#cb29-1" tabindex="-1"></a><span class="co">#&#39; foo: A package for computating the notorious bar statistic</span></span>
+<span id="cb29-2"><a href="my-package-notes.html#cb29-2" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb29-3"><a href="my-package-notes.html#cb29-3" tabindex="-1"></a><span class="co">#&#39; The foo package provides three categories of important functions:</span></span>
+<span id="cb29-4"><a href="my-package-notes.html#cb29-4" tabindex="-1"></a><span class="co">#&#39; foo, bar and baz.</span></span>
+<span id="cb29-5"><a href="my-package-notes.html#cb29-5" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb29-6"><a href="my-package-notes.html#cb29-6" tabindex="-1"></a><span class="co">#&#39; @section Foo functions:</span></span>
+<span id="cb29-7"><a href="my-package-notes.html#cb29-7" tabindex="-1"></a><span class="co">#&#39; The foo functions ...</span></span>
+<span id="cb29-8"><a href="my-package-notes.html#cb29-8" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb29-9"><a href="my-package-notes.html#cb29-9" tabindex="-1"></a><span class="co">#&#39; @docType package</span></span>
+<span id="cb29-10"><a href="my-package-notes.html#cb29-10" tabindex="-1"></a><span class="co">#&#39; @name foo</span></span>
+<span id="cb29-11"><a href="my-package-notes.html#cb29-11" tabindex="-1"></a><span class="cn">NULL</span></span></code></pre></div>
 </div>
 </div>
 <div id="testing" class="section level2 hasAnchor" number="2.13">
 <h2><span class="header-section-number">2.13</span> Step 9: Creating unit tests<a href="my-package-notes.html#testing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Testing is an important part of programming. For detailed information on testing see the appropriate <a href="https://r-pkgs.org/tests.html">testing chapter in R Packages</a>.<span class="citation"><sup><a href="#ref-Wickham2022-ff" role="doc-biblioref">1</a></sup></span></p>
+<p>Testing is an important part of programming. For detailed information on testing see the appropriate <a href="https://r-pkgs.org/tests.html">testing chapter in R Packages</a>.<span class="citation"><sup><a href="#ref-Wickham2022-ff">1</a></sup></span></p>
 <p>Get started with <code>devtools::use_testthat()</code>.</p>
 <ol style="list-style-type: decimal">
 <li><p>Create test file. Must be in <code>tests/testhat</code>. File name should start with test_ and the function name. For example, <code>test_check_catvars</code>.</p></li>
@@ -1123,25 +1130,25 @@ There are currently no downstream dependencies for this package.</code></pre>
 <h3><span class="header-section-number">2.17.1</span> Get rid of .DS_Store<a href="my-package-notes.html#get-rid-of-.ds_store" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>.DS_Store</code> file can be an annoyance when working with Git on MacOS. <a href="https://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository/107921">Here is a link</a> to instructions for removing <code>.DS_Store</code> from your repository. Do it early and never worry about it again.</p>
 <p>In the terminal, run the following code from the root directory:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="my-package-notes.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove existing files from the repository:</span></span>
-<span id="cb32-2"><a href="my-package-notes.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.DS_Store&quot;</span> <span class="at">-type</span> f <span class="at">-exec</span> git-rm {} <span class="dt">\;</span></span></code></pre></div>
-<div class="sourceCode" id="cb33"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="my-package-notes.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add .DS_Store to .gitignore</span></span>
-<span id="cb33-2"><a href="my-package-notes.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> .DS_Store <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
-<div class="sourceCode" id="cb34"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="my-package-notes.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Commit the file to the repo</span></span>
-<span id="cb34-2"><a href="my-package-notes.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .gitignore</span>
-<span id="cb34-3"><a href="my-package-notes.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&#39;.DS_Store banished!&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="my-package-notes.html#cb32-1" tabindex="-1"></a><span class="co"># Remove existing files from the repository:</span></span>
+<span id="cb32-2"><a href="my-package-notes.html#cb32-2" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.DS_Store&quot;</span> <span class="at">-type</span> f <span class="at">-exec</span> git-rm {} <span class="dt">\;</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="my-package-notes.html#cb33-1" tabindex="-1"></a><span class="co"># Add .DS_Store to .gitignore</span></span>
+<span id="cb33-2"><a href="my-package-notes.html#cb33-2" tabindex="-1"></a><span class="bu">echo</span> .DS_Store <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="my-package-notes.html#cb34-1" tabindex="-1"></a><span class="co"># Commit the file to the repo</span></span>
+<span id="cb34-2"><a href="my-package-notes.html#cb34-2" tabindex="-1"></a><span class="fu">git</span> add .gitignore</span>
+<span id="cb34-3"><a href="my-package-notes.html#cb34-3" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&#39;.DS_Store banished!&#39;</span></span></code></pre></div>
 </div>
 <div id="file-mode-changes" class="section level3 hasAnchor" number="2.17.2">
 <h3><span class="header-section-number">2.17.2</span> File mode changes<a href="my-package-notes.html#file-mode-changes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When working on Epi III – and I think this could be an issue with using git on OneDrive more generally – I would have to recommit files when I changed computers. Not because the <strong>content</strong> of the file had changed, but because something called the <strong>file mode</strong> had changed. I searched SO and seemed to fix it with this post: <a href="https://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-file-mode-chmod-changes" class="uri">https://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-file-mode-chmod-changes</a></p>
 <p>Open terminal and type:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb35-1"><a href="my-package-notes.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config core.fileMode false</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb35-1"><a href="my-package-notes.html#cb35-1" tabindex="-1"></a><span class="fu">git</span> config core.fileMode false</span></code></pre></div>
 </div>
 <div id="icon-files" class="section level3 hasAnchor" number="2.17.3">
 <h3><span class="header-section-number">2.17.3</span> Icon files<a href="my-package-notes.html#icon-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Another issue I encountered when working on Epi III – and I think this could be an issue with using git on OneDrive more generally – was the existence of these “Icon” files every time I switched computers. However, they didn’t seem to actually exist (or at least they weren’t visible), and ignoring them in the usual way did not seem to <em>actually</em> ignore them. I searched SO and seemed to fix it with this post: <a href="https://stackoverflow.com/questions/17556250/how-to-ignore-icon-in-git" class="uri">https://stackoverflow.com/questions/17556250/how-to-ignore-icon-in-git</a></p>
 <p>Open terminal and type:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="my-package-notes.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="bu">printf</span> <span class="st">&quot;Icon\r\r&quot;</span> <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="my-package-notes.html#cb36-1" tabindex="-1"></a><span class="bu">printf</span> <span class="st">&quot;Icon\r\r&quot;</span> <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
 </div>
 </div>
 <div id="errors-warnings-notes" class="section level2 hasAnchor" number="2.18">
@@ -1154,7 +1161,7 @@ E checking examples (707ms)
 Running examples in ‘freqtables-Ex.R’ failed
 The error most likely occurred in:</p>
 </blockquote>
-<p>I got this error because I had <code>library(tidyverse)</code> in the<span class="citation"><sup><a href="#ref-examples" role="doc-biblioref"><strong>examples?</strong></a></sup></span> section of my roxygen2 header in one of my R scripts, but I did not have <code>tidyverse</code> in the Imports section of my DESCRIPTION file. I could add <code>tidyverse</code> to the DESCRIPTION file (<code>usethis::use_package("tidyverse", type = "Imports")</code>). However, in this case I chose to use <code>library(dplyr)</code>, which was already in the Imports section of my DESCRIPTION file, instead.</p>
+<p>I got this error because I had <code>library(tidyverse)</code> in the<span class="citation"><sup><a href="#ref-examples"><strong>examples?</strong></a></sup></span> section of my roxygen2 header in one of my R scripts, but I did not have <code>tidyverse</code> in the Imports section of my DESCRIPTION file. I could add <code>tidyverse</code> to the DESCRIPTION file (<code>usethis::use_package("tidyverse", type = "Imports")</code>). However, in this case I chose to use <code>library(dplyr)</code>, which was already in the Imports section of my DESCRIPTION file, instead.</p>
 <blockquote>
 <p>W checking dependencies in R code (369ms)
 ‘::’ or ‘:::’ import not declared from: ‘rlang’</p>
@@ -1176,10 +1183,10 @@ The error most likely occurred in:</p>
 <p>Prevents R CMD check: “no visible binding for global variable ‘.’”</p>
 </blockquote>
 <p>Put the following (for example) directly inside the function definition in the R script where the function is defined:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="my-package-notes.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------</span></span>
-<span id="cb37-2"><a href="my-package-notes.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Prevents R CMD check: &quot;no visible binding for global variable ‘.’&quot;</span></span>
-<span id="cb37-3"><a href="my-package-notes.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------</span></span>
-<span id="cb37-4"><a href="my-package-notes.html#cb37-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> n_total <span class="ot">=</span> prop <span class="ot">=</span> t_crit <span class="ot">=</span> se <span class="ot">=</span> lcl_wald <span class="ot">=</span> ucl_wald <span class="ot">=</span> percent <span class="ot">=</span> <span class="cn">NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="my-package-notes.html#cb37-1" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------</span></span>
+<span id="cb37-2"><a href="my-package-notes.html#cb37-2" tabindex="-1"></a><span class="co"># Prevents R CMD check: &quot;no visible binding for global variable ‘.’&quot;</span></span>
+<span id="cb37-3"><a href="my-package-notes.html#cb37-3" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------</span></span>
+<span id="cb37-4"><a href="my-package-notes.html#cb37-4" tabindex="-1"></a>n <span class="ot">=</span> n_total <span class="ot">=</span> prop <span class="ot">=</span> t_crit <span class="ot">=</span> se <span class="ot">=</span> lcl_wald <span class="ot">=</span> ucl_wald <span class="ot">=</span> percent <span class="ot">=</span> <span class="cn">NULL</span></span></code></pre></div>
 <blockquote>
 <p>N checking R code for possible problems (1.8s)
 get_group_n: no visible global function definition for ‘%&gt;%’

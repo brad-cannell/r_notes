@@ -264,6 +264,9 @@ knitr::include_graphics("img/01_programming/use_github.png")
 
 * Go ahead and agree to commit. 
 
+### Setting up GitHub
+
+I added a page on the [templates package wiki](https://github.com/brad-cannell/templates/wiki/R-Package-Templates) about setting up the issue tags, planner project boards, etc. That seems more durable writing them here.
 
 ## Step 8: Adding content to the package {#package-functions}
 

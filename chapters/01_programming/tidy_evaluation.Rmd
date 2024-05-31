@@ -1167,6 +1167,52 @@ starwars_2 %>%
 
 [top](#top)
 
+### Setting a default function parameter value to NULL
+
+I was trying to create a function that would produce histograms while working on L2C. Sometimes I wanted the histograms faceted by group and sometimes I didn't. So, I wanted to set the facet variable to `NULL` by default. But I kept getting an error: "Error: object 'variable name' not found". 
+
+Here is a reproducible example. It isn't a histogram. Instead, it's much simpler code, but it produces the same error and has the same solution.
+
+```{r error=TRUE}
+# Won't work
+test_null <- function(df, x = NULL) {
+  if (is.null(x)) {
+    dplyr::select(df, name)
+  } else {
+    dplyr::select(df, {{ x }})
+  }
+}
+
+# Produces an error
+test_null(starwars, mass)
+```
+
+I used this [SO post](https://stackoverflow.com/questions/68007842/check-if-a-tidyselect-is-null-and-if-so-set-a-default-tidyselect-method) to find a solution.
+
+```{r}
+# This works
+test_null <- function(df, x = NULL) {
+  # First, enquo x
+  x_enquo <- rlang::enquo(x)
+  # Use rlang::quo_is_null to check for a null value
+  if (rlang::quo_is_null(x_enquo)) {
+    select(df, name)
+  } else {
+    # Inject the defued x with !!
+    select(df, !! x_enquo)
+  }
+}
+```
+
+```{r}
+# With NULL x
+test_null(starwars)
+```
+
+```{r}
+# Pass a column to x
+test_null(starwars, mass)
+```
 
 ## Example I created for Steph Yap
 

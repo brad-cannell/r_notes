@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Packages: Quick Start | R Notes</title>
   <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Packages: Quick Start | R Notes" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2023-07-29" />
+<meta name="date" content="2024-05-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,19 +52,22 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.23/datatables.js"></script>
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="libs/datatables-binding-0.33/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -127,6 +130,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -270,6 +277,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.16.3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-create-variable-name-in-mutate"><i class="fa fa-check"></i><b>4.16.3</b> Using a quoture to create variable name in mutate</a></li>
 <li class="chapter" data-level="4.16.4" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-turn-a-variable-name-into-a-constant-value"><i class="fa fa-check"></i><b>4.16.4</b> Using a quoture to turn a variable name into a constant value</a></li>
 <li class="chapter" data-level="4.16.5" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#convert-a-string-to-a-quoture"><i class="fa fa-check"></i><b>4.16.5</b> Convert a string to a quoture</a></li>
+<li class="chapter" data-level="4.16.6" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#setting-a-default-function-parameter-value-to-null"><i class="fa fa-check"></i><b>4.16.6</b> Setting a default function parameter value to NULL</a></li>
 </ul></li>
 <li class="chapter" data-level="4.17" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#example-i-created-for-steph-yap"><i class="fa fa-check"></i><b>4.17</b> Example I created for Steph Yap</a></li>
 </ul></li>
@@ -673,7 +681,7 @@ Hidden comments placeholder
 <p>Call <code>create_package()</code> to initialize a new package in a directory on your computer (and create the directory, if necessary).</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="my-package-notes.html#cb13-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_package</span>(<span class="st">&quot;/Users/bradcannell/Dropbox/R/Packages/codebook&quot;</span>)</span></code></pre></div>
 <p>The function will do all of this:</p>
-<p><img src="img/01_programming/create_package.png" width="663" /></p>
+<p><img src="img/01_programming/create_package.png" /><!-- --></p>
 </div>
 <div id="notes" class="section level2 hasAnchor" number="2.6">
 <h2><span class="header-section-number">2.6</span> Step 2: Add a NOTES file<a href="my-package-notes.html#notes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -719,7 +727,7 @@ Hidden comments placeholder
 <h2><span class="header-section-number">2.7</span> Step 3: Add license<a href="my-package-notes.html#license" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="my-package-notes.html#cb17-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_mit_license</span>()</span></code></pre></div>
 <p>The function will do all of this:</p>
-<p><img src="img/01_programming/use_mit_license.png" width="629" /></p>
+<p><img src="img/01_programming/use_mit_license.png" /><!-- --></p>
 <p>You will still need to open the new <code>LICENSE</code> file and change <code>COPYRIGHT HOLDER:</code> to “Brad Cannell”. You can also look in the templates folder for more elaborate licenses.</p>
 </div>
 <div id="modify" class="section level2 hasAnchor" number="2.8">
@@ -782,7 +790,7 @@ Hidden comments placeholder
 <li><p>Add installation instructions to README. Although we haven’t created the repository yet, we know what it’s going to be called.</p></li>
 </ul>
 <p>The README file already contains the following lines:</p>
-<p><img src="img/01_programming/install_placeholder.png" width="627" /></p>
+<p><img src="img/01_programming/install_placeholder.png" /><!-- --></p>
 <p>We just need to replace it with:</p>
 <p><strong>Make sure to set the <code>eval=FALSE</code> code chunk option.</strong></p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="my-package-notes.html#cb21-1" tabindex="-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
@@ -813,7 +821,7 @@ Hidden comments placeholder
 </ul>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="my-package-notes.html#cb24-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>()</span></code></pre></div>
 <p>The function will do all of this:</p>
-<p><img src="img/01_programming/use_github.png" width="749" /></p>
+<p><img src="img/01_programming/use_github.png" /><!-- --></p>
 <ul>
 <li>Go ahead and agree to commit.</li>
 </ul>
@@ -1279,7 +1287,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

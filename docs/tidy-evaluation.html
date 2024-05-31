@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4 Tidy Evaluation | R Notes</title>
   <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4 Tidy Evaluation | R Notes" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2023-07-29" />
+<meta name="date" content="2024-05-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,19 +52,22 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.23/datatables.js"></script>
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="libs/datatables-binding-0.33/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -127,6 +130,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -270,6 +277,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.16.3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-create-variable-name-in-mutate"><i class="fa fa-check"></i><b>4.16.3</b> Using a quoture to create variable name in mutate</a></li>
 <li class="chapter" data-level="4.16.4" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-turn-a-variable-name-into-a-constant-value"><i class="fa fa-check"></i><b>4.16.4</b> Using a quoture to turn a variable name into a constant value</a></li>
 <li class="chapter" data-level="4.16.5" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#convert-a-string-to-a-quoture"><i class="fa fa-check"></i><b>4.16.5</b> Convert a string to a quoture</a></li>
+<li class="chapter" data-level="4.16.6" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#setting-a-default-function-parameter-value-to-null"><i class="fa fa-check"></i><b>4.16.6</b> Setting a default function parameter value to NULL</a></li>
 </ul></li>
 <li class="chapter" data-level="4.17" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#example-i-created-for-steph-yap"><i class="fa fa-check"></i><b>4.17</b> Example I created for Steph Yap</a></li>
 </ul></li>
@@ -630,7 +638,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="tidy-evaluation" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">4</span> Tidy Evaluation<a href="tidy-evaluation.html#tidy-evaluation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Created: 2017-06-24 <br> Updated: 2023-07-29</p>
+<p>Created: 2017-06-24 <br> Updated: 2024-05-31</p>
 <!--
 Hidden comments placeholder
 bookdown::preview_chapter("/Users/bradcannell/Dropbox/R/r_notes_bookdown/chapters/01_programming/tidy_evaluation.Rmd")
@@ -677,7 +685,7 @@ bookdown::preview_chapter("/Users/bradcannell/Dropbox/R/r_notes_bookdown/chapter
 <span id="cb39-3"><a href="tidy-evaluation.html#cb39-3" tabindex="-1"></a>  <span class="at">id     =</span> <span class="fu">as.character</span>(<span class="fu">seq</span>(<span class="dv">1001</span>, <span class="dv">1020</span>, <span class="dv">1</span>)),</span>
 <span id="cb39-4"><a href="tidy-evaluation.html#cb39-4" tabindex="-1"></a>  <span class="at">sex    =</span> <span class="fu">factor</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>), <span class="dv">20</span>, <span class="cn">TRUE</span>)),</span>
 <span id="cb39-5"><a href="tidy-evaluation.html#cb39-5" tabindex="-1"></a>  <span class="at">date   =</span> <span class="fu">sample</span>(<span class="fu">seq.Date</span>(<span class="fu">as.Date</span>(<span class="st">&quot;2021-09-15&quot;</span>), <span class="fu">as.Date</span>(<span class="st">&quot;2021-10-26&quot;</span>), <span class="st">&quot;day&quot;</span>), <span class="dv">20</span>, <span class="cn">TRUE</span>),</span>
-<span id="cb39-6"><a href="tidy-evaluation.html#cb39-6" tabindex="-1"></a>  <span class="at">days   =</span> <span class="fu">sample</span>(1L<span class="sc">:</span>21L, 20L, <span class="cn">TRUE</span>),</span>
+<span id="cb39-6"><a href="tidy-evaluation.html#cb39-6" tabindex="-1"></a>  <span class="at">days   =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="dt">L</span><span class="sc">:</span><span class="dv">21</span><span class="dt">L</span>, <span class="dv">20</span><span class="dt">L</span>, <span class="cn">TRUE</span>),</span>
 <span id="cb39-7"><a href="tidy-evaluation.html#cb39-7" tabindex="-1"></a>  <span class="at">height =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">71</span>, <span class="dv">10</span>)</span>
 <span id="cb39-8"><a href="tidy-evaluation.html#cb39-8" tabindex="-1"></a>)</span>
 <span id="cb39-9"><a href="tidy-evaluation.html#cb39-9" tabindex="-1"></a></span>
@@ -702,7 +710,7 @@ bookdown::preview_chapter("/Users/bradcannell/Dropbox/R/r_notes_bookdown/chapter
 <pre><code>## [1] 6.59375</code></pre>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="tidy-evaluation.html#cb43-1" tabindex="-1"></a><span class="co"># Referring to columns is an error - Where is the data?</span></span>
 <span id="cb43-2"><a href="tidy-evaluation.html#cb43-2" tabindex="-1"></a><span class="fu">mean</span>(cyl <span class="sc">+</span> am)</span></code></pre></div>
-<pre><code>## Error in mean(cyl + am): object &#39;cyl&#39; not found</code></pre>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;cyl&#39; not found</code></pre>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="tidy-evaluation.html#cb45-1" tabindex="-1"></a><span class="co"># Data-masking (using base R)</span></span>
 <span id="cb45-2"><a href="tidy-evaluation.html#cb45-2" tabindex="-1"></a><span class="fu">with</span>(mtcars, <span class="fu">mean</span>(cyl <span class="sc">+</span> am))</span></code></pre></div>
 <pre><code>## [1] 6.59375</code></pre>
@@ -910,7 +918,7 @@ bookdown::preview_chapter("/Users/bradcannell/Dropbox/R/r_notes_bookdown/chapter
 <span id="cb73-5"><a href="tidy-evaluation.html#cb73-5" tabindex="-1"></a>}</span>
 <span id="cb73-6"><a href="tidy-evaluation.html#cb73-6" tabindex="-1"></a></span>
 <span id="cb73-7"><a href="tidy-evaluation.html#cb73-7" tabindex="-1"></a><span class="fu">freq_table</span>(<span class="at">df =</span> starwars, species, hair_color)</span></code></pre></div>
-<pre><code>## Error in FUN(X[[i]], ...): object &#39;hair_color&#39; not found</code></pre>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;hair_color&#39; not found</code></pre>
 </div>
 <div id="the-as_label-and-as_name-functions" class="section level3 hasAnchor" number="4.9.7">
 <h3><span class="header-section-number">4.9.7</span> The as_label and as_name functions<a href="tidy-evaluation.html#the-as_label-and-as_name-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -952,7 +960,7 @@ bookdown::preview_chapter("/Users/bradcannell/Dropbox/R/r_notes_bookdown/chapter
 <pre><code>## # A tibble: 1 × 2
 ##   mean_height sum_height
 ##         &lt;dbl&gt;      &lt;int&gt;
-## 1        174.      14123</code></pre>
+## 1        175.      14143</code></pre>
 <p>Alternatively, with the embrace operator and <code>glue</code> to make the var names (supported as of <a href="https://www.tidyverse.org/blog/2020/02/glue-strings-and-tidy-eval/">rlang 0.4.3</a>).</p>
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="tidy-evaluation.html#cb79-1" tabindex="-1"></a>continuous_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df, x) {</span>
 <span id="cb79-2"><a href="tidy-evaluation.html#cb79-2" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
@@ -966,7 +974,7 @@ bookdown::preview_chapter("/Users/bradcannell/Dropbox/R/r_notes_bookdown/chapter
 <pre><code>## # A tibble: 1 × 2
 ##   mean_height sum_height
 ##         &lt;dbl&gt;      &lt;int&gt;
-## 1        174.      14123</code></pre>
+## 1        175.      14143</code></pre>
 </div>
 <div id="the-sym-function" class="section level3 hasAnchor" number="4.9.8">
 <h3><span class="header-section-number">4.9.8</span> The sym function<a href="tidy-evaluation.html#the-sym-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1006,7 +1014,7 @@ bookdown::preview_chapter("/Users/bradcannell/Dropbox/R/r_notes_bookdown/chapter
 <pre><code>## # A tibble: 1 × 1
 ##    mean
 ##   &lt;dbl&gt;
-## 1  174.</code></pre>
+## 1  175.</code></pre>
 <p>And it works as expected</p>
 </div>
 <div id="the-syms-function" class="section level3 hasAnchor" number="4.9.9">
@@ -1043,7 +1051,7 @@ bookdown::preview_chapter("/Users/bradcannell/Dropbox/R/r_notes_bookdown/chapter
 <pre><code>## # A tibble: 2 × 1
 ##     avg
 ##   &lt;dbl&gt;
-## 1 174. 
+## 1 175. 
 ## 2  97.3</code></pre>
 </div>
 <div id="the-rlang-prounouns" class="section level3 hasAnchor" number="4.9.10">
@@ -1158,14 +1166,14 @@ global environment and return rows where the value of <code>cyl</code> matches t
 <span id="cb115-4"><a href="tidy-evaluation.html#cb115-4" tabindex="-1"></a>}</span>
 <span id="cb115-5"><a href="tidy-evaluation.html#cb115-5" tabindex="-1"></a></span>
 <span id="cb115-6"><a href="tidy-evaluation.html#cb115-6" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">f</span>(cyl, am)</span></code></pre></div>
-<pre><code>## Error in f(., cyl, am): object &#39;cyl&#39; not found</code></pre>
+<pre><code>## Error: object &#39;cyl&#39; not found</code></pre>
 <div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="tidy-evaluation.html#cb117-1" tabindex="-1"></a><span class="co"># Doesn&#39;t work</span></span>
 <span id="cb117-2"><a href="tidy-evaluation.html#cb117-2" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(.data, ...) {</span>
 <span id="cb117-3"><a href="tidy-evaluation.html#cb117-3" tabindex="-1"></a>  rlang<span class="sc">::</span><span class="fu">list2</span>(...)</span>
 <span id="cb117-4"><a href="tidy-evaluation.html#cb117-4" tabindex="-1"></a>}</span>
 <span id="cb117-5"><a href="tidy-evaluation.html#cb117-5" tabindex="-1"></a></span>
 <span id="cb117-6"><a href="tidy-evaluation.html#cb117-6" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">f</span>(cyl, am)</span></code></pre></div>
-<pre><code>## Error in rlang::list2(...): object &#39;cyl&#39; not found</code></pre>
+<pre><code>## Error: object &#39;cyl&#39; not found</code></pre>
 <div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="tidy-evaluation.html#cb119-1" tabindex="-1"></a><span class="co"># Must diffuse first</span></span>
 <span id="cb119-2"><a href="tidy-evaluation.html#cb119-2" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(.data, ...) {</span>
 <span id="cb119-3"><a href="tidy-evaluation.html#cb119-3" tabindex="-1"></a>  <span class="fu">enquos</span>(...)</span>
@@ -1177,12 +1185,12 @@ global environment and return rows where the value of <code>cyl</code> matches t
 ## [[1]]
 ## &lt;quosure&gt;
 ## expr: ^cyl
-## env:  0x7fdb27174ff0
+## env:  0x103d7ce30
 ## 
 ## [[2]]
 ## &lt;quosure&gt;
 ## expr: ^am
-## env:  0x7fdb27174ff0</code></pre>
+## env:  0x103d7ce30</code></pre>
 <p>Now you can inject them into tidyverse functions with the splice operator:</p>
 <div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="tidy-evaluation.html#cb121-1" tabindex="-1"></a><span class="co"># Must diffuse first</span></span>
 <span id="cb121-2"><a href="tidy-evaluation.html#cb121-2" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(.data, ...) {</span>
@@ -1329,9 +1337,9 @@ global environment and return rows where the value of <code>cyl</code> matches t
 ##   Variable     Human      `Not Human`
 ##   &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;      
 ## 1 &quot;&quot;           &quot;(N = 35)&quot; (N = 48)   
-## 2 &quot;height&quot;     &quot;176.6&quot;    172.4      
-## 3 &quot;mass&quot;       &quot; 82.8&quot;    107.6      
-## 4 &quot;birth_year&quot; &quot; 53.4&quot;    139.3</code></pre>
+## 2 &quot;height&quot;     &quot;178.0&quot;    172.4      
+## 3 &quot;mass&quot;       &quot; 81.3&quot;    107.6      
+## 4 &quot;birth_year&quot; &quot; 53.7&quot;    139.3</code></pre>
 </div>
 <div id="functions" class="section level2 hasAnchor" number="4.13">
 <h2><span class="header-section-number">4.13</span> Example: function<a href="tidy-evaluation.html#functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -1428,8 +1436,8 @@ global environment and return rows where the value of <code>cyl</code> matches t
 <span id="cb143-3"><a href="tidy-evaluation.html#cb143-3" tabindex="-1"></a>    <span class="fu">my_stats</span>(starwars, <span class="fu">c</span>(height, mass, birth_year))</span>
 <span id="cb143-4"><a href="tidy-evaluation.html#cb143-4" tabindex="-1"></a>  )</span></code></pre></div>
 <pre><code>## Warning: There was 1 warning in `summarise()`.
-## ℹ In argument: `across(.cols = c(height, mass, birth_year), .fns = mean,
-##   na.rm = TRUE)`.
+## ℹ In argument: `across(.cols = c(height, mass, birth_year), .fns = mean, na.rm =
+##   TRUE)`.
 ## ℹ In group 1: `human = &quot;No&quot;`.
 ## Caused by warning:
 ## ! The `...` argument of `across()` is deprecated as of dplyr 1.1.0.
@@ -1447,9 +1455,9 @@ global environment and return rows where the value of <code>cyl</code> matches t
 ## 2 &quot;&quot;           &quot;&quot;         &quot;&quot;         
 ## 3 &quot;&quot;           &quot;&quot;         &quot;&quot;         
 ## 4 &quot;&quot;           &quot;&quot;         &quot;&quot;         
-## 5 &quot;height&quot;     &quot;176.6&quot;    &quot;172.4&quot;    
-## 6 &quot;mass&quot;       &quot; 82.8&quot;    &quot;107.6&quot;    
-## 7 &quot;birth_year&quot; &quot; 53.4&quot;    &quot;139.3&quot;</code></pre>
+## 5 &quot;height&quot;     &quot;178.0&quot;    &quot;172.4&quot;    
+## 6 &quot;mass&quot;       &quot; 81.3&quot;    &quot;107.6&quot;    
+## 7 &quot;birth_year&quot; &quot; 53.7&quot;    &quot;139.3&quot;</code></pre>
 </div>
 <div id="nesting" class="section level2 hasAnchor" number="4.14">
 <h2><span class="header-section-number">4.14</span> Nesting functions with data masking<a href="tidy-evaluation.html#nesting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -1528,9 +1536,9 @@ global environment and return rows where the value of <code>cyl</code> matches t
 <pre><code>## # A tibble: 41 × 3
 ##    gender    `mean(height, na.rm = TRUE)` species 
 ##    &lt;chr&gt;                            &lt;dbl&gt; &lt;chr&gt;   
-##  1 feminine                          165. &lt;NA&gt;    
+##  1 feminine                          167. &lt;NA&gt;    
 ##  2 masculine                         177. &lt;NA&gt;    
-##  3 &lt;NA&gt;                              181. &lt;NA&gt;    
+##  3 &lt;NA&gt;                              175  &lt;NA&gt;    
 ##  4 &lt;NA&gt;                               79  Aleena  
 ##  5 &lt;NA&gt;                              198  Besalisk
 ##  6 &lt;NA&gt;                              198  Cerean  
@@ -1538,7 +1546,7 @@ global environment and return rows where the value of <code>cyl</code> matches t
 ##  8 &lt;NA&gt;                              168  Clawdite
 ##  9 &lt;NA&gt;                              131. Droid   
 ## 10 &lt;NA&gt;                              112  Dug     
-## # … with 31 more rows</code></pre>
+## # ℹ 31 more rows</code></pre>
 <p>I’m not sure why this doesn’t work:</p>
 <div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="tidy-evaluation.html#cb155-1" tabindex="-1"></a><span class="co"># vars &lt;- quos(gender, species)</span></span>
 <span id="cb155-2"><a href="tidy-evaluation.html#cb155-2" tabindex="-1"></a><span class="co"># </span></span>
@@ -1558,9 +1566,9 @@ global environment and return rows where the value of <code>cyl</code> matches t
 <pre><code>## # A tibble: 41 × 3
 ##    gender    `mean(height, na.rm = TRUE)` species 
 ##    &lt;chr&gt;                            &lt;dbl&gt; &lt;chr&gt;   
-##  1 feminine                          165. &lt;NA&gt;    
+##  1 feminine                          167. &lt;NA&gt;    
 ##  2 masculine                         177. &lt;NA&gt;    
-##  3 &lt;NA&gt;                              181. &lt;NA&gt;    
+##  3 &lt;NA&gt;                              175  &lt;NA&gt;    
 ##  4 &lt;NA&gt;                               79  Aleena  
 ##  5 &lt;NA&gt;                              198  Besalisk
 ##  6 &lt;NA&gt;                              198  Cerean  
@@ -1568,7 +1576,7 @@ global environment and return rows where the value of <code>cyl</code> matches t
 ##  8 &lt;NA&gt;                              168  Clawdite
 ##  9 &lt;NA&gt;                              131. Droid   
 ## 10 &lt;NA&gt;                              112  Dug     
-## # … with 31 more rows</code></pre>
+## # ℹ 31 more rows</code></pre>
 <p>However, I’m not entirely sure why. When I have more time, I’d like to figure this out.</p>
 <div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="tidy-evaluation.html#cb158-1" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">quos</span>(gender, species)</span>
 <span id="cb158-2"><a href="tidy-evaluation.html#cb158-2" tabindex="-1"></a></span>
@@ -1623,7 +1631,7 @@ global environment and return rows where the value of <code>cyl</code> matches t
 ##  8 &lt;NA&gt;         
 ##  9 black        
 ## 10 auburn, white
-## # … with 77 more rows</code></pre>
+## # ℹ 77 more rows</code></pre>
 </div>
 <div id="unquoting-inside-non-dplyr-functions" class="section level3 hasAnchor" number="4.16.2">
 <h3><span class="header-section-number">4.16.2</span> Unquoting inside non-dplyr functions<a href="tidy-evaluation.html#unquoting-inside-non-dplyr-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1637,21 +1645,21 @@ global environment and return rows where the value of <code>cyl</code> matches t
 <span id="cb164-7"><a href="tidy-evaluation.html#cb164-7" tabindex="-1"></a>}</span>
 <span id="cb164-8"><a href="tidy-evaluation.html#cb164-8" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(hair_color)</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 15
-##    name        height  mass hair_…¹ skin_…² eye_c…³ birth…⁴ sex   gender homew…⁵
-##    &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  
-##  1 Luke Skywa…    172    77 blonde  fair    blue       19   male  mascu… Tatooi…
-##  2 C-3PO          167    75 &lt;NA&gt;    gold    yellow    112   none  mascu… Tatooi…
-##  3 R2-D2           96    32 &lt;NA&gt;    white,… red        33   none  mascu… Naboo  
-##  4 Darth Vader    202   136 none    white   yellow     41.9 male  mascu… Tatooi…
-##  5 Leia Organa    150    49 brown   light   brown      19   fema… femin… Aldera…
-##  6 Owen Lars      178   120 brown,… light   blue       52   male  mascu… Tatooi…
-##  7 Beru White…    165    75 brown   light   blue       47   fema… femin… Tatooi…
-##  8 R5-D4           97    32 &lt;NA&gt;    white,… red        NA   none  mascu… Tatooi…
-##  9 Biggs Dark…    183    84 black   light   brown      24   male  mascu… Tatooi…
-## 10 Obi-Wan Ke…    182    77 auburn… fair    blue-g…    57   male  mascu… Stewjon
-## # … with 77 more rows, 5 more variables: species &lt;chr&gt;, films &lt;list&gt;,
-## #   vehicles &lt;list&gt;, starships &lt;list&gt;, human &lt;chr&gt;, and abbreviated variable
-## #   names ¹​hair_color, ²​skin_color, ³​eye_color, ⁴​birth_year, ⁵​homeworld</code></pre>
+##    name     height  mass hair_color skin_color eye_color birth_year sex   gender
+##    &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1 Luke Sk…    172    77 blonde     fair       blue            19   male  mascu…
+##  2 C-3PO       167    75 &lt;NA&gt;       gold       yellow         112   none  mascu…
+##  3 R2-D2        96    32 &lt;NA&gt;       white, bl… red             33   none  mascu…
+##  4 Darth V…    202   136 none       white      yellow          41.9 male  mascu…
+##  5 Leia Or…    150    49 brown      light      brown           19   fema… femin…
+##  6 Owen La…    178   120 brown, gr… light      blue            52   male  mascu…
+##  7 Beru Wh…    165    75 brown      light      blue            47   fema… femin…
+##  8 R5-D4        97    32 &lt;NA&gt;       white, red red             NA   none  mascu…
+##  9 Biggs D…    183    84 black      light      brown           24   male  mascu…
+## 10 Obi-Wan…    182    77 auburn, w… fair       blue-gray       57   male  mascu…
+## # ℹ 77 more rows
+## # ℹ 6 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+## #   vehicles &lt;list&gt;, starships &lt;list&gt;, human &lt;chr&gt;</code></pre>
 </div>
 <div id="using-a-quoture-to-create-variable-name-in-mutate" class="section level3 hasAnchor" number="4.16.3">
 <h3><span class="header-section-number">4.16.3</span> Using a quoture to create variable name in mutate<a href="tidy-evaluation.html#using-a-quoture-to-create-variable-name-in-mutate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1677,21 +1685,21 @@ global environment and return rows where the value of <code>cyl</code> matches t
 <span id="cb168-7"><a href="tidy-evaluation.html#cb168-7" tabindex="-1"></a>}</span>
 <span id="cb168-8"><a href="tidy-evaluation.html#cb168-8" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(hair_color)</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 15
-##    name        height  mass hair_…¹ skin_…² eye_c…³ birth…⁴ sex   gender homew…⁵
-##    &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  
-##  1 Luke Skywa…    172    77 blonde  fair    blue       19   male  mascu… Tatooi…
-##  2 C-3PO          167    75 &lt;NA&gt;    gold    yellow    112   none  mascu… Tatooi…
-##  3 R2-D2           96    32 &lt;NA&gt;    white,… red        33   none  mascu… Naboo  
-##  4 Darth Vader    202   136 none    white   yellow     41.9 male  mascu… Tatooi…
-##  5 Leia Organa    150    49 brown   light   brown      19   fema… femin… Aldera…
-##  6 Owen Lars      178   120 brown,… light   blue       52   male  mascu… Tatooi…
-##  7 Beru White…    165    75 brown   light   blue       47   fema… femin… Tatooi…
-##  8 R5-D4           97    32 &lt;NA&gt;    white,… red        NA   none  mascu… Tatooi…
-##  9 Biggs Dark…    183    84 black   light   brown      24   male  mascu… Tatooi…
-## 10 Obi-Wan Ke…    182    77 auburn… fair    blue-g…    57   male  mascu… Stewjon
-## # … with 77 more rows, 5 more variables: species &lt;chr&gt;, films &lt;list&gt;,
-## #   vehicles &lt;list&gt;, starships &lt;list&gt;, human &lt;chr&gt;, and abbreviated variable
-## #   names ¹​hair_color, ²​skin_color, ³​eye_color, ⁴​birth_year, ⁵​homeworld</code></pre>
+##    name     height  mass hair_color skin_color eye_color birth_year sex   gender
+##    &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1 Luke Sk…    172    77 blonde     fair       blue            19   male  mascu…
+##  2 C-3PO       167    75 &lt;NA&gt;       gold       yellow         112   none  mascu…
+##  3 R2-D2        96    32 &lt;NA&gt;       white, bl… red             33   none  mascu…
+##  4 Darth V…    202   136 none       white      yellow          41.9 male  mascu…
+##  5 Leia Or…    150    49 brown      light      brown           19   fema… femin…
+##  6 Owen La…    178   120 brown, gr… light      blue            52   male  mascu…
+##  7 Beru Wh…    165    75 brown      light      blue            47   fema… femin…
+##  8 R5-D4        97    32 &lt;NA&gt;       white, red red             NA   none  mascu…
+##  9 Biggs D…    183    84 black      light      brown           24   male  mascu…
+## 10 Obi-Wan…    182    77 auburn, w… fair       blue-gray       57   male  mascu…
+## # ℹ 77 more rows
+## # ℹ 6 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+## #   vehicles &lt;list&gt;, starships &lt;list&gt;, human &lt;chr&gt;</code></pre>
 <p>Fix 2:</p>
 <p>Must have !! in front of as_name(). Must use := instead of =.</p>
 <div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="tidy-evaluation.html#cb170-1" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="cf">function</span>(df, var) {</span>
@@ -1702,21 +1710,21 @@ global environment and return rows where the value of <code>cyl</code> matches t
 <span id="cb170-6"><a href="tidy-evaluation.html#cb170-6" tabindex="-1"></a>}</span>
 <span id="cb170-7"><a href="tidy-evaluation.html#cb170-7" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(hair_color)</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 15
-##    name        height  mass hair_…¹ skin_…² eye_c…³ birth…⁴ sex   gender homew…⁵
-##    &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  
-##  1 Luke Skywa…    172    77 blonde  fair    blue       19   male  mascu… Tatooi…
-##  2 C-3PO          167    75 &lt;NA&gt;    gold    yellow    112   none  mascu… Tatooi…
-##  3 R2-D2           96    32 &lt;NA&gt;    white,… red        33   none  mascu… Naboo  
-##  4 Darth Vader    202   136 none    white   yellow     41.9 male  mascu… Tatooi…
-##  5 Leia Organa    150    49 brown   light   brown      19   fema… femin… Aldera…
-##  6 Owen Lars      178   120 brown,… light   blue       52   male  mascu… Tatooi…
-##  7 Beru White…    165    75 brown   light   blue       47   fema… femin… Tatooi…
-##  8 R5-D4           97    32 &lt;NA&gt;    white,… red        NA   none  mascu… Tatooi…
-##  9 Biggs Dark…    183    84 black   light   brown      24   male  mascu… Tatooi…
-## 10 Obi-Wan Ke…    182    77 auburn… fair    blue-g…    57   male  mascu… Stewjon
-## # … with 77 more rows, 5 more variables: species &lt;chr&gt;, films &lt;list&gt;,
-## #   vehicles &lt;list&gt;, starships &lt;list&gt;, human &lt;chr&gt;, and abbreviated variable
-## #   names ¹​hair_color, ²​skin_color, ³​eye_color, ⁴​birth_year, ⁵​homeworld</code></pre>
+##    name     height  mass hair_color skin_color eye_color birth_year sex   gender
+##    &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1 Luke Sk…    172    77 blonde     fair       blue            19   male  mascu…
+##  2 C-3PO       167    75 &lt;NA&gt;       gold       yellow         112   none  mascu…
+##  3 R2-D2        96    32 &lt;NA&gt;       white, bl… red             33   none  mascu…
+##  4 Darth V…    202   136 none       white      yellow          41.9 male  mascu…
+##  5 Leia Or…    150    49 brown      light      brown           19   fema… femin…
+##  6 Owen La…    178   120 brown, gr… light      blue            52   male  mascu…
+##  7 Beru Wh…    165    75 brown      light      blue            47   fema… femin…
+##  8 R5-D4        97    32 &lt;NA&gt;       white, red red             NA   none  mascu…
+##  9 Biggs D…    183    84 black      light      brown           24   male  mascu…
+## 10 Obi-Wan…    182    77 auburn, w… fair       blue-gray       57   male  mascu…
+## # ℹ 77 more rows
+## # ℹ 6 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+## #   vehicles &lt;list&gt;, starships &lt;list&gt;, human &lt;chr&gt;</code></pre>
 <p>Fix 3:</p>
 <p>Alternatively, use the embrace operator and <code>glue</code> to make the var names (supported as of <a href="https://www.tidyverse.org/blog/2020/02/glue-strings-and-tidy-eval/">rlang 0.4.3</a>).</p>
 <div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="tidy-evaluation.html#cb172-1" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="cf">function</span>(df, var) {</span>
@@ -1729,22 +1737,21 @@ global environment and return rows where the value of <code>cyl</code> matches t
 <span id="cb172-8"><a href="tidy-evaluation.html#cb172-8" tabindex="-1"></a>}</span>
 <span id="cb172-9"><a href="tidy-evaluation.html#cb172-9" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">example</span>(hair_color)</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 16
-##    name        height  mass hair_…¹ skin_…² eye_c…³ birth…⁴ sex   gender homew…⁵
-##    &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  
-##  1 Luke Skywa…    172    77 blonde  fair    blue       19   male  mascu… Tatooi…
-##  2 C-3PO          167    75 &lt;NA&gt;    gold    yellow    112   none  mascu… Tatooi…
-##  3 R2-D2           96    32 &lt;NA&gt;    white,… red        33   none  mascu… Naboo  
-##  4 Darth Vader    202   136 none    white   yellow     41.9 male  mascu… Tatooi…
-##  5 Leia Organa    150    49 brown   light   brown      19   fema… femin… Aldera…
-##  6 Owen Lars      178   120 brown,… light   blue       52   male  mascu… Tatooi…
-##  7 Beru White…    165    75 brown   light   blue       47   fema… femin… Tatooi…
-##  8 R5-D4           97    32 &lt;NA&gt;    white,… red        NA   none  mascu… Tatooi…
-##  9 Biggs Dark…    183    84 black   light   brown      24   male  mascu… Tatooi…
-## 10 Obi-Wan Ke…    182    77 auburn… fair    blue-g…    57   male  mascu… Stewjon
-## # … with 77 more rows, 6 more variables: species &lt;chr&gt;, films &lt;list&gt;,
-## #   vehicles &lt;list&gt;, starships &lt;list&gt;, human &lt;chr&gt;, new_hair_color &lt;chr&gt;, and
-## #   abbreviated variable names ¹​hair_color, ²​skin_color, ³​eye_color,
-## #   ⁴​birth_year, ⁵​homeworld</code></pre>
+##    name     height  mass hair_color skin_color eye_color birth_year sex   gender
+##    &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1 Luke Sk…    172    77 blonde     fair       blue            19   male  mascu…
+##  2 C-3PO       167    75 &lt;NA&gt;       gold       yellow         112   none  mascu…
+##  3 R2-D2        96    32 &lt;NA&gt;       white, bl… red             33   none  mascu…
+##  4 Darth V…    202   136 none       white      yellow          41.9 male  mascu…
+##  5 Leia Or…    150    49 brown      light      brown           19   fema… femin…
+##  6 Owen La…    178   120 brown, gr… light      blue            52   male  mascu…
+##  7 Beru Wh…    165    75 brown      light      blue            47   fema… femin…
+##  8 R5-D4        97    32 &lt;NA&gt;       white, red red             NA   none  mascu…
+##  9 Biggs D…    183    84 black      light      brown           24   male  mascu…
+## 10 Obi-Wan…    182    77 auburn, w… fair       blue-gray       57   male  mascu…
+## # ℹ 77 more rows
+## # ℹ 7 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+## #   vehicles &lt;list&gt;, starships &lt;list&gt;, human &lt;chr&gt;, new_hair_color &lt;chr&gt;</code></pre>
 </div>
 <div id="using-a-quoture-to-turn-a-variable-name-into-a-constant-value" class="section level3 hasAnchor" number="4.16.4">
 <h3><span class="header-section-number">4.16.4</span> Using a quoture to turn a variable name into a constant value<a href="tidy-evaluation.html#using-a-quoture-to-turn-a-variable-name-into-a-constant-value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1764,7 +1771,7 @@ global environment and return rows where the value of <code>cyl</code> matches t
 <pre><code>## # A tibble: 1 × 2
 ##   Characteristic  Mean
 ##   &lt;chr&gt;          &lt;dbl&gt;
-## 1 height          174.</code></pre>
+## 1 height          175.</code></pre>
 <p>Alternatively:</p>
 <div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="tidy-evaluation.html#cb176-1" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="cf">function</span>(df, var) {</span>
 <span id="cb176-2"><a href="tidy-evaluation.html#cb176-2" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
@@ -1779,7 +1786,7 @@ global environment and return rows where the value of <code>cyl</code> matches t
 <pre><code>## # A tibble: 1 × 2
 ##   Characteristic  Mean
 ##   &lt;chr&gt;          &lt;dbl&gt;
-## 1 height          174.</code></pre>
+## 1 height          175.</code></pre>
 </div>
 <div id="convert-a-string-to-a-quoture" class="section level3 hasAnchor" number="4.16.5">
 <h3><span class="header-section-number">4.16.5</span> Convert a string to a quoture<a href="tidy-evaluation.html#convert-a-string-to-a-quoture" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1806,7 +1813,7 @@ global environment and return rows where the value of <code>cyl</code> matches t
 ##  8    32
 ##  9    84
 ## 10    77
-## # … with 77 more rows</code></pre>
+## # ℹ 77 more rows</code></pre>
 </div>
 <div id="when-the-string-is-created-inside-the-function" class="section level4 hasAnchor" number="4.16.5.2">
 <h4><span class="header-section-number">4.16.5.2</span> When the string is created inside the function<a href="tidy-evaluation.html#when-the-string-is-created-inside-the-function" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1848,7 +1855,7 @@ global environment and return rows where the value of <code>cyl</code> matches t
 <pre><code>## # A tibble: 1 × 1
 ##     Mean
 ##    &lt;dbl&gt;
-## 1 31595.</code></pre>
+## 1 31681.</code></pre>
 </div>
 <div id="grouping-by-all-columns-in-the-data-frame" class="section level4 hasAnchor" number="4.16.5.3">
 <h4><span class="header-section-number">4.16.5.3</span> Grouping by all columns in the data frame<a href="tidy-evaluation.html#grouping-by-all-columns-in-the-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1875,7 +1882,7 @@ global environment and return rows where the value of <code>cyl</code> matches t
 <span id="cb188-7"><a href="tidy-evaluation.html#cb188-7" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb188-8"><a href="tidy-evaluation.html#cb188-8" tabindex="-1"></a>  <span class="fu">select</span>(n)</span></code></pre></div>
 <pre><code>## # A tibble: 0 × 1
-## # … with 1 variable: n &lt;int&gt;</code></pre>
+## # ℹ 1 variable: n &lt;int&gt;</code></pre>
 <p>And, there are no duplicates.</p>
 <p>Another, more general solution for using all column names is:</p>
 <div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="tidy-evaluation.html#cb190-1" tabindex="-1"></a>starwars_2 <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>films, <span class="sc">-</span>vehicles, <span class="sc">-</span>starships) <span class="co"># Remove list columns</span></span>
@@ -1889,46 +1896,108 @@ global environment and return rows where the value of <code>cyl</code> matches t
 <span id="cb190-9"><a href="tidy-evaluation.html#cb190-9" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb190-10"><a href="tidy-evaluation.html#cb190-10" tabindex="-1"></a>  <span class="fu">select</span>(n)</span></code></pre></div>
 <pre><code>## # A tibble: 0 × 1
-## # … with 1 variable: n &lt;int&gt;</code></pre>
+## # ℹ 1 variable: n &lt;int&gt;</code></pre>
 <p><a href="#top">top</a></p>
 </div>
+</div>
+<div id="setting-a-default-function-parameter-value-to-null" class="section level3 hasAnchor" number="4.16.6">
+<h3><span class="header-section-number">4.16.6</span> Setting a default function parameter value to NULL<a href="tidy-evaluation.html#setting-a-default-function-parameter-value-to-null" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>I was trying to create a function that would produce histograms while working on L2C. Sometimes I wanted the histograms faceted by group and sometimes I didn’t. So, I wanted to set the facet variable to <code>NULL</code> by default. But I kept getting an error: “Error: object ‘variable name’ not found”.</p>
+<p>Here is a reproducible example. It isn’t a histogram. Instead, it’s much simpler code, but it produces the same error and has the same solution.</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="tidy-evaluation.html#cb192-1" tabindex="-1"></a><span class="co"># Won&#39;t work</span></span>
+<span id="cb192-2"><a href="tidy-evaluation.html#cb192-2" tabindex="-1"></a>test_null <span class="ot">&lt;-</span> <span class="cf">function</span>(df, <span class="at">x =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb192-3"><a href="tidy-evaluation.html#cb192-3" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(x)) {</span>
+<span id="cb192-4"><a href="tidy-evaluation.html#cb192-4" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(df, name)</span>
+<span id="cb192-5"><a href="tidy-evaluation.html#cb192-5" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb192-6"><a href="tidy-evaluation.html#cb192-6" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(df, {{ x }})</span>
+<span id="cb192-7"><a href="tidy-evaluation.html#cb192-7" tabindex="-1"></a>  }</span>
+<span id="cb192-8"><a href="tidy-evaluation.html#cb192-8" tabindex="-1"></a>}</span>
+<span id="cb192-9"><a href="tidy-evaluation.html#cb192-9" tabindex="-1"></a></span>
+<span id="cb192-10"><a href="tidy-evaluation.html#cb192-10" tabindex="-1"></a><span class="co"># Produces an error</span></span>
+<span id="cb192-11"><a href="tidy-evaluation.html#cb192-11" tabindex="-1"></a><span class="fu">test_null</span>(starwars, mass)</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;mass&#39; not found</code></pre>
+<p>I used this <a href="https://stackoverflow.com/questions/68007842/check-if-a-tidyselect-is-null-and-if-so-set-a-default-tidyselect-method">SO post</a> to find a solution.</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="tidy-evaluation.html#cb194-1" tabindex="-1"></a><span class="co"># This works</span></span>
+<span id="cb194-2"><a href="tidy-evaluation.html#cb194-2" tabindex="-1"></a>test_null <span class="ot">&lt;-</span> <span class="cf">function</span>(df, <span class="at">x =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb194-3"><a href="tidy-evaluation.html#cb194-3" tabindex="-1"></a>  <span class="co"># First, enquo x</span></span>
+<span id="cb194-4"><a href="tidy-evaluation.html#cb194-4" tabindex="-1"></a>  x_enquo <span class="ot">&lt;-</span> rlang<span class="sc">::</span><span class="fu">enquo</span>(x)</span>
+<span id="cb194-5"><a href="tidy-evaluation.html#cb194-5" tabindex="-1"></a>  <span class="co"># Use rlang::quo_is_null to check for a null value</span></span>
+<span id="cb194-6"><a href="tidy-evaluation.html#cb194-6" tabindex="-1"></a>  <span class="cf">if</span> (rlang<span class="sc">::</span><span class="fu">quo_is_null</span>(x_enquo)) {</span>
+<span id="cb194-7"><a href="tidy-evaluation.html#cb194-7" tabindex="-1"></a>    <span class="fu">select</span>(df, name)</span>
+<span id="cb194-8"><a href="tidy-evaluation.html#cb194-8" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb194-9"><a href="tidy-evaluation.html#cb194-9" tabindex="-1"></a>    <span class="co"># Inject the defued x with !!</span></span>
+<span id="cb194-10"><a href="tidy-evaluation.html#cb194-10" tabindex="-1"></a>    <span class="fu">select</span>(df, <span class="sc">!!</span> x_enquo)</span>
+<span id="cb194-11"><a href="tidy-evaluation.html#cb194-11" tabindex="-1"></a>  }</span>
+<span id="cb194-12"><a href="tidy-evaluation.html#cb194-12" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="tidy-evaluation.html#cb195-1" tabindex="-1"></a><span class="co"># With NULL x</span></span>
+<span id="cb195-2"><a href="tidy-evaluation.html#cb195-2" tabindex="-1"></a><span class="fu">test_null</span>(starwars)</span></code></pre></div>
+<pre><code>## # A tibble: 87 × 1
+##    name              
+##    &lt;chr&gt;             
+##  1 Luke Skywalker    
+##  2 C-3PO             
+##  3 R2-D2             
+##  4 Darth Vader       
+##  5 Leia Organa       
+##  6 Owen Lars         
+##  7 Beru Whitesun Lars
+##  8 R5-D4             
+##  9 Biggs Darklighter 
+## 10 Obi-Wan Kenobi    
+## # ℹ 77 more rows</code></pre>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="tidy-evaluation.html#cb197-1" tabindex="-1"></a><span class="co"># Pass a column to x</span></span>
+<span id="cb197-2"><a href="tidy-evaluation.html#cb197-2" tabindex="-1"></a><span class="fu">test_null</span>(starwars, mass)</span></code></pre></div>
+<pre><code>## # A tibble: 87 × 1
+##     mass
+##    &lt;dbl&gt;
+##  1    77
+##  2    75
+##  3    32
+##  4   136
+##  5    49
+##  6   120
+##  7    75
+##  8    32
+##  9    84
+## 10    77
+## # ℹ 77 more rows</code></pre>
 </div>
 </div>
 <div id="example-i-created-for-steph-yap" class="section level2 hasAnchor" number="4.17">
 <h2><span class="header-section-number">4.17</span> Example I created for Steph Yap<a href="tidy-evaluation.html#example-i-created-for-steph-yap" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Need to clean this up, but I don’t have time now.</p>
 <p><strong>Here is a worked example using some toy data</strong></p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="tidy-evaluation.html#cb192-1" tabindex="-1"></a>aps_cleaned <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb192-2"><a href="tidy-evaluation.html#cb192-2" tabindex="-1"></a>  <span class="at">case_num =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
-<span id="cb192-3"><a href="tidy-evaluation.html#cb192-3" tabindex="-1"></a>  <span class="at">valid_physical_neglect =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb192-4"><a href="tidy-evaluation.html#cb192-4" tabindex="-1"></a>  <span class="at">valid_sexual_abuse =</span> <span class="dv">0</span></span>
-<span id="cb192-5"><a href="tidy-evaluation.html#cb192-5" tabindex="-1"></a>)</span>
-<span id="cb192-6"><a href="tidy-evaluation.html#cb192-6" tabindex="-1"></a>discrepancies_valid_physical_neglect <span class="ot">&lt;-</span><span class="fu">tibble</span>(</span>
-<span id="cb192-7"><a href="tidy-evaluation.html#cb192-7" tabindex="-1"></a>  <span class="at">case_num =</span> <span class="dv">1</span>,</span>
-<span id="cb192-8"><a href="tidy-evaluation.html#cb192-8" tabindex="-1"></a>  <span class="at">valid_physical_neglect =</span> <span class="dv">1</span></span>
-<span id="cb192-9"><a href="tidy-evaluation.html#cb192-9" tabindex="-1"></a>)</span>
-<span id="cb192-10"><a href="tidy-evaluation.html#cb192-10" tabindex="-1"></a>discrepancies_valid_sexual_abuse <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb192-11"><a href="tidy-evaluation.html#cb192-11" tabindex="-1"></a>  <span class="at">case_num =</span> <span class="dv">3</span>,</span>
-<span id="cb192-12"><a href="tidy-evaluation.html#cb192-12" tabindex="-1"></a>  <span class="at">valid_sexual_abuse =</span> <span class="dv">1</span></span>
-<span id="cb192-13"><a href="tidy-evaluation.html#cb192-13" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="tidy-evaluation.html#cb199-1" tabindex="-1"></a>aps_cleaned <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb199-2"><a href="tidy-evaluation.html#cb199-2" tabindex="-1"></a>  <span class="at">case_num =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
+<span id="cb199-3"><a href="tidy-evaluation.html#cb199-3" tabindex="-1"></a>  <span class="at">valid_physical_neglect =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb199-4"><a href="tidy-evaluation.html#cb199-4" tabindex="-1"></a>  <span class="at">valid_sexual_abuse =</span> <span class="dv">0</span></span>
+<span id="cb199-5"><a href="tidy-evaluation.html#cb199-5" tabindex="-1"></a>)</span>
+<span id="cb199-6"><a href="tidy-evaluation.html#cb199-6" tabindex="-1"></a>discrepancies_valid_physical_neglect <span class="ot">&lt;-</span><span class="fu">tibble</span>(</span>
+<span id="cb199-7"><a href="tidy-evaluation.html#cb199-7" tabindex="-1"></a>  <span class="at">case_num =</span> <span class="dv">1</span>,</span>
+<span id="cb199-8"><a href="tidy-evaluation.html#cb199-8" tabindex="-1"></a>  <span class="at">valid_physical_neglect =</span> <span class="dv">1</span></span>
+<span id="cb199-9"><a href="tidy-evaluation.html#cb199-9" tabindex="-1"></a>)</span>
+<span id="cb199-10"><a href="tidy-evaluation.html#cb199-10" tabindex="-1"></a>discrepancies_valid_sexual_abuse <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb199-11"><a href="tidy-evaluation.html#cb199-11" tabindex="-1"></a>  <span class="at">case_num =</span> <span class="dv">3</span>,</span>
+<span id="cb199-12"><a href="tidy-evaluation.html#cb199-12" tabindex="-1"></a>  <span class="at">valid_sexual_abuse =</span> <span class="dv">1</span></span>
+<span id="cb199-13"><a href="tidy-evaluation.html#cb199-13" tabindex="-1"></a>)</span></code></pre></div>
 <p><strong>Create the function</strong></p>
 <p>Here is a refernce to help with the tidy evaluation stuff: <a href="https://dplyr.tidyverse.org/articles/programming.html" class="uri">https://dplyr.tidyverse.org/articles/programming.html</a></p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="tidy-evaluation.html#cb193-1" tabindex="-1"></a>join_aps <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">.data =</span> aps_cleaned, join_df, valid_col) {</span>
-<span id="cb193-2"><a href="tidy-evaluation.html#cb193-2" tabindex="-1"></a>  <span class="co"># Create column names to use in the code below</span></span>
-<span id="cb193-3"><a href="tidy-evaluation.html#cb193-3" tabindex="-1"></a>  col_x <span class="ot">&lt;-</span> <span class="fu">sym</span>(<span class="fu">paste0</span>(<span class="fu">quo_name</span>(<span class="fu">enquo</span>(valid_col)), <span class="st">&quot;.x&quot;</span>))</span>
-<span id="cb193-4"><a href="tidy-evaluation.html#cb193-4" tabindex="-1"></a>  col_y <span class="ot">&lt;-</span> <span class="fu">sym</span>(<span class="fu">paste0</span>(<span class="fu">quo_name</span>(<span class="fu">enquo</span>(valid_col)), <span class="st">&quot;.y&quot;</span>))</span>
-<span id="cb193-5"><a href="tidy-evaluation.html#cb193-5" tabindex="-1"></a>  </span>
-<span id="cb193-6"><a href="tidy-evaluation.html#cb193-6" tabindex="-1"></a>  .data <span class="sc">%&gt;%</span> </span>
-<span id="cb193-7"><a href="tidy-evaluation.html#cb193-7" tabindex="-1"></a>    <span class="fu">left_join</span>(join_df, <span class="at">by =</span> <span class="st">&quot;case_num&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb193-8"><a href="tidy-evaluation.html#cb193-8" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb193-9"><a href="tidy-evaluation.html#cb193-9" tabindex="-1"></a>      <span class="st">&quot;{{valid_col}}_cleaned&quot;</span> <span class="sc">:=</span> <span class="fu">if_else</span>(</span>
-<span id="cb193-10"><a href="tidy-evaluation.html#cb193-10" tabindex="-1"></a>        <span class="fu">is.na</span>({{ col_y }}), {{ col_x }}, {{ col_y }}</span>
-<span id="cb193-11"><a href="tidy-evaluation.html#cb193-11" tabindex="-1"></a>      )</span>
-<span id="cb193-12"><a href="tidy-evaluation.html#cb193-12" tabindex="-1"></a>    )</span>
-<span id="cb193-13"><a href="tidy-evaluation.html#cb193-13" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="tidy-evaluation.html#cb200-1" tabindex="-1"></a>join_aps <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">.data =</span> aps_cleaned, join_df, valid_col) {</span>
+<span id="cb200-2"><a href="tidy-evaluation.html#cb200-2" tabindex="-1"></a>  <span class="co"># Create column names to use in the code below</span></span>
+<span id="cb200-3"><a href="tidy-evaluation.html#cb200-3" tabindex="-1"></a>  col_x <span class="ot">&lt;-</span> <span class="fu">sym</span>(<span class="fu">paste0</span>(<span class="fu">quo_name</span>(<span class="fu">enquo</span>(valid_col)), <span class="st">&quot;.x&quot;</span>))</span>
+<span id="cb200-4"><a href="tidy-evaluation.html#cb200-4" tabindex="-1"></a>  col_y <span class="ot">&lt;-</span> <span class="fu">sym</span>(<span class="fu">paste0</span>(<span class="fu">quo_name</span>(<span class="fu">enquo</span>(valid_col)), <span class="st">&quot;.y&quot;</span>))</span>
+<span id="cb200-5"><a href="tidy-evaluation.html#cb200-5" tabindex="-1"></a>  </span>
+<span id="cb200-6"><a href="tidy-evaluation.html#cb200-6" tabindex="-1"></a>  .data <span class="sc">%&gt;%</span> </span>
+<span id="cb200-7"><a href="tidy-evaluation.html#cb200-7" tabindex="-1"></a>    <span class="fu">left_join</span>(join_df, <span class="at">by =</span> <span class="st">&quot;case_num&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb200-8"><a href="tidy-evaluation.html#cb200-8" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb200-9"><a href="tidy-evaluation.html#cb200-9" tabindex="-1"></a>      <span class="st">&quot;{{valid_col}}_cleaned&quot;</span> <span class="sc">:=</span> <span class="fu">if_else</span>(</span>
+<span id="cb200-10"><a href="tidy-evaluation.html#cb200-10" tabindex="-1"></a>        <span class="fu">is.na</span>({{ col_y }}), {{ col_x }}, {{ col_y }}</span>
+<span id="cb200-11"><a href="tidy-evaluation.html#cb200-11" tabindex="-1"></a>      )</span>
+<span id="cb200-12"><a href="tidy-evaluation.html#cb200-12" tabindex="-1"></a>    )</span>
+<span id="cb200-13"><a href="tidy-evaluation.html#cb200-13" tabindex="-1"></a>}</span></code></pre></div>
 <p><strong>Test function</strong></p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="tidy-evaluation.html#cb194-1" tabindex="-1"></a>aps_cleaned <span class="sc">%&gt;%</span> </span>
-<span id="cb194-2"><a href="tidy-evaluation.html#cb194-2" tabindex="-1"></a>  <span class="fu">join_aps</span>(discrepancies_valid_physical_neglect, valid_physical_neglect)</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="tidy-evaluation.html#cb201-1" tabindex="-1"></a>aps_cleaned <span class="sc">%&gt;%</span> </span>
+<span id="cb201-2"><a href="tidy-evaluation.html#cb201-2" tabindex="-1"></a>  <span class="fu">join_aps</span>(discrepancies_valid_physical_neglect, valid_physical_neglect)</span></code></pre></div>
 <!--
 Clean up and add session info
 -->
@@ -2007,7 +2076,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

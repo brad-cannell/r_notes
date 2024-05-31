@@ -81,6 +81,7 @@ convert-a-string-to-a-quoture
 simple-example---now-this-works
 when-the-string-is-created-inside-the-function
 grouping-by-all-columns-in-the-data-frame
+setting-a-default-function-parameter-value-to-null
 example-i-created-for-steph-yap
 confidence-intervals
 overview-4

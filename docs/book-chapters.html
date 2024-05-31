@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>14 Bookdown: Creating Book Chapters | R Notes</title>
   <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="14 Bookdown: Creating Book Chapters | R Notes" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2023-07-29" />
+<meta name="date" content="2024-05-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,19 +52,22 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.23/datatables.js"></script>
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="libs/datatables-binding-0.33/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -127,6 +130,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -270,6 +277,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.16.3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-create-variable-name-in-mutate"><i class="fa fa-check"></i><b>4.16.3</b> Using a quoture to create variable name in mutate</a></li>
 <li class="chapter" data-level="4.16.4" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-turn-a-variable-name-into-a-constant-value"><i class="fa fa-check"></i><b>4.16.4</b> Using a quoture to turn a variable name into a constant value</a></li>
 <li class="chapter" data-level="4.16.5" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#convert-a-string-to-a-quoture"><i class="fa fa-check"></i><b>4.16.5</b> Convert a string to a quoture</a></li>
+<li class="chapter" data-level="4.16.6" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#setting-a-default-function-parameter-value-to-null"><i class="fa fa-check"></i><b>4.16.6</b> Setting a default function parameter value to NULL</a></li>
 </ul></li>
 <li class="chapter" data-level="4.17" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#example-i-created-for-steph-yap"><i class="fa fa-check"></i><b>4.17</b> Example I created for Steph Yap</a></li>
 </ul></li>
@@ -666,18 +674,18 @@ div.csl-indent {
 </div>
 <div id="special-sections" class="section level3 hasAnchor" number="14.3.3">
 <h3><span class="header-section-number">14.3.3</span> Special sections<a href="book-chapters.html#special-sections" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="book-chapters.html#cb443-1" tabindex="-1"></a><span class="sc">&lt;</span>p class<span class="ot">=</span><span class="st">&quot;note&quot;</span><span class="sc">&gt;</span> 🗒<span class="sc">**</span>Side Note<span class="sc">:</span><span class="er">**</span> This is an example note. <span class="sc">&lt;</span><span class="er">/</span>p<span class="sc">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="book-chapters.html#cb450-1" tabindex="-1"></a><span class="sc">&lt;</span>p class<span class="ot">=</span><span class="st">&quot;note&quot;</span><span class="sc">&gt;</span> 🗒<span class="sc">**</span>Side Note<span class="sc">:</span><span class="er">**</span> This is an example note. <span class="sc">&lt;</span><span class="er">/</span>p<span class="sc">&gt;</span></span></code></pre></div>
 <p class="note">
 🗒<strong>Side Note:</strong> This is an example note.
 </p>
-<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="book-chapters.html#cb444-1" tabindex="-1"></a><span class="sc">&lt;</span>p class<span class="ot">=</span><span class="st">&quot;warning&quot;</span><span class="sc">&gt;</span> ⚠️<span class="sc">**</span>Warning<span class="sc">:</span><span class="er">**</span> This is an example warning <span class="sc">&lt;</span><span class="er">/</span>p<span class="sc">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="book-chapters.html#cb451-1" tabindex="-1"></a><span class="sc">&lt;</span>p class<span class="ot">=</span><span class="st">&quot;warning&quot;</span><span class="sc">&gt;</span> ⚠️<span class="sc">**</span>Warning<span class="sc">:</span><span class="er">**</span> This is an example warning <span class="sc">&lt;</span><span class="er">/</span>p<span class="sc">&gt;</span></span></code></pre></div>
 <p class="warning">
 ⚠️<strong>Warning:</strong> This is an example warning
 </p>
 </div>
 <div id="images" class="section level3 hasAnchor" number="14.3.4">
 <h3><span class="header-section-number">14.3.4</span> Images<a href="book-chapters.html#images" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><img src="img/06_presenting_results/bookdown_creating_book_chapters/example_bookdown_image.png" width="957" /></p>
+<p><img src="img/06_presenting_results/bookdown_creating_book_chapters/example_bookdown_image.png" /><!-- --></p>
 <ul>
 <li><p>Don’t forget to add “echo=FALSE” to the code chunk.</p></li>
 <li><p>Details on cross-referencing figures are given <a href="book-chapters.html#cr-figs">below</a>.</p></li>
@@ -685,15 +693,15 @@ div.csl-indent {
 <li><p>Because of the way the files are structured, You won’t be able to see pictures directly in the Rmd files without including “../../” on the front the file paths. However, having “../../” on the front of the file paths prevents the book from building appropriately.</p></li>
 </ul>
 <p>You can also directly use img tags. Here’s the one I used for my photo in R4Epi</p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="book-chapters.html#cb445-1" tabindex="-1"></a><span class="sc">&lt;!--</span> Cannell profile photo <span class="sc">-</span><span class="ot">-&gt;</span></span>
-<span id="cb445-2"><a href="book-chapters.html#cb445-2" tabindex="-1"></a><span class="er">&lt;</span>img align<span class="ot">=</span><span class="st">&quot;right&quot;</span> src<span class="ot">=</span><span class="st">&quot;img/index/cannell-headshot copy.png&quot;</span> alt<span class="ot">=</span><span class="st">&quot;R4Epi hex logo&quot;</span> width<span class="ot">=</span><span class="st">&quot;250&quot;</span> style<span class="ot">=</span><span class="st">&quot;margin: 0 1em 0 1em; border-radius: 20px 0px 20px 0px;&quot;</span><span class="sc">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="book-chapters.html#cb452-1" tabindex="-1"></a><span class="sc">&lt;!--</span> Cannell profile photo <span class="sc">-</span><span class="ot">-&gt;</span></span>
+<span id="cb452-2"><a href="book-chapters.html#cb452-2" tabindex="-1"></a><span class="er">&lt;</span>img align<span class="ot">=</span><span class="st">&quot;right&quot;</span> src<span class="ot">=</span><span class="st">&quot;img/index/cannell-headshot copy.png&quot;</span> alt<span class="ot">=</span><span class="st">&quot;R4Epi hex logo&quot;</span> width<span class="ot">=</span><span class="st">&quot;250&quot;</span> style<span class="ot">=</span><span class="st">&quot;margin: 0 1em 0 1em; border-radius: 20px 0px 20px 0px;&quot;</span><span class="sc">&gt;</span></span></code></pre></div>
 <p>Yihui talks about some of the advantages of using <code>knitr::include_graphics()</code> here: <a href="https://bookdown.org/yihui/bookdown/figures.html" class="uri">https://bookdown.org/yihui/bookdown/figures.html</a>. Most of them have to do with creating PDF documents. For HTML only, the img tag seems to be a little more customizable.</p>
 </div>
 <div id="videos" class="section level3 hasAnchor" number="14.3.5">
 <h3><span class="header-section-number">14.3.5</span> Videos<a href="book-chapters.html#videos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You can include videos published on either YouTube or Vimeo within a chapter using the standard Markdown image syntax. Note that any valid YouTube or Vimeo URL will work.</p>
 <p><strong>Note: You must use YouTube’s embed code for the video to work.</strong> Simply adding <code>![](https://youtu.be/RiAeNSFjjLc)</code> will not work as some websites claim. Instead, on YouTube, you need to click <code>share</code>, then click the <code>Embed</code> button, then copy the iframe code. For example, this code</p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="book-chapters.html#cb446-1" tabindex="-1"></a><span class="sc">&lt;</span>iframe width<span class="ot">=</span><span class="st">&quot;560&quot;</span> height<span class="ot">=</span><span class="st">&quot;315&quot;</span> src<span class="ot">=</span><span class="st">&quot;https://www.youtube.com/embed/RiAeNSFjjLc&quot;</span> title<span class="ot">=</span><span class="st">&quot;YouTube video player&quot;</span> frameborder<span class="ot">=</span><span class="st">&quot;0&quot;</span> allow<span class="ot">=</span><span class="st">&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot;</span> allowfullscreen<span class="sc">&gt;</span><span class="er">&lt;/</span>iframe<span class="sc">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="book-chapters.html#cb453-1" tabindex="-1"></a><span class="sc">&lt;</span>iframe width<span class="ot">=</span><span class="st">&quot;560&quot;</span> height<span class="ot">=</span><span class="st">&quot;315&quot;</span> src<span class="ot">=</span><span class="st">&quot;https://www.youtube.com/embed/RiAeNSFjjLc&quot;</span> title<span class="ot">=</span><span class="st">&quot;YouTube video player&quot;</span> frameborder<span class="ot">=</span><span class="st">&quot;0&quot;</span> allow<span class="ot">=</span><span class="st">&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot;</span> allowfullscreen<span class="sc">&gt;</span><span class="er">&lt;/</span>iframe<span class="sc">&gt;</span></span></code></pre></div>
 <p>produces:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RiAeNSFjjLc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
@@ -708,13 +716,13 @@ knitr::include_url(&quot;https://www.youtube.com/embed/RiAeNSFjjLc&quot;)
 <div id="font-awesome" class="section level3 hasAnchor" number="14.3.6">
 <h3><span class="header-section-number">14.3.6</span> Font Awesome<a href="book-chapters.html#font-awesome" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are few different ways to incorporate font awesome icons into your output. The font awesome package (<a href="https://github.com/rstudio/fontawesome" class="uri">https://github.com/rstudio/fontawesome</a>) is my favorite so far. Here are the social media links I added to <a href="https://www.r4epi.com/about-the-authors.html">R4Epi</a>:</p>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="book-chapters.html#cb448-1" tabindex="-1"></a><span class="sc">**</span>Contact<span class="sc">**</span>   </span>
-<span id="cb448-2"><a href="book-chapters.html#cb448-2" tabindex="-1"></a>Connect with Dr. Cannell and follow his work.   </span>
-<span id="cb448-3"><a href="book-chapters.html#cb448-3" tabindex="-1"></a><span class="sc">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.bradcannell.com&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;globe&quot;, fill = &quot;#003087&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
-<span id="cb448-4"><a href="book-chapters.html#cb448-4" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.facebook.com/Brad-Cannell-PhD-MPH-109345984850672&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;facebook-square&quot;, fill = &quot;#4267B2&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
-<span id="cb448-5"><a href="book-chapters.html#cb448-5" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.linkedin.com/in/bradcannell/&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;linkedin&quot;, fill = &quot;#2867B2&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
-<span id="cb448-6"><a href="book-chapters.html#cb448-6" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://twitter.com/brad_cannell&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;twitter-square&quot;, fill = &quot;#198CD8&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
-<span id="cb448-7"><a href="book-chapters.html#cb448-7" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.instagram.com/brad_cannell/&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;instagram-square&quot;, fill = &quot;#833AB4&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="book-chapters.html#cb455-1" tabindex="-1"></a><span class="sc">**</span>Contact<span class="sc">**</span>   </span>
+<span id="cb455-2"><a href="book-chapters.html#cb455-2" tabindex="-1"></a>Connect with Dr. Cannell and follow his work.   </span>
+<span id="cb455-3"><a href="book-chapters.html#cb455-3" tabindex="-1"></a><span class="sc">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.bradcannell.com&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;globe&quot;, fill = &quot;#003087&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
+<span id="cb455-4"><a href="book-chapters.html#cb455-4" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.facebook.com/Brad-Cannell-PhD-MPH-109345984850672&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;facebook-square&quot;, fill = &quot;#4267B2&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
+<span id="cb455-5"><a href="book-chapters.html#cb455-5" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.linkedin.com/in/bradcannell/&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;linkedin&quot;, fill = &quot;#2867B2&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
+<span id="cb455-6"><a href="book-chapters.html#cb455-6" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://twitter.com/brad_cannell&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;twitter-square&quot;, fill = &quot;#198CD8&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span>
+<span id="cb455-7"><a href="book-chapters.html#cb455-7" tabindex="-1"></a><span class="er">&lt;</span>a href<span class="ot">=</span><span class="st">&quot;https://www.instagram.com/brad_cannell/&quot;</span> target<span class="ot">=</span><span class="st">&quot;_blank&quot;</span><span class="sc">&gt;</span><span class="st">`</span><span class="at">r fa(&quot;instagram-square&quot;, fill = &quot;#833AB4&quot;, height=&quot;2em&quot;)</span><span class="st">`</span><span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span></code></pre></div>
 </div>
 <div id="links" class="section level3 hasAnchor" number="14.3.7">
 <h3><span class="header-section-number">14.3.7</span> Links<a href="book-chapters.html#links" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -725,13 +733,13 @@ knitr::include_url(&quot;https://www.youtube.com/embed/RiAeNSFjjLc&quot;)
 <p>Add the following below code blocks…</p>
 <p>👆<strong>Here’s what we did above:</strong></p>
 <p>Use unordered lists for these sections. It allows for nested lists and code. Add line breaks in between the bullets.</p>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="book-chapters.html#cb449-1" tabindex="-1"></a><span class="sc">&lt;</span>ul<span class="sc">&gt;</span></span>
-<span id="cb449-2"><a href="book-chapters.html#cb449-2" tabindex="-1"></a>  <span class="er">&lt;</span>li<span class="sc">&gt;</span>You can type <span class="st">`</span><span class="at">?mutate</span><span class="st">`</span> into your R console to view the help documentation <span class="cf">for</span> this <span class="cf">function</span> and follow along with the explanation below.<span class="sc">/</span>li<span class="sc">&gt;</span></span>
-<span id="cb449-3"><a href="book-chapters.html#cb449-3" tabindex="-1"></a>  </span>
-<span id="cb449-4"><a href="book-chapters.html#cb449-4" tabindex="-1"></a>  <span class="er">&lt;</span>li<span class="sc">&gt;</span><span class="er">&lt;/</span>li<span class="sc">&gt;</span></span>
-<span id="cb449-5"><a href="book-chapters.html#cb449-5" tabindex="-1"></a>  </span>
-<span id="cb449-6"><a href="book-chapters.html#cb449-6" tabindex="-1"></a>  <span class="er">&lt;</span>li<span class="sc">&gt;</span><span class="er">&lt;/</span>li<span class="sc">&gt;</span></span>
-<span id="cb449-7"><a href="book-chapters.html#cb449-7" tabindex="-1"></a><span class="er">&lt;/</span>ul<span class="sc">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="book-chapters.html#cb456-1" tabindex="-1"></a><span class="sc">&lt;</span>ul<span class="sc">&gt;</span></span>
+<span id="cb456-2"><a href="book-chapters.html#cb456-2" tabindex="-1"></a>  <span class="er">&lt;</span>li<span class="sc">&gt;</span>You can type <span class="st">`</span><span class="at">?mutate</span><span class="st">`</span> into your R console to view the help documentation <span class="cf">for</span> this <span class="cf">function</span> and follow along with the explanation below.<span class="sc">/</span>li<span class="sc">&gt;</span></span>
+<span id="cb456-3"><a href="book-chapters.html#cb456-3" tabindex="-1"></a>  </span>
+<span id="cb456-4"><a href="book-chapters.html#cb456-4" tabindex="-1"></a>  <span class="er">&lt;</span>li<span class="sc">&gt;</span><span class="er">&lt;/</span>li<span class="sc">&gt;</span></span>
+<span id="cb456-5"><a href="book-chapters.html#cb456-5" tabindex="-1"></a>  </span>
+<span id="cb456-6"><a href="book-chapters.html#cb456-6" tabindex="-1"></a>  <span class="er">&lt;</span>li<span class="sc">&gt;</span><span class="er">&lt;/</span>li<span class="sc">&gt;</span></span>
+<span id="cb456-7"><a href="book-chapters.html#cb456-7" tabindex="-1"></a><span class="er">&lt;/</span>ul<span class="sc">&gt;</span></span></code></pre></div>
 </div>
 </div>
 <div id="cross-references" class="section level2 hasAnchor" number="14.4">
@@ -840,7 +848,7 @@ knitr::include_url(&quot;https://www.youtube.com/embed/RiAeNSFjjLc&quot;)
 <li>Click the BibTeX option. This will copy a BibTeX citation to your clipboard.</li>
 </ol>
 <div class="figure"><span style="display:block;" id="fig:paperpile"></span>
-<img src="img/06_presenting_results/bookdown_creating_book_chapters/paperpile.png" alt="A screenshot of selecting BibTex in PaperPile." width="978" />
+<img src="img/06_presenting_results/bookdown_creating_book_chapters/paperpile.png" alt="A screenshot of selecting BibTex in PaperPile."  />
 <p class="caption">
 Figure 14.1: A screenshot of selecting BibTex in PaperPile.
 </p>
@@ -851,7 +859,7 @@ Figure 14.1: A screenshot of selecting BibTex in PaperPile.
 <li>Paste the BibTeX citation into <code>book.bib</code>. Order the citations alphabetically by author’s last name. Save.</li>
 </ol>
 <p>For example, here is the <code>book.bib</code> entry for the Yihui Xie’s bookdown book:</p>
-<p><img src="img/06_presenting_results/bookdown_creating_book_chapters/bibtex_example.png" width="688" /></p>
+<p><img src="img/06_presenting_results/bookdown_creating_book_chapters/bibtex_example.png" /><!-- --></p>
 <p>Then, to cite that book, type <code>@key</code> where you want the citation to appear – the <strong>key</strong> part of <code>@key</code> is marked in the example above. So, I’m citing Yihui Xie’s bookdown book at the end of this sentence by typing <code>@Xie2021-pn</code> after the period <em>with a space in between</em>.<span class="citation"><sup><a href="#ref-Xie2021-pn">3</a></sup></span></p>
 <p class="note">
 🗒<strong>Side Note:</strong> You can change the citation style using the <code>csl:</code> parameter in <code>index.Rmd</code>. I typically use <code>csl: ama.csl</code>, but you can download other formats from <a href="https://github.com/citation-style-language/styles" class="uri">https://github.com/citation-style-language/styles</a>.
@@ -965,7 +973,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>19 Officer | R Notes</title>
   <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="19 Officer | R Notes" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2023-07-29" />
+<meta name="date" content="2024-05-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,19 +52,22 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.23/datatables.js"></script>
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="libs/datatables-binding-0.33/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -127,6 +130,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -270,6 +277,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.16.3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-create-variable-name-in-mutate"><i class="fa fa-check"></i><b>4.16.3</b> Using a quoture to create variable name in mutate</a></li>
 <li class="chapter" data-level="4.16.4" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-turn-a-variable-name-into-a-constant-value"><i class="fa fa-check"></i><b>4.16.4</b> Using a quoture to turn a variable name into a constant value</a></li>
 <li class="chapter" data-level="4.16.5" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#convert-a-string-to-a-quoture"><i class="fa fa-check"></i><b>4.16.5</b> Convert a string to a quoture</a></li>
+<li class="chapter" data-level="4.16.6" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#setting-a-default-function-parameter-value-to-null"><i class="fa fa-check"></i><b>4.16.6</b> Setting a default function parameter value to NULL</a></li>
 </ul></li>
 <li class="chapter" data-level="4.17" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#example-i-created-for-steph-yap"><i class="fa fa-check"></i><b>4.17</b> Example I created for Steph Yap</a></li>
 </ul></li>
@@ -664,89 +672,89 @@ Hidden comments placeholder
 </div>
 <div id="load-packages-12" class="section level2 hasAnchor" number="19.3">
 <h2><span class="header-section-number">19.3</span> 📦Load packages<a href="officer.html#load-packages-12" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="officer.html#cb502-1" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb502-2"><a href="officer.html#cb502-2" tabindex="-1"></a><span class="fu">library</span>(officer, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb502-3"><a href="officer.html#cb502-3" tabindex="-1"></a><span class="fu">library</span>(flextable, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="officer.html#cb509-1" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb509-2"><a href="officer.html#cb509-2" tabindex="-1"></a><span class="fu">library</span>(officer, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb509-3"><a href="officer.html#cb509-3" tabindex="-1"></a><span class="fu">library</span>(flextable, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 </div>
 <div id="formatted-text" class="section level2 hasAnchor" number="19.4">
 <h2><span class="header-section-number">19.4</span> Formatted text<a href="officer.html#formatted-text" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Can start with a template</p>
-<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="officer.html#cb503-1" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_docx</span>(<span class="st">&quot;officer_word_template.docx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="officer.html#cb510-1" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_docx</span>(<span class="st">&quot;officer_word_template.docx&quot;</span>)</span></code></pre></div>
 <p>Or not</p>
-<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="officer.html#cb504-1" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_docx</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb504-2"><a href="officer.html#cb504-2" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;DETECT LEAD Panel Initial Review Report&quot;</span>, <span class="at">style =</span> <span class="st">&quot;heading 1&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb504-3"><a href="officer.html#cb504-3" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="fu">paste</span>(<span class="st">&quot;Updated: &quot;</span>, <span class="fu">Sys.Date</span>())) <span class="sc">%&gt;%</span></span>
-<span id="cb504-4"><a href="officer.html#cb504-4" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb504-5"><a href="officer.html#cb504-5" tabindex="-1"></a>  <span class="fu">body_add_fpar</span>(</span>
-<span id="cb504-6"><a href="officer.html#cb504-6" tabindex="-1"></a>    <span class="fu">fpar</span>(</span>
-<span id="cb504-7"><a href="officer.html#cb504-7" tabindex="-1"></a>      <span class="fu">ftext</span>(</span>
-<span id="cb504-8"><a href="officer.html#cb504-8" tabindex="-1"></a>        <span class="st">&quot;Total Initial Assessments:&quot;</span>,</span>
-<span id="cb504-9"><a href="officer.html#cb504-9" tabindex="-1"></a>        <span class="at">prop =</span> <span class="fu">fp_text</span>(</span>
-<span id="cb504-10"><a href="officer.html#cb504-10" tabindex="-1"></a>          <span class="at">font.family =</span> <span class="st">&quot;Times New Roman&quot;</span>, <span class="at">font.size =</span> <span class="dv">11</span></span>
-<span id="cb504-11"><a href="officer.html#cb504-11" tabindex="-1"></a>        )</span>
-<span id="cb504-12"><a href="officer.html#cb504-12" tabindex="-1"></a>      )</span>
-<span id="cb504-13"><a href="officer.html#cb504-13" tabindex="-1"></a>    )</span>
-<span id="cb504-14"><a href="officer.html#cb504-14" tabindex="-1"></a>  )</span></code></pre></div>
-<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="officer.html#cb505-1" tabindex="-1"></a><span class="fu">print</span>(</span>
-<span id="cb505-2"><a href="officer.html#cb505-2" tabindex="-1"></a>  doc, </span>
-<span id="cb505-3"><a href="officer.html#cb505-3" tabindex="-1"></a>  <span class="st">&quot;examples/officer_formatted_text.docx&quot;</span></span>
-<span id="cb505-4"><a href="officer.html#cb505-4" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="officer.html#cb511-1" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_docx</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb511-2"><a href="officer.html#cb511-2" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;DETECT LEAD Panel Initial Review Report&quot;</span>, <span class="at">style =</span> <span class="st">&quot;heading 1&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb511-3"><a href="officer.html#cb511-3" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="fu">paste</span>(<span class="st">&quot;Updated: &quot;</span>, <span class="fu">Sys.Date</span>())) <span class="sc">%&gt;%</span></span>
+<span id="cb511-4"><a href="officer.html#cb511-4" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb511-5"><a href="officer.html#cb511-5" tabindex="-1"></a>  <span class="fu">body_add_fpar</span>(</span>
+<span id="cb511-6"><a href="officer.html#cb511-6" tabindex="-1"></a>    <span class="fu">fpar</span>(</span>
+<span id="cb511-7"><a href="officer.html#cb511-7" tabindex="-1"></a>      <span class="fu">ftext</span>(</span>
+<span id="cb511-8"><a href="officer.html#cb511-8" tabindex="-1"></a>        <span class="st">&quot;Total Initial Assessments:&quot;</span>,</span>
+<span id="cb511-9"><a href="officer.html#cb511-9" tabindex="-1"></a>        <span class="at">prop =</span> <span class="fu">fp_text</span>(</span>
+<span id="cb511-10"><a href="officer.html#cb511-10" tabindex="-1"></a>          <span class="at">font.family =</span> <span class="st">&quot;Times New Roman&quot;</span>, <span class="at">font.size =</span> <span class="dv">11</span></span>
+<span id="cb511-11"><a href="officer.html#cb511-11" tabindex="-1"></a>        )</span>
+<span id="cb511-12"><a href="officer.html#cb511-12" tabindex="-1"></a>      )</span>
+<span id="cb511-13"><a href="officer.html#cb511-13" tabindex="-1"></a>    )</span>
+<span id="cb511-14"><a href="officer.html#cb511-14" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="officer.html#cb512-1" tabindex="-1"></a><span class="fu">print</span>(</span>
+<span id="cb512-2"><a href="officer.html#cb512-2" tabindex="-1"></a>  doc, </span>
+<span id="cb512-3"><a href="officer.html#cb512-3" tabindex="-1"></a>  <span class="st">&quot;examples/officer_formatted_text.docx&quot;</span></span>
+<span id="cb512-4"><a href="officer.html#cb512-4" tabindex="-1"></a>)</span></code></pre></div>
 <p><a href="https://www.dropbox.com/s/3f8c0omkfahdc8l/officer_formatted_text.docx?dl=0">Link to Word Document on Dropbox</a></p>
-<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="officer.html#cb506-1" tabindex="-1"></a><span class="co"># Output Word document</span></span>
-<span id="cb506-2"><a href="officer.html#cb506-2" tabindex="-1"></a><span class="co"># Update the year and month in the file name dynamically</span></span>
-<span id="cb506-3"><a href="officer.html#cb506-3" tabindex="-1"></a><span class="fu">print</span>(</span>
-<span id="cb506-4"><a href="officer.html#cb506-4" tabindex="-1"></a>  doc, </span>
-<span id="cb506-5"><a href="officer.html#cb506-5" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="fu">Sys.Date</span>() <span class="sc">%&gt;%</span> <span class="fu">format</span>(<span class="st">&quot;%Y-%m&quot;</span>), <span class="st">&quot; Initial Review Report.docx&quot;</span>)</span>
-<span id="cb506-6"><a href="officer.html#cb506-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="officer.html#cb513-1" tabindex="-1"></a><span class="co"># Output Word document</span></span>
+<span id="cb513-2"><a href="officer.html#cb513-2" tabindex="-1"></a><span class="co"># Update the year and month in the file name dynamically</span></span>
+<span id="cb513-3"><a href="officer.html#cb513-3" tabindex="-1"></a><span class="fu">print</span>(</span>
+<span id="cb513-4"><a href="officer.html#cb513-4" tabindex="-1"></a>  doc, </span>
+<span id="cb513-5"><a href="officer.html#cb513-5" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="fu">Sys.Date</span>() <span class="sc">%&gt;%</span> <span class="fu">format</span>(<span class="st">&quot;%Y-%m&quot;</span>), <span class="st">&quot; Initial Review Report.docx&quot;</span>)</span>
+<span id="cb513-6"><a href="officer.html#cb513-6" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="bulleted-list" class="section level2 hasAnchor" number="19.5">
 <h2><span class="header-section-number">19.5</span> Bulleted list<a href="officer.html#bulleted-list" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>It’s possible to do. You need to make sure you create a bullet style in the template Word doc.</p>
 <p>See here: <a href="https://github.com/davidgohel/officer/issues/262" class="uri">https://github.com/davidgohel/officer/issues/262</a></p>
-<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="officer.html#cb507-1" tabindex="-1"></a><span class="co">#  Create Word doc</span></span>
-<span id="cb507-2"><a href="officer.html#cb507-2" tabindex="-1"></a>ss_report <span class="ot">&lt;-</span> <span class="fu">read_docx</span>(<span class="st">&quot;examples/Word Template for Officer.docx&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb507-3"><a href="officer.html#cb507-3" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;Sun Study Outcomes Report&quot;</span>, <span class="at">style =</span> <span class="st">&quot;heading 1&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb507-4"><a href="officer.html#cb507-4" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb507-5"><a href="officer.html#cb507-5" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="fu">paste</span>(<span class="st">&quot;Updated: &quot;</span>, <span class="fu">Sys.Date</span>())) <span class="sc">%&gt;%</span> </span>
-<span id="cb507-6"><a href="officer.html#cb507-6" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb507-7"><a href="officer.html#cb507-7" tabindex="-1"></a>  </span>
-<span id="cb507-8"><a href="officer.html#cb507-8" tabindex="-1"></a>  <span class="co"># Add bulleted list</span></span>
-<span id="cb507-9"><a href="officer.html#cb507-9" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;item 1&quot;</span>, <span class="at">style =</span> <span class="st">&quot;bullet&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb507-10"><a href="officer.html#cb507-10" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;item 2&quot;</span>, <span class="at">style =</span> <span class="st">&quot;bullet&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb507-11"><a href="officer.html#cb507-11" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;item 3&quot;</span>, <span class="at">style =</span> <span class="st">&quot;bullet&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="officer.html#cb508-1" tabindex="-1"></a><span class="co"># Output Word document</span></span>
-<span id="cb508-2"><a href="officer.html#cb508-2" tabindex="-1"></a><span class="fu">print</span>(</span>
-<span id="cb508-3"><a href="officer.html#cb508-3" tabindex="-1"></a>  ss_report, </span>
-<span id="cb508-4"><a href="officer.html#cb508-4" tabindex="-1"></a>  <span class="st">&quot;examples/officer_bullets.docx&quot;</span></span>
-<span id="cb508-5"><a href="officer.html#cb508-5" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="officer.html#cb514-1" tabindex="-1"></a><span class="co">#  Create Word doc</span></span>
+<span id="cb514-2"><a href="officer.html#cb514-2" tabindex="-1"></a>ss_report <span class="ot">&lt;-</span> <span class="fu">read_docx</span>(<span class="st">&quot;examples/Word Template for Officer.docx&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb514-3"><a href="officer.html#cb514-3" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;Sun Study Outcomes Report&quot;</span>, <span class="at">style =</span> <span class="st">&quot;heading 1&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb514-4"><a href="officer.html#cb514-4" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb514-5"><a href="officer.html#cb514-5" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="fu">paste</span>(<span class="st">&quot;Updated: &quot;</span>, <span class="fu">Sys.Date</span>())) <span class="sc">%&gt;%</span> </span>
+<span id="cb514-6"><a href="officer.html#cb514-6" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb514-7"><a href="officer.html#cb514-7" tabindex="-1"></a>  </span>
+<span id="cb514-8"><a href="officer.html#cb514-8" tabindex="-1"></a>  <span class="co"># Add bulleted list</span></span>
+<span id="cb514-9"><a href="officer.html#cb514-9" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;item 1&quot;</span>, <span class="at">style =</span> <span class="st">&quot;bullet&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb514-10"><a href="officer.html#cb514-10" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;item 2&quot;</span>, <span class="at">style =</span> <span class="st">&quot;bullet&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb514-11"><a href="officer.html#cb514-11" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;item 3&quot;</span>, <span class="at">style =</span> <span class="st">&quot;bullet&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="officer.html#cb515-1" tabindex="-1"></a><span class="co"># Output Word document</span></span>
+<span id="cb515-2"><a href="officer.html#cb515-2" tabindex="-1"></a><span class="fu">print</span>(</span>
+<span id="cb515-3"><a href="officer.html#cb515-3" tabindex="-1"></a>  ss_report, </span>
+<span id="cb515-4"><a href="officer.html#cb515-4" tabindex="-1"></a>  <span class="st">&quot;examples/officer_bullets.docx&quot;</span></span>
+<span id="cb515-5"><a href="officer.html#cb515-5" tabindex="-1"></a>)</span></code></pre></div>
 <p><a href="https://www.dropbox.com/s/qc57o5oa54hqnev/officer_bullets.docx?dl=0">Link to Word Document on Dropbox</a></p>
 </div>
 <div id="adding-on-to-the-end-of-a-file." class="section level2 hasAnchor" number="19.6">
 <h2><span class="header-section-number">19.6</span> Adding on to the end of a file.<a href="officer.html#adding-on-to-the-end-of-a-file." class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>From the Sun Study. Need to clean up when I get time.</p>
 <p>Start with the same document we just made above.</p>
-<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="officer.html#cb509-1" tabindex="-1"></a><span class="co">#  Create Word doc</span></span>
-<span id="cb509-2"><a href="officer.html#cb509-2" tabindex="-1"></a>ss_report <span class="ot">&lt;-</span> <span class="fu">read_docx</span>(<span class="st">&quot;examples/Word Template for Officer.docx&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb509-3"><a href="officer.html#cb509-3" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;Sun Study Outcomes Report&quot;</span>, <span class="at">style =</span> <span class="st">&quot;heading 1&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb509-4"><a href="officer.html#cb509-4" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb509-5"><a href="officer.html#cb509-5" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="fu">paste</span>(<span class="st">&quot;Updated: &quot;</span>, <span class="fu">Sys.Date</span>())) <span class="sc">%&gt;%</span> </span>
-<span id="cb509-6"><a href="officer.html#cb509-6" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="officer.html#cb510-1" tabindex="-1"></a><span class="co"># Output Word document</span></span>
-<span id="cb510-2"><a href="officer.html#cb510-2" tabindex="-1"></a><span class="fu">print</span>(</span>
-<span id="cb510-3"><a href="officer.html#cb510-3" tabindex="-1"></a>  ss_report, </span>
-<span id="cb510-4"><a href="officer.html#cb510-4" tabindex="-1"></a>  <span class="st">&quot;examples/officer_bullets.docx&quot;</span></span>
-<span id="cb510-5"><a href="officer.html#cb510-5" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="officer.html#cb516-1" tabindex="-1"></a><span class="co">#  Create Word doc</span></span>
+<span id="cb516-2"><a href="officer.html#cb516-2" tabindex="-1"></a>ss_report <span class="ot">&lt;-</span> <span class="fu">read_docx</span>(<span class="st">&quot;examples/Word Template for Officer.docx&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb516-3"><a href="officer.html#cb516-3" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;Sun Study Outcomes Report&quot;</span>, <span class="at">style =</span> <span class="st">&quot;heading 1&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb516-4"><a href="officer.html#cb516-4" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb516-5"><a href="officer.html#cb516-5" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="fu">paste</span>(<span class="st">&quot;Updated: &quot;</span>, <span class="fu">Sys.Date</span>())) <span class="sc">%&gt;%</span> </span>
+<span id="cb516-6"><a href="officer.html#cb516-6" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="officer.html#cb517-1" tabindex="-1"></a><span class="co"># Output Word document</span></span>
+<span id="cb517-2"><a href="officer.html#cb517-2" tabindex="-1"></a><span class="fu">print</span>(</span>
+<span id="cb517-3"><a href="officer.html#cb517-3" tabindex="-1"></a>  ss_report, </span>
+<span id="cb517-4"><a href="officer.html#cb517-4" tabindex="-1"></a>  <span class="st">&quot;examples/officer_bullets.docx&quot;</span></span>
+<span id="cb517-5"><a href="officer.html#cb517-5" tabindex="-1"></a>)</span></code></pre></div>
 <p><a href="https://www.dropbox.com/s/qc57o5oa54hqnev/officer_bullets.docx?dl=0">Link to Word Document on Dropbox</a></p>
 <p>Now add a new section to the document.</p>
 <p>Section 1. Report on missing data</p>
-<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="officer.html#cb511-1" tabindex="-1"></a><span class="co"># Load report and add to the end?</span></span>
-<span id="cb511-2"><a href="officer.html#cb511-2" tabindex="-1"></a>ss_report <span class="ot">&lt;-</span> <span class="fu">read_docx</span>(<span class="st">&quot;examples/officer_bullets.docx&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb511-3"><a href="officer.html#cb511-3" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;Test Text&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="officer.html#cb512-1" tabindex="-1"></a><span class="co"># Output Word document</span></span>
-<span id="cb512-2"><a href="officer.html#cb512-2" tabindex="-1"></a><span class="fu">print</span>(</span>
-<span id="cb512-3"><a href="officer.html#cb512-3" tabindex="-1"></a>  ss_report, </span>
-<span id="cb512-4"><a href="officer.html#cb512-4" tabindex="-1"></a>  <span class="st">&quot;examples/officer_add_to_end.docx&quot;</span></span>
-<span id="cb512-5"><a href="officer.html#cb512-5" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="officer.html#cb518-1" tabindex="-1"></a><span class="co"># Load report and add to the end?</span></span>
+<span id="cb518-2"><a href="officer.html#cb518-2" tabindex="-1"></a>ss_report <span class="ot">&lt;-</span> <span class="fu">read_docx</span>(<span class="st">&quot;examples/officer_bullets.docx&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb518-3"><a href="officer.html#cb518-3" tabindex="-1"></a>  <span class="fu">body_add_par</span>(<span class="st">&quot;Test Text&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="officer.html#cb519-1" tabindex="-1"></a><span class="co"># Output Word document</span></span>
+<span id="cb519-2"><a href="officer.html#cb519-2" tabindex="-1"></a><span class="fu">print</span>(</span>
+<span id="cb519-3"><a href="officer.html#cb519-3" tabindex="-1"></a>  ss_report, </span>
+<span id="cb519-4"><a href="officer.html#cb519-4" tabindex="-1"></a>  <span class="st">&quot;examples/officer_add_to_end.docx&quot;</span></span>
+<span id="cb519-5"><a href="officer.html#cb519-5" tabindex="-1"></a>)</span></code></pre></div>
 <p><a href="https://www.dropbox.com/s/ucnt8pm3r28qj42/officer_add_to_end.docx?dl=0">Link to Word Document on Dropbox</a></p>
 <p>This works. However, there was no advantage to doing it this way in the Sun Study example. In fact, what I’ve found in general is that it typically works best to do as much adding text and formatting things as possible directly in the Word template. Then, just pretty much add flextables and plots to the Word template.</p>
 </div>
@@ -759,37 +767,37 @@ Hidden comments placeholder
 <p>If you don’t add other text around the bookmark, you will get this error: Error: bookmark ‘example_table’ does not end in the same paragraph (or is on the whole paragraph)</p>
 <p>A hacky fix is to enclose bookmark text with bm text <bm>. Make sure only the “text” part is the bookmark.</p>
 <p>I also found that you can’t continue piping the document after you’ve added a flextable at a bookmark. You have to start overwriting the Word document object. See LEAD Panel Summary Report as an example.</p>
-<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="officer.html#cb513-1" tabindex="-1"></a>doc_w_bookmarks <span class="ot">&lt;-</span> <span class="fu">read_docx</span>(<span class="st">&quot;examples/Word Template for Officer Bookmarks.docx&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb513-2"><a href="officer.html#cb513-2" tabindex="-1"></a>  <span class="fu">body_replace_flextable_at_bkm</span>(</span>
-<span id="cb513-3"><a href="officer.html#cb513-3" tabindex="-1"></a>    <span class="at">bookmark =</span> <span class="st">&quot;example_table&quot;</span>,</span>
-<span id="cb513-4"><a href="officer.html#cb513-4" tabindex="-1"></a>    <span class="at">value =</span> <span class="fu">flextable</span>(<span class="fu">head</span>(mtcars))</span>
-<span id="cb513-5"><a href="officer.html#cb513-5" tabindex="-1"></a>  )</span>
-<span id="cb513-6"><a href="officer.html#cb513-6" tabindex="-1"></a></span>
-<span id="cb513-7"><a href="officer.html#cb513-7" tabindex="-1"></a><span class="fu">print</span>(</span>
-<span id="cb513-8"><a href="officer.html#cb513-8" tabindex="-1"></a>  doc_w_bookmarks,</span>
-<span id="cb513-9"><a href="officer.html#cb513-9" tabindex="-1"></a>  <span class="st">&quot;examples/officer_bookmarks.docx&quot;</span></span>
-<span id="cb513-10"><a href="officer.html#cb513-10" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="officer.html#cb520-1" tabindex="-1"></a>doc_w_bookmarks <span class="ot">&lt;-</span> <span class="fu">read_docx</span>(<span class="st">&quot;examples/Word Template for Officer Bookmarks.docx&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb520-2"><a href="officer.html#cb520-2" tabindex="-1"></a>  <span class="fu">body_replace_flextable_at_bkm</span>(</span>
+<span id="cb520-3"><a href="officer.html#cb520-3" tabindex="-1"></a>    <span class="at">bookmark =</span> <span class="st">&quot;example_table&quot;</span>,</span>
+<span id="cb520-4"><a href="officer.html#cb520-4" tabindex="-1"></a>    <span class="at">value =</span> <span class="fu">flextable</span>(<span class="fu">head</span>(mtcars))</span>
+<span id="cb520-5"><a href="officer.html#cb520-5" tabindex="-1"></a>  )</span>
+<span id="cb520-6"><a href="officer.html#cb520-6" tabindex="-1"></a></span>
+<span id="cb520-7"><a href="officer.html#cb520-7" tabindex="-1"></a><span class="fu">print</span>(</span>
+<span id="cb520-8"><a href="officer.html#cb520-8" tabindex="-1"></a>  doc_w_bookmarks,</span>
+<span id="cb520-9"><a href="officer.html#cb520-9" tabindex="-1"></a>  <span class="st">&quot;examples/officer_bookmarks.docx&quot;</span></span>
+<span id="cb520-10"><a href="officer.html#cb520-10" tabindex="-1"></a>)</span></code></pre></div>
 <p><a href="https://www.dropbox.com/s/drgw3okcqwp9eqy/officer_bookmarks.docx?dl=0">Link to Word Document on Dropbox</a></p>
 <p>After figuring this out, I think it makes more sense to write in Word and replace tables and figures with bookmarks.</p>
 <p>For ggplot graphs, it looks like you need to use ggsave to save the plot as an image file. Then, use the image file as the value to body_replace_img_at_bkm()</p>
 <p><strong>Don’t forget to use external_img()</strong></p>
 <p>Example from L2C quarterly report:</p>
-<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="officer.html#cb514-1" tabindex="-1"></a>doc <span class="ot">&lt;-</span> doc <span class="sc">%&gt;%</span> </span>
-<span id="cb514-2"><a href="officer.html#cb514-2" tabindex="-1"></a>  <span class="fu">body_replace_text_at_bkm</span>(<span class="st">&quot;n_phone_terminations&quot;</span>, <span class="fu">as.character</span>(n_phone_terminations)) <span class="sc">%&gt;%</span> </span>
-<span id="cb514-3"><a href="officer.html#cb514-3" tabindex="-1"></a>  <span class="fu">body_replace_img_at_bkm</span>(</span>
-<span id="cb514-4"><a href="officer.html#cb514-4" tabindex="-1"></a>    <span class="st">&quot;fig_phone_terminations&quot;</span>, </span>
-<span id="cb514-5"><a href="officer.html#cb514-5" tabindex="-1"></a>    <span class="fu">external_img</span>(<span class="st">&quot;fig_1.jpeg&quot;</span>, <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">4</span>)</span>
-<span id="cb514-6"><a href="officer.html#cb514-6" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="officer.html#cb521-1" tabindex="-1"></a>doc <span class="ot">&lt;-</span> doc <span class="sc">%&gt;%</span> </span>
+<span id="cb521-2"><a href="officer.html#cb521-2" tabindex="-1"></a>  <span class="fu">body_replace_text_at_bkm</span>(<span class="st">&quot;n_phone_terminations&quot;</span>, <span class="fu">as.character</span>(n_phone_terminations)) <span class="sc">%&gt;%</span> </span>
+<span id="cb521-3"><a href="officer.html#cb521-3" tabindex="-1"></a>  <span class="fu">body_replace_img_at_bkm</span>(</span>
+<span id="cb521-4"><a href="officer.html#cb521-4" tabindex="-1"></a>    <span class="st">&quot;fig_phone_terminations&quot;</span>, </span>
+<span id="cb521-5"><a href="officer.html#cb521-5" tabindex="-1"></a>    <span class="fu">external_img</span>(<span class="st">&quot;fig_1.jpeg&quot;</span>, <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">4</span>)</span>
+<span id="cb521-6"><a href="officer.html#cb521-6" tabindex="-1"></a>  )</span></code></pre></div>
 <p>For images, just add the bookmark to the end of the title without surrounding it with “bm”. For example, “Figure 1. Overall trend in sunscreen application outcomes by study p_overall” Where “p_overall is the bookmark. Otherwise, the”bm” will still be there.</p>
 <p>For best results, the width and height used in ggsave() should match the width and height in external_img(). Deciding on the correct width and height might take some trial and error.</p>
 <p>To add an updated date, use this:</p>
-<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="officer.html#cb515-1" tabindex="-1"></a>doc_w_bookmarks <span class="ot">&lt;-</span> doc_w_bookmarks <span class="sc">%&gt;%</span> </span>
-<span id="cb515-2"><a href="officer.html#cb515-2" tabindex="-1"></a>  <span class="fu">body_replace_text_at_bkm</span>(<span class="st">&quot;date&quot;</span>, <span class="fu">as.character</span>(<span class="fu">Sys.Date</span>()))</span></code></pre></div>
+<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="officer.html#cb522-1" tabindex="-1"></a>doc_w_bookmarks <span class="ot">&lt;-</span> doc_w_bookmarks <span class="sc">%&gt;%</span> </span>
+<span id="cb522-2"><a href="officer.html#cb522-2" tabindex="-1"></a>  <span class="fu">body_replace_text_at_bkm</span>(<span class="st">&quot;date&quot;</span>, <span class="fu">as.character</span>(<span class="fu">Sys.Date</span>()))</span></code></pre></div>
 <div id="embedding-cells-form-one-table-into-cells-of-an-existing-word-tables-at-a-bookmark-with-flextable-and-officer" class="section level3 hasAnchor" number="19.7.1">
 <h3><span class="header-section-number">19.7.1</span> Embedding cells form one table into cells of an existing Word tables at a bookmark with flextable and officer<a href="officer.html#embedding-cells-form-one-table-into-cells-of-an-existing-word-tables-at-a-bookmark-with-flextable-and-officer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Posting on Stack Overflow – Update when you have a solution</strong></p>
 <p>In Word, it is possible to copy and paste a subsection of one table into another table. For example, if I have the two Word tables below, I can copy column 2, rows 2-5 from the first table and paste them into column 2, rows 4-7 in the second table.</p>
-<p><img src="img/06_presenting_results/embedding_flextables_in_existing_word_tables_01.png" width="641" /></p>
+<p><img src="img/06_presenting_results/embedding_flextables_in_existing_word_tables_01.png" /><!-- --></p>
 <p>I can highlight the cells that I want to copy in the first table and and paste them into the cells of the second table.</p>
 <p><img src="img/06_presenting_results/embedding_flextables_in_existing_word_tables_01.gif" /><!-- --></p>
 <p>I’m wondering if there is a programmatic way to do the same operation with <code>flextable</code> and <code>officer</code>. It’s probably worth mentioning the following to parameters:</p>
@@ -799,19 +807,19 @@ Hidden comments placeholder
 </ol>
 <p>I’ve tried the following potential solutions so far. They all begin with the following <a href="https://www.dropbox.com/s/ac06bgempt2kpzz/embedding_flextables_in_existing_word_tables.docx?dl=0">template Word document</a> with bookmarks embedded in the table.</p>
 <p>Additionally, here is the code I’m using to create the “First table” example data.</p>
-<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="officer.html#cb516-1" tabindex="-1"></a>first_table <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb516-2"><a href="officer.html#cb516-2" tabindex="-1"></a>  <span class="at">n_items =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
-<span id="cb516-3"><a href="officer.html#cb516-3" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">40</span>, <span class="dv">20</span>, <span class="dv">5</span>)</span>
-<span id="cb516-4"><a href="officer.html#cb516-4" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="officer.html#cb523-1" tabindex="-1"></a>first_table <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb523-2"><a href="officer.html#cb523-2" tabindex="-1"></a>  <span class="at">n_items =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
+<span id="cb523-3"><a href="officer.html#cb523-3" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">40</span>, <span class="dv">20</span>, <span class="dv">5</span>)</span>
+<span id="cb523-4"><a href="officer.html#cb523-4" tabindex="-1"></a>)</span></code></pre></div>
 <p><strong>Method 1: Add values to a bookmark in the second table</strong></p>
-<p><img src="img/06_presenting_results/embedding_flextables_in_existing_word_tables_02.png" width="640" /></p>
+<p><img src="img/06_presenting_results/embedding_flextables_in_existing_word_tables_02.png" /><!-- --></p>
 <p>Start by reading in the Word template document.</p>
 <p>Then, I tried adding the <em>values</em> from first_table to the bookmark in the second table.</p>
-<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="officer.html#cb517-1" tabindex="-1"></a>doc <span class="ot">&lt;-</span> doc <span class="sc">%&gt;%</span> </span>
-<span id="cb517-2"><a href="officer.html#cb517-2" tabindex="-1"></a>  <span class="fu">body_replace_text_at_bkm</span>(</span>
-<span id="cb517-3"><a href="officer.html#cb517-3" tabindex="-1"></a>    <span class="st">&quot;bm_add_rows_01&quot;</span>, </span>
-<span id="cb517-4"><a href="officer.html#cb517-4" tabindex="-1"></a>    first_table <span class="sc">%&gt;%</span> <span class="fu">pull</span>(n) <span class="sc">%&gt;%</span> <span class="fu">as.character</span>()</span>
-<span id="cb517-5"><a href="officer.html#cb517-5" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="officer.html#cb524-1" tabindex="-1"></a>doc <span class="ot">&lt;-</span> doc <span class="sc">%&gt;%</span> </span>
+<span id="cb524-2"><a href="officer.html#cb524-2" tabindex="-1"></a>  <span class="fu">body_replace_text_at_bkm</span>(</span>
+<span id="cb524-3"><a href="officer.html#cb524-3" tabindex="-1"></a>    <span class="st">&quot;bm_add_rows_01&quot;</span>, </span>
+<span id="cb524-4"><a href="officer.html#cb524-4" tabindex="-1"></a>    first_table <span class="sc">%&gt;%</span> <span class="fu">pull</span>(n) <span class="sc">%&gt;%</span> <span class="fu">as.character</span>()</span>
+<span id="cb524-5"><a href="officer.html#cb524-5" tabindex="-1"></a>  )</span></code></pre></div>
 <pre><code>## Error in body_replace_text_at_bkm(., &quot;bm_add_rows_01&quot;, first_table %&gt;% : is_scalar_character(value) is not TRUE</code></pre>
 <p>That code results in the following error:</p>
 <pre><code>Error in body_replace_text_at_bkm(., &quot;bm_add_rows_01&quot;, first_table %&gt;% : 
@@ -819,32 +827,32 @@ is_scalar_character(value) is not TRUE</code></pre>
 <p>So, I can’t add a vector of values to the bookmark.</p>
 <p><strong>Method 2: Add a single-column flextable to a bookmark in the second table</strong></p>
 <p>To do this, I need to first coerce first_table into a single-column flextable object.</p>
-<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="officer.html#cb520-1" tabindex="-1"></a>first_table_ft <span class="ot">&lt;-</span> first_table <span class="sc">%&gt;%</span> </span>
-<span id="cb520-2"><a href="officer.html#cb520-2" tabindex="-1"></a>  <span class="fu">select</span>(n) <span class="sc">%&gt;%</span> </span>
-<span id="cb520-3"><a href="officer.html#cb520-3" tabindex="-1"></a>  <span class="fu">flextable</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb520-4"><a href="officer.html#cb520-4" tabindex="-1"></a>  <span class="fu">delete_part</span>(<span class="st">&quot;header&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb520-5"><a href="officer.html#cb520-5" tabindex="-1"></a>  <span class="fu">border_remove</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="officer.html#cb527-1" tabindex="-1"></a>first_table_ft <span class="ot">&lt;-</span> first_table <span class="sc">%&gt;%</span> </span>
+<span id="cb527-2"><a href="officer.html#cb527-2" tabindex="-1"></a>  <span class="fu">select</span>(n) <span class="sc">%&gt;%</span> </span>
+<span id="cb527-3"><a href="officer.html#cb527-3" tabindex="-1"></a>  <span class="fu">flextable</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb527-4"><a href="officer.html#cb527-4" tabindex="-1"></a>  <span class="fu">delete_part</span>(<span class="st">&quot;header&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb527-5"><a href="officer.html#cb527-5" tabindex="-1"></a>  <span class="fu">border_remove</span>()</span></code></pre></div>
 <p>Then, add the single-column flextable to the bookmark in the second table.</p>
-<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="officer.html#cb521-1" tabindex="-1"></a>doc <span class="ot">&lt;-</span> doc <span class="sc">%&gt;%</span> </span>
-<span id="cb521-2"><a href="officer.html#cb521-2" tabindex="-1"></a>  <span class="fu">body_replace_flextable_at_bkm</span>(<span class="st">&quot;bm_add_rows_01&quot;</span>, first_table_ft)</span></code></pre></div>
-<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="officer.html#cb522-1" tabindex="-1"></a><span class="fu">print</span>(</span>
-<span id="cb522-2"><a href="officer.html#cb522-2" tabindex="-1"></a>  doc, </span>
-<span id="cb522-3"><a href="officer.html#cb522-3" tabindex="-1"></a>  <span class="st">&quot;embedding_flextables.docx&quot;</span></span>
-<span id="cb522-4"><a href="officer.html#cb522-4" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="officer.html#cb528-1" tabindex="-1"></a>doc <span class="ot">&lt;-</span> doc <span class="sc">%&gt;%</span> </span>
+<span id="cb528-2"><a href="officer.html#cb528-2" tabindex="-1"></a>  <span class="fu">body_replace_flextable_at_bkm</span>(<span class="st">&quot;bm_add_rows_01&quot;</span>, first_table_ft)</span></code></pre></div>
+<div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb529-1"><a href="officer.html#cb529-1" tabindex="-1"></a><span class="fu">print</span>(</span>
+<span id="cb529-2"><a href="officer.html#cb529-2" tabindex="-1"></a>  doc, </span>
+<span id="cb529-3"><a href="officer.html#cb529-3" tabindex="-1"></a>  <span class="st">&quot;embedding_flextables.docx&quot;</span></span>
+<span id="cb529-4"><a href="officer.html#cb529-4" tabindex="-1"></a>)</span></code></pre></div>
 <p>That returns the following result – a four-row table embedded into a single cell of the second table. This result makes sense, but it isn’t the result I’m attempting to achieve.</p>
-<p><img src="img/06_presenting_results/embedding_flextables_in_existing_word_tables_03.png" width="734" /></p>
+<p><img src="img/06_presenting_results/embedding_flextables_in_existing_word_tables_03.png" /><!-- --></p>
 <p><strong>Method 3: Add a single-column flextable to a bookmark in the second table with cells merged vertically</strong></p>
 <p>For my third attempt, I tried adding the bookmark to the second table with rows 4-7 merged in column 2.</p>
-<p><img src="img/06_presenting_results/embedding_flextables_in_existing_word_tables_04.png" width="634" /></p>
+<p><img src="img/06_presenting_results/embedding_flextables_in_existing_word_tables_04.png" /><!-- --></p>
 <p>Then, adding the single-column flextable to the bookmark in the second table as before.</p>
-<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="officer.html#cb523-1" tabindex="-1"></a>doc <span class="ot">&lt;-</span> doc <span class="sc">%&gt;%</span> </span>
-<span id="cb523-2"><a href="officer.html#cb523-2" tabindex="-1"></a>  <span class="fu">body_replace_flextable_at_bkm</span>(<span class="st">&quot;bm_add_rows_02&quot;</span>, first_table_ft)</span></code></pre></div>
-<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="officer.html#cb524-1" tabindex="-1"></a><span class="fu">print</span>(</span>
-<span id="cb524-2"><a href="officer.html#cb524-2" tabindex="-1"></a>  doc, </span>
-<span id="cb524-3"><a href="officer.html#cb524-3" tabindex="-1"></a>  <span class="st">&quot;embedding_flextables.docx&quot;</span></span>
-<span id="cb524-4"><a href="officer.html#cb524-4" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="officer.html#cb530-1" tabindex="-1"></a>doc <span class="ot">&lt;-</span> doc <span class="sc">%&gt;%</span> </span>
+<span id="cb530-2"><a href="officer.html#cb530-2" tabindex="-1"></a>  <span class="fu">body_replace_flextable_at_bkm</span>(<span class="st">&quot;bm_add_rows_02&quot;</span>, first_table_ft)</span></code></pre></div>
+<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="officer.html#cb531-1" tabindex="-1"></a><span class="fu">print</span>(</span>
+<span id="cb531-2"><a href="officer.html#cb531-2" tabindex="-1"></a>  doc, </span>
+<span id="cb531-3"><a href="officer.html#cb531-3" tabindex="-1"></a>  <span class="st">&quot;embedding_flextables.docx&quot;</span></span>
+<span id="cb531-4"><a href="officer.html#cb531-4" tabindex="-1"></a>)</span></code></pre></div>
 <p>Which again returns a result that isn’t quite what I’m looking for.</p>
-<p><img src="img/06_presenting_results/embedding_flextables_in_existing_word_tables_05.png" width="721" /></p>
+<p><img src="img/06_presenting_results/embedding_flextables_in_existing_word_tables_05.png" /><!-- --></p>
 <p>Any solutions and/or constructive feedback is appreciated!</p>
 <!--
 Clean up and add session info
@@ -920,7 +928,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>21 Git and GitHub | R Notes</title>
   <meta name="description" content="This is the Bookdown for Brad Cannell’s R Notes." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="21 Git and GitHub | R Notes" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Brad Cannell" />
 
 
-<meta name="date" content="2023-07-29" />
+<meta name="date" content="2024-05-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,19 +52,22 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.23/datatables.js"></script>
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="libs/datatables-binding-0.33/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -127,6 +130,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -270,6 +277,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.16.3" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-create-variable-name-in-mutate"><i class="fa fa-check"></i><b>4.16.3</b> Using a quoture to create variable name in mutate</a></li>
 <li class="chapter" data-level="4.16.4" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#using-a-quoture-to-turn-a-variable-name-into-a-constant-value"><i class="fa fa-check"></i><b>4.16.4</b> Using a quoture to turn a variable name into a constant value</a></li>
 <li class="chapter" data-level="4.16.5" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#convert-a-string-to-a-quoture"><i class="fa fa-check"></i><b>4.16.5</b> Convert a string to a quoture</a></li>
+<li class="chapter" data-level="4.16.6" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#setting-a-default-function-parameter-value-to-null"><i class="fa fa-check"></i><b>4.16.6</b> Setting a default function parameter value to NULL</a></li>
 </ul></li>
 <li class="chapter" data-level="4.17" data-path="tidy-evaluation.html"><a href="tidy-evaluation.html#example-i-created-for-steph-yap"><i class="fa fa-check"></i><b>4.17</b> Example I created for Steph Yap</a></li>
 </ul></li>
@@ -634,9 +642,9 @@ div.csl-indent {
 bookdown::preview_chapter("chapters/09_collaborating/git.Rmd")
 -->
 <p><img src="https://picsum.photos/200/300" /><!-- --></p>
-<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="git-and-github.html#cb581-1" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb581-2"><a href="git-and-github.html#cb581-2" tabindex="-1"></a><span class="fu">library</span>(ggdag, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb581-3"><a href="git-and-github.html#cb581-3" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="git-and-github.html#cb588-1" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb588-2"><a href="git-and-github.html#cb588-2" tabindex="-1"></a><span class="fu">library</span>(ggdag, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb588-3"><a href="git-and-github.html#cb588-3" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 <div id="overview-18" class="section level2 hasAnchor" number="21.1">
 <h2><span class="header-section-number">21.1</span> ⭐️Overview<a href="git-and-github.html#overview-18" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>My notes on git and GitHub. There are also chapters in R4Epi on git and GitHub. These notes should not reproduce those chapter. These notes should go beyond those chapters or be used for experimenting.</p>
@@ -699,13 +707,13 @@ bookdown::preview_chapter("chapters/09_collaborating/git.Rmd")
 <h2><span class="header-section-number">21.6</span> Get rid of .DS_Store<a href="git-and-github.html#get-rid-of-.ds_store-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>.DS_Store</code> file can be an annoyance when working with Git on MacOS. <a href="https://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository/107921">Here is a link</a> to instructions for removing <code>.DS_Store</code> from your repository. Do it early and never worry about it again.</p>
 <p>In the terminal, run the following code from the root directory:</p>
-<div class="sourceCode" id="cb582"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb582-1"><a href="git-and-github.html#cb582-1" tabindex="-1"></a><span class="co"># Remove existing files from the repository:</span></span>
-<span id="cb582-2"><a href="git-and-github.html#cb582-2" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.DS_Store&quot;</span> <span class="at">-type</span> f <span class="at">-exec</span> git-rm {} <span class="dt">\;</span></span></code></pre></div>
-<div class="sourceCode" id="cb583"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb583-1"><a href="git-and-github.html#cb583-1" tabindex="-1"></a><span class="co"># Add .DS_Store to .gitignore</span></span>
-<span id="cb583-2"><a href="git-and-github.html#cb583-2" tabindex="-1"></a><span class="bu">echo</span> .DS_Store <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
-<div class="sourceCode" id="cb584"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb584-1"><a href="git-and-github.html#cb584-1" tabindex="-1"></a><span class="co"># Commit the file to the repo</span></span>
-<span id="cb584-2"><a href="git-and-github.html#cb584-2" tabindex="-1"></a><span class="fu">git</span> add .gitignore</span>
-<span id="cb584-3"><a href="git-and-github.html#cb584-3" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&#39;.DS_Store banished!&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb589"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb589-1"><a href="git-and-github.html#cb589-1" tabindex="-1"></a><span class="co"># Remove existing files from the repository:</span></span>
+<span id="cb589-2"><a href="git-and-github.html#cb589-2" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.DS_Store&quot;</span> <span class="at">-type</span> f <span class="at">-exec</span> git-rm {} <span class="dt">\;</span></span></code></pre></div>
+<div class="sourceCode" id="cb590"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb590-1"><a href="git-and-github.html#cb590-1" tabindex="-1"></a><span class="co"># Add .DS_Store to .gitignore</span></span>
+<span id="cb590-2"><a href="git-and-github.html#cb590-2" tabindex="-1"></a><span class="bu">echo</span> .DS_Store <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb591"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb591-1"><a href="git-and-github.html#cb591-1" tabindex="-1"></a><span class="co"># Commit the file to the repo</span></span>
+<span id="cb591-2"><a href="git-and-github.html#cb591-2" tabindex="-1"></a><span class="fu">git</span> add .gitignore</span>
+<span id="cb591-3"><a href="git-and-github.html#cb591-3" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&#39;.DS_Store banished!&#39;</span></span></code></pre></div>
 </div>
 <div id="amend" class="section level2 hasAnchor" number="21.7">
 <h2><span class="header-section-number">21.7</span> Amend<a href="git-and-github.html#amend" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -733,7 +741,7 @@ bookdown::preview_chapter("chapters/09_collaborating/git.Rmd")
 <li>Use command line instructions to try out the code to resolve more complex merge conflicts.</li>
 </ul>
 <p>Example command line pull request merge conflict
-<img src="img/08_collaborating/git_merge_conflict.png" width="800" /></p>
+<img src="img/08_collaborating/git_merge_conflict.png" /><!-- --></p>
 <p>If there are already changes on the branch (so you can’t pull), you need to either:</p>
 <ul>
 <li>Commit the changes on the branch (if you want to keep them)<br />
@@ -793,24 +801,24 @@ issue-#-short-description</p>
 <li><p>We have a sandbox repository here: <a href="https://github.com/brad-cannell/sandbox" class="uri">https://github.com/brad-cannell/sandbox</a>. We cloned it to Dropbox/R.</p></li>
 <li><p>We created a plain text file named <code>test_git</code> in the master branch, we added a little bit of text, we committed it to the master branch, and we pushed it to GitHub.</p></li>
 </ol>
-<p><img src="img/08_collaborating/git_remove_initial_commit.png" width="528" /></p>
+<p><img src="img/08_collaborating/git_remove_initial_commit.png" /><!-- --></p>
 <ol start="3" style="list-style-type: decimal">
 <li>We created a csv file with some fake “data”. We saved it as <code>data/test_data.csv</code>. We need the data for our project, but we don’t want the data to be pushed to GitHub where it will be available to the public. What we should do is add this file – or perhaps the entire data folder – to <code>.gitignore</code>. But, we are going to pretend that we forgot to do that. Instead, we committed <code>data/test_data.csv</code> to our <strong>local</strong> repo after saving.</li>
 </ol>
-<p><img src="img/08_collaborating/git_remove_add_test_data_1.png" width="575" /></p>
+<p><img src="img/08_collaborating/git_remove_add_test_data_1.png" /><!-- --></p>
 <p>In the screenshot above, we can see that we have accidentally committed <code>data/test_data.csv</code> to the <code>master</code> branch of our local repository. However, we have <strong>not</strong> pushed that commit to our remote repository on GitHub.</p>
 <div id="undo-commits-no-push" class="section level3 hasAnchor" number="21.13.1">
 <h3><span class="header-section-number">21.13.1</span> Undo commits, no push<a href="git-and-github.html#undo-commits-no-push" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Because we haven’t pushed the commit to GitHub, we have lots of options. In fact, we haven’t even technically done anything “wrong” yet. Committing the data to our local repository isn’t a problem in and of itself. It only becomes a problem when we push it to the public remote repository on GitHub. The easiest solution is to simply click the <code>Undo</code> button in GitKraken (<a href="https://www.gitkraken.com/learn/git/problems/undo-git-commit" class="uri">https://www.gitkraken.com/learn/git/problems/undo-git-commit</a>).</p>
-<p><img src="img/08_collaborating/git_remove_undo_1.png" width="1561" /></p>
+<p><img src="img/08_collaborating/git_remove_undo_1.png" /><!-- --></p>
 <p>As we can see in the screenshot above, clicking <code>Undo</code> rolled back the commit, and leaves <code>data/test_data.csv</code> in the staging area. Now, we can easily unstage the file <code>data/test_data.csv</code>, add it to <code>.gitignore</code>, and move on with our project. From this point on, <code>data/test_data.csv</code> will still exist on our computer, but git will be totally oblivious to it, and more importantly, won’t ever upload a copy of it up to our public remote repository on GitHub.</p>
 <p>This is sort of the best case scenario. Now, let’s add one level of complication to the scenario.</p>
 <ol start="4" style="list-style-type: decimal">
 <li>Just like 3 above, we committed <code>data/test_data.csv</code> to our local repo after saving. However, we don’t catch it immediately this time. Instead, we keep working on our project. Specifically, we add a little text to <code>test_git</code>, save <code>test_git</code>, and commit those changes. Importantly, we still haven’t pushed any commits that include <code>data/test_data.csv</code> to our public remote repository on GitHub.</li>
 </ol>
-<p><img src="img/08_collaborating/git_remove_add_test_data_2.png" width="676" /></p>
+<p><img src="img/08_collaborating/git_remove_add_test_data_2.png" /><!-- --></p>
 <p>It turns out that we can still use the <code>Undo</code> button in this scenario as well.</p>
-<p><img src="img/08_collaborating/git_remove_undo_2.png" width="640" /></p>
+<p><img src="img/08_collaborating/git_remove_undo_2.png" /><!-- --></p>
 <p>As we can see in the screenshot above, clicking <code>Undo</code> twice rolled back two commits, and left <code>data/test_data.csv</code> and the edited version of <code>test_git</code> in the staging area. Then, we unstaged <code>data/test_data.csv</code>, added it to <code>.gitignore</code>, staged the modified <code>.gitignore</code>, and committed. From this point on, <code>data/test_data.csv</code> will still exist on our computer, but git will be totally oblivious to it, and more importantly, won’t ever upload a copy of it up to our public remote repository on GitHub.</p>
 <p>So, when won’t the <code>Undo</code> button work?</p>
 <ul>
@@ -826,72 +834,72 @@ issue-#-short-description</p>
 <li><p>We have a sandbox repository here: <a href="https://github.com/brad-cannell/sandbox" class="uri">https://github.com/brad-cannell/sandbox</a>. We cloned it to Dropbox/R.</p></li>
 <li><p>We created a plain text file named <code>test_git</code> in the master branch, we added a little bit of text, we committed it to the master branch, and we pushed it to GitHub.</p></li>
 </ol>
-<p><img src="img/08_collaborating/git_remove_initial_commit.png" width="528" /></p>
+<p><img src="img/08_collaborating/git_remove_initial_commit.png" /><!-- --></p>
 <ol start="3" style="list-style-type: decimal">
 <li>We created a csv file with some fake “data”. We saved it as <code>data/test_data.csv</code>. We need the data for our project, but we don’t want the data to be pushed to GitHub where it will be available to the public. What we should do is add this file – or perhaps the entire data folder – to <code>.gitignore</code>. But, we are going to pretend that we forgot to do that. Instead, we committed <code>data/test_data.csv</code> to our <strong>local</strong> repo after saving.</li>
 </ol>
-<p><img src="img/08_collaborating/git_remove_add_test_data_1.png" width="575" /></p>
+<p><img src="img/08_collaborating/git_remove_add_test_data_1.png" /><!-- --></p>
 <p>In the screenshot above, we can see that we have accidentally committed <code>data/test_data.csv</code> to the <code>master</code> branch of our local repository. However, we have <strong>not</strong> pushed that commit to our remote repository on GitHub.</p>
 <p>This time, we do go ahead and push the commit to GitHub.</p>
-<p><img src="img/08_collaborating/git_remove_push_1.png" width="1164" /></p>
+<p><img src="img/08_collaborating/git_remove_push_1.png" /><!-- --></p>
 <p>Next, we will click the <code>Undo</code> button as we did above. Here’s what happens.</p>
 <ul>
 <li><p>GitKraken gives us a message saying that the undo was successful.</p></li>
 <li><p>The local repository is rolled back to its previous state.</p></li>
 <li><p><code>data/test_data.csv</code> is locally once again in the staging area.</p></li>
 </ul>
-<p><img src="img/08_collaborating/git_remove_push_2.png" width="1561" /></p>
+<p><img src="img/08_collaborating/git_remove_push_2.png" /><!-- --></p>
 <p>However, when we take a look at the repository in GitHub, we can see that the file is still there.</p>
-<p><img src="img/08_collaborating/git_remove_push_3.png" width="1241" /></p>
+<p><img src="img/08_collaborating/git_remove_push_3.png" /><!-- --></p>
 <p>Our first instinct might be to unstage <code>data/test_data.csv</code> locally, add it to <code>.gitignore</code>, and then create a new commit with <code>data/test_data.csv</code> ignored. Let’s do that.</p>
-<p><img src="img/08_collaborating/git_remove_push_4.png" width="1162" /></p>
+<p><img src="img/08_collaborating/git_remove_push_4.png" /><!-- --></p>
 <p>However, this hasn’t changed anything on GitHub. The data is still available there. So, try to push our commit with <code>data/test_data.csv</code> ignored to GitHub.</p>
-<p><img src="img/08_collaborating/git_remove_push_5.png" width="1170" /></p>
+<p><img src="img/08_collaborating/git_remove_push_5.png" /><!-- --></p>
 <p>When we do, GitKraken asks us that <code>refs/heads/master</code> is behind <code>refs/remotes/origin/master</code>. This makes sense, we rolled our local repo back one commit, so it is behind the latest commit on GitHub (i.e., <code>refs/remotes/origin/master</code>). However, we are trying to send up a commit that differs from the commit on GitHub. This could create a conflict. So, GitKraken asks us if we want to try to pull down the commit from GitHub first. In this case, we don’t. That commit is exactly what we are trying to get rid of. Let’s click the <code>Force Push</code> button. GitKraken will warn us that this is destructive and double-check that it is what we want to do. It is.</p>
-<p><img src="img/08_collaborating/git_remove_push_6.png" width="1161" /></p>
+<p><img src="img/08_collaborating/git_remove_push_6.png" /><!-- --></p>
 <p>Now, when we go on GitHub, we can see that <code>data/test_data.csv</code> is not longer showing up in our repository.</p>
-<p><img src="img/08_collaborating/git_remove_push_7.png" width="916" /></p>
+<p><img src="img/08_collaborating/git_remove_push_7.png" /><!-- --></p>
 <p>When we search for <code>test_data</code> in our repository, the only place it appears is in the <code>.gitignore</code> file. It looks like we successfully removed the data file from our repository!</p>
 </div>
 <div id="multiple-commits-pushed-to-github" class="section level3 hasAnchor" number="21.13.3">
 <h3><span class="header-section-number">21.13.3</span> Multiple commits, pushed to GitHub<a href="git-and-github.html#multiple-commits-pushed-to-github" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Finally, let’s add one more wrinkle to this scenario. Let’s send multiple commits to GitHub and see if we can remove any trace of the test data by simply adding it to <code>.gitignore</code> and pushing it up to GitHub.</p>
 <p>We are going to add some text to <code>test_git</code>, commit it to the master branch, and push it to GitHub.</p>
-<p><img src="img/08_collaborating/git_remove_mult_push_1.png" width="1161" /></p>
+<p><img src="img/08_collaborating/git_remove_mult_push_1.png" /><!-- --></p>
 <p>Let’s once again “accidentally” commit and push a data set – <code>data/test_data_2.csv</code> – to GitHub.</p>
-<p><img src="img/08_collaborating/git_remove_mult_push_2.png" width="1168" /></p>
+<p><img src="img/08_collaborating/git_remove_mult_push_2.png" /><!-- --></p>
 <p>When we look at GitHub, we can see that the file is there.</p>
-<p><img src="img/08_collaborating/git_remove_mult_push_3.png" width="917" /></p>
+<p><img src="img/08_collaborating/git_remove_mult_push_3.png" /><!-- --></p>
 <p>And when we search for test_data_2, it comes up as a commit.</p>
-<p><img src="img/08_collaborating/git_remove_mult_push_4.png" width="1070" /></p>
+<p><img src="img/08_collaborating/git_remove_mult_push_4.png" /><!-- --></p>
 <p>If we click on the commit, we can see the data.</p>
-<p><img src="img/08_collaborating/git_remove_mult_push_5.png" width="1746" /></p>
+<p><img src="img/08_collaborating/git_remove_mult_push_5.png" /><!-- --></p>
 <p>Now, we will make another change to <code>test_git</code>, commit it to the master branch, and push it to GitHub.</p>
 <p>We will make a change to <code>data/test_data_2.csv</code>, commit it to the master branch, and push it to GitHub.</p>
 <p>And, we will make yet another change to <code>test_git</code>, commit it to the master branch, and push it to GitHub.</p>
 <p>This is what our commit history looks like at this point.</p>
-<p><img src="img/08_collaborating/git_remove_mult_push_6.png" width="1167" /></p>
+<p><img src="img/08_collaborating/git_remove_mult_push_6.png" /><!-- --></p>
 <p>Let’s once again try to do what we did before. Click the <code>Undo</code> button all the way back to our first commit of <code>data/test_data_2.csv</code>.</p>
-<p><img src="img/08_collaborating/git_remove_mult_push_7.png" width="1559" /></p>
+<p><img src="img/08_collaborating/git_remove_mult_push_7.png" /><!-- --></p>
 <p>Add <code>data/test_data_2.csv</code> to <code>.gitignore</code>, commit, and force push.</p>
-<p><img src="img/08_collaborating/git_remove_mult_push_8.png" width="1561" /></p>
+<p><img src="img/08_collaborating/git_remove_mult_push_8.png" /><!-- --></p>
 <p>Here’s the situation:</p>
 <ul>
 <li><p>The edited <code>data/test_data_2.csv</code> file is still on our local machine.</p></li>
 <li><p>The edited <code>test_git</code> file is still on our local machine, ready to be committed and pushed again.</p></li>
 </ul>
 <p>When we look on GitHub, the data directory is gone.</p>
-<p><img src="img/08_collaborating/git_remove_mult_push_9.png" width="912" /></p>
+<p><img src="img/08_collaborating/git_remove_mult_push_9.png" /><!-- --></p>
 <p>When we search for <code>test_data</code> in our repository, the only place it appears is in the <code>.gitignore</code> file.</p>
-<p><img src="img/08_collaborating/git_remove_mult_push_10.png" width="1089" /></p>
-<p><img src="img/08_collaborating/git_remove_mult_push_11.png" width="1750" /></p>
+<p><img src="img/08_collaborating/git_remove_mult_push_10.png" /><!-- --></p>
+<p><img src="img/08_collaborating/git_remove_mult_push_11.png" /><!-- --></p>
 <p>It looks like we successfully removed the data file from our repository!</p>
 </div>
 <div id="when-these-methods-wont-work" class="section level3 hasAnchor" number="21.13.4">
 <h3><span class="header-section-number">21.13.4</span> When these methods won’t work<a href="git-and-github.html#when-these-methods-wont-work" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>I don’t know how, but I managed to mess up detect_public so bad that the methods above won’t work. I can’t <code>Undo</code> back to a point before the data file existed.</p>
 <p>Here’s the current state of my (fake) repository.</p>
-<p><img src="img/08_collaborating/git_filter_repo_1.png" width="1165" /></p>
+<p><img src="img/08_collaborating/git_filter_repo_1.png" /><!-- --></p>
 <p>It looks like the best thing to use is <a href="https://github.com/newren/git-filter-repo" class="uri">https://github.com/newren/git-filter-repo</a>.</p>
 <p>Use the installation instructions here: <a href="https://github.com/newren/git-filter-repo/blob/main/INSTALL.md" class="uri">https://github.com/newren/git-filter-repo/blob/main/INSTALL.md</a></p>
 <p>Click on the link to the raw data file, select all the text in the file, copy and paste the text into a blank plain text file, and save the file anywhere as <code>git-filter-repo</code> with no file extension.</p>
@@ -919,10 +927,10 @@ issue-#-short-description</p>
 <h2><span class="header-section-number">21.14</span> Other little quirks and errors<a href="git-and-github.html#other-little-quirks-and-errors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When working on Epi III – and I think this could be an issue with using git on OneDrive more generally – I would have to recommit files when I changed computers. Not because the <strong>content</strong> of the file had changed, but because something called the <strong>file mode</strong> had changed. I searched SO and seemed to fix it with this post: <a href="https://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-file-mode-chmod-changes" class="uri">https://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-file-mode-chmod-changes</a></p>
 <p>Open terminal and type:</p>
-<div class="sourceCode" id="cb585"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb585-1"><a href="git-and-github.html#cb585-1" tabindex="-1"></a><span class="fu">git</span> config core.fileMode false</span></code></pre></div>
+<div class="sourceCode" id="cb592"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb592-1"><a href="git-and-github.html#cb592-1" tabindex="-1"></a><span class="fu">git</span> config core.fileMode false</span></code></pre></div>
 <p>Another issue I encountered when working on Epi III – and I think this could be an issue with using git on OneDrive more generally – was the existence of these “Icon” files every time I switched computers. However, they didn’t seem to actually exist (or at least they weren’t visible), and ignoring them in the usual way did not seem to <em>actually</em> ignore them. I searched SO and seemed to fix it with this post: <a href="https://stackoverflow.com/questions/17556250/how-to-ignore-icon-in-git" class="uri">https://stackoverflow.com/questions/17556250/how-to-ignore-icon-in-git</a></p>
 <p>Open terminal and type:</p>
-<div class="sourceCode" id="cb586"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb586-1"><a href="git-and-github.html#cb586-1" tabindex="-1"></a><span class="bu">printf</span> <span class="st">&quot;Icon\r\r&quot;</span> <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb593"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb593-1"><a href="git-and-github.html#cb593-1" tabindex="-1"></a><span class="bu">printf</span> <span class="st">&quot;Icon\r\r&quot;</span> <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
 <!--
 Clean up and add session info
 -->
@@ -1001,7 +1009,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
